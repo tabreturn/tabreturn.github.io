@@ -3,18 +3,70 @@
 
   {% include head.html %}
 
-  <body>
-
-    {% include header.html %}
-
-    <div class="page-content">
-      <div class="wrapper">
-        {{ content }}
-      </div>
+  <body class="light serif loaded">
+  
+  {% include header.html %}
+  
+  <div id="container" class="container font-size4 content-width4">
+    
+    <div id="reader-header" class="header" style="display: block;">
+      <a id="reader-domain" class="domain" href="https://path...">domain.com</a>
+      <div class="domain-border"></div>
+      <h1 id="reader-title">Heading</h1>
+      <div id="reader-credits" class="credits"></div>
     </div>
 
-    {% include footer.html %}
-
+    <div class="content">
+      <div id="moz-reader-content" class="line-height5" style="display: block;">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+        <h2>
+          Sub Heading
+        </h2>
+        <p>
+          Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+        </p>
+        <pre>var x = 1;</pre>
+        <figure>
+          <img src="https://www.royalcanin.com/~/media/Royal-Canin/Product-Categories/cat-adult-landing-hero.ashx" />
+          <figcaption>cat</figcaption>
+        </figure>
+      </div>
+    </div>
+    
+  </div>
+  
+  <ul id="reader-toolbar" class="toolbar">
+    <li><button id="close-button" class="button close-button" title="Close Reader View"></button></li>
+    <ul id="style-dropdown" class="dropdown">
+      <li><button class="dropdown-toggle button style-button" title="Type controls"></button></li>
+      <li id="reader-popup" class="dropdown-popup" style="top: 48px;">
+        <div id="font-type-buttons"><button class="sans-serif-button"><div class="name">Aa</div><div class="description">Sans-serif</div></button><button class="serif-button selected"><div class="name">Aa</div><div class="description">Serif</div></button></div>
+        <hr>
+        <div id="font-size-buttons">
+          <button id="font-size-minus" class="minus-button">
+          </button><button id="font-size-sample">Aa</button><button id="font-size-plus" class="plus-button">
+        </button></div>
+        <hr>
+        <div id="content-width-buttons">
+          <button id="content-width-minus" class="content-width-minus-button">
+          </button><button id="content-width-plus" class="content-width-plus-button">
+        </button></div>
+        <hr>
+        <div id="line-height-buttons">
+          <button id="line-height-minus" class="line-height-minus-button">
+          </button><button id="line-height-plus" class="line-height-plus-button">
+        </button></div>
+        <hr>
+        <div id="color-scheme-buttons"><button class="light-button selected"><div class="name">Light</div></button><button class="dark-button"><div class="name">Dark</div></button><button class="sepia-button"><div class="name">Sepia</div></button></div>
+        <div class="dropdown-arrow">
+      </div></li>
+    </ul>
+  </ul>
+  
+  {% include footer.html %}
+  
   </body>
-
+  
 </html>

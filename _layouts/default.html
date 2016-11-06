@@ -34,16 +34,15 @@
           <figcaption>cat</figcaption>
         </figure>
       </div>
-      
+
       <section id="isso-thread"></section>
       <script data-isso="https://secure.tabreturn.com/" src="https://secure.tabreturn.com/js/embed.min.js"></script>
-      
+
     </div>
 
   </div>
 
   <ul id="reader-toolbar" class="toolbar">
-    <!--
     <li><button id="close-button" class="button close-button" title="Close Reader View"></button></li>
     <ul id="style-dropdown" class="dropdown">
       <li><button class="dropdown-toggle button style-button" title="Type controls"></button></li>
@@ -69,7 +68,6 @@
         <div class="dropdown-arrow">
       </div></li>
     </ul>
-  -->
   </ul>
 
   {% include footer.html %}
@@ -77,3 +75,38 @@
   </body>
 
 </html>
+
+<script>
+reader_popup_visible = false;
+document.querySelector('.dropdown-toggle').addEventListener('click', function(){
+  if (!reader_popup_visible)
+    document.getElementById('reader-popup').style.visibility = 'visible';
+  else
+    document.getElementById('reader-popup').style.visibility = 'hidden';
+  reader_popup_visible = !reader_popup_visible;
+});
+
+function colorSchemeSelect(selected, scheme) {
+  document.querySelector('#color-scheme-buttons .light-button').classList.remove('selected');
+  document.querySelector('#color-scheme-buttons .dark-button').classList.remove('selected');
+  document.querySelector('#color-scheme-buttons .sepia-button').classList.remove('selected');
+  document.getElementsByTagName('body')[0].classList.remove('light');
+  document.getElementsByTagName('body')[0].classList.remove('dark');
+  document.getElementsByTagName('body')[0].classList.remove('sepia');
+  document.getElementsByTagName('body')[0].classList.add(scheme);
+  selected.classList.add('selected');
+}
+
+document.querySelector('#color-scheme-buttons .light-button').addEventListener('click', function(){
+  colorSchemeSelect(this, 'light');
+});
+
+document.querySelector('#color-scheme-buttons .dark-button').addEventListener('click', function(){
+  colorSchemeSelect(this, 'dark');
+});
+
+document.querySelector('#color-scheme-buttons .sepia-button').addEventListener('click', function(){
+  colorSchemeSelect(this, 'sepia');
+});
+
+</script>

@@ -77,7 +77,10 @@
 </html>
 
 <script>
+// color schemes:
+
 reader_popup_visible = false;
+
 document.querySelector('.dropdown-toggle').addEventListener('click', function(){
   if (!reader_popup_visible)
     document.getElementById('reader-popup').style.visibility = 'visible';
@@ -100,11 +103,9 @@ function colorSchemeSelect(selected, scheme) {
 document.querySelector('#color-scheme-buttons .light-button').addEventListener('click', function(){
   colorSchemeSelect(this, 'light');
 });
-
 document.querySelector('#color-scheme-buttons .dark-button').addEventListener('click', function(){
   colorSchemeSelect(this, 'dark');
 });
-
 document.querySelector('#color-scheme-buttons .sepia-button').addEventListener('click', function(){
   colorSchemeSelect(this, 'sepia');
 });

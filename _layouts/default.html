@@ -112,6 +112,7 @@ document.querySelector('#font-type-buttons .serif-button').addEventListener('cli
 
 var current_font_size = 4;
 var current_content_width = 4;
+var current_line_height = 4;
 
 function fclAdjust(increment, container_id, class_name, value_holder) {
   var container = document.getElementById(container_id);
@@ -142,6 +143,12 @@ document.querySelector('#content-width-buttons .content-width-minus-button').add
 });
 document.querySelector('#content-width-buttons .content-width-plus-button').addEventListener('click', function(){
   fclSelect(+1, 'container', 'content-width', current_content_width);
+});
+document.querySelector('#line-height-buttons .line-height-minus-button').addEventListener('click', function(){
+  fclSelect(-1, 'moz-reader-content', 'line-height', current_line_height);
+});
+document.querySelector('#line-height-buttons .line-height-plus-button').addEventListener('click', function(){
+  fclSelect(+1, 'moz-reader-content', 'line-height', current_line_height);
 });
 
 // color schemes:

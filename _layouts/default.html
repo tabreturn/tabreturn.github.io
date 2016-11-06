@@ -136,6 +136,35 @@ document.querySelector('#font-size-buttons .plus-button').addEventListener('clic
   fontSizeSelect(+1);
 });
 
+// content width:
+
+var current_content_width = 4;
+
+function contentWidthAdjust(increment) {
+  var container = document.getElementById('container');
+  for (var i=1; i<=9; i++) {
+    container.classList.remove('content-width'+i);
+  }
+  current_content_width += increment;
+  container.classList.add('content-width'+current_content_width);
+}
+
+function contentWidthSelect(increment) {
+  if (current_content_width>1 && current_content_width<9)
+    contentWidthAdjust(increment);
+  else if (current_content_width==9 && increment<0)
+    contentWidthAdjust(increment);
+  else if (current_content_width==1 && increment>0)
+    contentWidthAdjust(increment);
+}
+
+document.querySelector('#content-width-buttons .content-width-minus-button').addEventListener('click', function(){
+  contentWidthSelect(-1);
+});
+document.querySelector('#content-width-buttons .content-width-plus-button').addEventListener('click', function(){
+  contentWidthSelect(+1);
+});
+
 // color schemes:
 
 function colorSchemeSelect(selected, scheme) {

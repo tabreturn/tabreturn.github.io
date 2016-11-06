@@ -89,9 +89,51 @@ document.querySelector('.dropdown-toggle').addEventListener('click', function(){
   reader_popup_visible = !reader_popup_visible;
 });
 
-// font options:
+// font family:
 
+function fontFamilySelect(selected, font) {
+  document.querySelector('#font-type-buttons .sans-serif-button').classList.remove('selected');
+  document.querySelector('#font-type-buttons .serif-button').classList.remove('selected');
+  document.getElementsByTagName('body')[0].classList.remove('sans-serif');
+  document.getElementsByTagName('body')[0].classList.remove('serif');
+  document.getElementsByTagName('body')[0].classList.add(font);
+  selected.classList.add('selected');
+}
 
+document.querySelector('#font-type-buttons .sans-serif-button').addEventListener('click', function(){
+  fontFamilySelect(this, 'sans-serif');
+});
+document.querySelector('#font-type-buttons .serif-button').addEventListener('click', function(){
+  fontFamilySelect(this, 'serif');
+});
+
+// font size:
+
+var current_font_size = 4;
+
+function fontSizeAdjust(increment) {
+  for (var i=1; i<=9; i++) {
+    document.getElementById('container').classList.remove('font-size'+i);
+  }
+  current_font_size += increment;
+  document.getElementById('container').classList.add('font-size'+current_font_size);
+}
+
+function fontSizeSelect(increment) {
+  if (current_font_size>1 && current_font_size<9)
+    fontSizeAdjust(increment);
+  else if (current_font_size==9 && increment<0)
+    fontSizeAdjust(increment);
+  else if (current_font_size==1 && increment>0)
+    fontSizeAdjust(increment);
+}
+
+document.querySelector('#font-size-buttons .minus-button').addEventListener('click', function(){
+  fontSizeSelect(-1);
+});
+document.querySelector('#font-size-buttons .plus-button').addEventListener('click', function(){
+  fontSizeSelect(+1);
+});
 
 // color schemes:
 

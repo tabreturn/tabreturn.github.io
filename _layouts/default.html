@@ -80,14 +80,30 @@
 
 // reader popup:
 
-reader_popup_visible = false;
+var reader_popup_visible = false;
+var reader_popup = document.getElementById('reader-popup');
 
 document.querySelector('.dropdown-toggle').addEventListener('click', function(){
   if (!reader_popup_visible)
-    document.getElementById('reader-popup').style.visibility = 'visible';
+    reader_popup.style.visibility = 'visible';
   else
-    document.getElementById('reader-popup').style.visibility = 'hidden';
+    reader_popup.style.visibility = 'hidden';
   reader_popup_visible = !reader_popup_visible;
+});
+
+window.addEventListener('click', function(e) {
+  parent_parent_id = null;
+  
+  try {
+    parent_parent_id = e.target.parentElement.parentElement.id;
+  } catch (e) {
+
+  } finally {
+    if (parent_parent_id!='reader-popup' && parent_parent_id!='style-dropdown' && reader_popup_visible) {
+      reader_popup.style.visibility = 'hidden';
+      reader_popup_visible = !reader_popup_visible;
+    }
+  }
 });
 
 // font family:

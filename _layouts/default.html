@@ -94,9 +94,10 @@ document.querySelector('.dropdown-toggle').addEventListener('click', function(){
 function fontFamilySelect(selected, font) {
   document.querySelector('#font-type-buttons .sans-serif-button').classList.remove('selected');
   document.querySelector('#font-type-buttons .serif-button').classList.remove('selected');
-  document.getElementsByTagName('body')[0].classList.remove('sans-serif');
-  document.getElementsByTagName('body')[0].classList.remove('serif');
-  document.getElementsByTagName('body')[0].classList.add(font);
+  var body = document.getElementsByTagName('body')[0].classList;
+  body.remove('sans-serif');
+  body.remove('serif');
+  body.add(font);
   selected.classList.add('selected');
 }
 
@@ -141,10 +142,11 @@ function colorSchemeSelect(selected, scheme) {
   document.querySelector('#color-scheme-buttons .light-button').classList.remove('selected');
   document.querySelector('#color-scheme-buttons .dark-button').classList.remove('selected');
   document.querySelector('#color-scheme-buttons .sepia-button').classList.remove('selected');
-  document.getElementsByTagName('body')[0].classList.remove('light');
-  document.getElementsByTagName('body')[0].classList.remove('dark');
-  document.getElementsByTagName('body')[0].classList.remove('sepia');
-  document.getElementsByTagName('body')[0].classList.add(scheme);
+  var body = document.getElementsByTagName('body')[0].classList;
+  body.remove('light');
+  body.remove('dark');
+  body.remove('sepia');
+  body.add(scheme);
   selected.classList.add('selected');
 }
 

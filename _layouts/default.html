@@ -108,61 +108,40 @@ document.querySelector('#font-type-buttons .serif-button').addEventListener('cli
   fontFamilySelect(this, 'serif');
 });
 
-// font size:
+// font size & content width & line height:
 
 var current_font_size = 4;
+var current_content_width = 4;
 
-function fontSizeAdjust(increment) {
+function fclAdjust(increment, container_id, class_name, value_holder) {
+  var container = document.getElementById(container_id);
   for (var i=1; i<=9; i++) {
-    document.getElementById('container').classList.remove('font-size'+i);
+    container.classList.remove(class_name+i);
   }
-  current_font_size += increment;
-  document.getElementById('container').classList.add('font-size'+current_font_size);
+  current_content_width += increment;
+  container.classList.add(class_name+current_content_width);
 }
 
-function fontSizeSelect(increment) {
-  if (current_font_size>1 && current_font_size<9)
-    fontSizeAdjust(increment);
-  else if (current_font_size==9 && increment<0)
-    fontSizeAdjust(increment);
-  else if (current_font_size==1 && increment>0)
-    fontSizeAdjust(increment);
+function fclSelect(increment, container_id, class_name, value_holder) {
+  if (current_content_width>1 && current_content_width<9)
+    fclAdjust(increment, container_id, class_name, value_holder);
+  else if (current_content_width==9 && increment<0)
+    fclAdjust(increment, container_id, class_name, value_holder);
+  else if (current_content_width==1 && increment>0)
+    fclAdjust(increment, container_id, class_name, value_holder);
 }
 
 document.querySelector('#font-size-buttons .minus-button').addEventListener('click', function(){
-  fontSizeSelect(-1);
+  fclSelect(-1, 'container', 'font-size', current_font_size);
 });
 document.querySelector('#font-size-buttons .plus-button').addEventListener('click', function(){
-  fontSizeSelect(+1);
+  fclSelect(+1, 'container', 'font-size', current_font_size);
 });
-
-// content width:
-
-var current_content_width = 4;
-
-function contentWidthAdjust(increment) {
-  var container = document.getElementById('container');
-  for (var i=1; i<=9; i++) {
-    container.classList.remove('content-width'+i);
-  }
-  current_content_width += increment;
-  container.classList.add('content-width'+current_content_width);
-}
-
-function contentWidthSelect(increment) {
-  if (current_content_width>1 && current_content_width<9)
-    contentWidthAdjust(increment);
-  else if (current_content_width==9 && increment<0)
-    contentWidthAdjust(increment);
-  else if (current_content_width==1 && increment>0)
-    contentWidthAdjust(increment);
-}
-
 document.querySelector('#content-width-buttons .content-width-minus-button').addEventListener('click', function(){
-  contentWidthSelect(-1);
+  fclSelect(-1, 'container', 'content-width', current_content_width);
 });
 document.querySelector('#content-width-buttons .content-width-plus-button').addEventListener('click', function(){
-  contentWidthSelect(+1);
+  fclSelect(+1, 'container', 'content-width', current_content_width);
 });
 
 // color schemes:

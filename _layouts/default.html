@@ -35,8 +35,7 @@
         </figure>
       </div>
 
-      <section id="isso-thread"></section>
-      <script data-isso="https://secure.tabreturn.com/" src="https://secure.tabreturn.com/js/embed.min.js"></script>
+
 
     </div>
 
@@ -80,7 +79,16 @@
 
 function typeControls() {
 
+  // local storage:
+
   console.log(localStorage);
+
+  function getLSValue(value) {
+    if (localStorage[value])
+      return parseInt(localStorage[value]);
+    else
+      return 4;
+  }
 
   // reader popup:
 
@@ -131,31 +139,40 @@ function typeControls() {
 
   // font size & content width & line height:
 
-  var fcl = {
-    current_font_size: 4,
-    current_content_width: 4,
-    current_line_height: 5
+  fcl = {
+    current_font_size: getLSValue('current_font_size'),
+    current_content_width: getLSValue('current_content_width'),
+    current_line_height: getLSValue('current_line_height')
   }
 
-  localStorage.fcl = fcl;
+
 
   function fclAdjust(increment, container_id, class_name, value_holder) {
     var container = document.getElementById(container_id);
     for (var i=1; i<=9; i++) {
       container.classList.remove(class_name+i);
     }
+console.log(fcl[value_holder]);
     fcl[value_holder] += increment;
+console.log(fcl[value_holder]);
+    localStorage[value_holder] = fcl[value_holder];
     container.classList.add(class_name+fcl[value_holder]);
   }
 
   function fclSelect(increment, container_id, class_name, value_holder) {
-    if (fcl[value_holder]>1 && fcl[value_holder]<9)
+    if (increment == 0)
+      fclAdjust(increment, container_id, class_name, value_holder);
+    else if (fcl[value_holder]>1 && fcl[value_holder]<9)
       fclAdjust(increment, container_id, class_name, value_holder);
     else if (fcl[value_holder]==9 && increment<0)
       fclAdjust(increment, container_id, class_name, value_holder);
     else if (fcl[value_holder]==1 && increment>0)
       fclAdjust(increment, container_id, class_name, value_holder);
   }
+
+  fclSelect(0, 'container', 'font-size', 'current_font_size');
+  fclSelect(0, 'container', 'content-width', 'current_content_width');
+  fclSelect(0, 'container', 'line-height', 'current_line_height');
 
   document.querySelector('#font-size-buttons .minus-button').addEventListener('click', function(){
     fclSelect(-1, 'container', 'font-size', 'current_font_size');
@@ -224,3 +241,6 @@ typeControls()
 }
 
 </style>
+
+<section id="isso-thread"></section>
+<script data-isso="https://secure.tabreturn.com/" src="https://secure.tabreturn.com/js/embed.min.js"></script>

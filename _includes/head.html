@@ -1,18 +1,19 @@
 <head>
   <title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
-  
+
   <meta content="text/html; charset=UTF-8" http-equiv="content-type" />
   <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
   <meta name="viewport" content="width=device-width; user-scalable=0" />
-  
+
   <link rel="stylesheet" href="{{ "/css/aboutReader.css" | prepend: site.baseurl }}" type="text/css">
   <link rel="stylesheet" href="{{ "/css/aboutReaderControls.css" | prepend: site.baseurl }}" type="text/css">
   <link rel="stylesheet" href="{{ "/css/aboutReaderContent.css" | prepend: site.baseurl }}" type="text/css">
-  
+
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
   <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}">
 
-  <!-- Piwik -->
+  <script href="{{ "/js/typeControls.js" | prepend: site.baseurl }}" type="text/javascript"></script>
+
   <script type="text/javascript">
     var _paq = _paq || [];
     _paq.push(["setDomains", ["*.tabreturn.github.io"]]);
@@ -25,7 +26,8 @@
       var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
       g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
     })();
-</script>
-<noscript><p><img src="https://www.secure.tabreturn.com/piwik.php?idsite=2" style="border:0;" alt="" /></p></noscript>
-<!-- End Piwik Code -->
+  </script>
+
+  <script data-isso="https://secure.tabreturn.com/" src="https://secure.tabreturn.com/js/embed.min.js"></script>
+
 </head>

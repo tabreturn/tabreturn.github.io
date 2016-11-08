@@ -89,7 +89,7 @@ function typeControls() {
 
   fclSelect(0, 'container', 'font-size', 'current_font_size');
   fclSelect(0, 'container', 'content-width', 'current_content_width');
-  fclSelect(0, 'container', 'line-height', 'current_line_height');
+  fclSelect(0, 'moz-reader-content', 'line-height', 'current_line_height');
 
   document.querySelector('#font-size-buttons .minus-button').addEventListener('click', function(){
     fclSelect(-1, 'container', 'font-size', 'current_font_size');

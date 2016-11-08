@@ -16,7 +16,7 @@ function typeControls() {
   var reader_popup_visible = false;
   var reader_popup = document.getElementById('reader-popup');
 
-  document.querySelector('.dropdown-toggle').addEventListener('click', function(){
+  document.querySelector('.dropdown-toggle').addEventListener('click', function() {
     if (!reader_popup_visible)
       reader_popup.style.visibility = 'visible';
     else
@@ -51,10 +51,10 @@ function typeControls() {
     selected.classList.add('selected');
   }
 
-  document.querySelector('#font-type-buttons .sans-serif-button').addEventListener('click', function(){
+  document.querySelector('#font-type-buttons .sans-serif-button').addEventListener('click', function() {
     fontFamilySelect(this, 'sans-serif');
   });
-  document.querySelector('#font-type-buttons .serif-button').addEventListener('click', function(){
+  document.querySelector('#font-type-buttons .serif-button').addEventListener('click', function() {
     fontFamilySelect(this, 'serif');
   });
 
@@ -91,22 +91,22 @@ function typeControls() {
   fclSelect(0, 'container', 'content-width', 'current_content_width');
   fclSelect(0, 'moz-reader-content', 'line-height', 'current_line_height');
 
-  document.querySelector('#font-size-buttons .minus-button').addEventListener('click', function(){
+  document.querySelector('#font-size-buttons .minus-button').addEventListener('click', function() {
     fclSelect(-1, 'container', 'font-size', 'current_font_size');
   });
-  document.querySelector('#font-size-buttons .plus-button').addEventListener('click', function(){
+  document.querySelector('#font-size-buttons .plus-button').addEventListener('click', function() {
     fclSelect(+1, 'container', 'font-size', 'current_font_size');
   });
-  document.querySelector('#content-width-buttons .content-width-minus-button').addEventListener('click', function(){
+  document.querySelector('#content-width-buttons .content-width-minus-button').addEventListener('click', function() {
     fclSelect(-1, 'container', 'content-width', 'current_content_width');
   });
-  document.querySelector('#content-width-buttons .content-width-plus-button').addEventListener('click', function(){
+  document.querySelector('#content-width-buttons .content-width-plus-button').addEventListener('click', function() {
     fclSelect(+1, 'container', 'content-width', 'current_content_width');
   });
-  document.querySelector('#line-height-buttons .line-height-minus-button').addEventListener('click', function(){
+  document.querySelector('#line-height-buttons .line-height-minus-button').addEventListener('click', function() {
     fclSelect(-1, 'moz-reader-content', 'line-height', 'current_line_height');
   });
-  document.querySelector('#line-height-buttons .line-height-plus-button').addEventListener('click', function(){
+  document.querySelector('#line-height-buttons .line-height-plus-button').addEventListener('click', function() {
     fclSelect(+1, 'moz-reader-content', 'line-height', 'current_line_height');
   });
 
@@ -124,13 +124,13 @@ function typeControls() {
     selected.classList.add('selected');
   }
 
-  document.querySelector('#color-scheme-buttons .light-button').addEventListener('click', function(){
+  document.querySelector('#color-scheme-buttons .light-button').addEventListener('click', function() {
     colorSchemeSelect(this, 'light');
   });
-  document.querySelector('#color-scheme-buttons .dark-button').addEventListener('click', function(){
+  document.querySelector('#color-scheme-buttons .dark-button').addEventListener('click', function() {
     colorSchemeSelect(this, 'dark');
   });
-  document.querySelector('#color-scheme-buttons .sepia-button').addEventListener('click', function(){
+  document.querySelector('#color-scheme-buttons .sepia-button').addEventListener('click', function() {
     colorSchemeSelect(this, 'sepia');
   });
 

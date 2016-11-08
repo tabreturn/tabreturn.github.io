@@ -111,7 +111,7 @@ function typeControls() {
     } catch (e) {
 
     } finally {
-      if (parent_parent_id!='reader-popup' && parent_parent_id!='style-dropdown' && reader_popup_visible) {
+      if (parent_parent_id!=='reader-popup' && parent_parent_id!=='style-dropdown' && reader_popup_visible) {
         reader_popup.style.visibility = 'hidden';
         reader_popup_visible = !reader_popup_visible;
       }
@@ -152,21 +152,19 @@ function typeControls() {
     for (var i=1; i<=9; i++) {
       container.classList.remove(class_name+i);
     }
-console.log(fcl[value_holder]);
     fcl[value_holder] += increment;
-console.log(fcl[value_holder]);
     localStorage[value_holder] = fcl[value_holder];
     container.classList.add(class_name+fcl[value_holder]);
   }
 
   function fclSelect(increment, container_id, class_name, value_holder) {
-    if (increment == 0)
+    if (increment === 0)
       fclAdjust(increment, container_id, class_name, value_holder);
     else if (fcl[value_holder]>1 && fcl[value_holder]<9)
       fclAdjust(increment, container_id, class_name, value_holder);
-    else if (fcl[value_holder]==9 && increment<0)
+    else if (fcl[value_holder]===9 && increment<0)
       fclAdjust(increment, container_id, class_name, value_holder);
-    else if (fcl[value_holder]==1 && increment>0)
+    else if (fcl[value_holder]===1 && increment>0)
       fclAdjust(increment, container_id, class_name, value_holder);
   }
 
@@ -219,7 +217,7 @@ console.log(fcl[value_holder]);
 
 }
 
-typeControls()
+typeControls();
 
 </script>
 

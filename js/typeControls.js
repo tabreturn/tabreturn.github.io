@@ -1,16 +1,5 @@
 function typeControls() {
 
-  // local storage:
-
-  console.log(localStorage);
-
-  function getLSValue(value) {
-    if (localStorage[value])
-      return parseInt(localStorage[value]);
-    else
-      return 4;
-  }
-
   // reader popup:
 
   var reader_popup_visible = false;
@@ -39,23 +28,61 @@ function typeControls() {
     }
   });
 
+  // local storage:
+
+  console.log(localStorage);
+
+  function getFCValue(value) {
+    if (localStorage[value]) {
+      return localStorage[value];
+    }
+    else {
+      switch (value) {
+        case 'current_font_family':
+          return 'serif';
+          break;
+        case 'current_color_scheme':
+          return 'light';
+          break;
+      }
+    }
+  }
+
+  function getLSValue(value) {
+    if (localStorage[value])
+      return parseInt(localStorage[value]);
+    else
+      return 4;
+  }
+
   // font family:
 
-  function fontFamilySelect(selected, font) {
-    document.querySelector('#font-type-buttons .sans-serif-button').classList.remove('selected');
-    document.querySelector('#font-type-buttons .serif-button').classList.remove('selected');
+  var current_font_family = getFCValue('current_font_family');
+  fontFamilySelect(current_font_family);
+
+  function fontFamilySelect(font) {
     var body = document.getElementsByTagName('body')[0].classList;
+    var button_sans_serif = document.querySelector('#font-type-buttons .sans-serif-button');
+    var button_serif = document.querySelector('#font-type-buttons .serif-button');
+
     body.remove('sans-serif');
     body.remove('serif');
+    localStorage.current_font_family = font;
     body.add(font);
-    selected.classList.add('selected');
+    button_sans_serif.classList.remove('selected');
+    button_serif.classList.remove('selected');
+
+    if (font === 'sans-serif')
+      button_sans_serif.classList.add('selected');
+    else if (font === 'serif')
+      button_serif.classList.add('selected');
   }
 
   document.querySelector('#font-type-buttons .sans-serif-button').addEventListener('click', function() {
-    fontFamilySelect(this, 'sans-serif');
+    fontFamilySelect('sans-serif');
   });
   document.querySelector('#font-type-buttons .serif-button').addEventListener('click', function() {
-    fontFamilySelect(this, 'serif');
+    fontFamilySelect('serif');
   });
 
   // font size & content width & line height:

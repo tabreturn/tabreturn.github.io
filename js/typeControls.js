@@ -30,8 +30,6 @@ function typeControls() {
 
   // local storage:
 
-  console.log(localStorage);
-
   function getFCValue(value) {
     if (localStorage[value]) {
       return localStorage[value];
@@ -139,26 +137,40 @@ function typeControls() {
 
   // color schemes:
 
-  function colorSchemeSelect(selected, scheme) {
-    document.querySelector('#color-scheme-buttons .light-button').classList.remove('selected');
-    document.querySelector('#color-scheme-buttons .dark-button').classList.remove('selected');
-    document.querySelector('#color-scheme-buttons .sepia-button').classList.remove('selected');
+  var current_color_scheme = getFCValue('current_color_scheme');
+  colorSchemeSelect(current_color_scheme);
+
+  function colorSchemeSelect(scheme) {
     var body = document.getElementsByTagName('body')[0].classList;
+    var button_light = document.querySelector('#color-scheme-buttons .light-button');
+    var button_dark = document.querySelector('#color-scheme-buttons .dark-button');
+    var button_sepia = document.querySelector('#color-scheme-buttons .sepia-button');
+
     body.remove('light');
     body.remove('dark');
     body.remove('sepia');
+    localStorage.current_color_scheme = scheme;
     body.add(scheme);
-    selected.classList.add('selected');
+    button_light.classList.remove('selected');
+    button_dark.classList.remove('selected');
+    button_sepia.classList.remove('selected');
+
+    if (scheme === 'light')
+      button_light.classList.add('selected');
+    else if (scheme === 'dark')
+      button_dark.classList.add('selected');
+    else if (scheme === 'sepia')
+      button_sepia.classList.add('selected');
   }
 
   document.querySelector('#color-scheme-buttons .light-button').addEventListener('click', function() {
-    colorSchemeSelect(this, 'light');
+    colorSchemeSelect('light');
   });
   document.querySelector('#color-scheme-buttons .dark-button').addEventListener('click', function() {
-    colorSchemeSelect(this, 'dark');
+    colorSchemeSelect('dark');
   });
   document.querySelector('#color-scheme-buttons .sepia-button').addEventListener('click', function() {
-    colorSchemeSelect(this, 'sepia');
+    colorSchemeSelect('sepia');
   });
 
 }

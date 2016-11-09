@@ -5,73 +5,21 @@
 
   <body class="light serif loaded">
 
-  {% include header.html %}
+    <div id="container" class="container font-size4 content-width4">
 
-  <div id="container" class="container font-size4 content-width4">
+      {% include header.html %}
 
-    <div id="reader-header" class="header" style="display: block;">
-      <a id="reader-domain" class="domain" href="https://tabreturn.github.io">tabreturn.github.io</a>
-      <div class="domain-border"></div>
-      <h1 id="reader-title">A Blog Website Based on Reader View</h1>
-      <div id="reader-credits" class="credits"></div>
-    </div>
-
-    <div class="content">
-      <div id="moz-reader-content" class="line-height4" style="display: block;">
-        <p>
-          <a href="https://support.mozilla.org/en-US/kb/firefox-reader-view-clutter-free-web-pages">Reader View</a> is a Firefox feature that strips away clutter like buttons, ads and background images, and changes the page's text size, contrast and layout for better readability. Reader View settings are easily customizable to fit your reading preferences.
-        </p>
-        <p>
-          It's how I (and many others?) prefer to read blogs and articles, so I reckon it must be the perfect format for this site!
-        </p>
-        <h2>Under Construction &hellip;</h2>
-        <p>
-          There's plenty of good content to come ... for now, though, here's a variable and a cat:
-        </p>
-        <pre>var x = 1;</pre>
-        <figure>
-          <img src="https://www.royalcanin.com/~/media/Royal-Canin/Product-Categories/cat-adult-landing-hero.ashx" />
-          <figcaption>cat</figcaption>
-        </figure>
+      <div class="content">
+        <div id="moz-reader-content" class="line-height4">
+          {{ content }}
+        </div>
       </div>
 
-      <section id="isso-thread"></section>
-      <noscript><p><img src="https://www.secure.tabreturn.com/piwik.php?idsite=2" style="border:0;" alt="" /></p></noscript>
-
     </div>
 
-  </div>
-
-  <ul id="reader-toolbar" class="toolbar">
-    <li><button id="close-button" class="button close-button" title="Close Reader View"></button></li>
-    <ul id="style-dropdown" class="dropdown">
-      <li><button class="dropdown-toggle button style-button" title="Type controls"></button></li>
-      <li id="reader-popup" class="dropdown-popup" style="top: 48px;">
-        <div id="font-type-buttons"><button class="sans-serif-button"><div class="name">Aa</div><div class="description">Sans-serif</div></button><button class="serif-button selected"><div class="name">Aa</div><div class="description">Serif</div></button></div>
-        <hr>
-        <div id="font-size-buttons">
-          <button id="font-size-minus" class="minus-button">
-          </button><button id="font-size-sample">Aa</button><button id="font-size-plus" class="plus-button">
-        </button></div>
-        <hr>
-        <div id="content-width-buttons">
-          <button id="content-width-minus" class="content-width-minus-button">
-          </button><button id="content-width-plus" class="content-width-plus-button">
-        </button></div>
-        <hr>
-        <div id="line-height-buttons">
-          <button id="line-height-minus" class="line-height-minus-button">
-          </button><button id="line-height-plus" class="line-height-plus-button">
-        </button></div>
-        <hr>
-        <div id="color-scheme-buttons"><button class="light-button selected"><div class="name">Light</div></button><button class="dark-button"><div class="name">Dark</div></button><button class="sepia-button"><div class="name">Sepia</div></button></div>
-        <div class="dropdown-arrow">
-      </div></li>
-    </ul>
-  </ul>
-
-  {% include footer.html %}
-  {% include js.html %}
+    {% include typecontrols.html %}
+    {% include footer.html %}
+    {% include js.html %}
 
   </body>
 

@@ -1,3 +1,11 @@
+#moz-reader-content {
+  display: block;
+}
+
+#reader-header {
+  display: block;
+}
+
 #reader-toolbar {
   border-radius: 0;
 }

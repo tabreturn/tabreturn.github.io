@@ -2,22 +2,100 @@
 layout: default
 ---
 
-<div class="home">
+{% include about.md %}
 
-  <h1 class="page-heading">Posts</h1>
+<strong>tags include:</strong>
 
-  <ul class="post-list">
-    {% for post in site.posts %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+{% assign sorted_categories = site.categories | sort %}
 
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-      </li>
-    {% endfor %}
-  </ul>
+<span id="categories">
+{% for category in sorted_categories | sort %}
+  <a class="disabled">{{ category | first }}</a>
+{% endfor %}
+</span>
 
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+<style>
+  #categories a {
+    cursor: pointer;
+  }
+  #categories a.disabled {
+    opacity: 0.25;
+  }
+  .hidden {
+    display: none;
+  }
+</style>
 
-</div>
+<script>
+  var category_buttons = document.querySelectorAll('#categories a');
+  var categories_selected = [];
+
+  function postShowHide() {
+    // show/hide posts code
+  }
+
+  function categorySelect(selected) {
+    if (selected.classList[0] === 'disabled')
+      selected.classList.remove('disabled');
+    else
+      selected.classList.add('disabled');
+
+    categories_selected = [];
+    document.querySelectorAll('#categories a').forEach(function(cat) {
+      if (cat.classList.value !== 'disabled')
+        categories_selected.push(cat.innerHTML);
+    });
+    postShowHide();
+console.log(categories_selected);
+  }
+
+  category_buttons.forEach(function(category_button) {
+    category_button.addEventListener('click', function(e) {
+      categorySelect(e.target);
+    });
+  });
+
+
+/*
+    category_button.addEventListener('click', function(e) {
+      var category = e.target.innerHTML;
+      var posts = document.querySelectorAll('[data-category~='+category+']');
+
+      if (e.target.classList.value === 'disabled') {
+        e.target.classList.remove('disabled');
+        posts.forEach(function(post) {
+          post.classList.remove('hidden');
+        });
+      }
+      else {
+        e.target.classList.add('disabled');
+        posts.forEach(function(post) {
+          if (!post.getAttribute('data-category').replace(category, '').replace(' ', ''))
+            post.classList.add('hidden');
+        });
+      }
+
+    });*/
+
+
+</script>
+
+<h1>Posts</h1>
+
+{% for post in site.posts %}
+
+  {% assign sorted_categories = post.categories | sort %}
+
+  <p data-category="{{ sorted_categories | join: ' ' }}" class="hidden">
+    <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+    <br />
+    <span class="post-meta">{{ post.date | date: "%Y-%m-%d" }}</span>
+    <em>
+      | {{ sorted_categories | join: ' | ' }}
+    </em>
+  </p>
+
+{% endfor %}
+
+
+<p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>

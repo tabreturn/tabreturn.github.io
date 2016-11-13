@@ -30,9 +30,9 @@ $on-laptop:        800px;
   user-select: $value;
 }
 @mixin media-query($device) {
-    @media screen and (max-width: $device) {
-        @content;
-    }
+  @media screen and (max-width: $device) {
+    @content;
+  }
 }
 
 // import partials from sass_dir (defaults to _sass)

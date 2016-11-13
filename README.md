@@ -20,3 +20,4 @@ customisable blog interface.
  * front-matter condition for showing comments
  * customise/style comments (isso config options as well)
  * rudimentary captcha?
+* add favicon

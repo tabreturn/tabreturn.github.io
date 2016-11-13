@@ -5,13 +5,13 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
 
-  a {
-    cursor: pointer;
+a {
+  cursor: pointer;
 
-    .disabled {
-      opacity: 0.25;
-    }
+  &.disabled {
+    opacity: 0.25;
   }
 }
 

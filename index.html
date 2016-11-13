@@ -41,11 +41,15 @@ layout: default
   {% assign sorted_categories = post.categories | sort %}
 
   <p data-category="{{ sorted_categories | join:' ' }} {{ post.date | date:'%Y' }}" class="post">
+    {{ post.date | date:'%Y-%m-%d' }}
+    <br />
     <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
     <br />
-    <span class="post-meta">{{ post.date | date:'%Y-%m-%d' }}</span>
-    <em class="category_tags">
-      | {{ sorted_categories | join:' | ' }}
+    <em class="post-meta">
+      <span class="tag-{{ post.date | date:'%Y' }}">{{ post.date | date:'%Y' }}</span>
+      {% for tag in sorted_categories %}
+        <span class="tag-{{ tag }}">{{ tag }}</span>
+      {% endfor %}
     </em>
   </p>
 
@@ -69,6 +73,9 @@ layout: default
   .hidden {
     display: none;
   }
+  .highlighted {
+    font-weight: bold;
+  }
 </style>
 
 <script>
@@ -91,6 +98,18 @@ function categoryFilter(show_on_start) {
     return found;
   }
 
+  function tagHighlight(selected_tags) {
+    document.querySelectorAll('.highlighted').forEach(function(tag) {
+      tag.classList.remove('highlighted')
+    });
+
+    selected_tags.forEach(function(sel) {
+      document.querySelectorAll('.tag-'+sel).forEach(function(tag) {
+        tag.classList.add('highlighted');
+      });
+    });
+  }
+
   function postShowHide(scat) {
     var post_categories;
 
@@ -102,6 +121,8 @@ function categoryFilter(show_on_start) {
       if (!checkForCategory(post_categories, scat))
         post.classList.add('hidden');
     });
+
+    tagHighlight(scat);
   }
 
   function categorySelect(selected, buttons) {

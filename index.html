@@ -8,13 +8,13 @@ layout: default
 
 <h1>Posts</h1>
 
-<p>
-  
+<p id="categories">
+
   <strong>filter:</strong>
 
   {% assign sorted_categories = site.categories | sort %}
 
-  <span id="categories">
+  <span>
   {% assign most_recent_year = site.posts[0].date | date:'%Y' %}
 
   <a class="disabled">{{ most_recent_year }}</a>

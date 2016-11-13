@@ -1,17 +1,16 @@
-#categories * {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
+#categories {
+  @include user-select(none);
 
-a {
-  cursor: pointer;
+  & * {
+    @include user-select(none);
+  }
 
-  &.disabled {
-    opacity: 0.25;
+  a {
+    cursor: pointer;
+
+    &.disabled {
+      opacity: 0.25;
+    }
   }
 }
 

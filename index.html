@@ -2,16 +2,7 @@
 layout: default
 ---
 
-{% include about.md %}
-
-<!--
-{% assign first_post = site.posts | size | minus:1 %}
-{% assign oldest_post = site.posts[oldest_post].date | date:'%Y' %}
-{% assign newest_post = site.posts[0].date | date:'%Y' %}
-
-{{ oldest_post }}
-{{ newest_post }}
--->
+<p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
 
 <strong>filter:</strong>
 
@@ -160,4 +151,4 @@ categoryFilter(['2016', '2015']);
 
 </script>
 
-<p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+{% include about.md %}

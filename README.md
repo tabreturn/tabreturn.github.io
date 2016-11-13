@@ -6,8 +6,15 @@ customisable blog interface.
 
 ## todo:
 * cursor:pointer for all links/buttons
-* white hover state for home icon (and change icon?)
+* home link
+ * white hover state for home icon (and change icon?)
+ * create link
 * landing page with:
- * listing by year
- * tags
- * search/filter (tags and topics)
+ * ~listing by year~
+ * ~tags~
+ * search/filter (tags and topics) ?
+* comments
+ * global config
+ * front-matter condition for showing comments
+ * customise/style comments (isso config options as well)
+ * rudimentary captcha?

@@ -2,30 +2,36 @@
 layout: default
 ---
 
+{% include about.md %}
+
 <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
 
-<strong>filter:</strong>
-
-{% assign sorted_categories = site.categories | sort %}
-
-<span id="categories">
-{% assign most_recent_year = site.posts[0].date | date:'%Y' %}
-
-<a class="disabled">{{ most_recent_year }}</a>
-
-{% for post in site.posts %}
-  {% assign year = post.date | date:'%Y' %}
-  {% if year != most_recent_year %}
-    <a class="disabled">{{ year }}</a>
-  {% endif %}
-{% endfor %}
-
-{% for category in sorted_categories | sort %}
-  <a class="disabled">{{ category | first }}</a>
-{% endfor %}
-</span>
-
 <h1>Posts</h1>
+
+<p>
+  
+  <strong>filter:</strong>
+
+  {% assign sorted_categories = site.categories | sort %}
+
+  <span id="categories">
+  {% assign most_recent_year = site.posts[0].date | date:'%Y' %}
+
+  <a class="disabled">{{ most_recent_year }}</a>
+
+  {% for post in site.posts %}
+    {% assign year = post.date | date:'%Y' %}
+    {% if year != most_recent_year %}
+      <a class="disabled">{{ year }}</a>
+    {% endif %}
+  {% endfor %}
+
+  {% for category in sorted_categories | sort %}
+    <a class="disabled">{{ category | first }}</a>
+  {% endfor %}
+  </span>
+
+</p>
 
 {% for post in site.posts %}
 
@@ -45,110 +51,3 @@ layout: default
   </p>
 
 {% endfor %}
-
-<style>
-  #categories * {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
-  #categories a {
-    cursor: pointer;
-  }
-  #categories a.disabled {
-    opacity: 0.25;
-  }
-  .hidden {
-    display: none;
-  }
-  .highlighted {
-    font-weight: bold;
-  }
-</style>
-
-<script>
-
-function categoryFilter(show_on_start) {
-  var category_buttons = document.querySelectorAll('#categories a');
-  var posts = document.querySelectorAll('.post');
-  var categories_selected = [];
-
-  function checkForCategory(post_cat, cat_sel) {
-    var found = false;
-
-    post_cat.forEach(function(pcat) {
-      cat_sel.forEach(function(scat) {
-        if (pcat === scat)
-          found = true;
-      });
-    });
-
-    return found;
-  }
-
-  function tagHighlight(selected_tags) {
-    document.querySelectorAll('.highlighted').forEach(function(tag) {
-      tag.classList.remove('highlighted')
-    });
-
-    selected_tags.forEach(function(sel) {
-      document.querySelectorAll('.tag-'+sel).forEach(function(tag) {
-        tag.classList.add('highlighted');
-      });
-    });
-  }
-
-  function postShowHide(scat) {
-    var post_categories;
-
-    posts.forEach(function(post) {
-      post_categories = post.getAttribute('data-category');
-      post_categories = post_categories.split(' ');
-      post.classList.remove('hidden');
-
-      if (!checkForCategory(post_categories, scat))
-        post.classList.add('hidden');
-    });
-
-    tagHighlight(scat);
-  }
-
-  function categorySelect(selected, buttons) {
-    buttons.forEach(function(but) {
-      if (but.innerHTML === selected) {
-        if (but.classList[0]==='disabled')
-          but.classList.remove('disabled');
-        else
-          but.classList.add('disabled');
-      }
-    });
-
-    categories_selected = [];
-
-    category_buttons.forEach(function(cat) {
-      if (cat.classList.value !== 'disabled')
-        categories_selected.push(cat.innerHTML);
-    });
-
-    postShowHide(categories_selected);
-  }
-
-  category_buttons.forEach(function(cat_but) {
-    cat_but.addEventListener('click', function(e) {
-      categorySelect(e.target.innerHTML, category_buttons);
-    });
-  });
-
-  show_on_start.forEach(function(show) {
-    categorySelect(show, category_buttons);
-  });
-}
-
-categoryFilter(['2016', '2015']);
-
-</script>
-
-{% include about.md %}

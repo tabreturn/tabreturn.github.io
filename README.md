@@ -2,6 +2,8 @@
 A Jekyll theme based on the Firefox Reader View, for a clean, clear,
 customisable blog interface.
 
+![demo](https://tabreturn.github.io/)
+
 ![screenshot](screenshot.png)
 
 ## todo:

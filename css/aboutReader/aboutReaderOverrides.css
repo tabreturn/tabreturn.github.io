@@ -2,6 +2,10 @@ body {
   padding-left: 51px;
 }
 
+a, button {
+  cursor: pointer;
+}
+
 h1 {
   padding-bottom: 0.2em;
 }

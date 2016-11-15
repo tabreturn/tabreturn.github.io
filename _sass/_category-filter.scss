@@ -5,12 +5,8 @@
     @include user-select(none);
   }
 
-  a {
-    cursor: pointer;
-
-    &.disabled {
-      opacity: 0.25;
-    }
+  a.disabled {
+    opacity: 0.25;
   }
 }
 

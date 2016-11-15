@@ -18,6 +18,10 @@ h1 {
   display: block;
 }
 
+#reader-popup {
+   top: 48px;
+}
+
 #reader-toolbar {
   border-radius: 0;
 }

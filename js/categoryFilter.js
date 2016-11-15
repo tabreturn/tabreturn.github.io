@@ -22,59 +22,75 @@ function categoryFilter(show_on_start) {
   }
 
   function tagHighlight(selected_tags) {
-    document.querySelectorAll('.highlighted').forEach(function(tag) {
-      tag.classList.remove('highlighted')
-    });
+    var tags = document.querySelectorAll('.highlighted');
+    var tagsel = [];
 
-    selected_tags.forEach(function(sel) {
-      document.querySelectorAll('.tag-'+sel).forEach(function(tag) {
-        tag.classList.add('highlighted');
-      });
+    for (var i=0; i<tags.length; i++) {
+      tags[0].classList.remove('highlighted');
+    }
+
+    for (var i=0; i<selected_tags.length; i++) {
+      var sel = selected_tags[i];
+      tagsel.push(document.querySelectorAll('.tag-'+sel));
+    }
+
+    tagsel.forEach(function(node) {
+      for (var i=0; i<node.length; i++) {
+        node[i].classList.add('highlighted');
+      }
     });
   }
 
   function postShowHide(scat) {
     var post_categories;
 
-    posts.forEach(function(post) {
+    for (var i=0; i<posts.length; i++) {
+      post = posts[i];
       post_categories = post.getAttribute('data-category');
       post_categories = post_categories.split(' ');
       post.classList.remove('hidden');
 
       if (!checkForCategory(post_categories, scat))
         post.classList.add('hidden');
-    });
+    }
 
     tagHighlight(scat);
   }
 
   function categorySelect(selected, buttons) {
-    buttons.forEach(function(but) {
+
+    for (var i=0; i<buttons.length; i++) {
+      var but = buttons[i];
+
       if (but.innerHTML === selected) {
         if (but.classList[0]==='disabled')
           but.classList.remove('disabled');
         else
           but.classList.add('disabled');
       }
-    });
+    }
 
     categories_selected = [];
 
-    category_buttons.forEach(function(cat) {
+    for (var i=0; i<category_buttons.length; i++) {
+      var cat = category_buttons[i];
+
       if (cat.classList.value !== 'disabled')
         categories_selected.push(cat.innerHTML);
-    });
+    }
 
     postShowHide(categories_selected);
   }
 
-  category_buttons.forEach(function(cat_but) {
+  for (var i=0; i<category_buttons.length; i++) {
+    var cat_but = category_buttons[i];
     cat_but.addEventListener('click', function(e) {
       categorySelect(e.target.innerHTML, category_buttons);
     });
-  });
+  }
 
-  show_on_start.forEach(function(show) {
+  for (var i=0; i<show_on_start.length; i++) {
+    var show = show_on_start[i];
     categorySelect(show, category_buttons);
-  });
+  }
 }

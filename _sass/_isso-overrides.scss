@@ -1,0 +1,49 @@
+#isso-thread {
+  .form-wrapper .textarea-wrapper .placeholder {
+    color: inherit;
+  }
+
+  h4 {
+    opacity: 1;
+  }
+
+  a, a:hover {
+    font-weight: normal;
+    text-decoration: underline;
+    text-shadow: none;
+  }
+
+  .outlined-inputs {
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    outline: 1px solid #B5B5B5;
+  }
+
+  .isso-postbox > .form-wrapper .textarea {
+    @extend .outlined-inputs;
+  }
+
+  .input-wrapper, .post-action {
+    padding: 0 0.2em;
+
+    &:first-child {
+      padding-left: 0;
+    }
+
+    &:last-child {
+      padding-right: 0;
+    }
+
+    input {
+      @extend .outlined-inputs;
+      color: inherit;
+    }
+
+    .post-action input {
+      background-color: #FBFBFB;
+      color: #737373;
+    }
+  }
+}

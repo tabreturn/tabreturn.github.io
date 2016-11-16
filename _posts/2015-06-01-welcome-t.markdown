@@ -1,7 +1,7 @@
 ---
 layout: post
-comments: true
-title: "Welcome to Jekyll!"
+comments: false
+title: "Welcome T!"
 date: 2015-06-01 15:02:12 +1400
 categories: update
 ---

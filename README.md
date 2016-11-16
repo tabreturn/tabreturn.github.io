@@ -16,8 +16,8 @@ customisable blog interface.
  * ~~tags~~
  * search/filter (tags and topics) ?
 * comments
- * global config
- * front-matter condition for showing comments
+ * ~~global config~~
+ * ~~front-matter variable for showing comments~~
  * customise/style comments (isso config options as well)
  * rudimentary captcha?
 * ~~add favicon~~

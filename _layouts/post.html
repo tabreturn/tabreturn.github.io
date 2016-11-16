@@ -4,10 +4,11 @@ layout: default
 
 <article itemscope itemtype="http://schema.org/BlogPosting">
 
-  <h1 id="reader-title" itemprop="name headline">{{ page.title }}</h1>
   {{ content }}
-  
+
+  {% if page.comments %}
   <section id="isso-thread"></section>
   <noscript><p><img src="https://www.secure.tabreturn.com/piwik.php?idsite=2" style="border:0;" alt="" /></p></noscript>
+  {% endif %}
 
 </article>

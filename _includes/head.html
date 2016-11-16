@@ -1,4 +1,5 @@
 <head>
+
   <title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
 
   <meta content="text/html; charset=UTF-8" http-equiv="content-type" />
@@ -14,4 +15,5 @@
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
   <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}">
   <link rel="shortcut icon" type="image/png" href="/favicon.png">
+  
 </head>

@@ -1,27 +1,13 @@
+<a id="reader-domain" class="domain" href="{{ site.baseurl }}/">{{ site.title }}</a>
+
 <div id="reader-header" class="header">
-  <a id="reader-domain" class="domain" href="{{ site.baseurl }}/">{{ site.title }}</a>
-  <div id="reader-credits" class="credits"></div>
-</div>
 
-<!--
-<header class="site-header">
-
-  <div class="wrapper">
-
-    <a class="site-title" href="{{ site.baseurl }}/">{{ site.title }}</a>
-
-    <nav class="site-nav">
-
-      <div class="trigger">
-        {% for my_page in site.pages %}
-          {% if my_page.title %}
-          <a class="page-link" href="{{ my_page.url | prepend: site.baseurl }}">{{ my_page.title }}</a>
-          {% endif %}
-        {% endfor %}
-      </div>
-    </nav>
-
+  <h1 id="reader-title" itemprop="name headline">{{ page.title }}</h1>
+  
+  <div id="reader-credits" class="credits">
+    {{ page.date | date:'%Y-%m-%d' }}
   </div>
 
-</header>
--->
+  <p></p>
+
+</div>

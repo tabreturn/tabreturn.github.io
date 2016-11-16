@@ -14,6 +14,23 @@ h1 {
   display: block;
 }
 
+pre, code {
+  background-color: transparent;
+  border: none;
+  font-size: 0.9em;
+  margin-bottom: 0;
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+}
+
+figure.highlight {
+  padding-bottom: 0;
+}
+
+.highlight, .highlight * {
+  background-color: transparent;
+}
+
 #reader-header {
   display: block;
 }

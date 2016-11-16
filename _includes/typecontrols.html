@@ -1,68 +1,60 @@
-<ul id="reader-toolbar" class="toolbar">
+<ul id="style-dropdown" class="dropdown">
 
   <li>
-    <button id="close-button" class="button close-button" title="Close Reader View"></button>
+    <button class="dropdown-toggle button style-button" title="Type Controls"></button>
   </li>
 
-  <ul id="style-dropdown" class="dropdown">
+  <li id="reader-popup" class="dropdown-popup">
 
-    <li>
-      <button class="dropdown-toggle button style-button" title="Type Controls"></button>
-    </li>
+    <div id="font-type-buttons">
+      <button class="sans-serif-button">
+        <div class="name">Aa</div>
+        <div class="description">Sans-serif</div>
+      </button>
+      <button class="serif-button selected">
+        <div class="name">Aa</div>
+        <div class="description">Serif</div>
+      </button>
+    </div>
 
-    <li id="reader-popup" class="dropdown-popup">
+    <hr/>
 
-      <div id="font-type-buttons">
-        <button class="sans-serif-button">
-          <div class="name">Aa</div>
-          <div class="description">Sans-serif</div>
-        </button>
-        <button class="serif-button selected">
-          <div class="name">Aa</div>
-          <div class="description">Serif</div>
-        </button>
-      </div>
+    <div id="font-size-buttons">
+      <button id="font-size-minus" class="minus-button"></button>
+      <button id="font-size-sample">Aa</button>
+      <button id="font-size-plus" class="plus-button"></button>
+    </div>
 
-      <hr/>
+    <hr/>
 
-      <div id="font-size-buttons">
-        <button id="font-size-minus" class="minus-button"></button>
-        <button id="font-size-sample">Aa</button>
-        <button id="font-size-plus" class="plus-button"></button>
-      </div>
+    <div id="content-width-buttons">
+      <button id="content-width-minus" class="content-width-minus-button"></button>
+      <button id="content-width-plus" class="content-width-plus-button"></button>
+    </div>
 
-      <hr/>
+    <hr/>
 
-      <div id="content-width-buttons">
-        <button id="content-width-minus" class="content-width-minus-button"></button>
-        <button id="content-width-plus" class="content-width-plus-button"></button>
-      </div>
+    <div id="line-height-buttons">
+      <button id="line-height-minus" class="line-height-minus-button"></button>
+      <button id="line-height-plus" class="line-height-plus-button"></button>
+    </div>
 
-      <hr/>
+    <hr/>
 
-      <div id="line-height-buttons">
-        <button id="line-height-minus" class="line-height-minus-button"></button>
-        <button id="line-height-plus" class="line-height-plus-button"></button>
-      </div>
+    <div id="color-scheme-buttons">
+      <button class="light-button selected">
+        <div class="name">Light</div>
+      </button>
+      <button class="dark-button">
+        <div class="name">Dark</div>
+      </button>
+      <button class="sepia-button">
+        <div class="name">Sepia</div>
+      </button>
+    </div>
 
-      <hr/>
+    <div class="dropdown-arrow"></div>
 
-      <div id="color-scheme-buttons">
-        <button class="light-button selected">
-          <div class="name">Light</div>
-        </button>
-        <button class="dark-button">
-          <div class="name">Dark</div>
-        </button>
-        <button class="sepia-button">
-          <div class="name">Sepia</div>
-        </button>
-      </div>
-
-      <div class="dropdown-arrow"></div>
-
-    </li>
-
-  </ul>
+  </li>
 
 </ul>

@@ -51,3 +51,16 @@ figure.highlight {
 #reader-toolbar li button {
   border-right: none;
 }
+
+#close-button {
+  background-image: url("RM-Close-24x24.svg");
+  background-position: top;
+  background-size: 26px 138px;
+  background-repeat: no-repeat;
+  height: 70px;
+}
+
+#close-button:hover, #close-button:active {
+  background-image: url("RM-Close-24x24.svg");
+  background-position: bottom;
+}

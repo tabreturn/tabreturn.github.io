@@ -1,9 +1,10 @@
 <a id="reader-domain" class="domain" href="{{ site.baseurl }}/">{{ site.title }}</a>
 
+{% if page.title %}
 <div id="reader-header" class="header">
 
   <h1 id="reader-title" itemprop="name headline">{{ page.title }}</h1>
-  
+
   <div id="reader-credits" class="credits">
     {{ page.date | date:'%Y-%m-%d' }}
   </div>
@@ -11,3 +12,4 @@
   <p></p>
 
 </div>
+{% endif %}

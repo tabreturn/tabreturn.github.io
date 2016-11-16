@@ -51,6 +51,11 @@ $on-laptop:        800px;
     color: inherit;
   }
 
+  a.delete, a.edit {
+    font-weight: normal;
+    text-decoration: underline;
+  }
+
   .outlined-inputs {
     background-color: transparent;
     border: none;

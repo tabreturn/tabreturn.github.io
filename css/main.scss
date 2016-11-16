@@ -48,12 +48,13 @@ $on-laptop:        800px;
   }
 
   h4 {
-    color: inherit;
+    opacity: 1;
   }
 
-  a.delete, a.edit {
+  a.delete, a.edit, a.delete:hover, a.edit:hover {
     font-weight: normal;
     text-decoration: underline;
+    text-shadow: none;
   }
 
   .outlined-inputs {

@@ -8,3 +8,6 @@ Isso (a Disqus alternative) and Piwik (open-source analytics platform).
 ![demo](https://tabreturn.github.io/)
 
 ![screenshot](screenshot.png)
+
+# todo
+* mobile view style fixes for comment section

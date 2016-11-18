@@ -9,5 +9,5 @@ Isso (a Disqus alternative) and Piwik (open-source analytics platform).
 
 ![screenshot](screenshot.png)
 
-# todo
-* mobile view style fixes for comment section
+## todo
+* ~~mobile view style fixes for comment section~~

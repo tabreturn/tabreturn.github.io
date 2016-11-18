@@ -15,10 +15,6 @@ hr {
   border-bottom: 1px solid #B5B5B5;
 }
 
-#moz-reader-content {
-  display: block;
-}
-
 pre, code {
   background-color: transparent;
   border: none;
@@ -28,12 +24,33 @@ pre, code {
   padding-left: 0 !important;
 }
 
-figure.highlight {
-  padding-bottom: 0;
+#close-button {
+  background-image: url("RM-Close-24x24.svg");
+  background-position: top;
+  background-size: 26px 138px;
+  background-repeat: no-repeat;
+  height: 70px;
+}
+
+#close-button:hover, #close-button:active {
+  background-image: url("RM-Close-24x24.svg");
+  background-position: bottom;
+}
+
+.container {
+  padding-right: 11px;
 }
 
 .highlight, .highlight * {
   background-color: transparent;
+}
+
+figure.highlight {
+  padding-bottom: 0;
+}
+
+#moz-reader-content {
+  display: block;
 }
 
 #reader-header {
@@ -55,17 +72,4 @@ figure.highlight {
 
 #reader-toolbar li button {
   border-right: none;
-}
-
-#close-button {
-  background-image: url("RM-Close-24x24.svg");
-  background-position: top;
-  background-size: 26px 138px;
-  background-repeat: no-repeat;
-  height: 70px;
-}
-
-#close-button:hover, #close-button:active {
-  background-image: url("RM-Close-24x24.svg");
-  background-position: bottom;
 }

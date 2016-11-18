@@ -60,3 +60,10 @@
     }
   }
 }
+
+@media screen and (max-width: 600px) {
+
+  #isso-thread .input-wrapper, .post-action {
+    padding: 0;
+  }
+}

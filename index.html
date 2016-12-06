@@ -25,7 +25,7 @@ layout: default
       {% endif %}
     {% endfor %}
 
-    {% for category in sorted_categories | sort %}
+    {% for category in sorted_categories %}
       <a class="disabled">{{ category | first }}</a>
     {% endfor %}
     </span>

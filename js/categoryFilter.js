@@ -26,7 +26,7 @@ function categoryFilter(show_on_start) {
     var tagsel = [];
 
     for (var i=0; i<tags.length; i++) {
-      tags[0].classList.remove('highlighted');
+      tags[i].classList.remove('highlighted');
     }
 
     for (var i=0; i<selected_tags.length; i++) {

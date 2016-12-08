@@ -1,8 +1,8 @@
 ---
 layout: post
 comments: true
-title: "A Blog Website Based on Reader View"
-categories: random
+title: "A Jekyll Theme Based on Reader View"
+categories: jekyll random
 ---
 
 [Reader View](https://support.mozilla.org/en-US/kb/firefox-reader-view-clutter-free-web-pages) is a Firefox feature that strips away clutter like buttons, ads and background images, and changes the page's text size, contrast and layout for better readability. Reader View settings are easily customizable to fit your reading preferences.

@@ -5,8 +5,6 @@ title: "Comparing Colours"
 categories: code
 ---
 
-site.url: {{ site.url }}
-
 This post discusses the concepts around measuring differences in colour, particularly in the RGB colour space.
 
 ## Introduction

@@ -45,11 +45,11 @@ Thus, one can say that the screen's bright green is out of gamut in the printer'
 
 To begin measuring distance between colours, consider an image rendered using a single primary colour, rather than three. It's probably easiest to use a black primary, just like a grey-scale printer does. So, [0] black results in white; whereas [100] is the darkest possible black; and everything between in some shade of grey. In the image below, point *A* has a black value of 40 and point *B* a value of 95.
 
-![greyscale sample](//{{ site.url }}/img/cc-greyscale-sample.png)
+![greyscale sample]({{ site.url }}/img/cc-greyscale-sample.png)
 
 So if one were to plot points *A* and *B* along a scale, it looks something like this:
 
-![greyscale graph](//{{ site.url }}/img/cc-greyscale-graph.svg)
+![greyscale graph]({{ site.url }}/img/cc-greyscale-graph.svg)
 
 If you wish to calculate a distance between the two colours, simply take B and subtract A from it, which in this case is:  
 `95 - 45`  

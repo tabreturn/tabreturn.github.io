@@ -3,7 +3,7 @@ title: github.tabreturn.io
 email: github.tabreturn.io@tabreturn.com
 description: Yeah -- yet another blog! Just what the f$%king Internet needs!
 baseurl: "" # subpath, e.g. /blog
-url: "http://github.tabreturn.io" # base hostname & protocol
+url: "https://github.tabreturn.io" # base hostname & protocol
 github_username: tabreturn
 
 # build settings

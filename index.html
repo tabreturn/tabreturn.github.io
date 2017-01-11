@@ -22,6 +22,7 @@ layout: default
       {% assign year = post.date | date:'%Y' %}
       {% if year != most_recent_year %}
         <a class="disabled">{{ year }}</a>
+        {% assign most_recent_year = year %}
       {% endif %}
     {% endfor %}
 

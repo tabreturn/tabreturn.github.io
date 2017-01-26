@@ -5,7 +5,7 @@ customisable blog interface.
 Check the ``_config.yml`` for configuration options. It includes parameters for
 Isso (a Disqus alternative) and Piwik (open-source analytics platform).
 
-![demo](https://tabreturn.github.io/)
+[demo](https://tabreturn.github.io/)
 
 ![screenshot](screenshot.png)
 

@@ -140,8 +140,8 @@ As you can see, green is heavily weighted, occupying around 213 degrees of the p
 
 
 {% highlight html %}
-<div id="alert" style="color:#FF0000">
-  warning!!!
+<div id="alert" style="background-color:red">
+  ... a red div ...
 </div>
 {% endhighlight %}
 
@@ -149,42 +149,46 @@ As you can see, green is heavily weighted, occupying around 213 degrees of the p
 
 
 {% highlight js %}
-var rgba = pixels[i].style.backgroundColor.match(/[0-9\.]+/g);
+// use either 'avg' or 'gimp'
+var algorithm = 'gimp';
+// the selector ID you wish to affect
+var selector = document.getElementById('alert');
 
-  if (rgba) {
-    var sum = 0;
+var style = window.getComputedStyle(selector, null);
+var bgcolor = style.backgroundColor;
+var rgba = bgcolor.match(/[0-9\.]+/g);
 
-    switch (algorithm) {
-      case 'avg': // averaging
-        sum += parseInt(rgba[0]);
-        sum += parseInt(rgba[1]);
-        sum += parseInt(rgba[2]);
-        break;
+if (rgba) {
+  var sum = 0;
 
-      case 'gimp': // gimp
-        sum += parseFloat(rgba[0]*0.89);
-        sum += parseFloat(rgba[1]*1.77);
-        sum += parseFloat(rgba[2]*0.33);
-        break;
+  switch (algorithm) {
+    case 'avg': // averaging
+      sum += parseInt(rgba[0]);
+      sum += parseInt(rgba[1]);
+      sum += parseInt(rgba[2]);
+      break;
+
+    case 'gimp': // gimp
+      sum += parseFloat(rgba[0]*0.89);
+      sum += parseFloat(rgba[1]*1.77);
+      sum += parseFloat(rgba[2]*0.33);
+      break;
     }
 
-    var g = Math.ceil(sum/3);
+  var g = Math.ceil(sum/3);
 
-    var gray = 'rgb('+g+','+g+','+g;
+  var gray = 'rgb('+g+','+g+','+g;
 
-    if (rgba[3]) {
-      gray += ','+rgba[3];
-    }
-
-    gray += ')';
-
-    pixels[i].style.backgroundColor = gray;
+  if (rgba[3]) {
+    gray += ','+rgba[3];
   }
-}
 
+  gray += ')';
+
+  selector.style.backgroundColor = gray;
+}
 {% endhighlight %}
 
-...\*
 
 This is a simple example, but you can [checkout](https://github.com/tabreturn/pensioner) the ...
 

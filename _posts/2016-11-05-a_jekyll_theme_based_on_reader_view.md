@@ -9,4 +9,4 @@ categories: jekyll random
 
 It's how I (and many others?) prefer to read blogs and articles, so I reckon it must be the perfect format for this site! It's built using Jekyll, and includes [Isso](https://posativ.org/isso/) (a Disqus alternative) and [Piwik](https://piwik.org/) (open-source analytics platform).
 
-There's plenty of good stuff to come ...
+I intend to modify and improve the theme over time, but if you wish to do so yourself, just grab the source code from the [GitHub repo](https://github.com/tabreturn/tabreturn.github.io).

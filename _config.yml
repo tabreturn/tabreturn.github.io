@@ -3,7 +3,6 @@ title: t@breturn // blog
 email: github.tabreturn.io@tabreturn.com
 description: coder/designer/lecturer
 baseurl: "" # subpath, e.g. /blog
-url: "https://tabreturn.github.io" # base hostname & protocol
 github_username: tabreturn
 
 # build settings

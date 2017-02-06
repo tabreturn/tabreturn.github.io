@@ -176,7 +176,6 @@ if (rgba) {
     }
 
   var g = Math.ceil(sum/3);
-
   var gray = 'rgb('+g+','+g+','+g;
 
   if (rgba[3]) {
@@ -184,7 +183,6 @@ if (rgba) {
   }
 
   gray += ')';
-
   selector.style.backgroundColor = gray;
 }
 {% endhighlight %}

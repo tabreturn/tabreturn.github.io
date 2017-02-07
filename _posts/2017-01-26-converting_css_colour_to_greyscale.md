@@ -202,6 +202,8 @@ if (rgba) {
 
 The red background colour is now converted to a shade of grey. If you're using JSFiddle, don't forget to click "Run" again.
 
+You may have noticed the script's provision for the `rgba()` and `rgb()` CSS colour notation. RGBA takes a fourth value between 0 and 1 to indicate a level of opacity (alpha). This is maintained if necessary, so that a semi-opaque colour, i.e.<span style="color:rgba(253,55,55,0.75)"> `rgba(253,55,55,0.75)`</span>, is converted to a <span style="color:rgba(121,121,121,0.75)">semi-opaque grey</span>.
+
 This is a simple example, but you (JS)fiddle with it some more -- or better yet, checkout the [GitHub repo](https://github.com/tabreturn/pensioner) for something more fully-featured.
 
 # Further Reading

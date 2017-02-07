@@ -131,22 +131,22 @@ To take things a step further, I decided to throw more colours into the image, s
 
 This issue has to with how the [human eye is more sensitive to certain colours]({% post_url 2016-12-10-comparing_colours %}), but the next method takes our physiology into account to provide improved results.
 
-### The 'GIMP' Method
+### The Luminosity Method
 
-Firstly, I've titled this the *GIMP method* for lack of a better term, as it incorporates the same coefficients as those implemented in GIMP's ([an open source Photoshop alternative](https://www.gimp.org/)) greyscale algorithm. What exactly do I mean by 'coefficients'? The weighting of the red, green, and blue channels when converting to a shade of grey.
+The luminosity method incorporates the same coefficients as those implemented in GIMP's ([an open source Photoshop alternative](https://www.gimp.org/)) greyscale algorithm. What exactly do I mean by 'coefficients'? The weighting of the red, green, and blue channels when converting to a shade of grey.
 
-Being that I'm a fan of visual explanations, I'll illustrate the coefficient concept using pie charts and ratios. The *averaging* method blended the RGB channels using a simple **1:1:1** ratio -- that is 1 part red, 1 part green, and 1 part blue. However, because the human eye is most sensitive to green, and least sensitive to blue, the ratio should be **0.89 : 1.77 : 0.33**. Using a <span style="color:#63F">purple / `rgb(102,51,255)`</span> I've created pie charts for both the *averaged* and *GIMP* methods:
+Being that I'm a fan of visual explanations, I'll illustrate the coefficient concept using pie charts and ratios. The *averaging* method blended the RGB channels using a simple **1:1:1** ratio -- that is 1 part red, 1 part green, and 1 part blue. However, because the human eye is most sensitive to green, and least sensitive to blue, the ratio should be **0.89 : 1.77 : 0.33**. Using a <span style="color:#63F">purple / `rgb(102,51,255)`</span> I've created pie charts for both the *averaged* and *luminosity* methods:
 
 <figure>
   <img src='{{ site.url }}/img/ccctg-coefficient-charts.svg'>
-  <figcaption>Averaged proportions of RGB channels (left) versus the GIMP ratio (right).</figcaption>
+  <figcaption>Averaged proportions of RGB channels (left) versus the luminosity ratio (right).</figcaption>
 </figure>
 
-As you can see, green is heavily weighted, occupying around 213 degrees of the pie chart. Factoring in this coefficient produces more accurate results, as seen in the GIMP-method conversion below. Take note of the background rainbow in particular -- how the blue section of spectrum is clearly darker than the green:
+As you can see, green is heavily weighted, occupying around 213 degrees of the pie chart. Factoring in this coefficient produces more accurate results, as seen in the luminosity conversion below. Take note of the background rainbow in particular -- how the blue section of spectrum is clearly darker than the green:
 
 <figure>
-  <img src='{{ site.url }}/img/ccctg-nyancat-colour-to-gimp-rainbow.png'>
-  <figcaption>Greyscale conversion using the GIMP formula.</figcaption>
+  <img src='{{ site.url }}/img/ccctg-nyancat-colour-to-luminosity-rainbow.png'>
+  <figcaption>Greyscale conversion using the luminosity formula.</figcaption>
 </figure>
 
 # Doing it with JavaScript
@@ -162,8 +162,8 @@ It's probably simplest to test this out using something like [JSFiddle](https://
 If you're using JSFiddle, you'll have to click "Run". The background colour for the div should currently appear red. Next, add the JavaScript:
 
 {% highlight js %}
-// use either 'avg' or 'gimp'
-var algorithm = 'gimp';
+// use either 'averaged' or 'luminosity'
+var algorithm = 'luminosity';
 // the selector ID you wish to affect
 var selector = document.getElementById('alert');
 
@@ -175,13 +175,13 @@ if (rgba) {
   var sum = 0;
 
   switch (algorithm) {
-    case 'avg': // averaging
+    case 'averaged':
       sum += parseInt(rgba[0]);
       sum += parseInt(rgba[1]);
       sum += parseInt(rgba[2]);
       break;
 
-    case 'gimp': // gimp
+    case 'luminosity':
       sum += parseFloat(rgba[0]*0.89);
       sum += parseFloat(rgba[1]*1.77);
       sum += parseFloat(rgba[2]*0.33);

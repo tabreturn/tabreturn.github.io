@@ -5,7 +5,7 @@ title: "Converting CSS Colour to Greyscale"
 categories: code html javascript
 ---
 
-This post discusses how RGB colour is converted to greyscale. Two formulae are presented here, along with techniques to implement them using HTML and JavaScript.
+This post discusses how RGB colour is converted to greyscale. Two formulae are presented here, along with techniques to implement them using a combination of HTML and JavaScript.
 
 ## Introduction
 
@@ -20,7 +20,7 @@ red: 100%
 green: 0%  
 blue: 0%
 
-Now change the red value to 0% and you're left with black; change all the values to 100% and you get white. Black and white lie at either end of the greyscale gamut -- and as you've probably figured out already -- three equivalent RGB values will result in some shade of grey. For example:
+Should you change the red value to 0% and you're left with black; change all the values to 100% and you get white. Black and white lie at either end of the greyscale gamut -- and as you've probably figured out already -- three equivalent RGB values will result in some shade of grey. For example:
 
 <div style="background-color:#444444; display:inline-block; width:80px; height:2em"></div>  
 red: 25%  
@@ -42,7 +42,7 @@ Of course, the keyword "`red`" refers to a very specific shade of red, that may 
 
 `#FF0000`
 
-There are six digits in all, prepended with a hash symbol. Or more correctly -- there are *three pairs* of digits representing red, green, and blue, respectively (`F` is actually a digit -- but more on that later). The first step to decoding the value is to split it into these pairs:
+There are six digits in all, prepended with a hash symbol (`F` is actually a digit -- but more on that later). Or more correctly -- there are *three pairs* of digits representing red, green, and blue, respectively. The first step to decoding the colour is to split it into these pairs:
 
 red: FF  
 green: 00  
@@ -50,7 +50,7 @@ blue: 00
 
 Notice that instead of 100% for red, there is now an `FF`; and that the 0%'s are now padded to `00` in order to fill two places. We can therefore surmise that *100%* is equal to FF, which is actually equal to **255** ... but, why not 100, or 99?
 
-To explain this as simply as possible: humans use a *base 10* (decimal) counting system. This system works nicely for counting on ten fingers -- but using *base 16* (hexadecimal) is like counting on sixteen fingers. To make up those extra digits (fingers?), hexadecimal adds a few letters. As a comparison, in the two lines that follow, the first counts up using decimal; the line below it is the equivalent in hexadecimal:
+To explain this as simply as possible: humans use a *base 10* (decimal) counting system. This system works nicely for counting on ten fingers -- but using *base 16* (hexadecimal) is like counting on sixteen fingers. To make up those extra digits (fingers?), hexadecimal adds a few letters. Below is a comparison: the first line counts up using decimal; the line below it is the equivalent in hexadecimal:
 
 `0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 ... 255`
 
@@ -60,7 +60,7 @@ Using just two digits, hexadecimal can therefore represent a maximum value of 25
 
 ### RGB 0--255 Notation
 
-When extracting colour values from HTML elements using JavaScript, the browser returns RGB values using another form of CSS notation: `rgb(0-255,0-255,0-255)`. These are decimal values, as  opposed to hexadecimal or percentile. To see behaviour this in action, consider the following HTML example:
+When extracting colour values from HTML elements using JavaScript, the browser returns RGB values using another form of CSS notation: `rgb(0-255,0-255,0-255)`. These are decimal values, as  opposed to hexadecimal or percentile. To see behaviour this in action, consider the following HTML:
 
 {% highlight html %}
 <div id="alert" style="color:#FF0000">
@@ -68,7 +68,7 @@ When extracting colour values from HTML elements using JavaScript, the browser r
 </div>
 {% endhighlight %}
 
-To retrieve the colour of the "warning!!!" text -- in this case, red -- one would make use of the the following JavaScript code:
+To retrieve the colour of the "warning!!!" text -- in this case, a red -- one would make use of the the following JavaScript code:
 
 {% highlight js %}
 var alert = document.getElementById('alert');
@@ -76,17 +76,17 @@ var style = window.getComputedStyle(alert, null);
 console.log(style.color);
 {% endhighlight %}
 
-The `console.log(style.color)` returns the colour value -- originally specified in hexadecimal -- logging the following line in the developer console:
+The `console.log(style.color)` returns the colour value -- originally specified in hexadecimal as `#FF0000`-- logging the following line in the developer console:
 
 `rgb(255, 0, 0)`
 
 ## Greyscale Conversion
 
-With the necessary colour, CSS, and JavaScript concepts introduced, it's now time to focus on the conversion algorithms. Two methods are presented here, though the second is essentially a tweaked improvement of the first.
+With the necessary colour, CSS, and JavaScript concepts introduced, it's time to focus on the conversion algorithms. Two methods are presented here, though the second is essentially a tweaked improvement of the first.
 
 ### The Averaging Method
 
-Having extracted the RGB value -- in this case a <span style="color:rgb(255,0,0)">red</span> of `rgb(255,0,0)` -- the next step is to convert it to a grey. It has been established that greys are an equal mix of red, green, and blue, and for this method all three values are added together then averaged out. For example:
+Having extracted the RGB value -- in this case a <span style="color:rgb(255,0,0)">red</span> of `rgb(255,0,0)` -- the next step is to convert it to a grey. It has been established that greys are an equal mix of red, green, and blue, and for this method all three values are added together then averaged out. The formula can be expressed as:
 
 `(red + green + blue) ÷ 3 = grey`
 
@@ -94,24 +94,24 @@ Substituting in the red values results in:
 
 `(255 + 0 + 0) ÷ 3 = 85`
 
-Therefore the greyscale equivalent of `rgb(255,0,0)` is `rgb(85,85,85)`, as displayed using the pair of swatches below:
+Therefore, the greyscale equivalent of `rgb(255,0,0)` is `rgb(85,85,85)`, as presented using the pair of swatches below:
 
 <div style="background-color:rgb(255,0,0); float:left; width:80px; height:2em"></div>
 <div style="background-color:rgb(85,85,85); float:left; width:80px; height:2em"></div>
 <div style="clear:both; height:1.5em"></div>  
 
-However, it's difficult to gauge how 'correct' this is -- but a spectrum of colours should help contextualise the result. To accomplish this, I wrote some JavaScript that converts raster images (GIF, JPG, and PNG files) to an array of `div` elements, each with a background-colour corresponding to its source pixel. Pixel art is well-suited to the task at hand, and to see this script in action, let's begin with this image of [Nyan Cat](https://en.wikipedia.org/wiki/Nyan_Cat):
+However, it's difficult to gauge how 'correct' this conversion is -- but a spectrum of colours should help contextualise the result. To accomplish this, I wrote some JavaScript that converts raster images (GIF, JPG, and PNG files) into an array of `div` elements, each with a background-colour corresponding to its source pixel. Pixel art is well-suited to the task at hand -- allowing for more discernible areas of colour -- so to see this script in action, let's begin with this image of [Nyan Cat](https://en.wikipedia.org/wiki/Nyan_Cat):
 
 ![nyan cat original]({{ site.url }}/img/ccctg-nyancat-original.png)
 
-Firstly, the image is a bit small. However, the script accepts a parameter for scaling, and in this case I've used a factor of 3. Next, the pixels were rendered as div elements and the background colours converted to greyscale. The averaged conversion has then been placed alongside the original colours to provide a comparison:
+Firstly, the image is a bit small. However, the script accepts a parameter for scaling, and in this case I've used a factor of 3. The averaged conversion has then been placed alongside the original colours to provide a comparison:
 
 <figure>
   <img src='{{ site.url }}/img/ccctg-nyancat-colour-to-averaged.png'>
   <figcaption>Greyscale conversion using the averaged formula.</figcaption>
 </figure>
 
-The result is satisfactory, although there is room for improvement -- most notably, the <span style="color:#63F">purple</span> and <span style="color:#09F">blue</span> bands of the rainbow appear in the same shade of grey. This is, in some cases, unavoidable. After all, each RGB channel has 256 (0-255) levels, and as there are three, that's 256 × 256 × 256 = 16,777,216 possible colours to be converted to just 256 possible greys. As a case in point, here's the math behind how the purple and blue land up the same:
+The result is satisfactory, although there is room for improvement -- most notably, the <span style="color:#63F">purple</span> and <span style="color:#09F">blue</span> bands of the rainbow appear in the same shade of grey. This is, in some cases, unavoidable. After all, each RGB channel has 256 (0-255) levels, and as there are three, that's 16,777,216 (256 × 256 × 256) possible colours to be converted to just 256 possible greys. As a case in point, here's the math behind how the purple and blue land up the same:
 
 * The <span style="color:#63F">purple</span> RGB value is `rgb(102,51,255)`, so  
   `(102 + 51 + 255) ÷ 3 = 136`  
@@ -129,20 +129,22 @@ To take things a step further, I decided to throw more colours into the image, s
   <figcaption>Greyscale conversion using the averaged formula, on a rainbow background.</figcaption>
 </figure>
 
-This issue has to with how the [human eye is more sensitive to certain colours]({% post_url 2016-12-10-comparing_colours %}), but the next method takes our physiology into account to provide improved results.
+This issue has to with how the [human eye is more sensitive to certain colours]({% post_url 2016-12-10-comparing_colours %}), but to address this, the next method takes our physiology into account to provide improved results.
 
 ### The Luminosity Method
 
-The luminosity method incorporates the same coefficients as those implemented in GIMP's ([an open source Photoshop alternative](https://www.gimp.org/)) greyscale algorithm. What exactly do I mean by 'coefficients'? The weighting of the red, green, and blue channels when converting to a shade of grey.
+The luminosity method incorporates the same coefficients as those implemented in GIMP's ([an open source Photoshop alternative](https://www.gimp.org/)) greyscale algorithm. What exactly do I mean by 'coefficients'? *The weighting of the red, green, and blue channels when converting to a shade of grey.* The coefficient used by GIMP is:
 
-Being that I'm a fan of visual explanations, I'll illustrate the coefficient concept using pie charts and ratios. The *averaging* method blended the RGB channels using a simple **1:1:1** ratio -- that is 1 part red, 1 part green, and 1 part blue. However, because the human eye is most sensitive to green, and least sensitive to blue, the ratio should be **0.89 : 1.77 : 0.33**. Using a <span style="color:#63F">purple / `rgb(102,51,255)`</span> I've created pie charts for both the *averaged* and *luminosity* methods:
+`(red × 0.3 + green × 0.59 + blue × 0.11) = grey`
+
+... but being that I'm a fan of visual explanations, I'll illustrate the coefficient concept using pie charts and ratios. The *averaging* method blended the RGB channels using a simple **1:1:1** ratio -- that is 1 part red, 1 part green, and 1 part blue, respectively. However, because the human eye is most sensitive to green, and least sensitive to blue, the ratio should be **0.89 : 1.77 : 0.33**. Using a <span style="color:#63F">purple / `rgb(102,51,255)`</span> I've created pie charts for both the *averaged* and *luminosity* methods:
 
 <figure>
   <img src='{{ site.url }}/img/ccctg-coefficient-charts.svg'>
   <figcaption>Averaged proportions of RGB channels (left) versus the luminosity ratio (right).</figcaption>
 </figure>
 
-As you can see, green is heavily weighted, occupying around 213 degrees of the pie chart. Factoring in this coefficient produces more accurate results, as seen in the luminosity conversion below. Take note of the background rainbow in particular -- how the blue section of spectrum is clearly darker than the green:
+As you can see, green is heavily weighted, occupying around 213 degrees of the pie chart. Factoring in this coefficient produces more accurate results, as seen in the luminosity conversion below. Take note of the background rainbow in particular -- especially how the blue section of spectrum is clearly darker than the green:
 
 <figure>
   <img src='{{ site.url }}/img/ccctg-nyancat-colour-to-luminosity-rainbow.png'>
@@ -159,7 +161,7 @@ It's probably simplest to test this out using something like [JSFiddle](https://
 </div>
 {% endhighlight %}
 
-If you're using JSFiddle, you'll have to click "Run". The background colour for the div should currently appear red. Next, add the JavaScript:
+The background colour for the div should currently appear red (if you're using JSFiddle, you'll have to click "Run"). Next, add the JavaScript:
 
 {% highlight js %}
 // use either 'averaged' or 'luminosity'
@@ -200,11 +202,11 @@ if (rgba) {
 }
 {% endhighlight %}
 
-The red background colour is now converted to a shade of grey. If you're using JSFiddle, don't forget to click "Run" again.
+The red background colour is now converted to a shade of grey (if you're using JSFiddle, don't forget to click "Run" again).
 
 You may have noticed the script's provision for the `rgba()` and `rgb()` CSS colour notation. RGBA takes a fourth value between 0 and 1 to indicate a level of opacity (alpha). This is maintained if necessary, so that a semi-opaque colour, i.e.<span style="color:rgba(253,55,55,0.75)"> `rgba(253,55,55,0.75)`</span>, is converted to a <span style="color:rgba(121,121,121,0.75)">semi-opaque grey</span>.
 
-This is a simple example, but you (JS)fiddle with it some more -- or better yet, checkout the [GitHub repo](https://github.com/tabreturn/pensioner) for something more fully-featured.
+This is a simple example, but you can fiddle with it some more -- or better yet, checkout the [GitHub repo](https://github.com/tabreturn/pensioner) for something more fully-featured.
 
 # Further Reading
 

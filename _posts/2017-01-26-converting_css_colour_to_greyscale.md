@@ -102,12 +102,12 @@ Therefore, the greyscale equivalent of `rgb(255,0,0)` is `rgb(85,85,85)`, as pre
 
 However, it's difficult to gauge how 'correct' this conversion is -- but a spectrum of colours should help contextualise the result. To accomplish this, I wrote some JavaScript that converts raster images (GIF, JPG, and PNG files) into an array of `div` elements, each with a background-colour corresponding to its source pixel. Pixel art is well-suited to the task at hand -- allowing for more discernible areas of colour -- so to see this script in action, let's begin with this image of [Nyan Cat](https://en.wikipedia.org/wiki/Nyan_Cat):
 
-![nyan cat original]({{ site.url }}/img/ccctg-nyancat-original.png)
+![nyan cat original]({{ site.url }}/img/ccctg/nyancat-original.png)
 
 Firstly, the image is a bit small. However, the script accepts a parameter for scaling, and in this case I've used a factor of 3. The averaged conversion has then been placed alongside the original colours to provide a comparison:
 
 <figure>
-  <img src='{{ site.url }}/img/ccctg-nyancat-colour-to-averaged.png'>
+  <img src='{{ site.url }}/img/ccctg/nyancat-colour-to-averaged.png'>
   <figcaption>Greyscale conversion using the averaged formula.</figcaption>
 </figure>
 
@@ -125,7 +125,7 @@ The result is satisfactory, although there is room for improvement -- most notab
 To take things a step further, I decided to throw more colours into the image, substituting the standard background for a rainbow gradient. In this case the shortcomings of the averaging method are more apparent -- just observe how the greyscale background is seemingly comprised of the same shades of grey repeating themselves:
 
 <figure>
-  <img src='{{ site.url }}/img/ccctg-nyancat-colour-to-averaged-rainbow.png'>
+  <img src='{{ site.url }}/img/ccctg/nyancat-colour-to-averaged-rainbow.png'>
   <figcaption>Greyscale conversion using the averaged formula, on a rainbow background.</figcaption>
 </figure>
 
@@ -140,18 +140,18 @@ The luminosity method incorporates the same coefficients as those implemented in
 ... but being that I'm a fan of visual explanations, I'll illustrate the coefficient concept using pie charts and ratios. The *averaging* method blended the RGB channels using a simple **1:1:1** ratio -- that is 1 part red, 1 part green, and 1 part blue, respectively. However, because the human eye is most sensitive to green, and least sensitive to blue, the ratio should be **0.89 : 1.77 : 0.33**. Using a <span style="color:#63F">purple / `rgb(102,51,255)`</span> I've created pie charts for both the *averaged* and *luminosity* methods:
 
 <figure>
-  <img src='{{ site.url }}/img/ccctg-coefficient-charts.svg'>
+  <img src='{{ site.url }}/img/ccctg/coefficient-charts.svg'>
   <figcaption>Averaged proportions of RGB channels (left) versus the luminosity ratio (right).</figcaption>
 </figure>
 
 As you can see, green is heavily weighted, occupying around 213 degrees of the pie chart. Factoring in this coefficient produces more accurate results, as seen in the luminosity conversion below. Take note of the background rainbow in particular -- especially how the blue section of spectrum is clearly darker than the green:
 
 <figure>
-  <img src='{{ site.url }}/img/ccctg-nyancat-colour-to-luminosity-rainbow.png'>
+  <img src='{{ site.url }}/img/ccctg/nyancat-colour-to-luminosity-rainbow.png'>
   <figcaption>Greyscale conversion using the luminosity formula.</figcaption>
 </figure>
 
-# Doing it with JavaScript
+## Doing it with JavaScript
 
 It's probably simplest to test this out using something like [JSFiddle](https://jsfiddle.net/). Start by adding the following HTML code:
 
@@ -208,11 +208,11 @@ You may have noticed the script's provision for the `rgba()` and `rgb()` CSS col
 
 This is a simple example, but you can fiddle with it some more -- or better yet, checkout the [GitHub repo](https://github.com/tabreturn/pensioner) for something more fully-featured.
 
-# Further Reading
+## Further Reading
 
 This post covered two common formulae for converting colour to greyscale. However, there are more, and if you're interested in reading further, I highly recommend [Tanner Helland's blog post]( http://www.tannerhelland.com/3643/grayscale-image-algorithm-vb6/) on the topic.
 
-# References
+## References
 
 * http://gimp-savvy.com/BOOK/index.html?node54.html
 * http://www.tannerhelland.com/3643/grayscale-image-algorithm-vb6/

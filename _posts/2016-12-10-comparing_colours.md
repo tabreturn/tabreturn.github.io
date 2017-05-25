@@ -46,14 +46,14 @@ Thus, one can say that the screen's bright green is out of gamut in the printer'
 To begin measuring distance between colours, consider an image rendered using a single primary colour, rather than three. It's probably easiest to use a black primary, just like a grey-scale printer does. So, [0] black results in white; whereas [100] is the darkest possible black; and everything between in some shade of grey. In the image below, point *A* has a black value of 40 and point *B* a value of 95.
 
 <figure>
-  <img src='{{ site.url }}/img/cc-greyscale-sample.png'>
+  <img src='{{ site.url }}/img/cc/greyscale-sample.png'>
   <figcaption>Greyscale photograph with sample points A and B.</figcaption>
 </figure>
 
 So if one were to plot points *A* and *B* along a scale, it looks something like this:
 
 <figure>
-  <img src='{{ site.url }}/img/cc-greyscale-graph.svg'>
+  <img src='{{ site.url }}/img/cc/greyscale-graph.svg'>
   <figcaption>Plotting points A and B in one dimension (between white and black).</figcaption>
 </figure>
 
@@ -68,14 +68,14 @@ So the smaller the value, the closer the match; where a value of zero indicates 
 Now consider an image in which all of the colours are mixed from two primaries -- such as a [duotone](https://en.wikipedia.org/wiki/Duotone). Below is a sepia duotone of the same photograph:
 
 <figure>
-  <img src='{{ site.url }}/img/cc-sepia-sample.png'>
+  <img src='{{ site.url }}/img/cc/sepia-sample.png'>
   <figcaption>Duo/sepia-tone photograph with sample points A and B.</figcaption>
 </figure>
 
 Rather than measuring the distance in one dimension, the values must now be plotted in **two dimensions** -- one for sepia and one for black. In order to measure the distance one must employ the [Pythagorean theorem](https://en.wikipedia.org/wiki/Pythagorean_theorem) and use the length of the hypotenuse to indicate the distance between the two points :
 
 <figure>
-  <img src='{{ site.url }}/img/cc-sepia-graph.svg'>
+  <img src='{{ site.url }}/img/cc/sepia-graph.svg'>
   <figcaption>Plotting points A and B in two dimensions (black and sepia).</figcaption>
 </figure>
 
@@ -90,14 +90,14 @@ This same concept can be extended for full-colour images.
 It has been established that screens display full-colour graphics using three primary colours, namely red, green, and blue. In the image below, the RGB values for points A and B are equal to [30,50,70] and [5,0,5] respectively:
 
 <figure>
-  <img src='{{ site.url }}/img/cc-colour-sample.png'>
+  <img src='{{ site.url }}/img/cc/colour-sample.png'>
   <figcaption>Full colour photograph with sample points A and B.</figcaption>
 </figure>
 
 An additional **third** dimension is now added to the graph, as visually illustrated in the diagram below:
 
 <figure>
-  <img src='{{ site.url }}/img/cc-colour-graph.svg'>
+  <img src='{{ site.url }}/img/cc/colour-graph.svg'>
   <figcaption>Plotting points A and B in three dimensions (RGB).</figcaption>
 </figure>
 
@@ -139,7 +139,7 @@ This is because HVS is more sensitive to certain colours due to the physiology o
 
 It gets more complicated, though, and further adjustments must be made to accommodate for -- among other considerations -- the fact that changes in darker colours are less noticeable than those in lighter colours. And this is where the article ends; and where you can head over to Zachary Schuessler's [Delta E 101 webpage](http://zschuessler.github.io/DeltaE/learn/). Zachary does an excellent job of explaining Delta E further, and also provides the CIE's algorithms implemented as a [JavaScript library](https://zschuessler.github.io/DeltaE/).
 
-# References
+## References
 
 * https://www.researchgate.net/publication/236023905_Color_difference_Delta_E_-_A_survey
 * http://zschuessler.github.io/DeltaE/learn/

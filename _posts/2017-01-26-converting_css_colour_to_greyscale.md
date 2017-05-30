@@ -107,7 +107,7 @@ However, it's difficult to gauge how 'correct' this conversion is -- but a spect
 Firstly, the image is a bit small. However, the script accepts a parameter for scaling, and in this case I've used a factor of 3. The averaged conversion has then been placed alongside the original colours to provide a comparison:
 
 <figure>
-  <img src="{{ site.url }}/img/ccctg/nyancat-colour-to-averaged.png">
+  <img src="{{ site.url }}/img/ccctg/nyancat-colour-to-averaged.png" />
   <figcaption>Greyscale conversion using the averaged formula.</figcaption>
 </figure>
 
@@ -125,7 +125,7 @@ The result is satisfactory, although there is room for improvement -- most notab
 To take things a step further, I decided to throw more colours into the image, substituting the standard background for a rainbow gradient. In this case the shortcomings of the averaging method are more apparent -- just observe how the greyscale background is seemingly comprised of the same shades of grey repeating themselves:
 
 <figure>
-  <img src="{{ site.url }}/img/ccctg/nyancat-colour-to-averaged-rainbow.png">
+  <img src="{{ site.url }}/img/ccctg/nyancat-colour-to-averaged-rainbow.png" />
   <figcaption>Greyscale conversion using the averaged formula, on a rainbow background.</figcaption>
 </figure>
 
@@ -140,14 +140,14 @@ The luminosity method incorporates the same coefficients as those implemented in
 ... but being that I'm a fan of visual explanations, I'll illustrate the coefficient concept using pie charts and ratios. The *averaging* method blended the RGB channels using a simple **1:1:1** ratio -- that is 1 part red, 1 part green, and 1 part blue, respectively. However, because the human eye is most sensitive to green, and least sensitive to blue, the ratio should be **0.89 : 1.77 : 0.33**. Using a <span style="color:#63F">purple / `rgb(102,51,255)`</span> I've created pie charts for both the *averaged* and *luminosity* methods:
 
 <figure>
-  <img src="{{ site.url }}/img/ccctg/coefficient-charts.svg">
+  <img src="{{ site.url }}/img/ccctg/coefficient-charts.svg" />
   <figcaption>Averaged proportions of RGB channels (left) versus the luminosity ratio (right).</figcaption>
 </figure>
 
 As you can see, green is heavily weighted, occupying around 213 degrees of the pie chart. Factoring in this coefficient produces more accurate results, as seen in the luminosity conversion below. Take note of the background rainbow in particular -- especially how the blue section of spectrum is clearly darker than the green:
 
 <figure>
-  <img src="{{ site.url }}/img/ccctg/nyancat-colour-to-luminosity-rainbow.png">
+  <img src="{{ site.url }}/img/ccctg/nyancat-colour-to-luminosity-rainbow.png" />
   <figcaption>Greyscale conversion using the luminosity formula.</figcaption>
 </figure>
 

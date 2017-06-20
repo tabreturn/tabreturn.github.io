@@ -48,7 +48,7 @@ img {
   vertical-align: middle;
 }
 
-img.full {
+img.fullwidth {
   max-width: 100%;
   max-height: none;
 }
@@ -65,7 +65,7 @@ figure > img {
 figcaption {
   font-size: $small-font-size;
   opacity: 0.5;
-  margin-top: 0.3em;
+  margin-top: 0.6em;
 }
 
 

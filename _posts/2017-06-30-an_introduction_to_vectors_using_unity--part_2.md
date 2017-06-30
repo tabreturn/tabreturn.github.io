@@ -8,17 +8,29 @@ categories: code physics unity
 <!-- unityscript error highlight conceal -->
 <style> .err {background-color: transparent !important} </style>
 
-Firstly: this post looks at vectors, *as in physics*, otherwise referred to as *Euclidean vectors* (not scalable graphics). Unity includes built-in features for dealing with 2- and 3-dimensional vectors, but the purpose of this tutorial is to understand vector concepts and math from the bottom up. You will write your own 2D vector code from scratch, and once this is complete, take a look at what Unity offers.
+This is the second and final post in a series of tutorials introducing vectors. In this installment covers normalizing vectors, dynamic HUD read-outs, coding additional physics (acceleration & friction), and concludes with Unity's built-in vector implementations.
 
+You will need to continue with what you produced in part 1. If you missed this, you should start [here]({% post_url 2017-06-20-an_introduction_to_vectors_using_unity--part_1 %}).
 
-[Part 1]({% post_url 2017-06-20-an_introduction_to_vectors_using_unity--part_1 %})
+## Normalizing Vectors
 
-## Introduction
+Part 1 ended with a unsolved problem. Currently, the `Update` function reads as follows:
 
-To keep things as simple as possible, this tutorial makes use of *UnityScript*. Anyone familiar with the basics of Unity, and some programming language (be it JavaScript, Python, C#, or something similar) should grasp things just fine. To get started, all you'll need is [Unity](https://unity3d.com/), and:
+{% highlight js %}
+function Update () {
+  input.x = Input.GetAxis('Horizontal');
+  input.y = Input.GetAxis('Vertical');
+  input = multiply(input, 12);
+  Debug.Log("nyan cat's input magnitude: " + magnitude(input));
+  ...
+{% endhighlight %}
 
-* this <a href='{{ site.url }}/img/aitvuup1/nyan_cat.png' download>Nyan Cat graphic</a>;
-* this [font, named Wendy](http://www.dafont.com/wendy.font).
+This code multiplies the input by 12 to produce greater thrust. The problem, as revealed in the **Console** output is that the magnitude can reach *~16.97* with diagonal input, yet never exceeds 12 with directly vertical or horizontal input:
+
+<figure>
+  <img src="{{ site.url }}/img/aitvuup2/00-log-magnitude.png" class="fullwidth" />
+</figure>
+
 
 ## Creating a New Document
 
@@ -27,6 +39,8 @@ To keep things as simple as possible, this tutorial makes use of *UnityScript*. 
 ## Further Reading
 
 Nature of code ...
+
+...source code ...
 
 ## References
 

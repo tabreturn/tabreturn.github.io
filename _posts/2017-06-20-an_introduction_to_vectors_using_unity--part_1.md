@@ -10,12 +10,14 @@ categories: code physics unity
 
 Firstly: this post looks at vectors, *as in physics*, otherwise referred to as *Euclidean vectors* (not scalable graphics). Unity includes built-in features for dealing with 2- and 3-dimensional vectors, but the purpose of this tutorial is to understand vector concepts and math from the bottom up. You will write your own 2D vector code from scratch, and once this is complete, take a look at what Unity offers.
 
+If you are seeking a tutorial on nothing but Unity's built-in vector features, there are better places to look. If you wish to fundamentally understand vectors, keep reading.
+
 ## Introduction
 
 To keep things as simple as possible, this tutorial makes use of *UnityScript*. Anyone familiar with the basics of Unity, and some programming language (be it JavaScript, Python, C#, or something similar) should grasp things just fine. To get started, all you'll need is [Unity](https://unity3d.com/), and:
 
-* this <a href='{{ site.url }}/img/aitvuup1/nyan_cat.png' download>Nyan Cat graphic</a>;
-* this [font, named Wendy](http://www.dafont.com/wendy.font).
+* this [Nyan Cat graphic]({{ site.url }}/img/aitvuup1/nyan_cat.png){:download="download"};
+* this [font, named Wendy](http://www.dafont.com/wendy.font){:target="blank"}.
 
 ## Creating a New Document
 
@@ -25,7 +27,7 @@ Begin by creating a new **2D** project in Unity:
   <img src="{{ site.url }}/img/aitvuup1/00-new-document.png" class="fullwidth" />
 </figure>
 
-Import the [nyan_cat.png]({{ site.url }}/img/aitvuup1/nyan_cat.png) graphic (you can do this by dragging the file into the **Assets** panel); then using the **Inspector** panel on the right, set the graphic's *Pixels per Unit* to `30` and *Filter Mode* to `Point`. Click **Apply** when you're done:
+Import the <a href='{{ site.url }}/img/aitvuup1/nyan_cat.png' download>nyan_cat.png</a> graphic (you can do this by dragging the file into the **Assets** panel); then using the **Inspector** panel on the right, set the graphic's *Pixels per Unit* to `30` and *Filter Mode* to `Point`. Click **Apply** when you're done:
 
 <figure>
   <img src="{{ site.url }}/img/aitvuup1/01-nyan-cat-settings.png" class="fullwidth" />
@@ -71,11 +73,11 @@ Finally, add a **Box Collider 2D** component (also found within Physics 2D) to *
   <figcaption>Be sure to add the Box Collider to both Nyan Cat and the platform.</figcaption>
 </figure>
 
-Play the scene. Because of the Box Colliders, Nyan Cat and the platform are are unable to pass through one another, and Nyan Cat should drop and land/stop on the platform.
+Play the scene. Because of the Box Colliders, Nyan Cat and the platform are are unable to pass through one another. Nyan Cat should drop and land/stop on the platform.
 
 ## Adjusting the Scale for Easier Math
 
-Before getting into the code and math stuff, it's best to scale everything in order to make the numbers a bit more sane to work with. This step will allow you to avoid lengthy decimals in favour of single- and double-digit integers. You normally wouldn't scale things so dramatically -- and it'll incur some odd side-effects, as you'll come to see -- but understanding vectors will be easier using values like `[1, 5]` instead of `[0.0025, 0.0125]`.
+Before getting into the code and math stuff, it's best to scale everything in order to make the numbers a bit more sane to work with. This step will allow you to avoid lengthy decimals in favour of single- and double-digit integers. You normally wouldn't scale things so dramatically -- incurring some odd side-effects, as you'll come to see -- but understanding vectors will be easier using values like `[1, 5]` instead of `[0.0025, 0.0125]`.
 
 Make the necessary adjustments to the following objects in the Hierarchy:
 
@@ -95,16 +97,16 @@ Make the necessary adjustments to the following objects in the Hierarchy:
 
 <figure>
   <img src="{{ site.url }}/img/aitvuup1/10-platform-scale.png" class="fullwidth" />
-  <figcaption>Zoom-out (mouse scroll-wheel) to get a better view of all your up-sized objects.</figcaption>
+  <figcaption>Zoom-out (mouse scroll-wheel on the Scene area) to get a better view of all your up-sized objects.</figcaption>
 </figure>
 
-If you play the scene now, it should look somethig like this:
+If you play the scene now, it should look something like this:
 
 <figure>
   <img src="{{ site.url }}/img/aitvuup1/11-test-scale.png" class="fullwidth" />
 </figure>
 
-However, everything now appears to be moving far more slowly, even though Nyan Cat is actually moving at the same speed as before. This is because (s)he is now 500 times larger -- about 500 m<sup>3</sup> in Unity physics! So, what was a cat falling a few meters, is something more like a massive meteor falling a few meters. In order to avoid your view being completely engulfed by Nyan Cat, you're now viewing things from far further away, and as a result, everything appears to be moving slower ... kind of like how an aeroplane high overhead crosses your field of view slower than a mobility scooter.
+However, everything now appears to be moving far more slowly, even though Nyan Cat is actually moving at the same speed as before. This is because (s)he is now 500 times larger -- about 500 m<sup>3</sup> in Unity physics! So, what was a cat falling a few meters, is something more like a massive meteor falling a few meters. In order to avoid your view being completely engulfed by Nyan Cat, you're now viewing things from far further away, and as a result, everything appears to be moving slower ... kind of like how an aeroplane high overhead crosses your field of view slower than a mobility scooter a few meters away.
 
 Remember, though, this scaling makes the math simpler, so it's all relative and won't actually make any difference when you start writing some code to replace Unity's physics with your own; and on that point, the final step here is to remove the **Rigidbody 2D** and **Box Collider 2D** components from both Nyan Cat and the platform. You can do this using the menu under the cog icon:
 
@@ -115,7 +117,7 @@ Remember, though, this scaling makes the math simpler, so it's all relative and 
 
 ## Adding Some Code
 
-Using **Add Component > New Script**, add a new *Java Script* to Nyan Cat; name it "Vectors":
+With the Unity physics components removed, it's time to program your own. Using **Add Component > New Script**, add a new *Java Script* to Nyan Cat; name it "Vectors":
 
 <figure>
   <img src="{{ site.url }}/img/aitvuup1/13-vectors-script-component.png" class="fullwidth" />
@@ -127,10 +129,6 @@ Begin by adding some simple code to your Vector scripts to pull Nyan Cat downwar
 
 {% highlight js %}
 #pragma strict
-
-function Start () {
-
-}
 
 var y:float = 0;
 var YSpeed:float = -9.8;
@@ -168,7 +166,7 @@ You can experiment with the *X/Y Speed* values, but rather than editing variable
 
 ## Adding the HUD
 
-While you can watch the Inspector to track any variable values, a Heads-Up Display adds a nice touch. Add the Wendy ([wendy.ttf](http://www.dafont.com/wendy.font)) file to your Assets. You can simply drag it into Unity. Then, from the menu bar, select **GameObject > UI > Text** to create a new Text component. Now, using the Inspector:
+While you can watch the Inspector to track any variable values, a Heads-Up Display adds a nice touch. Add the [Wendy font](http://www.dafont.com/wendy.font){:target="blank"} file to your Assets. You can simply drag it into Unity. Then, from the menu bar, select **GameObject > UI > Text** to create a new Text component. Now, using the Inspector:
 
 * enter into the *Text* field: `wind: 5`, and on a new line, `gravity: -9.8`
 * set the *Font* to `Wendy`, *Font Size* to `20`, *Vertical Overflow* to `Overflow`, and *Color* to white
@@ -176,9 +174,10 @@ While you can watch the Inspector to track any variable values, a Heads-Up Displ
 
 <figure>
   <img src="{{ site.url }}/img/aitvuup1/15-add-hud.png" class="fullwidth" />
+  <figcaption>Use the <b>Game</b> view tab when placing and editing text.</figcaption>
 </figure>
 
-In time you'll control the HUD output dynamically, but for now, the HUD text simply matches the values declared in your code. The next step is to rewrite the code using a vector approach.
+In time you'll control the HUD output dynamically, but for now the HUD text will remain the same, regardless of your variable values. The next step is to rewrite the code using a vector approach.
 
 ## Vectors -- The Fundamentals
 
@@ -223,7 +222,7 @@ These vector concepts will now be applied using programming code.
 
 ## Coding Movement Using Vectors
 
-Currently, there are 2 forces in effect in this simulation: one lateral (wind); one vertical (gravity). Create a new `Vector` class at the top of your script for handling vector forces:
+Currently, there are 2 forces in effect in this simulation: one lateral (wind); one vertical (gravity). Create a new `Vector` class at the top of your script for dealing with vector forces:
 
 {% highlight js %}
 #pragma strict
@@ -270,8 +269,8 @@ These new *Gravity* and *Wind* variables, of course, have no effect on Nyan Cat'
 //var YSpeed:float = 0;
 
 // with this
-var velocity:Vector;
 var location:Vector;
+var velocity:Vector;
 
 ...
 {% endhighlight %}
@@ -336,7 +335,7 @@ Consider a scenario where Nyan Cat and *nayN Cat* are cruising together through 
 <code>offset = Nyan Cat - nyaN Cat</code>  
 <code>&#8756; offset = (7, 2) - (10, -2)</code>
 
-Therefore, nayN's drive needs to be re-calibrated using an adjustment vector of `(-3, 4)`. Gauged by the solid grey, arrow-capped line in the illustration above, one can confirm this is correct.
+Therefore, nayN's drive needs to be re-calibrated using an adjustment vector of `(-3, 4)`. Gauging by the solid grey, arrow-capped line in the illustration above, one can confirm this is correct.
 
 As subtraction is the opposite of addition, you can create a subtract function by copy/pasting the existing `add` function, renaming it `subtract`, and switching any `+` signs to `-` signs:
 
@@ -362,7 +361,7 @@ You probably understand multiplication as a series of additions, and the same is
  <figcaption><code>(3, 2) × 3 is equal to (3, 2) + (3, 2) + (3, 2)</code></figcaption>
 </figure>
 
-Add this `multiply` function to your code, and note how both the *x* and *y* values are multiplied by the same `float` value:
+Add this `multiply` function to your code. Note how both the *x* and *y* values are multiplied by the same `float` value:
 
 {% highlight js %}
  ...
@@ -418,7 +417,7 @@ While holding the right key, Nyan Cat's `input` vector is `(12, 0)`. But, consid
   <figcaption>"The square of the hypotenuse (the side opposite the right angle) is equal to the sum of the squares of the other two sides."</figcaption>
 </figure>
 
-To limit the input force to 12 in every direction, first add a function for calculating *magnitude* (the length of a vector). This, effectively, is a code implementation of the same Pythagorean Theorem used in the illustration above:
+Before limiting the input force to 12 in every direction, it's best to add a function for measuring *magnitude* (the length of a vector). This, effectively, is a code implementation of the same Pythagorean Theorem used in the illustration above:
 
 {% highlight js %}
 ...
@@ -431,7 +430,7 @@ function magnitude(v:Vector) {
 ...
 {% endhighlight %}
 
-Now using this new magnitude function, add a `Debug.Log` to measure and log the input magnitude:
+Now using this new magnitude function, add a `Debug.Log` to log the input magnitude:
 
 {% highlight js %}
 ...
@@ -445,7 +444,7 @@ function Update () {
 
 {% endhighlight %}
 
-Save your code, test, and observe the **Console** output. Note how the magnitude can reach ~*16.97* with diagonal input, yet never exceeds *12* with directly vertical or horizontal input:
+Save your code, test, and observe the **Console** output. Note how the input magnitude can reach ~*16.97* with diagonal input, yet never exceeds *12* with directly vertical or horizontal input:
 
 <figure>
   <img src="{{ site.url }}/img/aitvuup1/24-log-magnitude.png" class="fullwidth" />
@@ -455,9 +454,9 @@ Restricting the magnitude to 12 in every direction requires *normalizing* the ve
 
 ## Part 2
 
-The second (and final) part of this series covers normalizing vectors, dynamic HUD read-outs, coding additional physics (acceleration & friction), and concludes with the Unity's built-in vector implementations.
+The second (and penultimate) of these tutorials covers normalizing vectors, dynamic HUD read-outs, and coding additional physics (acceleration & friction). Part 3 concludes with the Unity's built-in vector implementations.
 
-Part 2 is now available [here]({% post_url 2017-06-30-an_introduction_to_vectors_using_unity--part_2 %}).
+Part 2 is now available [here]({% post_url 2017-07-06-an_introduction_to_vectors_using_unity--part_2 %}).
 
 ## References
 

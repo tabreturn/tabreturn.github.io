@@ -14,9 +14,9 @@ This installment covers normalizing vectors, dynamic HUD read-outs, and coding a
 
 ## Normalizing Vectors
 
-*Normalization* refers to a process that adjusts something to bring it within a regular/normal range. For example, many albums in my MP3 collection are louder than others. This isn't a problem when listening to an album from start to finish, but when I switch to playing random songs across my entire collection, I'm constantly having to adjust the volume dial. To solve this problem, I scanned the entire collection using [ReplayGain](https://en.wikipedia.org/wiki/ReplayGain) software. This software analyses and adds some metadata to each track indicating what its overall "loudness" is compared to a standard of 89 dB. When my audio player loads a track, it reads the ReplayGain metadata and automatically adjusts the volume to compensate, thus *normalizing* the loudness of the tracks. The tracks still contain the same audio information, but the playback volume is now governed by my dial.
+*Normalization* refers to a process that adjusts something to bring it within a regular/normal range. For example, many albums in my MP3 collection are louder than others. This isn't a problem when listening to an album from start to finish, but when I switch to playing random songs across my entire collection, I'm constantly having to adjust the volume dial. To solve this problem, I scanned the entire collection using [ReplayGain](https://en.wikipedia.org/wiki/ReplayGain) software. This software analyses and adds some metadata to each track indicating its overall "loudness" compared to a standard of 89 dB. When my audio player loads a track, it reads the ReplayGain metadata and automatically adjusts the volume to compensate, thus *normalizing* the loudness of the tracks. The tracks still contain the same audio information, but the playback volume is now governed by my dial.
 
-Normalizing vectors works on a similar principle: the length/magnitude of the vector is converted to a standard unit (of 1) from which it can be increased or decreased while still containing the same direction information. To accomplish this, the *x*, *y*, and *length* values are divided by the length, resulting in a magnitude of 1:
+Normalizing vectors works on a similar principle: the length/magnitude of the vector is converted to a standard unit (of 1) from which it can be increased or decreased while still containing the same direction information. To accomplish this, the *x*, *y*, and *length* values are each divided by the length, resulting in a magnitude of 1:
 
 <figure>
   <img src="{{ site.url }}/img/aitvuup2/00-normalizing-vector.svg" />
@@ -45,7 +45,7 @@ function Update () {
   ...
 {% endhighlight %}
 
-To ensure that Nyan cat moves 12 in every direction, the vector must be normalized, then multiplied it by 12. Add a `normalize` function to perform the arithmetic (of dividing every side by the length), and employ it in the `Update` function:
+To ensure that Nyan Cat's thrust is limited to 12 in every direction, the input vector must be normalized before it is multiplied it by 12. Add a `normalize` function to perform the arithmetic (of dividing every side by the length), and employ it in the `Update` function:
 
 {% highlight js %}
 ...
@@ -74,10 +74,10 @@ Save your code and test. Nyan Cat will have frozen, but you can use the arrow ke
 
 <figure>
   <img src="{{ site.url }}/img/aitvuup2/02-normalize-error.png" class="fullwidth" />
-  <figcaption>The "Collapse" option groups any duplicate console output. You can identify which lines are actively being logged by their changing line count.</figcaption>
+  <figcaption>The "Collapse" option groups any duplicate console output. Watch the counts to detect which lines are actively being logged.</figcaption>
 </figure>
 
-The input magnitude is now equal in all directions. The problem is that Nyan Cat has stopped moving altogether! However, there are `NaN` errors in the console to provide some hint as to what could be wrong. If you are not familiar with such errors, `NaN` is an acronym for *Not a Number*. In this case, the `normalize` function is returning a `NaN` in the absence of key input -- which is actually the result of a division by zero. Update the `normalize` function to resolve this:
+The input magnitude is now equal in all directions. The problem is that Nyan Cat has stopped moving altogether! However, there are `NaN` errors in the console to provide some hint as to what could be wrong. If you are not familiar with such errors, `NaN` is an acronym for *Not a Number*. In this case, the `normalize` function is returning a `NaN` in the absence of key input -- which is actually the result of a [division by zero](https://en.wikipedia.org/wiki/Division_by_zero). Update the `normalize` function to resolve this:
 
 {% highlight js %}
 function normalize(v:Vector) {
@@ -94,15 +94,15 @@ function normalize(v:Vector) {
 }
 {% endhighlight %}
 
-Nyan Cat is moving again, but is unable to move diagonally-up-and-left (northwest) across the screen. (S)he can no longer achieve a diagonal input thrust of 16.7 -- instead maxing out at 12 -- and is overwhelmed by the combined forces of wind and gravity
+Nyan Cat is moving again, but is unable to move diagonally-up-and-left (northwest) across the screen. (S)he can no longer achieve a diagonal input thrust of 16.7 -- instead maxing out at 12 -- and, as a result, is now overwhelmed by the combined forces of wind and gravity
 
 You will also notice a slightly delayed reaction to releasing the arrow keys. This has nothing to do with your code, but is related to the input manager settings.
 
-### Input Manager Settings
+### Adjusting Input Manager Settings
 
 The Unity *Input Manager* allows you to reference your inputs by axis name -- for example: `Input.GetAxis('Vertical')`. This is useful because you can map multiple device axes (of gamepads, keyboards, etc.) to the same name, and furthermore, reconfigure your inputs without having to edit your code.
 
-The delayed input Nyan Cat is experiencing is due to Unity's analog stick emulation. Whereas a key registers as either pressed or not pressed, an analog input is sensitive to any pressures between. For this reason, keys and buttons return a `0` *or* `1`, whereas analog inputs return a floating-point value ranging from `0.0` *to* `1.0`. More correctly speaking, because the analog stick's up and down are diametrically opposed, the `Input.GetAxis('Vertical')` values range between `-1.0` and `1.0`. When Unity is handling axis input from a keyboard, it mimics an analog stick by returning floating-point values --  and even goes a step further: when one releases an arrow key, Unity simulates the stick's re-centering by returning a range of values before reaching zero again.
+The delayed input Nyan Cat is experiencing is due to Unity's analog stick emulation. Whereas a key registers as either pressed or not pressed, an analog input is sensitive to any pressures between. For this reason keys and buttons return a `0` *or* `1`, whereas analog inputs return a floating-point value ranging from `0.0` *to* `1.0`. More correctly speaking, because the analog stick's up and down are diametrically opposed, the `Input.GetAxis('Vertical')` values range between `-1.0` and `1.0`. When Unity is handling axis input from a keyboard, it mimics an analog stick by returning floating-point values --  and even goes a step further: when one releases an arrow key, Unity simulates the stick's re-centering by returning a range of values before reaching absolute zero again.
 
 The normalize function does not work well with this, rounding the floating-point values to 1 (or -1) while the simulated re-centering is taking place. However, Unity provides a setting to control the spring-back force, termed *Gravity*. Select **Edit > Project Settings > Input** and then, using the Inspector, set the *Gravity* to `3000` for both the *Horizontal* and *Vertical* axes:
 
@@ -124,7 +124,7 @@ Select the object named *Text* in your hierarchy, and add a new script component
   <figcaption>The Text object is nested within the Canvas object.</figcaption>
 </figure>
 
-The code for the HUD script is fairly straight-forward. The `vec` variable points to Nyan Cat's "Vector" script, from which it retrieves the magnitudes of each force, outputting them to the HUD using the `.text` method:
+The code for the HUD script is fairly straight-forward. The `vec` variable points to Nyan Cat's "Vector" script from which it retrieves the magnitudes of each force, outputting them to the HUD using the `.text` method:
 
 {% highlight js %}
 #pragma strict
@@ -159,11 +159,11 @@ You should now have a functioning HUD, listing four forces in real-time:
   <img src="{{ site.url }}/img/aitvuup2/05-working-hud.png" class="fullwidth" />
 </figure>
 
-Remove the `Debug.Log` line in the "Vectors" script, now that it is no longer necessary.
+Remove the `Debug.Log` line in the "Vectors" script now that it is no longer necessary.
 
 ## Acceleration
 
-The `Update` function adds the sum total of the all vectors acting on Nyan Cat to the feline's previous location. No matter how many forces are included, the same principle applies. Consider, for example, a scenario with updrafts, thrusters, propellers, and afterburners:
+The `velocity` represents the sum total of the all vectors acting on Nyan Cat. With each iteration of the `Update` function, it is recalculated and added to the feline's previous location. No matter how many forces are included, the same principle applies. Consider, for example, a scenario with additional updrafts, thrusters, propellers, and afterburners:
 
 {% highlight js %}
   ...
@@ -178,9 +178,9 @@ The `Update` function adds the sum total of the all vectors acting on Nyan Cat t
   ...
 {% endhighlight %}
 
-However, implementing acceleration requires a new variable that can accumulate velocity. This is because the velocity is equal to itself plus the acceleration -- and the acceleration increases with each frame.
+Acceleration is yet another vector, but one which *accumulates* velocity. Think of it like this: velocity is equal to itself plus any acceleration -- and acceleration increases with each frame.
 
-Add a new `acceleration` variable to the "Vectors" script; then edit the update `Update` function:
+Add a new `acceleration` variable to the "Vectors" script; then edit the `Update` function:
 
 {% highlight js %}
 ...
@@ -206,22 +206,22 @@ function Update () {
 }
 {% endhighlight %}
 
-As there is no deceleration (yet), Nyan Cat will accumulate speed rapidly. Zero the *Gravity* and *Wind* using the Inspector, then test, and monitor the HUD to see how the velocity is increased as you continue to add further input in the same direction:
+As there is no friction or drag (yet), Nyan Cat will accumulate speed rapidly. Zero the *Gravity* and *Wind* using the Inspector, then test and monitor the HUD to see how the velocity is increased as you continue to add further input in the same direction:
 
 <figure>
   <img src="{{ site.url }}/img/aitvuup2/06-test-acceleration.png" class="fullwidth" />
 </figure>
 
-Were you to add a duplicate Nyan Cat to the simulation, (s)he would accelerate at an equal rate. But, what if this new Nyan Cate were made of lead? Lead weighs than pop-tarts and fur, and -- with the same forces were applied -- should accelerate more gradually. More correctly speaking, lead has greater *mass*.
+Were you to add a duplicate Nyan Cat to the simulation, (s)he would accelerate at an equal rate. But, what if this new Nyan Cate were made of lead? Lead surely weighs more than pop-tarts and fur, and -- with the same forces were applied -- should accelerate more gradually. More correctly speaking, lead has greater *mass*.
 
 ### Adding Mass
 
-Newton's second law states that *force equals mass times acceleration.* For coding this simulation, it's useful to switch things around a bit so that   
+Newton's second law states that *force equals mass times acceleration.* For coding this simulation, it's useful to switch things around so that   
 `force = mass × acceleration`  
 is restated as:   
 <code>acceleration = force &#247; mass</code>
 
-Now apply this formula to the "Vector" script by adding a new `mass` variable, and adjusting the `Update` function:
+Now apply this formula to the "Vector" script with a new `mass` variable:
 
 {% highlight js %}
 ...
@@ -244,11 +244,11 @@ function Update () {
   ...
 {% endhighlight %}
 
-Save and test. You will notice that Nyan Cat accelerates more gradually -- but you can also adjust the *Mass* using the Inspector to see how different values affect the simulation.
+Save and test. You will notice that Nyan Cat accelerates more gradually. You can also adjust the *Mass* using the Inspector to see how different values affect the simulation.
 
 ## Friction
 
-The only way to slow Nyan Cat's heading in a given direction is to apply an opposite force using the arrow keys. Friction behaves in exactly the same way. Well, technically speaking, not *exactly*, but this tutorial is about vectors not precise physics.
+The only way to slow Nyan Cat's heading in a given direction is to apply an opposite force using the arrow keys. Friction behaves in exactly the same way. Well, technically speaking, not *exactly*, but this tutorial is about vectors rather than accurate physics.
 
 The `velocity` variable represents Nyan Cat's current speed and heading, so calculating an inverse velocity is simple enough. Like finding the inverse of any scalar value, this is a multiply by `-1` calculation:
 
@@ -263,7 +263,7 @@ function Update () {
   ...
 {% endhighlight %}
 
-Edit your code to match that of the above, then save and test. Note how Nyan Cat is unable to move, as, no matter what forces are added to the velocity, an equal and opposite force is applied by the friction. Reduce the friction coefficient (usually represented as μ) from `-1` to `-0.05`:
+Edit your code to match that of the above, then save and test. Note how Nyan Cat is unable to move, as, no matter what forces are added to the velocity, an equal and opposite force is applied by the friction. Reduce the friction coefficient from `-1` to `-0.05`:
 
 {% highlight js %}
   ...
@@ -271,35 +271,35 @@ Edit your code to match that of the above, then save and test. Note how Nyan Cat
   ...
 {% endhighlight %}
 
-Save and test. Nyan Cat now accelerates and decelerates, however, the velocity never quite reaches zero:
+Save and test. Nyan Cat now accelerates and decelerates, and although (s)he appears to drift to a complete stop, the velocity never quite reaches zero:
 
 <figure>
   <img src="{{ site.url }}/img/aitvuup2/07-test-friction-stop.png" class="fullwidth" />
-  <figcaption>The velocity value (floating-point) is a simplified representation of <code>0.000000000000000000004498928</code></figcaption>
+  <figcaption>This floating-point velocity value is a simplified representation of <code>0.000000000000000000004498928</code></figcaption>
 </figure>
 
 ### Bringing Nyan Cat to a Complete Stop
 
-The simplest way to bring Nyan Cat's velocity to a complete halt is to round it to zero. Add a `chop` function that harnesses Unity's `Mathf.Abs`:
+The simplest way to bring Nyan Cat's velocity to a complete halt is to round it to zero. Add your own `chop` function to perform this task:
 
 {% highlight js %}
 ...
 
 function chop(v:Vector, tolerance:float) {
   var mag:float = magnitude(v);
-  var result = new Vector();
 
-  if (Mathf.Abs(mag) > tolerance) {
-    result = v;
+  if (Mathf.Abs(mag) < tolerance) {
+    v.x = 0;
+    v.y = 0;
   }
 
-  return result;
+  return v;
 }
 
 ...
 {% endhighlight %}
 
-`Mathf.Abs` does the rounding down, and if this result falls within `tolerance` parameter, a zero is returned. Call the function in the `Update` function, and set the tolerance to `0.01`:
+[`Mathf.Abs`](https://docs.unity3d.com/ScriptReference/Mathf.Abs.html) converts negative values to positive (absolute) values, and if the result falls beneath the `tolerance` parameter, a vector of `(0, 0)` is returned. Call the function in the `Update` function, and set the tolerance to `0.01`:
 
 {% highlight js %}
 function Update () {
@@ -311,22 +311,24 @@ function Update () {
   ...
 {% endhighlight %}
 
-Save, test, and confirm that Nyan Cat is able to reach a complete stop. Play around with the force values using the inspector, and perhaps consider a new `float` variable for your key input multplier.
+Save, test, and confirm that Nyan Cat is able to reach a complete stop at a sufficiently small velocity.
 
-The next step involves substituting your code with Unity's built-in features.
+## What's Next?
 
-## Further Reading
+The next part involves substituting your code with Unity's built-in features. For now, play around with the force values using the Inspector, and perhaps consider a new `float` variable for your key input multplier.
 
-Daniel Shiffman's *Nature of Code* focuses on the programming strategies and techniques behind computer simulations of natural systems using Processing. It's an excellent book, and a major inspiration for this post, that will take you far further and deeper into this subject matter. If you've found the tutorial interesting thus far, I highly recommend you give it a read. You can buy it in print, or read free online. Check it out [here](http://natureofcode.com/).
-
-## Part 3
+### Part 3
 
 Part 3 concludes with the Unity's built-in vector implementations.
 
+## Further Reading
+
+Daniel Shiffman's [*Nature of Code*](http://natureofcode.com/) focuses on programming strategies and techniques for computer simulations of natural systems using the Processing programming lanuguage. It's an excellent book, and a major inspiration for this post. It will take you far further and deeper into this subject matter, and if you've found the tutorial interesting thus far, I highly recommend you give it a read. You can buy it in print, or read it free online.
+
 ## References
 
-https://www.khanacademy.org/math/precalculus/vectors-precalc
-
+* https://www.khanacademy.org/math/precalculus/vectors-precalc
 * http://natureofcode.com/book/chapter-1-vectors/
 * http://natureofcode.com/book/chapter-2-forces/
 * https://unity3d.com/learn/tutorials/topics/scripting/vector-maths
+* https://youtube.com/watch?v=QH2-TGUlwu4

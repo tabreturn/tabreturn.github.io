@@ -9,6 +9,6 @@ Isso (a Disqus alternative) and Piwik (open-source analytics platform).
 
 ![screenshot](screenshot.png)
 
-## todo
+## to-do
 * ~~mobile view style fixes for comment section~~
 * topics filter to use url (e.g. #physics)

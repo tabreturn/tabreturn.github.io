@@ -20,7 +20,7 @@ red: 100%
 green: 0%  
 blue: 0%
 
-Should you change the red value to 0% and you're left with black; change all the values to 100% and you get white. Black and white lie at either end of the greyscale gamut -- and as you've probably figured out already -- three equivalent RGB values will result in some shade of grey. For example:
+Should you change the red value to 0%, you're left with black; change all the values to 100% and you get white. Black and white lie at either end of the greyscale gamut -- and as you've probably figured out already -- three equivalent RGB values will result in some shade of grey. For example:
 
 <div style="background-color:#444444; display:inline-block; width:80px; height:2em"></div>  
 red: 25%  
@@ -38,17 +38,17 @@ CSS allows for various means of denoting RGB colour. <span style="color:red">Red
 
 `rgb(100%, 0%, 0%)`
 
-Of course, the keyword "`red`" refers to a very specific shade of red, that may not suit your design. If you wished for a slightly darker red, you could use `rgb(90%,0%,0%)`. Other named colours include: <span style="color:blue">blue</span>, which is `rgb(0%,100%,0%)`; <span style="color:orange">orange</span>, which is `rgb(100%,60%,0%)`; and so forth. In these examples, each RGB value is represented using percentile measurements, but there are more popular ways to describe colour when programmings websites and applications. [Hexadecimal](https://en.wikipedia.org/wiki/Hexadecimal) representation is likely to be the format you encounter most. In hexadecimal, red is:
+Of course, the keyword "`red`" refers to a very specific shade of red, which may not suit your design. If you wished for a slightly darker red, you could use `rgb(90%,0%,0%)`. Other named colours include: <span style="color:blue">blue</span>, which is `rgb(0%,100%,0%)`; or <span style="color:orange">orange</span>, which is `rgb(100%,60%,0%)`; and so forth. In these examples, each RGB value is represented using percentile measurements, but there are more popular ways to describe colour when programmings websites and applications. [Hexadecimal](https://en.wikipedia.org/wiki/Hexadecimal) representation is likely to be the format you encounter most. In hexadecimal, red is:
 
 `#FF0000`
 
-There are six digits in all, prepended with a hash symbol (`F` is actually a digit -- but more on that later). Or more correctly -- there are *three pairs* of digits representing red, green, and blue, respectively. The first step to decoding the colour is to split it into these pairs:
+There are six digits and a hash symbol (`F` is actually a digit, but more on that later). Or more correctly speaking -- there are *three pairs* of digits representing red, green, and blue, respectively:
 
 red: FF  
 green: 00  
 blue: 00
 
-Notice that instead of 100% for red, there is now an `FF`; and that the 0%'s are now padded to `00` in order to fill two places. We can therefore surmise that *100%* is equal to FF, which is actually equal to **255** ... but, why not 100, or 99?
+Notice that instead of 100% for red, there is an `FF`; and that the 0%'s are now padded to `00` in order to fill two places. We can therefore surmise that *100%* is equal to FF, which is actually equal to **255** ... but, why not 100, or 99?
 
 To explain this as simply as possible: humans use a *base 10* (decimal) counting system. This system works nicely for counting on ten fingers -- but using *base 16* (hexadecimal) is like counting on sixteen fingers. To make up those extra digits (fingers?), hexadecimal adds a few letters. Below is a comparison: the first line counts up using decimal; the line below it is the equivalent in hexadecimal:
 
@@ -60,7 +60,7 @@ Using just two digits, hexadecimal can therefore represent a maximum value of 25
 
 ### RGB 0--255 Notation
 
-When extracting colour values from HTML elements using JavaScript, the browser returns RGB values using another form of CSS notation: `rgb(0-255,0-255,0-255)`. These are decimal values, as  opposed to hexadecimal or percentile. To see behaviour this in action, consider the following HTML:
+When extracting colour values from HTML elements using JavaScript, the browser returns RGB values using another form of CSS notation: `rgb(0-255,0-255,0-255)`. These are decimal values, as opposed to hexadecimal or percentile. To see behaviour this in action, consider the following HTML:
 
 {% highlight html %}
 <div id="alert" style="color:#FF0000">
@@ -82,7 +82,7 @@ The `console.log(style.color)` returns the colour value -- originally specified 
 
 ## Greyscale Conversion
 
-With the necessary colour, CSS, and JavaScript concepts introduced, it's time to focus on the conversion algorithms. Two methods are presented here, though the second is essentially a tweaked improvement of the first.
+With the necessary colour, CSS, and JavaScript concepts introduced, it's time to focus on the conversion algorithms. Two methods are presented here, although the second is essentially a tweaked improvement of the first.
 
 ### The Averaging Method
 
@@ -100,7 +100,7 @@ Therefore, the greyscale equivalent of `rgb(255,0,0)` is `rgb(85,85,85)`, as pre
 <div style="background-color:rgb(85,85,85); float:left; width:80px; height:2em"></div>
 <div style="clear:both; height:1.5em"></div>  
 
-However, it's difficult to gauge how 'correct' this conversion is -- but a spectrum of colours should help contextualise the result. To accomplish this, I wrote some JavaScript that converts raster images (GIF, JPG, and PNG files) into an array of `div` elements, each with a background-colour corresponding to its source pixel. Pixel art is well-suited to the task at hand -- allowing for more discernible areas of colour -- so to see this script in action, let's begin with this image of [Nyan Cat](https://en.wikipedia.org/wiki/Nyan_Cat):
+However, it's difficult to gauge how 'correct' this conversion is, but a spectrum of colours should help contextualise the result. To accomplish this, I wrote some JavaScript that converts raster images (GIF, JPG, and PNG files) into an array of `div` elements, each with a background-colour corresponding to its source pixel. Pixel art is well-suited to the task at hand -- allowing for more discernible areas of colour -- so to see this script in action, let's begin with this image of [Nyan Cat](https://en.wikipedia.org/wiki/Nyan_Cat):
 
 ![nyan cat original]({{ site.url }}/img/ccctg/nyancat-original.png)
 
@@ -122,29 +122,29 @@ The result is satisfactory, although there is room for improvement -- most notab
   Therefore, the averaged grey RGB value is also   
   `rgb(136, 136, 136)`
 
-To take things a step further, I decided to throw more colours into the image, substituting the standard background for a rainbow gradient. In this case the shortcomings of the averaging method are more apparent -- just observe how the greyscale background is seemingly comprised of the same shades of grey repeating themselves:
+To take things a step further, I decided to throw a few more colours into the image, substituting the standard background for a rainbow gradient. In this case the shortcomings of the averaging method are more apparent -- just observe how the greyscale background is seemingly comprised of the same shades of grey repeating themselves:
 
 <figure>
   <img src="{{ site.url }}/img/ccctg/nyancat-colour-to-averaged-rainbow.png" />
   <figcaption>Greyscale conversion using the averaged formula, on a rainbow background.</figcaption>
 </figure>
 
-This issue has to with how the [human eye is more sensitive to certain colours]({% post_url 2016-12-10-comparing_colours %}), but to address this, the next method takes our physiology into account to provide improved results.
+This issue has something to do with how the [human eye is more sensitive to certain colours]({% post_url 2016-12-10-comparing_colours %}), but to address this, the next method takes human physiology into account to provide improved results.
 
 ### The Luminosity Method
 
-The luminosity method incorporates the same coefficients as those implemented in GIMP's ([an open source Photoshop alternative](https://www.gimp.org/)) greyscale algorithm. What exactly do I mean by 'coefficients'? *The weighting of the red, green, and blue channels when converting to a shade of grey.* The coefficient used by GIMP is:
+The luminosity method incorporates the same coefficients as those implemented in GIMP's ([an open source Photoshop alternative](https://www.gimp.org/)) greyscale algorithm:
 
 `(red × 0.3 + green × 0.59 + blue × 0.11) = grey`
 
-... but being that I'm a fan of visual explanations, I'll illustrate the coefficient concept using pie charts and ratios. The *averaging* method blended the RGB channels using a simple **1:1:1** ratio -- that is 1 part red, 1 part green, and 1 part blue, respectively. However, because the human eye is most sensitive to green, and least sensitive to blue, the ratio should be **0.89 : 1.77 : 0.33**. Using a <span style="color:#63F">purple / `rgb(102,51,255)`</span> I've created pie charts for both the *averaged* and *luminosity* methods:
+'Coefficients' in this context refer to: *the weighting of the red, green, and blue channels when converting to a shade of grey*. Recall that the *averaging* method blended the RGB channels using a straight-forward **1:1:1** ratio -- that is 1 part red, to every 1 part green, and 1 part blue, respectively. However, because the human eye is most sensitive to green, and least sensitive to blue, the ratio should be **0.89 : 1.77 : 0.33**. The *averaged* and *luminosity* pie charts below illustrate this concept as applied for the colour <span style="color:#63F">`rgb(102,51,255)`</span>:
 
 <figure>
   <img src="{{ site.url }}/img/ccctg/coefficient-charts.svg" />
-  <figcaption>Averaged proportions of RGB channels (left) versus the luminosity ratio (right).</figcaption>
+  <figcaption>Averaged proportions (left) versus the luminosity proportions (right) for the colour purple.</figcaption>
 </figure>
 
-As you can see, green is heavily weighted, occupying around 213 degrees of the pie chart. Factoring in this coefficient produces more accurate results, as seen in the luminosity conversion below. Take note of the background rainbow in particular -- especially how the blue section of spectrum is clearly darker than the green:
+As you can see, the green 'slice' is heavily weighted in the luminosity (right) pie chart, occupying around 213 degrees. So even though it contains a fraction of the total green that could be applied, green is as prominent as the blue. Factoring in this coefficient produces more accurate results, as seen in the luminosity conversion below. Take note of the background rainbow in particular -- especially how the blue section of spectrum is clearly darker than the green:
 
 <figure>
   <img src="{{ site.url }}/img/ccctg/nyancat-colour-to-luminosity-rainbow.png" />

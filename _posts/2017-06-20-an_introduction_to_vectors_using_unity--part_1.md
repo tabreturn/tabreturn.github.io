@@ -8,7 +8,7 @@ categories: code physics unity
 <!-- unityscript error highlight conceal -->
 <style> .err {background-color: transparent !important} </style>
 
-Firstly: this post looks at vectors, *as in physics*, otherwise referred to as *Euclidean vectors* (not scalable graphics). Unity includes built-in features for dealing with 2- and 3-dimensional vectors, but the purpose of this tutorial is to understand vector concepts and math from the bottom up. You will write your own 2D vector code from scratch, and once this is complete, take a look at what Unity offers.
+Firstly: this series looks at vectors *as in physics*, otherwise referred to as *Euclidean vectors* (and not scalable graphics). Unity includes built-in features for dealing with 2- and 3-dimensional vectors, but the purpose of this tutorial is to understand vector concepts and math from the bottom up. You'll write your own 2D vector code from scratch, and once this is complete, take a look at what Unity offers pre-packaged.
 
 If you are seeking a tutorial on nothing but Unity's built-in vector features, there are better places to look. If you wish to fundamentally understand vectors, keep reading.
 
@@ -77,7 +77,7 @@ Play the scene. Because of the Box Colliders, Nyan Cat and the platform are are 
 
 ## Adjusting the Scale for Easier Math
 
-Before getting into the code and math stuff, it's best to scale everything in order to make the numbers a bit more sane to work with. This step will allow you to avoid lengthy decimals in favour of single- and double-digit integers. You normally wouldn't scale things so dramatically -- incurring some odd side-effects, as you'll come to see -- but understanding vectors will be easier using values like `[1, 5]` instead of `[0.0025, 0.0125]`.
+Before getting into the code and math stuff, it's best to scale everything in order to make the numbers a bit more sane to work with. This step will allow you to avoid lengthy decimals in favour of single- and double-digit integers. You normally wouldn't scale things so dramatically -- which incurs some odd side-effects, as you'll come to see -- but understanding vectors will be easier using values like `[1, 5]` instead of `[0.0025, 0.0125]`.
 
 Make the necessary adjustments to the following objects in the Hierarchy:
 
@@ -106,7 +106,7 @@ If you play the scene now, it should look something like this:
   <img src="{{ site.url }}/img/aitvuup1/11-test-scale.png" class="fullwidth" />
 </figure>
 
-However, everything now appears to be moving far more slowly, even though Nyan Cat is actually moving at the same speed as before. This is because (s)he is now 500 times larger -- about 500 m<sup>3</sup> in Unity physics! So, what was a cat falling a few meters, is something more like a massive meteor falling a few meters. In order to avoid your view being completely engulfed by Nyan Cat, you're now viewing things from far further away, and as a result, everything appears to be moving slower ... kind of like how an aeroplane high overhead crosses your field of view slower than a mobility scooter a few meters away.
+However, everything appears to be moving far more slowly now, even though Nyan Cat is actually moving at the same speed as before. This is because (s)he is now 500 times larger -- about 500 m<sup>3</sup> in Unity physics! So, what was a cat falling a few meters, is something more like a massive meteor falling a few meters. In order to avoid your view being completely engulfed by Nyan Cat, you're now viewing things from far further away, and as a result, everything appears to be moving slower ... kind of like how an aeroplane high overhead crosses your field of view slower than a mobility scooter a few meters away.
 
 Remember, though, this scaling makes the math simpler, so it's all relative and won't actually make any difference when you start writing some code to replace Unity's physics with your own; and on that point, the final step here is to remove the **Rigidbody 2D** and **Box Collider 2D** components from both Nyan Cat and the platform. You can do this using the menu under the cog icon:
 
@@ -123,7 +123,7 @@ With the Unity physics components removed, it's time to program your own. Using 
   <img src="{{ site.url }}/img/aitvuup1/13-vectors-script-component.png" class="fullwidth" />
 </figure>
 
-### Basic Movement and 'Gravity' the Non-Vector Way
+### Basic Movement and 'Gravity' -- the Non-Vector Way
 
 Begin by adding some simple code to your Vector scripts to pull Nyan Cat downward:
 
@@ -177,11 +177,11 @@ While you can watch the Inspector to track any variable values, a Heads-Up Displ
   <figcaption>Use the <b>Game</b> view tab when placing and editing text.</figcaption>
 </figure>
 
-In time you'll control the HUD output dynamically, but for now the HUD text will remain the same, regardless of your variable values. The next step is to rewrite the code using a vector approach.
+In time you'll control the HUD output dynamically, but for now the HUD text will display the same numbers, regardless of your variable values. The next step is to rewrite the code using a vector approach.
 
 ## Vectors -- The Fundamentals
 
-According to [Wikipedia](https://en.wikipedia.org/wiki/Euclidean_vector), a Euclidean vector is "used to represent physical quantities that have both magnitude and direction". That's a pretty accurate description, but to make things clearer, consider this illustration:
+According to [Wikipedia](https://en.wikipedia.org/wiki/Euclidean_vector), a Euclidean vector is "used to represent physical quantities that have both magnitude and direction". That's a succinct and accurate description, but to make things clearer, consider this illustration:
 
 <figure>
   <img src="{{ site.url }}/img/aitvuup1/16-scalar.svg" />
@@ -201,11 +201,11 @@ This example can be expressed as a vector using the following notation:
 
 <code>v&#8407; = (10, 4)</code>
 
-Note how an arrow is placed above the letter (a *v* in this case) to indicate it is a vector quantity. You can perform various types of arithmetic using vectors. For example, additions are calculated by adding the horizontal and vertical values of each vector:  
+Note how an arrow is placed above the letter (a *v* in this case) to indicate it is a vector quantity. You can perform various types of arithmetic using vectors. For example, addition operations are calculated by adding the horizontal and vertical values of each vector:
 
 <code>a&#8407; = (4, 1)</code>  
 <code>b&#8407; = (6, 3)</code>  
-<code>c&#8407; = a&#8407; + b&#8407;</code>  
+<code>c&#8407; = a&#8407; + b&#8407;</code>
 
 Therefore, <code>c&#8407;</code> is equal to `(10, 4)`:
 
@@ -218,7 +218,7 @@ Using this vector you can determine that the direction is up- and (more heavily 
 `SQRT( (10)^2 + (4)^2 )`  
 which equals **10.77**.
 
-These vector concepts will now be applied using programming code.
+These vector concepts can now be applied using programming code.
 
 ## Coding Movement Using Vectors
 
@@ -235,7 +235,7 @@ class Vector {
 ...
 {% endhighlight %}
 
-If you're unfamiliar with classes, think of them as a *data type* of your own definition and design. There are a number of data types with which you are already familiar, such as `float`, `int`, or `String`. With this new class, you've created your own `Vector` data type, which allows you to declare your gravity and wind vectors:
+If you're unfamiliar with classes, think of them as a *data type* of your own definition and design. There are a number of data types with which you should already be familiar, such as `float`, `int`, or `String`. With this new class, you've created your own `Vector` data type, which allows you to declare your gravity and wind vectors:
 
 {% highlight js %}
 #pragma strict
@@ -257,7 +257,7 @@ Your new vector variables will appear in the Inspector panel, with each comprisi
   <img src="{{ site.url }}/img/aitvuup1/19-vector-variables.png" class="fullwidth" />
 </figure>
 
-These new *Gravity* and *Wind* variables, of course, have no effect on Nyan Cat's movement, as this is still controlled using the original variables. Replace them with a new `velocity` (to which you will soon add the various forces acting on Nyan cat) and `location` vector:
+These new *Gravity* and *Wind* variables, of course, have no effect on Nyan Cat's movement, as this is still controlled using the original variables. Replace them with a new `velocity` (to which you will soon add the various forces acting on Nyan cat) and `location` vectors:
 
 {% highlight js %}
 ...
@@ -293,7 +293,7 @@ function add(v1:Vector, v2:Vector) {
 
 Mathematically notated, you will now use this function to perform the following arithmetic (where *v* is velocity, *g* is gravity, and *w* is wind):
 
-<code>v&#8407; = g&#8407; + w&#8407;</code>  
+<code>v&#8407; = g&#8407; + w&#8407;</code>
 
 However, this must occur with each new frame, so the `Update` function must be overhauled to include the `add` function, which in turn computes the values of the `velocity` and `location` variables:
 
@@ -308,7 +308,7 @@ function Update () {
 }
 {% endhighlight %}
 
-The result, I'm sure you'll agree, is something far more intelligible: the first two lines of the `Update` function express that the current `location` is equal to the previous frame's location + the `velocity` (which can be a combination of any number of forces); and the last lines two place Nyan Cat according to the updated location coordinates.
+The result, I'm sure you'll agree, is something far more intelligible: the first two lines of the `Update` function express that the current `location` is equal to the previous frame's location + the `velocity` (which itself can be a combination of any number of forces); and the last lines two place Nyan Cat according to the updated location coordinates.
 
 Calibrate your new *Gravity* and *Wind* variables using the Inspector, then test the result:
 
@@ -337,19 +337,19 @@ Consider a scenario where Nyan Cat and *nayN Cat* are cruising together through 
 
 Therefore, nayN's drive needs to be re-calibrated using an adjustment vector of `(-3, 4)`. Gauging by the solid grey, arrow-capped line in the illustration above, one can confirm this is correct.
 
-As subtraction is the opposite of addition, you can create a subtract function by copy/pasting the existing `add` function, renaming it `subtract`, and switching any `+` signs to `-` signs:
+As subtraction is the opposite of addition, you can create a subtract function by copy & pasting the existing `add` function, renaming it `subtract`, and switching any `+` signs to `-` signs:
 
 {% highlight js %}
 ...
 
- function subtract(v1:Vector, v2:Vector) {
-   var result = new Vector();
-   result.x = v1.x - v2.x;
-   result.y = v1.y - v2.y;
-   return result;
- }
+function subtract(v1:Vector, v2:Vector) {
+  var result = new Vector();
+  result.x = v1.x - v2.x;
+  result.y = v1.y - v2.y;
+  return result;
+}
 
- ...
+...
 {% endhighlight %}
 
 ### Multiplying Vectors
@@ -361,19 +361,19 @@ You probably understand multiplication as a series of additions, and the same is
  <figcaption><code>(3, 2) × 3 is equal to (3, 2) + (3, 2) + (3, 2)</code></figcaption>
 </figure>
 
-Add this `multiply` function to your code. Note how both the *x* and *y* values are multiplied by the same `float` value:
+Add this `multiply` function to your code (note how both the *x* and *y* values are multiplied by the same `float` value):
 
 {% highlight js %}
- ...
+...
 
- function multiply(v:Vector, f:float) {
-   var result = new Vector();
-   result.x = v.x * f;
-   result.y = v.y * f;
-   return result;
- }
+function multiply(v:Vector, f:float) {
+  var result = new Vector();
+  result.x = v.x * f;
+  result.y = v.y * f;
+  return result;
+}
 
- ...
+...
 {% endhighlight %}
 
 ### Dividing Vectors
@@ -381,7 +381,7 @@ Add this `multiply` function to your code. Note how both the *x* and *y* values 
 A divide function is not essential, as you could perform a division operation using a decimal fraction and your `multiply` function -- for example:  
 ``multiply(gravity, 0.5) // divide by 2``
 
-However, a designated divide function should make your code easier to read, so it's best to add one. Simply copy/paste the existing `multiply` function, rename it `divide`, and then switch the `*` signs to `/` signs.
+However, a designated divide function should make your code easier to read, so it's best to add one. Simply copy & paste the existing `multiply` function, rename it `divide`, and then switch the `*` signs to `/` signs.
 
 ## Adding Key Input
 
@@ -414,7 +414,7 @@ While holding the right key, Nyan Cat's `input` vector is `(12, 0)`. But, consid
 
 <figure>
   <img src="{{ site.url }}/img/aitvuup1/23-vector-diagonal.svg" />
-  <figcaption>"The square of the hypotenuse (the side opposite the right angle) is equal to the sum of the squares of the other two sides."</figcaption>
+  <figcaption>"The square of the hypotenuse (the side diagonally opposite the right angle) is equal to the sum of the squares of the other two sides."</figcaption>
 </figure>
 
 Before limiting the input force to 12 in every direction, it's best to add a function for measuring *magnitude* (the length of a vector). This, effectively, is a code implementation of the same Pythagorean Theorem used in the illustration above:
@@ -450,7 +450,7 @@ Save your code, test, and observe the **Console** output. Note how the input mag
   <img src="{{ site.url }}/img/aitvuup1/24-log-magnitude.png" class="fullwidth" />
 </figure>
 
-Restricting the magnitude to 12 in every direction requires *normalizing* the vector first, but this has been left for part 2 of this tutorial.
+Restricting the magnitude to 12 in every direction requires *normalizing* the vector first, but this (and much more) has been left for part 2 of this tutorial.
 
 ## Part 2
 

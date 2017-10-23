@@ -10,11 +10,11 @@ categories: code physics unity
 
 This is the second post in a three part tutorial series introducing vectors. It extends on what was produced in part 1. If you missed this, you should start [here]({% post_url 2017-06-20-an_introduction_to_vectors_using_unity--part_1 %}).
 
-This installment covers normalizing vectors, dynamic HUD read-outs, and coding additional physics (such as acceleration and friction).
+This instalment covers normalizing vectors, dynamic HUD read-outs, and coding additional physics features (such as acceleration and friction).
 
 ## Normalizing Vectors
 
-*Normalization* refers to a process that adjusts something to bring it within a regular/normal range. For example, many albums in my MP3 collection are louder than others. This isn't a problem when listening to an album from start to finish, but when I switch to playing random songs across my entire collection, I'm constantly having to adjust the volume dial. To solve this problem, I scanned the entire collection using [ReplayGain](https://en.wikipedia.org/wiki/ReplayGain) software. This software analyses and adds some metadata to each track indicating its overall "loudness" compared to a standard of 89 dB. When my audio player loads a track, it reads the ReplayGain metadata and automatically adjusts the volume to compensate, thus *normalizing* the loudness of the tracks. The tracks still contain the same audio information, but the playback volume is now governed by my dial.
+*Normalization* refers to a process that adjusts something to bring it within a regular/normal range. For example, many albums in my MP3 collection are louder than others. This isn't a problem when listening to an album from start to finish, but when I switch to playing random songs across my entire collection, I'm constantly having to adjust the volume dial. To solve this problem, I scanned the entire collection using [ReplayGain](https://en.wikipedia.org/wiki/ReplayGain) software. This software analyses and adds some metadata to each track indicating its overall "loudness" in relation to a standard of 89 dB. When my audio player loads a track, it reads the ReplayGain metadata and automatically adjusts the volume to compensate, thus *normalizing* the loudness of the tracks. The tracks still contain the same audio information, but the playback volume is now governed precisely by my dial.
 
 Normalizing vectors works on a similar principle: the length/magnitude of the vector is converted to a standard unit (of 1) from which it can be increased or decreased while still containing the same direction information. To accomplish this, the *x*, *y*, and *length* values are each divided by the length, resulting in a magnitude of 1:
 
@@ -45,7 +45,7 @@ function Update () {
   ...
 {% endhighlight %}
 
-To ensure that Nyan Cat's thrust is limited to 12 in every direction, the input vector must be normalized before it is multiplied it by 12. Add a `normalize` function to perform the arithmetic (of dividing every side by the length), and employ it in the `Update` function:
+To ensure that Nyan Cat's thrust is limited to 12 in every direction, the input vector must be normalized *before* it is multiplied it by 12. Add a `normalize` function to perform the arithmetic (of dividing every side by the length), and employ it in the `Update` function:
 
 {% highlight js %}
 ...
@@ -77,7 +77,7 @@ Save your code and test. Nyan Cat will have frozen, but you can use the arrow ke
   <figcaption>The "Collapse" option groups any duplicate console output. Watch the counts to detect which lines are actively being logged.</figcaption>
 </figure>
 
-The input magnitude is now equal in all directions. The problem is that Nyan Cat has stopped moving altogether! However, there are `NaN` errors in the console to provide some hint as to what could be wrong. If you are not familiar with such errors, `NaN` is an acronym for *Not a Number*. In this case, the `normalize` function is returning a `NaN` in the absence of key input -- which is actually the result of a [division by zero](https://en.wikipedia.org/wiki/Division_by_zero). Update the `normalize` function to resolve this:
+The input magnitude is now equal in all directions. The problem is that Nyan Cat has stopped moving altogether! However, there are `NaN` errors in the console to provide some hint as to what could be wrong. If you are not familiar with such errors, `NaN` is an acronym for *Not a Number*. In this case, the `normalize` function is returning a `NaN` in the absence of key input -- which is actually the result of a [division by zero](https://en.wikipedia.org/wiki/Division_by_zero). Add a condition the `normalize` function to resolve this:
 
 {% highlight js %}
 function normalize(v:Vector) {
@@ -94,17 +94,15 @@ function normalize(v:Vector) {
 }
 {% endhighlight %}
 
-Nyan Cat is moving again, but is unable to move diagonally-up-and-left (northwest) across the screen. (S)he can no longer achieve a diagonal input thrust of 16.7 -- instead maxing out at 12 -- and, as a result, is now overwhelmed by the combined forces of wind and gravity
-
-You will also notice a slightly delayed reaction to releasing the arrow keys. This has nothing to do with your code, but is related to the input manager settings.
+Nyan Cat is moving again, but is unable to move diagonally-up-and-left (northwest) across the screen. (S)he can no longer achieve a diagonal input thrust of 16.7 -- instead maxing out at 12 -- and, as a result, is now overwhelmed by the combined forces of wind and gravity. You will also notice a slightly delayed reaction to releasing the arrow keys. This has nothing to do with your code, but is related to the input manager settings.
 
 ### Adjusting Input Manager Settings
 
-The Unity *Input Manager* allows you to reference your inputs by axis name -- for example: `Input.GetAxis('Vertical')`. This is useful because you can map multiple device axes (of gamepads, keyboards, etc.) to the same name, and furthermore, reconfigure your inputs without having to edit your code.
+The Unity *Input Manager* allows you to reference your inputs by axis name -- for example: `Input.GetAxis('Vertical')`. This is useful because you can map multiple device axes (of gamepads, keyboards, etc.) to the same name, and then reconfigure your inputs without having to edit your code.
 
-The delayed input Nyan Cat is experiencing is due to Unity's analog stick emulation. Whereas a key registers as either pressed or not pressed, an analog input is sensitive to any pressures between. For this reason keys and buttons return a `0` *or* `1`, whereas analog inputs return a floating-point value ranging from `0.0` *to* `1.0`. More correctly speaking, because the analog stick's up and down are diametrically opposed, the `Input.GetAxis('Vertical')` values range between `-1.0` and `1.0`. When Unity is handling axis input from a keyboard, it mimics an analog stick by returning floating-point values --  and even goes a step further: when one releases an arrow key, Unity simulates the stick's re-centering by returning a range of values before reaching absolute zero again.
+The delayed input Nyan Cat is experiencing is due to Unity's analog stick emulation. Whereas a key registers as either pressed or not pressed, an analog input is sensitive to any pressures between. For this reason keys and buttons return a `0` *or* `1`, whereas analog inputs return a floating-point value ranging from `0.0` *to* `1.0`. More correctly speaking, because the analog stick's up and down are diametrically opposed, the `Input.GetAxis('Vertical')` values range between `-1.0` and `1.0`. When Unity is handling axis input from a keyboard, it mimics an analog stick by returning floating-point values -- and even goes a step further: when one releases an arrow key, Unity simulates the stick's re-centring by returning a range of values before reaching absolute zero again.
 
-The normalize function does not work well with this, rounding the floating-point values to 1 (or -1) while the simulated re-centering is taking place. However, Unity provides a setting to control the spring-back force, termed *Gravity*. Select **Edit > Project Settings > Input** and then, using the Inspector, set the *Gravity* to `3000` for both the *Horizontal* and *Vertical* axes:
+The normalize function does not work well with this, rounding the floating-point values to 1 (or -1) while the simulated re-centring occurs. However, Unity provides a setting to control the spring-back force, termed *Gravity*. Select **Edit > Project Settings > Input** and then, using the Inspector, set the *Gravity* to `3000` for both the *Horizontal* and *Vertical* axes:
 
 <figure>
   <img src="{{ site.url }}/img/aitvuup2/03-adjust-input-gravity.png" class="fullwidth" />
@@ -133,9 +131,10 @@ import UnityEngine.UI;
 
 var vec:Vectors;
 var hud:Text;
+var nyan:GameObject;
 
 function Start () {
-  var nyan = GameObject.Find('nyan_cat');
+  nyan = GameObject.Find('nyan_cat');
   vec = nyan.GetComponent.<Vectors>();
   hud = GetComponent.<Text>();
 }
@@ -163,7 +162,7 @@ Remove the `Debug.Log` line in the "Vectors" script now that it is no longer nec
 
 ## Acceleration
 
-The `velocity` represents the sum total of the all vectors acting on Nyan Cat. With each iteration of the `Update` function, it is recalculated and added to the feline's previous location. No matter how many forces are included, the same principle applies. Consider, for example, a scenario with additional updrafts, thrusters, propellers, and afterburners:
+The `velocity` represents the sum total of the all vectors acting on Nyan Cat. With each iteration of the `Update` function, it is recalculated and added to the cosmic feline's previous location. No matter how many forces are included, the same principle applies. Consider, for example, a scenario with additional updrafts, thrusters, propellers, and afterburners:
 
 {% highlight js %}
   ...
@@ -212,16 +211,16 @@ As there is no friction or drag (yet), Nyan Cat will accumulate speed rapidly. Z
   <img src="{{ site.url }}/img/aitvuup2/06-test-acceleration.png" class="fullwidth" />
 </figure>
 
-Were you to add a duplicate Nyan Cat to the simulation, (s)he would accelerate at an equal rate. But, what if this new Nyan Cate were made of lead? Lead surely weighs more than pop-tarts and fur, and -- with the same forces were applied -- should accelerate more gradually. More correctly speaking, lead has greater *mass*.
+Were you to add a duplicate Nyan Cat to the simulation, (s)he would accelerate at an equal rate. But, what if this new Nyan Cat were made of lead? Lead surely weighs more than pop-tarts and fur, and -- with the same forces were applied -- should accelerate more gradually. More correctly speaking, lead has a greater *mass*.
 
 ### Adding Mass
 
-Newton's second law states that *force equals mass times acceleration.* For coding this simulation, it's useful to switch things around so that   
+Newton's second law states that *force equals mass times acceleration.* For coding this simulation, it's useful to switch things around so that  
 `force = mass × acceleration`  
 is restated as:   
 <code>acceleration = force &#247; mass</code>
 
-Now apply this formula to the "Vector" script with a new `mass` variable:
+Now apply this formula to the "Vector" script along with a new `mass` variable:
 
 {% highlight js %}
 ...
@@ -248,7 +247,7 @@ Save and test. You will notice that Nyan Cat accelerates more gradually. You can
 
 ## Friction
 
-The only way to slow Nyan Cat's heading in a given direction is to apply an opposite force using the arrow keys. Friction behaves in exactly the same way. Well, technically speaking, not *exactly*, but this tutorial is about vectors rather than accurate physics.
+Currently, the only way to slow Nyan Cat's heading in a given direction is to apply an opposite force using the arrow keys. Friction behaves in exactly the same way. Well, technically speaking, not *exactly*, but this tutorial is about vectors rather than perfectly accurate physics.
 
 The `velocity` variable represents Nyan Cat's current speed and heading, so calculating an inverse velocity is simple enough. Like finding the inverse of any scalar value, this is a multiply by `-1` calculation:
 
@@ -263,7 +262,7 @@ function Update () {
   ...
 {% endhighlight %}
 
-Edit your code to match that of the above, then save and test. Note how Nyan Cat is unable to move, as, no matter what forces are added to the velocity, an equal and opposite force is applied by the friction. Reduce the friction coefficient from `-1` to `-0.05`:
+Edit your code to match that of the above, then save and test. Note how Nyan Cat is unable to move as, no matter what forces are added to the velocity, an equal and opposite force is applied by the friction. Reduce the friction coefficient from `-1` to `-0.05`:
 
 {% highlight js %}
   ...
@@ -275,7 +274,7 @@ Save and test. Nyan Cat now accelerates and decelerates, and although (s)he appe
 
 <figure>
   <img src="{{ site.url }}/img/aitvuup2/07-test-friction-stop.png" class="fullwidth" />
-  <figcaption>This floating-point velocity value is a simplified representation of <code>0.000000000000000000004498928</code></figcaption>
+  <figcaption>This floating-point velocity value is a concise representation of <code>0.000000000000000000004498928</code></figcaption>
 </figure>
 
 ### Bringing Nyan Cat to a Complete Stop
@@ -299,7 +298,7 @@ function chop(v:Vector, tolerance:float) {
 ...
 {% endhighlight %}
 
-[`Mathf.Abs`](https://docs.unity3d.com/ScriptReference/Mathf.Abs.html) converts negative values to positive (absolute) values, and if the result falls beneath the `tolerance` parameter, a vector of `(0, 0)` is returned. Call the function in the `Update` function, and set the tolerance to `0.01`:
+[`Mathf.Abs`](https://docs.unity3d.com/ScriptReference/Mathf.Abs.html) converts negative values to positive (absolute) values, and if the result falls beneath the `tolerance` parameter, a vector of `(0, 0)` is returned. Call the function in the `Update` function and set the tolerance to `0.01`:
 
 {% highlight js %}
 function Update () {
@@ -315,7 +314,7 @@ Save, test, and confirm that Nyan Cat is able to reach a complete stop at a suff
 
 ## What's Next?
 
-The next part involves substituting your code with Unity's built-in features. For now, play around with the force values using the Inspector, and perhaps consider a new `float` variable for your key input multplier.
+The next part involves substituting your code with Unity's built-in features. For now, play around with the force values using the Inspector, and perhaps consider a new `float` variable for your key input multiplier.
 
 ### Part 3
 
@@ -323,11 +322,11 @@ Part 3 concludes with the Unity's built-in vector implementations.
 
 ## Further Reading
 
-Daniel Shiffman's [*Nature of Code*](http://natureofcode.com/) focuses on programming strategies and techniques for computer simulations of natural systems using the Processing programming lanuguage. It's an excellent book, and a major inspiration for this post. It will take you far further and deeper into this subject matter, and if you've found the tutorial interesting thus far, I highly recommend you give it a read. You can buy it in print, or read it free online.
+Daniel Shiffman's [*Nature of Code*](http://natureofcode.com/) focuses on programming strategies and techniques for computer simulations of natural systems using the Processing programming language. It's an excellent book, and a major inspiration for this post. It will take you far further and deeper into this subject matter, and if you've found the tutorial interesting thus far, I highly recommend you give it a read. You can buy it in print, or read it free online.
 
 ## References
 
-* https://www.khanacademy.org/math/precalculus/vectors-precalc
+* https://khanacademy.org/math/precalculus/vectors-precalc
 * http://natureofcode.com/book/chapter-1-vectors/
 * http://natureofcode.com/book/chapter-2-forces/
 * https://unity3d.com/learn/tutorials/topics/scripting/vector-maths

@@ -29,21 +29,21 @@ red: 50%
 green: 0%  
 blue: 0%
 
-Following the same red-green-blue sequence (RGB), black is [0,0,0] white is [100,100,100] blue is [0,0,100] yellow is [100,100,0] and so forth. These values are often represented in hexadecimal, where 100% is described as FF -- but this article avoids any hexadecimal representations.
+Following the same red-green-blue sequence (RGB), black is [0,0,0], white is [100,100,100], blue is [0,0,100], yellow is [100,100,0], and so forth. These values are often represented in hexadecimal, where 100% is described as FF -- but this article avoids any hexadecimal representations.
 
 ## Distance
 
-Distance can be defined as the length of the space between two points. In this case, those points happen to be colours, and the range of space the colours occupy is referred to as a [gamut](https://en.wikipedia.org/wiki/Gamut). Certain media offer wider gamuts than others. For example, if you print this page, these two colour swatches will appear far more alike on paper -- if not identical -- than on your screen:
+Distance can be defined as the length of the space between two points. In this case, those points happen to be colours, and the range of space the colours can occupy is referred to as a [gamut](https://en.wikipedia.org/wiki/Gamut). Certain media offer wider gamuts than others. For example, if you print this page, these two colour swatches will appear far more alike on paper -- if not identical -- than on your screen:
 
 <div style="background-color:#0F0; display:inline-block; width:80px; height:2em"></div>
 <div style="background-color:#69bd45; display:inline-block; width:80px; height:2em"></div>
 <div style="clear:both; height:1em"></div>
 
-Thus, one can say that the screen's bright green is out of gamut in the printer's (CMYK) colour space.
+The average printer cannot reproduce the bright green (left) swatch. Thus, one can say that the screen's bright green is out of gamut in the printer's (CMYK) colour space.
 
 ### One Primary Colour
 
-To begin measuring distance between colours, consider an image rendered using a single primary colour, rather than three. It's probably easiest to use a black primary, just like a grey-scale printer does. So, [0] black results in white; whereas [100] is the darkest possible black; and everything between in some shade of grey. In the image below, point *A* has a black value of 40 and point *B* a value of 95.
+To begin measuring distance between colours, consider an image rendered using a single primary colour, rather than three. It's probably easiest to use a single black primary, just like a grey-scale printer does. So, [0] black results in white; whereas [100] is the darkest possible black; everything in-between is some shade of grey. In the image below, point *A* has a black value of 40 and point *B* a value of 95.
 
 <figure width='100%'>
   <img src="{{ site.url }}/img/cc/greyscale-sample.png" />
@@ -61,18 +61,18 @@ If you wish to calculate a distance between the two colours, simply take B and s
 `95 - 45`  
 which equals **50**.
 
-So the smaller the value, the closer the match; where a value of zero indicates that the colours are identical.
+So the smaller the value, the closer the match; whereas a value of zero indicates that the colours are identical.
 
 ### Two Primary Colours
 
-Now consider an image in which all of the colours are mixed from two primaries -- such as a [duotone](https://en.wikipedia.org/wiki/Duotone). Below is a sepia duotone of the same photograph:
+Now consider an image in which all of the colours are mixed using two primaries -- such as a [duotone](https://en.wikipedia.org/wiki/Duotone) graphic. Below is a sepia duotone of the same photograph:
 
 <figure>
   <img src="{{ site.url }}/img/cc/sepia-sample.png" />
   <figcaption>Duo/sepia-tone photograph with sample points A and B.</figcaption>
 </figure>
 
-Rather than measuring the distance in one dimension, the values must now be plotted in **two dimensions** -- one for sepia and one for black. In order to measure the distance one must employ the [Pythagorean theorem](https://en.wikipedia.org/wiki/Pythagorean_theorem) and use the length of the hypotenuse to indicate the distance between the two points :
+Rather than measuring the distance in one dimension, the values must now be plotted in **two dimensions** -- one for sepia and one for black. In order to measure the distance one must employ the [Pythagorean theorem](https://en.wikipedia.org/wiki/Pythagorean_theorem) and use the length of the hypotenuse to indicate the distance between the two points:
 
 <figure>
   <img src="{{ site.url }}/img/cc/sepia-graph.svg" />
@@ -83,7 +83,7 @@ Therefore, the distance (the black dashed-line) between colours A and B is calcu
 `SQRT( (90-30)^2 + (50-35)^2 )`  
 which equals roughly **62**.
 
-This same concept can be extended for full-colour images.
+This same concept can be extended to accommodate full-colour images.
 
 ### Three Primary Colours
 
@@ -101,15 +101,15 @@ An additional **third** dimension is now added to the graph, as visually illustr
   <figcaption>Plotting points A and B in three dimensions (RGB).</figcaption>
 </figure>
 
-A right-angled triangle can drawn between points A and B. Mathematically speaking, an extra dimension has been added to the Pythagorean theorum, so the distance is now calculated as:  
+A right-angled triangle can be drawn between points A and B. Mathematically speaking, an extra dimension has been added to the Pythagorean theorem, so the distance is now calculated as:  
 `SQRT( (30-5)^2 + (50-0)^2 + (70-5)^2 )`  
 which equals roughly **86**.
 
-More correctly speaking, this distance is referred to as [Euclidean distance](https://en.wikipedia.org/wiki/Euclidean_distance), and there are no limits to how many dimensions can be added to the formula. So, it would seem that Euclidean distance is a measure of how similar two colours are ... **but** it's a bit more complicated than this ...
+More correctly speaking, this distance is referred to as [Euclidean distance](https://en.wikipedia.org/wiki/Euclidean_distance) -- and there are no limits to how many dimensions can be added using the formula. So, it would seem that Euclidean distance is a measure of how similar two colours are ... **but** it's a bit more complicated than this ...
 
 ## The Human Visual System (HVS) Model
 
-When taking into account differences in colour, one has to consider the apparatus. For humans, this is a combination of the eyes and brain. To assist in hardware and software development, experts in the field of computer graphics have devised the *HVS Model*. By modeling how humans visually perceive the world around them, they are able to optimise how devices handle and render graphics. As an example, JPG compression can dramatically reduce the file size of digital photos by discarding information -- yet there is little to no discernible difference to the HVS. Of course, heavier JPG compressions do produce a more noticeable loss in quality, but high-quality JPGs are difficult to discern from an uncompressed original. One technique JPG compression relies upon is [Chroma subsampling](https://en.wikipedia.org/wiki/Chroma_subsampling) which takes advantage of the HVS's lower acuity for detecting differences in colour than differences in brightness (or more correctly, *luminance*).
+When taking into account differences in colour, one has to consider the apparatus. For humans, this is a combination of the eyes and brain. To assist in hardware and software development, experts in the field of computer graphics have devised the *HVS Model*. By modelling how humans visually perceive the world around them, they are able to optimise how devices handle and render graphics. As an example, JPG compression can dramatically reduce the file size of digital photos by discarding colour information -- yet there is little to no discernible difference to the HVS. Of course, heavier JPG compression does produce a more noticeable loss in quality, but high-quality JPGs are difficult to discern from an uncompressed original. One technique JPG compression relies upon is [Chroma subsampling](https://en.wikipedia.org/wiki/Chroma_subsampling) which takes advantage of the HVS's lower acuity for detecting differences in colour than differences in brightness (or more correctly, *luminance*).
 
 ### Visual Acuity
 
@@ -125,7 +125,7 @@ Maybe removing the gap will help? Still unsure?
 <div style="background-color:#0000FF; float:left; width:80px; height:2em"></div>
 <div style="clear:both; height:1.5em"></div>
 
-The correct answer is ... the right swatch. Although both swatches contain no red or green, the right swatch has 1% less blue in it. As a test, I took a screenshot and zoomed well into the centre boundary of the gap-less version; there indeed was a difference, albeit a barely discernible one. Now imagine an image that contains both of these colours alongside one another, and possibly interspersed amongst other colours. The image effectively contains more information than the HVS can truly handle. One colour will suffice, so compression algorithms, such as those used in GIF and PNG, reduce the file size by reducing the number of colours in the image -- or this case, discard one of the blues in favour of using a single shade.
+The correct answer is ... the right swatch. Although both swatches contain no red or green, the right swatch has 1% less blue in it. As a test, I took a screenshot and zoomed well into the centre boundary of the gap-less version; there indeed was a difference, albeit a barely discernible one. Now imagine an image that contains both of these colours alongside one another, and possibly interspersed amongst other colours. The image effectively contains more information than the HVS can truly discern. One colour will suffice, so compression algorithms, such as those used in GIF and PNG, reduce the file size by reducing the number of colours in the image -- or this case, discarding one of the blues in favour of a single shade.
 
 ### Delta E
 
@@ -135,7 +135,7 @@ Delta E (or *ΔE*, or *dE*) is the measure of change in *visual perception*. The
 to:  
 `SQRT( 3(R)^2 + 4(G)^2 + 2(B)^2 )`
 
-This is because HVS is more sensitive to certain colours due to the physiology of the eye -- with green being more dominant than red or blue. But, one can compensate by adjusting the formula, factoring in the correct RGB ratio by multiplying the green value (G) by four making its effect the most prominent over the red (R) -- which must be multiplied by three; and blue (B), which has must be multiplied by two.
+This is because the HVS is more sensitive to certain colours due to the physiology of the eye -- which contains a greater number of green receptors, than it does red or blue. But, one can compensate by adjusting the formula, factoring in the correct RGB ratio by multiplying the green value (G) by four, making its effect the most prominent. Similarly, The red (R) value is multiplied by three; and the blue (B) by two.
 
 It gets more complicated, though, and further adjustments must be made to accommodate for -- among other considerations -- the fact that changes in darker colours are less noticeable than those in lighter colours. And this is where the article ends; and where you can head over to Zachary Schuessler's [Delta E 101 webpage](http://zschuessler.github.io/DeltaE/learn/). Zachary does an excellent job of explaining Delta E further, and also provides the CIE's algorithms implemented as a [JavaScript library](https://zschuessler.github.io/DeltaE/).
 

@@ -11,7 +11,7 @@ markdown: kramdown
 # piwik settings
 # remove/comment lines to disable
 piwik_trackerurl: "*.tabreturn.github.io"
-piwik_sourceurl: "https://www.secure.tabreturn.com/"
+piwik_sourceurl: "https://piwik.tabreturn.com/"
 piwik_siteid: 2
 
 # isso settings

@@ -1,7 +1,7 @@
 # site settings
-title: t@breturn // blog
+title: tabreturn // blog
 email: github.tabreturn.io@tabreturn.com
-description: coder/designer/lecturer
+description: ""
 baseurl: "" # subpath, e.g. /blog
 github_username: tabreturn
 

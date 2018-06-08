@@ -52,7 +52,7 @@ You are now ready to write your first line of code! If you would like to see exa
 
 Processing refers to programs as "sketches". Given the visual and artistic nature of what you are likely to produce, it's a fitting term. Create a new sketch by selecting **File > New**, or using the associated keyboard shortcut (which is listed alongside the File menu entry).
 
-#### Processing Functions
+### Processing Functions
 
 Type in the following lines of code:
 
@@ -137,7 +137,38 @@ Note the white-on-red suggestion. Pretty smart, huh? To be honest, the console i
 
 ## Colour
 
+There are various way to specify colour in Processing. To keep things simple, we will stick with hexadecimal values to begin with. If you are familiar with graphics software like Adobe Photoshop, Illustrator, Inkscape, or Gimp, you will have seen these values in your colour mixer.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl01gs/colour-gimp-mixer.png" />
+  <figcaption>The GIMP colour mixer. The hexadecimal value is in the field labelled "HTML notation".</figcaption>
+</figure>
+
+The `fill()` function sets the colour used to fill shapes. It accommodates up to four arguments, depending on the colour system you are using. For hexadecimal, use the 6-digit value prefixed with a `#` and wrapped in quotes:
+
+{% highlight py %}
 ...
+
+fill('#FF0000')
+{% endhighlight %}
+
+To see the fill colour in effect, you will add a rectangle. The `rect()` function is used to draw rectangles (or squares) and takes four arguments:
+
+`rect(x-coordinate, y-coordinate, width, height)`
+
+The x-coordinate values begin at the right-edge of the display windows; the y-coordinate from the top-edge. Add the following code to your "hello_world" sketch; then run it to confirm that the output matches the image below:
+
+{% highlight py %}
+...
+
+fill('#FF0000')
+rect(100, 150, 200, 300)
+{% endhighlight %}
+
+<figure>
+  <img src="{{ site.url }}/img/pitl01gs/colour-fill-rect.png" />
+  <figcaption><code>rect(100, 150, 200, 300)</code></figcaption>
+</figure>
 
 ## Drawing
 

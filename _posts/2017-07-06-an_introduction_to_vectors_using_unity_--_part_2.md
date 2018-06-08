@@ -8,7 +8,7 @@ categories: code physics unity
 <!-- unityscript error highlight conceal -->
 <style> .err {background-color: transparent !important} </style>
 
-This is the second post in a three part tutorial series introducing vectors. It extends on what was produced in part 1. If you missed this, you should start [here]({% post_url 2017-06-20-an_introduction_to_vectors_using_unity--part_1 %}).
+This is the second post in a three part tutorial series introducing vectors. It extends on what was produced in part 1. If you missed this, you should start [here]({% post_url 2017-06-20-an_introduction_to_vectors_using_unity_--_part_1 %}).
 
 This instalment covers normalizing vectors, dynamic HUD read-outs, and coding additional physics features (such as acceleration and friction).
 
@@ -27,7 +27,7 @@ The result is referred to as a *unit vector*. Unit vectors are notated using a c
 
 ### Normalizing Nyan Cat's Key Input
 
-At the end of [part 1]({% post_url 2017-06-20-an_introduction_to_vectors_using_unity--part_1 %}#vector-magnitude) the **Console** output revealed that Nyan Cat's key input can reach a magnitude of *~16.97* diagonally, yet never exceeds 12 when it's directly vertical or horizontal:
+At the end of [part 1]({% post_url 2017-06-20-an_introduction_to_vectors_using_unity_--_part_1 %}#vector-magnitude) the **Console** output revealed that Nyan Cat's key input can reach a magnitude of *~16.97* diagonally, yet never exceeds 12 when it's directly vertical or horizontal:
 
 <figure>
   <img src="{{ site.url }}/img/aitvuup2/01-log-magnitude.png" class="fullwidth" />

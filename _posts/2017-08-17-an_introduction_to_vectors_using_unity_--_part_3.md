@@ -8,7 +8,7 @@ categories: code physics unity
 <!-- unityscript error highlight conceal -->
 <style> .err {background-color: transparent !important} </style>
 
-This is the third and final part in an introductory series on vectors. The instalment covers substituting the existing vector code with Unity's built-in features, extending upon what was produced in parts 1 and 2. If you missed these, begin with [part 1]({% post_url 2017-06-20-an_introduction_to_vectors_using_unity--part_1 %}).
+This is the third and final part in an introductory series on vectors. The instalment covers substituting the existing vector code with Unity's built-in features, extending upon what was produced in parts 1 and 2. If you missed these, begin with [part 1]({% post_url 2017-06-20-an_introduction_to_vectors_using_unity_--_part_1 %}).
 
 ## Replacing Components
 

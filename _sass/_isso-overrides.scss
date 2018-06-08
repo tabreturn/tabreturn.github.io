@@ -8,9 +8,9 @@
   }
 
   a.edit, a.delete, a.reply {
-    font-weight: normal;
     text-decoration: underline;
     text-shadow: none;
+    font-weight: normal;
 
     &:hover {
       color: inherit;

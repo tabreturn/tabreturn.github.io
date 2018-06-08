@@ -24,6 +24,10 @@ pre, code {
   padding-left: 0 !important;
 }
 
+ol, ul {
+  margin-right: 0;
+}
+
 #close-button {
   background-image: url("RM-Close-24x24.svg");
   background-position: top;

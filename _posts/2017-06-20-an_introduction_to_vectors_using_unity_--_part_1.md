@@ -456,7 +456,7 @@ Restricting the magnitude to 12 in every direction requires *normalizing* the ve
 
 The second (and penultimate) of these tutorials covers normalizing vectors, dynamic HUD read-outs, and coding additional physics (acceleration & friction). Part 3 concludes with the Unity's built-in vector implementations.
 
-Part 2 is now available [here]({% post_url 2017-07-06-an_introduction_to_vectors_using_unity--part_2 %}).
+Part 2 is now available [here]({% post_url 2017-07-06-an_introduction_to_vectors_using_unity_--_part_2 %}).
 
 ## References
 

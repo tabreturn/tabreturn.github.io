@@ -227,9 +227,7 @@ fill('#FF0000')
   <figcaption>Placing the stroke functions above the <code>rect()</code> lines affects everything you have drawn.</figcaption>
 </figure>
 
-To specify if stroke corners and tips should rounded or sharp, consult the relevant reference entries:  
-[`strokeCap()`](http://py.processing.org/reference/strokeCap.html)  
-[`strokeJoin()`](http://py.processing.org/reference/strokeJoin.html)
+To specify if stroke corners and tips should rounded or sharp, consult the relevant reference entries: [`strokeCap()`](http://py.processing.org/reference/strokeCap.html) and [`strokeJoin()`](http://py.processing.org/reference/strokeJoin.html)
 
 ### Background
 
@@ -286,9 +284,8 @@ and a dark-greyish purple as:
 
 Shifting along the colour spectrum -- from red to orange to yellow to green, etc. -- is now a matter of adding or subtracting from the H-value.
 
-There will be more on colour in this lessons to come. If you need to find out more before then, consult the relevant reference entries:  
-[`colorMode()`](http://py.processing.org/reference/colorMode.html)  
-[`fill()`](http://py.processing.org/reference/fill.html)
+There will be more on colour in this lessons to come. If you need to find out more before then, consult the relevant reference entries:
+[`colorMode()`](http://py.processing.org/reference/colorMode.html) and [`fill()`](http://py.processing.org/reference/fill.html)
 
 ## Drawing
 
@@ -594,6 +591,7 @@ And the final challenge before moving onto lesson 2!
   <figcaption>https://en.wikipedia.org/wiki/Radian#/media/File:Circle_radians.gif</figcaption>
 </figure>
 
+That's the end of lesson 01. I hope it was enjoyable, if somewhat challenging. Take a break -- you deserve it! When you are ready o move onto lesson 02, use the link below. If you are familiar with vector graphics (Adobe Illustrator, Inkscape, etc.) you'll be gaining some new insight into their inner-workings.
 
 [Next lesson: Look Mom, No Pixels!]({% post_url 2018-06-20-processing.py_in_ten_lessons--02-_look_mom,_no_pixels %})
 

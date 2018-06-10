@@ -10,12 +10,13 @@ published: false
 <a href="#..."><em>...</em></a> /
 <a href="#..."><em>...</em></a>
 
-[Previous lesson: Getting Started!]({% post_url 2018-06-10-processing.py_in_ten_lessons--01-_hello_world %})
-
 ---
 &nbsp;  
 ... Coming soon ...
 
+[Next lesson: in development]({% post_url 2018-06-20-processing.py_in_ten_lessons--02-_look_mom,_no_pixels %})
+
+[Complete list of Processing lessons]({{ site.baseurl }}/#processing)
 
 ## References
 

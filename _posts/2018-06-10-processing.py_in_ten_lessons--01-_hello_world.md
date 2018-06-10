@@ -597,6 +597,8 @@ And the final challenge before moving onto lesson 2!
 
 [Next lesson: Look Mom, No Pixels!]({% post_url 2018-06-20-processing.py_in_ten_lessons--02-_look_mom,_no_pixels %})
 
+[Complete list of Processing lessons]({{ site.baseurl }}/#processing)
+
 ## References
 
 * http://py.processing.org/reference/

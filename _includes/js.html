@@ -3,7 +3,14 @@
 
 <script>
   typeControls();
-  categoryFilter(['2020', '2019', '2018', '2017', '2016', '2015']);
+  var hash = location.hash.slice(1)
+  
+  if (hash) {
+    categoryFilter([hash]);
+  }
+  else {
+    categoryFilter(['2020', '2019', '2018', '2017', '2016', '2015']);
+  }
 </script>
 
 {% if site.piwik_trackerurl %}

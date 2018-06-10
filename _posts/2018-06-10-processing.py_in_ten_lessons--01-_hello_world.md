@@ -1,23 +1,31 @@
 ---
 layout: post
 comments: true
-title: "Processing.py in Ten Lessons -- 01: Getting Started"
+title: "Processing.py in Ten Lessons -- 01: Hello World"
 categories: code processing python
 published: false
 ---
 
-***covered in this lesson:***  
-*intro to processing / colour / drawing / variables / arithmetic operators*
+***Covered in this lesson:***  
+<a href="#intro-to-processing"><em>intro to processing</em></a> /
+<a href="#colour"><em>colour</em></a> /
+<a href="#drawing"><em>drawing</em></a> /
+<a href="#variables"><em>variables</em></a> /
+<a href="#arithmetic-operators"><em>arithmetic-operators</em></a>
 
 ---
 &nbsp;  
 This series of lesson posts covers *Processing.py*, with the purpose of introducing non-programmers to the fundamentals of computer programming in a visual context. If you're an artist, student, designer, researcher, or just somebody who is keen on learning how to code, Processing is a great place to start.
+
+I would estimate each lesson to take around 2--4 hours to complete, of which a large part will be spent on the tasks/challenges.
 
 ## Intro to Processing
 
 Processing has been around since the early 2000's and is comprised of a programming language, and an editor for writing and compiling code (IDE). The original programming language component is based on Java, but several other variants have been developed. These include a JavaScript ([p5.js](https://p5js.org/)), Ruby ([JRubyArt](https://ruby-processing.github.io/JRubyArt/)), and Python ([Processing.py](http://py.processing.org/)) version.
 
 As somebody teaching programming fundamentals to creative students -- who will proceed to take courses in web, game, and interactive design & development -- combining Processing with Python provides an ideal learning tool. What's more, Processing costs nothing, is open source; and runs on Windows, Mac, and Linux.
+
+You can think of Processing as a kind-of extension of the Python programming language, with all sorts of drawing features and an editor rolled-in. Sometimes it may seem that these notes use the terms Processing and Python interchangeably. I will usually refer to Processing-exclusive features in the context of "Processing"; and standard Python features along with the term Python. If this confusing you, just think of the terms as one and the same!
 
 ### Setup Processing
 
@@ -30,21 +38,21 @@ Run the application. Note that the default mode is "Java". To follow along, you'
 Click on the down arrow next to "Java" and select **Add Mode...** . Then, from the *Contribution Manager* window, select **Python Mode for Processing 3**. Finally, click **Install**.
 
 <figure>
-  <img src="{{ site.url }}/img/pitl01gs/setup-add-python-mode.png" class="fullwidth" />
+  <img src="{{ site.url }}/img/pitl01gs/intro-to-processing-add-python-mode.png" class="fullwidth" />
   <figcaption>Adding/installing Python mode.</figcaption>
 </figure>
 
 Once this is complete, you can switch to Python mode.
 
 <figure>
-  <img src="{{ site.url }}/img/pitl01gs/setup-switch-to-python-mode.png" class="fullwidth" />
+  <img src="{{ site.url }}/img/pitl01gs/intro-to-processing-switch-to-python-mode.png" class="fullwidth" />
   <figcaption>Switching to Python mode.</figcaption>
 </figure>
 
 You are now ready to write your first line of code! If you would like to see examples of some code in action, perhaps take a look through the examples (**File > Examples...**). If you are ready to begin writing your own code, move onto the next section.
 
 <figure>
-  <img src="{{ site.url }}/img/pitl01gs/setup-examples.png" class="fullwidth" />
+  <img src="{{ site.url }}/img/pitl01gs/intro-to-processing-examples.png" class="fullwidth" />
   <figcaption>Use the &#9654; button to run any code.</figcaption>
 </figure>
 
@@ -66,7 +74,7 @@ Using **File > Save as...** save the sketch (to wherever it is you wish to store
 Hit the &#9654; button to execute the code. Better yet, use the associated keyboard shortcut: **Ctrl+R** for Windows; or **&#8984;+R** for Mac.
 
 <figure>
-  <img src="{{ site.url }}/img/pitl01gs/hello-world-run.png" class="fullwidth" />
+  <img src="{{ site.url }}/img/pitl01gs/intro-to-processing-hello-world-run.png" class="fullwidth" />
   <figcaption>A grey 500×500 pixels display window (left) appears when you run your sketch.</figcaption>
 </figure>
 
@@ -107,7 +115,7 @@ While working through these lessons, add your own comments to remind you of what
 Python, and by extension Processing.py, is whitespace-sensitive. As an example, add a few space characters at the beginning of the `size()` line; then run your sketch.
 
 <figure>
-  <img src="{{ site.url }}/img/pitl01gs/whitespace-error.png" class="fullwidth" />
+  <img src="{{ site.url }}/img/pitl01gs/intro-to-processing-whitespace-error.png" class="fullwidth" />
   <figcaption>Console displaying errors.</figcaption>
 </figure>
 
@@ -129,7 +137,7 @@ size(500, 500
 Now run the code and observe the console output:
 
 <figure>
-  <img src="{{ site.url }}/img/pitl01gs/error-unclosed-paren.png" class="fullwidth" />
+  <img src="{{ site.url }}/img/pitl01gs/intro-to-processing-unclosed-paren.png" class="fullwidth" />
   <figcaption>"Maybe there's an unclosed paren or quote mark somewhere before this line?"</figcaption>
 </figure>
 
@@ -286,7 +294,7 @@ There will be more on colour in this lessons to come. If you need to find out mo
 
 In this section you will look at a number of drawing functions.
 
-Begin a new sketch (**File > New**) and then save it as "drawing" (**File > Save As**...). Add some code to set things up before proceeding to get the sketch setup:
+Begin a new sketch (**File > New**) and then save it as "drawing" (**File > Save As**...). Add some code to set things up before proceeding:
 
 {% highlight py %}
 size(500, 500)
@@ -339,6 +347,12 @@ ellipse(100,100, 100,50)
   <img src="{{ site.url }}/img/pitl01gs/drawing-ellipse.png" />
 </figure>
 
+#### Ellipse and Rect Modes
+
+You have seen how rectangles are drawn from the top-left corner, and ellipses are centred on the x/y coordinate. If you wish to change this behaviour refer to the following functions:  
+[`ellipseMode()`](http://py.processing.org/reference/ellipseMode.html)  
+[`rectMode()`](http://py.processing.org/reference/rectMode.html)
+
 ### Quad
 
 Draws a quadrilateral (a for-sided polygon). The eight arguments represent four x/y-coordinate pairs.  
@@ -352,33 +366,238 @@ quad(250,250, 350,300, 380,400, 260,380)
   <img src="{{ site.url }}/img/pitl01gs/drawing-quad.png" />
 </figure>
 
+### Line
 
-### Ellipse and Rect Modes
+Draws a straight line between two points. The first pair of arguments represent the starting x/y coordinates; and the second pair the ending x/y coordinates.  
+*Reference link:* [`line()`](http://py.processing.org/reference/line.html)
 
-You have seen how rectangles are drawn from the top-left corner, and ellipses are centred on the x/y coordinate. You can change this behaviour using the following functions:  
-[`ellipseMode()`](http://py.processing.org/reference/ellipseMode.html)  
-[`rectMode()`](http://py.processing.org/reference/rectMode.html)
+{% highlight py %}
+line(390,380, 460,320)
+{% endhighlight %}
 
+<figure>
+  <img src="{{ site.url }}/img/pitl01gs/drawing-line.png" />
+</figure>
 
+## Rainbow Task
+
+Time for a challenge!
+
+Begin a new sketch (**File > New**) and then save it as "rainbow" (**File > Save As**...).
+
+Add some code to get the sketch setup:
+
+{% highlight py %}
+size(600, 600)
+background('#004477')
+noStroke()
+{% endhighlight %}
+
+Using what you've learnt this far, complete the rainbow below:
+
+<figure>
+  <img src="{{ site.url }}/img/pitl01gs/drawing-rainbow.png" />
+</figure>
+
+Clue: you can overlap shapes to mask-off others.
 
 ## Variables
 
+Variables are placeholders for information. Much like when you use letters in algebra to represent a value. In fact, variables in Python look quite similar.
+
+Begin a new sketch and then save it as "variables". To keep things simple, we'll print to the Console area:
+
+{% highlight py %}
+size(600, 400)
+background('#004477')
+
+print(width)
+print(height)
+{% endhighlight %}
+
+<figure>
+  <img src="{{ site.url }}/img/pitl01gs/variables-width-height.png" class="fullwidth" />
+</figure>
+
+The `width` and `height` are system variables that store the dimensions of the display window. When you set the size -- using `size(600, 400)` -- you defined these variable values.
+
+However, you are not limited to system variables. When declaring your own variables, you assign a value using an `=` sign (assignment operator):
+
+{% highlight py %}
 ...
 
+x = 1
+print(x) # displays 1 in the console
+{% endhighlight %}
+
+You may name your variables whatever you wish, provided the name: contains only alpha-numeric and underscore characters; does not begin with a number; and does not clash with a reserved python keyword or variable (like `width`). For example:
+
+{% highlight py %}
+playerlives = 3  # correct
+playerLives = 3  # correct
+player_lives = 3 # correct
+player lives = 3 # incorrect -- contains a space
+player-lives = 3 # incorrect -- contains a hyphen
+{% endhighlight %}
+
+Whether you should name a variable using camelCase, underscores, or some other convention is a matter of style (and, often, vociferous debate). You will make intensive use of variables throughout these lessons any beyond. Add some code that makes more practical use of variables:
+
+{% highlight py %}
+...
+
+x = 1
+print(x) # displays 1 in the console
+y = 30
+w = 20
+h = w
+rect(x,y, w,h)
+{% endhighlight %}
+
+<figure>
+  <img src="{{ site.url }}/img/pitl01gs/variables-rect.png" class="fullwidth" />
+  <figcaption>Note how the <code>w</code> variable has been assigned to <code>h</code>, resulting in a square.</figcaption>
+</figure>
 
 ## Arithmetic Operators
 
+Variables are far more useful when you can perform arithmetic operations on them. Add the following code to your "variables" sketch:
+
+{% highlight py %}
 ...
+rect(x,y, w,h)
+
+print(x + 2)       # displays 3
+{% endhighlight %}
+
+I'm guessing that did exactly what you expected it to? You can also substract:
+
+{% highlight py %}
+...
+rect(x,y, w,h)
+
+print(x + 2)       # displays 3
+print(x - 2)       # displays -1
+{% endhighlight %}
+
+Multiplication is performed using the `*` operator:
+
+{% highlight py %}
+...
+print(x * 5)       # displays 5
+{% endhighlight %}
+
+As you might expect, certain operators take precedence over others. Remember BEDMAS (or BODMAS, depending where you're from)? More correctly this concept is referred to as the [order of operations](https://en.wikipedia.org/wiki/Order_of_operations).
+
+{% highlight py %}
+...
+print(1 + 2 * 3)   # displays 7
+{% endhighlight %}
+
+In the above case, the Console displays a 7 -- and not a 9 -- because the multiplication occurs before the addition. If you wish to override this order, simply use brackets:
+
+{% highlight py %}
+...
+print(1 + 2 * 3)   # displays 7
+print((1 + 2) * 3) # displays 9
+{% endhighlight %}
+
+The division operator is a forward-slash (`/`).
+
+{% highlight py %}
+...
+print(4 / 2)       # displays 2
+{% endhighlight %}
+
+However, be aware that Python will discard any decimal digits when integer values. Integers, are 'whole' numbers, as apposed to those with a decimal point. For example:
+
+{% highlight py %}
+...
+print(3 / 2)       # displays 1
+{% endhighlight %}
+
+To divide with decimal results, ensure that on of your operands is defined with a decimal point:
+
+{% highlight py %}
+...
+print(3 / 2.0)     # displays 1.5
+{% endhighlight %}
+
+Decimal numbers are usually referred to as *floating point*, or *float* values, in programming terminology.
+
+Of course, [division by zero](https://en.wikipedia.org/wiki/Division_by_zero) operations will result in errors.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl01gs/arithmetic-operators-division-by-zero.png" class="fullwidth" />
+  <figcaption>Division by zero error.</figcaption>
+</figure>
+
+## Image Reveal Task
+
+Time for another challenge!
+
+The idea here is to follow the instructions to reveal a symbol. Create a new sketch and save it as "symbol_reveal". Add some code to get the sketch setup:
+
+{% highlight py %}
+size(600, 740)
+background('#004477')
+noFill()
+stroke('#FFFFFF')
+strokeWeight(3)
+
+xco = 400
+yco = 440
+{% endhighlight %}
+
+To begin revealing the symbol, follow the 6 instruction steps. To get you started, here is the first instruction, along with the correct code:
+
+1. Draw a line beginning at an x-coordinate of half the display window `width`, and y-coord of a third of the window `height`; and ending at x/y-coordinate equal to `xco` & `yco` respectively.
+
+-- which would be coded as follows:
+
+{% highlight py %}
+line(width/2,height/3, xco,yco)
+{% endhighlight %}
+
+<figure>
+  <img src="{{ site.url }}/img/pitl01gs/arithmetic-operators-symbol-reveal.png" />
+  <figcaption>Instruction 1 of 6.</figcaption>
+</figure>
+
+Now carry-out the rest of the instructions:
+
+<ol start="2">
+<li>
+Draw a centered ellipse with a width that is a eleventh of the display window <code>width</code>, and a height that is a fourteenth of the window <code>height</code>.
+</li>
+<li>
+Draw a centered ellipse with a width that is a nineteenth of the display window <code>width</code>, and a height that is a twentysecond of the window <code>height</code>.
+</li>
+<li>
+Draw a line beginning at an x/y-coordinate equal to <code>xco</code> & <code>yco</code> respectively; and ending at an x-coordinate of the display window <code>width</code> minus <code>xco</code>, and y-coord equal to  <code>yco</code>.
+</li>
+<li>
+Draw a line beginning at an x-coordinate of the display window <code>width</code> minus <code>xco</code>, and y-coord equal to <code>yco</code>; and ending at an x-coordinate of half the display window <code>width</code>, and y-coord of a third of the window <code>height</code>.
+</li>
+<li>
+Draw a centered ellipse with width that is a fifth of the display window <code>width</code>, and height that is a twelfth of the display window <code>height</code>.
+</li>
+</ol>
+
+Clue: if this seems like a conspiracy, you may be on the right track.
+
+## Image Reveal Task
+
+And the final challenge before moving onto lesson 2!
+
+<figure>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Circle_radians.gif" />
+  <figcaption>https://en.wikipedia.org/wiki/Radian#/media/File:Circle_radians.gif</figcaption>
+</figure>
 
 
-
-
-
-## Further Reading
-
-This post covered two common formulae for converting colour to greyscale. However, there are more, and if you're interested in reading further, I highly recommend [Tanner Helland's blog post]( http://www.tannerhelland.com/3643/grayscale-image-algorithm-vb6/) on the topic.
+[Next lesson: Look Mom, No Pixels!]({% post_url 2018-06-20-processing.py_in_ten_lessons--02-_look_mom,_no_pixels %})
 
 ## References
 
 * http://py.processing.org/reference/
-* ...
+* https://en.wikipedia.org/wiki/Radian#/media/File:Circle_radians.gif

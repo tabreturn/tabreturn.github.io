@@ -610,7 +610,7 @@ Clue: if this seems like a conspiracy, you may be on the right track.
 
 Here is the final challenge before moving onto lesson 2. However, before tackling this one, you will need an introduction to drawing arcs.
 
-The `arc()` function is used to draw elliptical arcs. To get your head around how it works, it is best to try out a few examples . Create a new sketch and save it as "disk_space_analyser". Add some code to get things started:
+The `arc()` function is used to draw elliptical arcs. It's best to try out a few examples to see how it works. Create a new sketch and save it as "disk_space_analyser". Add some code to get things started:
 
 {% highlight py %}
 size(600,700)
@@ -643,7 +643,7 @@ arc(width/2,height/2, 200,200, 0,2)
   <figcaption><code>arc(width/2,height/2, 200,200, 0,2)</code></figcaption>
 </figure>
 
-The green overlay helps illustrate how things work. The arc is drawn along the perimeter of an invisible ellipse that is centered on the given x/y coordinates. An angle of `0` is positioned at 'East', which then opens clockwise to an angle of `2` -- which looks more like, around, 115 degrees of rotation? The reason for this is that Processing uses *radians* and not degrees. Why radians? Well, to answer a question with a question: why are there 360 degrees in a in a whole circle, anyhow? I mean, why not 500 or 100, or 1 million degrees? In fact, while we're on the topic, why are there 60 minutes in an hour? Or 24 hours in a day? The answer has to do with influences from ancient civilisations, and is beyond what you need to know for now. What you *do* need to know is that radians are a standard unit of angular measure used in many areas of mathematics. Rather than try explain in writing how large/small a radian is, here is a neat animation from Wikipedia:
+The green overlay helps illustrate how things work. The arc is drawn along the perimeter of an invisible ellipse that is centered on the given x/y coordinates. An angle of `0` is positioned at 'East', which then opens clockwise to an angle of `2` -- which looks more like, around, 115 degrees of rotation? The reason for this is that Processing uses *radians* and not degrees. Why radians? Well, to answer a question with a question: why are there 360 degrees in a whole circle, anyhow? I mean, why not 500 or 100, or 1 million degrees? In fact, while we're on the topic, why are there 60 minutes in an hour? Or 24 hours in a day? The answer has to do with influences from ancient civilisations and is beyond what you need to know for now. What you *do* need to know is that radians are a standard unit of angular measure used in many areas of mathematics. Rather than try explain in writing how large/small a radian is, here is a neat animation from Wikipedia:
 
 <figure>
   <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Circle_radians.gif" />
@@ -691,12 +691,12 @@ A *disk usage analyser* presents a graphical representation of what is on a disk
 
 ## Lesson 02
 
-That's it for lesson 01. I hope it was enjoyable, if somewhat challenging. Take a break -- you deserve it! When you are ready to move onto lesson 02, use the link below. If you are familiar with vector graphics (Adobe Illustrator, Inkscape, etc.) you'll be gaining some new insight into their inner-workings.
+That's it for lesson 01. I hope it was enjoyable, if somewhat challenging. Take a break -- you deserve it! When you are ready to move onto lesson 02, use the link below. If you are familiar with vector graphics (Adobe Illustrator, Inkscape, etc.), you'll be gaining some new insight into their inner-workings.
 
 **Next lesson:** Look Mom, No Pixels! *(coming soon)*
-<!--
+{% comment %}
 [Next lesson: Look Mom, No Pixels!]({% post_url 2018-06-20-processing.py_in_ten_lessons--02-_look_mom,_no_pixels %})
--->
+{% endcomment %}
 
 [Complete list of Processing lessons]({{ site.baseurl }}/#processing)
 

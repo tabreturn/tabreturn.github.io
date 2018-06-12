@@ -102,7 +102,7 @@ Therefore, the greyscale equivalent of `rgb(255,0,0)` is `rgb(85,85,85)`, as pre
 
 However, it's difficult to gauge how 'correct' this conversion is, but a spectrum of colours should help contextualise the result. To accomplish this, I wrote some JavaScript that converts raster images (GIF, JPG, and PNG files) into an array of `div` elements, each with a background-colour corresponding to its source pixel. Pixel art is well-suited to the task at hand -- allowing for more discernible areas of colour -- so to see this script in action, let's begin with this image of [Nyan Cat](https://en.wikipedia.org/wiki/Nyan_Cat):
 
-![nyan cat original]({{ site.url }}/img/ccctg/nyancat-original.png)
+<img src="{{ site.url }}/img/ccctg/nyancat-original.png" style="width:auto" />
 
 Firstly, the image is a bit small. However, the script accepts a parameter for scaling, and in this case I've used a factor of 3. The averaged conversion has then been placed alongside the original colours to provide a comparison:
 

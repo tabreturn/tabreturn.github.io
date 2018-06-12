@@ -3,7 +3,6 @@ layout: post
 comments: true
 title: "Processing.py in Ten Lessons -- 01: Hello World"
 categories: code processing python
-published: false
 ---
 
 ***Covered in this lesson:***  
@@ -409,7 +408,7 @@ Time for a challenge!
 
 Begin a new sketch (**File > New**) and then save it as "rainbow" (**File > Save As**...).
 
-Add some code to get the sketch setup:
+Add some code to get started:
 
 {% highlight py %}
 size(600, 600)
@@ -417,7 +416,7 @@ background('#004477')
 noStroke()
 {% endhighlight %}
 
-Using what you've learnt this far, complete the rainbow below:
+Using what you've learnt thus far, complete the rainbow below:
 
 <figure>
   <img src="{{ site.url }}/img/pitl01/drawing-rainbow.png" />
@@ -427,7 +426,7 @@ Clue: you can overlap shapes to mask-off others.
 
 ## Variables
 
-Variables are placeholders for information -- much like when you use letters in algebra to represent a value. In fact, variables in Python look quite similar.
+Variables are placeholders for information -- much like when you use letters in algebra to represent a value. In fact, Python variables look and behave similarly.
 
 Begin a new sketch and then save it as "variables". To keep things simple, we'll print to the Console area. Add the following code:
 
@@ -443,7 +442,7 @@ print(height)
   <img src="{{ site.url }}/img/pitl01/variables-width-height.png" class="fullwidth" />
 </figure>
 
-The `width` and `height` are system variables that store the dimensions of the display window. However, you are not limited to system variables. When declaring your own variables, you assign a value using an `=` sign (assignment operator):
+`width` and `height` are system variables that store the dimensions of the display window. However, you are not limited to system variables. When declaring your own variables, you assign a value using an `=` sign (assignment operator). Try this out with a new variable named "x":
 
 {% highlight py %}
 ...
@@ -452,7 +451,7 @@ x = 1
 print(x) # displays 1 in the console
 {% endhighlight %}
 
-You may name your variables whatever you wish, provided the name: contains only alpha-numeric and underscore characters; does not begin with a number; and does not clash with a reserved python keyword or variable (like `width`). For example:
+You may name your variables whatever you wish, provided the name: contains only alpha-numeric and underscore characters; does not begin with a number; and does not clash with a reserved Python keyword or variable (like `width`). For example:
 
 {% highlight py %}
 playerlives = 3  # correct
@@ -462,7 +461,7 @@ player lives = 3 # incorrect (contains a space)
 player-lives = 3 # incorrect (contains a hyphen)
 {% endhighlight %}
 
-Whether you should name a variable using camelCase, underscores, or some other convention is a matter of style (and, often, vociferous debate). You will make intensive use of variables throughout these lessons any beyond. Add some code that makes more practical use of variables:
+Whether you should name a variable using camelCase, underscores, or some other convention is a matter of style (and vociferous debate). However, it is good to decide upon and stick to a naming convention, as you will make extensive use of variables in Processing. Add three more variables to your script, using them as arguments in a `rect()` function:
 
 {% highlight py %}
 ...
@@ -482,21 +481,22 @@ rect(x,y, w,h)
 
 ## Arithmetic Operators
 
-Variables are far more useful when you can perform arithmetic operations on them. Add the following code to your "variables" sketch:
+Variables are far more useful when you perform arithmetic operations using them. Add the following code to your "variables" sketch:
+
+{% highlight py %}
+...
+rect(x,y, w,h)
+
+print(x + 2)
+{% endhighlight %}
+
+I'm guessing that did exactly what you expected? You can also subtract:
 
 {% highlight py %}
 ...
 rect(x,y, w,h)
 
 print(x + 2)       # displays 3
-{% endhighlight %}
-
-I'm guessing that did exactly what you expected it to? You can also substract:
-
-{% highlight py %}
-...
-rect(x,y, w,h)
-
 print(x + 2)       # displays 3
 print(x - 2)       # displays -1
 {% endhighlight %}
@@ -508,14 +508,14 @@ Multiplication is performed using the `*` operator:
 print(x * 5)       # displays 5
 {% endhighlight %}
 
-As you might expect, certain operators take precedence over others. Remember BEDMAS (or BODMAS, depending where you're from)? More correctly this concept is referred to as the [order of operations](https://en.wikipedia.org/wiki/Order_of_operations).
+Now add the code below, but before hitting run, see if you can predict what the total is:
 
 {% highlight py %}
 ...
-print(1 + 2 * 3)   # displays 7
+print(1 + 2 * 3)   # displays ???
 {% endhighlight %}
 
-In the above case, the Console displays a 7 -- and not a 9 -- because the multiplication occurs before the addition. If you wish to override this order, simply use brackets:
+The console displays a `7` -- and not a `9` -- because multiplication occurs before addition. Certain operators take precedence over others. Remember BEDMAS? Or BODMAS (depending on where you're from)? It is an acronym to help you recall the [order of operations](https://en.wikipedia.org/wiki/Order_of_operations). If you wish to override this order, use brackets:
 
 {% highlight py %}
 ...
@@ -523,21 +523,21 @@ print(1 + 2 * 3)   # displays 7
 print((1 + 2) * 3) # displays 9
 {% endhighlight %}
 
-The division operator is a forward-slash (`/`).
+For division, use a forward-slash:
 
 {% highlight py %}
 ...
 print(4 / 2)       # displays 2
 {% endhighlight %}
 
-However, be aware that Python will discard any decimal digits when integer values. Integers, are 'whole' numbers, as apposed to those with a decimal point. For example:
+Be aware, though, that dividing two integers always produces an integer result (integers are 'whole' numbers, as opposed to those with a decimal point). For example:
 
 {% highlight py %}
 ...
 print(3 / 2)       # displays 1
 {% endhighlight %}
 
-To divide with decimal results, ensure that on of your operands is defined with a decimal point:
+Python discards any decimal digits, effectively 'rounding-down' the result. To allow decimal results, define at least one of your operands using a decimal point:
 
 {% highlight py %}
 ...
@@ -546,7 +546,7 @@ print(3 / 2.0)     # displays 1.5
 
 Decimal numbers are usually referred to as *floating point*, or *float* values, in programming terminology.
 
-Of course, [division by zero](https://en.wikipedia.org/wiki/Division_by_zero) operations will result in errors.
+Of course, [division by zero](https://en.wikipedia.org/wiki/Division_by_zero) operations will result in errors:
 
 <figure>
   <img src="{{ site.url }}/img/pitl01/arithmetic-operators-division-by-zero.png" class="fullwidth" />
@@ -556,7 +556,7 @@ Of course, [division by zero](https://en.wikipedia.org/wiki/Division_by_zero) op
 
 Time for another challenge!
 
-The idea here is to follow the instructions to reveal a symbol. Create a new sketch and save it as "symbol_reveal". Add some code to get the sketch setup:
+The idea here is to follow the instructions to reveal a symbol. Create a new sketch and save it as "symbol_reveal". Add some code to get started:
 
 {% highlight py %}
 size(600, 740)
@@ -569,11 +569,11 @@ xco = 400
 yco = 440
 {% endhighlight %}
 
-To begin revealing the symbol, follow the 6 instruction steps. To get you started, here is the first instruction, along with the correct code:
+To begin revealing the symbol, follow instruction steps 1 to 6. To get you started, here is the first instruction, along with the correct code:
 
-1. Draw a line beginning at an x-coordinate of half the display window `width`, and y-coord of a third of the window `height`; and ending at x/y-coordinate equal to `xco` & `yco` respectively.
+1. Draw a line beginning at an x-coordinate of half the display window `width`, and y-coordinate of a third of the window `height`. The endpoint must have an x/y-coordinate equal to `xco` & `yco`.
 
--- which would be coded as follows:
+-- which will be coded as follows:
 
 {% highlight py %}
 line(width/2,height/3, xco,yco)
@@ -584,23 +584,23 @@ line(width/2,height/3, xco,yco)
   <figcaption>Instruction 1 of 6.</figcaption>
 </figure>
 
-Now carry-out the rest of the instructions:
+Now, carry-out the rest of the instructions:
 
 <ol start="2">
 <li>
-Draw a centered ellipse with a width that is a eleventh of the display window <code>width</code>, and a height that is a fourteenth of the window <code>height</code>.
+Draw a centred ellipse with a width that is an eleventh of the display window <code>width</code>, and a height that is a fourteenth of the window <code>height</code>.
 </li>
 <li>
-Draw a centered ellipse with a width that is a nineteenth of the display window <code>width</code>, and a height that is a twentysecond of the window <code>height</code>.
+Draw a centred ellipse with a width that is a nineteenth of the display window <code>width</code>, and a height that is a twenty-second of the window <code>height</code>.
 </li>
 <li>
-Draw a line beginning at an x/y-coordinate equal to <code>xco</code> & <code>yco</code> respectively; and ending at an x-coordinate of the display window <code>width</code> minus <code>xco</code>, and y-coord equal to  <code>yco</code>.
+Draw a line beginning at an x/y-coordinate equal to <code>xco</code> & <code>yco</code> respectively. The endpoint must have an x-coordinate of the display window <code>width</code> minus <code>xco</code>, and a y-coordinate equal to <code>yco</code>.
 </li>
 <li>
-Draw a line beginning at an x-coordinate of the display window <code>width</code> minus <code>xco</code>, and y-coord equal to <code>yco</code>; and ending at an x-coordinate of half the display window <code>width</code>, and y-coord of a third of the window <code>height</code>.
+Draw a line beginning at an x-coordinate of the display window <code>width</code> minus <code>xco</code>, and y-coordinate equal to <code>yco</code>. The endpoint must have an x-coordinate of half the display window <code>width</code>, and a y-coordinate of a third of the window <code>height</code>.
 </li>
 <li>
-Draw a centered ellipse with width that is a fifth of the display window <code>width</code>, and height that is a twelfth of the display window <code>height</code>.
+Draw a centred ellipse with a width that is a fifth of the display window <code>width</code>, and height that is a twelfth of the display window <code>height</code>.
 </li>
 </ol>
 
@@ -608,9 +608,9 @@ Clue: if this seems like a conspiracy, you may be on the right track.
 
 ## Disk Space Analyser Task
 
-And now for the final challenge before moving onto lesson 2. Before tackling this one, you will need an introduction to drawing arcs (a portion of the circumference of a circle).
+Here is the final challenge before moving onto lesson 2. However, before tackling this one, you will need an introduction to drawing arcs.
 
-The `arc()` function is used to draw circular arcs. It's best to try out a few examples to get your head around how it works. Create a new sketch and save it as "disk_space_analyser". Add some code to get things started:
+The `arc()` function is used to draw elliptical arcs. To get your head around how it works, it is best to try out a few examples . Create a new sketch and save it as "disk_space_analyser". Add some code to get things started:
 
 {% highlight py %}
 size(600,700)
@@ -620,7 +620,7 @@ strokeWeight(3)
 noFill()
 {% endhighlight %}
 
-The `arc()` function takes the following arguments, expanded out for better comprehension:
+The `arc()` function takes the following arguments, expanded across multiple lines here for better comprehension:
 
 {% highlight py %}
 arc(
@@ -630,7 +630,7 @@ arc(
 )
 {% endhighlight %}
 
-Add an arc to your sketch, with a *`start_angle`* of **`0`** and *`end_angle`* of **`2`**
+Add an arc to your sketch using a *`start_angle`* of **`0`** and *`end_angle`* of **`2`**
 
 {% highlight py %}
 ...
@@ -640,17 +640,20 @@ arc(width/2,height/2, 200,200, 0,2)
 
 <figure>
   <img src="{{ site.url }}/img/pitl01/arithmetic-arc.png" />
-  <figcaption><code>arc(300,350, 200,200, 0,2)</code></figcaption>
+  <figcaption><code>arc(width/2,height/2, 200,200, 0,2)</code></figcaption>
 </figure>
 
-The green overlays help illustrate how things work. The arc is drawn along the perimeter of an invisible ellipse that is centered on the given x/y coordinates. An angle of `0` is positioned at East, which then opens clockwise to an angle of `2` -- erm, which looks more like, around, 115 degrees of rotation? The reason for this is that Processing uses *radians* and not degrees. Why radians? Well, to answer a question with a question: why are there 360 degrees in a in a whole circle, anyhow? I mean, why not 500 or 100, or 1 million? In fact, while we're on the topic, why are there 60 minutes in an hour? Or 24 hours in a day? The answer has to do with the influence of ancient civilisations, and is beyond what you need to know for now. What you do need to know is that radians are a standard unit of angular measure used in many areas of mathematics. Rather than try explain how large/small a radian is in words, here is a neat animation from Wikipedia:
+The green overlay helps illustrate how things work. The arc is drawn along the perimeter of an invisible ellipse that is centered on the given x/y coordinates. An angle of `0` is positioned at 'East', which then opens clockwise to an angle of `2` -- which looks more like, around, 115 degrees of rotation? The reason for this is that Processing uses *radians* and not degrees. Why radians? Well, to answer a question with a question: why are there 360 degrees in a in a whole circle, anyhow? I mean, why not 500 or 100, or 1 million degrees? In fact, while we're on the topic, why are there 60 minutes in an hour? Or 24 hours in a day? The answer has to do with influences from ancient civilisations, and is beyond what you need to know for now. What you *do* need to know is that radians are a standard unit of angular measure used in many areas of mathematics. Rather than try explain in writing how large/small a radian is, here is a neat animation from Wikipedia:
 
 <figure>
   <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Circle_radians.gif" />
-  <figcaption>https://en.wikipedia.org/wiki/Radian#/media/File:Circle_radians.gif</figcaption>
+  <figcaption>
+    The SI symbol for radian is <b>rad</b>.<br />
+    https://en.wikipedia.org/wiki/Radian#/media/File:Circle_radians.gif
+  </figcaption>
 </figure>
 
-There are plenty of online degree-to-radian converters out there, but it's good to know a few key measurements. For starters, zero degrees is equal to zero radians, and 180 degrees is equal to 3.142 degrees. You recognise that number? Yep, it's pi! So as you can guess, 360 degress is equal to 2π. Test this out, add the following code:
+There are plenty of online degree-to-radian converters out there, but it's good to know a few key measurements. For starters, zero degrees is equal to zero radians, and 180 degrees is equal to approximately 3.142 radians. You recognise that number? Yep, it's pi! Therefore, 360 degress is equal to 2π. Add the following code:
 
 {% highlight py %}
 ...
@@ -678,7 +681,6 @@ arc(width/2,height/2, 350,350, 3.4,(PI*2)-(PI/2), PIE)
 
 <figure>
   <img src="{{ site.url }}/img/pitl01/arithmetic-arc-pie.png" />
-  <figcaption><code>arc(300,350, 200,200, 0,2)</code></figcaption>
 </figure>
 
 A *disk usage analyser* presents a graphical representation of what is on a disk drive. The Linux *[GNOME Disk Usage Analyzer](https://en.wikipedia.org/wiki/Disk_Usage_Analyzer)* is one example of such software. You will recreate the storage ring-chart below. The text and number labels have been added to assist you; *you need not add them to your recreation*.
@@ -689,9 +691,12 @@ A *disk usage analyser* presents a graphical representation of what is on a disk
 
 ## Lesson 02
 
-That's it for lesson 01. I hope it was enjoyable, if somewhat challenging. Take a break -- you deserve it! When you are ready o move onto lesson 02, use the link below. If you are familiar with vector graphics (Adobe Illustrator, Inkscape, etc.) you'll be gaining some new insight into their inner-workings.
+That's it for lesson 01. I hope it was enjoyable, if somewhat challenging. Take a break -- you deserve it! When you are ready to move onto lesson 02, use the link below. If you are familiar with vector graphics (Adobe Illustrator, Inkscape, etc.) you'll be gaining some new insight into their inner-workings.
 
+**Next lesson:** Look Mom, No Pixels! *(coming soon)*
+<!--
 [Next lesson: Look Mom, No Pixels!]({% post_url 2018-06-20-processing.py_in_ten_lessons--02-_look_mom,_no_pixels %})
+-->
 
 [Complete list of Processing lessons]({{ site.baseurl }}/#processing)
 

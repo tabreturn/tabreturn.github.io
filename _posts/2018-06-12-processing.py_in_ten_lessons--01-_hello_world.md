@@ -693,9 +693,9 @@ A *disk usage analyser* presents a graphical representation of what is on a disk
 
 That's it for lesson 01. I hope it was enjoyable, if somewhat challenging. Take a break -- you deserve it! When you are ready to move onto lesson 02, use the link below. If you are familiar with vector graphics (Adobe Illustrator, Inkscape, etc.), you'll be gaining some new insight into their inner-workings.
 
-**Next lesson:** Look Mom, No Pixels! *(coming soon)*
+**Begin lesson 02:** Bézier, Catmull, and Rom walk into a bar ... *(coming soon)*
 {% comment %}
-[Next lesson: Look Mom, No Pixels!]({% post_url 2018-06-20-processing.py_in_ten_lessons--02-_look_mom,_no_pixels %})
+**Begin lesson 02:** [Bézier, Catmull, and Rom walk into a bar ...]({% post_url 2018-06-20-processing.py_in_ten_lessons--02-_bezier,_catmull,_and_rom_walk_into_a_bar %})
 {% endcomment %}
 
 [Complete list of Processing lessons]({{ site.baseurl }}/#processing)

@@ -182,7 +182,7 @@ fill('#FF0000')
 
 To see the fill colour in effect, add a rectangle. The `rect()` function is used to draw rectangles (or squares) and takes four arguments:
 
-`rect(x-coordinate, y-coordinate, width, height)`
+`rect(x_coordinate, y_coordinate, width, height)`
 
 The x-coordinate values begin at the right-edge of the display window; and the y-coordinate from the top edge. Add the following code to your "hello_world" sketch; then run it to confirm that the output matches the image below:
 
@@ -620,11 +620,11 @@ strokeWeight(3)
 noFill()
 {% endhighlight %}
 
-The `arc()` function takes the following arguments, expanded across multiple lines here for better comprehension:
+The `arc()` function takes the following arguments, expanded across multiple lines here for easier comprehension:
 
 {% highlight py %}
 arc(
-  x-coordinate, y-coordinate,
+  x_coordinate, y_coordinate,
   width, height,
   start_angle, end_angle
 )

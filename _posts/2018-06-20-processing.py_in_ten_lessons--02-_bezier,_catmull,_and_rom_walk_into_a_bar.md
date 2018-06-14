@@ -155,9 +155,9 @@ The `bezier()` function takes the following arguments, expanded across multiple 
 {% highlight py %}
 arc(
   anchor_point_1_x, anchor_point_1_y,
-  control_point_1_x, control_point_1_x,
+  control_point_1_x, control_point_1_y,
   anchor_point_2_x, anchor_point_2_y,
-  control_point_2_x, control_point_2_x
+  control_point_2_x, control_point_2_y
 )
 {% endhighlight %}
 
@@ -234,18 +234,73 @@ Create a new sketch and save it as "vertices". Within the new vertices folder, a
 
 <figure>
   <img src="{{ site.url }}/img/pitl02/vertices-data-folder.png" />
-  <figcaption>Four &ndash; of the five-hundred, or so &ndash; vertices circled in green.</figcaption>
 </figure>
 
 {% highlight py %}
 size(800,800)
-
 grid = loadImage('grid.png')
 image(grid, 0, 0)
+noFill()
+stroke('#FFFFFF')
+strokeWeight(3)
+{% endhighlight %}
+
+Now draw a square using vertices:
+
+{% highlight py %}
+...
+strokeWeight(3)
+
+beginShape() # begins recording vertices for a shape ...
+vertex(100,100)
+vertex(200,100)
+vertex(200,200)
+vertex(100,200)
+endShape()   # stops recording
+{% endhighlight %}
+
+<figure>
+  <img src="{{ site.url }}/img/pitl02/vertices-square.png" />
+</figure>
+
+The `beginShape()` and `endShape()` functions should be self-explanatory. However, the shape will not automatically close unless you use `endShape(CLOSE)`. There are also various parameters one can provide the `beginShape()` function to determine how the vertices are connected, if at all:
+
+{% highlight py %}
+...
+strokeWeight(3)
+
+beginShape(POINTS) # begins recording vertices for a shape ...
+...
+{% endhighlight %}
+
+<figure>
+  <img src="{{ site.url }}/img/pitl02/vertices-beginshape.png" />
+  <figcaption>Left: <code>beginShape(POINTS)</code>; right: <code>beginShape(LINES)</code></figcaption>
+</figure>
+
+There are a few other `beginShape()` parameters, for which you can consult the [reference](http://py.processing.org/reference/beginShape.html).
+
+### Bézier Vertices
+
+The `bezierVertex()` function allows one to create curved lines. There is also a [`curveVertex()`](http://py.processing.org/reference/curveVertex.html) for Catmull-Rom-type curves, but this lesson will focus on the Bézier kind, as these allow for greater control and more graceful curves.
+
+The `bezierVertex()` function takes the following arguments, expanded across multiple lines here for easier comprehension:
+
+{% highlight py %}
+bezierVertex(
+  control_point_1_x, control_point_1_y,
+  control_point_2_x, control_point_2_y,
+  anchor_point_x, anchor_point_y
+)
 {% endhighlight %}
 
 
+<a href="{{ site.url }}/img/pitl02/vertices.png">vertices.png</a>
 
+<figure>
+  <img src="{{ site.url }}/img/pitl02/vertices.png" />
+  <figcaption>Left: <code>beginShape(POINTS)</code>; right: <code>beginShape(LINES)</code></figcaption>
+</figure>
 
 
 

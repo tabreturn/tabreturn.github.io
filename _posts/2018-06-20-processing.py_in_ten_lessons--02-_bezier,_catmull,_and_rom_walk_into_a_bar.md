@@ -22,7 +22,7 @@ Processing deals with two types of curves: *Bézier* and *Catmull-Rom*. Both are
 
 The best way to grasp curves is to draw a few, then manipulate their control points. Create a new sketch and save it as "curves". This section will be coordinate-intensive; so, to make things easier, download this "grid.png" file and save/move it to a sub-folder within your sketch named "data":
 
-<a href="{{ site.url }}/img/pitl02/grid.png">grid.png</a>
+<a href="{{ site.url }}/img/pitl02/grid.png" download>grid.png</a>
 
 <figure>
   <img src="{{ site.url }}/img/pitl02/curves-data-folder.png" />
@@ -136,7 +136,7 @@ stroke('#FFFF00') # yellow
 
 ### Bézier Curves
 
-French engineer, Pierre Bézier popularised, but did not actually create the Bézier curve. He used them in his of design automobile bodies at Renault, devising a system whereby the shape of a curve is controlled by series of anchor and control points. If you have any experience with vector graphics drawing software -- such as Adobe Illustrator, or Inkscape -- these will look familiar.
+French engineer, Pierre Bézier popularised, but did not actually create the Bézier curve. He used them in his of design automobile bodies at Renault, devising a system whereby the shape of a curve is controlled by series of anchor and control points. If you have any experience with vector graphics drawing software, these will look familiar. Popular such applications include Adobe Illustrator and Inkscape, where Bézier curves are commonly referred to as "paths".
 
 <figure>
   <img src="{{ site.url }}/img/pitl02/bezier-inkscape.png" class="fullwidth" />
@@ -154,9 +154,9 @@ The `bezier()` function takes the following arguments, expanded across multiple 
 
 {% highlight py %}
 arc(
-  anchor_point_1_x, anchor_point_1_y,
+  vertex_point_1_x, vertex_point_1_y,
   control_point_1_x, control_point_1_y,
-  anchor_point_2_x, anchor_point_2_y,
+  vertex_point_2_x, vertex_point_2_y,
   control_point_2_x, control_point_2_y
 )
 {% endhighlight %}
@@ -179,7 +179,7 @@ bezier(400,100, cp1x,cp1y, cp2x,cp2y, 100,400)
   <figcaption>Left: editing a vector version of the Twitter logo in Adobe Illustrator. Right: editing a JPG version of the same logo in Photoshop.</figcaption>
 </figure>
 
-Notice how all of the `cp__` variables reference the centre of the display window (`250, 250`), meaning that all of the control points currently lie where the yellow and pale pink line cross. To visualise how the curve is manipulated, add a red line connecting the first anchor and control point. Adjust the `cp1y` variable to add some curve:
+Notice how all of the `cp__` variables reference the centre of the display window (`250, 250`), meaning that all of the control points currently lie where the yellow and pale pink line cross. To visualise how the curve is manipulated, add a red line connecting the first vertex and control point. Adjust the `cp1y` variable to add some curve:
 
 {% highlight py %}
 ...
@@ -194,7 +194,7 @@ line(400,100, cp1x,cp1y)
 
 <figure>
   <img src="{{ site.url }}/img/pitl02/bezier-control-point.png" />
-  <figcaption>The anchor and control points are indicated in green.</figcaption>
+  <figcaption>The vertex and control points are indicated in green.</figcaption>
 </figure>
 
 The `bezier()` and `line()` functions now share the control point's x/y-coordinates. Making any adjustments to `cp1y` and `cp1x`, therefore, affects both functions.
@@ -215,11 +215,11 @@ line(100,400, cp2x,cp2y)
   <img src="{{ site.url }}/img/pitl02/bezier-control-points.png" />
 </figure>
 
-Observe how the red handles 'magnetically' draw the line toward the control point. Getting the hang of where to place the anchor- and control points for a desired curve takes some practice. Perhaps try the Bézier Game to help you get the hang of it:
+Observe how the red handles 'magnetically' draw the line toward the control point. Getting the hang of where to place the vertex- and control points for a desired curve takes some practice. Perhaps try the Bézier Game to help you get the hang of it:
 
 [bezier.method.ac](http://bezier.method.ac/)
 
-You can also develop your Bézier skills using [Inkscape](https://inkscape.org/) (free), Illustrator, or some similar vector graphics drawing software.
+You can also develop your Bézier skills using [Inkscape](https://inkscape.org/) (free), Illustrator, or some similar vector graphics drawing software. It is usually easier to draw shapes using such software, then reference the relevant control points. This is how the tasks for this lesson were devised.
 
 ## Vertices
 
@@ -263,7 +263,13 @@ endShape()   # stops recording
   <img src="{{ site.url }}/img/pitl02/vertices-square.png" />
 </figure>
 
-The `beginShape()` and `endShape()` functions should be self-explanatory. However, the shape will not automatically close unless you use `endShape(CLOSE)`. There are also various parameters one can provide the `beginShape()` function to determine how the vertices are connected, if at all:
+The `beginShape()` and `endShape()` functions should be self-explanatory. However, the shape will not automatically close unless you use `endShape(CLOSE)`. However, an active `fill()` will fill a shape however it can:
+
+<figure>
+  <img src="{{ site.url }}/img/pitl02/vertices-fill.png" class="fullwidth" />
+</figure>
+
+There are also various parameters one can provide the `beginShape()` function to determine how the vertices are connected, if at all:
 
 {% highlight py %}
 ...
@@ -290,19 +296,195 @@ The `bezierVertex()` function takes the following arguments, expanded across mul
 bezierVertex(
   control_point_1_x, control_point_1_y,
   control_point_2_x, control_point_2_y,
-  anchor_point_x, anchor_point_y
+  vertex_point_x, vertex_point_y
 )
 {% endhighlight %}
 
-
-<a href="{{ site.url }}/img/pitl02/vertices.png">vertices.png</a>
+To get a better grip on how this works, we'll work toward completing the remaining shapes depicted below. The <span style="color:#0099FF">pale blue</span> lines/circles provide a visual indication of where the handles and control-points lie (so there is no need to recreate them).
 
 <figure>
   <img src="{{ site.url }}/img/pitl02/vertices.png" />
-  <figcaption>Left: <code>beginShape(POINTS)</code>; right: <code>beginShape(LINES)</code></figcaption>
 </figure>
 
+You will be referencing this image repeatedly in this section. It may be useful to <a href="{{ site.url }}/img/pitl02/vertices-s-bend.png" download>save a copy</a> and open a preview of it alongside your Processing editor.
 
+#### S-Bend
+
+The S-bend is comprised of two vertices, both of which are attached to control points. When using a `bezierVertex()`, the starting point is always a `vertex()`. In fact, one can mix `bezierVertex()`, `curveVertex()` and `vertex()` however necessary to complete a shape. Begin a new shape and place the starting (in this case, upper) vertex:
+
+{% highlight py %}
+...
+endShape(CLOSE)
+
+beginShape()
+vertex(400,200) # starting (upper) vertex
+endShape()
+{% endhighlight %}
+
+<figure>
+  <img src="{{ site.url }}/img/pitl02/vertices-vertex.png" />
+  <figcaption>As there is no second vertex with which to form a line, the isolated vertex appears as a point.</figcaption>
+</figure>
+
+Now add the second vertex using `bezierVertex()`:
+
+{% highlight py %}
+...
+endShape(CLOSE)
+
+beginShape()
+vertex(400,200) # starting (upper) vertex
+bezierVertex(
+  300,300, # control point for the starting vertex
+  500,500, # control point for the second (lower) vertex
+  400,600  # second (lower) vertex coordinates
+)
+endShape()
+{% endhighlight %}
+
+I'll admit, it's a bit confusing. But, with the positions of the vertices layed-out for you in the reference image, it's really just a matter of writing the coordinates into the correct sequence of arguments.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl02/vertices-s-bend.png" />
+  <figcaption>Completed S-bend.</figcaption>
+</figure>
+
+#### Heart
+
+You can think of the heart shape as two lines connecting two vertices. To begin, draw one half:
+
+{% highlight py %}
+  ...
+)
+endShape()
+
+beginShape()
+vertex(600,400)
+bezierVertex(420,300, 550,150, 600,250)
+endShape()
+{% endhighlight %}
+
+<figure>
+  <img src="{{ site.url }}/img/pitl02/vertices-heart.png" />
+  <figcaption>Half completed heart shape.</figcaption>
+</figure>
+
+All that is left for you to do is complete the right-half of the heart. Add a second `bezierVertex()` line and fill-in the arguments:
+
+{% highlight py %}
+beginShape()
+vertex(600,400)
+bezierVertex(420,300, 550,150, 600,250)
+bezierVertex(___,___, ___,___, 600,400)
+endShape()
+{% endhighlight %}
+
+
+
+#### Chinese Coin
+
+Round metal coins with square holes in the centre were first introduced in China many centuries ago. The purple-filled shape resembles one, albeit with none of the relief/engraving. Its form requires that one shape be subtracted from another. Processing provides the `beginContour()` and `endContour()` for this purpose.
+
+The first challenge is the circle shape. The contour functions are used within a `beginShape()` and `beginShape()`, so using an `ellipse` function is not an option. However, circles can be drawn using Bézier curves:
+
+<figure>
+  <img src="{{ site.url }}/img/pitl02/vertices-bezier-circle.png" />
+  <figcaption>An Inkscape circle object converted to a path.</figcaption>
+</figure>
+
+You can begin by forming a circle using a diamond shape:
+
+{% highlight py %}
+...
+bezierVertex(650,150, 780,300, 600,400)
+endShape()
+
+beginShape()
+vertex(100,600)
+vertex(200,500)
+vertex(300,600)
+vertex(200,700)
+vertex(100,600)
+endShape()
+{% endhighlight %}
+
+<figure>
+  <img src="{{ site.url }}/img/pitl02/vertices-coin-diamond.png" />
+</figure>
+
+With your vertices in place, you can convert the `vertex()` functions to `bezierVertex()` functions. Remember, though, that the first point must be a `vertex()`:
+
+{% highlight py %}
+...
+
+beginShape()
+vertex(100,600)
+bezierVertex(___,___, ___,___, 200,500) # vertex(200,500)
+bezierVertex(___,___, ___,___, 300,600) # vertex(300,600)
+bezierVertex(___,___, ___,___, 200,700) # vertex(200,700)
+bezierVertex(___,___, ___,___, 100,600) # vertex(100,600)
+endShape()
+{% endhighlight %}
+
+And to save you having to workout where the control points lie, here are the missing arguments:
+
+{% highlight py %}
+bezierVertex(100,545, 145,500, 200,500)
+bezierVertex(255,500, 300,545, 300,600)
+bezierVertex(300,655, 255,700, 200,700)
+bezierVertex(145,700, 100,655, 100,600)
+{% endhighlight %}
+
+<figure>
+  <img src="{{ site.url }}/img/pitl02/vertices-coin-circle.png" />
+</figure>
+
+With the circle in place, you can go about removing a square from the middle. This is a fairly simple exercise, but there is one crucial thing to be aware of: one must use *reverse winding* for the subtracted shape. Read through the circle code again and notice how all of the the vertices are plotted in a clockwise manner. This means that the square's vertices must be plotted counter-clockwise, i.e. opposite to the winding of the shape from which it will subtract. The square's vertices must also be placed within `beginContour()` and `endContour()` function. Of course, you cannot observe the effect unless you add a fill:
+
+{% highlight py %}
+fill('#6633FF')
+beginShape()
+vertex(100,600)
+bezierVertex(100,545, 145,500, 200,500)
+bezierVertex(255,500, 300,545, 300,600)
+bezierVertex(300,655, 255,700, 200,700)
+bezierVertex(145,700, 100,655, 100,600)
+beginContour()
+vertex(180,580)
+vertex(180,620)
+vertex(220,620)
+vertex(220,580)
+endContour()
+endShape()
+{% endhighlight %}
+
+<figure>
+  <img src="{{ site.url }}/img/pitl02/vertices-contour.png" />
+</figure>
+
+## Bézier Task
+
+Time for a challenge!
+
+
+<a href="{{ site.url }}/img/pitl02/beziers.png" download>beziers.png</a>
+
+{% highlight py %}
+size(800,800)
+grid = loadImage('grid.png')
+beziers = loadImage('beziers.png')
+image(grid, 0, 0)
+image(beziers, 0, 0)
+noFill()
+stroke('#FFFFFF')
+strokeWeight(3)
+{% endhighlight %}
+
+The curves need not be perfect. This is just something to get you used to how they operate.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl02/beziers-start.png" />
+</figure>
 
 ## Text
 

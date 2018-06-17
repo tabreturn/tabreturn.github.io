@@ -329,7 +329,7 @@ strokeWeight(3)
 
 When you run the sketch, an empty blue display window appears. What follows below are descriptions for several drawing functions, along with some code that you can add to your working sketch. Feel free to experiment with the arguments to see how things respond.
 
-### Point
+### `point()`
 
 Draws a point, the width of which is determined by the `strokeWeight()`. The arguments represent the x- and y-coordinates respectively.  
 *Reference link:*  [`point()`](http://py.processing.org/reference/point.html)
@@ -344,7 +344,7 @@ point(150, 75)
   <img src="{{ site.url }}/img/pitl01/drawing-point.png" />
 </figure>
 
-### Triangle
+### `triangle()`
 
 Draws a triangle. The six arguments represent three x/y-coordinate pairs.   
 *Reference link:* [`triangle()`](http://py.processing.org/reference/triangle.html)
@@ -357,7 +357,7 @@ triangle(100,25, 200,25, 150,75)
   <img src="{{ site.url }}/img/pitl01/drawing-triangle.png" />
 </figure>
 
-### Ellipse
+### `ellipse()`
 
 Draws an ellipse. The first pair of arguments represent an x/y coordinate that marks the centre of the ellipse; the second pair of arguments represent its width and height.  
 *Reference link:* [`ellipse()`](http://py.processing.org/reference/ellipse.html)
@@ -376,7 +376,7 @@ You have seen how rectangles are drawn from the top-left corner, and ellipses ar
 [`ellipseMode()`](http://py.processing.org/reference/ellipseMode.html)  
 [`rectMode()`](http://py.processing.org/reference/rectMode.html)
 
-### Quad
+### `quad()`
 
 Draws a quadrilateral (a four-sided polygon). The eight arguments represent four x/y-coordinate pairs.  
 *Reference link:* [`quad()`](http://py.processing.org/reference/quad.html)
@@ -389,7 +389,7 @@ quad(250,250, 350,300, 380,400, 260,380)
   <img src="{{ site.url }}/img/pitl01/drawing-quad.png" />
 </figure>
 
-### Line
+### `line()`
 
 Draws a straight line between two points. The first pair of arguments represent the starting x/y coordinates; and the second pair, the ending x/y coordinates.  
 *Reference link:* [`line()`](http://py.processing.org/reference/line.html)

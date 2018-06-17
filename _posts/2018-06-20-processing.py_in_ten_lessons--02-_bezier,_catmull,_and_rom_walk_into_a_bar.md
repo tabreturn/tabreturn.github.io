@@ -546,7 +546,7 @@ print(question)
 
 ### Concatenation and Formatting
 
-To *concatenate* means to connect or link in a series or chain. The `+` operator performs arithmetic addition on numbers (integers and floats). However, it becomes a concatenation operator when provided string operands.
+The `+` operator performs arithmetic addition on numbers (integers and floats). However, it becomes a concatenation operator when provided string operands. *Concatenate* means to connect or link in a series or chain. Try this example:
 
 {% highlight py %}
 ...
@@ -560,22 +560,77 @@ This displays the following line in the Console:
 
 `hello worldwhat's up!is your name really "world"?`
 
-Note how the concatenation adds no additional space characters. These will need to be explicitly included (along with any other punctuation you desire):
+Note how concatenating joins strings together exactly how they are they defined, with no additional space characters. Spaces -- along with any other punctuation you desire -- will need to be explicitly included. Edit your code to include these:
 
 {% highlight py %}
 hello + '. ' + whatsup + ' ' + question
 print(all)
 {% endhighlight %}
 
-Now displays:
+The Console now displays:
 
 `hello world. what's up! is your name really "world"?`
 
-An alternative to concatenating is string formatting, for which Python provides the `%` operator. This works by substituting placeholder symbols. For example, here is the implementation of your working example:
+An alternative to concatenating is string formatting, for which Python provides the `%` operator. This works by substituting placeholder symbols with the relevant string values, as opposed to chaining them together in a sequence with other characters. As an example, here is the same line constructed using the `%` operator:
 
 `all = ('%s. %s %s') % (hello, whatsup, question)`
 
-This approach has its advantages, but for this lesson, we'll stick to the concatenate operator (`+`). To specify if stroke corners and tips should rounded or sharp, consult the reference entry on [`String Formatting`](http://py.processing.org/reference/string_formatting.html).
+This approach has its advantages, but for this lesson, we'll stick to the concatenate operator (`+`). For more on this string formatting, consult the [reference](http://py.processing.org/reference/string_formatting.html).
+
+## Manipulating Strings
+
+What follows below are descriptions for several string manipulation functions and methods, along with some code that you can add to your working sketch. Each demonstration acts on the `all` variable, which represents:
+
+`hello world. what's up! is your name really "world"?`
+
+Feel free to experiment with the arguments to see how things respond.
+
+### `len()`
+
+Returns the length of any string within the parenthesis (you will encounter this function again in a future lesson dealing with lists and dictionaries).  
+*Reference link:*  [`len()`](http://py.processing.org/reference/point.html)
+
+{% highlight py %}
+print( len(all) )  # displays total number of characters (52)
+{% endhighlight %}
+
+### [ ]
+
+Python slice notation (`[]`) provides a simple, yet powerful, means of extracting characters from strings. Let us begin by adding a simple example:
+
+{% highlight py %}
+print( all[0] )    # displays the first character (h)
+{% endhighlight %}
+
+The position of the the character you wish to retrieve is placed within the square brackets. Take note that the character positions/indices begin at `0` (and not `1`).
+
+{% highlight py %}
+print( all[1] )    # displays the second character (e)
+print( all[4] )    # displays the fifth character (o)
+{% endhighlight %}
+
+
+
+
+
+
+
+
+
+
+
+
+You will encounter this notation again in a future lesson dealing with lists and dictionaries.  
+*Reference link:*  [`len()`](http://py.processing.org/reference/point.html)
+
+
+
+
+
+
+
+
+
 
 
 ## Typography

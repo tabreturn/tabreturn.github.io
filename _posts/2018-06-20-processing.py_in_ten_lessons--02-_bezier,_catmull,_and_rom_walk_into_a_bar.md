@@ -14,7 +14,7 @@ published: false
 
 ---
 &nbsp;  
-[Lesson 01]({% post_url 2018-06-12-processing.py_in_ten_lessons--01-_hello_world %}) introduced a number of 2d primitives, namely: arcs, ellipses, lines, points, quads, rectangles, and triangles. However, many shapes do not fit into any of these categories -- to name just a few: hearts (♥), stars (★), octagons, and duck silhouettes. In this lesson you will look at drawing with points and curves, as opposed to more restrictive shape functions.
+[Lesson 01]({% post_url 2018-06-12-processing.py_in_ten_lessons--01-_hello_world %}) introduced a number of 2d primitives, namely: arcs, ellipses, lines, points, quads, rectangles, and triangles. However, many shapes do not fit into any of these categories -- to name just a few: hearts (♥), stars (★), octagons, ... and duck silhouettes. In this lesson you will look at drawing with points and curves, as opposed to more restrictive shape functions.
 
 Processing deals with two types of curves: *Bézier* and *Catmull-Rom*. Both are named after the people who developed them and both involve some complicated math. Fortunately, the complex calculus is handled by the various curve functions, leaving you to deal with the coordinates of a few control points.
 
@@ -466,6 +466,7 @@ endShape()
 
 Time for a challenge!
 
+Create a new sketch and save it as "bezier_task". Within the sketch folder, create a data folder and add a copy of the grid.png file as well as this Béziers image:
 
 <a href="{{ site.url }}/img/pitl02/beziers.png" download>beziers.png</a>
 
@@ -480,17 +481,106 @@ stroke('#FFFFFF')
 strokeWeight(3)
 {% endhighlight %}
 
-The curves need not be perfect. This is just something to get you used to how they operate.
+There are four Bézier curves to recreate:
 
 <figure>
   <img src="{{ site.url }}/img/pitl02/beziers-start.png" />
 </figure>
 
+The curves need not be pixel-perfect replicas, as this is just something to get you used to working with them.
+
 ## Text
 
+Before looking at Processing's functions for displaying text, an introduction to *strings* is required. This section covers some common Python string operations.
+
+### Strings
+
+Text is referred to a string data in programming terminology. More correctly, on could refer to a string as a series of characters. You have already encountered this data type in lesson 01, and know that strings must be wrapped in quotation marks -- for which one may use single- or double-quotes, ensuring to close-off using the same type with which you opened.
+
+Create a new sketch and save it as "text". Add the following code to get started:
+
+{% highlight py %}
+size(500, 500)
+background('#004477')
+fill('#FFFFFF')
+stroke('#0000FF')
+strokeWeight(3)
+
+hello = 'hello world'
+print(hello)
+{% endhighlight %}
+
+<figure>
+  <img src="{{ site.url }}/img/pitl02/text-hello-world.png" class="fullwidth" />
+  <figcaption>The print function writes "hello world" to the Console area</figcaption>
+</figure>
+
+Add another string variable:
+
+{% highlight py %}
 ...
+print(hello)
+whatsup = 'what's up!'
+{% endhighlight %}
+
+Because of the apostrophe in `what's`, the string is closed before the `s`, leaving a rogue third quote with no closing counterpart. Run the sketch to observe the error:
+
+<figure>
+  <img src="{{ site.url }}/img/pitl02/text-quote-error.png" class="fullwidth" />
+</figure>
+
+There a few ways to fix this. One can opt for double quotation marks:  
+`whatsup = "what's up!"`  
+or *escape* the character using a backslash:  
+`whatsup = 'what\'s up!`  
+
+Amend your `whatsup` variable, and add another example using a alternative quotes:
+
+{% highlight py %}
+...
+whatsup = "what\'s up!"
+question = 'is your name really "world"?'
+print(whatsup)
+print(question)
+{% endhighlight %}
+
+### Concatenation and Formatting
+
+To *concatenate* means to connect or link in a series or chain. The `+` operator performs arithmetic addition on numbers (integers and floats). However, it becomes a concatenation operator when provided string operands.
+
+{% highlight py %}
+...
+print(question)
+
+all = hello + whatsup + question
+print(all)
+{% endhighlight %}
+
+This displays the following line in the Console:
+
+`hello worldwhat's up!is your name really "world"?`
+
+Note how the concatenation adds no additional space characters. These will need to be explicitly included (along with any other punctuation you desire):
+
+{% highlight py %}
+hello + '. ' + whatsup + ' ' + question
+print(all)
+{% endhighlight %}
+
+Now displays:
+
+`hello world. what's up! is your name really "world"?`
+
+An alternative to concatenating is string formatting, for which Python provides the `%` operator. This works by substituting placeholder symbols. For example, here is the implementation of your working example:
+
+`all = ('%s. %s %s') % (hello, whatsup, question)`
+
+This approach has its advantages, but for this lesson, we'll stick to the concatenate operator (`+`). To specify if stroke corners and tips should rounded or sharp, consult the reference entry on [`String Formatting`](http://py.processing.org/reference/string_formatting.html).
+
 
 ## Typography
+
+Fonts are vector based ...
 
 ...
 

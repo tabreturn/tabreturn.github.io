@@ -9,12 +9,12 @@ published: false
 ***Covered in this lesson:***  
 <a href="#curves"><em>curves</em></a> /
 <a href="#vertices"><em>vertices</em></a> /
-<a href="#text"><em>text</em></a> /
+<a href="#strings"><em>strings</em></a> /
 <a href="#typography"><em>typography</em></a>
 
 ---
 &nbsp;  
-[Lesson 01]({% post_url 2018-06-12-processing.py_in_ten_lessons--01-_hello_world %}) introduced a number of 2d primitives, namely: arcs, ellipses, lines, points, quads, rectangles, and triangles. However, many shapes do not fit into any of these categories -- to name just a few: hearts (♥), stars (★), octagons, ... and duck silhouettes. In this lesson you will look at drawing with points and curves, as opposed to more restrictive shape functions.
+[Lesson 01]({% post_url 2018-06-12-processing.py_in_ten_lessons--01-_hello_world %}) introduced a number of 2d primitives, namely: arcs, ellipses, lines, points, quads, rectangles, and triangles. However, many shapes do not fit into any of these categories -- to name just a few: hearts (♥), stars (★), octagons, ... and duck silhouettes. In this lesson you will look at drawing with points and curves, as opposed to more restrictive shape functions.  Modern fonts also rely on curves, hence this lesson also delves into Typography (and by extension, strings). To forewarn you, it may be a little more tedious than other lessons, but it lays down many important programming and drawing fundamentals.
 
 Processing deals with two types of curves: *Bézier* and *Catmull-Rom*. Both are named after the people who developed them and both involve some complicated math. Fortunately, the complex calculus is handled by the various curve functions, leaving you to deal with the coordinates of a few control points.
 
@@ -489,11 +489,9 @@ There are four Bézier curves to recreate:
 
 The curves need not be pixel-perfect replicas, as this is just something to get you used to working with them.
 
-## Text
+## Strings
 
 Before looking at Processing's functions for displaying text, an introduction to *strings* is required. This section covers some common Python string operations.
-
-### Strings
 
 Text is referred to a string data in programming terminology. More correctly, on could refer to a string as a series of characters. You have already encountered this data type in lesson 01, and know that strings must be wrapped in quotation marks -- for which one may use single- or double-quotes, ensuring to close-off using the same type with which you opened.
 
@@ -502,16 +500,13 @@ Create a new sketch and save it as "text". Add the following code to get started
 {% highlight py %}
 size(500, 500)
 background('#004477')
-fill('#FFFFFF')
-stroke('#0000FF')
-strokeWeight(3)
 
 hello = 'hello world'
 print(hello)
 {% endhighlight %}
 
 <figure>
-  <img src="{{ site.url }}/img/pitl02/text-hello-world.png" class="fullwidth" />
+  <img src="{{ site.url }}/img/pitl02/string-hello-world.png" class="fullwidth" />
   <figcaption>The print function writes "hello world" to the Console area</figcaption>
 </figure>
 
@@ -526,7 +521,7 @@ whatsup = 'what's up!'
 Because of the apostrophe in `what's`, the string is closed before the `s`, leaving a rogue third quote with no closing counterpart. Run the sketch to observe the error:
 
 <figure>
-  <img src="{{ site.url }}/img/pitl02/text-quote-error.png" class="fullwidth" />
+  <img src="{{ site.url }}/img/pitl02/string-quote-error.png" class="fullwidth" />
 </figure>
 
 There a few ways to fix this. One can opt for double quotation marks:  
@@ -577,24 +572,19 @@ An alternative to concatenating is string formatting, for which Python provides 
 
 This approach has its advantages, but for this lesson, we'll stick to the concatenate operator (`+`). For more on this string formatting, consult the [reference](http://py.processing.org/reference/string_formatting.html).
 
-## Manipulating Strings
-
-What follows below are descriptions for several string manipulation functions and methods, along with some code that you can add to your working sketch. Each demonstration acts on the `all` variable, which represents:
+What follows below are descriptions for several string manipulation functions and methods, along with some code that you can add to your working sketch. Feel free to experiment with the arguments to see how things respond. Each demonstration acts on the `all` variable which, to restate, represents:
 
 `hello world. what's up! is your name really "world"?`
 
-Feel free to experiment with the arguments to see how things respond.
+### Length
 
-### `len()`
-
-Returns the length of any string within the parenthesis (you will encounter this function again in a future lesson dealing with lists and dictionaries).  
-*Reference link:*  [`len()`](http://py.processing.org/reference/point.html)
+The `length` function returns the total number of characters of any string within the parenthesis. You will encounter this function again in a future lesson dealing with lists and dictionaries.
 
 {% highlight py %}
 print( len(all) )  # displays total number of characters (52)
 {% endhighlight %}
 
-### [ ]
+### Slice Notation
 
 Python slice notation (`[]`) provides a simple, yet powerful, means of extracting characters from strings. Let us begin by adding a simple example:
 
@@ -602,42 +592,181 @@ Python slice notation (`[]`) provides a simple, yet powerful, means of extractin
 print( all[0] )    # displays the first character (h)
 {% endhighlight %}
 
-The position of the the character you wish to retrieve is placed within the square brackets. Take note that the character positions/indices begin at `0` (and not `1`).
+The position of the character you wish to retrieve is placed within the square brackets. Take note that the indexing system is *zero-based*, meaning that the character positions/indices begin at `0` (and not `1`).
 
 {% highlight py %}
-print( all[1] )    # displays the second character (e)
-print( all[4] )    # displays the fifth character (o)
+print( all[1] )    # displays character at index 1 (e)
+print( all[4] )    # displays character at index 4 (o)
 {% endhighlight %}
 
+A colon (`:`) can be used to specify a range of characters. It can operate in a few different ways. Add a number to the right of it, and it will display all of the characters *up to but not including* the specified position:
 
+{% highlight py %}
+print( all[:4] )   # displays: hell
+{% endhighlight %}
 
+Add numbers to both the left and right of the colon, and it will return all of the characters beginning at the left index up to, but not including, the right:
 
+{% highlight py %}
+print( all[1:4] )  # displays: ell
+{% endhighlight %}
 
+With a single value to the left of the colon, it will return everything from the given index to the end of the string:
 
+{% highlight py %}
+print( all[4:] )   # displays: o world...
+{% endhighlight %}
 
+You can also include negative values:
 
+{% highlight py %}
+'''
+[:-x] returns everything from index 0
+up to but not including the fourth last character
+'''
+print( all[:-4] )  # ...our name really "wor
 
+'''
+[-x:] returns everything from the fourth last character
+to the end of the string
+'''
+print( all[-4:] )  # ld"?
 
+'''
+[x:-y] returns everything from index 4
+to the end of the string
+'''
+print( all[4:-4] ) # o world. ...eally "wor
+{% endhighlight %}
 
+There are a few other ways to use the colon operator to slice strings, but these should be sufficient for now. However, you will encounter this notation again in a future lesson dealing with lists and dictionaries.
 
-You will encounter this notation again in a future lesson dealing with lists and dictionaries.  
-*Reference link:*  [`len()`](http://py.processing.org/reference/point.html)
+### String Methods
 
+A Python *method* looks and behaves much like a function. With no knowledge of object-oriented programming, it's difficult to explain why exactly why methods are methods. However, all that you need to understand for now is the syntactical differences between the two, i.e. how you write a method versus a function. To illustrate this, it is best to contrast the two -- take the length function as an example:  
+`len(all)`  
+Were the length function a method, it would be instead be written as:  
+`all.len()`  
+Of course, `len()` is not a method, so this above code would result in an error. What is important to note, however, is how the method begins with a period (`.`) and is appended to the variable.
 
+What follows below are descriptions for several string methods, along with some code that you can add to your working sketch.
 
+#### `.upper()`
 
+Returns a version of the string with all lowercase characters converted to uppercase.
 
+{% highlight py %}
+print( all.upper() )         # HELLO WO...Y "WORLD"?
+{% endhighlight %}
 
+#### `.title()`
 
+Returns a version of the string in title case (the first letter of each word in uppercase).
 
+{% highlight py %}
+print( all.title() )         # Hello Wo...y "World"?
+{% endhighlight %}
 
+#### `.count()`
 
+Returns a version of the string in title case (the first letter of each word in uppercase).
+
+{% highlight py %}
+print( all.count('o') )      # 4
+{% endhighlight %}
+
+#### `.find()`
+
+Returns the index of where the term (first) appears in the string. If the substring is not found, returns `-1`.
+
+{% highlight py %}
+print( all.find('world') )   # 6
+{% endhighlight %}
+
+If the term appears multiple times, one can provide a second argument indicating the position where the search should begin:
+
+{% highlight py %}
+print( all.find('world'),7 ) # 45
+{% endhighlight %}
+
+A third argument can be provided to indicate where along the string the search terminates.
+
+## String Task
+
+Time for a challenge!
+
+Using just the `all` variable, produce a Console output that reads:
+
+`Hello. What is your name?`
+
+To start you off, here is part of the solution:
+
+{% highlight py %}
+print( all[0:5].title() + ... )
+{% endhighlight %}
+
+You will need to combine various string methods to successfully complete the task.
 
 ## Typography
 
-Fonts are vector based ...
+*Typography* refers to the arranging and styling of text (or, more correctly, *type*) to make more legible, readable, and aesthetically appealing. Typographical treatment can make or break a design. For example: headings work best if they stand-out from the rest your text; letter-spacing should be tighter than word-spacing; cursive fonts are not ideal for road sign; and so forth.
 
-...
+With a good grasp of strings, you can move onto displaying text in the display window. Early computer fonts were pixel-based, which required variants for each size. However, modern fonts are now vector-based, which is why you can scale text as large as you like without encountering any pixelation. Fonts need to be loaded into Processing, but there is a default *sans-serif* font should you not load a custom one.
+
+If you are unfamiliar with font classifications, *serifs* are the small lines attached to the tips of characters. By prefixing a term with "Sans", one implies an absence of whatever follows it.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl02/typography-font-types.png" />
+</figure>
+
+Monospaced fonts may also be serifed, but what defines them is the fixed-width of each character. To make fonts more legible, most serif and sans-serif font characters include some metrics to specify how far a given character should sit from any neighbours. However, monospace fonts are more legible in certain situations -- for example, when it is helpful to have characters line-up in columns:
+
+*monospaced*  
+```
+9 | 9 | 0 | 8 | 9
+1 | 2 | 1 | 1 | 1
+```
+
+*variable-width*  
+9 | 9 | 0 | 8 | 9  
+1 | 2 | 1 | 1 | 1
+
+This makes monospaced fonts preferable for source code -- which is why the default font for the Processing editor (and every other code editor) is monospace.
+
+Create a new sketch and save it as "typography". Setup your sketch using the following code:
+
+{% highlight py %}
+size(500, 500)
+background('#004477')
+fill('#FFFFFF')
+stroke('#0099FF')
+strokeWeight(3)
+{% endhighlight %}
+
+Now add a string variable to work with (the line must not wrap):
+
+{% highlight py %}
+razor = 'Never attribute to malice that which is adequately explained by stupidity.'
+{% endhighlight %}
+
+When you run the sketch, an empty blue display window appears. What follows below are descriptions for several typography functions, along with some code that you can add to your working sketch. Feel free to experiment with the arguments to see how things respond.
+
+### `text()`
+
+Draws text to the display window, the colour of which is determined by the active `fill()`. The arguments represent the string value, x-coordinate, and y-coordinate respectively.  
+*Reference link:*  [`text()`](http://py.processing.org/reference/text.html)
+
+{% highlight py %}
+text(razor, 0,50)
+{% endhighlight %}
+
+<figure>
+  <img src="{{ site.url }}/img/pitl02/typography-text.png" />
+</figure>
+
+
+
+
 
 ## Lesson 03
 

@@ -722,14 +722,12 @@ If you are unfamiliar with font classifications, *serifs* are the small lines at
 Monospaced fonts may also be serifed, but what defines them is the fixed-width of each character. To make fonts more legible, most serif and sans-serif font characters include some metrics to specify how far a given character should sit from any neighbours. However, monospace fonts are more legible in certain situations -- for example, when it is helpful to have characters line-up in columns:
 
 *monospaced*  
-```
-9 | 9 | 0 | 8 | 9
-1 | 2 | 1 | 1 | 1
-```
+`9 | 9 | 0 | 8 | 9`  
+`1 | 2 | 1 | 1 | 9`
 
 *variable-width*  
 9 | 9 | 0 | 8 | 9  
-1 | 2 | 1 | 1 | 1
+1 | 2 | 1 | 1 | 9
 
 This makes monospaced fonts preferable for source code -- which is why the default font for the Processing editor (and every other code editor) is monospace.
 
@@ -743,7 +741,7 @@ stroke('#0099FF')
 strokeWeight(3)
 {% endhighlight %}
 
-Now add a string variable to work with (the line must not wrap):
+Now add a string variable to work with (note: the line must not wrap):
 
 {% highlight py %}
 razor = 'Never attribute to malice that which is adequately explained by stupidity.'
@@ -753,7 +751,7 @@ When you run the sketch, an empty blue display window appears. What follows belo
 
 ### `text()`
 
-Draws text to the display window, the colour of which is determined by the active `fill()`. The arguments represent the string value, x-coordinate, and y-coordinate respectively.  
+Draws text to the display window, the colour of which is determined by the active `fill()`. The arguments represent the string value, x-coordinate, and y-coordinate respectively. Additional third and fourth argument can be added to specify a width and height for the text area.
 *Reference link:*  [`text()`](http://py.processing.org/reference/text.html)
 
 {% highlight py %}
@@ -763,6 +761,128 @@ text(razor, 0,50)
 <figure>
   <img src="{{ site.url }}/img/pitl02/typography-text.png" />
 </figure>
+
+### `textSize()`
+
+Sets the font size (in pixels) to be used in all subsequent `text()` functions.  
+*Reference link:*  [`textSize()`](http://py.processing.org/reference/textSize.html)
+
+{% highlight py %}
+textSize(20)
+text(razor, 0,50)
+{% endhighlight %}
+
+<figure>
+  <img src="{{ site.url }}/img/pitl02/typography-textsize.png" />
+</figure>
+
+### `createFont()`
+
+Converts a font to the format used by Processing. The two arguments represent the font name and size, respectively. For a list of fonts available on your computer, use `PFont.list()`. You can also place font files (TTF or OTF) in the sketches "data" directory.  
+*Reference link:*  [`createFont()`](http://py.processing.org/reference/createFont.html)
+
+{% highlight py %}
+timesroman = createFont('Times', 20);
+{% endhighlight %}
+
+<figure>
+  <img src="{{ site.url }}/img/pitl02/typography-pfontlist.png" class="fullwidth" />
+  <figcaption>Printing a list of available fonts using <code>PFont.list()</code></figcaption>
+</figure>
+
+### `textFont()`
+
+Sets the font for any subsequent `text()` functions.  
+*Reference link:*  [`textFont()`](http://py.processing.org/reference/textFont.html)
+
+{% highlight py %}
+...
+timesroman = createFont('Times-Roman', 20);
+textFont(timesroman)
+text(razor, 0,150)
+{% endhighlight %}
+
+<figure>
+  <img src="{{ site.url }}/img/pitl02/typography-textfont.png" />
+</figure>
+
+### `textLeading()`
+
+Sets the line-spacing (in pixels) for any subsequent `text()` functions.  
+*Reference link:*  [`textLeading()`](http://py.processing.org/reference/textLeading.html)
+
+{% highlight py %}
+textLeading(10)
+text(razor, 0,200, 250,100)
+{% endhighlight %}
+
+<figure>
+  <img src="{{ site.url }}/img/pitl02/typography-textleading.png" />
+</figure>
+
+
+### `textAlign()`
+
+Sets the text-alignment for any subsequent `text()` functions. Accepts the arguments `LEFT`, `CENTER`, or `RIGHT`.
+*Reference link:*  [`textAlign()`](http://py.processing.org/reference/textAlign.html)
+
+{% highlight py %}
+textAlign(RIGHT)
+text(razor, 0,250, 250,100)
+{% endhighlight %}
+
+<figure>
+  <img src="{{ site.url }}/img/pitl02/typography-textalign.png" />
+</figure>
+
+
+### `textWidth()`
+
+Calculates and returns the width of any string.  
+*Reference link:*  [`textWidth()`](http://py.processing.org/reference/textWidth.html)
+
+{% highlight py %}
+textAlign(LEFT)
+hanlons = '- Hanlon\'s'
+razor = 'razor'
+text(hanlons + ' ' + razor, 0,350)
+line(
+  textWidth(hanlons), 0,
+  textWidth(hanlons), height
+)
+{% endhighlight %}
+
+<figure>
+  <img src="{{ site.url }}/img/pitl02/typography-textwidth.png" />
+</figure>
+
+## Apple Logo Task
+
+Here is the final challenge before moving onto lesson 3.
+
+The first incarnation of the iconic apple logo was rainbow-coloured (albeit an incorrect ordering of bands). One common rumour around the bite involves computer pioneer, Alan Turing. During World War 2, Turing cracked the Enigma encryption used for Nazi communications. When it was discovered he was homosexual, Turing was forced to undergo hormonal treatment, and two years later he was found dead, having committed suicide by biting into a poisoned apple.
+
+
+<figure>
+  <img src="{{ site.url }}/img/pitl02/apple.png" />
+</figure>
+
+reiterate that straight connections between control points ensure smooth edges (use illustrator eg)
+
+<a href="{{ site.url }}/img/pitl02/apple.png" download>apple.png</a>
+
+<figure>
+  <img src="{{ site.url }}/img/pitl02/apple-clue.png" />
+</figure>
+
+
+
+
+
+
+
+
+
 
 
 
@@ -782,3 +902,8 @@ That's it for lesson 02. I hope it was enjoyable, if somewhat challenging. Take 
 ## References
 
 * https://vimeo.com/106757336
+* http://bezier.method.ac/
+* http://www.generativetypography.com/
+* http://www.pythonforbeginners.com/concatenation/string-concatenation-and-formatting-in-python
+* Processing Programming Handbook, p28, chapters 9 (Synthesis 1), 11, 12, 15
+* Python Crash Course, p23 (Strings)

@@ -327,7 +327,7 @@ stroke('#FFFFFF')
 strokeWeight(3)
 {% endhighlight %}
 
-When you run the sketch, an empty blue display window appears. What follows below are descriptions for several drawing functions, along with some code that you can add to your working sketch. Feel free to experiment with the arguments to see how things respond.
+When you run the sketch, an empty blue display window appears. What follows below are descriptions for several drawing functions, along with some code to add to your working sketch. Feel free to experiment with the arguments to see how things respond.
 
 ### `point()`
 
@@ -608,7 +608,7 @@ Clue: if this seems like a conspiracy, you may be on the right track.
 
 ## Disk Space Analyser Task
 
-Here is the final challenge before moving onto lesson 2. However, before tackling this one, you will need an introduction to drawing arcs.
+Here is the final challenge before moving onto lesson 02. However, before tackling this one, you will need an introduction to drawing arcs.
 
 The `arc()` function is used to draw elliptical arcs. It's best to try out a few examples to see how it works. Create a new sketch and save it as "disk_space_analyser". Add some code to get things started:
 

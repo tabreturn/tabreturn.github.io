@@ -24,7 +24,7 @@ published: false
 
 **Begin lesson 04:** fps > 12 == φ *(coming soon)*
 {% comment %}
-**Begin lesson 04:** [\<randomly generated lesson title\>]({% post_url 2018-06-..-... %})
+...
 {% endcomment %}
 
 [Complete list of Processing lessons]({{ site.baseurl }}/#processing)

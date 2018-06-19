@@ -3,7 +3,6 @@ layout: post
 comments: true
 title: "Processing.py in Ten Lessons -- 02: Bézier, Catmull, and Rom walk into a bar ..."
 categories: code processing python
-published: false
 ---
 
 ***Covered in this lesson:***  
@@ -923,7 +922,7 @@ That's it for lesson 02. I hope it was enjoyable if a little tedious. If you are
 
 **Begin lesson 03:** \<randomly generated lesson title\> *(coming soon)*
 {% comment %}
-**Begin lesson 03:** [\<randomly generated lesson title\>]({% post_url 2018-06-20-processing.py_in_ten_lessons--02-_bezier,_catmull,_and_rom_walk_into_a_bar %})
+**Begin lesson 03:** [\<randomly generated lesson title\>]({% post_url 2018-06-27-processing.py_in_ten_lessons--03-randomly-generated-lesson-title %})
 {% endcomment %}
 
 [Complete list of Processing lessons]({{ site.baseurl }}/#processing)

@@ -14,9 +14,9 @@ published: false
 
 ---
 &nbsp;  
-[Lesson 01]({% post_url 2018-06-12-processing.py_in_ten_lessons--01-_hello_world %}) introduced a number of 2d primitives, namely: arcs, ellipses, lines, points, quads, rectangles, and triangles. However, many shapes do not fit into any such category -- like, hearts (♥), stars (★), octagons, and Pikachu silhouettes, to name just a few. In this lesson you will look at drawing with points and curves, as opposed to more restrictive shape functions. Fonts also rely on curves to describe each glyph, and the latter part of this lesson delves into Typography (and by extension, strings). To forewarn you, this lesson may be a little tedious, but is necessary to lay down important programming and drawing fundamentals for future lessons.
+[Lesson 01]({% post_url 2018-06-12-processing.py_in_ten_lessons--01-_hello_world %}) introduced a number of 2d primitives, namely: arcs, ellipses, lines, points, quads, rectangles, and triangles. However, many shapes do not fit into any such category -- like hearts (♥), stars (★), octagons, and Pikachu silhouettes, to name just a few. In this lesson, you will look at drawing with points and curves, as opposed to more restrictive shape functions. Fonts also rely on curves to describe each glyph, and the latter part of this lesson delves into Typography (and by extension, strings). Be forewarned: this lesson may be a little tedious, but is necessary to lay down important programming and drawing fundamentals for future lessons.
 
-Processing deals with two types of curves: *Bézier* and *Catmull-Rom*. Both are named after the people who developed them and both involve some complicated math. Fortunately, the complex underlying calculus is handled by Processing's various curve functions, leaving you to deal with just the coordinates of a few control points.
+Processing deals with two types of curves: *Bézier* and *Catmull-Rom*. Both are named after the people who developed them, and both involve some complicated math. Fortunately, the complex underlying calculus is handled by Processing's various curve functions, leaving you to deal with just the coordinates of a few control points.
 
 ## Curves
 
@@ -137,14 +137,14 @@ stroke('#FFFF00') # yellow
 
 ### Bézier Curves
 
-French engineer, Pierre Bézier popularised, but did not actually create the Bézier curve. He used them in his of design automobile bodies at Renault, devising a system whereby the shape of a curve is controlled by series of anchor and control points. If you have any experience with vector graphics drawing software, these will look familiar. Popular such applications include Adobe Illustrator and Inkscape, where Bézier curves are commonly referred to as "paths".
+French engineer, Pierre Bézier popularised, but did not create the Bézier curve. He used them in his of design automobile bodies at Renault, devising a system whereby the shape of a curve is controlled by series of anchor and control points. If you have any experience with vector graphics drawing software, these will look familiar. Popular such applications include Adobe Illustrator and Inkscape, where Bézier curves are commonly referred to as "paths".
 
 <figure>
   <img src="{{ site.url }}/img/pitl02/bezier-inkscape.png" />
   <figcaption>Inkscape in path-editing mode.</figcaption>
 </figure>
 
-Bézier curves are widely used in computer graphics. Their ability to model smooth curves makes them fundamental to vector graphics, animation paths, and fonts. Vector graphics (such as SVG files) have the ability to scale to any size -- making them *resolution-independent*. Consider a digital photograph: as you zoom further and further in toward a given point, discernible squares of colour appear. This is because popular photographic file formats, such as JPG and PNG, are comprised of a pixel grid, the dimensions of which limit the overall resolution. However, in the case of vector-based graphics, the points along a Bézier curve can be recalculated to fit any resolution.
+Bézier curves are widely used in computer graphics. Their ability to model smooth curves makes them fundamental to vector graphics, animation paths, and fonts. Vector graphics (such as SVG files) can scale to any size -- making them *resolution-independent*. Consider a digital photograph: as you zoom further and further in toward a given point, discernible squares of colour appear. Popular photographic file formats, such as JPG and PNG, are comprised of a pixel grid, the dimensions of which limit the overall resolution. However, in the case of vector-based graphics, the points along a Bézier curve can be recalculated to fit any resolution.
 
 <figure>
   <img src="{{ site.url }}/img/pitl02/bezier-raster-vector.png" class="fullwidth" />
@@ -224,7 +224,7 @@ You can also develop your Bézier skills using [Inkscape](https://inkscape.org/)
 
 ## Vertices
 
-You can think of vertices as the dots in a connect-the-dots style drawing puzzle. A triangle requires three vertices; a pentagon, five; a five-pointed star (★), ten; and so forth. By connecting vertices together using lines and curves, the shape possibilities become limitless. A *vertex* (singular) is not limited to two-dimensional space -- for example, Blender's Suzanne (a monkey head) has around five-hundred vertices positioned in 3D space.
+You can think of vertices as the dots in a connect-the-dots style drawing puzzle. A triangle requires three vertices; a pentagon, five; a five-pointed star (★), ten; and so forth. By connecting vertices using lines and curves, the shape possibilities become limitless. A *vertex* (singular) is not limited to two-dimensional space -- for example, Blender's Suzanne (a monkey head) has around five-hundred vertices positioned in 3D space.
 
 <figure>
   <img src="{{ site.url }}/img/pitl02/vertices-blender.png" class="fullwidth" />
@@ -342,7 +342,7 @@ bezierVertex(
 endShape()
 {% endhighlight %}
 
-I'll admit, it's a bit confusing. But, with the positions of the vertices layed-out for you in the reference image, it's really just a matter of writing in the correct sequence of coordinates.
+I'll admit, it's a bit confusing. But, with the positions of the vertices presented for you in the reference image, it's really just a matter of writing in the correct sequence of coordinates.
 
 <figure>
   <img src="{{ site.url }}/img/pitl02/vertices-s-bend.png" />
@@ -437,7 +437,7 @@ bezierVertex(145,700, 100,655, 100,600)
   <img src="{{ site.url }}/img/pitl02/vertices-coin-circle.png" />
 </figure>
 
-With the circle in place, you can go about removing a square from the middle. This is a fairly simple exercise, but there is one crucial thing to be aware of: one must use *reverse winding* for the subtracted shape. Read through the circle code again and notice how all of the the vertices are plotted in a clockwise manner. This means that the *square*'s vertices must be plotted counter-clockwise, i.e. opposite to the winding of the shape from which it will subtract.
+With the circle in place, you can go about removing a square from the middle. This is a relatively straightforward exercise, but there is one crucial thing to be aware of: one must use *reverse winding* for the subtracted shape. Read through the circle code again and notice how all of the vertices are plotted in a clockwise manner; this means that the *square*'s vertices must be plotted counter-clockwise, i.e. opposite to the winding of the shape from which it will subtract.
 
 Place the square's vertices within a `beginContour()` and `endContour()` function. Of course, you cannot observe the effect unless you add a fill:
 
@@ -495,7 +495,7 @@ The curves need not be pixel-perfect replicas, as this is just something to get 
 
 Before looking at Processing's functions for drawing text, an introduction to *strings* is required. This section covers some essential Python string operations.
 
-In programming terminology, text is referred to as string data. More correctly, on could refer to a string as a series of characters. You have already encountered this data type in lesson 01, and know that strings must be wrapped in quotation marks. One may use single- or double-quotes, but always ensure that you close-off using the same type with which you opened.
+In programming terminology, text is referred to as string data. More correctly, on could refer to a string as a series of characters. You have already encountered this data type in lesson 01, and know that strings are to be wrapped in quotation marks. One may use single- or double-quotes, but always ensure that you close-off using the same type with which you opened.
 
 Create a new sketch and save it as "strings". Add the following code to get started:
 
@@ -555,7 +555,7 @@ This displays the following line in the Console:
 
 `hello worldwhat's up!is your name really "world"?`
 
-Note how concatenating joins strings together exactly as they are defined, with no additional space characters. Spaces -- along with any other punctuation you desire -- need to be explicitly included. Edit your code:
+Note how concatenating joins strings together exactly as they are defined, with no additional space characters. Spaces -- along with any other punctuation you desire -- must be explicitly included. Edit your code:
 
 {% highlight py %}
 hello + '. ' + whatsup + ' ' + question
@@ -586,7 +586,7 @@ print( len(all) )  # displays total number of characters (52)
 
 ### Slice Notation
 
-Python slice notation (`[]`) provides a simple, yet powerful, means of extracting characters from strings. Add this basic example to your code:
+Python slice notation (`[]`) provides a simple, yet powerful means of extracting characters from strings. Add this basic example to your code:
 
 {% highlight py %}
 print( all[0] )    # displays the first character (h)
@@ -641,11 +641,11 @@ print( all[4:-4] ) # o world. ...eally "wor
 
 There are a few other ways in which the colon operator can slice strings, but these should be sufficient for now.
 
-You will encounter this notation again in future lessons dealing with lists and dictionaries.
+You will reencounter this notation in future lessons dealing with lists and dictionaries.
 
 ### String Methods
 
-A Python *method* looks and behaves much like a function. With no knowledge of object-oriented programming, it's difficult to explain exactly why methods are methods. However, all that you need to understand for now is the syntactical differences between the two, i.e. how you write a method versus a function. To illustrate this, it is best to contrast the two -- take the length function as an example:  
+A Python *method* looks and behaves much like a function. With no knowledge of object-oriented programming, it's difficult to explain exactly why methods are methods. However, all that you need to understand for now is the syntactical differences between the two, i.e. how you write a method versus a function. To contrast the two approaches -- take the length function as an example:  
 `len(all)`  
 Were the length function a method, it would be instead be written as:  
 `all.len()`  
@@ -671,7 +671,7 @@ print( all.title() )         # Hello Wo...y "World"?
 
 #### `.count()`
 
-Returns the total of times the character / character sequence appears in the given string.
+Returns the total of times the character/character-sequence appears in the given string.
 
 {% highlight py %}
 print( all.count('o') )      # 4
@@ -709,19 +709,19 @@ To start you off, here is a snippet of the solution:
 print( all[0:5].title() + ...
 {% endhighlight %}
 
-You will need to combine various string methods to successfully complete the task.
+To successfully complete the task, you will need to combine various string methods.
 
 ## Typography
 
 With a good grasp of strings, you can move onto displaying text in the display window.
 
-*Typography* refers to the arranging and styling of text (or, more correctly, *type*) in order to make it more legible, readable, and aesthetically appealing. Typographical treatment can truly make or break a design. Headings work best if they stand-out from the rest of your text; letter-spacing should be tighter than word-spacing; and cursive fonts are not ideal for road signs.
+*Typography* refers to the arranging and styling of text (or, more correctly, *type*) to make it more legible, readable, and aesthetically appealing. Typographical treatment can truly make or break a design. Headings work best if they stand-out from the rest of your text; letter-spacing should be tighter than word-spacing; cursive fonts are not ideal for road signs.
 
 ### Fonts
 
-Early computer fonts were pixel-based, which required variant glyph sets for each font-size. However, modern fonts are vector-based, which is why you can scale text as large as you like without encountering any pixelation. Fonts need to be loaded into Processing, but there is a default *sans-serif* font should you not load any.
+Early computer fonts were pixel-based, which required variant glyph sets for each font-size. However, modern fonts are vector-based, which is why you can scale text as large as you like without encountering any pixelation. Fonts must be loaded into Processing, but there is a default *sans-serif* font should you not load any.
 
-If you are unfamiliar with font classifications, *serifs* are the small lines attached to the tips of characters. By prefixing a term with "Sans", one implies an absence of whatever follows it, hence a *sans-serif* fonts has no serifs.
+If you are unfamiliar with font classifications, *serifs* are the small lines attached to the tips of characters. By prefixing a term with "Sans", one implies an absence of whatever follows it; hence a *sans-serif* fonts have no serifs.
 
 <figure>
   <img src="{{ site.url }}/img/pitl02/typography-font-types.png" />
@@ -881,13 +881,13 @@ line(
 
 Here is the final challenge before moving onto lesson 03.
 
-The first incarnation of the iconic apple logo was rainbow-coloured (albeit in an incorrect ordering of the bands). You will recreate this in Processing.
+The first incarnation of the iconic apple logo was rainbow-coloured (although the bands are incorrectly ordered). You will recreate this in Processing.
 
 <figure>
   <img src="{{ site.url }}/img/pitl02/apple.png" />
 </figure>
 
-One common rumour around the bite involves computer pioneer, Alan Turing -- a man who is widely considered to be the father of theoretical computer science and artificial intelligence. Among his many accomplishments, Turing managed to crack the Enigma cipher used to encrypt Nazi communications during World War II. When authorities discovered in 1952 that he was homosexual, Turing was forced to undergo hormonal treatment. Two years later he was found dead, having committed suicide by biting into a poisoned apple.
+One common rumour around the bite involves computer pioneer, Alan Turing -- a man who is widely considered to be the father of theoretical computer science and artificial intelligence. Among his many accomplishments, Turing managed to crack the Enigma cypher used to encrypt Nazi communications during World War II. When authorities discovered in 1952 that he was gay, Turing was forced to undergo hormonal treatment. Two years later he was found dead, having committed suicide by biting into a poisoned apple.
 
 Create a new sketch and save it as "apple_logo". Within a "data" sub-folder, add the grid.png image, along with this apple.png file:
 
@@ -919,7 +919,7 @@ Notice how straight-line connections between pairs of control points ensure smoo
 
 ## Lesson 03
 
-That's it for lesson 02. I hope it was enjoyable, if a little tedious. If you are familiar with any markup languages -- such as HTML, XML, or SVG in particular -- you have probably been cruising through the lessons thus far. In lesson 03 we'll begin to look at what really separates a programming language from markup. This includes topics like conditional statements and iteration. You will also look at randomness, which is one of the most powerful and exciting tools in the creative programmer's tool-set. For now, tough, take a break -- you deserve it! When you are ready to move onto lesson 03, use the link below.
+That's it for lesson 02. I hope it was enjoyable if a little tedious. If you are familiar with any markup languages -- such as HTML, XML, or SVG in particular -- you have probably been cruising through the lessons thus far. In lesson 03 we'll begin to look at what really separates a programming language from markup; this includes topics like conditional statements and iteration. You will also explore randomness -- one of the most powerful and exciting tools in the creative programmer's tool-set. For now, though, take a break -- you deserve it!
 
 **Begin lesson 03:** \<randomly generated lesson title\> *(coming soon)*
 {% comment %}

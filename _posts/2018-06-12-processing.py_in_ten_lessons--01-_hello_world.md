@@ -24,7 +24,7 @@ Processing has been around since the early 2000's and is comprised of a programm
 
 As somebody teaching programming fundamentals to creative students -- who will proceed to take courses in web, game, and interactive design & development -- combining Processing with Python provides an ideal learning tool. What's more, Processing costs nothing, is open source; and runs on multiple platforms, including Windows, Mac, and Linux.
 
-You can think of Processing as a kind-of extension of the Python programming language, with all sorts of drawing features and an editor rolled-in. Sometimes it may seem that these notes use the terms "Processing" and "Python" interchangeably. I will usually refer to Processing-exclusive features in the context of "Processing"; and standard Python features in relation with the term Python. If this confusing you, just think of them as one and the same! At this point, it is not important that you are able to distinguish Processing from Python, although you will come to understand the differences in time.
+You can think of Processing as a kind-of extension of the Python programming language, with all sorts of drawing features and an editor rolled-in. Sometimes it may seem that these notes use the terms "Processing" and "Python" interchangeably. I will usually refer to Processing-exclusive features in the context of "Processing"; and standard Python features in relation with the term Python. If this confuses you, think of them as one and the same! At this point, it is not important that you are able to distinguish Processing from Python, although you will come to understand the differences in time.
 
 ### Setup Processing
 
@@ -281,7 +281,7 @@ For various reasons, you may wish to express colours in something other than hex
 `fill('#FF0000')`  
 can also be represented as:  
 `fill(255, 0, 0)`  
-As you can probably deduce, `255` is equivalent to `FF` (which itself is equivalent to 100%, as previously explained). To make the red half as bright, you can simply subtract `127` from `255`. However, trying to subtract `127` from `FF` is more tricky because you are dealing with a mix of hexadecimal and decimal numbers.
+As you can probably deduce, `255` is equivalent to `FF` (which itself is equivalent to 100%, as previously explained). To make the red half as bright, you can subtract `127` from `255`. However, trying to subtract `127` from `FF` is more tricky because you are dealing with a mix of hexadecimal and decimal numbers.
 
 In the previous scenario, the Processing `colorMode()` was set to `RGB`. You didn't need to specify this, though, as it is the default mode. In this mode, values represent the screen's primary colours. However, there is another mode you can make use of: `HSB`. Once set to HSB, one enters values representing Hue, Saturation, and Brightness.
 
@@ -372,7 +372,7 @@ ellipse(100,100, 100,50)
 
 #### Ellipse and Rect Modes
 
-You have seen how rectangles are drawn from the top-left corner, and ellipses are centred on the x/y coordinate. If you wish to change this behaviour -- for example, have rect function draw from the center -- refer to the following functions:  
+You have seen how rectangles are drawn from the top-left corner, and ellipses are centred on the x/y coordinate. If you wish to change this behaviour -- for example, have the `rect` function draw from the center -- refer to the following functions:  
 [`ellipseMode()`](http://py.processing.org/reference/ellipseMode.html)  
 [`rectMode()`](http://py.processing.org/reference/rectMode.html)
 
@@ -643,7 +643,7 @@ arc(width/2,height/2, 200,200, 0,2)
   <figcaption><code>arc(width/2,height/2, 200,200, 0,2)</code></figcaption>
 </figure>
 
-The green overlay helps illustrate how things work. The arc is drawn along the perimeter of an invisible ellipse that is centered on the given x/y coordinates. An angle of `0` is positioned at 'East', which then opens clockwise to an angle of `2` -- which looks more like, around, 115 degrees of rotation? The reason for this is that Processing uses *radians* and not degrees. Why radians? Well, to answer a question with a question: why are there 360 degrees in a whole circle, anyhow? I mean, why not 500 or 100, or 1 million degrees? In fact, while we're on the topic, why are there 60 minutes in an hour? Or 24 hours in a day? The answer has to do with influences from ancient civilisations and is beyond what you need to know for now. What you *do* need to know is that radians are a standard unit of angular measure used in many areas of mathematics. Rather than try explain in writing how large/small a radian is, here is a neat animation from Wikipedia:
+The green overlay helps illustrate how things work. The arc is drawn along the perimeter of an invisible ellipse that is centred on the given x/y coordinates. An angle of `0` is positioned at 'East', which then opens clockwise to an angle of `2` -- which looks more like, around, 115 degrees of rotation? The reason for this is that Processing uses *radians* and not degrees. Why radians? Well, to answer a question with a question: why are there 360 degrees in a whole circle, anyhow? I mean, why not 500 or 100, or 1 million degrees? In fact, while we're on the topic, why are there 60 minutes in an hour? Or 24 hours in a day? The answer has to do with influences from ancient civilisations and is beyond what you need to know for now. What you *do* need to know is that radians are a standard unit of angular measure used in many areas of mathematics. Rather than try to explain in writing how large/small a radian is, here is a neat animation from Wikipedia:
 
 <figure>
   <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Circle_radians.gif" />
@@ -691,12 +691,10 @@ A *disk usage analyser* presents a graphical representation of what is on a disk
 
 ## Lesson 02
 
-That's it for lesson 01. I hope it was enjoyable, if somewhat challenging. Take a break -- you deserve it! When you are ready to move onto lesson 02, use the link below. If you are familiar with vector graphics (Adobe Illustrator, Inkscape, etc.), you'll be gaining some new insight into their inner-workings.
+That's it for lesson 01. I hope it was enjoyable, if somewhat challenging. Take a break -- you deserve it! When you are ready to move on, proceed to lesson 02 using the link below. If you are familiar with vector graphics (Adobe Illustrator, Inkscape, etc.), you'll be gaining some new insight into their inner-workings.
 
-**Begin lesson 02:** Bézier, Catmull, and Rom walk into a bar ... *(coming soon)*
-{% comment %}
-**Begin lesson 02:** [Bézier, Catmull, and Rom walk into a bar ...]({% post_url 2018-06-20-processing.py_in_ten_lessons--02-_bezier,_catmull,_and_rom_walk_into_a_bar %})
-{% endcomment %}
+**Begin lesson 02:** [Bézier, Catmull, and Rom walk into a bar ...]({% post_url 2018-06-19-processing.py_in_ten_lessons--02-_bezier,_catmull,_and_rom_walk_into_a_bar %})
+
 
 [Complete list of Processing lessons]({{ site.baseurl }}/#processing)
 

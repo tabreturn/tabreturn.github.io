@@ -314,11 +314,9 @@ Save, test, and confirm that Nyan Cat is able to reach a complete stop at a suff
 
 ## What's Next?
 
-The next part involves substituting your code with Unity's built-in features. For now, play around with the force values using the Inspector, and perhaps consider a new `float` variable for your key input multiplier.
+Take a moment to play around with the force values using the Inspector, and perhaps consider a new `float` variable for your key input multiplier.
 
-### Part 3
-
-Part 3 concludes with the Unity's built-in vector implementations.
+[Part 3]({% post_url 2017-08-17-an_introduction_to_vectors_using_unity_--_part_3 %}) concludes with the Unity's built-in vector implementations.
 
 ## Further Reading
 

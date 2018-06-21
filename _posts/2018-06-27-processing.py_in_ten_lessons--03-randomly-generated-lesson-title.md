@@ -152,7 +152,11 @@ The above prints `Bien Hecho!`
 
 #### Else Statements
 
-...
+the trouble is the system is just pass, what about a fail ...
+
+#### Else If Statements
+
+the trouble is the system is just pass/fail, what about a grades ...
 
 
 ## Iteration

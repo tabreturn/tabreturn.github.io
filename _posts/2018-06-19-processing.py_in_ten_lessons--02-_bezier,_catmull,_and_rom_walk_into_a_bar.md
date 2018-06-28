@@ -726,7 +726,7 @@ If you are unfamiliar with font classifications, *serifs* are the small lines at
   <img src="{{ site.url }}/img/pitl02/typography-font-types.png" />
 </figure>
 
-Monospaced fonts may also be serifed, but what defines them is how each character occupies the same amount of horizontal space. To make text more legible, (variable-width) fonts include metrics to specify how far a given character should sit from any neighbours. For example, having an "i" and "m" character occupy the same size container leads to some awkward spacing issues -- which many monospaced fonts attempt to resolve by adding enlarged serifs to the "i" and cramping the "m":
+Monospaced fonts may also be serifed, but what defines them is how each character occupies the same amount of horizontal space. To make text more legible, (variable-width) fonts include metrics to specify how far a given character should sit from any neighbours. For example, having an "i" and "m" character occupy the same size container results in some awkward spacing issues -- which many monospaced fonts attempt to resolve by adding enlarged serifs to the "i" and cramping the "m":
 
 *monospaced*  
 `mmm`  

@@ -455,6 +455,8 @@ while i <= 23:
   <img src="{{ site.url }}/img/pitl03/iteration-increment.png" class="fullwidth" />
 </figure>
 
+You may name this `i` variable whatever you wish, but it is a popular convention to represent the *iterator* value using `i`.
+
 The final line states that `i` is equal to itself plus one. Once `i` reaches twenty-three, the program can continue with any other code that follows. To draw 23 circles, place a `ellipse` function within the loop:
 
 {% highlight py %}
@@ -489,7 +491,7 @@ while i <= 23:
 
 Twenty-three happens to enough circles to fill the 500 by 500 pixel area -- but by changing the condition, you can draw as many (or as few circles) as you wish.
 
-#### Assignment Operators
+### Augmented Assignment Operators
 
 You are already familiar with the `=` operator, but not its arithmetic variants. In the "concentric_circles" example, the `i` was incremented using this line of code:  
 `i = i + 1`  
@@ -497,9 +499,57 @@ To simplify this statement, one can instead write:
 `i += 1`  
 
 Other similar operators include:  
-`i -= 1   ` equivalent to&nbsp; `i = i + 1`  
-`i *= 1   ` equivalent to&nbsp; `i = i * 1`  
-`i /= 1   ` equivalent to&nbsp; `i = i / 1`
+`i -= 1 ` is equivalent to&nbsp; `i = i + 1`  
+`i *= 1 ` is equivalent to&nbsp; `i = i * 1`  
+`i /= 1 ` is equivalent to&nbsp; `i = i / 1`
+
+For anybody familiar with other programming languages, Python does not make use of `--` and `++` in/de-crement operators.
+
+## Rows of Circles Task
+
+Time for another challenge!
+
+Using a while loop, you will recreate this arrangement:
+
+<figure>
+  <img src="{{ site.url }}/img/pitl03/rows_of_circles.png" />
+</figure>
+
+To begin, create a new sketch and save it as "rows_of_circles". Add the following code to get started:
+
+{% highlight py %}
+size(500,500)
+background('#004477')
+noFill()
+stroke('#FFFFFF')
+strokeWeight(3)
+ellipse(100,100, 80,80)
+{% endhighlight %}
+
+<figure>
+  <img src="{{ site.url }}/img/pitl03/rows_of_circles_start.png" />
+</figure>
+
+The following sequence of steps outlines the simplest approach to begin tackling this task:
+
+1. create a `while` structure that loops twelve times (perhaps using a `print()` to monitor your iterator);
+2. using the loop, place the circles in one long row, extending past the right-edge of the display window;
+3. once the above is working, use an `if` statement within the loop to detect when the second row must begin.
+
+It's up to you to figure out the rest. Oh -- and remember that [modulo operator]({% post_url 2018-06-12-processing.py_in_ten_lessons--01-_hello_world %}#modulo-operator) (`%`)? This may prove handy here.
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## Random

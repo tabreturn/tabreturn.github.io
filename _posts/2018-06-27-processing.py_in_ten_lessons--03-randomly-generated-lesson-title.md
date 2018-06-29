@@ -29,7 +29,9 @@ Control flow allows for more 'intelligent' programs. As an example: consider tha
 
 A 9-circle arrangement requires writing nine `ellipse` functions; this is manageable enough. However, writing eighty-one `ellipse` lines is tedious. Using control flow statements, one can instead instruct Processing to add as many circles as are required, ceasing once done. This allows for more dynamic code, i.e. you specify the size of circles and the program calculates how many columns and rows are required. Additionally, this approach can better cater for any random diameter value.
 
-This lesson covers topics involving conditional statements and iteration. You will also explore randomness -- one of the most powerful and exciting tools in the creative programmer's tool-set.
+This lesson covers topics involving conditional statements and iteration. Implementing such logic may require you to think in new ways. If you find yourself struggling with something, do not stress, that's normal! with a little perseverance you'll soon grasp whatever has you snagged.
+
+You will also explore randomness -- one of the most powerful and exciting tools in the creative programmer's tool-set.
 
 ## Conditional Statements
 
@@ -347,7 +349,7 @@ text(txt, x,y)
   <img src="{{ site.url }}/img/pitl03/four-square-qmark.png" />
 </figure>
 
-Your challenge is to write conditinal statements to replace the `?` character with an `R`, `B`, `P`, or `O` to match the colour beneath it. This way, one can adjust the `x` and `y` values and the character changes accordingly:
+Your challenge is to write conditional statements to replace the `?` character with an `R`, `B`, `P`, or `O` to match the colour beneath it. This way, one can adjust the `x` and `y` values and the character changes accordingly:
 
 <figure>
   <img src="{{ site.url }}/img/pitl03/four-square-four-up.png" />
@@ -428,7 +430,7 @@ ellipse(width/2,height/2, 90,90)
 
 i = 0
 
-while i <=23:
+while i < 24:
     print(i)
 {% endhighlight %}
 
@@ -439,14 +441,14 @@ Running the sketch prints an endless lines of `0` digits to the Console.
   <figcaption>Notice the length of the scroll track, and how the display window fails to display the background colour.</figcaption>
 </figure>
 
-This code has crashed your program by sending it into an infinitive loop. To explain, `i` is equal to zero, and therefore less-than-or-equal to `23`. But, unlike an if statement, the `while` repeatedly executes the `print` line until value of `i` exceeds twenty-three -- which is never.
+This code has crashed your program by sending it into an infinitive loop. To explain, `i` is equal to zero, and therefore less-than to `24`. But, unlike an if statement, the `while` repeatedly executes the `print` line until value of `i` exceeds twenty-three -- which is never.
 
 To increment `i` by one each time the line is printed, add one to it with each iteration of the loop:
 
 {% highlight py %}
 i = 0
 
-while i <= 23:
+while i < 24:
     print(i)
     i = i + 1
 {% endhighlight %}
@@ -457,12 +459,12 @@ while i <= 23:
 
 You may name this `i` variable whatever you wish, but it is a popular convention to represent the *iterator* value using `i`.
 
-The final line states that `i` is equal to itself plus one. Once `i` reaches twenty-three, the program can continue with any other code that follows. To draw 23 circles, place a `ellipse` function within the loop:
+The final line states that `i` is equal to itself plus one. Once `i` reaches twenty-four, the program can continue with any other code that follows. To draw twenty-four circles, place a `ellipse` function within the loop:
 
 {% highlight py %}
 i = 0
 
-while i <= 23:
+while i < 24:
     print(i)
     ellipse(width/2,height/2, 30,30)
     i = i + 1
@@ -474,12 +476,12 @@ Run the code. It appears that you have drawn a single circle:
   <img src="{{ site.url }}/img/pitl03/iteration-stacked-circles.png" />
 </figure>
 
-However, what you are actually is seeing twenty-three circles of the same size drawn in the same location. Adapt the ellipse, using the `i` value as a multiplier for the width and height arguments:
+However, what you are actually is seeing twenty-four circles of the same size drawn in the same location. Adapt the ellipse, using the `i` value as a multiplier for the width and height arguments:
 
 {% highlight py %}
 i = 0
 
-while i <= 23:
+while i < 24:
     print(i)
     ellipse(width/2,height/2, 30*i,30*i)
     i = i + 1
@@ -489,7 +491,7 @@ while i <= 23:
   <img src="{{ site.url }}/img/pitl03/iteration-concentric-circles.png" />
 </figure>
 
-Twenty-three happens to enough circles to fill the 500 by 500 pixel area -- but by changing the condition, you can draw as many (or as few circles) as you wish.
+It should be pointed-out that the width/height arguments (`30*i`) of the first iteration are multiplied by `0`, so the first circle is placed in the very centre of the display window, but is effectively invisible. The other twenty-three happen to be enough to fill the 500 by 500 pixel area -- but by changing the condition, you can draw as many (or as few circles) as you wish.
 
 ### Augmented Assignment Operators
 
@@ -505,14 +507,14 @@ Other similar operators include:
 
 For anybody familiar with other programming languages, Python does not make use of `--` and `++` in/de-crement operators.
 
-## Rows of Circles Task
+### Rows of Circles Task
 
 Time for another challenge!
 
 Using a while loop, you will recreate this arrangement:
 
 <figure>
-  <img src="{{ site.url }}/img/pitl03/rows_of_circles.png" />
+  <img src="{{ site.url }}/img/pitl03/rows-of-circles.png" />
 </figure>
 
 To begin, create a new sketch and save it as "rows_of_circles". Add the following code to get started:
@@ -527,7 +529,7 @@ ellipse(100,100, 80,80)
 {% endhighlight %}
 
 <figure>
-  <img src="{{ site.url }}/img/pitl03/rows_of_circles_start.png" />
+  <img src="{{ site.url }}/img/pitl03/rows-of-circles-start.png" />
 </figure>
 
 The following sequence of steps outlines the simplest approach to begin tackling this task:
@@ -536,21 +538,103 @@ The following sequence of steps outlines the simplest approach to begin tackling
 2. using the loop, place the circles in one long row, extending past the right-edge of the display window;
 3. once the above is working, use an `if` statement within the loop to detect when the second row must begin.
 
-It's up to you to figure out the rest. Oh -- and remember that [modulo operator]({% post_url 2018-06-12-processing.py_in_ten_lessons--01-_hello_world %}#modulo-operator) (`%`)? This may prove handy here.
+It's up to you to figure out the rest. Oh -- and remember that [modulo operator (%)]({% post_url 2018-06-12-processing.py_in_ten_lessons--01-_hello_world %}#modulo-operator)? This may prove handy here.
 
+### For Loops
 
+When programming a loop structure, you are not limited to `while` statements. The `for` loop operates in a similar manner, and depending on the scenario, you may elect to use one over the other. Perhaps the easiest way to explain a `for` loop is to convert something you have already written.
 
+Create a new sketch and save it as "for_loop". Add the following the code form your "concentric_circles" sketch:
 
+{% highlight py %}
+size(500,500)
+background('#004477')
+noFill()
+stroke('#FFFFFF')
+strokeWeight(3)
 
+i = 0
 
+while i < 24:
+    print(i)
+    ellipse(width/2,height/2, 30*i,30*i)
+    i += 1
+{% endhighlight %}
 
+Notice how the `i` variable is created to serve as an iterator. With each iteration of the loop, it is vital that you increment this to avoid entering an endless loop. The `for` loop does away with the need for iterator variables. Adapt your code:
 
+{% highlight py %}
+size(500,500)
+background('#004477')
+noFill()
+stroke('#FFFFFF')
+strokeWeight(3)
 
+for i in range(24):
+    print(i)
+    ellipse(width/2,height/2, 30*i,30*i)
+{% endhighlight %}
 
+Notice how the `i = 0` line has been removed, along with the line to increment it (`i += 1`). However, the result remains the same:
 
+<figure>
+  <img src="{{ site.url }}/img/pitl03/iteration-for-loop-adaption.png" class="fullwidth" />
+</figure>
 
+The `range()` function generates a list of values that the `for` then iterates over. With each iteration the active `range` value is assigned to the variable `i` -- although you may name this whatever you wish. For twenty-four iterations, the range function requires an argument of `24`; but the end value of twenty-four is never part of the generated list. The is because the first iteration begins at `0`.
 
+The range function can handle between one and three parameters. Provide two arguments for a start and end value:
 
+{% highlight py %}
+for i in range(8,12):
+    print(i)
+    ellipse(width/2,height/2, 30*i,30*i)
+{% endhighlight %}
+
+<figure>
+  <img src="{{ site.url }}/img/pitl03/iteration-for-loop-2-args.png" />
+</figure>
+
+Provide three arguments for a start, end, and step-size:
+
+{% highlight py %}
+for i in range(0,24,2):
+    print(i)
+    ellipse(width/2,height/2, 30*i,30*i)
+{% endhighlight %}
+
+<figure>
+  <img src="{{ site.url }}/img/pitl03/iteration-for-loop-3-args.png" class="fullwidth" />
+</figure>
+
+Any iterable object may be used in combination with a `for`, meaning the `range()` function is not always necessary. This concept is explored in the upcoming lessons dealing with lists and dictionaries (or "arrays" if you are familiar with other programming languages).
+
+### For Loops Task
+
+In this challenge you will recreate these three patterns using `for` loops:
+
+<figure>
+  <img src="{{ site.url }}/img/pitl03/iteration-for-loops-task.png" />
+  <figcaption>The <span style="color:#0099FF">pale blue</span> lines and coordinates indicate the line drawn on the first iteration of each loop.</figcaption>
+</figure>
+
+You will be referencing this image repeatedly during the task, so it may be useful to <a href="{{ site.url }}/img/pitl03/iteration-for-loop-challenges.png" download>save a copy</a> and open a preview of it alongside your Processing editor.
+
+To begin, create a new sketch and save it as "for_loops_task". Add the following setup code:
+
+{% highlight py %}
+size(600,600)
+background('#004477')
+noFill()
+stroke('#FFFFFF')
+strokeWeight(3)
+{% endhighlight %}
+
+Here are a few clues to help you approach each pattern:
+
+* *Top-left pattern:* you should manage this without any hints; it has twelve lines, if you must know.
+* *Top-right pattern:* the line spacing increases by a multiple of `1.5` with each iteration.
+* *Bottom-centre pattern*: consider using a modulo operator to establish `if` the iterator is odd or even.
 
 ## Random
 

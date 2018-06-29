@@ -556,7 +556,7 @@ Of course, [division by zero](https://en.wikipedia.org/wiki/Division_by_zero) op
 
 The modulo operator is written as a percentage sign (`%`). It calculates the remainder of a division operation. Take *five divided by two* as an example:
 * one could say the answer is `2.5`;
-* or, that the answer is `2` remainder `1`, because two 'goes into' five twice, with one left over.
+* or, that the answer is `2` remainder `1`, because two 'goes into' five twice with one left over.
 
 The modulo operator performs the latter. Here is some code contrasting a division and modulo operation:
 
@@ -565,14 +565,14 @@ print(5.0 / 2)     # displays 2.5
 print(5.0 % 2)     # displays 1
 {% endhighlight %}
 
-It may not be evident why this is operator useful, but many important algorithms -- such as those used in cryptography -- make use of it. For now, consider that modulo operations that result in `0` indicate that numbers divide exactly. Among other uses, this can be used to establish if a number is odd or even:
+It may not be evident why this is operator useful. However, many important algorithms -- such as those used in cryptography -- make use of it. For now, consider that modulo operations resulting in a `0` indicate that numbers divide exactly. Among other uses, this is handy for establishing whether a number is odd or even:
 
 {% highlight py %}
 print(7 % 2)       # displays 1, therefore 7 is odd
 print(6 % 2)       # displays 0, therefore 6 is even
 {% endhighlight %}
 
-You will make use of modulo operators in future lessons.
+You will be making use of modulo operators in future lessons.
 
 ## Image Reveal Task
 

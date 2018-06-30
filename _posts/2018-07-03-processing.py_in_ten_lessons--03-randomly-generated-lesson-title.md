@@ -9,7 +9,7 @@ published: false
 ***Covered in this lesson:***  
 <a href="#conditional-statements"><em>conditional statements</em></a> /
 <a href="#iteration"><em>iteration</em></a> /
-<a href="#random"><em>random</em></a>
+<a href="#randomness"><em>randomness</em></a>
 
 ---
 &nbsp;  
@@ -636,9 +636,97 @@ Here are a few clues to help you approach each pattern:
 * *Top-right pattern:* the line spacing increases by a multiple of `1.5` with each iteration.
 * *Bottom-centre pattern*: consider using a modulo operator to establish `if` the iterator is odd or even.
 
-## Random
+## Randomness
 
+The best computers can do is simulate randomness. Think about this for a moment: if you request a random number from a computer it will need to run some non-random set of instructions to pull a value. That said, computers are able to do to a pretty good job of this, relying on algorithms that generate *pseudorandom* numbers whose sequential appearance is statistically similar enough to a truly random sequence. This is okay for shuffling through your music collection, but best avoided for gambling and security applications.
+
+For 'true' random numbers, computers can rely on things like key-stroke timings. For example, you may have pressed your last key 0.654 milseconds past the tick of the previous second. In the quest for true randomness, researchers have relied on everything from dice to roullette wheels, and between the mid-1920s and 50s one could even purchase special books full of random numbers. If you are really serious about plucking random numbers from the universe, there are hardware devices that rely on various quantum phenomena, like [radioactive decay](https://www.youtube.com/watch?v=SxP30euw3-0). However, for most applications, pseudorandomness will suffice.
+
+So, what do random sequences look like? First, consider *Perlin noise*. In 1983, Ken Perlin developed an algorithm for synthesizing organic textures and forms -- like terrains, fire, smoke, and clouds. The graphs below plot random points over fixed intervals of time. The upper line represents a sequence of 'purely' random points, whereas the lower line charts values generated with Perlin noise. From this, you can visually appreciate why the 'smoother' Perlin noise is better suited for generating something like a mountain range.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl03/random-random-v-noise.png" class="fullwidth" />
+  <figcaption>Random (top) verse Perlin noise (bottom) sequences.</figcaption>
+</figure>
+
+Processing has functions for Perlin noise, but this lesson will focus on the `random()` and `randomSeed()` funtions.
+
+### Random Functions
+
+Create a new sketch and save it as "random_functions". Add the following setup code:
+
+{% highlight py %}
+size(600,600)
+background('#004477')
+noFill()
+stroke('#FFFFFF')
+strokeWeight(3)
+{% endhighlight %}
+
+The `random()` function takes one or two arguments. One arguments defines an upper limit:
+
+{% highlight py %}
 ...
+
+x = random(5)
+print(x)
+{% endhighlight %}
+
+The above code will display a random floating point value between `0` and `5`. Two arguments represent an upper- and lower-limit respectively:
+
+{% highlight py %}
+x = random(5)
+print(x)
+x = random(5,10)
+print(x)
+{% endhighlight %}
+
+The above code will display a random floating point value between `5` and `10`. If you are after a random integer, use the `int()` function to convert the floating point value:
+
+{% highlight py %}
+x = random(5)
+print(x)
+x = random(5,10)
+print(x)
+print( int(x) ) 
+{% endhighlight %}
+
+<figure>
+  <img src="{{ site.url }}/img/pitl03/random-prints.png" class="fullwidth" />
+  <figcaption>Given that the values are random, the Console output will appear different each time you run the sketch.</figcaption>
+</figure>
+
+The next step is to generate one hundred random values. Rather than displaying them as a long list in the Console area, plot them in a line in the display window:
+
+{% highlight py %}
+...
+
+for i in range(100):
+    point( random(width), height/2 )
+{% endhighlight %}
+
+<figure>
+  <img src="{{ site.url }}/img/pitl03/random-points-1d.png" />
+</figure>
+
+Now edit the loop. Change the range to `1000` and plot the `point` using both a random x- and y-coordinate:
+
+{% highlight py %}
+for i in range(1000):
+    point( random(width), random(height) )
+{% endhighlight %}
+
+<figure>
+  <img src="{{ site.url }}/img/pitl03/random-points-2d.png" />
+</figure>
+
+Each time the code is run, it results in a slightly different random pattern. Recall that ... pseudorandom ...
+
+
+
+
+* Looped pattern task (progressively jittery quads)
+* Read up on [break](http://py.processing.org/reference/break.html); and [continue](http://py.processing.org/reference/continue.html) statements
 
 ## Lesson 04
 
@@ -653,4 +741,4 @@ Here are a few clues to help you approach each pattern:
 
 ## References
 
-* ...
+* https://www.youtube.com/watch?v=SxP30euw3-0

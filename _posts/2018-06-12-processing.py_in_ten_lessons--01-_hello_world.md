@@ -55,6 +55,19 @@ You are now ready to write your first line of code! If you would like a demonstr
   <figcaption>Use the &#9654; button to run any code.</figcaption>
 </figure>
 
+### Algorithms
+
+You will encounter the term *algorithm* frequently from here onward. For these lessons, the definition of an algorithm is: a set of rules a computer or machine follows to achieve a particular goal. As an example, an algorithm for making a cup of instant coffee will read as follows:
+
+1. place one heaped teaspoon of instant coffee in a mug;
+2. fill the kettle with water;
+3. switch-on the kettle;
+4. once boiled, add 240 ml boiling water to the mug;
+6. add one level teaspoon of sugar to the mug;
+7. stir the contents of the mug.
+
+However, this set of steps would likely be insufficient for programming a coffee-making robot. Should the sizes of the mugs vary, smaller ones would overflow; and any requests for milk or extra sugar would be ignored. Computers cannot make any assumptions and therefore require explicit and unambiguous direction, and this requires communicating in a language the machine understands -- like Python. Learning to write code may be the challenge you currently face, but as you grow more fluent, this will shift more towards mastering algorithmic thinking.
+
 ### Hello World
 
 Processing refers to programs as "sketches". Given the visual and artistic nature of what you are likely to produce, it's a fitting term. Create a new sketch by selecting **File > New**, or using the associated keyboard shortcut (which is listed alongside the menu entry).

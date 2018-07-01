@@ -13,7 +13,7 @@ published: false
 
 ---
 &nbsp;  
-The programs you have written thus far execute line-by-line, beginning at the top of the code and ending at the bottom. You can visualise this sequential flow as a set of steps chained together in a linear arrangement. However, a programmer can redefine the order in which code is run, writing various calls and conditions to control the flow -- a concept referred to as *control flow* -- thereby allowing the program to skip, jump to, and repeat lines.
+The programs you have written thus far execute line-by-line, beginning at the top of the code and ending at the bottom. You can visualise this flow as a set of steps chained together in a linear arrangement. However, a programmer can redefine this sequence, writing various calls and conditions to reorder the flow -- a concept referred to as *control flow* -- thereby directing the program to skip, jump to, and repeat lines.
 
 <figure>
   <img src="{{ site.url }}/img/pitl03/intro-flowchart.svg" />
@@ -27,15 +27,15 @@ Control flow allows for more 'intelligent' programs. As an example: consider tha
   <figcaption>9-circle (left) and 81-circle (right) layouts.</figcaption>
 </figure>
 
-A 9-circle arrangement requires writing nine `ellipse` functions; this is manageable enough. However, writing eighty-one `ellipse` lines is tedious. Using control flow statements, one can instead instruct Processing to add as many circles as are required, ceasing once done. This allows for more dynamic code, i.e. you specify the size of circles and the program calculates how many columns and rows are required. Additionally, this approach can better cater for any random diameter value.
+A 9-circle arrangement requires writing nine `ellipse` functions; this is manageable enough. However, writing eighty-one `ellipse` lines is tedious. Using control flow statements, one can instead instruct Processing to add as many circles as are required, ceasing once eighty-one have been placed. This allows for more dynamic code, i.e. you specify the size of circles, and the program calculates how many columns and rows are required. Additionally, this approach can better cater for random diameter values.
 
-This lesson covers topics involving conditional statements and iteration. Implementing such logic may require you to think in new ways. If you find yourself struggling with something, do not stress, that's normal! with a little perseverance you'll soon grasp whatever has you snagged.
+This lesson covers topics involving conditional statements and iteration. Implementing such logic may require you to think in new ways. If you find yourself struggling with something, do not stress, that's normal! With a little perseverance, you’ll soon grasp whatever is that has you snagged.
 
 You will also explore randomness -- one of the most powerful and exciting tools in the creative programmer's tool-set.
 
 ## Conditional Statements
 
-Conditional statements are used to check conditions and provide appropriate responses. You can think of this as asking a *question*; receiving an *answer*; then performing an *action* in response the answer. For example:
+Conditional statements are used to check conditions and provide appropriate responses. You can think of this as asking a *question*; receiving an *answer*; then performing an *action* in response to the answer. For example:
 
 *Question:* Is the ball red?
 
@@ -55,7 +55,7 @@ strokeWeight(3)
 
 ### Boolean Datatype
 
-At this point you are familiar with three datatypes: string, integer, and float. Before moving onto conditional statements, you require an introduction to a fourth type: *boolean*.
+At this point, you are familiar with three datatypes: string, integer, and float. Before moving onto conditional statements, you require an introduction to a fourth type: *boolean*.
 
 A boolean can represent one of two possible states: `True` or `False`. Note that when writing these values, the first letter is always uppercase and no quotation marks are used (as this would make the value a string). Add the following code:
 
@@ -86,14 +86,14 @@ print( x > 1 )        # displays: True
 print( x < 1 )        # displays: False
 {% endhighlight %}
 
-Take note of how the relational operations return a boolean value. This will be important in the next section. Here is a list of Python's various relational operators:
+Take note of how the relational operations return a boolean value; this will be important in the next section. Here is a list of Python's various relational operators:
 
 `>    ` greater-than  
-`<    ` less than  
+`<    ` less-than  
 `>=   ` greater-than-or-equal-to  
 `<=   ` less-than-or-equal-to  
 `==   ` equal-to  
-`!=   ` not-equal
+`!=   ` not-equal-to
 
 The `==` and `!=` operators have the ability to operate on both numbers and strings:
 
@@ -109,7 +109,7 @@ Relational operators are particularly useful when combined with `if` and other c
 
 ### If Statements
 
-If statements are one of the most essential and basic means of introducing logic to your program. Add this basic example to your working sketch:
+If statements are one of the most essential means of introducing logic to your program. Add this basic example to your working sketch:
 
 {% highlight py %}
 ...
@@ -120,7 +120,7 @@ if mark >= 50:
     print('PASS')
 {% endhighlight %}
 
-The code awards a PASS grade for any mark greater-than-or-equal-to fifty. In the above case the `mark >= 50` returns `True`; so the `print('PASS')` line is executed. It is vital that you indent the `print` line, for which you may use a tab or space characters. It does not matter how many spaces -- although, four or two is most common -- but you must be consistent throughout your code. Everything indented beneath the `if` line is executed upon the condition returning `True`. For example, this code will print "PASS" and "Well done!" for any mark greater-than-or-equal-to fifty:
+The code awards a PASS grade for any mark greater-than-or-equal-to fifty. In the above case the `mark >= 50` returns `True`; so the `print('PASS')` line is executed. It is vital that you indent the `print` line, for which you may use a tab or space characters. It does not matter how many spaces -- although, four or two is most common -- but you must be consistent throughout your code. Everything indented beneath the `if` line is executed upon the condition returning `True`. For example, the following code will print "PASS" and "Well done!" for any mark greater-than-or-equal-to fifty:
 
 {% highlight py %}
 mark = 60
@@ -130,7 +130,7 @@ if mark >= 50:
     print('Well done!')
 {% endhighlight %}
 
-However, this code would print "Well done!" regardless of whether or not the mark exceeds fifty:
+But, the following code will print “Well done!” regardless of whether or not the mark exceeds fifty:
 
 {% highlight py %}
 mark = 20
@@ -140,7 +140,7 @@ if mark >= 50:
 print('Well done!')
 {% endhighlight %}
 
-To nest an if statement within another if statement, increase the indentation accordingly:
+To nest an `if` statement within another `if` statement, increase the indentation accordingly:
 
 {% highlight py %}
 mark = 60
@@ -160,7 +160,7 @@ This displays "Bien Hecho!".
 
 #### Else-If Statements
 
-Currently, the grading program can only award a PASS. Ideally, it should assign letter grades (A/B/C/...). This requires additional if statements. Adapt you code for this:
+Currently, the grading program can only award a PASS. Ideally, it should assign letter grades (A/B/C/...). This requires additional if statements. Adapt your code:
 
 {% highlight py %}
 mark = 60
@@ -188,7 +188,7 @@ if mark >= 65:
   <img src="{{ site.url }}/img/pitl03/conditional-statements-if-cb.png" class="fullwidth" />
 </figure>
 
-The problem here is that both if statements operate independently of one another. If the grade is awarded a "B" then there is no need to check the C condition. This requires an `elif` (else-if) statement, as well as a little reordering of your code:
+The problem here is that both `if` statements operate independently of one another. If the grade is awarded a "B" then there is no need to check the C condition. An `elif` (else-if) statement is required, along with some reordering of your code:
 
 {% highlight py %}
 mark = 70
@@ -200,9 +200,9 @@ elif mark >= 50:
     print('C')
 {% endhighlight %}
 
-This correctly displays a "B" in the Console. Because the `if` line returns `True`, the `elif` is skipped. This is why the correct ordering of `if`/`elif` statements is vital; should the C condition to come first, every mark greater-than-or-equal-to 50 is awarded a C-grade, as the B condition will be skipped.
+This correctly displays a "B" in the Console. Because the `if` line returns `True`, the `elif` is skipped. This is why the correct ordering of `if`/`elif` statements is vital; should the C condition to come first, every mark greater-than-or-equal-to 50 is awarded a C-grade, as the B condition is skipped.
 
-Chain another `elif` statement to the code, and adjust the mark to test a few different cases:
+Chain another `elif` statement to the code, adjusting the mark to test three different cases:
 
 {% highlight py %}
 mark = 77
@@ -215,13 +215,13 @@ elif mark >= 50:
     print('C')
 {% endhighlight %}
 
-To visually group the connected if/elif statements, the empty line between each has been removed; this is a matter of style, but you are welcome to add as many empty lines as you see fit. You may add as many additional `elif` statements as you need.
+To visually group the connected `if`/`elif` statements, the empty line between each has been removed; this is a matter of style, but you are welcome to add as many blank lines as you see fit. You may add as many additional `elif` statements as you need.
 
-A mark below `50` passes through all of the if/elif statements without invoking any action. To handle FAIL cases, one can use the `else` statement.
+A mark below `50` passes through all of the `if`/`elif` statements without invoking any action. To handle FAIL cases, one can employ `else` statement.
 
 #### Else Statements
 
-Else statements handle any condition that does not match that specified by in the `if` statement (or an `if`/`elif` grouping). Add an `else` statement to your code:
+Else statements handle any condition that does not match that specified in the `if` statement (or `if`/`elif` grouping). Add an `else` statement to your code:
 
 {% highlight py %}
 mark = 49
@@ -236,7 +236,7 @@ else:
     print('FAIL')
 {% endhighlight %}
 
-The else statement need not follow an `elif`. For example:
+The `else` statement need not necassarily follow an `elif`. For example:
 
 {% highlight py %}
 if mark >= 50:
@@ -257,9 +257,9 @@ However, there are many occasions where multiple relational operations must be e
 
 For these purposes, Python provides three logical operators:
 
-`and   ` returns true if both operands are true  
-`or    ` returns true if at least one operand is true  
-`not   ` reverses the boolean (true becomes false and vice-versa)
+`and   ` returns `True` if both operands are true  
+`or    ` returns `True` if at least one operand is true  
+`not   ` reverses the boolean (`True` becomes `False` and vice-versa)
 
 Add an `and` condition to handle marks in the RESUBMIT range:
 
@@ -297,7 +297,7 @@ else:
     print('FAIL')
 {% endhighlight %}
 
-The `not` operator has its uses, but is awkward to apply in the working example. Instead, here is a one line example of what it does:
+The `not` operator has its uses but is awkward to apply in the working example. Instead, here is a one-line example of it in action:
 
 `print( not(False) )   # displays: True`
 
@@ -323,7 +323,7 @@ fill('#FF9900') # orange quadrant
 rect(width/2,height/2, width/2,height/2)
 {% endhighlight %}
 
-This divides the display window into four quadrants:
+The above code divides the display window into four quadrants:
 
 <figure>
   <img src="{{ site.url }}/img/pitl03/four-square-quadrants.png" />
@@ -349,11 +349,11 @@ text(txt, x,y)
   <img src="{{ site.url }}/img/pitl03/four-square-qmark.png" />
 </figure>
 
-Your challenge is to write conditional statements to replace the `?` character with an `R`, `B`, `P`, or `O` to match the colour beneath it. This way, one can adjust the `x` and `y` values and the character changes accordingly:
+Your challenge is to write conditional statements to replace the `?` character with an `R`, `B`, `P`, or `O` to match the colour beneath it. This way, one can adjust just the `x` and `y` values and the character changes accordingly:
 
 <figure>
   <img src="{{ site.url }}/img/pitl03/four-square-four-up.png" />
-  <figcaption>Listed counter-clockwise from the top-right, the (x,y) coordinates of each letter:
+  <figcaption>Listed counter-clockwise from the top-right, the (x,y) coordinates of each letter are:
   R = (400,100);
   B = (38,121);
   P = (289,485);
@@ -361,7 +361,7 @@ Your challenge is to write conditional statements to replace the `?` character w
   </figcaption>
 </figure>
 
-To start you off, here is the code for the red condition:
+To start you off, here is the code for the red (`R`) condition:
 
 {% highlight py %}
 ...
@@ -381,19 +381,19 @@ However, if you change the `y` value to `400`, an "R" is displayed over the oran
 
 ## Iteration
 
-Consider that you wish to tile a floor. Starting in one corner, you place a single tile. Next, you place another tile alongside that, repeating the process until you have reached the opposite wall; after which point you move down a row and continue. In this scenario, the placing of an individual tile is referred to as an *iteration*. In many iterative processes, the result of a previous iteration defines the starting point of another -- in this instance, the position of each tile is advanced by the one laid before it.
+Consider that you wish to tile a floor. Starting in one corner, you place a single tile. Next, you place another tile alongside that, repeating the process until you have reached the opposite wall; after which point you move down a row and continue. In this scenario, the placing of an individual tile is referred to as an *iteration*. In many iterative processes, the result of a previous iteration defines the starting point of another -- in this case, the position of each tile is advanced by the one laid before it.
 
-Tasks like tiling can be a tedious work, though. Humans are exemplary in reasoning and creative thought, and if not sufficiently stimulated, loose interest performing such repetitive tasks. Computers, however, excel in performing tasks rapidly and accurately -- especially where numbers are involved. Interestingly, though, the term "computer" originally referred to a person who performed mathematical calculations. Much of the work performed by 'human computers' involved calculating *mathematical tables*. These tables of numbers would be compiled into printed volumes that were used to simplify and speed-up other computations. As an example, *logarithm tables* were used extensively in sciences, engineering, and navigation.
+Tasks like tiling can be tedious work, though. Humans are exemplary in reasoning and creative thought, and if not sufficiently stimulated, lose interest in performing such repetitive tasks. Computers, however, excel in performing monotonous duties rapidly and accurately -- especially where numbers are involved. Interestingly enough, the term "computer" originally referred to a person who performs mathematical calculations. Much of the work carried-out by 'human computers' involved calculating *mathematical tables*. These tables of numbers would be compiled into printed volumes that were used to simplify and speed-up other computations. As an example, *logarithm tables* were used extensively in sciences, engineering, and navigation.
 
 <figure>
   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/APN2002_Table_1%2C_1000-1500.agr.tiff/lossless-page1-789px-APN2002_Table_1%2C_1000-1500.agr.tiff.png" />
   <figcaption>
-    A page from a table of common logarithms.<br />
+    A logarithms table from American Practical Navigator.<br />
     https://en.wikipedia.org/wiki/File:APN2002_Table_1,_1000-1500.agr.tiff
   </figcaption>
 </figure>
 
-Rather than perform tedious multiplication and division operations by hand, logarithm tables provide lists of pre-computed answers -- like a more advanced version of the multiplication tables children are required to memorise in school. The forerunner of the modern computer, the *Difference Engine*, was built in the 1820s by Charles Babbage to automate the work of human computers. By devising a machine built of cogs and other moving parts, Babbage sought to automate the task of producing mathematical tables, while also providing more accurate results. Due to funding difficulties, a full-scale version of the machine was never completed -- but its mechanical inner-workings paved the way for more complex electronic computers.
+Rather than perform tedious multiplication and division operations by hand, logarithm tables provide lists of pre-computed answers -- like a more advanced version of the multiplication tables children are required to memorise in school. The forerunner of the modern computer, the *Difference Engine*, was built in the 1820s by Charles Babbage to automate the work of human computers. By devising a machine comprised of cogs and other moving parts, Babbage sought to automate the task of producing mathematical tables, while also providing more accurate results. Due to funding difficulties, a full-scale version of the machine was never completed -- but its mechanical inner-workings paved the way for more complex electronic computers.
 
 To begin exploring iteration in Processing, create a new sketch and save it as "concentric_circles". Add the following code:
 
@@ -413,11 +413,11 @@ ellipse(width/2,height/2, 90,90)
   <img src="{{ site.url }}/img/pitl03/iteration-manual.png" />
 </figure>
 
-I'm sure you can see where this is heading -- filling the display window requires many more `ellipse` lines. Instead of adding these manually, you will make use of Python's `while` loop to add them iteratively.
+I'm sure you can see where this is heading -- filling the display window requires writing many more `ellipse` lines. Instead of adding these manually, you will make use of Python’s `while` loop to insert them iteratively.
 
 ### While Loops
 
-The `while` loop statement looks and behaves much like the `if`. However, the key difference is that the while continues to execute the lines indented beneath it, *until* the condition is no longer true.
+The `while` loop statement looks and behaves much like the `if`. However, the key difference is that the `while` continues to execute the lines indented beneath it *until* the condition is no longer true.
 
 Comment out your ellipse lines and add a basic `while` structure:
 
@@ -434,14 +434,14 @@ while i < 24:
     print(i)
 {% endhighlight %}
 
-Running the sketch prints an endless lines of `0` digits to the Console.
+Running the sketch prints endless lines of single `0` digits to the Console.
 
 <figure>
   <img src="{{ site.url }}/img/pitl03/iteration-crash.png" class="fullwidth" />
-  <figcaption>Notice the length of the scroll track, and how the display window fails to display the background colour.</figcaption>
+  <figcaption>Notice the length of the Console scroll-track, and how the display window fails to render the background colour.</figcaption>
 </figure>
 
-This code has crashed your program by sending it into an infinitive loop. To explain, `i` is equal to zero, and therefore less-than to `24`. But, unlike an if statement, the `while` repeatedly executes the `print` line until value of `i` exceeds twenty-three -- which is never.
+This code has crashed your program by sending it into an infinitive loop. To explain, `i` is equal to zero, and therefore less-than to `24`. But, unlike an `if` statement, the `while` repeatedly executes the `print` line until the value of `i` reaches twenty-four -- which is never.
 
 To increment `i` by one each time the line is printed, add one to it with each iteration of the loop:
 
@@ -457,9 +457,9 @@ while i < 24:
   <img src="{{ site.url }}/img/pitl03/iteration-increment.png" class="fullwidth" />
 </figure>
 
-You may name this `i` variable whatever you wish, but it is a popular convention to represent the *iterator* value using `i`.
+You may name this `i` variable whatever you wish, but it is a popular convention to represent the *iterator* value using an `i`.
 
-The final line states that `i` is equal to itself plus one. Once `i` reaches twenty-four, the program can continue with any other code that follows. To draw twenty-four circles, place a `ellipse` function within the loop:
+The final line (`i = i + 1`) states that `i` is equal to itself plus one. Once `i` reaches twenty-four, the program can continue with any other code that follows beneath the loop structure. To draw twenty-four circles, place an `ellipse` function within the loop:
 
 {% highlight py %}
 i = 0
@@ -476,7 +476,7 @@ Run the code. It appears that you have drawn a single circle:
   <img src="{{ site.url }}/img/pitl03/iteration-stacked-circles.png" />
 </figure>
 
-However, what you are actually is seeing twenty-four circles of the same size drawn in the same location. Adapt the ellipse, using the `i` value as a multiplier for the width and height arguments:
+However, what you are actually is seeing twenty-four circles of the same size drawn in the same location. Adapt the `ellipse`, using the `i` value as a multiplier for the width and height (third and fourth) arguments:
 
 {% highlight py %}
 i = 0
@@ -491,17 +491,17 @@ while i < 24:
   <img src="{{ site.url }}/img/pitl03/iteration-concentric-circles.png" />
 </figure>
 
-It should be pointed-out that the width/height arguments (`30*i`) of the first iteration are multiplied by `0`, so the first circle is placed in the very centre of the display window, but is effectively invisible. The other twenty-three happen to be enough to fill the 500 by 500 pixel area -- but by changing the condition, you can draw as many (or as few circles) as you wish.
+It should be pointed out that the width/height arguments (`30*i`) of the first iteration are multiplied by `0`, so the first circle is placed in the very centre of the display window but is effectively too small to be visible. The other twenty-three are sufficient to fill the 500 by 500-pixel area -- but by changing the condition, you can draw as many (or as few circles) as you wish.
 
 ### Augmented Assignment Operators
 
-You are already familiar with the `=` operator, but not its arithmetic variants. In the "concentric_circles" example, the `i` was incremented using this line of code:  
+You are already familiar with the `=` operator, but not its arithmetic variants. In the "concentric_circles" example, `i` was incremented using this line of code:  
 `i = i + 1`  
 To simplify this statement, one can instead write:  
 `i += 1`  
 
 Other similar operators include:  
-`i -= 1 ` is equivalent to&nbsp; `i = i + 1`  
+`i -= 1 ` is equivalent to&nbsp; `i = i - 1`  
 `i *= 1 ` is equivalent to&nbsp; `i = i * 1`  
 `i /= 1 ` is equivalent to&nbsp; `i = i / 1`
 
@@ -532,19 +532,19 @@ ellipse(100,100, 80,80)
   <img src="{{ site.url }}/img/pitl03/rows-of-circles-start.png" />
 </figure>
 
-The following sequence of steps outlines the simplest approach to begin tackling this task:
+The following sequence of steps outlines the most straightforward approach to begin tackling this task:
 
-1. create a `while` structure that loops twelve times (perhaps using a `print()` to monitor your iterator);
-2. using the loop, place the circles in one long row, extending past the right-edge of the display window;
+1. create a `while` structure that loops twelve times (consider using a `print()` to monitor your iterator);
+2. using the loop, place the circles in one long row, extending past the right edge of the display window;
 3. once the above is working, use an `if` statement within the loop to detect when the second row must begin.
 
-It's up to you to figure out the rest. Oh -- and remember that [modulo operator (%)]({% post_url 2018-06-12-processing.py_in_ten_lessons--01-_hello_world %}#modulo-operator)? This may prove handy here.
+It's up to you to figure out the rest. Oh -- and remember that [modulo operator (%)]({% post_url 2018-06-12-processing.py_in_ten_lessons--01-_hello_world %}#modulo-operator)? It may prove handy here.
 
 ### For Loops
 
-When programming a loop structure, you are not limited to `while` statements. The `for` loop operates in a similar manner, and depending on the scenario, you may elect to use one over the other. Perhaps the easiest way to explain a `for` loop is to convert something you have already written.
+When programming a loop structure, you are not limited to `while` statements. The `for` loop operates similarly; depending on the scenario, you may elect to use one over the other. Perhaps the easiest way to explain a `for` loop is to convert something you have already written.
 
-Create a new sketch and save it as "for_loop". Add the following the code form your "concentric_circles" sketch:
+Create a new sketch and save it as "for_loop". Add the following the code from your "concentric_circles" sketch:
 
 {% highlight py %}
 size(500,500)
@@ -561,7 +561,7 @@ while i < 24:
     i += 1
 {% endhighlight %}
 
-Notice how the `i` variable is created to serve as an iterator. With each iteration of the loop, it is vital that you increment this to avoid entering an endless loop. The `for` loop does away with the need for iterator variables. Adapt your code:
+Notice how the `i` variable is created to serve as an iterator. With each iteration of the loop, it is vital that you increment `i` to avoid entering an endless loop. The `for` loop does away with the need for iterator variables. Adapt your code to make use of a `for`:
 
 {% highlight py %}
 size(500,500)
@@ -575,13 +575,13 @@ for i in range(24):
     ellipse(width/2,height/2, 30*i,30*i)
 {% endhighlight %}
 
-Notice how the `i = 0` line has been removed, along with the line to increment it (`i += 1`). However, the result remains the same:
+Notice how the `i = 0` line has been removed, along with the line to increment it (`i += 1`). Despite these changes, the result remains the same:
 
 <figure>
   <img src="{{ site.url }}/img/pitl03/iteration-for-loop-adaption.png" class="fullwidth" />
 </figure>
 
-The `range()` function generates a list of values that the `for` then iterates over. With each iteration the active `range` value is assigned to the variable `i` -- although you may name this whatever you wish. For twenty-four iterations, the range function requires an argument of `24`; but the end value of twenty-four is never part of the generated list. The is because the first iteration begins at `0`.
+The `range()` function generates a list of values that the `for` then iterates over. With each iteration, the acting `range` value is assigned to the variable `i` -- although you may name this whatever you wish. For twenty-four iterations, the `range` function requires an argument of `24`; but the end value of twenty-four is never part of the generated list because the first iteration begins with `0`.
 
 The range function can handle between one and three parameters. Provide two arguments for a start and end value:
 
@@ -607,7 +607,7 @@ for i in range(0,24,2):
   <img src="{{ site.url }}/img/pitl03/iteration-for-loop-3-args.png" class="fullwidth" />
 </figure>
 
-Any iterable object may be used in combination with a `for`, meaning the `range()` function is not always necessary. This concept is explored in the upcoming lessons dealing with lists and dictionaries (or "arrays" if you are familiar with other programming languages).
+Any iterable object may be used in combination with a `for`, meaning the `range()` function is not always necessary. This concept is explored in the upcoming lessons dealing with lists and dictionaries (or "arrays" if you are familiar with other programming language terminology).
 
 ### For Loops Task
 
@@ -615,7 +615,7 @@ In this challenge you will recreate these three patterns using `for` loops:
 
 <figure>
   <img src="{{ site.url }}/img/pitl03/iteration-for-loops-task.png" />
-  <figcaption>The <span style="color:#0099FF">pale blue</span> lines and coordinates indicate the line drawn on the first iteration of each loop.</figcaption>
+  <figcaption>The <span style="color:#0099FF">pale blue</span> lines and coordinates detail the line drawn on the first iteration of each loop.</figcaption>
 </figure>
 
 You will be referencing this image repeatedly during the task, so it may be useful to <a href="{{ site.url }}/img/pitl03/iteration-for-loops-task.png" download>save a copy</a> and open a preview of it alongside your Processing editor.
@@ -632,24 +632,26 @@ strokeWeight(3)
 
 Here are a few clues to help you approach each pattern:
 
-* *Top-left pattern:* you should manage this without any hints; it has twelve lines, if you must know.
+* *Top-left pattern:* you should manage this without any hints; it has twelve lines if you must know.
 * *Top-right pattern:* the line spacing increases by a multiple of `1.5` with each iteration.
 * *Bottom-centre pattern*: consider using a modulo operator to establish `if` the iterator is odd or even.
 
+After successfully completing this, you should have a decent grasp of loops.
+
 ## Randomness
 
-The best computers can do is simulate randomness. Think about this for a moment: if you request a random number from a computer it will need to run some non-random set of instructions to pull a value. That said, computers are able to do to a pretty good job of this, relying on algorithms that generate *pseudorandom* numbers whose sequential appearance is statistically similar enough to a truly random sequence. This is okay for shuffling through your music collection, but best avoided for gambling and security applications.
+The best a computer can do is simulate randomness. Think about this for a moment: if you request a random number from a computer, it will need to run some non-random set of instructions to pull a value. That said, computers can manage a pretty good job of this, relying on algorithms that generate *pseudorandom* numbers whose sequential appearance is statistically similar enough to a truly random sequence. This is okay for shuffling through your music collection, but best avoided for gambling and security applications.
 
-For 'true' random numbers, computers can rely on things like key-stroke timings. For example, you may have pressed your last key 0.654 milseconds past the tick of the previous second. In the quest for true randomness, researchers have relied on everything from dice to roullette wheels, and between the mid-1920s and 50s one could even purchase special books full of random numbers. If you are really serious about plucking random numbers from the universe, there are hardware devices that rely on various quantum phenomena, like [radioactive decay](https://www.youtube.com/watch?v=SxP30euw3-0). However, for most applications, pseudorandomness will suffice.
+For 'true' random numbers, computers can rely on things like key-stroke timings. For example, you may have pressed your last key 0.654 milliseconds past the tick of the previous second. In the quest for true randomness, researchers have relied on everything from dice to roulette wheels, and between the mid-1920s and 50s one could even purchase special books full of random numbers. If you are really serious about plucking random numbers from the universe, there are hardware devices that rely on various quantum phenomena, like [radioactive decay](https://www.youtube.com/watch?v=SxP30euw3-0). However, for most applications, pseudorandomness will suffice.
 
-So, what do random sequences look like? First, consider *Perlin noise*. In 1983, Ken Perlin developed an algorithm for synthesizing organic textures and forms -- like terrains, fire, smoke, and clouds. The graphs below plot random points over fixed intervals of time. The upper line represents a sequence of 'purely' random points, whereas the lower line charts values generated with Perlin noise. From this, you can visually appreciate why the 'smoother' Perlin noise is better suited for generating something like a mountain range.
+So, what do random sequences look like? First, consider *Perlin noise*. In 1983, Ken Perlin developed an algorithm for synthesising organic textures and forms -- like terrains, fire, smoke, and clouds. The graphs below plot random points (vertical axis) over fixed intervals of time (horizontal axis). The upper line represents a sequence of 'purely' random points, whereas the lower line charts values generated with Perlin noise. From this, you can visually appreciate why the 'smoother' Perlin noise is better suited for generating something like a mountain range.
 
 <figure>
   <img src="{{ site.url }}/img/pitl03/random-random-v-noise.png" class="fullwidth" />
   <figcaption>Random (top) verse Perlin noise (bottom) sequences.</figcaption>
 </figure>
 
-Processing has functions for Perlin noise, but this lesson will focus on the `random()` and `randomSeed()` funtions.
+Processing has functions for Perlin noise, but this lesson will focus on the `random()` and `randomSeed()` functions.
 
 ### Random Functions
 

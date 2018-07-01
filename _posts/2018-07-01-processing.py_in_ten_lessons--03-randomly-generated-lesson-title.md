@@ -618,7 +618,7 @@ In this challenge you will recreate these three patterns using `for` loops:
   <figcaption>The <span style="color:#0099FF">pale blue</span> lines and coordinates indicate the line drawn on the first iteration of each loop.</figcaption>
 </figure>
 
-You will be referencing this image repeatedly during the task, so it may be useful to <a href="{{ site.url }}/img/pitl03/iteration-for-loop-challenges.png" download>save a copy</a> and open a preview of it alongside your Processing editor.
+You will be referencing this image repeatedly during the task, so it may be useful to <a href="{{ site.url }}/img/pitl03/iteration-for-loops-task.png" download>save a copy</a> and open a preview of it alongside your Processing editor.
 
 To begin, create a new sketch and save it as "for_loops_task". Add the following setup code:
 
@@ -681,7 +681,7 @@ x = random(5,10)
 print(x)
 {% endhighlight %}
 
-The above code will display a random floating point value between `5` and `10`. If you are after a random integer, use the `int()` function to convert the floating point value:
+The above code will display a random floating point value between `5` and `10`. If you are after a random integer, use the `int()` function. This converts the floating point to an integer by removing the decimal point and everything that follows it (effectively, rounding-down):
 
 {% highlight py %}
 x = random(5)
@@ -707,6 +707,7 @@ for i in range(100):
 
 <figure>
   <img src="{{ site.url }}/img/pitl03/random-points-1d.png" />
+  <figcaption>The spread of points will vary each time the sketch is run.</figcaption>
 </figure>
 
 Now edit the loop. Change the range to `1000` and plot the `point` using both a random x- and y-coordinate:
@@ -718,27 +719,165 @@ for i in range(1000):
 
 <figure>
   <img src="{{ site.url }}/img/pitl03/random-points-2d.png" />
+  <figcaption>Four runs of the same code. Notice (perhaps by comparing a given corner) how each is unique.</figcaption>
 </figure>
 
-Each time the code is run, it results in a slightly different random pattern. Recall that ... pseudorandom ...
+Each time the code is run, it produces a slightly different random pattern. However, recall that these are pseudorandom sequences. What the `random()` function is really doing is picking an initial number (based on something such as keystoke timing) and then generating an entire sequence based upon this. The initial value is referred to as the *seed*. Using Processing's `randomSeed()` function, one can set the seed parameter to ensure the pseudorandom numbers each time the sketch is run. Add a random seed to your working sketch -- you may use any integer, but use `213` to verify that your output matches that depicted below.
 
+{% highlight py %}
+randomSeed(213)
+size(600,600)
+...
+{% endhighlight %}
 
+<figure>
+  <img src="{{ site.url }}/img/pitl03/random-points-seed.png" />
+  <figcaption><code>randomSeed(213)</code></figcaption>
+</figure>
 
+Unlike the previous versions in which no random seed had been defined, every run of the code produces the same pattern, on any computer that executes it. This is useful in many applications. As a concrete example, suppose you developed a platform game in which the positions of obstacles are randomly generated. This feature saves you a lot of time, as you no longer have to design each level manually. However, you find that certain sequences of random numbers produce more engaging levels than others. Knowing these key seed values, you can reproduce a level with single number.
 
-* Looped pattern task (progressively jittery quads)
-* Read up on [break](http://py.processing.org/reference/break.html); and [continue](http://py.processing.org/reference/continue.html) statements
+### Truchet Tiles
+
+Sébastien Truchet (1657--1729), a French Dominican priest, was active in the fields of mathematics, hydraulics, graphics and typography. Among his many contributions, he developed a scheme for creating interesting patterns using tiles, which have since become known as *Truchet tiles*. The original Truchet tile is square in shape and divided diagonally between opposing corners. This tile can be rotated in mutliples of ninety degrees to produce four variants. 
+
+<figure>
+  <img src="{{ site.url }}/img/pitl03/random-truchet-contrast-set.png" />
+  <figcaption>The original Truchet tile, presented in its four possible orientations.</figcaption>
+</figure>
+
+These tiles are arranged an a square grid -- either randomly, or according to some pattern, to create aesthetically-pleasing patterns.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl03/random-truchet-variants.png" />
+  <figcaption>Systematic versus random (bottom-right) Truchet tile arrangements.</figcaption>
+</figure>
+
+There are other Truchet tile forms. Using the looping and randomness techniques from the lesson, you will now experiment with quarter-cirlce Truchet tiles.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl03/random-truchet-quarter-circle-set.png" />
+  <figcaption>Truchet quarter-circles presented in their two possible orientations.</figcaption>
+</figure>
+
+Create a new sketch and save it as "truchet_tiles". Add the floowing setup code, which includes a single tile:
+
+{% highlight py %}
+size(600,600)
+background('#004477')
+noFill()
+stroke('#FFFFFF')
+strokeWeight(3)
+
+arc(0,0, 50,50, 0,PI/2)
+arc(50,50, 50,50, PI,PI+PI/2)
+{% endhighlight %}
+
+<figure>
+  <img src="{{ site.url }}/img/pitl03/random-truchet-quarter-circle-single.png" />
+</figure>
+
+Comment-out the `arc` lines and tile the entire display window using `for` loop:
+
+{% highlight py %}
+#arc(0,0, 50,50, 0,PI/2)
+#arc(50,50, 50,50, PI,PI+PI/2)
+
+for i in range(1,145):
+    arc(col,row, 50,50, 0,PI/2)
+    arc(col+50,row+50, 50,50, PI,PI+PI/2)
+    col += 50
+    
+    if i%12 == 0:
+        row += 50
+        col = 0
+{% endhighlight %}
+
+<figure>
+  <img src="{{ site.url }}/img/pitl03/random-truchet-quarter-circle-single-loop.png" />
+</figure>
+
+The next step is to randomise the tiles. Becuase there are only two orientations, the loop must effectively 'flip a coin' with each iteration to select a tile. A `random(2)` will return floating point values ranging from `0.0` to `2.0`. Converting the result to an integer, therefore producing a `0` *or* `1`.
+
+{% highlight py %}
+for i in range(1,145):
+    print( int(random(2)) )
+
+    arc(col,row, 50,50, 0,PI/2)
+    ...
+{% endhighlight %}
+
+After verifying that the above code prints lines of `1` or `0`, adapt it for `True`/`False` results. 
+
+{% highlight py %}
+for i in range(1,145):
+    print( int(random(2)) == 1 )
+
+    arc(col,row, 50,50, 0,PI/2)
+    ...
+{% endhighlight %}
+
+<figure>
+  <img src="{{ site.url }}/img/pitl03/random-truchet-quarter-circle-flip-a-coin.png" class="fullwidth" />
+</figure>
+
+Because this operation returns a boolean value, it can be used as an `if` statement condition:
+
+{% highlight py %}
+for i in range(1,145):
+    #print( int(random(2)) == 1 )
+    
+    if int(random(2)) == 1:
+        arc(col,row, 50,50, 0,PI/2)
+        arc(col+50,row+50, 50,50, PI,PI+PI/2)
+    else:
+        arc(col+50,row, 50,50, PI/2,PI)
+        arc(col,row+50, 50,50, PI+PI/2,2*PI)
+        
+    col += 50
+    
+    if i%12 == 0:
+        row += 50
+        col = 0
+{% endhighlight %}
+
+<figure>
+  <img src="{{ site.url }}/img/pitl03/random-truchet-quarter-circle-done.png" />
+  <figcaption>Randomised quarter-circle sketch.</figcaption>
+</figure>
+
+If have ever played the strategy game, [Trax](https://en.wikipedia.org/wiki/Trax_(game)), you will recognise this quarter circle tile. Another tile-based abstract game, [Tantrix](https://en.wikipedia.org/wiki/Tantrix), uses a hexagonal adaption of a Truchet tile.
+
+Tiles are an intersting area to explore using Processing, and we'll look at other types in the lessons to come.
+
+## Progressively-Jittery Quads Task
+
+Here is the final challenge before moving onto lesson 04.
+
+This one appears in Ira Greenberg's *Processing: Creative Coding and Generative Art in Processing 2* (page 80). It's a great book that presents a fun and creative approach to learning programming. It is based on the Java -- rather than Python programming language -- but well worth a read.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl03/progressively-jittery-quads.png" />
+</figure>
+
+You will be referencing this image during the task, so it may be useful to <a href="{{ site.url }}/img/pitl03/progressively-jittery-quads.png" download>save a copy</a> and open a preview of it alongside your Processing editor.
+
+Create a new sketch and save is "progressively_jittery_quads". The display window is 600 pixels wide by 600 pixels high. The rest is for you to work out.
 
 ## Lesson 04
 
-...
+That's it for lesson 03. Control flow is a tricky matter to get your head around at first! The next lesson deals with animation. The code involved is probably simpler, but there is a bit you need to know about matrices and trigonometry. If you find yourself experiencing disturbing flashbacks of high school math class -- take a deep breath and relax. This will be a practical and visual reintroduction to these concepts, with Processing crunching all of the numbers for you.
+
+If statements and loops will reappear thoughout the lessons to come; which will give plenty of opportunity to master them. Sometimes it is useful to skip over loop iterations, or even 'break-out' of loop structures. If you have some time, you can read up on the [break](http://py.processing.org/reference/break.html) and [continue](http://py.processing.org/reference/continue.html) statements.
 
 **Begin lesson 04:** fps > 12 == φ *(coming soon)*
 {% comment %}
-...
+**Begin lesson 04:** [fps > 12 == φ]()
 {% endcomment %}
 
 [Complete list of Processing lessons]({{ site.baseurl }}/#processing)
 
 ## References
 
+* https://www.apress.com/us/book/9781430244646
 * https://www.youtube.com/watch?v=SxP30euw3-0

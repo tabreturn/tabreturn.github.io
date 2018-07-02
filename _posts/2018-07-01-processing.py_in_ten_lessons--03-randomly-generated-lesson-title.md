@@ -109,7 +109,7 @@ Relational operators are particularly useful when combined with `if` and other c
 
 ### If Statements
 
-If statements are one of the most essential means of introducing logic to your program. Add this basic example to your working sketch:
+If statements are one of the essential means of introducing logic to your program. Add this basic example to your working sketch:
 
 {% highlight py %}
 ...
@@ -156,7 +156,7 @@ if mark >= 50:
         print('Bien Hecho!')
 {% endhighlight %}
 
-This displays "Bien Hecho!".
+The above displays "Bien Hecho!".
 
 #### Else-If Statements
 
@@ -665,7 +665,7 @@ stroke('#FFFFFF')
 strokeWeight(3)
 {% endhighlight %}
 
-The `random()` function takes one or two arguments. One arguments defines an upper limit:
+The `random()` function takes one or two arguments. One argument defines an upper limit:
 
 {% highlight py %}
 ...
@@ -683,7 +683,7 @@ x = random(5,10)
 print(x)
 {% endhighlight %}
 
-The above code will display a random floating point value between `5` and `10`. If you are after a random integer, use the `int()` function. This converts the floating point to an integer by removing the decimal point and everything that follows it (effectively, rounding-down):
+The above displays a random floating point value between `5` and `10`. If it is a random integer you seek, wrap this the `x` in an `int()` function. This converts the floating point to an integer by removing the decimal point and everything that follows it (effectively, rounding-down):
 
 {% highlight py %}
 x = random(5)
@@ -698,7 +698,7 @@ print( int(x) )
   <figcaption>Given that the values are random, the Console output will appear different each time you run the sketch.</figcaption>
 </figure>
 
-The next step is to generate one hundred random values. Rather than displaying them as a long list in the Console area, plot them in a line in the display window:
+The next step is to generate one hundred random values. Rather than print a long list in the Console area, plot them as a series of points along the same y-axis:
 
 {% highlight py %}
 ...
@@ -724,7 +724,7 @@ for i in range(1000):
   <figcaption>Four runs of the same code. Notice (perhaps by comparing a given corner) how each is unique.</figcaption>
 </figure>
 
-Each time the code is run, it produces a slightly different random pattern. However, recall that these are pseudorandom sequences. What the `random()` function is really doing is picking an initial number (based on something such as keystoke timing) and then generating an entire sequence based upon this. The initial value is referred to as the *seed*. Using Processing's `randomSeed()` function, one can set the seed parameter to ensure the pseudorandom numbers each time the sketch is run. Add a random seed to your working sketch -- you may use any integer, but use `213` to verify that your output matches that depicted below.
+Each time the code is run, it produces a slightly different pattern. Recall, though, that these are pseudorandom sequences. What the `random()` function does is pick an initial random number (based on something such as keystroke timing), then generates an entire sequence based upon this. The initial value is referred to as the *seed*. Using Processing's `randomSeed()` function, one can set the seed parameter manually, thereby ensuring that the same sequence of pseudorandom numbers is generated each time the sketch is run. Add a `randomSeed()` to your working sketch -- the argument may be any integer, but use `213` to verify that your output matches that depicted below.
 
 {% highlight py %}
 randomSeed(213)
@@ -737,32 +737,32 @@ size(600,600)
   <figcaption><code>randomSeed(213)</code></figcaption>
 </figure>
 
-Unlike the previous versions in which no random seed had been defined, every run of the code produces the same pattern, on any computer that executes it. This is useful in many applications. As a concrete example, suppose you developed a platform game in which the positions of obstacles are randomly generated. This feature saves you a lot of time, as you no longer have to design each level manually. However, you find that certain sequences of random numbers produce more engaging levels than others. Knowing these key seed values, you can reproduce a level with single number.
+Unlike the earlier versions in which no random seed had been defined, every run of the code produces the same pattern, on any computer that executes it. This is useful in many applications. As a concrete example, suppose you developed a platform game in which the positions of obstacles are randomly generated. This feature saves you a lot of time, as you no longer have to design each level manually. However, you find that certain sequences of random numbers produce more engaging levels than others. If you are aware of these key seed values, you can reproduce each good level with an integer.
 
 ### Truchet Tiles
 
-Sébastien Truchet (1657--1729), a French Dominican priest, was active in the fields of mathematics, hydraulics, graphics and typography. Among his many contributions, he developed a scheme for creating interesting patterns using tiles, which have since become known as *Truchet tiles*. The original Truchet tile is square in shape and divided diagonally between opposing corners. This tile can be rotated in mutliples of ninety degrees to produce four variants. 
+Sébastien Truchet (1657--1729), a French Dominican priest, was active in the fields of mathematics, hydraulics, graphics and typography. Among his many contributions, he developed a scheme for creating interesting patterns using tiles -- which have since become known as *Truchet tiles*. The original Truchet tile is square and divided by a diagonal line between opposing corners. This tile can be rotated in multiples of ninety degrees to produce four variants. 
 
 <figure>
   <img src="{{ site.url }}/img/pitl03/random-truchet-contrast-set.png" />
   <figcaption>The original Truchet tile, presented in its four possible orientations.</figcaption>
 </figure>
 
-These tiles are arranged an a square grid -- either randomly, or according to some pattern, to create aesthetically-pleasing patterns.
+These tiles are arranged on a square grid -- either randomly, or according to some pattern -- to create aesthetically-pleasing patterns.
 
 <figure>
   <img src="{{ site.url }}/img/pitl03/random-truchet-variants.png" />
   <figcaption>Systematic versus random (bottom-right) Truchet tile arrangements.</figcaption>
 </figure>
 
-There are other Truchet tile forms. Using the looping and randomness techniques from the lesson, you will now experiment with quarter-cirlce Truchet tiles.
+There are other Truchet tile forms, such as the quarter-circle tile:
 
 <figure>
   <img src="{{ site.url }}/img/pitl03/random-truchet-quarter-circle-set.png" />
-  <figcaption>Truchet quarter-circles presented in their two possible orientations.</figcaption>
+  <figcaption>Truchet quarter-circle tile presented in its two possible orientations.</figcaption>
 </figure>
 
-Create a new sketch and save it as "truchet_tiles". Add the floowing setup code, which includes a single tile:
+Using the looping and randomness techniques from the lesson, you will now experiment with this. Create a new sketch and save it as "truchet_tiles". Add the following setup code, which includes a single tile:
 
 {% highlight py %}
 size(600,600)
@@ -779,11 +779,14 @@ arc(50,50, 50,50, PI,PI+PI/2)
   <img src="{{ site.url }}/img/pitl03/random-truchet-quarter-circle-single.png" />
 </figure>
 
-Comment-out the `arc` lines and tile the entire display window using `for` loop:
+Now comment-out the `arc` lines and tile the entire display window using a `for` loop:
 
 {% highlight py %}
 #arc(0,0, 50,50, 0,PI/2)
 #arc(50,50, 50,50, PI,PI+PI/2)
+
+col = 0
+row = 0
 
 for i in range(1,145):
     arc(col,row, 50,50, 0,PI/2)
@@ -799,7 +802,7 @@ for i in range(1,145):
   <img src="{{ site.url }}/img/pitl03/random-truchet-quarter-circle-single-loop.png" />
 </figure>
 
-The next step is to randomise the tiles. Becuase there are only two orientations, the loop must effectively 'flip a coin' with each iteration to select a tile. A `random(2)` will return floating point values ranging from `0.0` to `2.0`. Converting the result to an integer, therefore producing a `0` *or* `1`.
+The next step is to randomise each tile's orientation. Because there are only two options, the loop must effectively 'flip a coin' with each iteration. A `random(2)` will return floating point values ranging from `0.0` up to `2.0`. Converting the result to an integer, therefore, produces a `0` *or* `1`.
 
 {% highlight py %}
 for i in range(1,145):
@@ -809,7 +812,7 @@ for i in range(1,145):
     ...
 {% endhighlight %}
 
-After verifying that the above code prints lines of `1` or `0`, adapt it for `True`/`False` results. 
+After verifying that the above code prints lines of `1` or `0` to the Console, adapt it to display `True`/`False` results. 
 
 {% highlight py %}
 for i in range(1,145):
@@ -823,7 +826,7 @@ for i in range(1,145):
   <img src="{{ site.url }}/img/pitl03/random-truchet-quarter-circle-flip-a-coin.png" class="fullwidth" />
 </figure>
 
-Because this operation returns a boolean value, it can be used as an `if` statement condition:
+Because this operation returns a boolean value, it can be used as an `if` statement condition. Add an `if`-`else` structure:
 
 {% highlight py %}
 for i in range(1,145):
@@ -848,15 +851,15 @@ for i in range(1,145):
   <figcaption>Randomised quarter-circle sketch.</figcaption>
 </figure>
 
-If have ever played the strategy game, [Trax](https://en.wikipedia.org/wiki/Trax_(game)), you will recognise this quarter circle tile. Another tile-based abstract game, [Tantrix](https://en.wikipedia.org/wiki/Tantrix), uses a hexagonal adaption of a Truchet tile.
+If you have ever played the strategy game [Trax](https://en.wikipedia.org/wiki/Trax_(game)), this pattern will look familiar. Another tile-based strategy game [Tantrix](https://en.wikipedia.org/wiki/Tantrix) uses a hexagonal adaption of a Truchet tile.
 
-Tiles are an intersting area to explore using Processing, and we'll look at other types in the lessons to come.
+Tiles are an exciting area to explore using Processing, and we'll look at other types in the lessons to come.
 
 ## Progressively-Jittery Quads Task
 
 Here is the final challenge before moving onto lesson 04.
 
-This one appears in Ira Greenberg's *Processing: Creative Coding and Generative Art in Processing 2* (page 80). It's a great book that presents a fun and creative approach to learning programming. It is based on the Java -- rather than Python programming language -- but well worth a read.
+This one appears in Ira Greenberg's *Processing: Creative Coding and Generative Art in Processing 2* (page 80). It's a great book that presents a fun and creative approach to learning programming. It is based on Processing's Java mode (rather than Python) and well worth a read.
 
 <figure>
   <img src="{{ site.url }}/img/pitl03/progressively-jittery-quads.png" />
@@ -864,13 +867,15 @@ This one appears in Ira Greenberg's *Processing: Creative Coding and Generative 
 
 You will be referencing this image during the task, so it may be useful to <a href="{{ site.url }}/img/pitl03/progressively-jittery-quads.png" download>save a copy</a> and open a preview of it alongside your Processing editor.
 
-Create a new sketch and save is "progressively_jittery_quads". The display window is 600 pixels wide by 600 pixels high. The rest is for you to work out.
+Create a new sketch and save is "progressively_jittery_quads". The display window is 600 pixels wide by 600 pixels high. Go ahead and complete the task.
 
 ## Lesson 04
 
-That's it for lesson 03. Control flow is a tricky matter to get your head around at first! The next lesson deals with animation. The code involved is probably simpler, but there is a bit you need to know about matrices and trigonometry. If you find yourself experiencing disturbing flashbacks of high school math class -- take a deep breath and relax. This will be a practical and visual reintroduction to these concepts, with Processing crunching all of the numbers for you.
+That’s it for lesson 03. Kudos for getting through it -- control flow is a tricky matter to get your head around at first! I trust that introducing random values has inspired some exciting project ideas.
 
-If statements and loops will reappear thoughout the lessons to come; which will give plenty of opportunity to master them. Sometimes it is useful to skip over loop iterations, or even 'break-out' of loop structures. If you have some time, you can read up on the [break](http://py.processing.org/reference/break.html) and [continue](http://py.processing.org/reference/continue.html) statements.
+The next lesson deals with animation. There is a bit you need to know about matrices and trigonometry, though. If you find yourself experiencing disturbing flashbacks of high school math class – take a deep breath and relax. Lesson 04 will be a practical and visual reintroduction to these concepts, with Processing crunching all of the numbers for you.
+
+If statements and loops will reappear throughout this course, which will give you plenty of opportunities to master them. If you have some extra time, read up on the [continue](http://py.processing.org/reference/continue.html) and [break](http://py.processing.org/reference/break.html) statements. These are two useful loop techniques that allow one to skip over iterations, or to ‘break-out’ of loop structures.
 
 **Begin lesson 04:** fps > 12 == φ *(coming soon)*
 {% comment %}

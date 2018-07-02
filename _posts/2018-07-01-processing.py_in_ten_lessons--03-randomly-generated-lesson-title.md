@@ -3,7 +3,6 @@ layout: post
 comments: true
 title: "Processing.py in Ten Lessons -- 03: &lt;randomly generated lesson title>"
 categories: code processing python
-published: false
 ---
 
 ***Covered in this lesson:***  

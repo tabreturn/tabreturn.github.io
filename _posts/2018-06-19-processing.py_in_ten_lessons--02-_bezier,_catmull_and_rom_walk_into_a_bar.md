@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title: "Processing.py in Ten Lessons -- 02: Bézier, Catmull, and Rom ..."
+title: "Processing.py in Ten Lessons -- 02: Bézier, Catmull and Rom walk into a bar ..."
 categories: code processing python
 ---
 

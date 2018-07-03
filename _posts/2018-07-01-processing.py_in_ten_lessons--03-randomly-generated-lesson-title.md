@@ -876,9 +876,9 @@ The next lesson deals with animation. There is a bit you need to know about matr
 
 If statements and loops will reappear throughout this course, which will give you plenty of opportunities to master them. If you have some extra time, read up on the [continue](http://py.processing.org/reference/continue.html) and [break](http://py.processing.org/reference/break.html) statements. These are two useful loop techniques that allow one to skip over iterations, or to ‘break-out’ of loop structures.
 
-**Begin lesson 04:** fps > 12 == φ *(coming soon)*
+**Begin lesson 04:** β = fps > 12 *(coming soon)*
 {% comment %}
-**Begin lesson 04:** [fps > 12 == φ]()
+**Begin lesson 04:** [β = fps > 12]()
 {% endcomment %}
 
 [Complete list of Processing lessons]({{ site.baseurl }}/#processing)

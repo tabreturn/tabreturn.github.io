@@ -29,8 +29,14 @@ pre, code {
 }
 
 ol, ul {
+  list-style-position: inside;
   margin-left: 0;
   margin-right: 0;
+  padding-left: 0;
+}
+
+li {
+  word-break: break-all;
 }
 
 #close-button {

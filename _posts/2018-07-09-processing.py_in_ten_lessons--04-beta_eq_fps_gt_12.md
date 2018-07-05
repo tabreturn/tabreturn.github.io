@@ -222,11 +222,51 @@ def draw():
     ellipse(x,height/2, 47,47)
 {% endhighlight %}
 
-A motion trail has been added to many of animated results in these lessons in order to convey a sense of the motion.
+A motion trail has been added to convey the direction of the motion.
 
 <figure>
   <img src="{{ site.url }}/img/pitl04/global-variables-ellipse.png" />
+  <figcaption>The motion trail indicates left-to-right movement.</figcaption>
 </figure>
+
+### Saving Frames
+
+...
+
+{% highlight py %}
+def draw():
+    global x
+    background('#004477')
+    x += 1
+    print(x)
+    ellipse(x,height/2, 47,47)
+    
+    if frameCount % 100 == 0:
+        saveFrame()
+{% endhighlight %}
+
+
+<figure>
+  <img src="{{ site.url }}/img/pitl04/global-variables-saveframe-folder.png" />
+</figure>
+
+...
+
+<figure>
+  <img src="{{ site.url }}/img/pitl04/global-variables-saveframe-frames.png" />
+  <figcaption>Arranged left-to-right, top-to-bottom: frames 100, 200, 300 and 400.</figcaption>
+</figure>
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## Transformations

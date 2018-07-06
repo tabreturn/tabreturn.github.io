@@ -231,7 +231,9 @@ A motion trail has been added to convey the direction of the motion.
 
 ### Saving Frames
 
-...
+Processing provides two functions to save frames as image files: `save()` and `saveFrame()`.
+
+Each time the `saveFrame()` function is called it saves a TIFF (.tif) file in the sketch folder, naming it using the current frame count. Add the following code to save every hundredth frame:
 
 {% highlight py %}
 def draw():
@@ -245,31 +247,162 @@ def draw():
         saveFrame()
 {% endhighlight %}
 
+Run the sketch and watch the sketch folder. As every hundredth frame is encountered, a new file appears named "screen-" followed by a four digit frame count (padded with leading zeros).
 
 <figure>
   <img src="{{ site.url }}/img/pitl04/global-variables-saveframe-folder.png" />
 </figure>
-
-...
 
 <figure>
   <img src="{{ site.url }}/img/pitl04/global-variables-saveframe-frames.png" />
   <figcaption>Arranged left-to-right, top-to-bottom: frames 100, 200, 300 and 400.</figcaption>
 </figure>
 
+If you wish to save the file in some format other than TIFF -- such as JPEG, PNG, or TARGA -- refer to the relavent [reference entry](http://py.processing.org/reference/saveFrame.html).
 
+The [`save()`](http://py.processing.org/reference/save.html) function differs from `saveFrame()` in that it accepts a file-name argument -- but it does not automatically append frame count digits.
 
+## DVD Screensaver Task
 
+DVD players commonly feature a bouncing DVD logo as a screensaver, appearing after a given period of inactivity. You may also have seen some variation of this on another digital device, albeit with and different graphic. Intriguingly, people often find themselves staring at the pointless animation in the hope of witnessing the logo land perfectly in the corner of the screen. If you're interested to know how long you can expect to wait for such an occurance, refer to this excellent [Lost Math Lessons article](http://lostmathlessons.blogspot.com/2016/03/bouncing-dvd-logo.html).
 
+Create a new sketch and save it as "dvd_screensaver". Within this, create a "data" folder. Download this “dvd-logo.png” file and place it in the data folder:
 
+<a href="{{ site.url }}/img/pitl04/dvd-logo.png" download>dvd-logo.png</a>
 
+Add the following code:
 
+{% highlight py %}
+x = 0
+xspeed = 2
+logo = None
 
+def setup():
+    global logo
+    size(800,600)
+    logo = loadImage('dvd-logo.png')
 
+def draw():
+    global x, xspeed, logo
+    background('#000000')
+    x += xspeed
+    image(logo, x,100)
+{% endhighlight %}
 
+The only the unfamilair line is the `logo = None`. This defines the `logo` variable as an empty container in the global scope, which is then assigned in the `setup()` function. the Run the sketch.
 
+<figure>
+  <img src="{{ site.url }}/img/pitl04/dvd-logo-setup.png" />
+  <figcaption>The motion trail indicates left-to-right movement.</figcaption>
+</figure>
+
+Your challenge is to complete the task. The logo should begin moving at an angle, bouncing every wall it encounters thereafter. Perhaps consider randomising the starting angle.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl04/dvd-logo-bounce.png" />
+</figure>
 
 ## Transformations
+
+Processing's transformation functions provide a convenient means of dealing with complex geometric operations. Such operations would include scaling, rotation, shearing, and translation. These are especially useful for shapes comprised of vertices. Consider that you wished to scale and rotate the star shape depicted at the top-left, such that it results in bottom-right:
+
+<figure>
+  <img src="{{ site.url }}/img/pitl04/transformations-star.png" />
+</figure>
+
+Firstly, consider that the code for the untransformed star's ten vertices looks something like this:
+
+{% highlight py %}
+beginShape()
+vertex(190,66)
+vertex(220,155)
+vertex(310,155)
+vertex(238,210)
+vertex(264,298)
+vertex(190,246)
+vertex(114,298)
+vertex(140,210)
+vertex(68,155)
+vertex(158,155)
+endShape(CLOSE)
+{% endhighlight %}
+
+To calculate the coordinates for the new vertex positions, a *matrix* is required.
+
+### Matrices
+
+In mathematics, a matrix (plural: matrices) is a rectangular array of values. As an example, here is a two-by-three matrix (2 rows, 3 columns):
+
+<math>
+  <mfenced open = "[" close="]">
+    <mtable>
+      <mtr>
+        <mtd><mn>2</mn></mtd>
+        <mtd><mn>5</mn></mtd>
+        <mtd><mn>12</mn></mtd>
+      </mtr>
+      <mtr>
+        <mtd><mn>19</mn></mtd>
+        <mtd><mn>9</mn></mtd>
+        <mtd><mn>7</mn></mtd>
+      </mtr>
+    </mtable>
+  </mfenced>
+</math>
+
+Being that digital images are comprised of rectangular grids of pixels, it is easy to imagine why matrices are used extensively in graphics processing. Nevertheless, they can be found applied in various fields of mathematics and other sciences.
+
+To step you though how matrices operate, we'll take a look at a few practical examples. This is all rather mathematical, but the idea is to grasp a matrix as a concept. Following this section, you will be introduced to Processing's built-in matrix functions -- meaning you will no longer need to perform the calculations yourself.
+
+Create a new sketch and save it as "matrices". Within the sketch's folder, create a "data" sub-folder containing a copy of the grid.png and grid-overlay.png files:
+
+<a href="{{ site.url }}/img/pitl04/grid.png" download>grid.png</a>  
+<a href="{{ site.url }}/img/pitl04/grid-overlay.png" download>grid-overlay.png</a>
+
+<figure>
+  <img src="{{ site.url }}/img/pitl04/transformations-matrices-folder.png" />
+</figure>
+
+Add the following code:
+
+{% highlight py %}
+size(800, 800)
+grid = loadImage('grid.png')
+image(grid, 0, 0)
+noFill()
+stroke('#FFFFFF')
+strokeWeight(3)
+
+x = 400; y = 200
+w = 200; h = 200
+
+rect(x, y, w, h)
+{% endhighlight %}
+
+In Python, semicolons (`;`) are used as a substitute for new lines. The `x`/`y`/`w`/`h` variable assignments have been arranged like this as a matter of style. If you wish to avoid the semicolons, you may write each variable on its own line. Run the sketch and confirm that your display window matches that below.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl04/transformations-matrices-setup.png" />
+</figure>
+
+Matrices operate on vertices, whereas the `rect()` function does not. To move forward, substitute the `rect()` function with `quad()`
+
+{% highlight py %}
+#rect(x, y, w, h)
+quad(
+  x, y,
+  x, y+h, 
+  x+w, y+h, 
+  x+w, y
+)
+{% endhighlight %}
+
+The output appears the same, but now based on vertices. Of course, this code does not make use of Processing's `vertex()` functions, but each pair of values comprises a vertex nonetheless.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl04/transformations-matrices-quad.png" />
+  <figcaption>Vertices labelled according to positions.</figcaption>
+</figure>
 
 ## Time and Date
 
@@ -286,4 +419,7 @@ That’s it for lesson 04.
 
 ## References
 
+* http://lostmathlessons.blogspot.com/2016/03/bouncing-dvd-logo.html
+* https://commons.wikimedia.org/wiki/File:DVD_logo.svg
 * https://en.wikipedia.org/wiki/Beta_movement
+

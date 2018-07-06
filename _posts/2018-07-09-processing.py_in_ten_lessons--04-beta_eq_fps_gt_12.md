@@ -656,27 +656,34 @@ quad(
 
 
 
+#### Rotate
+
+... radians (45deg = 0.784 rad) ...
 
 
 
+#### Shear
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+...
 Matrices are a deep and complex area of mathematics, of which we have barely scratched the surface. Yet, this section has provided some insight into the inner-workings of Processing's transformation functions to be reviewed next.
+
+
+#### Processing Transform Functions
+
+...
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Time and Date
 

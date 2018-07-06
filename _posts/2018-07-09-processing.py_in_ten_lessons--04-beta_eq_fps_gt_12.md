@@ -379,7 +379,7 @@ w = 200; h = 200
 rect(x, y, w, h)
 {% endhighlight %}
 
-In Python, semicolons (`;`) are used as a substitute for new lines. The `x`/`y`/`w`/`h` variable assignments have been arranged like this as a matter of style. If you wish to avoid the semicolons, you may write each variable on its own line. Run the sketch and confirm that your display window matches that below.
+In Python, semicolons (`;`) are used as a substitute for new lines. The `x`/`y`/`w`/`h` variable assignments have been arranged like this as a matter of style. The `x`/`y` values represent the top-left corner of the square, and the `w`/`h` variables its width and height. If you wish to avoid the semicolons, you may write each variable on its own line. Run the sketch and confirm that your display window matches that below.
 
 <figure>
   <img src="{{ site.url }}/img/pitl04/transformations-matrices-setup.png" />
@@ -397,12 +397,286 @@ quad(
 )
 {% endhighlight %}
 
-The output appears the same, but now based on vertices. Of course, this code does not make use of Processing's `vertex()` functions, but each pair of values comprises a vertex nonetheless.
-
 <figure>
   <img src="{{ site.url }}/img/pitl04/transformations-matrices-quad.png" />
-  <figcaption>Vertices labelled according to positions.</figcaption>
+  <figcaption>Vertices labelled according to the above variables.</figcaption>
 </figure>
+
+The output appears the same, but is now based on vertices. Of course, this code does not make use of Processing's `vertex()` functions, but each pair of values comprises a vertex nonetheless.
+
+#### Translate
+
+The first transformation you will perform is a *translate*. This involves moving the shape a given distance in some direction. This is easy to perform without a matrix -- for example, to move the square one hundred pixels to right, all that one needs to do is add `100` to each vertice's x-coordinates. However, you will perform this using a matrix.
+
+Firstly, take note how the top-left vertex `(x, y)` determines the positions of the other three vertices. This means that the only matrix operation you need perform is on the top-left vertex -- the remaining vertices can be calcuated by adding the relevant `w` and `h` values. The matrix is you are manipulating can therefore be expressed as:
+
+<math>
+  <mfenced open = "[" close="]">
+    <mtable>
+      <mtr>
+        <mtd><mi>x</mi></mtd>
+      </mtr>
+      <mtr>
+        <mtd><mi>y</mi></mtd>
+      </mtr>
+    </mtable>
+  </mfenced>
+</math>
+
+Or, if you subsitute the variables with their corresponding values:
+
+<math>
+  <mfenced open = "[" close="]">
+    <mtable>
+      <mtr>
+        <mtd><mn>400</mn></mtd>
+      </mtr>
+      <mtr>
+        <mtd><mn>200</mn></mtd>
+      </mtr>
+    </mtable>
+  </mfenced>
+</math>
+
+To translate this matrix, add (or subtract) another matrix. To perform a matrix addition, add each of the top values of each matrix; then the bottom values:
+
+<math>
+  <mfenced open = "[" close="]">
+    <mtable>
+      <mtr>
+        <mtd><mi>x</mi></mtd>
+      </mtr>
+      <mtr>
+        <mtd><mi>y</mi></mtd>
+      </mtr>
+    </mtable>
+  </mfenced>
+  <mo>+</mo>
+  <mfenced open = "[" close="]">
+    <mtable>
+      <mtr>
+        <mtd><mi>a</mi></mtd>
+      </mtr>
+      <mtr>
+        <mtd><mi>b</mi></mtd>
+      </mtr>
+    </mtable>
+  </mfenced>
+  <mo>=</mo>
+  <mfenced open = "[" close="]">
+    <mtable>
+      <mtr>
+        <mtd>
+          <mi>x</mi>
+          <mo>+</mo>
+          <mi>a</mi>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd>
+          <mi>y</mi>
+          <mo>+</mo>
+          <mi>b</mi>
+        </mtd>
+      </mtr>
+    </mtable>
+  </mfenced>
+</math>
+
+Add some new code to the bottom of your existing sketch -- namely: two new variables representing values `a` and `b`; a yellow stroke; and a new `quad()` that integrates the matrix calculations within its arguments:
+
+{% highlight py %}
+a = 100; b = -80
+stroke('#FFFF00')
+quad(
+  x+a, y+b,
+  x+a, y+h+b, 
+  x+w+a, y+h+b, 
+  x+w+a, y+b
+)
+{% endhighlight %}
+
+Run the sketch. The new yellow square is drawn `100` pixels further right and `80` pixels higher than the original. 
+
+<figure>
+  <img src="{{ site.url }}/img/pitl04/transformations-matrices-translate.png" />
+</figure>
+
+#### Scale
+
+To scale a shape, one must *multiply* the matrix you wish to transform by one describing a translation. In mathematical notation, this can be represented as: 
+
+<math>
+  <mfenced open = "[" close="]">
+    <mtable>
+      <mtr>
+        <mtd><mi>x</mi></mtd>
+      </mtr>
+      <mtr>
+        <mtd><mi>y</mi></mtd>
+      </mtr>
+    </mtable>
+  </mfenced>
+  <mo>×</mo>
+  <mfenced open = "[" close="]">
+    <mtable>
+      <mtr>
+        <mtd><mi>a</mi></mtd>
+        <mtd><mi>b</mi></mtd>
+      </mtr>
+      <mtr>
+        <mtd><mi>c</mi></mtd>
+        <mtd><mi>d</mi></mtd>
+      </mtr>
+    </mtable>
+  </mfenced>
+</math>
+
+And this is the point where the power of matrices becomes evident! Depending on the values you subsitute for `a`, `b`, `c`, and `d`, the result will be a either scale, reflect, squeeze, rotate, or shear operation. Take note of how a matrix multiplication is performed:
+
+<math>
+  <mfenced open = "[" close="]">
+    <mtable>
+      <mtr>
+        <mtd><mi>a</mi></mtd>
+        <mtd><mi>b</mi></mtd>
+      </mtr>
+      <mtr>
+        <mtd><mi>c</mi></mtd>
+        <mtd><mi>d</mi></mtd>
+      </mtr>
+    </mtable>
+  </mfenced>
+  <mfenced open = "[" close="]">
+    <mtable>
+      <mtr>
+        <mtd><mi>x</mi></mtd>
+      </mtr>
+      <mtr>
+        <mtd><mi>y</mi></mtd>
+      </mtr>
+    </mtable>
+  </mfenced>
+  <mo>=</mo>
+  <mfenced open = "[" close="]">
+    <mtable>
+      <mtr>
+        <mtd>
+          <mi>a</mi>
+          <mi>x</mi>
+          <mo>+</mo>
+          <mi>b</mi>
+          <mi>y</mi>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd>
+          <mi>c</mi>
+          <mi>x</mi>
+          <mo>+</mo>
+          <mi>d</mi>
+          <mi>y</mi>
+        </mtd>
+      </mtr>
+    </mtable>
+  </mfenced>
+</math>
+
+To scale the square, `a` multiplies the width, and `b` multiplies the height. Add some code that draws a new orange square that is half the size of the white one:
+
+{% highlight py %}
+a = 0.5; b = 0
+c = 0; d = 0.5
+stroke('#FF9900')
+quad(
+  x*a + y*b,         x*c + y*d, 
+  x*a + (y+h)*b,     x*c + (y+h)*d, 
+  (x+w)*a + (y+h)*b, (x+w)*c + (y+h)*d, 
+  (x+w)*a + y*b,     (x+w)*c + y*d
+)
+{% endhighlight %}
+
+Run the sketch. The orange square is half the szie of the white square, but the position has changed:
+
+<figure>
+  <img src="{{ site.url }}/img/pitl04/transformations-matrices-scale.png" />
+</figure>
+
+To reveal why the position changes, add the grid-overlay.png file to your code, but halve its size using a third and fourth `image()` argument:
+
+{% highlight py %}
+grido = loadImage('grid-overlay.png')
+image(grido, 0,0, 800/2,800/2)
+
+a = 0.5; b = 0
+c = 0; d = 0.5
+stroke('#FF9900')
+quad(
+  x*a + y*b,         x*c + y*d, 
+  x*a + (y+h)*b,     x*c + (y+h)*d, 
+  (x+w)*a + (y+h)*b, (x+w)*c + (y+h)*d, 
+  (x+w)*a + y*b,     (x+w)*c + y*d
+)
+{% endhighlight %}
+
+When one performs a scale transformation, this is equivlent to scaling the grid upon which the shape is plotted, toward the orgin (0,0) -- as evidenced by the visual ouput:
+
+<figure>
+  <img src="{{ site.url }}/img/pitl04/transformations-matrices-scale-grid-overlay.png" />
+  <figcaption>The <span style="color:#0099FF">brighter blue</span> lines and numbers are those of the grid-overlay.png file.</figcaption>
+</figure>
+
+Scaling need not be proportionate. Comment out the grid-overlay image, and adjust your `a` and `b` variables for a distorted square:
+
+{% highlight py %}
+grido = loadImage('grid-overlay.png')
+#image(grido, 0,0, 800/2,800/2)
+
+a = 0.3; b = 0
+c = 0;   d = 1.8
+stroke('#FF9900')
+quad(
+  x*a + y*b,         x*c + y*d, 
+  x*a + (y+h)*b,     x*c + (y+h)*d, 
+  (x+w)*a + (y+h)*b, (x+w)*c + (y+h)*d, 
+  (x+w)*a + y*b,     (x+w)*c + y*d
+)
+{% endhighlight %}
+
+
+<figure>
+  <img src="{{ site.url }}/img/pitl04/transformations-matrices-scale-disproportionate.png" />
+</figure>
+
+
+
+#### Reflect
+
+...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Matrices are a deep and complex area of mathematics, of which we have barely scratched the surface. Yet, this section has provided some insight into the inner-workings of Processing's transformation functions to be reviewed next.
 
 ## Time and Date
 

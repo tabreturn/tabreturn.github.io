@@ -31,8 +31,8 @@ li {
 }
 
 math, .mjx-chtml {
-  margin-bottom: 1em !important;
-  margin-top: -0.5em !important;
+  margin-bottom: 2em !important;
+  margin-top: 0.2em !important;
 }
 
 pre, code {

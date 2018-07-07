@@ -376,7 +376,7 @@ strokeWeight(3)
 x = 400; y = 200
 w = 200; h = 200
 
-rect(x, y, w, h)
+rect(x,y, w,h)
 {% endhighlight %}
 
 In Python, semicolons (`;`) are used as a substitute for new lines. The `x`/`y`/`w`/`h` variable assignments have been arranged like this as a matter of style. The `x`/`y` values represent the top-left corner of the square, and the `w`/`h` variables its width and height. If you wish to avoid the semicolons, you may write each variable on its own line. Run the sketch and confirm that your display window matches that below.
@@ -388,7 +388,7 @@ In Python, semicolons (`;`) are used as a substitute for new lines. The `x`/`y`/
 Matrices operate on vertices, whereas the `rect()` function does not. To move forward, substitute the `rect()` function with `quad()`
 
 {% highlight py %}
-#rect(x, y, w, h)
+#rect(x,y, w,h)
 quad(
   x, y,
   x, y+h, 
@@ -1060,37 +1060,9 @@ As with the other transformations, the axis is (0,0). To better visualise this, 
 
 #### Shear
 
-Shearing a shape slants, or skews, the it along the horizontal or vertical axis. The area, however, remains constant.
+Shearing a shape slants, or skews, the it along the horizontal or vertical axis. The area (or volume), however, remains constant.
 
-For a horizontal refelection use:
-
-<math>
-  <mfenced open = "[" close="]">
-    <mtable>
-      <mtr>
-        <mtd><mi>x</mi></mtd>
-      </mtr>
-      <mtr>
-        <mtd><mi>y</mi></mtd>
-      </mtr>
-    </mtable>
-  </mfenced>
-  <mo>×</mo>
-  <mfenced open = "[" close="]">
-    <mtable>
-      <mtr>
-        <mtd><mo>-</mo><mi>a</mi></mtd>
-        <mtd><mn>0</mn></mtd>
-      </mtr>
-      <mtr>
-        <mtd><mn>0</mn></mtd>
-        <mtd><mn>1</mn></mtd>
-      </mtr>
-    </mtable>
-  </mfenced>
-</math>
-
-And for a vertical refelection:
+For a shear horizontally, use:
 
 <math>
   <mfenced open = "[" close="]">
@@ -1108,42 +1080,261 @@ And for a vertical refelection:
     <mtable>
       <mtr>
         <mtd><mn>1</mn></mtd>
-        <mtd><mn>0</mn></mtd>
+        <mtd><mi>b</mi></mtd>
       </mtr>
       <mtr>
         <mtd><mn>0</mn></mtd>
-        <mtd><mo>-</mo><mi>d</mi></mtd>
+        <mtd><mn>1</mn></mtd>
+      </mtr>
+    </mtable>
+  </mfenced>
+</math>
+
+And for a vertical shear:
+
+<math>
+  <mfenced open = "[" close="]">
+    <mtable>
+      <mtr>
+        <mtd><mi>x</mi></mtd>
+      </mtr>
+      <mtr>
+        <mtd><mi>y</mi></mtd>
+      </mtr>
+    </mtable>
+  </mfenced>
+  <mo>×</mo>
+  <mfenced open = "[" close="]">
+    <mtable>
+      <mtr>
+        <mtd><mn>1</mn></mtd>
+        <mtd><mn>0</mn></mtd>
+      </mtr>
+      <mtr>
+        <mtd><mi>c</mi></mtd>
+        <mtd><mn>1</mn></mtd>
       </mtr>
     </mtable>
   </mfenced>
 </math>
 
 
+Add a red version of the white square, sheared verically using a coefficent of `0.4`. 
 
+{% highlight py %}
+a = cos(0.785); b = -sin(0.785)
+c = sin(0.785); d = cos(0.785)
+stroke('#00FF00')
+quad(
+  x*a + y*b,         x*c + y*d, 
+  x*a + (y+h)*b,     x*c + (y+h)*d, 
+  (x+w)*a + (y+h)*b, (x+w)*c + (y+h)*d, 
+  (x+w)*a + y*b,     (x+w)*c + y*d
+)
+{% endhighlight %}
 
+Expressed in matrix notation, this is:
 
-...
-Matrices are a deep and complex area of mathematics, of which we have barely scratched the surface. Python's *NumPy* libarary ...
+<math>
+  <mfenced open = "[" close="]">
+    <mtable>
+      <mtr>
+        <mtd><mn>400</mn></mtd>
+      </mtr>
+      <mtr>
+        <mtd><mn>200</mn></mtd>
+      </mtr>
+    </mtable>
+  </mfenced>
+  <mo>×</mo>
+  <mfenced open = "[" close="]">
+    <mtable>
+      <mtr>
+        <mtd><mn>1</mn></mtd>
+        <mtd><mn>0</mn></mtd>
+      </mtr>
+      <mtr>
+        <mtd><mn>0.4</mn></mtd>
+        <mtd><mn>1</mn></mtd>
+      </mtr>
+    </mtable>
+  </mfenced>
+  <mo>=</mo>
+  <mfenced open = "[" close="]">
+    <mtable>
+      <mtr>
+        <mtd>
+          <mfenced open="(" close=")" separators="">
+            <mn>400</mn>
+            <mo>×</mo>
+            <mn>1</mn>
+          </mfenced>
+          <mo>+</mo>
+          <mfenced open="(" close=")" separators="">
+            <mi>200</mi>
+            <mo>×</mo>
+            <mn>0</mn>
+          </mfenced>  
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd>
+          <mfenced open="(" close=")" separators="">
+            <mn>400</mn>
+            <mo>×</mo>
+            <mn>0.4</mn>
+          </mfenced>
+          <mo>+</mo>
+          <mfenced open="(" close=")" separators="">
+            <mi>200</mi>
+            <mo>×</mo>
+            <mn>1</mn>
+          </mfenced>  
+        </mtd>
+      </mtr>
+    </mtable>
+  </mfenced>
+</math>
 
-Yet, this section has provided some insight into the inner-workings of Processing's transformation functions to be reviewed next.
+Here is the result, along with  a grid-overlay and x-y coordinate pair:
 
+<figure>
+  <img src="{{ site.url }}/img/pitl04/transformations-matrices-shear.png" />
+  <figcaption>A vertically-sheared red square.</figcaption>
+</figure>
+
+This section has introduced some fundamental transformation concepts, avoiding anything larger than 2 × 2 matrix. If you wish to delve deeper into this domain, exploring the complexities of handling larger matrices, take a look at Python's *NumPy* libarary. 
+
+Next up: doing all of the above transformations without having to worry about the math!
 
 #### Processing Transform Functions
 
+After having done transformations the hard way, grasping Processing's transform functions is a breeze.
+
+Create a new sketch and save it as "transform_functions". Within the sketch's folder, create a "data" sub-folder containing a copy of the grid.png and grid-overlay.png files:
+
+<a href="{{ site.url }}/img/pitl04/grid.png" download>grid.png</a>  
+<a href="{{ site.url }}/img/pitl04/grid-overlay.png" download>grid-overlay.png</a>
+
+Add the following setup code (note that grid-overlay.png is loaded but not drawn):
+
+{% highlight py %}
+size(800,800)
+noFill()
+stroke('#FFFFFF')
+strokeWeight(3)
+grid = loadImage('grid.png')
+image(grid, 0, 0)
+grido = loadImage('grid-overlay.png')
+{% endhighlight %}
+
+Add a white rectangle, drawn in the same position as that of the last sketch. Because you will be using Processing's built-in transform functions, a `rect()` will work fine, i.e. there is no need to use a `quad()` unless you prefer to.
+
+{% highlight py %}
+x = 400; y = 200
+w = 200; h = 200
+rect(x,y, w,h)
+{% endhighlight %}
+
+<figure>
+  <img src="{{ site.url }}/img/pitl04/transformations-matrices-setup.png" />
+</figure>
+
+Add a `translate(100,-80)` and a duplicate `rect()` in yellow. 
+
+{% highlight py %}
 ...
+x = 400; y = 200
+w = 200; h = 200
+rect(x,y, w,h)
 
+translate(100,-80)
+stroke('#FFFF00')
+rect(x,y, w,h)
+{% endhighlight %}
 
+<figure>
+  <img src="{{ site.url }}/img/pitl04/transformations-matrices-translate.png" />
+</figure>
 
+Add a square, 100 × 100 pixels in width and height, with an x-y coordinate of zero:
 
+{% highlight py %}
+...
+x = 400; y = 200
+w = 200; h = 200
+rect(x,y, w,h)
 
+translate(100,-80)
+stroke('#FFFF00')
+rect(x,y, w,h)
+stroke('#FF0000')
+rect(0,0, 100,100)
+{% endhighlight %}
 
+Run the sktech. The red square can be seen cut-off near the top-left of the display window. This is because the shapes do not change position; rather it is the coordinate system that does. To better visualise this behaviour, add draw the grid-overlay.png beneath the `translate()` line: 
 
+{% highlight py %}
+...
+x = 400; y = 200
+w = 200; h = 200
+rect(x,y, w,h)
 
+translate(100,-80)
+image(grido, 0,0)
+stroke('#FFFF00')
+rect(x,y, w,h)
+stroke('#FF0000')
+rect(0,0, 100,100)
+{% endhighlight %}
 
+<figure>
+  <img src="{{ site.url }}/img/pitl04/transformations-functions-translate-overlay.png" />
+</figure>
 
+This can be useful way to approach drawing -- moving the coordinate system to avoid keeping track using variables.
 
+To return the red square to the top-left corner, one could add a `translate(-100,80)` to offset the prior one; or better yet, isolate the translation somehow. Wrap the `translate`, `image`, and yellow square code in a `pushMatrix()` and `popMatrix()` function. These will create a new matrix stack within which only the nested shapes (a yellow square, for now) are translated:
 
+{% highlight py %}
+...
+x = 400; y = 200
+w = 200; h = 200
+rect(x,y, w,h)
 
+pushMatrix()
+translate(100,-80)
+image(grido, 0,0)
+stroke('#FFFF00')
+rect(x,y, w,h)
+popMatrix()
+
+stroke('#FF0000')
+rect(0,0, 100,100)
+{% endhighlight %}
+
+<figure>
+  <img src="{{ site.url }}/img/pitl04/transformations-functions-translate-matrix.png" />
+</figure>
+
+In addition to `translate` Processing's 2D transform functions include: [rotate()](http://py.processing.org/reference/rotate.html); [scale()](http://py.processing.org/reference/scale.html); [shearX()](http://py.processing.org/reference/shearX.html); [shearY()](http://py.processing.org/reference/shearY.html)
+
+What is more, you may combine these as you wish. Add further functions to the existing matrix stack:
+
+{% highlight py %}
+pushMatrix()
+translate(100,-80)
+rotate(0.785)
+shearY(0.4)
+image(grido, 0,0)
+stroke('#FFFF00')
+rect(x,y, w,h)
+popMatrix()
+{% endhighlight %}
+
+<figure>
+  <img src="{{ site.url }}/img/pitl04/transformations-functions-multiple.png" />
+</figure>
 
 ## Time and Date
 
@@ -1152,7 +1343,7 @@ Yet, this section has provided some insight into the inner-workings of Processin
 ## Lesson 04
 
 That’s it for lesson 04.
-...
+... definitely more mathematical than most
 
 **Begin lesson 05:** Art of the State *(coming soon)*
 

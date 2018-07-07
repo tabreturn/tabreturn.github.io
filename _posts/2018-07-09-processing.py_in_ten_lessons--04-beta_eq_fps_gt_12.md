@@ -496,6 +496,51 @@ quad(
 )
 {% endhighlight %}
 
+Expressed in matrix notation, this is:
+
+<math>
+  <mfenced open = "[" close="]">
+    <mtable>
+      <mtr>
+        <mtd><mn>400</mn></mtd>
+      </mtr>
+      <mtr>
+        <mtd><mn>200</mn></mtd>
+      </mtr>
+    </mtable>
+  </mfenced>
+  <mo>+</mo>
+  <mfenced open = "[" close="]">
+    <mtable>
+      <mtr>
+        <mtd><mn>100</mn></mtd>
+      </mtr>
+      <mtr>
+        <mtd><mn>-80</mn></mtd>
+      </mtr>
+    </mtable>
+  </mfenced>
+  <mo>=</mo>
+  <mfenced open = "[" close="]">
+    <mtable>
+      <mtr>
+        <mtd>
+          <mn>400</mn>
+          <mo>+</mo>
+          <mn>100</mn>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd>
+          <mn>200</mn>
+          <mo>+</mo>
+          <mn>-80</mn>
+        </mtd>
+      </mtr>
+    </mtable>
+  </mfenced>
+</math>
+
 Run the sketch. The new yellow square is drawn `100` pixels further right and `80` pixels higher than the original. 
 
 <figure>
@@ -538,6 +583,17 @@ And this is the point where the power of matrices becomes evident! Depending on 
   <mfenced open = "[" close="]">
     <mtable>
       <mtr>
+        <mtd><mi>x</mi></mtd>
+      </mtr>
+      <mtr>
+        <mtd><mi>y</mi></mtd>
+      </mtr>
+    </mtable>
+  </mfenced>
+  <mo>×</mo>
+  <mfenced open = "[" close="]">
+    <mtable>
+      <mtr>
         <mtd><mi>a</mi></mtd>
         <mtd><mi>b</mi></mtd>
       </mtr>
@@ -547,42 +603,32 @@ And this is the point where the power of matrices becomes evident! Depending on 
       </mtr>
     </mtable>
   </mfenced>
-  <mfenced open = "[" close="]">
-    <mtable>
-      <mtr>
-        <mtd><mi>x</mi></mtd>
-      </mtr>
-      <mtr>
-        <mtd><mi>y</mi></mtd>
-      </mtr>
-    </mtable>
-  </mfenced>
   <mo>=</mo>
   <mfenced open = "[" close="]">
     <mtable>
       <mtr>
         <mtd>
-          <mi>a</mi>
           <mi>x</mi>
+          <mi>a</mi>
           <mo>+</mo>
-          <mi>b</mi>
           <mi>y</mi>
+          <mi>b</mi>
         </mtd>
       </mtr>
       <mtr>
         <mtd>
-          <mi>c</mi>
           <mi>x</mi>
+          <mi>c</mi>
           <mo>+</mo>
-          <mi>d</mi>
           <mi>y</mi>
+          <mi>d</mi>
         </mtd>
       </mtr>
     </mtable>
   </mfenced>
 </math>
 
-To scale the square, `a` multiplies the width, and `b` multiplies the height. Add some code that draws a new orange square that is half the size of the white one:
+To scale the square, `a` multiplies the width, and `d` multiplies the height. Add some code that draws a new orange square that is half the size of the white one:
 
 {% highlight py %}
 a = 0.5; b = 0
@@ -595,6 +641,69 @@ quad(
   (x+w)*a + y*b,     (x+w)*c + y*d
 )
 {% endhighlight %}
+
+Expressed in matrix notation, this is:
+
+<math>
+  <mfenced open = "[" close="]">
+    <mtable>
+      <mtr>
+        <mtd><mn>400</mn></mtd>
+      </mtr>
+      <mtr>
+        <mtd><mn>200</mn></mtd>
+      </mtr>
+    </mtable>
+  </mfenced>
+  <mo>×</mo>
+  <mfenced open = "[" close="]">
+    <mtable>
+      <mtr>
+        <mtd><mn>0.5</mn></mtd>
+        <mtd><mn>0</mn></mtd>
+      </mtr>
+      <mtr>
+        <mtd><mn>0</mn></mtd>
+        <mtd><mn>0.5</mn></mtd>
+      </mtr>
+    </mtable>
+  </mfenced>   
+  <mo>=</mo>
+  <mfenced open = "[" close="]">
+    <mtable>
+      <mtr>
+        <mtd>
+          <mfenced open="(" close=")" separators="">
+            <mn>400</mn>
+            <mo>×</mo>
+            <mn>0.5</mn>
+          </mfenced>
+          <mo>+</mo>
+          <mfenced open="(" close=")" separators="">
+            <mi>200</mi>
+            <mo>×</mo>
+            <mn>0</mn>
+          </mfenced>  
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd>
+          <mfenced open="(" close=")" separators="">
+            <mn>400</mn>
+            <mo>×</mo>
+            <mn>0</mn>
+          </mfenced>
+          <mo>+</mo>
+          <mfenced open="(" close=")" separators="">
+            <mi>200</mi>
+            <mo>×</mo>
+            <mn>0.5</mn>
+          </mfenced>  
+        </mtd>
+      </mtr>
+    </mtable>
+  </mfenced>
+</math>
 
 Run the sketch. The orange square is half the szie of the white square, but the position has changed:
 
@@ -619,7 +728,7 @@ quad(
 )
 {% endhighlight %}
 
-When one performs a scale transformation, this is equivlent to scaling the grid upon which the shape is plotted, toward the orgin (0,0) -- as evidenced by the visual ouput:
+When one performs a scale transformation, the entire grid upon which the shape is plotted scales toward the orgin (0,0) -- as evidenced by the visual ouput:
 
 <figure>
   <img src="{{ site.url }}/img/pitl04/transformations-matrices-scale-grid-overlay.png" />
@@ -643,29 +752,380 @@ quad(
 )
 {% endhighlight %}
 
+Expressed in matrix notation, this is:
+
+<math>
+  <mfenced open = "[" close="]">
+    <mtable>
+      <mtr>
+        <mtd><mn>400</mn></mtd>
+      </mtr>
+      <mtr>
+        <mtd><mn>200</mn></mtd>
+      </mtr>
+    </mtable>
+  </mfenced>
+  <mo>×</mo>
+  <mfenced open = "[" close="]">
+    <mtable>
+      <mtr>
+        <mtd><mn>0.3</mn></mtd>
+        <mtd><mn>0</mn></mtd>
+      </mtr>
+      <mtr>
+        <mtd><mn>0</mn></mtd>
+        <mtd><mn>1.8</mn></mtd>
+      </mtr>
+    </mtable>
+  </mfenced>   
+  <mo>=</mo>
+  <mfenced open = "[" close="]">
+    <mtable>
+      <mtr>
+        <mtd>
+          <mfenced open="(" close=")" separators="">
+            <mn>400</mn>
+            <mo>×</mo>
+            <mn>0.3</mn>
+          </mfenced>
+          <mo>+</mo>
+          <mfenced open="(" close=")" separators="">
+            <mi>200</mi>
+            <mo>×</mo>
+            <mn>0</mn>
+          </mfenced>  
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd>
+          <mfenced open="(" close=")" separators="">
+            <mn>400</mn>
+            <mo>×</mo>
+            <mn>0</mn>
+          </mfenced>
+          <mo>+</mo>
+          <mfenced open="(" close=")" separators="">
+            <mi>200</mi>
+            <mo>×</mo>
+            <mn>1.8</mn>
+          </mfenced>  
+        </mtd>
+      </mtr>
+    </mtable>
+  </mfenced>
+</math>
 
 <figure>
   <img src="{{ site.url }}/img/pitl04/transformations-matrices-scale-disproportionate.png" />
 </figure>
 
-
-
 #### Reflect
 
-...
+Reflecting a shape is a matter of scaling one axis by a negative value; and multpiplying the other by `0`.
 
+For a horizontal refelection use:
 
+<math>
+  <mfenced open = "[" close="]">
+    <mtable>
+      <mtr>
+        <mtd><mi>x</mi></mtd>
+      </mtr>
+      <mtr>
+        <mtd><mi>y</mi></mtd>
+      </mtr>
+    </mtable>
+  </mfenced>
+  <mo>×</mo>
+  <mfenced open = "[" close="]">
+    <mtable>
+      <mtr>
+        <mtd><mo>-</mo><mi>a</mi></mtd>
+        <mtd><mn>0</mn></mtd>
+      </mtr>
+      <mtr>
+        <mtd><mn>0</mn></mtd>
+        <mtd><mn>1</mn></mtd>
+      </mtr>
+    </mtable>
+  </mfenced>
+</math>
+
+And for a vertical refelection:
+
+<math>
+  <mfenced open = "[" close="]">
+    <mtable>
+      <mtr>
+        <mtd><mi>x</mi></mtd>
+      </mtr>
+      <mtr>
+        <mtd><mi>y</mi></mtd>
+      </mtr>
+    </mtable>
+  </mfenced>
+  <mo>×</mo>
+  <mfenced open = "[" close="]">
+    <mtable>
+      <mtr>
+        <mtd><mn>1</mn></mtd>
+        <mtd><mn>0</mn></mtd>
+      </mtr>
+      <mtr>
+        <mtd><mn>0</mn></mtd>
+        <mtd><mo>-</mo><mi>d</mi></mtd>
+      </mtr>
+    </mtable>
+  </mfenced>
+</math>
+
+Beware aware, though: when reflection operations are relative to the orgin (0,0). As an example, add a new red square that is a horzontal reflection of the white orginal:
+
+{% highlight py %}
+a = -1; b = 0
+c = 0;  d = 1
+stroke('#FF0000')
+quad(
+  x*a + y*b,         x*c + y*d, 
+  x*a + (y+h)*b,     x*c + (y+h)*d, 
+  (x+w)*a + (y+h)*b, (x+w)*c + (y+h)*d, 
+  (x+w)*a + y*b,     (x+w)*c + y*d
+)
+{% endhighlight %}
+
+Expressed in matrix notation, this is:
+
+<math>
+  <mfenced open = "[" close="]">
+    <mtable>
+      <mtr>
+        <mtd><mn>400</mn></mtd>
+      </mtr>
+      <mtr>
+        <mtd><mn>200</mn></mtd>
+      </mtr>
+    </mtable>
+  </mfenced>
+  <mo>×</mo>
+  <mfenced open = "[" close="]">
+    <mtable>
+      <mtr>
+        <mtd><mn>-1</mn></mtd>
+        <mtd><mn>0</mn></mtd>
+      </mtr>
+      <mtr>
+        <mtd><mn>0</mn></mtd>
+        <mtd><mn>1</mn></mtd>
+      </mtr>
+    </mtable>
+  </mfenced>   
+  <mo>=</mo>
+  <mfenced open = "[" close="]">
+    <mtable>
+      <mtr>
+        <mtd>
+          <mfenced open="(" close=")" separators="">
+            <mn>400</mn>
+            <mo>×</mo>
+            <mn>-1</mn>
+          </mfenced>
+          <mo>+</mo>
+          <mfenced open="(" close=")" separators="">
+            <mi>200</mi>
+            <mo>×</mo>
+            <mn>0</mn>
+          </mfenced>  
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd>
+          <mfenced open="(" close=")" separators="">
+            <mn>400</mn>
+            <mo>×</mo>
+            <mn>0</mn>
+          </mfenced>
+          <mo>+</mo>
+          <mfenced open="(" close=")" separators="">
+            <mi>200</mi>
+            <mo>×</mo>
+            <mn>1</mn>
+          </mfenced>  
+        </mtd>
+      </mtr>
+    </mtable>
+  </mfenced>
+</math>
+
+The result is a square with a witdth of `-200`, drawn from a starting coordinate of `(-400,200)`. As this lies beyond left edge of the display window, it cannot be seen. 
+
+<figure>
+  <img src="{{ site.url }}/img/pitl04/transformations-matrices-reflect.png" class="fullwidth" />
+  <figcaption>The green line indicates the axis of horizontal reflection.</figcaption>
+</figure>
 
 #### Rotate
 
-... radians (45deg = 0.784 rad) ...
+Rotation transformations require the trigonometric functions `cos()` and `sin()`. Recall, though, that Processing deals in radians, rather than degrees. Any arguments you pass these functions must therefore be expressed in radians.
 
+Add a pink version of the white square, rotated 45 degrees (roughly `0.785` radians). 
 
+{% highlight py %}
+a = cos(0.785); b = -sin(0.785)
+c = sin(0.785); d = cos(0.785)
+stroke('#00FF00')
+quad(
+  x*a + y*b,         x*c + y*d, 
+  x*a + (y+h)*b,     x*c + (y+h)*d, 
+  (x+w)*a + (y+h)*b, (x+w)*c + (y+h)*d, 
+  (x+w)*a + y*b,     (x+w)*c + y*d
+)
+{% endhighlight %}
+
+Expressed in matrix notation, this is:
+
+<math>
+  <mfenced open = "[" close="]">
+    <mtable>
+      <mtr>
+        <mtd><mn>400</mn></mtd>
+      </mtr>
+      <mtr>
+        <mtd><mn>200</mn></mtd>
+      </mtr>
+    </mtable>
+  </mfenced>
+  <mo>×</mo>
+  <mfenced open = "[" close="]">
+    <mtable>
+      <mtr>
+        <mtd><mn>cos(0.785)</mn></mtd>
+        <mtd><mn>-sin(0.785)</mn></mtd>
+      </mtr>
+      <mtr>
+        <mtd><mn>sin(0.785)</mn></mtd>
+        <mtd><mn>cos(0.785)</mn></mtd>
+      </mtr>
+    </mtable>
+  </mfenced>
+</math>
+
+The result is a 'top-left'/beginning coordinate of roughly (141,424).
+
+<math>
+  <mfenced open = "[" close="]">
+    <mtable>
+      <mtr>
+        <mtd>
+          <mn>282.96</mn>
+          <mo>+</mo>
+          <mn>-141.37</mn>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd>
+          <mn>282.73</mn>
+          <mo>+</mo>
+          <mn>141.47</mn>
+        </mtd>
+      </mtr>
+    </mtable>
+  </mfenced>
+  <mo>=</mo>
+  <mfenced open = "[" close="]">
+    <mtable>
+      <mtr>
+        <mtd>
+          <mn>141.58</mn>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd>
+          <mn>424.2</mn>
+        </mtd>
+      </mtr>
+    </mtable>
+  </mfenced>
+</math>
+
+<figure>
+  <img src="{{ site.url }}/img/pitl04/transformations-matrices-rotate.png" />
+  <figcaption>The green line indicates the axis of horizontal reflection.</figcaption>
+</figure>
+
+As with the other transformations, the axis is (0,0). To better visualise this, here is the rotation represented with a grid-overlay:
+
+<figure>
+  <img src="{{ site.url }}/img/pitl04/transformations-matrices-rotate-overlay.png" />
+</figure>
 
 #### Shear
 
+Shearing a shape slants, or skews, the it along the horizontal or vertical axis. The area, however, remains constant.
+
+For a horizontal refelection use:
+
+<math>
+  <mfenced open = "[" close="]">
+    <mtable>
+      <mtr>
+        <mtd><mi>x</mi></mtd>
+      </mtr>
+      <mtr>
+        <mtd><mi>y</mi></mtd>
+      </mtr>
+    </mtable>
+  </mfenced>
+  <mo>×</mo>
+  <mfenced open = "[" close="]">
+    <mtable>
+      <mtr>
+        <mtd><mo>-</mo><mi>a</mi></mtd>
+        <mtd><mn>0</mn></mtd>
+      </mtr>
+      <mtr>
+        <mtd><mn>0</mn></mtd>
+        <mtd><mn>1</mn></mtd>
+      </mtr>
+    </mtable>
+  </mfenced>
+</math>
+
+And for a vertical refelection:
+
+<math>
+  <mfenced open = "[" close="]">
+    <mtable>
+      <mtr>
+        <mtd><mi>x</mi></mtd>
+      </mtr>
+      <mtr>
+        <mtd><mi>y</mi></mtd>
+      </mtr>
+    </mtable>
+  </mfenced>
+  <mo>×</mo>
+  <mfenced open = "[" close="]">
+    <mtable>
+      <mtr>
+        <mtd><mn>1</mn></mtd>
+        <mtd><mn>0</mn></mtd>
+      </mtr>
+      <mtr>
+        <mtd><mn>0</mn></mtd>
+        <mtd><mo>-</mo><mi>d</mi></mtd>
+      </mtr>
+    </mtable>
+  </mfenced>
+</math>
+
+
+
+
+
 ...
-Matrices are a deep and complex area of mathematics, of which we have barely scratched the surface. Yet, this section has provided some insight into the inner-workings of Processing's transformation functions to be reviewed next.
+Matrices are a deep and complex area of mathematics, of which we have barely scratched the surface. Python's *NumPy* libarary ...
+
+Yet, this section has provided some insight into the inner-workings of Processing's transformation functions to be reviewed next.
 
 
 #### Processing Transform Functions

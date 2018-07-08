@@ -265,7 +265,7 @@ The [`save()`](http://py.processing.org/reference/save.html) function differs fr
 
 ## DVD Screensaver Task
 
-DVD players commonly feature a bouncing DVD logo as a screensaver, appearing after a given period of inactivity. You may also have seen some variation of this on another digital device, albeit with and different graphic. Intriguingly, people often find themselves staring at the pointless animation in the hope of witnessing the logo land perfectly in the corner of the screen. If you're interested to know how long you can expect to wait for such an occurance, refer to this excellent [Lost Math Lessons article](http://lostmathlessons.blogspot.com/2016/03/bouncing-dvd-logo.html).
+DVD players commonly feature a bouncing DVD logo as a screensaver, appearing after a given period of inactivity. You may also have seen some variation of this on another digital device, albeit with and different graphic. Intriguingly, people often find themselves staring at the pointless animation in the hope of witnessing the logo land perfectly in the corner of the screen. If you're interested to know how long you can expect to wait for such an occurrence, refer to this excellent [Lost Math Lessons article](http://lostmathlessons.blogspot.com/2016/03/bouncing-dvd-logo.html).
 
 Create a new sketch and save it as "dvd_screensaver". Within this, create a "data" folder. Download this “dvd-logo.png” file and place it in the data folder:
 
@@ -290,28 +290,30 @@ def draw():
     image(logo, x,100)
 {% endhighlight %}
 
-The only the unfamilair line is the `logo = None`. This defines the `logo` variable as an empty container in the global scope, which is then assigned in the `setup()` function. the Run the sketch.
+The only the unfamiliar line is the `logo = None`. This line defines the `logo` variable as an empty container in the global scope, which is then assigned a graphic in `setup()` function. Run the sketch.
 
 <figure>
   <img src="{{ site.url }}/img/pitl04/dvd-logo-setup.png" />
-  <figcaption>The motion trail indicates left-to-right movement.</figcaption>
+  <figcaption>The motion trail indicates the left-to-right movement.</figcaption>
 </figure>
 
-Your challenge is to complete the task. The logo should begin moving at an angle, bouncing every wall it encounters thereafter. Perhaps consider randomising the starting angle.
+Your challenge is to complete the task. The logo should begin moving at an angle, rebounding off every wall it encounters.
 
 <figure>
   <img src="{{ site.url }}/img/pitl04/dvd-logo-bounce.png" />
 </figure>
 
+Perhaps consider randomising the starting angle.
+
 ## Transformations
 
-Processing's transformation functions provide a convenient means of dealing with complex geometric operations. Such operations would include scaling, rotation, shearing, and translation. These are especially useful for shapes comprised of vertices. Consider that you wished to scale and rotate the star shape depicted at the top-left, such that it results in bottom-right:
+Processing's transform functions provide a convenient means of dealing with complex geometric transformations. Such operations include scaling, rotation, shearing, and translation. Suppose that you wish to rotate and scale the star shape depicted at the top-left, such that it results in the bottom-right:
 
 <figure>
   <img src="{{ site.url }}/img/pitl04/transformations-star.png" />
 </figure>
 
-Firstly, consider that the code for the untransformed star's ten vertices looks something like this:
+The code for the *untransformed* star's ten vertices look something like this:
 
 {% highlight py %}
 beginShape()
@@ -328,7 +330,7 @@ vertex(158,155)
 endShape(CLOSE)
 {% endhighlight %}
 
-To calculate the coordinates for the new vertex positions, a *matrix* is required.
+To calculate the coordinates for the *rotated + scaled* vertex positions, a *matrix* is required.
 
 ### Matrices
 
@@ -351,11 +353,11 @@ In mathematics, a matrix (plural: matrices) is a rectangular array of values. As
   </mfenced>
 </math>
 
-Being that digital images are comprised of rectangular grids of pixels, it is easy to imagine why matrices are used extensively in graphics processing. Nevertheless, they can be found applied in various fields of mathematics and other sciences.
+Given that digital images are essentially rectangular grids of pixels, it is easy to imagine how matrices are used extensively in graphics processing. That said, matrices are applied in various fields of mathematics and other sciences.
 
-To step you though how matrices operate, we'll take a look at a few practical examples. This is all rather mathematical, but the idea is to grasp a matrix as a concept. Following this section, you will be introduced to Processing's built-in matrix functions -- meaning you will no longer need to perform the calculations yourself.
+To step you through how matrices operate, we'll take a look at a few practical examples. Things get pretty mathematical here, but the idea is to grasp a matrix as a concept. Following this section, you will be introduced to Processing's built-in matrix functions -- meaning you will no longer need to perform the calculations yourself.
 
-Create a new sketch and save it as "matrices". Within the sketch's folder, create a "data" sub-folder containing a copy of the grid.png and grid-overlay.png files:
+Create a new sketch and save it as "matrices". Within the sketch's folder, create a "data" subfolder containing a copy of the grid.png and grid-overlay.png files:
 
 <a href="{{ site.url }}/img/pitl04/grid.png" download>grid.png</a>  
 <a href="{{ site.url }}/img/pitl04/grid-overlay.png" download>grid-overlay.png</a>
@@ -380,13 +382,13 @@ w = 200; h = 200
 rect(x,y, w,h)
 {% endhighlight %}
 
-In Python, semicolons (`;`) are used as a substitute for new lines. The `x`/`y`/`w`/`h` variable assignments have been arranged like this as a matter of style. The `x`/`y` values represent the top-left corner of the square, and the `w`/`h` variables its width and height. If you wish to avoid the semicolons, you may write each variable on its own line. Run the sketch and confirm that your display window matches that below.
+In Python, semicolons (`;`) serve as a substitute for new lines. The `x`/`y`/`w`/`h` variable assignments have been arranged in the above manner as a matter of style. If you wish to avoid the semicolons, you may write each variable on its own line. The `x`/`y` values represent the coordinates for the top-left corner of the square; the `w`/`h` variables, its width and height. Run the sketch and confirm that your display window matches the image below.
 
 <figure>
   <img src="{{ site.url }}/img/pitl04/transformations-matrices-setup.png" />
 </figure>
 
-Matrices operate on vertices, whereas the `rect()` function does not. To move forward, substitute the `rect()` function with `quad()`
+Matrices operate on vertices, whereas the `rect()` function does not. To move forward, substitute the `rect()` function with a `quad()`.
 
 {% highlight py %}
 #rect(x,y, w,h)
@@ -400,16 +402,16 @@ quad(
 
 <figure>
   <img src="{{ site.url }}/img/pitl04/transformations-matrices-quad.png" />
-  <figcaption>Vertices labelled according to the above variables.</figcaption>
+  <figcaption>Vertices labelled according to their <code>quad()</code> arguments.</figcaption>
 </figure>
 
-The output appears the same, but is now based on vertices. Of course, this code does not make use of Processing's `vertex()` functions, but each pair of values comprises a vertex nonetheless.
+The output appears the same but is now based on vertices. Of course, this code does not make use of Processing's `vertex()` function, but each x-y pair of values comprises a vertex nonetheless.
 
 #### Translate
 
-The first transformation you will perform is a *translate*. This involves moving the shape a given distance in some direction. This is easy to perform without a matrix -- for example, to move the square one hundred pixels to right, all that one needs to do is add `100` to each vertice's x-coordinates. However, you will perform this using a matrix.
+The first transformation you will perform is a *translation*. This involves moving the square a given distance in some direction. It's an easy enough task to accomplish without a matrix, but also ideal for introducing how matrices work.
 
-Firstly, take note how the top-left vertex `(x, y)` determines the positions of the other three vertices. This means that the only matrix operation you need perform is on the top-left vertex -- the remaining vertices can be calcuated by adding the relevant `w` and `h` values. The matrix is you are manipulating can therefore be expressed as:
+Firstly, take note of how the top-left vertex `(x, y)` determines the positions of the other three vertices. This means that the only matrix operation you need to perform is on the top-left vertex -- the remaining vertices can be calculated by adding the relevant `w` and `h` values. The matrix you are manipulating can, therefore, be expressed as:
 
 <math>
   <mfenced open = "[" close="]">
@@ -424,7 +426,7 @@ Firstly, take note how the top-left vertex `(x, y)` determines the positions of 
   </mfenced>
 </math>
 
-Or, if you subsitute the variables with their corresponding values:
+Or, if you substitute the variable values:
 
 <math>
   <mfenced open = "[" close="]">
@@ -439,7 +441,7 @@ Or, if you subsitute the variables with their corresponding values:
   </mfenced>
 </math>
 
-To translate this matrix, add (or subtract) another matrix. To perform a matrix addition, add each of the top values of each matrix; then the bottom values:
+To translate a matrix, add (or subtract) another matrix. To perform a matrix addition, add-up the values of each row:
 
 <math>
   <mfenced open = "[" close="]">
@@ -484,7 +486,7 @@ To translate this matrix, add (or subtract) another matrix. To perform a matrix 
   </mfenced>
 </math>
 
-Add some new code to the bottom of your existing sketch -- namely: two new variables representing values `a` and `b`; a yellow stroke; and a new `quad()` that integrates the matrix calculations within its arguments:
+Append the following code -- namely: two new variables representing values `a` and `b` (the distance the shape must move horizontally and vertically); a yellow stroke; and a new `quad()` that integrates the matrix calculations within its arguments:
 
 {% highlight py %}
 a = 100; b = -80
@@ -542,7 +544,7 @@ Expressed in matrix notation, this is:
   </mfenced>
 </math>
 
-Run the sketch. The new yellow square is drawn `100` pixels further right and `80` pixels higher than the original. 
+Run the sketch. The new yellow square is drawn `100` pixels further right and `80` pixels closer to the top-edge than the original. 
 
 <figure>
   <img src="{{ site.url }}/img/pitl04/transformations-matrices-translate.png" />
@@ -550,7 +552,7 @@ Run the sketch. The new yellow square is drawn `100` pixels further right and `8
 
 #### Scale
 
-To scale a shape, one must *multiply* the matrix you wish to transform by one describing a transformation. In mathematical notation, this can be represented as: 
+To scale a shape, one must *multiply* the matrix you wish to transform by one describing a transformation. In mathematical notation, this can be expressed as: 
 
 <math>
   <mfenced open = "[" close="]">
@@ -578,7 +580,7 @@ To scale a shape, one must *multiply* the matrix you wish to transform by one de
   </mfenced>
 </math>
 
-And this is the point where the power of matrices becomes evident! Depending on the values you subsitute for `a`, `b`, `c`, and `d`, the result will be a either scale, reflect, squeeze, rotate, or shear operation. Take note of how a matrix multiplication is performed:
+And this is the point where the power of matrices becomes evident! Depending on the values you substitute for `a`, `b`, `c`, and `d`, the result will be either a scale, reflect, squeeze, rotate, or shear operation. Take a moment to study how a matrix multiplication is performed:
 
 <math>
   <mfenced open = "[" close="]">
@@ -629,21 +631,7 @@ And this is the point where the power of matrices becomes evident! Depending on 
   </mfenced>
 </math>
 
-To scale the square, `a` multiplies the width, and `d` multiplies the height. Add some code that draws a new orange square that is half the size of the white one:
-
-{% highlight py %}
-a = 0.5; b = 0
-c = 0; d = 0.5
-stroke('#FF9900')
-quad(
-  x*a + y*b,         x*c + y*d, 
-  x*a + (y+h)*b,     x*c + (y+h)*d, 
-  (x+w)*a + (y+h)*b, (x+w)*c + (y+h)*d, 
-  (x+w)*a + y*b,     (x+w)*c + y*d
-)
-{% endhighlight %}
-
-Expressed in matrix notation, this is:
+To perform a scale, value `a` multiplies the width, and value `d` multiplies the height. To half the square's width and height, use a matrix where both `a` and `d` are equal to `0.5`: 
 
 <math>
   <mfenced open = "[" close="]">
@@ -706,15 +694,31 @@ Expressed in matrix notation, this is:
   </mfenced>
 </math>
 
-Run the sketch. The orange square is half the szie of the white square, but the position has changed:
+Add some code that draws a new orange square half the size of the white one:
+
+{% highlight py %}
+a = 0.5; b = 0
+c = 0; d = 0.5
+stroke('#FF9900')
+quad(
+  x*a + y*b,         x*c + y*d, 
+  x*a + (y+h)*b,     x*c + (y+h)*d, 
+  (x+w)*a + (y+h)*b, (x+w)*c + (y+h)*d, 
+  (x+w)*a + y*b,     (x+w)*c + y*d
+)
+{% endhighlight %}
+
+Run the sketch. The orange square is half the size of the white square, but the position has also changed:
 
 <figure>
   <img src="{{ site.url }}/img/pitl04/transformations-matrices-scale.png" />
 </figure>
 
-To reveal why the position changes, add the grid-overlay.png file to your code, but halve its size using a third and fourth `image()` argument:
+To reveal why the position changes, add the grid-overlay.png file to your code -- but halve its size using a third and fourth `image()` argument:
 
 {% highlight py %}
+...
+
 grido = loadImage('grid-overlay.png')
 image(grido, 0,0, 800/2,800/2)
 
@@ -729,7 +733,7 @@ quad(
 )
 {% endhighlight %}
 
-When one performs a scale transformation, the entire grid upon which the shape is plotted scales toward the orgin (0,0) -- as evidenced by the visual ouput:
+As evidenced by the grid overlay, when one performs a scale transformation, the entire grid upon which the shape is plotted scales toward the origin (0,0).
 
 <figure>
   <img src="{{ site.url }}/img/pitl04/transformations-matrices-scale-grid-overlay.png" />
@@ -822,9 +826,9 @@ Expressed in matrix notation, this is:
 
 #### Reflect
 
-Reflecting a shape is a matter of scaling one axis by a negative value; and multpiplying the other by `0`.
+Reflecting a shape is a matter of scaling one axis by a negative value; and multiplying the other by `1`.
 
-For a horizontal refelection use:
+For a horizontal reflection use:
 
 <math>
   <mfenced open = "[" close="]">
@@ -852,7 +856,7 @@ For a horizontal refelection use:
   </mfenced>
 </math>
 
-And for a vertical refelection:
+And for a vertical reflection:
 
 <math>
   <mfenced open = "[" close="]">
@@ -880,7 +884,7 @@ And for a vertical refelection:
   </mfenced>
 </math>
 
-Beware aware, though: when reflection operations are relative to the orgin (0,0). As an example, add a new red square that is a horzontal reflection of the white orginal:
+Beware aware, though: reflection operations are relative to the origin (0,0). As an example, add a new red square that is a horizontal reflection of the white original:
 
 {% highlight py %}
 a = -1; b = 0
@@ -957,7 +961,7 @@ Expressed in matrix notation, this is:
   </mfenced>
 </math>
 
-The result is a square with a witdth of `-200`, drawn from a starting coordinate of `(-400,200)`. As this lies beyond left edge of the display window, it cannot be seen. 
+The result is a square with a width of `-200`, drawn from a starting coordinate of `(-400,200)`. As this lies beyond left-edge of the display window, it cannot be seen. 
 
 <figure>
   <img src="{{ site.url }}/img/pitl04/transformations-matrices-reflect.png" class="fullwidth" />
@@ -966,7 +970,7 @@ The result is a square with a witdth of `-200`, drawn from a starting coordinate
 
 #### Rotate
 
-Rotation transformations require the trigonometric functions `cos()` and `sin()`. Recall, though, that Processing deals in radians, rather than degrees. Any arguments you pass these functions must therefore be expressed in radians.
+Rotation transformations require the trigonometric functions `cos()` and `sin()`. Recall, though, that Processing deals in radians, rather than degrees, so any arguments you pass these functions must be expressed in radians.
 
 Add a pink version of the white square, rotated 45 degrees (roughly `0.785` radians). 
 
@@ -1010,7 +1014,7 @@ Expressed in matrix notation, this is:
   </mfenced>
 </math>
 
-The result is a 'top-left'/beginning coordinate of roughly (141,424).
+The result is a 'top-left' coordinate of roughly (141, 424).
 
 <math>
   <mfenced open = "[" close="]">
@@ -1050,10 +1054,10 @@ The result is a 'top-left'/beginning coordinate of roughly (141,424).
 
 <figure>
   <img src="{{ site.url }}/img/pitl04/transformations-matrices-rotate.png" />
-  <figcaption>The green line indicates the axis of horizontal reflection.</figcaption>
+  <figcaption>With the square rotated 45 degrees, the top-left corner appears in a top-centre position.</figcaption>
 </figure>
 
-As with the other transformations, the axis is (0,0). To better visualise this, here is the rotation represented with a grid-overlay:
+As with the other transformations, the axis runs through (0,0). To better visualise this, here is the rotation represented with a grid-overlay graphic:
 
 <figure>
   <img src="{{ site.url }}/img/pitl04/transformations-matrices-rotate-overlay.png" />
@@ -1061,9 +1065,9 @@ As with the other transformations, the axis is (0,0). To better visualise this, 
 
 #### Shear
 
-Shearing a shape slants, or skews, the it along the horizontal or vertical axis. The area (or volume), however, remains constant.
+Shearing a shape slants, or skews, it along the horizontal or vertical axis. The area (or volume), however, remains constant.
 
-For a shear horizontally, use:
+To shear horizontally, use:
 
 <math>
   <mfenced open = "[" close="]">
@@ -1120,12 +1124,12 @@ And for a vertical shear:
 </math>
 
 
-Add a red version of the white square, sheared verically using a coefficent of `0.4`. 
+Add a red version of the white square, sheared vertically using a coefficient of `0.4`. 
 
 {% highlight py %}
-a = cos(0.785); b = -sin(0.785)
-c = sin(0.785); d = cos(0.785)
-stroke('#00FF00')
+a = 1;   b = 0
+c = 0.4; d = 1
+stroke('#FF0000')
 quad(
   x*a + y*b,         x*c + y*d, 
   x*a + (y+h)*b,     x*c + (y+h)*d, 
@@ -1197,22 +1201,22 @@ Expressed in matrix notation, this is:
   </mfenced>
 </math>
 
-Here is the result, along with  a grid-overlay and x-y coordinate pair:
+Below is the result, along with a grid-overlay and x-y coordinate label:
 
 <figure>
   <img src="{{ site.url }}/img/pitl04/transformations-matrices-shear.png" />
   <figcaption>A vertically-sheared red square.</figcaption>
 </figure>
 
-This section has introduced some fundamental transformation concepts, avoiding anything larger than 2 × 2 matrix. If you wish to delve deeper into this domain, exploring the complexities of handling larger matrices, take a look at Python's *NumPy* libarary. 
+This section has introduced some fundamental transformation concepts using matrices, while avoiding anything larger than 2 × 2 matrix. If you wish to handle larger matrices, take a look at Python's *NumPy* library. 
 
-Next up: doing all of the above transformations without having to worry about the math!
+Next up: performing all of the above transformations without having to worry about the math!
 
 #### Processing Transform Functions
 
 After having done transformations the hard way, grasping Processing's transform functions is a breeze.
 
-Create a new sketch and save it as "transform_functions". Within the sketch's folder, create a "data" sub-folder containing a copy of the grid.png and grid-overlay.png files:
+Create a new sketch and save it as "transform_functions". Within the sketch's folder, create a "data" subfolder containing a copy of the grid.png and grid-overlay.png files:
 
 <a href="{{ site.url }}/img/pitl04/grid.png" download>grid.png</a>  
 <a href="{{ site.url }}/img/pitl04/grid-overlay.png" download>grid-overlay.png</a>
@@ -1225,7 +1229,7 @@ noFill()
 stroke('#FFFFFF')
 strokeWeight(3)
 grid = loadImage('grid.png')
-image(grid, 0, 0)
+image(grid, 0,0)
 grido = loadImage('grid-overlay.png')
 {% endhighlight %}
 
@@ -1241,7 +1245,7 @@ rect(x,y, w,h)
   <img src="{{ site.url }}/img/pitl04/transformations-matrices-setup.png" />
 </figure>
 
-Add a `translate(100,-80)` and a duplicate `rect()` in yellow. 
+Add a `translate(100,-80)` function and a duplicate `rect()` in yellow:
 
 {% highlight py %}
 ...
@@ -1258,22 +1262,15 @@ rect(x,y, w,h)
   <img src="{{ site.url }}/img/pitl04/transformations-matrices-translate.png" />
 </figure>
 
-Add a square, 100 × 100 pixels in width and height, with an x-y coordinate of zero:
+Add a square, 100 × 100 pixels in width/height, with an x-y coordinate of zero:
 
 {% highlight py %}
 ...
-x = 400; y = 200
-w = 200; h = 200
-rect(x,y, w,h)
-
-translate(100,-80)
-stroke('#FFFF00')
-rect(x,y, w,h)
 stroke('#FF0000')
 rect(0,0, 100,100)
 {% endhighlight %}
 
-Run the sktech. The red square can be seen cut-off near the top-left of the display window. This is because the shapes do not change position; rather it is the coordinate system that does. To better visualise this behaviour, add draw the grid-overlay.png beneath the `translate()` line: 
+Run the sketch. The red square can be seen cut-off near the top-left of the display window. This is because the shapes do not change position; rather it is the coordinate system that does. To better visualise this behaviour, draw the grid-overlay.png after the `translate()` function: 
 
 {% highlight py %}
 ...
@@ -1293,9 +1290,7 @@ rect(0,0, 100,100)
   <img src="{{ site.url }}/img/pitl04/transformations-functions-translate-overlay.png" />
 </figure>
 
-This can be useful way to approach drawing -- moving the coordinate system to avoid keeping track using variables.
-
-To return the red square to the top-left corner, one could add a `translate(-100,80)` to offset the prior one; or better yet, isolate the translation somehow. Wrap the `translate`, `image`, and yellow square code in a `pushMatrix()` and `popMatrix()` function. These will create a new matrix stack within which only the nested shapes (a yellow square, for now) are translated:
+To return the red square to the top-left corner, one could add a `translate(-100,80)` to offset the prior one -- or better yet, isolate the translation. Wrap the `translate`, `image`, and yellow square code in a `pushMatrix()` and `popMatrix()` function. These will create a new matrix stack within which only the nested shapes (a yellow square, for now) are translated:
 
 {% highlight py %}
 ...
@@ -1318,9 +1313,11 @@ rect(0,0, 100,100)
   <img src="{{ site.url }}/img/pitl04/transformations-functions-translate-matrix.png" />
 </figure>
 
-In addition to `translate` Processing's 2D transform functions include, [rotate()](http://py.processing.org/reference/rotate.html), [scale()](http://py.processing.org/reference/scale.html), [shearX()](http://py.processing.org/reference/shearX.html), and [shearY()](http://py.processing.org/reference/shearY.html).
+This can be a useful way to approach drawing -- moving the coordinate system to avoid keeping track using variables, then adding a `popMatrix()` to return to the original coordinate system. It ultimately depends on what works best for what you are drawing.
 
-What is more, you may combine these as you wish. Add further functions to the existing matrix stack:
+In addition to `translate()`, Processing's 2D transform functions include, [rotate()](http://py.processing.org/reference/rotate.html), [scale()](http://py.processing.org/reference/scale.html), [shearX()](http://py.processing.org/reference/shearX.html), and [shearY()](http://py.processing.org/reference/shearY.html).
+
+What is more, you may combine these as you wish. Add further transform functions to the existing matrix stack:
 
 {% highlight py %}
 pushMatrix()
@@ -1337,7 +1334,7 @@ popMatrix()
   <img src="{{ site.url }}/img/pitl04/transformations-functions-multiple.png" />
 </figure>
 
-Depending on what you wish to draw, you may find that moving the entire coordinate system about is easier than keeping track of coordinates.
+You will be using a mix of these techniques in the tasks to come.
 
 ## Time and Date
 

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   height="1000"
+   width="1000"
+   id="svg56"
+   version="1.1"
+   viewBox="0 0 1000 1000">
+  <metadata
+     id="metadata62">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>sequence</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs60" />
+  <title
+     id="title2">sequence</title>
+  <text
+     id="text4599-8"
+     y="203.07404"
+     x="614.31067"
+     style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+     xml:space="preserve"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';fill:#000000"
+       y="203.07404"
+       x="614.31067"
+       id="tspan4597-3">frame 1</tspan></text>
+  <text
+     id="text4599-2-9"
+     y="825.07404"
+     x="614.31067"
+     style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+     xml:space="preserve"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';fill:#000000"
+       y="825.07404"
+       x="614.31067"
+       id="tspan4597-4-0">frame 7</tspan></text>
+  <circle
+     id="circle22"
+     style="fill:none;stroke:#004775;stroke-width:7px;stroke-miterlimit:10;stroke-opacity:0.03921569"
+     r="65.269997"
+     cy="190.26999"
+     cx="500" />
+  <circle
+     id="circle24"
+     style="fill:none;stroke:#004775;stroke-width:7px;stroke-miterlimit:10"
+     r="65.269997"
+     cy="807.72998"
+     cx="500" />
+  <circle
+     id="circle22-7"
+     style="fill:none;stroke:#004775;stroke-width:7px;stroke-miterlimit:10;stroke-opacity:0.15686275"
+     r="65.269997"
+     cy="293.17996"
+     cx="500" />
+  <circle
+     id="circle22-9"
+     style="fill:none;stroke:#004775;stroke-width:7px;stroke-miterlimit:10;stroke-opacity:0.2745098"
+     r="65.269997"
+     cy="396.08997"
+     cx="500" />
+  <circle
+     id="circle22-3"
+     style="fill:none;stroke:#004775;stroke-width:7px;stroke-miterlimit:10;stroke-opacity:0.39215686"
+     r="65.269997"
+     cy="499"
+     cx="500" />
+  <circle
+     id="circle22-8"
+     style="fill:none;stroke:#004775;stroke-width:7px;stroke-miterlimit:10;stroke-opacity:0.5098038"
+     r="65.269997"
+     cy="601.90997"
+     cx="500" />
+  <circle
+     id="circle22-0"
+     style="fill:none;stroke:#004775;stroke-width:7px;stroke-miterlimit:10;stroke-opacity:0.62745098"
+     r="65.269997"
+     cy="704.82001"
+     cx="500" />
+  <text
+     id="text4599"
+     y="200.65686"
+     x="611.75195"
+     style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+     xml:space="preserve"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';fill:#00ff00"
+       y="200.65686"
+       x="611.75195"
+       id="tspan4597">frame 1</tspan></text>
+  <text
+     id="text4599-2"
+     y="822.65686"
+     x="611.75195"
+     style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+     xml:space="preserve"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';fill:#00ff00"
+       y="822.65686"
+       x="611.75195"
+       id="tspan4597-4">frame 7</tspan></text>
+</svg>

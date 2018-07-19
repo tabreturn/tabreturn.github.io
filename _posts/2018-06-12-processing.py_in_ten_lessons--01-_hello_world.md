@@ -684,7 +684,7 @@ The green overlay helps illustrate how things work. The arc is drawn along the p
   <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Circle_radians.gif" />
   <figcaption>
     The SI symbol for radian is <b>rad</b>.<br />
-    https://en.wikipedia.org/wiki/Radian#/media/File:Circle_radians.gif
+    source: <a href="https://en.wikipedia.org/wiki/Radian#/media/File:Circle_radians.gif">Wikipedia</a>
   </figcaption>
 </figure>
 

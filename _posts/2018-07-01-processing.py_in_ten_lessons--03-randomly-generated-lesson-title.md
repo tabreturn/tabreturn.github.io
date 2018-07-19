@@ -388,7 +388,7 @@ Tasks like tiling can be tedious work, though. Humans are exemplary in reasoning
   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/APN2002_Table_1%2C_1000-1500.agr.tiff/lossless-page1-789px-APN2002_Table_1%2C_1000-1500.agr.tiff.png" />
   <figcaption>
     A logarithms table from American Practical Navigator.<br />
-    https://en.wikipedia.org/wiki/File:APN2002_Table_1,_1000-1500.agr.tiff
+    source: <a href="https://en.wikipedia.org/wiki/File:APN2002_Table_1,_1000-1500.agr.tiff">Wikipedia</a>
   </figcaption>
 </figure>
 
@@ -689,7 +689,7 @@ x = random(5)
 print(x)
 x = random(5,10)
 print(x)
-print( int(x) ) 
+print( int(x) )
 {% endhighlight %}
 
 <figure>
@@ -740,7 +740,7 @@ Unlike the earlier versions in which no random seed had been defined, every run 
 
 ### Truchet Tiles
 
-Sébastien Truchet (1657--1729), a French Dominican priest, was active in the fields of mathematics, hydraulics, graphics and typography. Among his many contributions, he developed a scheme for creating interesting patterns using tiles -- which have since become known as *Truchet tiles*. The original Truchet tile is square and divided by a diagonal line between opposing corners. This tile can be rotated in multiples of ninety degrees to produce four variants. 
+Sébastien Truchet (1657--1729), a French Dominican priest, was active in the fields of mathematics, hydraulics, graphics and typography. Among his many contributions, he developed a scheme for creating interesting patterns using tiles -- which have since become known as *Truchet tiles*. The original Truchet tile is square and divided by a diagonal line between opposing corners. This tile can be rotated in multiples of ninety degrees to produce four variants.
 
 <figure>
   <img src="{{ site.url }}/img/pitl03/random-truchet-contrast-set.png" />
@@ -791,7 +791,7 @@ for i in range(1,145):
     arc(col,row, 50,50, 0,PI/2)
     arc(col+50,row+50, 50,50, PI,PI+PI/2)
     col += 50
-    
+
     if i%12 == 0:
         row += 50
         col = 0
@@ -811,7 +811,7 @@ for i in range(1,145):
     ...
 {% endhighlight %}
 
-After verifying that the above code prints lines of `1` or `0` to the Console, adapt it to display `True`/`False` results. 
+After verifying that the above code prints lines of `1` or `0` to the Console, adapt it to display `True`/`False` results.
 
 {% highlight py %}
 for i in range(1,145):
@@ -830,16 +830,16 @@ Because this operation returns a boolean value, it can be used as an `if` statem
 {% highlight py %}
 for i in range(1,145):
     #print( int(random(2)) == 1 )
-    
+
     if int(random(2)) == 1:
         arc(col,row, 50,50, 0,PI/2)
         arc(col+50,row+50, 50,50, PI,PI+PI/2)
     else:
         arc(col+50,row, 50,50, PI/2,PI)
         arc(col,row+50, 50,50, PI+PI/2,2*PI)
-        
+
     col += 50
-    
+
     if i%12 == 0:
         row += 50
         col = 0

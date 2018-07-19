@@ -1,20 +1,10 @@
-<script src="{{ "/js/typeControls.js" | prepend: site.baseurl }}" type="text/javascript"></script>
-<script src="{{ "/js/categoryFilter.js" | prepend: site.baseurl }}" type="text/javascript"></script>
-
+<script src="{{ "/js/typeControls.js" | prepend: site.baseurl }}"></script>
 <script>
   typeControls();
-  var hash = location.hash.slice(1)
-  
-  if (hash) {
-    categoryFilter([hash]);
-  }
-  else {
-    categoryFilter(['2020', '2019', '2018', '2017', '2016', '2015']);
-  }
 </script>
 
 {% if site.piwik_trackerurl %}
-<script type="text/javascript">
+<script>
   var _paq = _paq || [];
   _paq.push(['setDomains', ['{{ site.piwik_trackerurl }}']]);
   _paq.push(['trackPageView']);

@@ -26,7 +26,7 @@ Take a moment to note the numbering sequence of the circles in the illustration 
   <img src="{{ site.url }}/img/pitl04/sequence.svg" />
 </figure>
 
-Consider that you displayed just circle 1 for a full four seconds, followed by just circle 5 for another four seconds, looping the sequence indefinitely (an effective frame rate of 0.25 fps). The result, most observers would agree, is a pair of alternating images depicting circles in different positions. However, speed up the frame rate to around 2.5 fps, and one begins to interpret the sequence as a circle bouncing between two points. Speed up the frame rate further, and the two circles seemingly flicker in sync. 
+Consider that you displayed just circle 1 for a full four seconds, followed by just circle 5 for another four seconds, looping the sequence indefinitely (an effective frame rate of 0.25 fps). The result, most observers would agree, is a pair of alternating images depicting circles in different positions. However, speed up the frame rate to around 2.5 fps, and one begins to interpret the sequence as a circle bouncing between two points. Speed up the frame rate further, and the two circles seemingly flicker in sync.
 
 <figure>
   <img src="{{ site.url }}/img/pitl04/sequence-timings.gif" class="fullwidth" />
@@ -57,7 +57,7 @@ def setup():
     noFill()
     stroke('#FFFFFF')
     strokeWeight(3)
-    
+
 def draw():
     print(frameCount)
 {% endhighlight %}
@@ -78,7 +78,7 @@ def setup():
     noFill()
     stroke('#FFFFFF')
     strokeWeight(3)
-    
+
 def draw():
     if frameCount%2 == 0:
         print(frameCount)
@@ -114,7 +114,7 @@ def setup():
     noFill()
     stroke('#FFFFFF')
     strokeWeight(3)
-    
+
 def draw():
     background('#004477')
     if frameCount%2 == 0:
@@ -140,7 +140,7 @@ For a more convincing effect, the animation should fill-in the intermediate fram
 
 <figure>
   <img src="{{ site.url }}/img/pitl04/animation-functions-tween.svg" />
-  <figcaption>The onionskin effect is used to indicate previous frame positions.</figcaption>
+  <figcaption>The onionskin rendition is used to indicate the frame positions.</figcaption>
 </figure>
 
 To accomplish this without having to write out each frame position, one requires a variable to store and update the circle's `y` value.
@@ -186,13 +186,13 @@ However, this global `y` variable can be overridden on a local level by another 
   <figcaption>To capture this Console output, the sketch has been stopped almost immediately after running it. The lines of zeroes would otherwise soon scroll the <code>1</code> out of view.</figcaption>
 </figure>
 
-While you can override a global variable, you cannot write/reassign a value to it:
+While you can override a global variable, you will find that you cannot write/reassign a value to it:
 
 <figure>
   <img src="{{ site.url }}/img/pitl04/global-variables-error-no-global.png" class="fullwidth" />
 </figure>
 
-This is where the `global` keyword is useful. Edit your code, moving the `y = 1` line to the top of your code (into the global scope). Then, to modify this variable from within the `draw()` function, bind it to the `draw`'s local scope using the `global` keyword:
+This is where the `global` keyword is useful. Edit your code, moving the `y = 1` line to the top of your code (into the global scope). Then, to modify this variable from within the `draw()` function, binding it to the `draw`'s local scope using the `global` keyword:
 
 {% highlight py %}
 y = 1
@@ -243,12 +243,12 @@ Each time the `saveFrame()` function is called it saves a TIFF (.tif) file withi
 {% highlight py %}
     ...
     ellipse(height/2,y, 47,47)
-    
+
     if frameCount % 100 == 0:
         saveFrame()
 {% endhighlight %}
 
-Run the sketch and monitor the sketch folder. As every hundredth frame is encountered, a new file appears named &ldquo;screen-&rdquo; followed by a four-digit frame count (padded with leading zeros).
+Run the code and monitor the sketch folder. As every hundredth frame is encountered, a new file appears named &ldquo;screen-&rdquo; followed by a four-digit frame count padded with a leading zero(s).
 
 <figure>
   <img src="{{ site.url }}/img/pitl04/global-variables-saveframe-folder.png" />
@@ -297,7 +297,7 @@ The only the unfamiliar line is the `logo = None`. This line defines the `logo` 
   <figcaption>The motion trail indicates the left-to-right movement.</figcaption>
 </figure>
 
-Your challenge is to complete the task. The logo should begin moving at an angle, rebounding off every wall it encounters.
+The logo should begin moving at an angle, rebounding off every wall it encounters. Your challenge is to complete the task.
 
 <figure>
   <img src="{{ site.url }}/img/pitl04/dvd-logo-bounce.png" />
@@ -371,7 +371,7 @@ Add the following code:
 {% highlight py %}
 size(800, 800)
 grid = loadImage('grid.png')
-image(grid, 0, 0)
+image(grid, 0,0)
 noFill()
 stroke('#FFFFFF')
 strokeWeight(3)
@@ -394,8 +394,8 @@ Matrices operate on vertices, whereas the `rect()` function does not. To move fo
 #rect(x,y, w,h)
 quad(
   x, y,
-  x, y+h, 
-  x+w, y+h, 
+  x, y+h,
+  x+w, y+h,
   x+w, y
 )
 {% endhighlight %}
@@ -493,8 +493,8 @@ a = 100; b = -80
 stroke('#FFFF00')
 quad(
   x+a, y+b,
-  x+a, y+h+b, 
-  x+w+a, y+h+b, 
+  x+a, y+h+b,
+  x+w+a, y+h+b,
   x+w+a, y+b
 )
 {% endhighlight %}
@@ -544,7 +544,7 @@ Expressed in matrix notation, this is:
   </mfenced>
 </math>
 
-Run the sketch. The new yellow square is drawn `100` pixels further right and `80` pixels closer to the top-edge than the original. 
+Run the sketch. The new yellow square is drawn `100` pixels further right and `80` pixels closer to the top-edge than the original.
 
 <figure>
   <img src="{{ site.url }}/img/pitl04/transformations-matrices-translate.png" />
@@ -552,7 +552,7 @@ Run the sketch. The new yellow square is drawn `100` pixels further right and `8
 
 #### Scale
 
-To scale a shape, one must *multiply* the matrix you wish to transform by one describing a transformation. In mathematical notation, this can be expressed as: 
+To scale a shape, one must *multiply* the matrix you wish to transform by one describing a transformation. In mathematical notation, this can be expressed as:
 
 <math>
   <mfenced open = "[" close="]">
@@ -631,7 +631,7 @@ And this is the point where the power of matrices becomes evident! Depending on 
   </mfenced>
 </math>
 
-To perform a scale, value `a` multiplies the width, and value `d` multiplies the height. To half the square's width and height, use a matrix where both `a` and `d` are equal to `0.5`: 
+To perform a scale, value `a` multiplies the width, and value `d` multiplies the height. To half the square's width and height, use a matrix where both `a` and `d` are equal to `0.5`:
 
 <math>
   <mfenced open = "[" close="]">
@@ -701,9 +701,9 @@ a = 0.5; b = 0
 c = 0; d = 0.5
 stroke('#FF9900')
 quad(
-  x*a + y*b,         x*c + y*d, 
-  x*a + (y+h)*b,     x*c + (y+h)*d, 
-  (x+w)*a + (y+h)*b, (x+w)*c + (y+h)*d, 
+  x*a + y*b,         x*c + y*d,
+  x*a + (y+h)*b,     x*c + (y+h)*d,
+  (x+w)*a + (y+h)*b, (x+w)*c + (y+h)*d,
   (x+w)*a + y*b,     (x+w)*c + y*d
 )
 {% endhighlight %}
@@ -726,9 +726,9 @@ a = 0.5; b = 0
 c = 0; d = 0.5
 stroke('#FF9900')
 quad(
-  x*a + y*b,         x*c + y*d, 
-  x*a + (y+h)*b,     x*c + (y+h)*d, 
-  (x+w)*a + (y+h)*b, (x+w)*c + (y+h)*d, 
+  x*a + y*b,         x*c + y*d,
+  x*a + (y+h)*b,     x*c + (y+h)*d,
+  (x+w)*a + (y+h)*b, (x+w)*c + (y+h)*d,
   (x+w)*a + y*b,     (x+w)*c + y*d
 )
 {% endhighlight %}
@@ -750,9 +750,9 @@ a = 0.3; b = 0
 c = 0;   d = 1.8
 stroke('#FF9900')
 quad(
-  x*a + y*b,         x*c + y*d, 
-  x*a + (y+h)*b,     x*c + (y+h)*d, 
-  (x+w)*a + (y+h)*b, (x+w)*c + (y+h)*d, 
+  x*a + y*b,         x*c + y*d,
+  x*a + (y+h)*b,     x*c + (y+h)*d,
+  (x+w)*a + (y+h)*b, (x+w)*c + (y+h)*d,
   (x+w)*a + y*b,     (x+w)*c + y*d
 )
 {% endhighlight %}
@@ -891,9 +891,9 @@ a = -1; b = 0
 c = 0;  d = 1
 stroke('#FF0000')
 quad(
-  x*a + y*b,         x*c + y*d, 
-  x*a + (y+h)*b,     x*c + (y+h)*d, 
-  (x+w)*a + (y+h)*b, (x+w)*c + (y+h)*d, 
+  x*a + y*b,         x*c + y*d,
+  x*a + (y+h)*b,     x*c + (y+h)*d,
+  (x+w)*a + (y+h)*b, (x+w)*c + (y+h)*d,
   (x+w)*a + y*b,     (x+w)*c + y*d
 )
 {% endhighlight %}
@@ -961,7 +961,7 @@ Expressed in matrix notation, this is:
   </mfenced>
 </math>
 
-The result is a square with a width of `-200`, drawn from a starting coordinate of `(-400,200)`. As this lies beyond left-edge of the display window, it cannot be seen. 
+The result is a square with a width of `-200`, drawn from a starting coordinate of `(-400,200)`. As this lies beyond left-edge of the display window, it cannot be seen.
 
 <figure>
   <img src="{{ site.url }}/img/pitl04/transformations-matrices-reflect.png" class="fullwidth" />
@@ -970,18 +970,18 @@ The result is a square with a width of `-200`, drawn from a starting coordinate 
 
 #### Rotate
 
-Rotation transformations require the trigonometric functions `cos()` and `sin()`. Recall, though, that Processing deals in radians, rather than degrees, so any arguments you pass these functions must be expressed in radians.
+Rotation transformations require the trigonometric functions `cos()` and `sin()`. Recall, though, that Processing deals in radians rather than degrees, so any arguments you pass these functions must be expressed in radians.
 
-Add a pink version of the white square, rotated 45 degrees (roughly `0.785` radians). 
+Add a pink version of the white square, rotated 45 degrees (roughly `0.785` radians).
 
 {% highlight py %}
 a = cos(0.785); b = -sin(0.785)
 c = sin(0.785); d = cos(0.785)
 stroke('#00FF00')
 quad(
-  x*a + y*b,         x*c + y*d, 
-  x*a + (y+h)*b,     x*c + (y+h)*d, 
-  (x+w)*a + (y+h)*b, (x+w)*c + (y+h)*d, 
+  x*a + y*b,         x*c + y*d,
+  x*a + (y+h)*b,     x*c + (y+h)*d,
+  (x+w)*a + (y+h)*b, (x+w)*c + (y+h)*d,
   (x+w)*a + y*b,     (x+w)*c + y*d
 )
 {% endhighlight %}
@@ -1124,16 +1124,16 @@ And for a vertical shear:
 </math>
 
 
-Add a red version of the white square, sheared vertically using a coefficient of `0.4`. 
+Add a red version of the white square, sheared vertically using a coefficient of `0.4`.
 
 {% highlight py %}
 a = 1;   b = 0
 c = 0.4; d = 1
 stroke('#FF0000')
 quad(
-  x*a + y*b,         x*c + y*d, 
-  x*a + (y+h)*b,     x*c + (y+h)*d, 
-  (x+w)*a + (y+h)*b, (x+w)*c + (y+h)*d, 
+  x*a + y*b,         x*c + y*d,
+  x*a + (y+h)*b,     x*c + (y+h)*d,
+  (x+w)*a + (y+h)*b, (x+w)*c + (y+h)*d,
   (x+w)*a + y*b,     (x+w)*c + y*d
 )
 {% endhighlight %}
@@ -1208,7 +1208,7 @@ Below is the result, along with a grid-overlay and x-y coordinate label:
   <figcaption>A vertically-sheared red square.</figcaption>
 </figure>
 
-This section has introduced some fundamental transformation concepts using matrices, while avoiding anything larger than 2 × 2 matrix. If you wish to handle larger matrices, take a look at Python's *NumPy* library. 
+This section has introduced some fundamental transformation concepts using matrices, while avoiding anything larger than 2 × 2 matrix. If you wish to handle larger matrices, take a look at Python's *NumPy* library.
 
 Next up: performing all of the above transformations without having to worry about the math!
 
@@ -1270,7 +1270,7 @@ stroke('#FF0000')
 rect(0,0, 100,100)
 {% endhighlight %}
 
-Run the sketch. The red square can be seen cut-off near the top-left of the display window. This is because the shapes do not change position; rather it is the coordinate system that does. To better visualise this behaviour, draw the grid-overlay.png after the `translate()` function: 
+Run the sketch. The red square can be seen cut-off near the top-left of the display window. This is because the shapes do not change position; rather it is the coordinate system that does. To better visualise this behaviour, draw the grid-overlay.png after the `translate()` function:
 
 {% highlight py %}
 ...
@@ -1338,7 +1338,16 @@ You will be using a mix of these techniques in the tasks to come.
 
 ## Time and Date
 
+There are twenty-four hours in a day. Why twenty-four and not ten, thirty, or some other number? The duodecimal system -- a
 
+https://www.mojotech.com/blog/the-complexity-of-time-data-programming/
+https://en.wikipedia.org/wiki/Duodecimal
+https://www.tutorialspoint.com/python/python_date_time.htm
+
+{% highlight py %}
+import time
+print( time.time() )
+{% endhighlight %}
 
 
 
@@ -1381,4 +1390,3 @@ That’s it for lesson 04.
 * http://lostmathlessons.blogspot.com/2016/03/bouncing-dvd-logo.html
 * https://commons.wikimedia.org/wiki/File:DVD_logo.svg
 * https://en.wikipedia.org/wiki/Beta_movement
-

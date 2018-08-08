@@ -1338,18 +1338,53 @@ You will be using a mix of these techniques in the tasks to come.
 
 ## Time and Date
 
-There are twenty-four hours in a day. Why twenty-four and not ten, thirty, or some other number? The duodecimal system -- a
+There are twenty-four hours in a day. But why is this not ten, twenty, a hundred, or some other more 'rounded' number? To make things more confusing, these twenty-four hours are then split into twelve AM and twelve PM hours. To understand why this is, one must look back to where the system first originated -- around Mesopotamia and Ancient Egypt, circa 1500 BC. These civilisations relied on sundials and water-clocks for day- and night-time timekeeping, which explains the need for the two cycles. The twelve hour figure arises from the finger-counting system, where one uses the thumb to count up to twelve on the three bones of each finger.
 
-https://www.mojotech.com/blog/the-complexity-of-time-data-programming/
-https://en.wikipedia.org/wiki/Duodecimal
-https://www.tutorialspoint.com/python/python_date_time.htm
+<figure>
+  <img src="{{ site.url }}/img/pitl04/time-dozen-counting.svg" />
+</figure>
+
+Not only does the explain the origins of 12-hour clock, but also the twelve months of the year, and the *dozen* grouping system. Twelve has another handy attribute, though: it happens to have the most divisors of any number below 18.
+
+If the twelve-hour (AM/PM) clock makes time tricky to deal with, time zones only complicate matters even further. Given that the earth is a spinning ball circling the sun, it's always noon across some longitudinal arc of the planet's surface. Because the earth must rotate a full 360 degrees to complete one day, 'noon' moves across the planet's surface at 15 degrees (360 ÷ 24) each hour. This gives us 24 *solar* time zones, each an hour apart. But whether or not your watch reads 12:00 depends on the *local* time zone in which you find yourself. For example, Australia has three such local time zones whereas China has one, despite the latter straddling 4 of the solar variety.
+
+<figure>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Standard_World_Time_Zones.png/1024px-Standard_World_Time_Zones.png" class="fullwidth" />
+  <figcaption>
+    Standard world time zones.<br />
+    source: <a href="https://en.wikipedia.org/wiki/File:Standard_World_Time_Zones.png">Wikipedia</a>
+  </figcaption>
+</figure>
+
+Then there are day-light savings hours to contend with -- where one day in the year in 23 hours long, and another is 25. Never mind that each year is comprised of 52 weeks, 12 months (of varying lengths), 365 days ... oh, and leap years! All of these factors make handling time a complicated task -- but, fortunately, Processing provides a number functions to calculate things for you.
+
+Firstly, though, an introduction to UTC (Coordinated Universal Time) will help make local time zones more manageable. UTC is never adjusted for daylight savings and lies on zero degrees longitude. Local time zones can be expressed using a UTC offset, for example:
+
+China: `UTC+08:00`  
+India: `UTC+05:30`  
+Uruguay: `UTC-03:00`
+
+The Python `datetime` library provides a `utcnow()` method for retrieving UTC timestamps:
+
+{% highlight py %}
+import datetime
+timestamp = datetime.datetime.utcnow()
+# 2018-08-06 07:57:22.817889
+{% endhighlight %}
+
+Unix timestamps represent the number of seconds that have elapsed since 00:00:00, January 1st, 1970 (UTC):
 
 {% highlight py %}
 import time
-print( time.time() )
+timestamp = time.time()
+# 1533715946.817889
 {% endhighlight %}
 
+Depending on what you wish to accomplish, you may elect one approach over the other. However, Processing includes a number of built-in functions that may prove easier to use.
 
+### Processing Time & Date Functions
+
+To begin exploring Processing time and date functions, create a new sketch and save it as “spritesheet_animation”. Add the following code:
 
 
 

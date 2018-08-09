@@ -1338,15 +1338,15 @@ You will be using a mix of these techniques in the tasks to come.
 
 ## Time and Date
 
-There are twenty-four hours in a day. But why is this not ten, twenty, a hundred, or some other more 'rounded' number? To make things more confusing, these twenty-four hours are then split into twelve AM and twelve PM hours. To understand why this is, one must look back to where the system first originated -- around Mesopotamia and Ancient Egypt, circa 1500 BC. These civilisations relied on sundials and water-clocks for day- and night-time timekeeping, which explains the need for the two cycles. The twelve hour figure arises from the finger-counting system, where one uses the thumb to count up to twelve on the three bones of each finger.
+There are twenty-four hours in a day. But why is this not ten, twenty, a hundred, or some other more 'rounded' number? To make things more confusing, these twenty-four hours are then split into twelve AM and twelve PM hours. To understand why this is, one must look back to where the system first originated -- around Mesopotamia and Ancient Egypt, circa 1500 BC. These civilisations relied on sundials and water-clocks for day- and night-time timekeeping, which explains the need for the two (AM/PM) cycles. The twelve hour figure arises from the finger-counting system, where one would use the thumb to count up to twelve on the three bones of each finger.
 
 <figure>
   <img src="{{ site.url }}/img/pitl04/time-dozen-counting.svg" />
 </figure>
 
-Not only does the explain the origins of 12-hour clock, but also the twelve months of the year, and the *dozen* grouping system. Twelve has another handy attribute, though: it happens to have the most divisors of any number below 18.
+Not only does this explain the origins of 12-hour clock, but also the twelve months of the year and the *dozen* grouping system. Twelve also happens to have the most divisors of any number below eighteen.
 
-If the twelve-hour (AM/PM) clock makes time tricky to deal with, time zones only complicate matters even further. Given that the earth is a spinning ball circling the sun, it's always noon across some longitudinal arc of the planet's surface. Because the earth must rotate a full 360 degrees to complete one day, 'noon' moves across the planet's surface at 15 degrees (360 ÷ 24) each hour. This gives us 24 *solar* time zones, each an hour apart. But whether or not your watch reads 12:00 depends on the *local* time zone in which you find yourself. For example, Australia has three such local time zones whereas China has one, despite the latter straddling 4 of the solar variety.
+If the twelve-hour (AM/PM) clock makes time tricky to deal with, time zones only complicate matters further. Given that the earth is a spinning ball circling the sun, it's always noon across some longitudinal arc of the planet's surface. Because the earth must rotate a full 360 degrees to complete one day, 'noon' moves across the planet's surface at 15 degrees (360 ÷ 24) each hour. This gives us 24 *solar* time zones. But whether or not your watch reads 12:00 depends on the *local* time zone in which you find yourself. For example, Australia has three such local time zones whereas China has one, despite the latter straddling four solar time zones.
 
 <figure>
   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Standard_World_Time_Zones.png/1024px-Standard_World_Time_Zones.png" class="fullwidth" />
@@ -1356,13 +1356,15 @@ If the twelve-hour (AM/PM) clock makes time tricky to deal with, time zones only
   </figcaption>
 </figure>
 
-Then there are day-light savings hours to contend with -- where one day in the year in 23 hours long, and another is 25. Never mind that each year is comprised of 52 weeks, 12 months (of varying lengths), 365 days ... oh, and leap years! All of these factors make handling time a complicated task -- but, fortunately, Processing provides a number functions to calculate things for you.
+Then there are day-light savings hours to contend with (where one day in each year must be 23 hours long; and another, 25). Never mind that each year is comprised of 52 weeks, 12 months (of varying lengths), 365 days ... oh, and what about leap years? All of these factors make handling time a complicated task -- but, fortunately, Processing provides a number of functions that perform the tricky calculations for you.
 
-Firstly, though, an introduction to UTC (Coordinated Universal Time) will help make local time zones more manageable. UTC is never adjusted for daylight savings and lies on zero degrees longitude. Local time zones can be expressed using a UTC offset, for example:
+Firstly, though, an introduction to UTC (Coordinated Universal Time) will help make time zones more manageable. UTC -- which is interchangeable with GMT -- lies on zero degrees longitude and is never adjusted for daylight savings. Local time zones can be expressed using a UTC offset, for example:
 
-China: `UTC+08:00`  
-India: `UTC+05:30`  
-Uruguay: `UTC-03:00`
+~~~
+China:   UTC+08:00
+India:   UTC+05:30
+Uruguay: UTC-03:00
+~~~
 
 The Python `datetime` library provides a `utcnow()` method for retrieving UTC timestamps:
 
@@ -1380,34 +1382,119 @@ timestamp = time.time()
 # 1533715946.817889
 {% endhighlight %}
 
-Depending on what you wish to accomplish, you may elect one approach over the other. However, Processing includes a number of built-in functions that may prove easier to use.
+The `datetime` and `time` libraries include a complete set of functions for manipulating and managing time data, and depending on what you wish to accomplish, you may elect one toolset over the other. However, Processing's built-in functions that may prove easier to use.
 
-### Processing Time & Date Functions
+### Processing Date and Time Functions
 
-To begin exploring Processing time and date functions, create a new sketch and save it as “spritesheet_animation”. Add the following code:
+To begin exploring Processing time and date functions, create a new sketch and save it as "date_and_time". Add the following code:
 
+{% highlight py %}
+y = year()
+m = month()
+d = day()
+print('{}-{}-{}'.format(y,m,d))
 
+h = hour()
+m = minute()
+s = second()
+print('{}:{}:{}'.format(h,m,s))
+{% endhighlight %}
 
+The date and time functions above communicate with your computer clock (local time). Each function returns and integer value, as your Console output will confirm. The *string interpolation* approach cuts-out the need for multiple `+` operators, instead replacing each pair of `{}` braces with its respective `.format()` argument. Of course, the figures in your Console will reflect the point in time at which your run your sketch.
 
+<figure>
+  <img src="{{ site.url }}/img/pitl04/time-date-time.png" class="fullwidth" />
+  <figcaption>The Console reads:<br />
+    <code>2018-8-6</code><br />
+    <code>7:57:22</code>
+  </figcaption>
+</figure>
 
+Unlike the functions above, `millis()` does not fetch date and time values from your clock -- but instead returns the number of milliseconds (thousands of a second) that have elapsed since starting the program. Add the following code:
 
+{% highlight py %}
+ms = millis()
+print(ms)
+{% endhighlight %}
 
+Run this code. You will likely see a below `700`. However, the number of milliseconds printed to Console will vary depending on the code that precedes it. For example, place a for loop above the `millis()` function call, and have it draw a million squares:
 
+{% highlight py %}
+...
 
+for i in range(1000000):
+    rect(10,10,10,10)
 
+ms = millis()
+print(ms)
+{% endhighlight %}
 
+The `ms` value is now likely to exceed `1000`. I say "likely", because your computer specs and any processes running in the background will have an influence. As a case in point, running this code on my laptop while transcoding a video file added around another thousand milliseconds to the readout.
 
+The `millis()` function operates independently of frame rate. To monitor how many frames have elapsed, use the `frameCount` system variable.
 
+### Sprite Sheet Animation
 
+A *sprite* is a single graphic comprised of pixels. Multiple sprites can be combined to create a scene like that of this *Mario Bros.* level:
 
+<figure>
+  <img src="https://upload.wikimedia.org/wikipedia/en/c/cf/Mario_Bros._Gameplay.gif" />
+  <figcaption>
+    Mario Bros.<br />
+    Source: <a href="https://en.wikipedia.org/wiki/Mario_Bros">Wikipedia</a>
+  </figcaption>
+</figure>
 
+Study the screenshot above; notice how the blue bricks are all clones of one another. Rather place a completed environment image in the scene, the developer repeats a single blue tile in the positions necessary to form the platforms. The red ground is also formed from repeating tile. Mario, the turtle, and the fireball are also sprites, although, unlike the environmental sprites, they are all animated. Each animated sprite frame can be packed into a single *sprite sheet* -- like in this Nyan Cat example:
 
+<figure>
+  <img src="{{ site.url }}/img/pitl04/nyancat-spritesheet.gif" class="fullwidth" />
+  <figcaption>
+    Source: <a href="https://www.youtube.com/watch?v=QH2-TGUlwu4">Nyan Cat</a>
+  </figcaption>
+</figure>
 
+By packing every frame into a single image, the developer need only load a single sprite sheet graphic, thus reducing memory and processing overhead. Typically, all of the background elements are also packed into a separate sprite sheet. The technique dates back to early video game development but has been utilised in other domains, such as web development.
 
+To create a sprite sheet animation of your own, create a new sketch and save it as "spritesheet_animation". Within this, create a "data" folder. Download a copy of the Nyan Cat sprite sheet and place it in the data folder:
 
+<a href="{{ site.url }}/img/pitl04/nyancat-spritesheet.gif" download>nyancat-spritesheet.gif</a>  
 
+Add the following code:
 
+{% highlight py %}
+def setup():
+    size(300,138)
+    frameRate(12)
 
+def draw():
+    background('#004477')
+    nyan = loadImage('nyancat_spritesheet.gif')
+    xpos = 0
+    image(nyan, xpos,0)
+{% endhighlight %}
+
+<figure>
+  <img src="{{ site.url }}/img/pitl04/time-spritesheet.png" class="fullwidth" />
+</figure>
+
+The sprite sheet must move about within a containing box, as if behind a sort of mask. In this instance, the display window will serve as that 'mask'. The *nyancat-spritesheet.gif* is 1500 pixels wide and 138 pixels high. This means each sprite is 300 pixels wide (1500 ÷ 5), hence the `size(300,138)` line. To advance a frame, the *nyancat-spritesheet.gif* graphic needs to be shifted 300 pixels further left with each new `draw`. This can be controlled using `frameCount`, but combined with a modulo operation to bring it back to zero every fifth frame:
+
+{% highlight py %}
+def setup():
+    size(300,138)
+    frameRate(12)
+
+def draw():
+    background('#004477')
+    nyan = loadImage('nyancat_spritesheet.gif')
+    xpos = (frameCount % 5) * 300 * -1
+    image(nyan, xpos,0)
+{% endhighlight %}
+
+Run the sketch to verify that Nyan Cat loops seamlessly.
+
+This was a *very* basic introduction to sprite sheets. It's hardly an ideal approach (that modulo operation only grows more demanding as the `frameCount` increases). Should you wish to create 2D game -- using Processing or another platform -- you will want to research this topic further.
 
 ## Animated Trigonometry
 

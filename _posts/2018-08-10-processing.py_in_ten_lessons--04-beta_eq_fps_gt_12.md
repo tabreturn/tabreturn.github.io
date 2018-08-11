@@ -1586,11 +1586,71 @@ Remember "[sohcahtoa](https://en.wikipedia.org/wiki/Mnemonics_in_trigonometry)"?
   </figcaption>
 </figure>
 
-Remember *unit circles*? They look like this:
+Remember *unit circles*? A unit circle is a circle with a radius of one:
 
 <figure>
   <img src="{{ site.url }}/img/pitl04/trigonometry-unit-circle.svg" />
 </figure>
+
+In the above illustration, angle theta (θ) is equal 45 degrees -- or roughly 0.785 radians. But, more correctly, one could say that theta is equal to pi over 4. We will come back to the unit circle in a moment; for now, create a new sketch and save it as "sohcahtoa". Add the following code:
+
+{% highlight py %}
+theta = QUARTER_PI
+radius = 1
+s = 200 # scale variable
+radius *= s
+
+def setup():
+    size(600,600)
+    noFill()
+    stroke('#FFFFFF')
+    strokeWeight(3)
+
+def draw():
+    background('#004477')
+    translate(width/2, height/2)
+    ellipse(0,0, radius*2,radius*2)
+    line(0,0, 150,-150)
+{% endhighlight %}
+
+<figure>
+  <img src="{{ site.url }}/img/pitl04/trigonometry-sohcahtoa-circle.png" />
+</figure>
+
+A unit circle would be far too small to work with, hence inclusion of an `s` variable for scale. Rather than dealing with radius of 1, we now have a circle with a radius of 200. Provided one scales every coordinate by the same factor, the trigonometry calculations will work fine. Notice how the diagonal line reaches beyond the circumference -- instead, this should terminate precisely one the circle boundary. One can use the *sin* (sine) and *cos* (cosine) functions to calculate this x/y coordinate.
+
+To begin, look at this cool animation for a ten seconds:
+
+<figure>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Circle_cos_sin.gif" class="fullwidth"/>
+  <figcaption>
+    Source: <a href="https://upload.wikimedia.org/wikipedia/commons/3/3b/Circle_cos_sin.gif">Wikipedia</a>
+  </figcaption>
+</figure>
+
+This frame represents theta as it reached 45 degrees / `QUARTER_PI` radians, and the unit circle illustration has placed over it:
+
+<figure>
+  <img src="{{ site.url }}/img/pitl04/trigonometry-unit-circle-overlay.png" class="fullwidth" />
+</figure>
+
+This x/y coordinate can be be calculated is the `sin()` and `cos()` functions. Update the draw function:
+
+{% highlight py %}
+def draw():
+    background('#004477')
+    translate(width/2, height/2)
+    ellipse(0,0, radius*2,radius*2)
+    x = sin(theta) * s
+    y = cos(theta) * s * -1
+    line(0,0, x,y)
+{% endhighlight %}
+
+
+
+
+
+
 
 {% comment %}
 

@@ -1360,11 +1360,10 @@ Then there are day-light savings hours to contend with (where one day in each ye
 
 Firstly, though, an introduction to UTC (Coordinated Universal Time) will help make time zones more manageable. UTC -- which is interchangeable with GMT -- lies on zero degrees longitude and is never adjusted for daylight savings. Local time zones can be expressed using a UTC offset, for example:
 
-~~~
-China:   UTC+08:00
-India:   UTC+05:30
-Uruguay: UTC-03:00
-~~~
+| China:   | UTC+08:00 |
+| India:   | UTC+05:30 |
+| Uruguay: | UTC-03:00 |
+|||
 
 The Python `datetime` library provides a `utcnow()` method for retrieving UTC timestamps:
 
@@ -1498,9 +1497,113 @@ This was a *very* basic introduction to sprite sheets. It's hardly an ideal appr
 
 ## Animated Trigonometry
 
+It is assumed that you possess some (if only a very little bit of) trigonometry knowledge. What follows is a practical and visual introduction to trigonometry in motion. Clock, metronome, and piston mechanisms all exhibit elegant rhythms that can be reproduced using sine and cosine functions.
+
+### Analog Clock Task
+
+Trigonometry focuses on triangles, but is also associated with circles. A solid grasp of radians is required before venturing further, and what better way to link angles and circles than analog clocks?
+
+Creating a digital clock in Processing is a simple matter of combining time and text functions. For an analog clock, however, one must convert the hours, minutes, and seconds into angles of rotation. As with the [disk space analyser task]({% post_url 2018-06-12-processing.py_in_ten_lessons--01-_hello_world %}#disk-space-analyser-task), you will be dealing in radians.
+
+Create a new sketch and save it as "analog_clock". To help you out, begin with some code that prints out Processing's pi constants:
+
+{% highlight py %}
+print(PI)
+print(TWO_PI)
+print(TAU)
+print(HALF_PI)
+print(QUARTER_PI)
+{% endhighlight %}
+
+These will prove handy for programming your clock. For example, rather than entering `PI/2` each time you wish to rotate something 90 degrees, you can instead use `HALF_PI`. Regarding `TAU` ... well, there is this big, nerdy mathematician war raging over whether it is better to use pi or *tau*. Basically, 2π tends to spring up in formulae all over the place i.e. there are 2π radians in a circle. In 2001 it was proposed that a new constant be devised to represent a circle; in 2010 it was decided that this value be represented using the tau symbol (τ). The table below represents equivalent expressions using `TAU` and `PI` constants, additionally listing their approximate decimal values:
+
+| `TAU`   | ` `=` ` | `TWO_PI`     | ` `=` ` | 6.284 |
+| `TAU/2` | ` `=` ` | `PI`         | ` `=` ` | 3.142 |
+| `TAU/4` | ` `=` ` | `HALF_PI`    | ` `=` ` | 1.571 |
+| `TAU/8` | ` `=` ` | `QUARTER_PI` | ` `=` ` | 0.785 |
+|||
+
+To begin the clock, draw the face and hour hand:
+
+{% highlight py %}
+...
+
+def setup():
+    size(600,600)
+    noFill()
+    stroke('#FFFFFF')
+
+def draw():
+    background('#004477')
+    translate(width/2, height/2)
+    strokeWeight(3)
+    ellipse(0,0, 350,350)
+
+    strokeWeight(10)
+    line(0,0, 100,0)
+{% endhighlight %}
+
+<figure>
+  <img src="{{ site.url }}/img/pitl04/trigonometry-clock-face.png" />
+</figure>
+
+The hour hand rests along zero radians. Recall that when drawing `arc`s, one begins at 'East' then progresses clockwise (southward) as the angle increases. This is a problematic starting position, as our clock will be offset by three hours should the hand begin from the 3 o'clock position. Correct this using a `rotate()` function:
+
+{% highlight py %}
+    ...
+
+    rotate(-HALF_PI)
+
+    strokeWeight(10)
+    line(0,0, 100,0)
+{% endhighlight %}
+
+<figure>
+  <img src="{{ site.url }}/img/pitl04/trigonometry-clock-12.png" />
+</figure>
+
+The next step is to calculate many radians the hour hand advances with each hour. Consider that a complete rotation is tau radians; therefore one hour equals tau over `__`? Multiply this by the `hour()` function and use a translation matrix to perform the rotation; then add the minute and second hands. Your finished clock will look something like this:
+
+<figure>
+  <img src="{{ site.url }}/img/pitl04/trigonometry-clock-complete.png" />
+  <figcaption>Your hands will reflect the time of <b>your</b> computer clock.</figcaption>
+</figure>
+
+With a good grasp on radians, it is time to begin with trigonometric functions.
+
+## SOH-CAH-TOA
+
+Remember "[sohcahtoa](https://en.wikipedia.org/wiki/Mnemonics_in_trigonometry)"? That mnemonic device to help you remember the sine, cosine, and tangent ratios? You thought you'd never use it again after leaving school? To refresh your memory, it stands for:
+
+| <b>s</b>ine    | ` `=` ` | <b>o</b>pposite ÷ <b>h</b>ypotenuse |
+| <b>c</b>osine  | ` `=` ` | <b>a</b>djacent ÷ <b>h</b>ypotenuse |
+| <b>t</b>angent | ` `=` ` | <b>o</b>pposite ÷ <b>a</b>djacent   |
+
+<figure>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/TrigonometryTriangle.svg" />
+  <figcaption>
+    Source: <a href="https://en.wikipedia.org/wiki/Trigonometry">Wikipedia</a>
+  </figcaption>
+</figure>
+
+Remember *unit circles*? They look like this:
+
+<figure>
+  <img src="{{ site.url }}/img/pitl04/trigonometry-unit-circle.svg" />
+</figure>
+
+{% comment %}
+
+### Engines task
+
+Time for a final trig challenge!
+
+...
+
+
 ## Lesson 04
 
-That’s it for lesson 04.
+That's it for lesson 04.
 ... definitely more mathematical than most
 
 **Begin lesson 05:** Art of the State *(coming soon)*
@@ -1512,3 +1615,5 @@ That’s it for lesson 04.
 * http://lostmathlessons.blogspot.com/2016/03/bouncing-dvd-logo.html
 * https://commons.wikimedia.org/wiki/File:DVD_logo.svg
 * https://en.wikipedia.org/wiki/Beta_movement
+
+{% endcomment %}

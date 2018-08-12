@@ -1349,10 +1349,10 @@ Not only does this explain the origins of 12-hour clock, but also the twelve mon
 If the twelve-hour (AM/PM) clock makes time tricky to deal with, time zones only complicate matters further. Given that the earth is a spinning ball circling the sun, it's always noon across some longitudinal arc of the planet's surface. Because the earth must rotate a full 360 degrees to complete one day, 'noon' moves across the planet's surface at 15 degrees (360 ÷ 24) each hour. This gives us 24 *solar* time zones. But whether or not your watch reads 12:00 depends on the *local* time zone in which you find yourself. For example, Australia has three such local time zones whereas China has one, despite the latter straddling four solar time zones.
 
 <figure>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Standard_World_Time_Zones.png/1024px-Standard_World_Time_Zones.png" class="fullwidth" />
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Standard_World_Time_Zones.png/1280px-Standard_World_Time_Zones.png" class="fullwidth" />
   <figcaption>
     Standard world time zones.<br />
-    source: <a href="https://en.wikipedia.org/wiki/File:Standard_World_Time_Zones.png">Wikipedia</a>
+    source: <a href="https://commons.wikimedia.org/wiki/File:Standard_World_Time_Zones.png">Wikipedia Commons</a>
   </figcaption>
 </figure>
 
@@ -1440,7 +1440,7 @@ A *sprite* is a single graphic comprised of pixels. Multiple sprites can be comb
   <img src="https://upload.wikimedia.org/wikipedia/en/c/cf/Mario_Bros._Gameplay.gif" />
   <figcaption>
     Mario Bros.<br />
-    Source: <a href="https://en.wikipedia.org/wiki/Mario_Bros">Wikipedia</a>
+    Source: <a href="https://en.wikipedia.org/wiki/Mario_Bros.#/media/File:Mario_Bros._Gameplay.gif">Wikipedia</a>
   </figcaption>
 </figure>
 
@@ -1571,7 +1571,7 @@ The next step is to calculate many radians the hour hand advances with each hour
 
 With a good grasp on radians, it is time to begin with trigonometric functions.
 
-## SOH-CAH-TOA
+### SOH-CAH-TOA
 
 Remember "[sohcahtoa](https://en.wikipedia.org/wiki/Mnemonics_in_trigonometry)"? That mnemonic device to help you remember the sine, cosine, and tangent ratios? You thought you'd never use it again after leaving school? To refresh your memory, it stands for:
 
@@ -1582,7 +1582,7 @@ Remember "[sohcahtoa](https://en.wikipedia.org/wiki/Mnemonics_in_trigonometry)"?
 <figure>
   <img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/TrigonometryTriangle.svg" />
   <figcaption>
-    Source: <a href="https://en.wikipedia.org/wiki/Trigonometry">Wikipedia</a>
+    Source: <a href="https://commons.wikimedia.org/wiki/File:TrigonometryTriangle.svg">Wikimedia Commons</a>
   </figcaption>
 </figure>
 
@@ -1590,15 +1590,15 @@ Remember *unit circles*? A unit circle is a circle with a radius of one:
 
 <figure>
   <img src="{{ site.url }}/img/pitl04/trigonometry-unit-circle.svg" />
+  <figcaption>Unit circle illustration</figcaption>
 </figure>
 
-In the above illustration, angle theta (θ) is equal 45 degrees -- or roughly 0.785 radians. But, more correctly, one could say that theta is equal to pi over 4. We will come back to the unit circle in a moment; for now, create a new sketch and save it as "sohcahtoa". Add the following code:
+In the above illustration, angle theta (θ) is equal to 45 degrees -- or roughly 0.785 radians; or to be more accurate, pi over 4, which can expressed as `QUARTER_PI` in Processing. We will return to the unit circle in a moment. For now, create a new sketch and save it as "sohcahtoa". Add the following code:
 
 {% highlight py %}
-theta = QUARTER_PI
+theta = 0
 radius = 1
 s = 200 # scale variable
-radius *= s
 
 def setup():
     size(600,600)
@@ -1607,64 +1607,187 @@ def setup():
     strokeWeight(3)
 
 def draw():
+    global theta
     background('#004477')
     translate(width/2, height/2)
-    ellipse(0,0, radius*2,radius*2)
-    line(0,0, 150,-150)
+    r = radius*2*s
+    ellipse(0,0, r,r)
+    x = cos(theta)
+    y = sin(theta)
+    print(
+      round(x,1),
+      round(y,1)
+    )
+    line(0, 0, x*s, y*s)
 {% endhighlight %}
+
+A unit circle would be far too small to work with, hence inclusion of an `s` variable for scale. Rather than dealing with radius of 1, we now have a circle with a radius of 200. Provided one scales every coordinate by the same factor, the trigonometry calculations will work fine. Run the code. The Console will display lines of `(0.0, 1.0)` pairs. To avoid printing lengthy floating-point values, these have been rounded to one decimal place. Within the `line()` function's arguments, `x` and `y` are multiply by `s` -- an integer of 200 -- to calculate the end point:
 
 <figure>
   <img src="{{ site.url }}/img/pitl04/trigonometry-sohcahtoa-circle.png" />
 </figure>
 
-A unit circle would be far too small to work with, hence inclusion of an `s` variable for scale. Rather than dealing with radius of 1, we now have a circle with a radius of 200. Provided one scales every coordinate by the same factor, the trigonometry calculations will work fine. Notice how the diagonal line reaches beyond the circumference -- instead, this should terminate precisely one the circle boundary. One can use the *sin* (sine) and *cos* (cosine) functions to calculate this x/y coordinate.
+Increase the angle slightly, then run the code to see what happens:
 
-To begin, look at this cool animation for a ten seconds:
+{% highlight py %}
+    theta = 0.1
+    ...
+{% endhighlight %}
 
 <figure>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Circle_cos_sin.gif" class="fullwidth"/>
+  <img src="{{ site.url }}/img/pitl04/trigonometry-sohcahtoa-circle-0.1.png" />
+</figure>
+
+The angle opens in a clockwise direction. To reverse this, multiply the y-coordinate by negative one. To further mimic the unit circle illustration, set the `theta` variable to 45 degrees (using radians, of course).
+
+{% highlight py %}
+theta = QUARTER_PI
+...
+
+def draw():
+    ...
+    line(0, 0, x*s, y*s*-1)
+{% endhighlight %}
+
+<figure>
+  <img src="{{ site.url }}/img/pitl04/trigonometry-sohcahtoa-circle-45.png" />
+</figure>
+
+From the Console, one can see that (where theta equals `QUARTER_PI`) the **sin** *θ* returns a value `0.7`, as does **cos** *θ*. These values change as you increase/decrease the angle. The concept can be illustrated using a unit circle:
+
+<figure>
+  <img src="{{ site.url }}/img/pitl04/trigonometry-unit-circles.svg" />
+  <figcaption><b>Top-left:</b> <em>θ</em>=0; <b>top-right:</b> <em>θ</em>=π÷2; <b>bottom-left:</b> <em>θ</em>=π÷4; <b>bottom-right:</b> <em>θ</em>=π+0.3. These pairs can be multiplied to draw a circle of any radius</figcaption>
+</figure>
+
+To understand how this all works, look at this cool animation for about ten seconds:
+
+<figure>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Circle_cos_sin.gif" class="fullwidth" style="padding-right:1.7%; box-sizing:border-box" />
   <figcaption>
-    Source: <a href="https://upload.wikimedia.org/wikipedia/commons/3/3b/Circle_cos_sin.gif">Wikipedia</a>
+    Source: <a href="https://commons.wikimedia.org/wiki/File:Circle_cos_sin.gif">Wikimedia Commons</a>
   </figcaption>
 </figure>
 
-This frame represents theta as it reached 45 degrees / `QUARTER_PI` radians, and the unit circle illustration has placed over it:
+The frame below captures the moment where *θ* reaches 45 degrees / `QUARTER_PI` radians.
 
 <figure>
   <img src="{{ site.url }}/img/pitl04/trigonometry-unit-circle-overlay.png" class="fullwidth" />
+  <figcaption>The unit circle illustration has been placed over the animated circle.</figcaption>
 </figure>
 
-This x/y coordinate can be be calculated is the `sin()` and `cos()` functions. Update the draw function:
+The value for **sin** *θ* -- the red dot at the end of the red wave -- is equal to roughly 0.7. Take note how the sine function returns values between 1 and -1, which indicate the y-coordinate of where the arrow touches the circle's circumference. The blue **cos** wave also fluctuate between 1 and -1, representing the arrow's x-coordinate.
+
+Increment `theta` by `0.1` with each new frame, and a smaller circle to capture the sine wave's vertical motion:
 
 {% highlight py %}
 def draw():
-    background('#004477')
-    translate(width/2, height/2)
-    ellipse(0,0, radius*2,radius*2)
-    x = sin(theta) * s
-    y = cos(theta) * s * -1
-    line(0,0, x,y)
+    ...
+    ellipse(-width/2+40, y*s*-1, 10, 10)
+    theta += 0.1
 {% endhighlight %}
 
+<figure>
+  <img src="{{ site.url }}/img/pitl04/trigonometry-sohcahtoa-circle-sine.png" class="fullwidth" />
+  <figcaption>The small circle moves up-and-down periodically, moving fastest as it cross the circle's centre.</figcaption>
+</figure>
 
+Add another small circle to capture the cosine wave's horizontal motion:
 
+{% highlight py %}
+def draw():
+    ...
+    ellipse(-width/2+40, y*s*-1, 10, 10)
+    ellipse(x*s, -height/2+40, 10, 10)
+    theta += 0.1
+{% endhighlight %}
 
+And, finally, add another small circle at the point where the radius connects to the circumference:
 
+{% highlight py %}
+def draw():
+    ...
+    ellipse(-width/2+40, y*s*-1, 10, 10)
+    ellipse(x*s, -height/2+40, 10, 10)
+    theta += 0.1
+{% endhighlight %}
 
+<figure>
+  <img src="{{ site.url }}/img/pitl04/trigonometry-sohcahtoa-circle-cosine-sine.png" />
+</figure>
 
-{% comment %}
+Sine (and cosine) wave patterns are found in various fields, including physics, engineering, and signal processing.
+
+#### What about the -TOA part?
+
+Tangent (*tan*) functions do not produce wave-like graphs, and return values between negative infinity and infinity. Perhaps one of neatest practical examples of tangent is xeyes, albeit that it uses tan's inverse function, *arctangent*. Since the early days of the Linux *X Window System*, developers have included an application named *xeyes*. This places a pair of eyes somewhere on your desktop to help you locate the mouse cursor. This is especially handy for multi-head arrangements where there is some distance between displays.
+
+<figure>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Blackbox-Fenstermanager.png/512px-Blackbox-Fenstermanager.png" />
+  <figcaption>
+    xeyes (at the lower-right) running on Linux.<br />
+    Source: <a href="https://commons.wikimedia.org/wiki/File:Blackbox-Fenstermanager.png">Wikimedia Commons</a>
+  </figcaption>
+</figure>
+
+The arctangent function is used to find an angle between two points. To harness this in Processing, use the `atan2()` function. Create a pair of xeyes of your own by adding the following code:
+
+{% highlight py %}
+def draw():
+    ...
+
+    # left eye
+    leftx = 180
+    lefty = 255
+    leftr = atan2(
+      y*s*-1 + lefty*-1,
+      x*s + leftx*-1
+    )
+    pushMatrix()
+    translate(leftx,lefty)
+    rotate(leftr)
+    ellipse(0,0, 40,40)
+    ellipse(8,0, 10,10)
+    popMatrix()
+
+    # right eye
+    rightx = 250
+    righty = 255
+    rightr = atan2(
+      y*s*-1 + righty*-1,
+      x*s + rightx*-1
+    )
+    pushMatrix()
+    translate(rightx,righty)
+    rotate(rightr)
+    ellipse(0,0, 40,40)
+    ellipse(8,0, 10,10)
+    popMatrix()
+{% endhighlight %}
+
+<figure>
+  <img src="{{ site.url }}/img/pitl04/trigonometry-sohcahtoa-circle-atan.png" />
+  <figcaption>The eyes follow the small circle at the end of the line as it races along the boundary.</figcaption>
+</figure>
+
+We will not be using any other tangent functions in the lessons to come -- and the upcoming task requires only `sin()` and `cos()` functions. If you wish to understand more about how this code works, refer to the relevant reference entry:  
+[`atan2()`](https://py.processing.org/reference/atan2.html)
 
 ### Engines task
 
-Time for a final trig challenge!
+Time for a final challenge before moving onto lesson 05: recreate the animation below.
 
-...
+<figure>
+  <img src="{{ site.url }}/img/pitl04/engine-task.gif" class="fullwidth" />
+</figure>
 
+Technically speaking, the piston motion in such an engine design is not quite *sinusoidal*, but very close. If you would like another engine challenge, perhaps try the perfectly sinusoidal [skotch yoke](https://en.wikipedia.org/wiki/Scotch_yoke#/media/File:Scotch_yoke_animation.gif).
 
-## Lesson 04
+## Lesson 05
 
-That's it for lesson 04.
-... definitely more mathematical than most
+That's it for lesson 04. If you have made it this far -- the next lesson should be a breeze! Lesson 04 was definitely more mathematical than most, and probably a longer, too.
+
+You have dealt with string, integer, floating, and boolean datatypes. In the next lesson deals you will explore datatypes that hold a collection of elements -- namely Python *lists* and *dictionaries*. If you have some programming experience, you may have encountered *arrays* in other languages? If not, do not stress -- we will begin with the very basics. This subject matter works nicely with graphs and other forms of visualising data.
 
 **Begin lesson 05:** Art of the State *(coming soon)*
 
@@ -1675,5 +1798,3 @@ That's it for lesson 04.
 * http://lostmathlessons.blogspot.com/2016/03/bouncing-dvd-logo.html
 * https://commons.wikimedia.org/wiki/File:DVD_logo.svg
 * https://en.wikipedia.org/wiki/Beta_movement
-
-{% endcomment %}

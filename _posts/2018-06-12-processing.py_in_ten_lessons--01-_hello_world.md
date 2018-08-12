@@ -684,7 +684,7 @@ The green overlay helps illustrate how things work. The arc is drawn along the p
   <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Circle_radians.gif" />
   <figcaption>
     The SI symbol for radian is <b>rad</b>.<br />
-    source: <a href="https://en.wikipedia.org/wiki/Radian#/media/File:Circle_radians.gif">Wikipedia</a>
+    source: <a href="https://commons.wikimedia.org/wiki/File:Circle_radians.gif">Wikimedia Commons</a>
   </figcaption>
 </figure>
 
@@ -736,4 +736,3 @@ That's it for lesson 01. I hope it was enjoyable, if somewhat challenging. Take 
 ## References
 
 * http://py.processing.org/reference/
-* https://en.wikipedia.org/wiki/Radian#/media/File:Circle_radians.gif

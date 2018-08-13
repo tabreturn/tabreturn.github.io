@@ -84,7 +84,7 @@ def draw():
         print(frameCount)
 {% endhighlight %}
 
-With the `frameRate` set to `2.5`, the draw line runs two-and-a-half times every second. This means each frame is 4000 milliseconds (0.4 of a second) in duration. Because the `print` line executes on every second frame, a new line appears in the Console every 8000 milliseconds:
+With the `frameRate` set to `2.5`, the draw line runs two-and-a-half times every second; this means each frame is 4000 milliseconds (0.4 of a second) in duration. Because the `print` line executes on every second frame, a new line appears in the Console every 8000 milliseconds:
 
 <figure>
   <img src="{{ site.url }}/img/pitl04/animation-functions-framecount-evens.png" class="fullwidth" />
@@ -171,7 +171,7 @@ Run the sketch and note the error message:
   <figcaption>"NameError: global name 'y' is not defined"</figcaption>
 </figure>
 
-The `y` variable is defined within the `setup()` function. As such, `y` is only accessible among the indented lines of this block. The variable *scope* is therefore said to be *local* to `setup()`. Alternatively, one can place this variable line outside of the `setup()` function -- thereby placing it in the *global scope*. This permits either function to read it. Stop writing code for a moment and consider the scenarios that follow.
+The `y` variable is defined within the `setup()` function. As such, `y` is only accessible among the indented lines of this block. The variable *scope* is therefore said to be *local* to `setup()`. Alternatively, one can place this variable line outside of the `setup()` function -- thereby setting it in the *global scope*. This permits either function to read it. Stop writing code for a moment and consider the scenarios that follow.
 
 Adding the `y = 1` line to the top of the code places the variable in the global scope, making it accessible to the `setup()` and `draw()` functions:
 
@@ -183,7 +183,7 @@ However, this global `y` variable can be overridden on a local level by another 
 
 <figure>
   <img src="{{ site.url }}/img/pitl04/global-variables-local-override.png" class="fullwidth" />
-  <figcaption>To capture this Console output, the sketch has been stopped almost immediately after running it. The lines of zeroes would otherwise soon scroll the <code>1</code> out of view.</figcaption>
+  <figcaption>The sketch has been run then stopped almost immediately. You will need to scroll to the very top line of the Console area to view the <code>1</code>.</figcaption>
 </figure>
 
 While you can override a global variable, you will find that you cannot write/reassign a value to it:
@@ -192,7 +192,7 @@ While you can override a global variable, you will find that you cannot write/re
   <img src="{{ site.url }}/img/pitl04/global-variables-error-no-global.png" class="fullwidth" />
 </figure>
 
-This is where the `global` keyword is useful. Edit your code, moving the `y = 1` line to the top of your code (into the global scope). Then, to modify this variable from within the `draw()` function, binding it to the `draw`'s local scope using the `global` keyword:
+This is the point where the `global` keyword is useful. Edit your code, moving the `y = 1` line to the top of your code (into the global scope). Then, to modify this variable from within the `draw()` function, binding it to the `draw`'s local scope using the `global` keyword:
 
 {% highlight py %}
 y = 1
@@ -409,9 +409,9 @@ The output appears the same but is now based on vertices. Of course, this code d
 
 #### Translate
 
-The first transformation you will perform is a *translation*. This involves moving the square a given distance in some direction. It's an easy enough task to accomplish without a matrix, but also ideal for introducing how matrices work.
+The first transformation you will perform is a *translation*; this involves moving the square a given distance in some direction. It's an easy enough task to accomplish without a matrix, but also ideal for introducing how matrices work.
 
-Firstly, take note of how the top-left vertex `(x, y)` determines the positions of the other three vertices. This means that the only matrix operation you need to perform is on the top-left vertex -- the remaining vertices can be calculated by adding the relevant `w` and `h` values. The matrix you are manipulating can, therefore, be expressed as:
+Firstly, take note of how the top-left vertex `(x, y)` determines the positions of the other three vertices. Therefore the only matrix operation you need to perform is on the top-left vertex -- the remaining vertices can be calculated by adding the relevant `w` and `h` values. The matrix you are manipulating can, hence, be expressed as:
 
 <math>
   <mfenced open = "[" close="]">
@@ -544,7 +544,7 @@ Expressed in matrix notation, this is:
   </mfenced>
 </math>
 
-Run the sketch. The new yellow square is drawn `100` pixels further right and `80` pixels closer to the top-edge than the original.
+Run the sketch. The new yellow square is drawn `100` pixels further right and `80` pixels closer to the top edge than the original.
 
 <figure>
   <img src="{{ site.url }}/img/pitl04/transformations-matrices-translate.png" />
@@ -580,7 +580,7 @@ To scale a shape, one must *multiply* the matrix you wish to transform by one de
   </mfenced>
 </math>
 
-And this is the point where the power of matrices becomes evident! Depending on the values you substitute for `a`, `b`, `c`, and `d`, the result will be either a scale, reflect, squeeze, rotate, or shear operation. Take a moment to study how a matrix multiplication is performed:
+And this is the point where the power of matrices becomes evident! Depending on the values you substitute for `a`, `b`, `c`, and `d`, the result will be either a scale, reflect, squeeze, rotate, or shear operation. Take a moment to study how matrix multiplication is performed:
 
 <math>
   <mfenced open = "[" close="]">
@@ -826,7 +826,7 @@ Expressed in matrix notation, this is:
 
 #### Reflect
 
-Reflecting a shape is a matter of scaling one axis by a negative value; and multiplying the other by `1`.
+Reflecting a shape is a matter of scaling one axis by a negative value; then multiplying the other by `1`.
 
 For a horizontal reflection use:
 
@@ -1065,7 +1065,7 @@ As with the other transformations, the axis runs through (0,0). To better visual
 
 #### Shear
 
-Shearing a shape slants, or skews, it along the horizontal or vertical axis. The area (or volume), however, remains constant.
+Shearing a shape slants/skews it along the horizontal or vertical axis. The area (or volume), however, remains constant.
 
 To shear horizontally, use:
 
@@ -1208,7 +1208,7 @@ Below is the result, along with a grid-overlay and x-y coordinate label:
   <figcaption>A vertically-sheared red square.</figcaption>
 </figure>
 
-This section has introduced some fundamental transformation concepts using matrices, while avoiding anything larger than 2 × 2 matrix. If you wish to handle larger matrices, take a look at Python's *NumPy* library.
+This section has introduced some fundamental transformation concepts using matrices while avoiding anything larger than 2 × 2 matrix. If you wish to handle larger matrices, take a look at Python's *NumPy* library.
 
 Next up: performing all of the above transformations without having to worry about the math!
 
@@ -1270,7 +1270,7 @@ stroke('#FF0000')
 rect(0,0, 100,100)
 {% endhighlight %}
 
-Run the sketch. The red square can be seen cut-off near the top-left of the display window. This is because the shapes do not change position; rather it is the coordinate system that does. To better visualise this behaviour, draw the grid-overlay.png after the `translate()` function:
+Run the sketch. The red square can be seen cut-off near the top-left of the display window. The shapes do not change position -- rather it is the coordinate system that does. To better visualise this behaviour, draw the grid-overlay.png after the `translate()` function:
 
 {% highlight py %}
 ...
@@ -1313,7 +1313,7 @@ rect(0,0, 100,100)
   <img src="{{ site.url }}/img/pitl04/transformations-functions-translate-matrix.png" />
 </figure>
 
-This can be a useful way to approach drawing -- moving the coordinate system to avoid keeping track using variables, then adding a `popMatrix()` to return to the original coordinate system. It ultimately depends on what works best for what you are drawing.
+This makes for a useful drawing approach -- moving the coordinate system to avoid keeping track using variables, then adding a `popMatrix()` to return to the original coordinate system. It ultimately depends on what works best for what you are drawing.
 
 In addition to `translate()`, Processing's 2D transform functions include, [rotate()](http://py.processing.org/reference/rotate.html), [scale()](http://py.processing.org/reference/scale.html), [shearX()](http://py.processing.org/reference/shearX.html), and [shearY()](http://py.processing.org/reference/shearY.html).
 
@@ -1334,19 +1334,19 @@ popMatrix()
   <img src="{{ site.url }}/img/pitl04/transformations-functions-multiple.png" />
 </figure>
 
-You will be using a mix of these techniques in the tasks to come.
+You will be using a mix of coordinate tracking and transformation techniques in the tasks to come.
 
 ## Time and Date
 
-There are twenty-four hours in a day. But why is this not ten, twenty, a hundred, or some other more 'rounded' number? To make things more confusing, these twenty-four hours are then split into twelve AM and twelve PM hours. To understand why this is, one must look back to where the system first originated -- around Mesopotamia and Ancient Egypt, circa 1500 BC. These civilisations relied on sundials and water-clocks for day- and night-time timekeeping, which explains the need for the two (AM/PM) cycles. The twelve hour figure arises from the finger-counting system, where one would use the thumb to count up to twelve on the three bones of each finger.
+There are twenty-four hours in a day. But why is this not ten, twenty, a hundred, or some other more 'rounded' number? To make things more confusing, these twenty-four hours are then split into twelve AM and twelve PM hours. To understand why this is, one must look back to where the system first originated -- around Mesopotamia and Ancient Egypt, circa 1500 BC. These civilisations relied on sundials and water-clocks for day- and night-time timekeeping, which explains the need for the two (AM/PM) cycles. The twelve figure arises from an ancient finger-counting system, where one uses the thumb to count up to twelve on the three bones of each finger.
 
 <figure>
   <img src="{{ site.url }}/img/pitl04/time-dozen-counting.svg" />
 </figure>
 
-Not only does this explain the origins of 12-hour clock, but also the twelve months of the year and the *dozen* grouping system. Twelve also happens to have the most divisors of any number below eighteen.
+Not only does this explain the origins of the 12-hour clock, but also the *dozen* grouping system. Twelve also happens to have the most divisors of any number below eighteen.
 
-If the twelve-hour (AM/PM) clock makes time tricky to deal with, time zones only complicate matters further. Given that the earth is a spinning ball circling the sun, it's always noon across some longitudinal arc of the planet's surface. Because the earth must rotate a full 360 degrees to complete one day, 'noon' moves across the planet's surface at 15 degrees (360 ÷ 24) each hour. This gives us 24 *solar* time zones. But whether or not your watch reads 12:00 depends on the *local* time zone in which you find yourself. For example, Australia has three such local time zones whereas China has one, despite the latter straddling four solar time zones.
+If the twelve-hour clocks make time tricky to deal with, time zones only complicate matters further. Given that the earth is a spinning ball circling the sun, it's always noon along some longitudinal arc of the planet's surface. Because the earth must rotate a full 360 degrees to complete one day, 'noon' moves across the planet's surface at 15 degrees (360 ÷ 24) each hour, giving rise to 24 *solar* time zones. But whether or not your watch reads 12:00 depends on the *local* time zone in which you find yourself. For example, Australia has three such local time zones whereas China has one, despite the latter straddling four solar time zones.
 
 <figure>
   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Standard_World_Time_Zones.png/1280px-Standard_World_Time_Zones.png" class="fullwidth" />
@@ -1381,7 +1381,7 @@ timestamp = time.time()
 # 1533715946.817889
 {% endhighlight %}
 
-The `datetime` and `time` libraries include a complete set of functions for manipulating and managing time data, and depending on what you wish to accomplish, you may elect one toolset over the other. However, Processing's built-in functions that may prove easier to use.
+The `datetime` and `time` libraries include a complete set of functions for manipulating and managing time data, and depending on what you wish to accomplish you may elect one toolset over the other. However, Processing's built-in functions that may prove easier to use.
 
 ### Processing Date and Time Functions
 
@@ -1399,11 +1399,11 @@ s = second()
 print('{}:{}:{}'.format(h,m,s))
 {% endhighlight %}
 
-The date and time functions above communicate with your computer clock (local time). Each function returns and integer value, as your Console output will confirm. The *string interpolation* approach cuts-out the need for multiple `+` operators, instead replacing each pair of `{}` braces with its respective `.format()` argument. Of course, the figures in your Console will reflect the point in time at which your run your sketch.
+The date and time functions above communicate with your computer clock (local time). Each function returns an integer value, as your Console output will confirm. The *string interpolation* approach cuts-out the need for multiple `+` operators, replacing each pair of `{}` braces with its respective `.format()` argument.
 
 <figure>
   <img src="{{ site.url }}/img/pitl04/time-date-time.png" class="fullwidth" />
-  <figcaption>The Console reads:<br />
+  <figcaption>The figures in your Console will reflect the point in time at which you run your sketch. In this instance, the Console reads:<br />
     <code>2018-8-6</code><br />
     <code>7:57:22</code>
   </figcaption>
@@ -1416,7 +1416,7 @@ ms = millis()
 print(ms)
 {% endhighlight %}
 
-Run this code. You will likely see a below `700`. However, the number of milliseconds printed to Console will vary depending on the code that precedes it. For example, place a for loop above the `millis()` function call, and have it draw a million squares:
+Run this code. The `ms` value is unlikely to exceed `700`. However, the number of milliseconds printed to Console will vary depending on any code executed prior to the `millis()` function call. For example, add a `for` loop and have it draw a million squares:
 
 {% highlight py %}
 ...
@@ -1430,7 +1430,7 @@ print(ms)
 
 The `ms` value is now likely to exceed `1000`. I say "likely", because your computer specs and any processes running in the background will have an influence. As a case in point, running this code on my laptop while transcoding a video file added around another thousand milliseconds to the readout.
 
-The `millis()` function operates independently of frame rate. To monitor how many frames have elapsed, use the `frameCount` system variable.
+The `millis()` function operates independently of frame rate (which is prone to fluctuation). To monitor how many frames have elapsed, use the `frameCount` system variable.
 
 ### Sprite Sheet Animation
 
@@ -1444,7 +1444,7 @@ A *sprite* is a single graphic comprised of pixels. Multiple sprites can be comb
   </figcaption>
 </figure>
 
-Study the screenshot above; notice how the blue bricks are all clones of one another. Rather place a completed environment image in the scene, the developer repeats a single blue tile in the positions necessary to form the platforms. The red ground is also formed from repeating tile. Mario, the turtle, and the fireball are also sprites, although, unlike the environmental sprites, they are all animated. Each animated sprite frame can be packed into a single *sprite sheet* -- like in this Nyan Cat example:
+Study the screenshot above; notice how the blue bricks are all clones of one another. Rather than place a unified environment image into the scene, the developer repeats a single blue brick at the positions necessary to form the platforms. The paved red surface is also formed using a repeating tile. Mario, the turtle, and the fireball are also sprites, although, unlike the environmental sprites, these are animated. Every frame that comprises Mario's walk-cycle is packed into a single *sprite sheet* -- like in this Nyan Cat example:
 
 <figure>
   <img src="{{ site.url }}/img/pitl04/nyancat-spritesheet.gif" class="fullwidth" />
@@ -1453,7 +1453,7 @@ Study the screenshot above; notice how the blue bricks are all clones of one ano
   </figcaption>
 </figure>
 
-By packing every frame into a single image, the developer need only load a single sprite sheet graphic, thus reducing memory and processing overhead. Typically, all of the background elements are also packed into a separate sprite sheet. The technique dates back to early video game development but has been utilised in other domains, such as web development.
+By packing every frame into a single image, the developer need only load a single sprite sheet graphic, thus reducing memory and processing overhead. Additionally, all of the background elements are packed into a separate sprite sheet of their own. The technique dates back to early video game development but has since been utilised in other domains, such as web development.
 
 To create a sprite sheet animation of your own, create a new sketch and save it as "spritesheet_animation". Within this, create a "data" folder. Download a copy of the Nyan Cat sprite sheet and place it in the data folder:
 
@@ -1477,7 +1477,7 @@ def draw():
   <img src="{{ site.url }}/img/pitl04/time-spritesheet.png" class="fullwidth" />
 </figure>
 
-The sprite sheet must move about within a containing box, as if behind a sort of mask. In this instance, the display window will serve as that 'mask'. The *nyancat-spritesheet.gif* is 1500 pixels wide and 138 pixels high. This means each sprite is 300 pixels wide (1500 ÷ 5), hence the `size(300,138)` line. To advance a frame, the *nyancat-spritesheet.gif* graphic needs to be shifted 300 pixels further left with each new `draw`. This can be controlled using `frameCount`, but combined with a modulo operation to bring it back to zero every fifth frame:
+A sprite sheet must move about within a containing box, as if behind a sort of mask. In this instance, the display window will serve as that 'mask'. The *nyancat-spritesheet.gif* is 1500 pixels wide and 138 pixels high. This means that each frame is 300 pixels wide (1500 ÷ 5), hence the `size(300,138)` line. To advance a frame, the *nyancat-spritesheet.gif* graphic needs to be shifted 300 pixels further left with each iteration of `draw()`. The position can be controlled using `frameCount`, but combined with a modulo operation to bring it back to zero every fifth frame:
 
 {% highlight py %}
 def setup():
@@ -1493,19 +1493,23 @@ def draw():
 
 Run the sketch to verify that Nyan Cat loops seamlessly.
 
-This was a *very* basic introduction to sprite sheets. It's hardly an ideal approach (that modulo operation only grows more demanding as the `frameCount` increases). Should you wish to create 2D game -- using Processing or another platform -- you will want to research this topic further.
+<figure>
+  <img src="{{ site.url }}/img/pitl04/time-spritesheet-animated.gif" />
+</figure>
+
+This was an elementary introduction to sprite sheets. It's hardly an ideal approach (that modulo operation only grows more demanding as the `frameCount` increases). Most sprite sheets are grid-like in appearance, with graphics arranged in rows and columns.  Should you wish to create 2D game -- using Processing or another platform -- you will want to research this topic further.
 
 ## Animated Trigonometry
 
 It is assumed that you possess some (if only a very little bit of) trigonometry knowledge. What follows is a practical and visual introduction to trigonometry in motion. Clock, metronome, and piston mechanisms all exhibit elegant rhythms that can be reproduced using sine and cosine functions.
 
-### Analog Clock Task
+### Analogue Clock Task
 
-Trigonometry focuses on triangles, but is also associated with circles. A solid grasp of radians is required before venturing further, and what better way to link angles and circles than analog clocks?
+Trigonometry focuses on triangles but is also associated with *circles*. A refresher on [radians]({% post_url 2018-06-12-processing.py_in_ten_lessons--01-_hello_world %}#disk-space-analyser-task) is required before venturing further, and what better way to link angles and circles than analogue clocks?
 
-Creating a digital clock in Processing is a simple matter of combining time and text functions. For an analog clock, however, one must convert the hours, minutes, and seconds into angles of rotation. As with the [disk space analyser task]({% post_url 2018-06-12-processing.py_in_ten_lessons--01-_hello_world %}#disk-space-analyser-task), you will be dealing in radians.
+Creating a digital clock in Processing is a simple matter of combining time and text functions. For an analogue clock, however, one must convert the hours, minutes, and seconds into angles of rotation.
 
-Create a new sketch and save it as "analog_clock". To help you out, begin with some code that prints out Processing's pi constants:
+Create a new sketch and save it as "analogue_clock". To help you along, begin with some code that prints out Processing's pi constants:
 
 {% highlight py %}
 print(PI)
@@ -1515,7 +1519,7 @@ print(HALF_PI)
 print(QUARTER_PI)
 {% endhighlight %}
 
-These will prove handy for programming your clock. For example, rather than entering `PI/2` each time you wish to rotate something 90 degrees, you can instead use `HALF_PI`. Regarding `TAU` ... well, there is this big, nerdy mathematician war raging over whether it is better to use pi or *tau*. Basically, 2π tends to spring up in formulae all over the place i.e. there are 2π radians in a circle. In 2001 it was proposed that a new constant be devised to represent a circle; in 2010 it was decided that this value be represented using the tau symbol (τ). The table below represents equivalent expressions using `TAU` and `PI` constants, additionally listing their approximate decimal values:
+These will prove handy for programming your clock. For example, rather than entering `PI/2` each time you wish to rotate something 90 degrees, you can instead use `HALF_PI`. Regarding `TAU` ... well, there is this big, nerdy mathematician war raging over whether it is better to use pi or *tau*. Basically, π represents only *half* a circle in radians, so 2π tends to spring up in formulae all over the place, i.e. there are 2π radians in a circle. In 2001 it was proposed that a new constant be devised to represent a *full* circle; in 2010 it was decided that this value is represented using the tau symbol (τ). The table below represents equivalent expressions using `TAU` and `PI` constants, additionally listing their approximate decimal values:
 
 | `TAU`   | ` `=` ` | `TWO_PI`     | ` `=` ` | 6.284 |
 | `TAU/2` | ` `=` ` | `PI`         | ` `=` ` | 3.142 |

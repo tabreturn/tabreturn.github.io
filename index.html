@@ -4,7 +4,7 @@ layout: default
 
 <div id="reader-header" class="header">
 
-  <div style="padding:4em 0; margin:1.5em 0 2.5em 0; border-bottom:#b5b5b5 1px solid;">
+  <div id="intro" style="padding:4em 0; margin:1.5em 0 2.5em 0; border-bottom:#b5b5b5 1px solid;">
     <img src="{{ site.url }}/img/logo.svg" alt="logo" style="width:60px; float:left; margin:0.15em 2em 0 0;" />
     Welcome to my blog -- a collection of posts covering my research into code, interaction, and creativity.
   </div>
@@ -77,6 +77,9 @@ layout: default
 
   if (hash) {
     categoryFilter([hash]);
+    document.getElementById('intro').innerHTML = '';
+    document.getElementById('intro').style.paddingTop = 0;
+    document.getElementById('reader-title').style.display = 'none';
   }
   else {
     categoryFilter(['2020', '2019', '2018', '2017', '2016', '2015']);

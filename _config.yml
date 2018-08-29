@@ -8,11 +8,11 @@ github_username: tabreturn
 # build settings
 markdown: kramdown
 
-# piwik settings
+# matomo settings
 # remove/comment lines to disable
-piwik_trackerurl: "*.tabreturn.github.io"
-piwik_sourceurl: "https://piwik.tabreturn.com/"
-piwik_siteid: 2
+matomo_trackerurl: "*.tabreturn.github.io"
+matomo_sourceurl: "https://matomo.tabreturn.com/"
+matomo_siteid: 2
 
 # isso settings
 # remove/comment lines to disable

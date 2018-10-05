@@ -870,7 +870,7 @@ Create a new sketch and save is "progressively_jittery_quads". The display windo
 
 ## Lesson 04
 
-That’s it for lesson 03. Kudos for getting through it -- control flow is a tricky matter to get your head around at first! I trust that introducing random values has inspired some exciting project ideas.
+That's it for lesson 03. Kudos for getting through it -- control flow is a tricky matter to get your head around at first! I trust that introducing random values has inspired some exciting project ideas.
 
 The next lesson deals with animation. There is a bit you need to know about matrices and trigonometry, though. If you find yourself experiencing disturbing flashbacks of high school math class – take a deep breath and relax. Lesson 04 will be a practical and visual reintroduction to these concepts, with Processing crunching all of the numbers for you.
 

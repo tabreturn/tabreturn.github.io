@@ -13,7 +13,7 @@ categories: code processing python
 
 ---
 &nbsp;  
-[Lesson 01]({% post_url 2018-06-12-processing.py_in_ten_lessons--01-_hello_world %}) introduced a number of 2d primitives, namely: arcs, ellipses, lines, points, quads, rectangles, and triangles. However, many shapes do not fit into any such category -- like hearts (♥), stars (★), octagons, and Pikachu silhouettes, to name just a few. In this lesson, you will look at drawing with points and curves, as opposed to more restrictive shape functions. Fonts also rely on curves to describe each glyph, and the latter part of this lesson delves into Typography (and by extension, strings). Be forewarned: this lesson may be a little tedious, but is necessary to lay down important programming and drawing fundamentals for future lessons.
+[Lesson 01]({% post_url 2018-06-12-processing.py_in_ten_lessons--01-_hello_world %}) introduced a number of 2d primitives, namely: arcs, ellipses, lines, points, quads, rectangles, and triangles. However, many shapes do not fit into any such category -- like hearts (♥), stars (★), octagons, and Pikachu silhouettes, to name just a few. In this tutorial, you will look at drawing with points and curves, as opposed to more restrictive shape functions. Fonts also rely on curves to describe each glyph, and the latter part of this tutorial delves into Typography (and by extension, strings). Be forewarned: this lesson may be a little tedious, but is necessary to lay down important programming and drawing fundamentals for future lessons.
 
 Processing deals with two types of curves: *Bézier* and *Catmull-Rom*. Both are named after the people who developed them, and both involve some complicated math. Fortunately, the complex underlying calculus is handled by Processing's various curve functions, leaving you to deal with just the coordinates of a few control points.
 
@@ -219,7 +219,7 @@ Observe how the red handles 'magnetically' draw the line toward the control poin
 
 [bezier.method.ac](http://bezier.method.ac/)
 
-You can also develop your Bézier skills using [Inkscape](https://inkscape.org/) (free), Illustrator, or other similar vector graphics drawing software. It is usually easier to draw shapes using such software, then gauge the relevant control points for Processing -- which is how the tasks for this lesson were devised ;)
+You can also develop your Bézier skills using [Inkscape](https://inkscape.org/) (free), Illustrator, or other similar vector graphics drawing software. It is usually easier to draw shapes using such software, then gauge the relevant control points for Processing -- which is how the tasks for this tutorial were devised ;)
 
 ## Vertices
 
@@ -918,7 +918,7 @@ Notice how straight-line connections between pairs of control points ensure smoo
 
 ## Lesson 03
 
-That's it for lesson 02. I hope it was enjoyable if a little tedious. If you are familiar with any markup languages -- such as HTML, XML, or SVG in particular -- you have probably been cruising through the lessons thus far. In lesson 03 we'll begin to look at what really separates a programming language from markup; this includes topics like conditional statements and iteration. You will also explore randomness -- one of the most powerful and exciting tools in the creative programmer's tool-set. For now, though, take a break -- you deserve it!
+That's it for lesson 02. I hope it was enjoyable if a little tedious. If you are familiar with any markup languages -- such as HTML, XML, or SVG in particular -- you have probably been cruising through the tutorials thus far. In lesson 03 we'll begin to look at what really separates a programming language from markup; this includes topics like conditional statements and iteration. You will also explore randomness -- one of the most powerful and exciting tools in the creative programmer's tool-set. For now, though, take a break -- you deserve it!
 
 **Begin lesson 03:** [\<randomly generated lesson title\>]({% post_url 2018-07-01-processing.py_in_ten_lessons--03-randomly-generated-lesson-title %})
 

@@ -14,7 +14,7 @@ categories: code processing python
 
 ---
 &nbsp;  
-This series of lesson posts covers *Processing.py*, with the purpose of introducing non-programmers to the fundamentals of computer programming in a visual context. If you're an artist, student, designer, researcher, or just somebody who is keen on learning how to code, Processing is a great place to start.
+This series of tutorial posts covers *Processing.py*, with the purpose of introducing non-programmers to the fundamentals of computer programming in a visual context. If you're an artist, student, designer, researcher, or just somebody who is keen on learning how to code, Processing is a great place to start.
 
 I would estimate each lesson to take around 2--4 hours to complete, of which a large part of that time will be spent on the tasks/challenges. The speed at which you get through the lessons is likely to be influenced by your prior experience in relatable areas. That said, it is not a race -- enjoy the ride and stop for breaks wherever. Hey, if you're really feeling inspired, feel free to head off-road!
 
@@ -32,7 +32,7 @@ Before you can write any code, you will need to download Processing. Head over t
 
 [processing.org/download](https://processing.org/download/)
 
-Run the application. Note that the default mode is "Java". As these lessons cover the Python variant, you'll need to switch to Python mode.
+Run the application. Note that the default mode is "Java". As these tutorials cover the Python variant, you'll need to switch to Python mode.
 
 Click on the down arrow next to "Java" and select **Add Mode...** . Then, from the *Contribution Manager* window that appears, choose **Python Mode for Processing 3**. Finally, click **Install**.
 
@@ -57,7 +57,7 @@ You are now ready to write your first line of code! If you would like a demonstr
 
 ### Algorithms
 
-You will encounter the term *algorithm* frequently from here onward. For these lessons, the definition of an algorithm is: a set of rules a computer or machine follows to achieve a particular goal. As an example, an algorithm for making a cup of instant coffee will read as follows:
+You will encounter the term *algorithm* frequently from here onward. For these tutorials, the definition of an algorithm is: a set of rules a computer or machine follows to achieve a particular goal. As an example, an algorithm for making a cup of instant coffee will read as follows:
 
 1. place one heaped teaspoon of instant coffee in a mug;
 2. fill the kettle with water;
@@ -174,7 +174,7 @@ Note the white-on-red suggestion. Pretty smart, huh? To be honest, the console i
 
 ## Colour
 
-There are various ways to specify colour in Processing. To keep things simple, we will stick with hexadecimal values for the first lesson. If you are familiar with graphics software like Adobe Photoshop, Illustrator, Inkscape, or Gimp, you will have seen these values in your colour mixer. Processing includes its own colour selector. To access this, select **Tools > Color Selector...**
+There are various ways to specify colour in Processing. To keep things simple, we will stick with hexadecimal values for the first tutorial. If you are familiar with graphics software like Adobe Photoshop, Illustrator, Inkscape, or Gimp, you will have seen these values in your colour mixer. Processing includes its own colour selector. To access this, select **Tools > Color Selector...**
 
 <figure>
   <img src="{{ site.url }}/img/pitl01/colour-selector.png" />

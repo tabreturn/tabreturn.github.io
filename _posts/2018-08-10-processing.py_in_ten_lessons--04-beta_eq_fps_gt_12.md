@@ -13,7 +13,7 @@ categories: code processing python
 
 ---
 &nbsp;  
-In this lesson, you get to make things move. The content focuses primarily on animation, but also covers transformations, time & date functions, and some trigonometry. As you will discover, blending motion with math produces some exciting results.
+In this tutorial, you get to make things move. The content focuses primarily on animation, but also covers transformations, time & date functions, and some trigonometry. As you will discover, blending motion with math produces some exciting results.
 
 ## Animation
 

@@ -739,12 +739,12 @@ iii
 That said, monospace fonts are more legible in certain situations -- for example, when it is helpful to have characters line-up in columns:
 
 *monospaced*  
-`9 | 9 | 0 | 8 | 9`  
-`1 | 2 | 1 | 1 | 9`
+`sam | jan | amy | tim`  
+`99  | 359 | 11  | 3`
 
 *variable-width*  
-9 | 9 | 0 | 8 | 9  
-1 | 2 | 1 | 1 | 9
+sam       | jan | amy      | tim  
+99&nbsp;  | 359 | 11&nbsp; | 3
 
 This makes monospaced fonts preferable for source code, which is why the default font for the Processing editor (and every other code editor) is monospace.
 

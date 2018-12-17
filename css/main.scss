@@ -42,3 +42,8 @@ $on-laptop:        800px;
   "category-filter",
   "isso-overrides"
 ;
+
+// smooth scroll
+html {
+  scroll-behavior: smooth;
+}

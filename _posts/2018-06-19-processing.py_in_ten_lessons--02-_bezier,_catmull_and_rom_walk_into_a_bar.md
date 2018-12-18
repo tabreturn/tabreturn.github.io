@@ -653,32 +653,35 @@ Of course, `len()` is not a method, so this would result in an error. What is im
 What follows below are descriptions for several string methods, along with some code to add to your working sketch.
 
 #### `.upper()`
-
+<dd markdown="1">
 Returns a version of the string with all lowercase characters converted to uppercase.
 
 {% highlight py %}
 print( all.upper() )         # HELLO WO...Y "WORLD"?
 {% endhighlight %}
+</dd>
 
 #### `.title()`
-
+<dd markdown="1">
 Returns a version of the string in title case (the first letter of each word in uppercase).
 
 {% highlight py %}
 print( all.title() )         # Hello Wo...y "World"?
 {% endhighlight %}
+</dd>
 
 #### `.count()`
-
+<dd markdown="1">
 Returns the total of times the character/character-sequence appears in the given string.
 
 {% highlight py %}
 print( all.count('o') )      # 4
 print( all.count('or') )     # 2
 {% endhighlight %}
+</dd>
 
 #### `.find()`
-
+<dd markdown="1">
 Returns the index of where the term (first) appears in the string. If the substring is not found, returns `-1`.
 
 {% highlight py %}
@@ -693,6 +696,7 @@ print( all.find('world'),7 ) # 45
 {% endhighlight %}
 
 A third argument can be provided to indicate where along the string the search terminates.
+</dd>
 
 ## String Task
 
@@ -769,7 +773,7 @@ razor = 'Never attribute to malice that which is adequately explained by stupidi
 When you run the sketch, an empty blue display window appears. What follows below are descriptions for several typographic functions, along with some code to add to your working sketch. Feel free to experiment with the arguments to see how things respond.
 
 ### `text()`
-
+<dd markdown="1">
 Draws text to the display window, the colour of which is determined by the active `fill()`. The arguments represent the string value, x-coordinate, and y-coordinate respectively. Additional third and fourth argument can be added to specify a width and height for the text area.  
 *Reference link:*  [`text()`](http://py.processing.org/reference/text.html)
 
@@ -780,9 +784,10 @@ text(razor, 0,50)
 <figure>
   <img src="{{ site.url }}/img/pitl02/typography-text.png" />
 </figure>
+</dd>
 
 ### `textSize()`
-
+<dd markdown="1">
 Sets the font size (in pixels) to be used in all subsequent `text()` functions.  
 *Reference link:*  [`textSize()`](http://py.processing.org/reference/textSize.html)
 
@@ -794,9 +799,10 @@ text(razor, 0,50)
 <figure>
   <img src="{{ site.url }}/img/pitl02/typography-textsize.png" />
 </figure>
+</dd>
 
 ### `createFont()`
-
+<dd markdown="1">
 Converts a font to the format used by Processing. The two arguments represent the font name and size, respectively. For a list of fonts available on your computer, use `PFont.list()`. You can also place font files (TTF or OTF) in the sketch's "data" directory.  
 *Reference link:*  [`createFont()`](http://py.processing.org/reference/createFont.html)
 
@@ -809,9 +815,10 @@ timesroman = createFont('Times', 20);
   <img src="{{ site.url }}/img/pitl02/typography-pfontlist.png" class="fullwidth" />
   <figcaption>Printing a list of available fonts using <code>PFont.list()</code></figcaption>
 </figure>
+</dd>
 
 ### `textFont()`
-
+<dd markdown="1">
 Sets the font for any subsequent `text()` functions.  
 *Reference link:*  [`textFont()`](http://py.processing.org/reference/textFont.html)
 
@@ -825,9 +832,10 @@ text(razor, 0,150)
 <figure>
   <img src="{{ site.url }}/img/pitl02/typography-textfont.png" />
 </figure>
+</dd>
 
 ### `textLeading()`
-
+<dd markdown="1">
 Sets the line-spacing (in pixels) for any subsequent `text()` functions.  
 *Reference link:*  [`textLeading()`](http://py.processing.org/reference/textLeading.html)
 
@@ -839,10 +847,10 @@ text(razor, 0,200, 250,100)
 <figure>
   <img src="{{ site.url }}/img/pitl02/typography-textleading.png" />
 </figure>
-
+</dd>
 
 ### `textAlign()`
-
+<dd markdown="1">
 Sets the text-alignment for any subsequent `text()` functions. Accepts the arguments `LEFT`, `CENTER`, or `RIGHT`.  
 *Reference link:*  [`textAlign()`](http://py.processing.org/reference/textAlign.html)
 
@@ -854,10 +862,10 @@ text(razor, 0,250, 250,100)
 <figure>
   <img src="{{ site.url }}/img/pitl02/typography-textalign.png" />
 </figure>
-
+</dd>
 
 ### `textWidth()`
-
+<dd markdown="1">
 Calculates and returns the width of any string.  
 *Reference link:*  [`textWidth()`](http://py.processing.org/reference/textWidth.html)
 
@@ -875,6 +883,7 @@ line(
 <figure>
   <img src="{{ site.url }}/img/pitl02/typography-textwidth.png" />
 </figure>
+</dd>
 
 ## Apple Logo Task
 
@@ -920,7 +929,7 @@ Notice how straight-line connections between pairs of control points ensure smoo
 
 That's it for lesson 02. I hope it was enjoyable if a little tedious. If you are familiar with any markup languages -- such as HTML, XML, or SVG in particular -- you have probably been cruising through the tutorials thus far. In lesson 03 we'll begin to look at what really separates a programming language from markup; this includes topics like conditional statements and iteration. You will also explore randomness -- one of the most powerful and exciting tools in the creative programmer's tool-set. For now, though, take a break -- you deserve it!
 
-**Begin lesson 03:** [\<randomly generated lesson title\>]({% post_url 2018-07-01-processing.py_in_ten_lessons--03-randomly-generated-lesson-title %})
+**Begin lesson 03:** [\<randomly generated lesson title\>]({% post_url 2018-07-01-processing.py_in_ten_lessons--03-_randomly-generated-lesson-title %})
 
 [Complete list of Processing lessons]({{ site.baseurl }}/#processing)
 

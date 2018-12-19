@@ -340,7 +340,7 @@ stroke('#FFFFFF')
 strokeWeight(3)
 {% endhighlight %}
 
-When you run the sketch, an empty blue display window appears. What follows below are descriptions for several drawing functions, along with some code to add to your working sketch. Feel free to experiment with the arguments to see how things respond.
+When you run the sketch, an empty blue display window appears. What follows below are descriptions for several drawing functions, along with some code to add to your working sketch. Feel free to experiment with the arguments to see how things respond. Each example builds on the code before it, so you'll need to work through all of them, entering each line as you progress.
 
 ### `point()`
 <dd markdown="1">

@@ -103,7 +103,19 @@ Should you specify an index beyond the bounds of the list -- in this case, `rain
 
 ### Modifying lists
 
-To modify an existing element, assign a new value like you would any other variable but include the index. Overwrite the first value of the rainbow list, changing blue to red by adding the following code:
+Many lists are dynamic in nature. Consider a game like *Breakout* (image below). The bricks are stored in a list; each time one is hit it is removed from this list. In some levels, new bricks may appear, in which case elements are added to the list.
+
+<figure>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Screenshot-LBreakout2.jpg" />
+  <figcaption>
+    LBreakout2 &ndash; an open source Breakout clone.<br />
+    source: <a href="https://commons.wikimedia.org/wiki/File:Screenshot-LBreakout2.jpg">Wikimedia Commons</a>
+  </figcaption>
+</figure>
+
+I'm assuming you have played some variant of this game, and are probably aware that, upon destruction, select bricks drop power-ups. Moreover: bricks come in different colours; some may be invisible; others take multiple hits to destroy. This can all be programmed using lists of lists. Yes -- lists can contain other lists, which can, in turn, can contain other lists ... but more on that later.
+
+To modify an existing element, assign a new value like you would any other variable but include the index. Overwrite the first value of the rainbow list, changing blue to red by adding the following code to your "rainbow_list" sketch:
 
 {% highlight py %}
 ...
@@ -111,7 +123,7 @@ rainbow[0] = 'red'
 print(rainbow)      # ['red', 'orange', 'yellow']
 {% endhighlight %}
 
-The Processing [reference](https://py.processing.org/reference/) includes a number of Python *List Methods*. Correctly speaking, these are standard Python methods, so they will work in any Python environment. What follows below are descriptions for several list methods, along with some code to add to your working sketch.
+The Processing [reference](https://py.processing.org/reference/) includes a number of Python *List Methods*. Correctly speaking, these are standard Python methods, so they will work in any Python environment. What follows below are descriptions for several list methods, along with some code to add to your working sketch. Each example builds on the code before it, so you'll need to work through all of them, entering each line as you progress.
 
 #### `.append()`
 <dd markdown="1">
@@ -119,7 +131,7 @@ Adds an element to the end of a list.
 
 {% highlight py %}
 rainbow.append('blue')
-print(rainbow)      # ['red', 'orange', 'yellow', 'blue']
+print(rainbow)      # red, orange, yellow, blue
 {% endhighlight %}
 </dd>
 
@@ -131,7 +143,7 @@ Adds one list to the end of another.
 colors = ['indigo', 'violet']
 rainbow.extend(colors)
 print(rainbow)
-# ['red', 'orange', 'yellow', 'blue', 'indigo', 'violet']
+# red, orange, yellow, blue, indigo, violet
 {% endhighlight %}
 </dd>
 
@@ -152,45 +164,143 @@ This insert method accepts two arguments: the first is the position at you wish 
 {% highlight py %}
 rainbow.insert(3, 'green')
 print(rainbow)
-# ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet']
+# red, orange, yellow, green, blue, indigo, violet
 {% endhighlight %}
 </dd>
 
 #### `.pop()`
 <dd markdown="1">
-The argument specifies an element to be removed from the list.
+The argument specifies an element to be removed from the list. The method also returns the value it removes.
 
 {% highlight py %}
-rainbow.pop(5)      # removes blue
+i = rainbow.pop(5)  # removes indigo
+print(i)            # indigo
 print(rainbow)
-# ['red', 'orange', 'yellow', 'green', 'blue', 'violet']
+# red, orange, yellow, green, blue, violet
 {% endhighlight %}
 
-However, the argument is optional. Should you provide none, the last element is removed.
+However, the argument is optional. If you provide none, the last element is removed.
 
 {% highlight py %}
 rainbow.pop()       # removes violet
 print(rainbow)
-# ['red', 'orange', 'yellow', 'green', 'blue']
+# red, orange, yellow, green, blue
 {% endhighlight %}
 </dd>
 
 #### `.remove()`
 <dd markdown="1">
-The argument specifies an element to be removed from the list.
+The first element with a value matching the argument is removed.
 
 {% highlight py %}
-rainbow.insert(0, 'red')
+rainbow.extend(colors)
 print(rainbow)
-# ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet']
-rainbow.remove('violet')
+# red, orange, yellow, green, blue, indigo, violet
+rainbow.remove('indigo')
 print(rainbow)
-# ['red', 'orange', 'yellow', 'green', 'blue', 'indigo']
+# red, orange, yellow, green, blue, violet
 {% endhighlight %}
 </dd>
 
+Python does offer other list methods, but the above should suffice, for now at least. Any decent Python reference should cover the others; failing that, there's always your favourite search engine. If you are looking to reorder list elements, there are the [`reverse()`](https://py.processing.org/reference/list_reverse.html) and alphanumerical [`sort()`](https://py.processing.org/reference/list_sort.html) methods.
+
+### ... challenge
+
+Blue out of order
+
+{% highlight py %}
+...
+
+bands = [
+  '#FF0000', # red
+  '#0099FF', # blue
+  '#FF9900', # orange
+  '#FFFF00', # yellow
+  '#00FF00', # green
+  '#6633FF'  # violet
+]
+
+fill(bands[0])
+rect(0,100, width,50)
+fill(bands[1])
+rect(0,150, width,50)
+fill(bands[2])
+rect(0,200, width,50)
+fill(bands[3])
+rect(0,250, width,50)
+fill(bands[4])
+rect(0,300, width,50)
+fill(bands[5])
+rect(0,350, width,50)
+{% endhighlight %}
+
+<figure>
+  <img src="{{ site.url }}/img/pitl05/lists-rainbow-methods.png" />
+</figure>
+
+fgfghhgjhgjgkj
+
+{% highlight py %}
+  ...
+  '#6633FF'  # violet
+]
+
+blueindex = bands.___('blue')
+bands.insert(len(bands)-1, bands[___])
+bands.___(1)
+
+fill(bands[0])
+...
+{% endhighlight %}
 
 
+
+
+### Loops and Lists
+
+Looping through a list of elements can save countless lines of manual coded instructions. As a case a point, let us return to the *Breakout* game example. To render each brick using a `rect()` function requires as many lines of code as there are bricks. This is hardly efficient, nor does it account for a list that changes in length.
+
+In a previous lesson on [for loops]({% post_url 2018-07-01-processing.py_in_ten_lessons--03-_randomly-generated-lesson-title %}#for-loops), you looked at iterating over integer values using a `range()` function. To perform something similar on a loop, use the `len()` function to determine a list's length. Print the length of your rainbow list to see how this function behaves:
+
+{% highlight py %}
+...
+print(rainbow)
+# ['red', 'orange', 'yellow', 'green', 'blue', 'violet']
+print( len(rainbow) )
+{% endhighlight %}
+
+<figure>
+  <img src="{{ site.url }}/img/pitl05/lists-len.png" class="fullwidth" />
+  <figcaption>
+    The <code>len()</code> function returns a list length of <code>6</code>.
+  </figcaption>
+</figure>
+
+As the `len()` function returns an integer -- in this case, six -- it can serve as a `range()` argument. Add the following code:
+
+{% highlight py %}
+...
+
+for i in range( len(rainbow) ):
+    print(rainbow[i])
+{% endhighlight %}
+
+Run the code. With iteration of the loop `i` is incremented by 1. The print line first displays `rainbow[0]`, followed by `rainbow[1]`, and so forth.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl05/lists-range.png" class="fullwidth" />
+</figure>
+
+### ... challenge
+
+<figure>
+  <img src="{{ site.url }}/img/pitl05/lists-rainbow-loop.png" />
+</figure>
+
+
+### ... challenge
+
+multi-dim arrays? placing bricks (color, x, y)
 
 ## Dictionaries
 

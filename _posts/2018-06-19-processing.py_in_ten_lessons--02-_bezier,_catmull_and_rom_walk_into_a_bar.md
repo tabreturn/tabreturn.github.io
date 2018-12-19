@@ -650,7 +650,7 @@ Were the length function a method, it would be instead be written as:
 `all.len()`  
 Of course, `len()` is not a method, so this would result in an error. What is important to note, however, is how the method begins with a period (`.`) and is appended to the variable.
 
-What follows below are descriptions for several string methods, along with some code to add to your working sketch.
+What follows below are descriptions for several string methods, along with some code to add to your working sketch. Each example builds on the code before it, so you'll need to work through all of them, entering each line as you progress.
 
 #### `.upper()`
 <dd markdown="1">
@@ -889,13 +889,13 @@ line(
 
 Here is the final challenge before moving onto lesson 03.
 
-The first incarnation of the iconic apple logo was rainbow-coloured (although the bands are incorrectly ordered). You will recreate this in Processing.
+The first incarnation of the iconic apple logo was rainbow-coloured (although the bands are incorrectly ordered). One common rumour around the bite involves computer pioneer, Alan Turing -- a man who is widely considered to be the father of theoretical computer science and artificial intelligence. Among his many accomplishments, Turing managed to crack the Enigma cypher used to encrypt Nazi communications during World War II. When authorities discovered in 1952 that he was gay, Turing was forced to undergo hormonal treatment. Two years later he was found dead, having committed suicide by biting into a poisoned apple.
+
+You will recreate the logo in Processing, such that the final result looks this:
 
 <figure>
   <img src="{{ site.url }}/img/pitl02/apple.png" />
 </figure>
-
-One common rumour around the bite involves computer pioneer, Alan Turing -- a man who is widely considered to be the father of theoretical computer science and artificial intelligence. Among his many accomplishments, Turing managed to crack the Enigma cypher used to encrypt Nazi communications during World War II. When authorities discovered in 1952 that he was gay, Turing was forced to undergo hormonal treatment. Two years later he was found dead, having committed suicide by biting into a poisoned apple.
 
 Create a new sketch and save it as "apple_logo". Within a "data" sub-folder, add the grid.png image, along with this apple.png file:
 
@@ -921,6 +921,7 @@ To assist you in approximating the positions of the anchor and control points, h
 
 <figure>
   <img src="{{ site.url }}/img/pitl02/apple-clue.png" />
+  <figcaption>In progress (left) and complete version (right).</figcaption>
 </figure>
 
 Notice how straight-line connections between pairs of control points ensure smooth curves along the perimeter of the apple. Conversely, the leaf handles are bent in different directions resulting in a sharp tip.

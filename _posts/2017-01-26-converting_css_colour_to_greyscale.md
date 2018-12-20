@@ -166,7 +166,7 @@ The background colour for the div should currently appear red (if you're using J
 {% highlight js %}
 // use either 'averaged' or 'luminosity'
 var algorithm = 'luminosity';
-// the selector ID you wish to affect
+// the selector ID you want to affect
 var selector = document.getElementById('alert');
 
 var style = window.getComputedStyle(selector, null);

@@ -591,7 +591,7 @@ Python slice notation (`[]`) provides a simple, yet powerful means of extracting
 print( all[0] )    # displays the first character (h)
 {% endhighlight %}
 
-The position (*index*) of the character you wish to retrieve is placed within the square brackets. Take note that the indexing system is *zero-based*, meaning that the character indices begin at `0` (and not `1`).
+The position (*index*) of the character you intend to retrieve is placed within the square brackets. Take note that the indexing system is *zero-based*, meaning that the character indices begin at `0` (and not `1`).
 
 {% highlight py %}
 print( all[1] )    # displays character at index 1 (e)

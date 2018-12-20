@@ -57,7 +57,7 @@ So if one were to plot points *A* and *B* along a scale, it looks something like
   <figcaption>Plotting points A and B in one dimension (between white and black).</figcaption>
 </figure>
 
-If you wish to calculate a distance between the two colours, simply take B and subtract A from it, which in this case is:  
+If you want to calculate a distance between the two colours, simply take B and subtract A from it, which in this case is:  
 `95 - 45`  
 which equals **50**.
 

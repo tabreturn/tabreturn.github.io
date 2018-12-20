@@ -215,7 +215,7 @@ Processing's `rect()` is one of its many drawing functions. You will be introduc
 
 ### Fills and Strokes
 
-When you write a `fill()` function, every shape after that is filled in the specified colour -- that is, up until the next `fill()` line. If you wish to disable the fill altogether, use `noFill()`. In this way, Processing is like painting: you grab a brush and dip it in some paint, then everything you paint is influenced by the brush and colour you last selected. When you wish to paint in a different style or colour, you simply change-out your brush or dip it in a different pot.
+When you write a `fill()` function, every shape after that is filled in the specified colour -- that is, up until the next `fill()` line. If you want to disable the fill altogether, use `noFill()`. In this way, Processing is like painting: you grab a brush and dip it in some paint, then everything you paint is influenced by the brush and colour you last selected. When you intend to paint in a different style or colour, you simply change-out your brush or dip it in a different pot.
 
 Add the following code to your "hello_world" file. Note that comments have been added to give you a better idea of what each chunk is doing:
 
@@ -290,7 +290,7 @@ background('#004477')
 
 You have been using hexadecimal values to represent colour thus far. We will stick to them for the rest of the lesson, but before moving along, here is a quick introduction to some other approaches. There is no need to write any code for this section -- just read through it to gain a basic grasp of the concepts involved.
 
-For various reasons, you may wish to express colours in something other than hexadecimal. Here is one such scenario: you wish to write some code that darkens the bright red fill. Firstly, consider that this shade of red:  
+For various reasons, you may need to express colours in something other than hexadecimal. Here is one such scenario: you wish to write some code that darkens the bright red fill. Firstly, consider that this shade of red:  
 `fill('#FF0000')`  
 can also be represented as:  
 `fill(255, 0, 0)`  
@@ -533,7 +533,7 @@ Now add the code below, but before hitting run, see if you can predict what the 
 print(1 + 2 * 3)   # displays ???
 {% endhighlight %}
 
-The console displays a `7` -- and not a `9` -- because multiplication occurs before addition. Certain operators take precedence over others. Remember BEDMAS? Or BODMAS (depending on where you're from)? It is an acronym to help you recall the [order of operations](https://en.wikipedia.org/wiki/Order_of_operations). If you wish to override this order, use brackets:
+The console displays a `7` -- and not a `9` -- because multiplication occurs before addition. Certain operators take precedence over others. Remember BEDMAS? Or BODMAS (depending on where you're from)? It is an acronym to help you recall the [order of operations](https://en.wikipedia.org/wiki/Order_of_operations). If you want to override this order, use brackets:
 
 {% highlight py %}
 ...

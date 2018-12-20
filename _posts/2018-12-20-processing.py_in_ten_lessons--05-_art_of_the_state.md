@@ -32,7 +32,7 @@ Here, `'Sam'` represents a student name -- or more technically speaking, some st
 student = ['Sam', 24]
 {% endhighlight %}
 
-The square-brackets contain both the string and integer values. You may never have used a list before, but can likely make some sense of the syntax? More on syntax shortly, though. You may also be wondering: wouldn't it be simpler to stick with the two separate variables? Perhaps -- it really depends on the application. Lists are ordered, and ordering is significant in many situations -- for example, this sequence of rainbow colours:
+The square-brackets contain both the string and integer values. You may never have used a list before, but can likely make some sense of the syntax? More on syntax shortly, though. You may also be wondering: wouldn't it be simpler to stick with the two separate variables? Perhaps. It really depends on the application. Lists are ordered, and ordering is significant in many situations -- for example, in this sequence of rainbow colours:
 
 {% highlight py %}
 rainbow = [
@@ -62,13 +62,13 @@ rainbow = ['blue', 'orange', 'yellow']
 print(rainbow)
 {% endhighlight %}
 
-Run the code and observe the Console output:
+Our rainbow is currently missing a few colours, and the sequence is incorrect, but this will be amended as we progress. Run the code and observe the Console output:
 
 <figure>
   <img src="{{ site.url }}/img/pitl05/lists-new-list.png" class="fullwidth" />
 </figure>
 
-Printing the `rainbow` variable displays all three values (along with square brackets and commas). In many instances, though, it's an individual element that you wish to retrieve. To display a given value, specify it's position in square brackets. Note, however, that Python lists begin at zero:
+Printing the `rainbow` variable displays all three values (along with square brackets and commas). In many instances, though, it's an individual element that you wish to retrieve. To display a given value, specify it's position in square brackets. Begin by printing the first element. Note, however, that Python list indices begin at zero:
 
 {% highlight py %}
 ...
@@ -81,8 +81,7 @@ Run the sketch to confirm that the Console displays `blue`.
   <img src="{{ site.url }}/img/pitl05/lists-index.png" class="fullwidth" />
 </figure>
 
-The second element, `orange`, has an index of `1`.  
-The last element in this list, `yellow`, has an index of `2`.
+One can think of each element's position as its offset from the start of the list. The second element, `orange`, has an index of `1`. The last element in this list, `yellow`, has an index of `2`.
 
 {% highlight py %}
 ...
@@ -90,7 +89,7 @@ print(rainbow[1])   # displays orange
 print(rainbow[2])   # displays yellow
 {% endhighlight %}
 
-This may remind you of string [slice notation]({% post_url 2018-06-19-processing.py_in_ten_lessons--02-_bezier,_catmull_and_rom_walk_into_a_bar %}#slice-notation)? Well, it works the same way! For example, the last element can be accessed using `-1`, while ranges of elements can be extracted using a colon. Try adding the following code:
+Maybe this syntax remind you of [slice notation]({% post_url 2018-06-19-processing.py_in_ten_lessons--02-_bezier,_catmull_and_rom_walk_into_a_bar %}#slice-notation)? Well, it works the same way! For example, the last element can be accessed using `-1`, while a subset of elements can be extracted using a colon. Add the following code:
 
 {% highlight py %}
 ...
@@ -99,11 +98,11 @@ print(rainbow[-2])  # displays orange
 print(rainbow[0:2]) # displays ['blue', 'orange']
 {% endhighlight %}
 
-Should you specify an index beyond the bounds of the list -- in this case, `rainbow[3]` or greater -- the Console will display an `IndexError`.
+Should you specify an index beyond the bounds of the list -- say, `rainbow[3]` or greater -- the Console will display an `IndexError`.
 
 ### Modifying lists
 
-Many lists are dynamic in nature. Consider a game like *Breakout* (image below). The bricks are stored in a list; each time one is hit it is removed from this list. In some levels, new bricks may appear, in which case elements are added to the list.
+Many lists are dynamic in nature. Consider a game like *Breakout* (image below). A list stores the bricks comprising the wall; hitting a brick removes it from this list. In some levels, additional bricks may appear during play, thereby inserting new elements.
 
 <figure>
   <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Screenshot-LBreakout2.jpg" />
@@ -113,17 +112,16 @@ Many lists are dynamic in nature. Consider a game like *Breakout* (image below).
   </figcaption>
 </figure>
 
-I'm assuming you have played some variant of this game, and are probably aware that, upon destruction, select bricks drop power-ups. Moreover: bricks come in different colours; some may be invisible; others take multiple hits to destroy. This can all be programmed using lists of lists. Yes -- lists can contain other lists, which can, in turn, can contain other lists ... but more on that later.
+I'm assuming you have played some variant of this game and are probably aware that, upon destruction, select bricks drop power-ups. Moreover: bricks come in different colours; some may be invisible; others take multiple hits to destroy. This can all be programmed using lists of lists. Yes -- lists can contain other lists, which can, in turn, can contain further nested lists ... but more on that later.
 
-To modify an existing element, assign a new value like you would any other variable but include the index. Overwrite the first value of the rainbow list, changing blue to red by adding the following code to your "rainbow_list" sketch:
+To modify an existing element, reassign a new value like you would any other variable but include the index in square brackets. Take a practical example: red must replace blue as the first value in the rainbow list. To accomplish this, add the following lines to the bottom of your "rainbow_list" sketch:
 
 {% highlight py %}
-...
 rainbow[0] = 'red'
 print(rainbow)      # ['red', 'orange', 'yellow']
 {% endhighlight %}
 
-The Processing [reference](https://py.processing.org/reference/) includes a number of Python *List Methods*. Correctly speaking, these are standard Python methods, so they will work in any Python environment. What follows below are descriptions for several list methods, along with some code to add to your working sketch. Each example builds on the code before it, so you'll need to work through all of them, entering each line as you progress.
+The Processing [reference](https://py.processing.org/reference/) includes a number of *List Methods*.  Correctly speaking, these are standard (as opposed to Processing.py) Python features, functional in any Python environment. What follows below are descriptions for several such methods, along with code to add to your working sketch. Each example builds on the code before it, so you’ll need to work through all of them, entering each line as you progress.
 
 #### `.append()`
 <dd markdown="1">
@@ -149,7 +147,7 @@ print(rainbow)
 
 #### `.index()`
 <dd markdown="1">
-Returns the index for the argument provided; if there are multiple matches, it represents the first. If there is no such element, the Console reports a `ValueError`.
+Returns the index (position as an integer) for the argument provided; if there are multiple matches, this is the lowest/first instance. If there is no matching value, the Console reports a `ValueError`.
 
 {% highlight py %}
 yellowindex = rainbow.index('yellow')
@@ -159,7 +157,7 @@ print(yellowindex)  # 2
 
 #### `.insert()`
 <dd markdown="1">
-This insert method accepts two arguments: the first is the position at you wish to insert the element; the second is the value itself.
+The insert method accepts two arguments: the first is the index/position to insert the element; the second is the value.
 
 {% highlight py %}
 rainbow.insert(3, 'green')
@@ -170,16 +168,20 @@ print(rainbow)
 
 #### `.pop()`
 <dd markdown="1">
-The argument specifies an element to be removed from the list. The method also returns the value it removes.
+The pop method accepts a single argument: the index/position of an element to remove. The pop-ed value is returned, should you need to utilise it for some other operation.
 
 {% highlight py %}
-i = rainbow.pop(5)  # removes indigo
+i = rainbow.pop(5)  # removes indigo and assigns it to i
+'''
+or, to just remove indigo:
+rainbow.pop(5)
+'''
 print(i)            # indigo
 print(rainbow)
 # red, orange, yellow, green, blue, violet
 {% endhighlight %}
 
-However, the argument is optional. If you provide none, the last element is removed.
+However, the argument is optional. If you provide none, Python removes the last element.
 
 {% highlight py %}
 rainbow.pop()       # removes violet
@@ -190,7 +192,7 @@ print(rainbow)
 
 #### `.remove()`
 <dd markdown="1">
-The first element with a value matching the argument is removed.
+Removes the first element with a value that matches the argument.
 
 {% highlight py %}
 rainbow.extend(colors)
@@ -202,9 +204,9 @@ print(rainbow)
 {% endhighlight %}
 </dd>
 
-Python does offer other list methods, but the above should suffice, for now at least. Any decent Python reference should cover the others; failing that, there's always your favourite search engine. If you are looking to reorder list elements, there are the [`reverse()`](https://py.processing.org/reference/list_reverse.html) and alphanumerical [`sort()`](https://py.processing.org/reference/list_sort.html) methods.
+Python does offer other list methods but the above should suffice, for now at least. Any decent Python reference should cover the others; failing that, there's always your favourite search engine. If you are looking to reorder list elements, there are the [`reverse()`](https://py.processing.org/reference/list_reverse.html) and alphanumerical [`sort()`](https://py.processing.org/reference/list_sort.html) methods.
 
-### ... challenge
+### Rainbow Sequence Task
 
 Blue out of order
 
@@ -301,6 +303,10 @@ Run the code. With iteration of the loop `i` is incremented by 1. The print line
 ### ... challenge
 
 multi-dim arrays? placing bricks (color, x, y)
+
+
+
+??? EXTRA ??? comprehensions, tuples
 
 ## Dictionaries
 

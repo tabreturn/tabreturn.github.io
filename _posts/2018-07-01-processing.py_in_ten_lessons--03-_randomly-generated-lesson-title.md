@@ -244,7 +244,7 @@ else:
     print('FAIL')
 {% endhighlight %}
 
-Of course, this all depends on the logic you wish to implement.
+Of course, this all depends on the logic you intend to implement.
 
 #### Logical Operators
 
@@ -490,7 +490,7 @@ while i < 24:
   <img src="{{ site.url }}/img/pitl03/iteration-concentric-circles.png" />
 </figure>
 
-It should be pointed out that the width/height arguments (`30*i`) of the first iteration are multiplied by `0`, so the first circle is placed in the very centre of the display window but is effectively too small to be visible. The other twenty-three are sufficient to fill the 500 by 500-pixel area -- but by changing the condition, you can draw as many (or as few circles) as you wish.
+It should be pointed out that the width/height arguments (`30*i`) of the first iteration are multiplied by `0`, so the first circle is placed in the very centre of the display window but is effectively too small to be visible. The other twenty-three are sufficient to fill the 500 by 500-pixel area -- but by changing the condition, you can draw as many (or as few circles) as you like.
 
 ### Augmented Assignment Operators
 

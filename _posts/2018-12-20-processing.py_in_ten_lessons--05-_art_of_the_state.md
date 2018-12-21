@@ -54,10 +54,6 @@ Moreover, lists (and dictionaries) are particularly powerful when combined with 
 To familiarise yourself with defining, accessing, and modifying lists, create a new sketch. Save this as "rainbow_list" and add the following code:
 
 {% highlight py %}
-size(500,500)
-noStroke()
-background('#004477')
-
 rainbow = ['blue', 'orange', 'yellow']
 print(rainbow)
 {% endhighlight %}
@@ -208,77 +204,102 @@ Python does offer other list methods but the above should suffice, for now at le
 
 ### Rainbow Sequence Task
 
-Blue out of order
+Time to consolidate what has been covered thus far. In this challenge you will apply various list techniques to shuffle the colour bands of an incorrectly sequenced rainbow (orange, followed by violet, then blue, red, yellow, green, and indigo). Wait -- what the heck is indigo, anyway? According to the [dictionary](https://en.wiktionary.org/wiki/indigo), indigo is a "purplish-blue colour", and violet is a "blueish-purple colour" 😕. On that point, why is there no purple band in the rainbow? Okay, let's just merge indigo and violet into purple, and stick with a six colour rainbow.
+
+<figure style="word-spacing:0">
+<div style="background-color:indigo; display:inline-block; width:80px; height:2.5em"></div
+><div style="background-color:violet; display:inline-block; width:80px; height:2.5em"></div
+><div style="background-color:purple; display:inline-block; width:80px; height:2.5em"></div>
+<figcaption>From left to right: indigo, violet, and purple. According to your web browser.</figcaption>
+</figure>
+
+Create a new sketch and save it as "rainbow_sequence". Add the following code:
 
 {% highlight py %}
-...
+size(500,500)
+noStroke()
+background('#004477')
 
 bands = [
-  '#FF0000', # red
-  '#0099FF', # blue
   '#FF9900', # orange
+  '#6633FF', # purple
+  '#0099FF', # blue
+  '#FF0000', # red
   '#FFFF00', # yellow
   '#00FF00', # green
-  '#6633FF'  # violet
 ]
 
-fill(bands[0])
-rect(0,100, width,50)
-fill(bands[1])
-rect(0,150, width,50)
-fill(bands[2])
-rect(0,200, width,50)
-fill(bands[3])
-rect(0,250, width,50)
-fill(bands[4])
-rect(0,300, width,50)
-fill(bands[5])
-rect(0,350, width,50)
+fill(bands[0]); rect(0,100, width,50)
+fill(bands[1]); rect(0,150, width,50)
+fill(bands[2]); rect(0,200, width,50)
+fill(bands[3]); rect(0,250, width,50)
+fill(bands[4]); rect(0,300, width,50)
+fill(bands[5]); rect(0,350, width,50)
 {% endhighlight %}
 
 <figure>
-  <img src="{{ site.url }}/img/pitl05/lists-rainbow-methods.png" />
+  <img src="{{ site.url }}/img/pitl05/lists-rainbow-methods-challenge.png" />
+  <figcaption>Incorrectly sequenced rainbow.</figcaption>
 </figure>
 
-fgfghhgjhgjgkj
+Now, insert the following code just above fill/rect lines:
 
 {% highlight py %}
-  ...
-  '#6633FF'  # violet
-]
+'''# move purple
+purple = bands[_]
+bands.append(purple)
+bands.remove(purple)'''
 
-blueindex = bands.___('blue')
-bands.insert(len(bands)-1, bands[___])
-bands.___(1)
+'''# move blue
+blueindex = bands.index('_______')
+bands.insert(4, bands.pop(blueindex))'''
 
-fill(bands[0])
+'''# switch orange and red
+bands.insert(bands.index('_______'), bands.___(_))'''
+
+fill(bands[0]); rect(0,100, width,50)
 ...
 {% endhighlight %}
 
+Remove the multi-line commented blocks (`'''`) a section time. The goal is to figure out what values and methods replace the underscores. The finished result looks like this:
 
+<figure>
+  <img src="{{ site.url }}/img/pitl05/lists-rainbow-methods-result.png" />
+</figure>
 
+Once complete, save this file. You will be editing it further in the next challenge.
 
-### Loops and Lists
+### Loops + Lists
 
-Looping through a list of elements can save countless lines of manual coded instructions. As a case a point, let us return to the *Breakout* game example. To render each brick using a `rect()` function requires as many lines of code as there are bricks. This is hardly efficient, nor does it account for a list that changes in length.
-
-In a previous lesson on [for loops]({% post_url 2018-07-01-processing.py_in_ten_lessons--03-_randomly-generated-lesson-title %}#for-loops), you looked at iterating over integer values using a `range()` function. To perform something similar on a loop, use the `len()` function to determine a list's length. Print the length of your rainbow list to see how this function behaves:
+Loops can be programmed to work with lists, potentially saving on countless lines of manual instruction. As a case a point, let us return to the *Breakout* game example. Rendering each brick requires at least as many lines of code as there are elements. For example:
 
 {% highlight py %}
+fill(color); rect(x, y, w, h) # brick A1
+fill(color); rect(x, y, w, h) # brick A2
+fill(color); rect(x, y, w, h) # brick A3
 ...
-print(rainbow)
-# ['red', 'orange', 'yellow', 'green', 'blue', 'violet']
+fill(color); rect(x, y, w, h) # brick J12
+{% endhighlight %}
+
+This is hardly efficient, nor can it handle a list that is constantly adapting in length. In a previous lesson covering [for loops]({% post_url 2018-07-01-processing.py_in_ten_lessons--03-_randomly-generated-lesson-title %}#for-loops), you looked at iterating integer values using a `range()` function. To perform something similar on a list, you will first need to determine the list's length.
+
+Create a new sketch and save it as "iterating_lists". Add the following code:
+
+{% highlight py %}
+rainbow = ['red', 'orange', 'yellow', 'green', 'blue', 'purple']
 print( len(rainbow) )
 {% endhighlight %}
 
+The `len()` accepts a list as an argument, and returns it's length. Run the sketch to confirm this.
+
 <figure>
-  <img src="{{ site.url }}/img/pitl05/lists-len.png" class="fullwidth" />
+  <img src="{{ site.url }}/img/pitl05/lists-loop-len.png" class="fullwidth" />
   <figcaption>
     The <code>len()</code> function returns a list length of <code>6</code>.
   </figcaption>
 </figure>
 
-As the `len()` function returns an integer -- in this case, six -- it can serve as a `range()` argument. Add the following code:
+As the `len()` function returns an integer -- in this case, six -- it can serve as an argument for a `range()` function. Add this for loop to the bottom of your code:
 
 {% highlight py %}
 ...
@@ -287,11 +308,52 @@ for i in range( len(rainbow) ):
     print(rainbow[i])
 {% endhighlight %}
 
-Run the code. With iteration of the loop `i` is incremented by 1. The print line first displays `rainbow[0]`, followed by `rainbow[1]`, and so forth.
+Run the sketch. With each iteration of the loop, `i` is incremented by 1. On the first iteration, the `print` line displays `rainbow[0]`, followed by `rainbow[1]` on the second, and so on through to `rainbow[5]`.
 
 <figure>
-  <img src="{{ site.url }}/img/pitl05/lists-range.png" class="fullwidth" />
+  <img src="{{ site.url }}/img/pitl05/lists-loop-range.png" class="fullwidth" />
 </figure>
+
+Your loops from previous lessons have relied on a `range()` function, and using again it here makes the code more relatable. However, Python regards loops as inherently iterable, and and the range can be omitted altogether. Comment out the previous loop, replacing it with a non-range alternative:
+
+{% highlight py %}
+'''
+for i in range( len(rainbow) ):
+    print(rainbow[i])
+'''
+for band in rainbow:
+    print(band)
+{% endhighlight %}
+
+Run the code. The Console prints the same list of values. But, what if you wished to print this output?
+
+~~~
+0: red
+1: orange
+2: yellow
+3: green
+4: blue
+5: purple
+~~~
+
+Without the `i` value from the first version of the loop, you have just the value and no count. One approach is to adapt the earlier approach. For example:
+
+{% highlight py %}
+for i in range( len(rainbow) ):
+    print( ('%s: %s') % (i, rainbow[i]) )
+{% endhighlight %}
+
+This way, the `i` value is used to print the index and retrieve values from the list. However, Python offers another approach using the `enumerate()` function. This is best explained using a practical example. Add the following to the bottom of your working code:
+
+{% highlight py %}
+for i,v in enumerate(rainbow):
+    print( ('%s: %s') % (i, v) )
+{% endhighlight %}
+
+<figure>
+  <img src="{{ site.url }}/img/pitl05/lists-loop-enumerate.png" class="fullwidth" />
+</figure>
+
 
 ### ... challenge
 

@@ -215,7 +215,7 @@ Processing's `rect()` is one of its many drawing functions. You will be introduc
 
 ### Fills and Strokes
 
-When you write a `fill()` function, every shape after that is filled in the specified colour -- that is, up until the next `fill()` line. If you want to disable the fill altogether, use `noFill()`. In this way, Processing is like painting: you grab a brush and dip it in some paint, then everything you paint is influenced by the brush and colour you last selected. When you intend to paint in a different style or colour, you simply change-out your brush or dip it in a different pot.
+When you write a `fill()` function, every shape after that is filled in the specified colour -- that is, up until the next `fill()` line. If you want to disable the fill altogether, use `noFill()`. In this way, Processing is like painting: you grab a brush and dip it in some paint, then everything you paint is influenced by the brush and colour you last selected. When you wish to paint in a different style or colour, you simply change-out your brush or dip it in a different pot.
 
 Add the following code to your "hello_world" file. Note that comments have been added to give you a better idea of what each chunk is doing:
 
@@ -245,7 +245,7 @@ rect(250,100, 150,150)
 {% highlight py %}
 ...
 
-stroke('#FFFFFF');
+stroke('#FFFFFF')
 strokeWeight(3)
 
 # red rectangles

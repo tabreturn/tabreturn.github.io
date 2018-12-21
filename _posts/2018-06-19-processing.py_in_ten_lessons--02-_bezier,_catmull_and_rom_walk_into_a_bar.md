@@ -808,7 +808,7 @@ Converts a font to the format used by Processing. The two arguments represent th
 
 {% highlight py %}
 print( PFont.list() )
-timesroman = createFont('Times', 20);
+timesroman = createFont('Times', 20)
 {% endhighlight %}
 
 <figure>
@@ -824,7 +824,7 @@ Sets the font for any subsequent `text()` functions.
 
 {% highlight py %}
 ...
-timesroman = createFont('Times-Roman', 20);
+timesroman = createFont('Times-Roman', 20)
 textFont(timesroman)
 text(razor, 0,150)
 {% endhighlight %}

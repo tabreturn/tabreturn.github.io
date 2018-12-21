@@ -336,14 +336,14 @@ Run the code. The Console prints the same list of values. But, what if you wishe
 5: purple
 ~~~
 
-Without the `i` value from the first version of the loop, you have just the value and no count. One approach is to adapt the earlier approach. For example:
+Without the `i` variable from the first version of the loop, you have just the element value but no count. One approach is to adapt the earlier loop. For example:
 
 {% highlight py %}
 for i in range( len(rainbow) ):
     print( ('%s: %s') % (i, rainbow[i]) )
 {% endhighlight %}
 
-This way, the `i` value is used to print the index and retrieve values from the list. However, Python offers another approach using the `enumerate()` function. This is best explained using a practical example. Add the following to the bottom of your working code:
+This way, the `i` value is used to print the index and retrieve values from the list. However, Python offers another approach using an `enumerate()` function. This is best explained using a practical example. Add the following to the bottom of your working code:
 
 {% highlight py %}
 for i,v in enumerate(rainbow):
@@ -354,17 +354,39 @@ for i,v in enumerate(rainbow):
   <img src="{{ site.url }}/img/pitl05/lists-loop-enumerate.png" class="fullwidth" />
 </figure>
 
+No specific approach is necessarily better than another. What you elect to use will depend on your coding style and the application at hand.
 
-### ... challenge
+### Rainbow Sequence Loop Task
+
+Reopen your "rainbow_sequence" task from earlier. Your challenge is to convert the following code into something that uses a loop instead:
+
+{% highlight py %}
+...
+
+fill(bands[0]); rect(0,100, width,50)
+fill(bands[1]); rect(0,150, width,50)
+fill(bands[2]); rect(0,200, width,50)
+fill(bands[3]); rect(0,250, width,50)
+fill(bands[4]); rect(0,300, width,50)
+fill(bands[5]); rect(0,350, width,50)
+{% endhighlight %}
+
+Ensure that the visual result remains the same:
 
 <figure>
   <img src="{{ site.url }}/img/pitl05/lists-rainbow-loop.png" />
 </figure>
 
+Enumerate is, perhaps, the more 'elegant' approach -- but, ultimately, it's your choice as a coder.
 
-### ... challenge
+
+### Lists of Lists
 
 multi-dim arrays? placing bricks (color, x, y)
+
+### Breakout Challenge
+
+...
 
 
 

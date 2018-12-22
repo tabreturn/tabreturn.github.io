@@ -396,10 +396,9 @@ multi-dim arrays? placing bricks (color, x, y)
 
 ### Breakout Task
 
-prob not best approach, but makes puzzle more challenging
+In this challenge you will recreate a Breakout level. Some code will be provided to work from, and this include a three-dimensional array. Working with such a list requires a nested loop -- that is, a loop inside another loop.
 
-
-...
+Create a new sketch and save it as "breakout"; then, copy-paste in the code below:
 
 {% highlight py %}
 size(600,600)
@@ -428,30 +427,44 @@ bricks = [
   [                            [3,o,1] ], # row 6
   [ [0,g,1]                            ]  # row 7
 ]
+{% endhighlight %}
 
+In an attempt to make the code more readable, the `bricks` list has been typed-out in a fashion that reflects the positioning of each brick. In the following order, each brick contains a column-number, fill-colour, hit-count (for indicating how many hits are required to destroy it). Take the first brick as an example:  
+{% highlight py %}
+[0,r,1]
+{% endhighlight %}
+The brick is positioned in column 0, has a fill of red, and requires one (more) hit to destroy. Of course, the row position can be inferred from the list in which it resides. Add two `print()` statements to confirm this information:
+
+{% highlight py %}
+...
 print(bricks[0])    # displays the first row of bricks
 print(bricks[0][0]) # displays the first brick
 {% endhighlight %}
-
-
-....
-bricks = [
-  [column, row, fill, strength], [col...
-]
-
-...
 
 <figure>
   <img src="{{ site.url }}/img/pitl05/lists-breakout-print.png" class="fullwidth" />
 </figure>
 
-...
+Now, you must complete the task, as per the result below. Bricks with a hit-count of `2` have an additional shine effect.
 
 <figure>
   <img src="{{ site.url }}/img/pitl05/lists-breakout-result.png" />
 </figure>
 
-??? EXTRA ??? comprehensions, tuples
+As mentioned already, you will need employ a nested loop. If you are stumped, perhaps these few lines will get you going?
+
+{% highlight py %}
+for row,bricks in enumerate(bricks):
+
+    for brick in bricks:
+        x = brick[0]*150
+        ...
+{% endhighlight %}
+
+If you are more comfortable with a `range()` type of approach, that should work fine too.
+
+### EXTRA
+??? comprehensions, tuples
 
 ## Dictionaries
 

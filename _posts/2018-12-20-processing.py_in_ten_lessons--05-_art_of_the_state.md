@@ -213,7 +213,7 @@ Time to consolidate what has been covered thus far. In this challenge you will a
 <figcaption>From left to right: indigo, violet, and purple. According to your web browser.</figcaption>
 </figure>
 
-Create a new sketch and save it as "rainbow_sequence". Add the following code:
+Create a new sketch and save it as "rainbow_sequence". Copy-paste in the following code:
 
 {% highlight py %}
 size(500,500)
@@ -356,6 +356,15 @@ for i,v in enumerate(rainbow):
 
 No specific approach is necessarily better than another. What you elect to use will depend on your coding style and the application at hand.
 
+Recall, though, that `i` and `v` are variable names. Use whatever you feel is most descriptive -- for example:
+
+{% highlight py %}
+for number,colour in enumerate(rainbow):
+    print( ('%s: %s') % (number, colour) )
+{% endhighlight %}
+
+In this instance, I have opted for the British spelling of col<ins>ou</ins>r to avoid confusing the variable with Processing's [`color()`](https://py.processing.org/reference/color.html) function.
+
 ### Rainbow Sequence Loop Task
 
 Reopen your "rainbow_sequence" task from earlier. Your challenge is to convert the following code into something that uses a loop instead:
@@ -377,18 +386,70 @@ Ensure that the visual result remains the same:
   <img src="{{ site.url }}/img/pitl05/lists-rainbow-loop.png" />
 </figure>
 
-Enumerate is, perhaps, the more 'elegant' approach -- but, ultimately, it's your choice as a coder.
+An `enumerate()` is, perhaps, the more elegant solution. If you ever find yourself weighing-up different approaches, read through [The Zen of Python](https://www.python.org/dev/peps/pep-0020/) -- a list of 19 one-line principles to help guide your coding.
 
 
 ### Lists of Lists
 
 multi-dim arrays? placing bricks (color, x, y)
+[][] syntax
 
-### Breakout Challenge
+### Breakout Task
+
+prob not best approach, but makes puzzle more challenging
+
 
 ...
 
+{% highlight py %}
+size(600,600)
+noStroke()
+background('#000000')
 
+# ball and paddle
+fill('#FFFFFF')
+ellipse(350,440, 18,18)
+rect(300,520, 190,40)
+
+r = '#FF0000' # red
+o = '#FF9900' # orange
+y = '#FFFF00' # yellow
+g = '#00FF00' # green
+b = '#0099FF' # blue
+p = '#6633FF' # purple
+
+bricks = [
+  [ [0,r,1], [1,o,1], [2,y,1], [3,g,1] ], # row 0
+  [ [0,o,1], [1,y,1], [2,g,1], [3,b,1] ], # row 1
+  [ [0,y,1], [1,g,1], [2,b,1], [3,p,1] ], # row 2
+  [ [0,g,1], [1,b,2], [2,p,2], [3,b,1] ], # row 3
+  [ [0,b,1], [1,p,2],          [3,g,1] ], # row 4
+  [ [0,p,1],                   [3,y,1] ], # row 5
+  [                            [3,o,1] ], # row 6
+  [ [0,g,1]                            ]  # row 7
+]
+
+print(bricks[0])    # displays the first row of bricks
+print(bricks[0][0]) # displays the first brick
+{% endhighlight %}
+
+
+....
+bricks = [
+  [column, row, fill, strength], [col...
+]
+
+...
+
+<figure>
+  <img src="{{ site.url }}/img/pitl05/lists-breakout-print.png" class="fullwidth" />
+</figure>
+
+...
+
+<figure>
+  <img src="{{ site.url }}/img/pitl05/lists-breakout-result.png" />
+</figure>
 
 ??? EXTRA ??? comprehensions, tuples
 
@@ -421,4 +482,8 @@ multi-dim arrays? placing bricks (color, x, y)
 
 ## References
 
+* http://lgames.sourceforge.net/
+
 * https://py.processing.org/reference/
+
+* https://www.python.org/dev/peps/pep-0020/

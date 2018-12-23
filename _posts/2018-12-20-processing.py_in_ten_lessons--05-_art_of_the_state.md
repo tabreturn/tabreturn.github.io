@@ -208,9 +208,9 @@ Time to consolidate what has been covered thus far. In this challenge you will a
 
 <figure style="word-spacing:0">
 <div style="background-color:indigo; display:inline-block; width:80px; height:2.5em"></div
-><div style="background-color:violet; display:inline-block; width:80px; height:2.5em"></div
+><div style="background-color:darkviolet; display:inline-block; width:80px; height:2.5em"></div
 ><div style="background-color:purple; display:inline-block; width:80px; height:2.5em"></div>
-<figcaption>From left to right: indigo, violet, and purple. According to your web browser.</figcaption>
+<figcaption>From left to right: indigo, dark-violet, and purple. According to your web browser.</figcaption>
 </figure>
 
 Create a new sketch and save it as "rainbow_sequence". Copy-paste in the following code:
@@ -222,7 +222,7 @@ background('#004477')
 
 bands = [
   '#FF9900', # orange
-  '#6633FF', # purple
+  '#6633FF', # violet
   '#0099FF', # blue
   '#FF0000', # red
   '#FFFF00', # yellow
@@ -245,10 +245,10 @@ fill(bands[5]); rect(0,350, width,50)
 Now, insert the following code just above fill/rect lines:
 
 {% highlight py %}
-'''# move purple
-purple = bands[_]
-bands.append(purple)
-bands.remove(purple)'''
+'''# move violet
+violet = bands[_]
+bands.append(violet)
+bands.remove(violet)'''
 
 '''# move blue
 blueindex = bands.index('_______')
@@ -286,7 +286,7 @@ This is hardly efficient, nor can it handle a list that is constantly adapting i
 Create a new sketch and save it as "iterating_lists". Add the following code:
 
 {% highlight py %}
-rainbow = ['red', 'orange', 'yellow', 'green', 'blue', 'purple']
+rainbow = ['red', 'orange', 'yellow', 'green', 'blue', 'violet']
 print( len(rainbow) )
 {% endhighlight %}
 
@@ -333,7 +333,7 @@ Run the code. The Console prints the same list of values. But, what if you wishe
 2: yellow
 3: green
 4: blue
-5: purple
+5: violet
 ~~~
 
 Without the `i` variable from the first version of the loop, you have just the element value but no count. One approach is to adapt the earlier loop. For example:
@@ -392,6 +392,12 @@ An `enumerate()` is, perhaps, the more elegant solution. If you ever find yourse
 ### Lists of Lists
 
 multi-dim arrays? placing bricks (color, x, y)
+
+
+While the two colors look similar, from the point of view of optics there are important differences. Violet is a spectral color – it occupies its own place at the end of the spectrum of light first identified by Isaac Newton in 1672, and it has its own wavelength (approximately 380–420 nm) – whereas purple is a combination of two spectral colors, red and blue. There is no such thing as the "wavelength of purple light"; it only exists as a combination.
+
+In fact, you can see the trend -- the next colour, violet, has no green
+
 [][] syntax
 
 ### Breakout Task
@@ -415,7 +421,7 @@ o = '#FF9900' # orange
 y = '#FFFF00' # yellow
 g = '#00FF00' # green
 b = '#0099FF' # blue
-p = '#6633FF' # purple
+p = '#6633FF' # violet
 
 bricks = [
   [ [0,r,1], [1,o,1], [2,y,1], [3,g,1] ], # row 0
@@ -445,7 +451,7 @@ print( bricks[0][0] )    # displays the first brick
   <img src="{{ site.url }}/img/pitl05/lists-breakout-print.png" class="fullwidth" />
 </figure>
 
-Should you wish to retrieve the colour of the first brick, it is:
+Should you wish to retrieve the colour of the first brick, it's:
 
 {% highlight py %}
 print( bricks[0][0][1] ) # displays #FF0000

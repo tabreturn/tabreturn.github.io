@@ -313,11 +313,11 @@ This is because red lies at 360 degrees of rotation on the Hue ring (which begin
   <img src="{{ site.url }}/img/pitl01/colour-gimp-mixer-red.png" />
 </figure>
 
-For a dark-greyish purple, one could use:  
+For a dark-greyish violet, one could use:  
 `fill(270, 50, 50)`  
 
 <figure>
-  <img src="{{ site.url }}/img/pitl01/colour-gimp-mixer-purple.png" />
+  <img src="{{ site.url }}/img/pitl01/colour-gimp-mixer-violet.png" />
 </figure>
 
 In HSB mode, shifting along the colour spectrum -- from red to orange to yellow to green, etc. -- is a matter of adding or subtracting from the H-value. Attempting the same in RGB mode is more complicated as you need to manage the quantities of each primary.

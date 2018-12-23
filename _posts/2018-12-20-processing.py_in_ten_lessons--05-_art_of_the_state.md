@@ -437,18 +437,25 @@ The brick is positioned in column 0, has a fill of red, and requires one (more) 
 
 {% highlight py %}
 ...
-print(bricks[0])    # displays the first row of bricks
-print(bricks[0][0]) # displays the first brick
+print( bricks[0] )       # displays the first row of bricks
+print( bricks[0][0] )    # displays the first brick
 {% endhighlight %}
 
 <figure>
   <img src="{{ site.url }}/img/pitl05/lists-breakout-print.png" class="fullwidth" />
 </figure>
 
+Should you wish to retrieve the colour of the first brick, it is:
+
+{% highlight py %}
+print( bricks[0][0][1] ) # displays #FF0000
+{% endhighlight %}
+
 Now, you must complete the task, as per the result below. Bricks with a hit-count of `2` have an additional shine effect.
 
 <figure>
   <img src="{{ site.url }}/img/pitl05/lists-breakout-result.png" />
+  <figcaption>The three centre bricks have a shine.</figcaption>
 </figure>
 
 As mentioned already, you will need employ a nested loop. If you are stumped, perhaps these few lines will get you going?

@@ -204,13 +204,26 @@ Python does offer other list methods but the above should suffice, for now at le
 
 ### Rainbow Sequence Task
 
-Time to consolidate what has been covered thus far. In this challenge you will apply various list techniques to shuffle the colour bands of an incorrectly sequenced rainbow (orange, followed by violet, then blue, red, yellow, green, and indigo). Wait -- what the heck is indigo, anyway? According to the [dictionary](https://en.wiktionary.org/wiki/indigo), indigo is a "purplish-blue colour", and violet is a "blueish-purple colour" 😕. On that point, why is there no purple band in the rainbow? Okay, let's just merge indigo and violet into purple, and stick with a six colour rainbow.
+Time to consolidate what has been covered thus far. In this challenge you will apply various list techniques to shuffle the colour bands of an incorrectly sequenced rainbow (orange, followed by violet, then blue, red, yellow, green, and indigo). Wait -- what the heck is indigo, anyway? According to the [dictionary](https://en.wiktionary.org/wiki/indigo), indigo is a "purplish-blue colour", and violet is a "blueish-purple colour" 😕. On that point, why is there no purple band in the rainbow?
 
 <figure style="word-spacing:0">
 <div style="background-color:indigo; display:inline-block; width:80px; height:2.5em"></div
 ><div style="background-color:darkviolet; display:inline-block; width:80px; height:2.5em"></div
 ><div style="background-color:purple; display:inline-block; width:80px; height:2.5em"></div>
 <figcaption>From left to right: indigo, dark-violet, and purple. According to your web browser.</figcaption>
+</figure>
+
+Purple is a combination of two *spectral* colours. There is no wavelength of purple light -- it only exists as a combination of red and blue waves. Violet, however, is an actual spectral colour, with its own wavelength of approximately 380–420 nanometres. Indigo is positioned somewhere between violet and blue, but exactly where -- or if at all -- is a matter for debate. In his famous prism experiments, Isaac Newtown defined seven rainbow colours, squeezing indigo in just before violet. You may wonder, why seven colours from a graduated array spanning the visible spectrum? Seven had occult significance. It's no coincidence that there are seven colours in the rainbow, seven days of the week, and seven musical notes that define the western major scale. Today, though, colour scientists are inclined to divide the spectrum at violet and blue, leaving no room for indigo.
+
+In these lessons, we drop indigo for a six colour rainbow (just like Pink Floyd did).
+
+<figure>
+  <img src="https://upload.wikimedia.org/wikipedia/en/3/3b/Dark_Side_of_the_Moon.png" />
+  <figcaption>
+    <em>The Dark Side of the Moon</em> album cover depicts a prism splitting a beam of white light into its constituent colours. Pink Floyd's designer, Storm Thorgerson, opted for a six-color, indigo-less rainbow.<br />
+    source: <a href="https://en.wikipedia.org/wiki/File:Dark_Side_of_the_Moon.png">Wikipedia</a>
+
+  </figcaption>
 </figure>
 
 Create a new sketch and save it as "rainbow_sequence". Copy-paste in the following code:
@@ -391,10 +404,154 @@ An `enumerate()` is, perhaps, the more elegant solution. If you ever find yourse
 
 ### Lists of Lists
 
-multi-dim arrays? placing bricks (color, x, y)
+Lists may contain other lists. While this may sound complicated at first, appropriately nested lists make complex data sets easier to manage. Programmers will often refer to 1-dimensional, 2-dimensional -- or other higher dimensional -- lists to describe the formations of multidimensional arrays. To introduce this concept, we will create a bar chart. Roughly speaking, something resembling the illustration below.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl05/lists-of-lists-bar-chart.svg" />
+  <figcaption>Bar chart outline. The final result will include additional features such as colour.</figcaption>
+</figure>
+
+Create a new sketch and save it as "lists_of_lists". Add the following setup code:
+
+{% highlight py %}
+size(500, 380)
+background('#004477')
+noFill()
+stroke('#FFFFFF')
+strokeWeight(3)
+
+h = 50
+translate(100,40)
+{% endhighlight %}
+
+This is the start of a rainbow-coloured bar chart. The `h` variable and `translate()` function define the first bar's height and starting position, respectively. You will begin with some 0-dimensional data, working your way up to a 3-dimensional list as you progress. To begin, here is a 0-dimensional integer value:
+
+{% highlight py %}
+...
+# 0-dimensional
+bands = 6
+rect(0,0, 40,h*bands)
+{% endhighlight %}
+
+Run the sketch. The result is a vertical bar representing the *number of bands* in the rainbow sequence.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl05/lists-of-lists-0-dimensional.png" />
+</figure>
+
+If `bands` was equal to seven, the bar would extend beyond the bottom of the display window. In order to describe the colour of each band, an additional dimension is required. A 1-dimensional variable can be expressed as a list. Add the following lines to the bottom of your working code:
+
+{% highlight py %}
+# 1-dimensional
+bands = [
+  '#FF0000',
+  '#FF9900',
+  '#FFFF00',
+  '#00FF00',
+  '#0099FF',
+  '#6633FF'
+]
+{% endhighlight %}
+
+To render the bands, include a loop statement:
+
+{% highlight py %}
+for i in range(len(bands)):
+    fill(bands[i])
+    rect(0,i*h, 40,h)
+{% endhighlight %}
+
+Run the sketch. The new strip is drawn precisely over the original bar, but is divided into six blocks of colour.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl05/lists-of-lists-1-dimensional.png" />
+</figure>
+
+The next step is to extend each block of colour, so as to form the horizontal bars. The width of each is to be determined by the brightness its respective colour. To calculate brightness, one can add the red, green, and blue values together. For example, consider white -- it is the brightest 'colour' on your screen; is represented in hexadecimal as `#FFFFFF`; and if converted to percentile values, is expressed as 100% red, 100% green, 100% blue. That is an overall brightness of 300%, or if you prefer to average it out, 300 divide by 3 = 100%.
+
+To manage the colours in as RGB percentages, one must substitute each hexadecimal string with a list of integers. The result is list of list elements -- a 2 dimensional array:
+
+{% highlight py %}
+# 2-dimensional
+bands = [
+  [ 100, 0, 0   ],
+  [ 100, 60, 0  ],
+  [ 100, 100, 0 ],
+  [ 0, 100, 0   ],
+  [ 0, 60, 100  ],
+  [ 40, 20, 100 ]
+]
+{% endhighlight %}
+
+One you have added the above code, set the `colorMode` accordingly, and add a loop to draw the bars.
+
+{% highlight py %}
+colorMode(RGB, 100)
+
+for i in range(len(bands)):
+    r = bands[i][0]
+    g = bands[i][1]
+    b = bands[i][2]
+    sum = r + g + b
+    avg = sum / 3
+    fill(avg, avg, avg)
+    rect(0,i*h, sum,h)
+{% endhighlight %}
+
+Run the sketch. The width of each bar is governed by brightness -- that is, the sum of the `r`, `g`, and `b` values. The bars are filled in grey, so as to better indicate the relative brightness of each colour.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl05/lists-of-lists-2-dimensional-grey.png" />
+</figure>
+
+Oddly, the green bar (fourth from the top) is equivalent in brightness/darkness to red (top bar). To recall, here is a colour swatch of each:
+
+<figure style="word-spacing:0">
+<div style="background-color:#FF0000; display:inline-block; width:80px; height:2.5em"></div
+><div style="background-color:#00FF00; display:inline-block; width:80px; height:2.5em"></div>
+</figure>
+
+This has to do with how the human eye perceives colour. We have a greater number of green receptors, so green is more prominent. There a ways to [compromise for this]({% post_url 2017-01-26-converting_css_colour_to_greyscale %}), but for now, our averaging formula will suffice. Adapt the existing loop so that the bars indicate the quantities of each primary colour that comprises them:
+
+{% highlight py %}
+    ...
+    b = bands[i][2]
+    #sum = r + g + b
+    #avg = sum / 3
+    #fill(avg, avg, avg)
+    #rect(0,i*h, sum,h)
+    fill('#FF0000')
+    rect(0,i*h, r,h)
+    fill('#00FF00')
+    rect(0+r,i*h, g,h)
+    fill('#0099FF')
+    rect(0+r+g,i*h, b,h)
+{% endhighlight %}
 
 
-While the two colors look similar, from the point of view of optics there are important differences. Violet is a spectral color – it occupies its own place at the end of the spectrum of light first identified by Isaac Newton in 1672, and it has its own wavelength (approximately 380–420 nm) – whereas purple is a combination of two spectral colors, red and blue. There is no such thing as the "wavelength of purple light"; it only exists as a combination.
+<figure>
+  <img src="{{ site.url }}/img/pitl05/lists-of-lists-2-dimensional-colour.png" />
+  <figcaption>..............................................</figcaption>
+</figure>
+
+Labels
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 In fact, you can see the trend -- the next colour, violet, has no green
 

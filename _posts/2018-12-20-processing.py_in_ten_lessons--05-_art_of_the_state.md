@@ -483,7 +483,13 @@ bands = [
 ]
 {% endhighlight %}
 
-One you have added the above code, set the `colorMode` accordingly, and add a loop to draw the bars.
+ Add the code above. To access a list element within another list, include a second pair of square brackets. For example, to retrieve the percentage of green in the second (orange) band, its:
+
+{% highlight py %}
+print( bands[1][1] )    # displays 60
+{% endhighlight %}
+
+Now, set the `colorMode` to use values between zero and a hundred, and add a loop to draw the bars:
 
 {% highlight py %}
 colorMode(RGB, 100)
@@ -511,7 +517,7 @@ Oddly, the green bar (fourth from the top) is equivalent in brightness/darkness 
 ><div style="background-color:#00FF00; display:inline-block; width:80px; height:2.5em"></div>
 </figure>
 
-This has to do with how the human eye perceives colour. We have a greater number of green receptors, so green is more prominent. There a ways to [compromise for this]({% post_url 2017-01-26-converting_css_colour_to_greyscale %}), but for now, our averaging formula will suffice. Adapt the existing loop so that the bars indicate the quantities of each primary colour that comprises them:
+This has to do with how the human eye perceives colour. We have a greater number of green receptors, so green is more prominent. There a ways to [compromise for this]({% post_url 2017-01-26-converting_css_colour_to_greyscale %}), but for now, our averaging formula will suffice. Adapt the existing loop:
 
 {% highlight py %}
     ...
@@ -528,34 +534,44 @@ This has to do with how the human eye perceives colour. We have a greater number
     rect(0+r+g,i*h, b,h)
 {% endhighlight %}
 
+Each bar now indicates the quantities of primary colour that comprise it.
 
 <figure>
   <img src="{{ site.url }}/img/pitl05/lists-of-lists-2-dimensional-colour.png" />
-  <figcaption>..............................................</figcaption>
 </figure>
 
-Labels
+Labels will help elucidate things. To add them, one could go another list deeper, for example:
 
+{% highlight py %}
+bands = [
+  [ [ 100, 0, 0   ], 'red'    ],
+  [ [ 100, 60, 0  ], 'orange' ],
+  ...
 
+print( bands[1][0][1] ) # displays 60
+{% endhighlight %}
 
+However, the above code just overcomplicates matters. Adding another dimension is overkill; a fourth element is really all that is required. Instead, adapt your code as below:
 
+{% highlight py %}
+bands = [
+  [100, 0, 0, 'red'],
+  [100, 60, 0, 'orange'],
+  ...
 
+for i in range(len(bands)):
+    ...
+    fill('#FFFFFF')
+    textAlign(RIGHT)
+    text(bands[i][3], -20,i*h+30)
+{% endhighlight %}
 
+<figure>
+  <img src="{{ site.url }}/img/pitl05/lists-of-lists-complete.png" />
+  <figcaption>Completed graph, with labels.</figcaption>
+</figure>
 
-
-
-
-
-
-
-
-
-
-
-
-In fact, you can see the trend -- the next colour, violet, has no green
-
-[][] syntax
+Many lists work just fine with a single dimension -- take for example, a shopping list. You can think of a two-dimensional list as a grid or matrix. This makes them good for plotting 2D graphics, which is exactly what computer screen is comprised of. Three- and other higher-dimensional arrays have their place, but before employing such a structure, consider whether adding another position to your 2D array may be more sensible.
 
 ### Breakout Task
 
@@ -632,6 +648,37 @@ for row,bricks in enumerate(bricks):
 {% endhighlight %}
 
 If you are more comfortable with a `range()` type of approach, that should work fine too.
+
+## A Few More Words on Dimensions and Visualisation
+
+Think of each dimension as a thing in a thing. Now let's say you have
+Sure you could have and array that a single dimensional array and do some math to make it act multidimensional, but why?
+
+“The greatest value of a picture is when it forces us to notice what we never expected to see.”
+John W. Tukey Exploratory Data Analysis, 1977
+
+https://www.youtube.com/watch?v=9RaqVGzhQTM
+Tetris scores
+
+<figure>
+  <img src="{{ site.url }}/img/pitl05/scatterplot-1.svg" />
+  <figcaption>The three centre bricks have a shine.</figcaption>
+</figure>
+
+<figure>
+  <img src="{{ site.url }}/img/pitl05/scatterplot-2.svg" />
+  <figcaption>The three centre bricks have a shine.</figcaption>
+</figure>
+
+<figure>
+  <img src="{{ site.url }}/img/pitl05/scatterplot-3.svg" />
+  <figcaption>The three centre bricks have a shine.</figcaption>
+</figure>
+
+<figure>
+  <img src="{{ site.url }}/img/pitl05/scatterplot-4.svg" />
+  <figcaption>The three centre bricks have a shine.</figcaption>
+</figure>
 
 ### EXTRA
 ??? comprehensions, tuples

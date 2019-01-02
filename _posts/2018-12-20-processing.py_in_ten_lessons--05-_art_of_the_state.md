@@ -647,28 +647,67 @@ for row,bricks in enumerate(bricks):
         ...
 {% endhighlight %}
 
-If you are more comfortable with a `range()` type of approach, that should work fine too.
+If you are more comfortable with a `range()` style approach, that should work fine too.
 
-## A Few More Words on Dimensions and Visualisation
+## A Few Words on Visualisation: Dimension
 
-Think of each dimension as a thing in a thing. Now let's say you have
-Sure you could have and array that a single dimensional array and do some math to make it act multidimensional, but why?
+Data visualisation is a recurring theme in these lessons. It relates neatly to a lot of the coding content, and makes for some intriguing -- and often, enlightening -- visual output. At various points in these lessons, you'll be provided some short introductions to useful concepts. This seems an opportune moment to look at visualising multi-dimensional data.
 
-“The greatest value of a picture is when it forces us to notice what we never expected to see.”
-John W. Tukey Exploratory Data Analysis, 1977
+Computers are remarkably efficient processing data tools. It's not surprising to discover that *VisiCalc*, a spreadsheet application released in 1979, is considered the world's first [killer application](https://en.wikipedia.org/wiki/Killer_application). Killer applications lead consumers to adopting new hard- or software platforms. For example, Atari quadrupled it's *VCS* console sales with a port of *Space Invaders*. Before email, many people felt they didn't need an Internet connection, or even a computer for that matter. Shortly after email went mainstream, web browsers converted many of the remaining holdouts.
 
-https://www.youtube.com/watch?v=9RaqVGzhQTM
-Tetris scores
+Websites have been tracking visitor traffic since the early days of the Web. Nowadays, smart devices gather information from machines, animals, and people. We are gathering vaster quantities of data, yet much of it remains unused. This presents a problem for visualisation to solve.
+
+Raw data is typically structured in a tabular type arrangement, which is easily dumped into a spreadsheet file. But, poring over the endless rows and columns is hardly an effective or engaging approach to analysis. Graphs help by presenting data more insightfully, also making it easier to present findings to others. *Lotus 1-2-3*, VisiCalc's usurper, introduced several graphing features. If you find that your modern spreadsheet solution lacks the chart you need, you'll likely find a web-app and programming library that suited to the task.
+
+### Visualising Tetris Scores
+
+*Tetris* is credited as the Nintendo *Gameboy*'s killer app, and to date remains the product line's top-selling game of all time. However, when the annual *Classic Tetris World Championship* (CTWC) kicked off in 2010, the organisers opted for the NES version. In 2017, one could [qualify with a  score of around 500,000](https://youtu.be/9RaqVGzhQTM?t=1640). Now suppose you wished to qualify for the next event. You've trained for months, but seem to have plateaued. To analyse your performance, you decide to write Processing visualisations in Python.
+
+To begin, you create a one-dimensional list. This list contains the dates you have played.
+
+{% highlight py %}
+dates = [ 'Jan 28', 'Feb 04', ... ]
+{% endhighlight %}
+
+From the plot, one can determine how frequently you play. Moreover, one can easily gauge the range of dates with which we are dealing.
 
 <figure>
-  <img src="{{ site.url }}/img/pitl05/scatterplot-1.svg" />
-  <figcaption>The three centre bricks have a shine.</figcaption>
+  <img src="{{ site.url }}/img/pitl05/dimension-1-dimensional.svg" />
 </figure>
 
+In statistics, one refers to this as an example of *univariate* analysis. In this case, we are concerned with a single variable (the dates you played) and have visualised this in one dimension (along a single "Date" axis).
+
+*Bivariate* analysis involves two variables. We will add another dimension to the list (a list in a list), and use scatterplot to determine the relationship between them.
+
+{% highlight py %}
+scores = [
+  ['Jan 28', 120000],
+  ['Feb 04', 80000],
+  ...
+]
+{% endhighlight %}
+
 <figure>
-  <img src="{{ site.url }}/img/pitl05/scatterplot-2.svg" />
-  <figcaption>The three centre bricks have a shine.</figcaption>
+  <img src="{{ site.url }}/img/pitl05/dimension-2-dimensional.svg" />
 </figure>
+
+It appears playing more frequently leads to more erratic scores. However there may be a third variable in play -- coffee. We can add further variables to the sub-lists as the data grows more *multivariate*, much like adding a column to a spreadsheet. In this case, the third value in each list indicates the number of coffees drunk before each Tetris session (always 1 or 2).
+
+{% highlight py %}
+scores = [
+  ['Jan 28', 120000, 2],
+  ['Feb 04', 80000,  1],
+  ...
+]
+{% endhighlight %}
+
+To accommodate the new
+
+<figure>
+  <img src="{{ site.url }}/img/pitl05/dimension-3-dimensional.svg" />
+</figure>
+
+
 
 <figure>
   <img src="{{ site.url }}/img/pitl05/scatterplot-3.svg" />
@@ -679,6 +718,56 @@ Tetris scores
   <img src="{{ site.url }}/img/pitl05/scatterplot-4.svg" />
   <figcaption>The three centre bricks have a shine.</figcaption>
 </figure>
+
+<figure>
+  <img src="{{ site.url }}/img/pitl05/scatterplot-5.svg" class="fullwidth" />
+  <figcaption>The three centre bricks have a shine.</figcaption>
+</figure>
+
+<figure>
+  <img src="{{ site.url }}/img/pitl05/scatterplot-6.svg" />
+  <figcaption>The three centre bricks have a shine.</figcaption>
+</figure>
+
+Comparing with braeakout scores
+
+
+
+“The greatest value of a picture is when it forces us to notice what we never expected to see.”
+John W. Tukey Exploratory Data Analysis, 1977
+
+
+Data visualisation Representing multidimensional information structures in a two- dimensional visual display
+
+One can think of a dimension as a thing in a thing.
+
+Now let's say you have
+Sure you could have and array that a single dimensional array and do some math to make it act multidimensional, but why?
+
+Your screen
+
+
+ is not trivial. The design process requires both analytical and visual/spatial methods of reasoning. Graphic design in general, and information design in particular, depend upon cognitive processes and visual perception for both its creation (encoding) and its use (decoding). If the decoding process fails, the visualization fails.
+
+What do the paths that millions of visitors take through a web site look like? How do the 3.1 billion A, C, G, and T letters of the human genome compare to those of the chimp or the mouse? Out of a few hundred thousand files on your computer’s hard disk, which ones are taking up the most space, and how often do you use them? By applying methods from the fields of computer science, statistics, data mining, graphicdesign,andvisualization,wecanbegintoanswerthesequestionsinamean- ingful way that also makes the answers accessible to others.
+
+
+
+
+ Table
+ Histogram
+ Scatter plot
+ Line, bar, pie, area, flow, and bubble charts Data series or a combination of charts Time line
+ Venn diagrams, data flow diagrams, and entity relationship (ER) diagrams
+
+inetaractive another dimension
+
+
+
+
+
+
+
 
 ### EXTRA
 ??? comprehensions, tuples
@@ -715,5 +804,7 @@ Tetris scores
 * http://lgames.sourceforge.net/
 
 * https://py.processing.org/reference/
+
+* https://towardsdatascience.com/the-art-of-effective-visualization-of-multi-dimensional-data-6c7202990c57
 
 * https://www.python.org/dev/peps/pep-0020/

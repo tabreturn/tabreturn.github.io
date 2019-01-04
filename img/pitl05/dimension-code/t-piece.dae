@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<COLLADA version="1.4.0" xmlns="http://www.collada.org/2005/11/COLLADASchema">
+<asset>
+<contributor>
+<author>Wings3D Collada Exporter</author>
+<authoring_tool>Wings3D 2.1.7 Collada Exporter</authoring_tool>
+<comments/>
+<copyright/>
+<source_data/>
+</contributor>
+<created>2019-01-03T23:00:25</created>
+<modified>2019-01-03T23:00:25</modified>
+<unit meter="0.01" name="centimeter"/>
+<up_axis>Y_UP</up_axis>
+</asset>
+<library_effects><effect id="default-fx" name="default-fx"><profile_COMMON><technique sid="wings3d"><phong><emission><color>0.000000 0.000000 0.000000 1.000000
+</color></emission><ambient><color>0.833333 0.742857 0.644444 1.000000
+</color></ambient><diffuse><color>0.833333 0.742857 0.644444 1.000000
+</color></diffuse><specular><color>0.000000 0.000000 0.000000 1.000000
+</color></specular><shininess><float>0.000000</float></shininess></phong></technique></profile_COMMON></effect></library_effects>
+
+<library_materials><material id="default" name="default"><instance_effect url="#default-fx"/></material></library_materials>
+<library_geometries><geometry name="Cube1-0" id="Cube1-0"><mesh><source id="Cube1-0-Pos"><float_array id="Cube1-0-Pos-array" count="96">0.134017 1.820314 0.692605 1.140392 1.006864 -0.832357 -0.521709 3.273322 -0.515200 0.484666 2.459872 -2.040162 -1.465118 0.712583 0.228170 -0.458743 -0.100867 -1.296792 -2.120844 2.165591 -0.979635 -1.114469 1.352141 -2.504596 0.788299 0.370508 1.897749 1.794674 -0.442943 0.372787 0.132572 1.823515 0.689944 1.138947 1.010065 -0.835018 -0.810836 -0.737223 1.433314 0.195538 -1.550673 -0.091648 -1.466563 0.715784 0.225509 -0.460188 -0.097666 -1.299452 1.792621 -0.441515 0.376449 2.798996 -1.254965 -1.148513 1.136894 1.011493 -0.831356 2.143269 0.198043 -2.356318 0.193486 -1.549245 -0.087986 1.199860 -2.362696 -1.612948 -0.462241 -0.096238 -1.295790 0.544134 -0.909688 -2.820752 -0.217963 1.183636 3.423091 0.788411 0.370185 1.898129 -0.873690 2.636643 2.215287 0.132685 1.823193 0.690325 -1.817099 0.075905 2.958657 -0.810724 -0.737545 1.433695 -2.472825 1.528913 1.750852 -1.466450 0.715462 0.225890</float_array><technique_common><accessor count="32" source="#Cube1-0-Pos-array" stride="3"><param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source><source id="Cube1-0-Normal"><float_array id="Cube1-0-Normal-array" count="96">0.360407 0.135150 0.922952 0.941438 -0.334496 0.042515 -0.018177 0.974044 0.225626 0.562854 0.504399 -0.654811 -0.562854 -0.504399 0.654811 0.018177 -0.974044 -0.225626 -0.941438 0.334496 -0.042515 -0.360407 -0.135150 -0.922952 0.360407 0.135150 0.922952 0.941438 -0.334496 0.042515 -0.018177 0.974044 0.225626 0.562854 0.504399 -0.654811 -0.562854 -0.504399 0.654811 0.018177 -0.974044 -0.225626 -0.941438 0.334496 -0.042515 -0.360407 -0.135150 -0.922952 0.360407 0.135150 0.922952 0.941438 -0.334496 0.042515 -0.018177 0.974044 0.225626 0.562854 0.504399 -0.654811 -0.562854 -0.504399 0.654811 0.018177 -0.974044 -0.225626 -0.941438 0.334496 -0.042515 -0.360407 -0.135150 -0.922952 0.360407 0.135150 0.922952 0.941438 -0.334496 0.042515 -0.018177 0.974044 0.225626 0.562854 0.504399 -0.654811 -0.562854 -0.504399 0.654811 0.018177 -0.974044 -0.225626 -0.941438 0.334496 -0.042515 -0.360407 -0.135150 -0.922952</float_array><technique_common><accessor count="32" source="#Cube1-0-Normal-array" stride="3"><param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source><vertices id="Cube1-0-Vtx"><input semantic="POSITION" source="#Cube1-0-Pos"/></vertices><polylist count="24" material="default"><input offset="0" semantic="VERTEX" source="#Cube1-0-Vtx"/><input offset="1" semantic="NORMAL" source="#Cube1-0-Normal"/><vcount>4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4</vcount><p>25 25 27 27 26 26 24 24 28 28 30 30 31 31 29 29 26 26 30 30 28 28 24 24 25 25 29 29 31 31 27 27 24 24 28 28 29 29 25 25 27 27 31 31 30 30 26 26 17 17 19 19 18 18 16 16 20 20 22 22 23 23 21 21 18 18 22 22 20 20 16 16 17 17 21 21 23 23 19 19 16 16 20 20 21 21 17 17 19 19 23 23 22 22 18 18 9 9 11 11 10 10 8 8 12 12 14 14 15 15 13 13 10 10 14 14 12 12 8 8 9 9 13 13 15 15 11 11 8 8 12 12 13 13 9 9 11 11 15 15 14 14 10 10 1 1 3 3 2 2 0 0 4 4 6 6 7 7 5 5 2 2 6 6 4 4 0 0 1 1 5 5 7 7 3 3 0 0 4 4 5 5 1 1 3 3 7 7 6 6 2 2</p></polylist></mesh></geometry></library_geometries>
+<library_visual_scenes><visual_scene id="Scene" name="Scene"><node layer="L1" id="Cube1-0L1" name="Cube1-0"><translate sid="translate">0.00000 0.00000 0.00000</translate>
+<rotate sid="rotateZ">0 0 1 0.00000</rotate><rotate sid="rotateY">0 1 0 0.00000</rotate><rotate sid="rotateX">1 0 0 0.00000</rotate><scale sid="scale">1.0000 1.0000 1.0000</scale><instance_geometry url="#Cube1-0"><bind_material><technique_common><instance_material symbol="default" target="#default"><bind_vertex_input input_semantic="TEXCOORD" input_set="1" semantic="CHANNEL1"/></instance_material></technique_common></bind_material></instance_geometry></node></visual_scene></library_visual_scenes>
+<scene><instance_visual_scene url="#Scene"/></scene>
+</COLLADA>

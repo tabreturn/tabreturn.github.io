@@ -691,7 +691,7 @@ scores = [
   <img src="{{ site.url }}/img/pitl05/dimension-2-dimensional.svg" />
 </figure>
 
-It appears playing more frequently leads to more erratic scores. However there may be a third variable in play -- coffee. We can add further variables to the sub-lists as the data grows more *multivariate*, much like adding a column to a spreadsheet. In this case, the third value in each list indicates the number of coffees drunk before each Tetris session (always 1 or 2).
+It appears playing more frequently leads to more erratic scores. However there may be a third variable in play -- coffee. We can add further variables to the sub-lists as the data grows more *multivariate*, much like adding a column to a spreadsheet. A third value has been added to each sublist to indicate the number of coffees drunk before each Tetris session (always 1 or 2).
 
 {% highlight py %}
 scores = [
@@ -701,37 +701,48 @@ scores = [
 ]
 {% endhighlight %}
 
-To accommodate the new
+To accommodate the new variable, a third axis is added to plot.
 
 <figure>
-  <img src="{{ site.url }}/img/pitl05/dimension-3-dimensional.svg" />
+  <img src="{{ site.url }}/img/pitl05/dimension-3-dimensional-depth.svg" />
 </figure>
 
+Gauging the positions of the dots is tricky. But, there are other ways to visualise data dimensions without having to go the 3D route. One can
+
+
 
 
 <figure>
-  <img src="{{ site.url }}/img/pitl05/scatterplot-3.svg" />
-  <figcaption>The three centre bricks have a shine.</figcaption>
+  <img src="{{ site.url }}/img/pitl05/dimension-3-dimensional-facets.svg" class="fullwidth" />
 </figure>
 
-<figure>
-  <img src="{{ site.url }}/img/pitl05/scatterplot-4.svg" />
-  <figcaption>The three centre bricks have a shine.</figcaption>
-</figure>
+Better yet
 
 <figure>
-  <img src="{{ site.url }}/img/pitl05/scatterplot-5.svg" class="fullwidth" />
-  <figcaption>The three centre bricks have a shine.</figcaption>
-</figure>
-
-<figure>
-  <img src="{{ site.url }}/img/pitl05/scatterplot-6.svg" />
-  <figcaption>The three centre bricks have a shine.</figcaption>
+  <img src="{{ site.url }}/img/pitl05/dimension-3-dimensional-scale.svg" />
 </figure>
 
 Comparing with braeakout scores
 
+<figure>
+  <img src="{{ site.url }}/img/pitl05/dimension-4-dimensional-colour.svg" />
+</figure>
 
+
+
+
+
+...
+
+
+
+<figure>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Mosaic-big.png" class="fullwidth" />
+  <figcaption>
+    LBreakout2 &ndash; an open source Breakout clone.<br />
+    source: <a href="https://commons.wikimedia.org/wiki/File:Screenshot-LBreakout2.jpg">Seancarmody [CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0) or GFDL (http://www.gnu.org/copyleft/fdl.html)], from Wikimedia Commons</a>
+  </figcaption>
+</figure>
 
 “The greatest value of a picture is when it forces us to notice what we never expected to see.”
 John W. Tukey Exploratory Data Analysis, 1977

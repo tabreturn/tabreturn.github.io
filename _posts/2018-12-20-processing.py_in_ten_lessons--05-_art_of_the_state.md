@@ -401,6 +401,155 @@ Ensure that the visual result remains the same:
 
 An `enumerate()` is, perhaps, the more elegant solution. If you ever find yourself weighing-up different approaches, read through [The Zen of Python](https://www.python.org/dev/peps/pep-0020/) -- a list of 19 one-line principles to help guide your coding.
 
+## Data Visualisation: Dimension
+
+BEFORE WRITING ANY LISTS IN LISTS ....
+
+
+
+
+
+Data visualisation is a recurring theme in these lessons. It relates neatly to a lot of the coding content, and makes for some intriguing -- and often, enlightening -- visual output. At various points in these lessons, you'll be provided some short introductions to useful concepts. This seems an opportune moment to look at visualising multi-dimensional data.
+
+Computers are remarkably efficient processing data tools. It's not surprising to discover that *VisiCalc*, a spreadsheet application released in 1979, is considered the world's first [killer application](https://en.wikipedia.org/wiki/Killer_application). Killer applications lead consumers to adopting new hard- or software platforms. For example, Atari quadrupled it's *VCS* console sales with a port of *Space Invaders*. *Tetris* is credited as the Nintendo *Gameboy*'s killer app and to date remains the product line's top-selling game of all time. Before email, many people felt they didn't need an Internet connection, or even a computer for that matter. Shortly after email went mainstream, web browsers converted many of the remaining holdouts.
+
+Websites have been tracking visitor traffic since the early days of the Web. Nowadays, smart devices gather information from machines, animals, and people. We are gathering vaster quantities of data, yet much of it remains unused. This presents a problem for visualisation to solve.
+
+Raw data is typically structured in a tabular type arrangement, which is easily dumped into a spreadsheet file. But, poring over the endless rows and columns is hardly an effective or engaging approach to analysis. Graphs help by presenting data more insightfully, also making it easier to present findings to others. *Lotus 1-2-3*, VisiCalc's usurper, introduced several graphing features. If you find that your modern spreadsheet solution lacks the chart you need, you'll likely find a web-app and programming library that suited to the task.
+
+### Visualising Tetris Scores
+
+The inaugural *Classic Tetris World Championship* (CTWC) was held in 2010. The organisers opted for the NES (8-bit Nintendo Entertainment System) version of Tetris, which is played on original hardware and CRT television screens. In 2017, one could [qualify with a score of around 500,000](https://youtu.be/9RaqVGzhQTM?t=1640). Now suppose you wished to enter the upcoming CTWC. You've bought a console, cartridge, and CRT television, and have trained for months. However, your high scores seem to have plateaued. To help analyse and (hopefully) improve your scores, you decide to visualise your performance using Python.
+
+To begin, you create a list containing all of the dates you have played.
+
+{% highlight py %}
+dates = [ 'Jan 28', 'Feb 04', ... ]
+{% endhighlight %}
+
+You then write some code that plots these values along a single axis labelled "Date".
+
+<figure>
+  <img src="{{ site.url }}/img/pitl05/dimension-1-dimensional.svg" />
+</figure>
+
+From this one-dimensional plot, you can determine how frequently you play. For a solid blue line of dots, you'd have to have been playing daily. There are large gaps on either side (you purchased the equipment in late January; now it's almost mid-May) as well as sporadic intervals of non-play, although more so towards the start. Statisticians would refer to this as an example of *univariate* analysis -- as we are concerned with a single variable (the dates you have played). Such analysis is useful for describing features like central tendency (mean, median, mode) and dispersion (range, variance, standard deviation).
+
+ *Bivariate* analysis involves two variables, which helps identify relationships (if any) between quantitative variables -- such as, between dates and scores. You decide to add another dimension to your list (a list in a list) so that each element contains two values: a date and the highest score you accomplished that day.
+
+{% highlight py %}
+scores = [
+  ['Jan 28', 120000],
+  ['Feb 04', 80000],
+  ...
+]
+{% endhighlight %}
+
+Note that you have added a dimension to your data, and in turn, your list. To visualise this, you must add a dimension to your plot. You elect to use a *scatterplot*, placing each dot against a horizontal ("Date") and vertical ("Score") axis.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl05/dimension-2-dimensional.svg" />
+</figure>
+
+It would appear that playing more frequently leads to more erratic high scores. Perhaps, what is most noteworthy, is that you perform best after a few days break. The good news is that your all-time high scores do seem to be improving.
+
+You've recorded a lot of data -- the time of day, environmental factors, and more ... most of it superfluous -- but poring over the details you realise that there may be a third variable in play: coffee. You add another value to your sub-lists, much like adding a column to an existing spreadsheet or table. This additional figure indicates how many millilitres of coffee you drank (up to 2 cups, or 500ml) before posting a high score for the day.
+
+{% highlight py %}
+scores = [
+  ['Jan 28', 120000, 220],
+  ['Feb 04', 80000,  260],
+  ...
+]
+{% endhighlight %}
+
+To accommodate the new coffee values, one can turn to *depth*. A third axis is now added to the scatterplot.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl05/dimension-3-dimensional-depth.svg" />
+</figure>
+
+Some interesting patterns have appeared, but gauging the positions of the dots is tricky. Moreover, should the data grow more *multivariate*, you face the problem of having to visualise a fourth spatial dimension. But, there are visual notions that you can introduce. Consider, *facets*. We can 'unfold' the three-dimensional scatterplot, each facet as though we are viewing as a (six-sided) cube. The result is a *scatterplot matrix* -- or, acronymically, a SPLOM.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl05/dimension-3-dimensional-facets.svg" class="fullwidth" />
+  <figcaption>The orange facet of the 3D scatterplot (left) corresponds to the orange subplot in the SPLOM (right).</figcaption>
+</figure>
+
+A three-dimensional SPLOM is three rows wide and three columns high. Should you wish to add further variables to the dataset, the matrix can expand to accommodate them.
+
+<figure>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/ScagnosticsExampleSplom.svg" />
+  <figcaption>
+    A scatterplot matrix of scagnostics measures for the Boston Housing data set.<br />
+    source: <a href="https://commons.wikimedia.org/wiki/File:ScagnosticsExampleSplom.svg">Wikimedia Commons</a>
+  </figcaption>
+</figure>
+
+One is not restricted to scatterplots; within the matrix, one can elect for a mix of bar, line, and other chart types. Facets are but one approach, though. *Size* is another option. You revert to the two-dimensional scatterplot, then represent the "Coffee" dimension by adjusting the size of each dot.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl05/dimension-3-dimensional-scale.svg" />
+</figure>
+
+Each dot need not even be circular. A variety of *shapes* could represent a further dimension. Then, there's *colour*. Your friend Sam -- who is also an avid coffee drinker -- plans to enter the tournament, too. To compare progress, you add Sam's scores in orange.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl05/dimension-4-dimensional-colour.svg" />
+</figure>
+
+array/list structures ...
+2d
+4d
+1d
+
+
+
+You can also use time as a dimension by making an animated plot for other attributes over time (considering time is a dimension in the data)
+
+
+
+...
+
+
+
+<figure>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Mosaic-big.png" class="fullwidth" />
+  <figcaption>
+    LBreakout2 &ndash; an open source Breakout clone.<br />
+    source: <a href="https://commons.wikimedia.org/wiki/File:Screenshot-LBreakout2.jpg">Seancarmody [CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0) or GFDL (http://www.gnu.org/copyleft/fdl.html)], from Wikimedia Commons</a>
+  </figcaption>
+</figure>
+
+“The greatest value of a picture is when it forces us to notice what we never expected to see.”
+John W. Tukey Exploratory Data Analysis, 1977
+
+
+Data visualisation Representing multidimensional information structures in a two- dimensional visual display
+
+One can think of a dimension as a thing in a thing.
+
+Now let's say you have
+Sure you could have and array that a single dimensional array and do some math to make it act multidimensional, but why?
+
+Your screen
+
+
+ is not trivial. The design process requires both analytical and visual/spatial methods of reasoning. Graphic design in general, and information design in particular, depend upon cognitive processes and visual perception for both its creation (encoding) and its use (decoding). If the decoding process fails, the visualization fails.
+
+What do the paths that millions of visitors take through a web site look like? How do the 3.1 billion A, C, G, and T letters of the human genome compare to those of the chimp or the mouse? Out of a few hundred thousand files on your computer’s hard disk, which ones are taking up the most space, and how often do you use them? By applying methods from the fields of computer science, statistics, data mining, graphicdesign,andvisualization,wecanbegintoanswerthesequestionsinamean- ingful way that also makes the answers accessible to others.
+
+
+
+
+
+
+!!! inetaractivey another dimension
+
+
+
+
+
 
 ### Lists of Lists
 
@@ -648,133 +797,6 @@ for row,bricks in enumerate(bricks):
 {% endhighlight %}
 
 If you are more comfortable with a `range()` style approach, that should work fine too.
-
-## A Few Words on Visualisation: Dimension
-
-Data visualisation is a recurring theme in these lessons. It relates neatly to a lot of the coding content, and makes for some intriguing -- and often, enlightening -- visual output. At various points in these lessons, you'll be provided some short introductions to useful concepts. This seems an opportune moment to look at visualising multi-dimensional data.
-
-Computers are remarkably efficient processing data tools. It's not surprising to discover that *VisiCalc*, a spreadsheet application released in 1979, is considered the world's first [killer application](https://en.wikipedia.org/wiki/Killer_application). Killer applications lead consumers to adopting new hard- or software platforms. For example, Atari quadrupled it's *VCS* console sales with a port of *Space Invaders*. Before email, many people felt they didn't need an Internet connection, or even a computer for that matter. Shortly after email went mainstream, web browsers converted many of the remaining holdouts.
-
-Websites have been tracking visitor traffic since the early days of the Web. Nowadays, smart devices gather information from machines, animals, and people. We are gathering vaster quantities of data, yet much of it remains unused. This presents a problem for visualisation to solve.
-
-Raw data is typically structured in a tabular type arrangement, which is easily dumped into a spreadsheet file. But, poring over the endless rows and columns is hardly an effective or engaging approach to analysis. Graphs help by presenting data more insightfully, also making it easier to present findings to others. *Lotus 1-2-3*, VisiCalc's usurper, introduced several graphing features. If you find that your modern spreadsheet solution lacks the chart you need, you'll likely find a web-app and programming library that suited to the task.
-
-### Visualising Tetris Scores
-
-*Tetris* is credited as the Nintendo *Gameboy*'s killer app, and to date remains the product line's top-selling game of all time. However, when the annual *Classic Tetris World Championship* (CTWC) kicked off in 2010, the organisers opted for the NES version. In 2017, one could [qualify with a  score of around 500,000](https://youtu.be/9RaqVGzhQTM?t=1640). Now suppose you wished to qualify for the next event. You've trained for months, but seem to have plateaued. To analyse your performance, you decide to write Processing visualisations in Python.
-
-To begin, you create a one-dimensional list. This list contains the dates you have played.
-
-{% highlight py %}
-dates = [ 'Jan 28', 'Feb 04', ... ]
-{% endhighlight %}
-
-From the plot, one can determine how frequently you play. Moreover, one can easily gauge the range of dates with which we are dealing.
-
-<figure>
-  <img src="{{ site.url }}/img/pitl05/dimension-1-dimensional.svg" />
-</figure>
-
-In statistics, one refers to this as an example of *univariate* analysis. In this case, we are concerned with a single variable (the dates you played) and have visualised this in one dimension (along a single "Date" axis).
-
-*Bivariate* analysis involves two variables. We will add another dimension to the list (a list in a list), and use scatterplot to determine the relationship between them.
-
-{% highlight py %}
-scores = [
-  ['Jan 28', 120000],
-  ['Feb 04', 80000],
-  ...
-]
-{% endhighlight %}
-
-<figure>
-  <img src="{{ site.url }}/img/pitl05/dimension-2-dimensional.svg" />
-</figure>
-
-It appears playing more frequently leads to more erratic scores. However there may be a third variable in play -- coffee. We can add further variables to the sub-lists as the data grows more *multivariate*, much like adding a column to a spreadsheet. A third value has been added to each sublist to indicate the number of coffees drunk before each Tetris session (always 1 or 2).
-
-{% highlight py %}
-scores = [
-  ['Jan 28', 120000, 2],
-  ['Feb 04', 80000,  1],
-  ...
-]
-{% endhighlight %}
-
-To accommodate the new variable, a third axis is added to plot.
-
-<figure>
-  <img src="{{ site.url }}/img/pitl05/dimension-3-dimensional-depth.svg" />
-</figure>
-
-Gauging the positions of the dots is tricky. But, there are other ways to visualise data dimensions without having to go the 3D route. One can
-
-
-
-
-<figure>
-  <img src="{{ site.url }}/img/pitl05/dimension-3-dimensional-facets.svg" class="fullwidth" />
-</figure>
-
-Better yet
-
-<figure>
-  <img src="{{ site.url }}/img/pitl05/dimension-3-dimensional-scale.svg" />
-</figure>
-
-Comparing with braeakout scores
-
-<figure>
-  <img src="{{ site.url }}/img/pitl05/dimension-4-dimensional-colour.svg" />
-</figure>
-
-
-
-
-
-...
-
-
-
-<figure>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Mosaic-big.png" class="fullwidth" />
-  <figcaption>
-    LBreakout2 &ndash; an open source Breakout clone.<br />
-    source: <a href="https://commons.wikimedia.org/wiki/File:Screenshot-LBreakout2.jpg">Seancarmody [CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0) or GFDL (http://www.gnu.org/copyleft/fdl.html)], from Wikimedia Commons</a>
-  </figcaption>
-</figure>
-
-“The greatest value of a picture is when it forces us to notice what we never expected to see.”
-John W. Tukey Exploratory Data Analysis, 1977
-
-
-Data visualisation Representing multidimensional information structures in a two- dimensional visual display
-
-One can think of a dimension as a thing in a thing.
-
-Now let's say you have
-Sure you could have and array that a single dimensional array and do some math to make it act multidimensional, but why?
-
-Your screen
-
-
- is not trivial. The design process requires both analytical and visual/spatial methods of reasoning. Graphic design in general, and information design in particular, depend upon cognitive processes and visual perception for both its creation (encoding) and its use (decoding). If the decoding process fails, the visualization fails.
-
-What do the paths that millions of visitors take through a web site look like? How do the 3.1 billion A, C, G, and T letters of the human genome compare to those of the chimp or the mouse? Out of a few hundred thousand files on your computer’s hard disk, which ones are taking up the most space, and how often do you use them? By applying methods from the fields of computer science, statistics, data mining, graphicdesign,andvisualization,wecanbegintoanswerthesequestionsinamean- ingful way that also makes the answers accessible to others.
-
-
-
-
- Table
- Histogram
- Scatter plot
- Line, bar, pie, area, flow, and bubble charts Data series or a combination of charts Time line
- Venn diagrams, data flow diagrams, and entity relationship (ER) diagrams
-
-inetaractive another dimension
-
-
-
 
 
 

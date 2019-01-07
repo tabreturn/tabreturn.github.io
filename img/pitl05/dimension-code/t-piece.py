@@ -7,7 +7,7 @@ from mpl_toolkits.mplot3d import axes3d
 # blender csv code
 '''
 import bpy
-outputFile = '/Users/tabunn/Desktop/mesh.csv'
+outputFile = 'PATH_TO_OUTPUT_DIRECTORY/mesh.csv'
 verts = [bpy.context.object.matrix_world * v.co for v in bpy.context.object.data.vertices]
 csvlines = [','.join([ str(v) for v in co ]) + '\n' for co in verts]
 f = open(outputFile, 'w')

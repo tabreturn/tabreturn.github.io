@@ -46,8 +46,7 @@ rainbow = [
 ]
 {% endhighlight %}
 
-
-Moreover, lists (and dictionaries) are particularly powerful when combined with loop statements.
+Moreover, lists (and dictionaries) are particularly powerful when combined with loop statements. Performing repetitive operations on diverse datasets is a common programming challenge. As an example: you are tasked with generating a population pyramid for each of the world's (195, or so) countries. Provided that you can write some loop that plots the chart using a list of Chinese population figures, the list values can be switched out for Transnistria.
 
 ### Working with Lists
 
@@ -58,13 +57,13 @@ rainbow = ['blue', 'orange', 'yellow']
 print(rainbow)
 {% endhighlight %}
 
-Our rainbow is currently missing a few colours, and the sequence is incorrect, but this will be amended as we progress. Run the code and observe the Console output:
+The rainbow is currently missing a few colours, and the sequence is incorrect, but this will be amended as we progress. Run the code and observe the Console output:
 
 <figure>
   <img src="{{ site.url }}/img/pitl05/lists-new-list.png" class="fullwidth" />
 </figure>
 
-Printing the `rainbow` variable displays all three values (along with square brackets and commas). In many instances, though, it's an individual element that you wish to retrieve. To display a given value, specify it's position in square brackets. Begin by printing the first element. Note, however, that Python list indices begin at zero:
+Printing the `rainbow` variable displays all three values (along with square brackets and commas). In many instances, though, it's an individual element that you wish to retrieve. To display a given value, specify its position (*index*) in square brackets. Begin by printing the first element. Note, however, that Python list indices begin at zero:
 
 {% highlight py %}
 ...
@@ -94,11 +93,11 @@ print(rainbow[-2])  # displays orange
 print(rainbow[0:2]) # displays ['blue', 'orange']
 {% endhighlight %}
 
-Should you specify an index beyond the bounds of the list -- say, `rainbow[3]` or greater -- the Console will display an `IndexError`.
+Should you specify an index beyond the bounds of the list -- say, `rainbow[3]` or greater -- the Console will display an `IndexError` message.
 
 ### Modifying lists
 
-Many lists are dynamic in nature. Consider a game like *Breakout* (image below). A list stores the bricks comprising the wall; hitting a brick removes it from this list. In some levels, additional bricks may appear during play, thereby inserting new elements.
+Many lists are dynamic in nature. Consider a game like *Breakout* (image below). A list stores the bricks comprising the wall; hitting a brick removes it from this list. In some levels, additional bricks may appear during play, thereby inserting new list elements.
 
 <figure>
   <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Screenshot-LBreakout2.jpg" />
@@ -108,7 +107,7 @@ Many lists are dynamic in nature. Consider a game like *Breakout* (image below).
   </figcaption>
 </figure>
 
-I'm assuming you have played some variant of this game and are probably aware that, upon destruction, select bricks drop power-ups. Moreover: bricks come in different colours; some may be invisible; others take multiple hits to destroy. This can all be programmed using lists of lists. Yes -- lists can contain other lists, which can, in turn, can contain further nested lists ... but more on that later.
+I am assuming you have played some variant of this game and are probably aware that, upon destruction, select bricks drop power-ups. Moreover, bricks come in different colours, some may be invisible, and others take multiple hits to destroy. These additional properties can all be programmed using lists of lists. Yes -- lists can contain other lists, which can, in turn, can contain further nested lists ... but more on that later.
 
 To modify an existing element, reassign a new value like you would any other variable but include the index in square brackets. Take a practical example: red must replace blue as the first value in the rainbow list. To accomplish this, add the following lines to the bottom of your "rainbow_list" sketch:
 
@@ -117,7 +116,7 @@ rainbow[0] = 'red'
 print(rainbow)      # ['red', 'orange', 'yellow']
 {% endhighlight %}
 
-The Processing [reference](https://py.processing.org/reference/) includes a number of *List Methods*.  Correctly speaking, these are standard (as opposed to Processing.py) Python features, functional in any Python environment. What follows below are descriptions for several such methods, along with code to add to your working sketch. Each example builds on the code before it, so you’ll need to work through all of them, entering each line as you progress.
+The Processing [reference](https://py.processing.org/reference/) includes a number of *List Methods*.  Correctly speaking, these are standard (as opposed to Processing.py) Python features, functional in any Python environment. What follows below are descriptions for several such methods along with code to add to your working sketch. Each example builds on the code before it, so you’ll need to work through all of them, entering each line as you progress.
 
 #### `.append()`
 <dd markdown="1">
@@ -131,7 +130,7 @@ print(rainbow)      # red, orange, yellow, blue
 
 #### `.extend()`
 <dd markdown="1">
-Adds one list to the end of another.
+Adds one list to the end of another list.
 
 {% highlight py %}
 colors = ['indigo', 'violet']
@@ -143,7 +142,7 @@ print(rainbow)
 
 #### `.index()`
 <dd markdown="1">
-Returns the index (position as an integer) for the argument provided; if there are multiple matches, this is the lowest/first instance. If there is no matching value, the Console reports a `ValueError`.
+Returns the index (position as an integer) for the argument provided; if there are multiple matches, this represents the lowest/first instance. If there is no matching value, the Console reports a `ValueError` message.
 
 {% highlight py %}
 yellowindex = rainbow.index('yellow')
@@ -200,11 +199,11 @@ print(rainbow)
 {% endhighlight %}
 </dd>
 
-Python does offer other list methods but the above should suffice, for now at least. Any decent Python reference should cover the others; failing that, there's always your favourite search engine. If you are looking to reorder list elements, there are the [`reverse()`](https://py.processing.org/reference/list_reverse.html) and alphanumerical [`sort()`](https://py.processing.org/reference/list_sort.html) methods.
+Python does offer other list methods, but the above should suffice, for now at least. Any decent Python reference should cover the others -- failing that, there's always your favourite search engine. If you are looking to reorder list elements, there are the [`reverse()`](https://py.processing.org/reference/list_reverse.html) and alphanumerical [`sort()`](https://py.processing.org/reference/list_sort.html) methods.
 
 ### Rainbow Sequence Task
 
-Time to consolidate what has been covered thus far. In this challenge you will apply various list techniques to shuffle the colour bands of an incorrectly sequenced rainbow (orange, followed by violet, then blue, red, yellow, green, and indigo). Wait -- what the heck is indigo, anyway? According to the [dictionary](https://en.wiktionary.org/wiki/indigo), indigo is a "purplish-blue colour", and violet is a "blueish-purple colour" 😕. On that point, why is there no purple band in the rainbow?
+Time to consolidate what has been covered thus far. In this challenge, you will apply various list techniques to shuffle the colour bands of an incorrectly sequenced rainbow (orange, followed by violet, then blue, red, yellow, green, and indigo). Wait -- what the heck is indigo, anyway? According to the [dictionary](https://en.wiktionary.org/wiki/indigo), indigo is a "purplish-blue colour", and violet is a "blueish-purple colour" 😕. On that point, why is there no purple band in the rainbow?
 
 <figure style="word-spacing:0">
 <div style="background-color:indigo; display:inline-block; width:80px; height:2.5em"></div
@@ -213,14 +212,14 @@ Time to consolidate what has been covered thus far. In this challenge you will a
 <figcaption>From left to right: indigo, dark-violet, and purple. According to your web browser.</figcaption>
 </figure>
 
-Purple is a combination of two *spectral* colours. There is no wavelength of purple light -- it only exists as a combination of red and blue waves. Violet, however, is an actual spectral colour, with its own wavelength of approximately 380–420 nanometres. Indigo is positioned somewhere between violet and blue, but exactly where -- or if at all -- is a matter for debate. In his famous prism experiments, Isaac Newtown defined seven rainbow colours, squeezing indigo in just before violet. You may wonder, why seven colours from a graduated array spanning the visible spectrum? Seven had occult significance. It's no coincidence that there are seven colours in the rainbow, seven days of the week, and seven musical notes that define the western major scale. Today, though, colour scientists are inclined to divide the spectrum at violet and blue, leaving no room for indigo.
+Purple is a combination of two *spectral* colours. There is no wavelength of purple light -- it only exists as a combination of red and blue waves. Violet, however, is an actual spectral colour with its own wavelength of approximately 380–420 nanometres. Indigo is positioned somewhere between blue and violet, but exactly where -- or if at all -- is a matter for debate. In his famous prism experiments, Isaac Newtown defined seven rainbow colours, squeezing indigo in just before violet. You may wonder, why seven colours from a blended array spanning the visible spectrum? This because seven had occult significance. It's no coincidence that there are seven colours in the rainbow, seven days of the week, and seven musical notes that make up the western major scale. Today, though, colour scientists are inclined to divide the spectrum at violet and blue, leaving no room for indigo.
 
-In these lessons, we drop indigo for a six colour rainbow (just like Pink Floyd did).
+In these lessons, we will drop indigo in favour of a six colour rainbow (just like Pink Floyd did).
 
 <figure>
   <img src="https://upload.wikimedia.org/wikipedia/en/3/3b/Dark_Side_of_the_Moon.png" />
   <figcaption>
-    <em>The Dark Side of the Moon</em> album cover depicts a prism splitting a beam of white light into its constituent colours. Pink Floyd's designer, Storm Thorgerson, opted for a six-color, indigo-less rainbow.<br />
+    <em>The Dark Side of the Moon</em> album cover depicts a prism splitting a beam of white light into its constituent colours. Pink Floyd's designer, Storm Thorgerson, opted for a six-colour, indigo-less rainbow.<br />
     source: <a href="https://en.wikipedia.org/wiki/File:Dark_Side_of_the_Moon.png">Wikipedia</a>
 
   </figcaption>
@@ -255,7 +254,7 @@ fill(bands[5]); rect(0,350, width,50)
   <figcaption>Incorrectly sequenced rainbow.</figcaption>
 </figure>
 
-Now, insert the following code just above fill/rect lines:
+Now, insert the following code just above `fill`/`rect` lines:
 
 {% highlight py %}
 '''# move violet
@@ -274,27 +273,27 @@ fill(bands[0]); rect(0,100, width,50)
 ...
 {% endhighlight %}
 
-Remove the multi-line commented blocks (`'''`) a section time. The goal is to figure out what values and methods replace the underscores. The finished result looks like this:
+Remove the multi-line commented blocks (`'''`) a section time. The goal is to figure out what values and methods replace the underscores. The correct result looks like this:
 
 <figure>
   <img src="{{ site.url }}/img/pitl05/lists-rainbow-methods-result.png" />
 </figure>
 
-Once complete, save this file. You will be editing it further in the next challenge.
+Once complete, be sure to save this file. You will be editing it further in the next challenge.
 
 ### Loops + Lists
 
 Loops can be programmed to work with lists, potentially saving on countless lines of manual instruction. As a case a point, let us return to the *Breakout* game example. Rendering each brick requires at least as many lines of code as there are elements. For example:
 
 {% highlight py %}
-fill(color); rect(x, y, w, h) # brick A1
-fill(color); rect(x, y, w, h) # brick A2
-fill(color); rect(x, y, w, h) # brick A3
+fill(bricks[0]);  rect(0,  0, 30,10) # brick A1
+fill(bricks[1]);  rect(30, 0, 30,10) # brick A2
+fill(bricks[2]);  rect(60, 0, 30,10) # brick A3
 ...
-fill(color); rect(x, y, w, h) # brick J12
+fill(bricks[59]); rect(270,50,30,10) # brick F10
 {% endhighlight %}
 
-This is hardly efficient, nor can it handle a list that is constantly adapting in length. In a previous lesson covering [for loops]({% post_url 2018-07-01-processing.py_in_ten_lessons--03-_randomly-generated-lesson-title %}#for-loops), you looked at iterating integer values using a `range()` function. To perform something similar on a list, you will first need to determine the list's length.
+This is hardly efficient, nor can it handle a list that is continually adapting in length. In a previous lesson covering [for loops]({% post_url 2018-07-01-processing.py_in_ten_lessons--03-_randomly-generated-lesson-title %}#for-loops), you looked at iterating integer values using a `range()` function. To perform something similar on a list, you will first need to determine its current length.
 
 Create a new sketch and save it as "iterating_lists". Add the following code:
 
@@ -303,7 +302,7 @@ rainbow = ['red', 'orange', 'yellow', 'green', 'blue', 'violet']
 print( len(rainbow) )
 {% endhighlight %}
 
-The `len()` accepts a list as an argument, and returns it's length. Run the sketch to confirm this.
+The `len()` function accepts a list as an argument and returns its length. Run the sketch to confirm this.
 
 <figure>
   <img src="{{ site.url }}/img/pitl05/lists-loop-len.png" class="fullwidth" />
@@ -321,13 +320,13 @@ for i in range( len(rainbow) ):
     print(rainbow[i])
 {% endhighlight %}
 
-Run the sketch. With each iteration of the loop, `i` is incremented by 1. On the first iteration, the `print` line displays `rainbow[0]`, followed by `rainbow[1]` on the second, and so on through to `rainbow[5]`.
+Run the sketch. With each iteration of the loop, `i` is incremented by 1. On the first iteration, the `print` line displays the value of `rainbow[0]`, followed by `rainbow[1]` on the second iteration, and so on until reaching `rainbow[5]`.
 
 <figure>
   <img src="{{ site.url }}/img/pitl05/lists-loop-range.png" class="fullwidth" />
 </figure>
 
-Your loops from previous lessons have relied on a `range()` function, and using again it here makes the code more relatable. However, Python regards loops as inherently iterable, and and the range can be omitted altogether. Comment out the previous loop, replacing it with a non-range alternative:
+Thus far, your loops have relied on the `range()` function. It's employed again here to make the code more relatable. However, Python regards loops as inherently iterable, meaning that one can omit the range function altogether. Comment out the previous loop and replace it with a `range`-less alternative:
 
 {% highlight py %}
 '''
@@ -338,7 +337,7 @@ for band in rainbow:
     print(band)
 {% endhighlight %}
 
-Run the code. The Console prints the same list of values. But, what if you wished to print this output?
+Run the code. The Console prints the same list of values. But, what if you wished to display this output instead?
 
 ~~~
 0: red
@@ -367,8 +366,6 @@ for i,v in enumerate(rainbow):
   <img src="{{ site.url }}/img/pitl05/lists-loop-enumerate.png" class="fullwidth" />
 </figure>
 
-No specific approach is necessarily better than another. What you elect to use will depend on your coding style and the application at hand.
-
 Recall, though, that `i` and `v` are variable names. Use whatever you feel is most descriptive -- for example:
 
 {% highlight py %}
@@ -377,6 +374,8 @@ for number,colour in enumerate(rainbow):
 {% endhighlight %}
 
 In this instance, I have opted for the British spelling of col<ins>ou</ins>r to avoid confusing the variable with Processing's [`color()`](https://py.processing.org/reference/color.html) function.
+
+No single approach (range, range-less, or enumerate) is necessarily better than another. What you elect to use will depend on your coding style and what you need to accomplish.
 
 ### Rainbow Sequence Loop Task
 
@@ -399,25 +398,23 @@ Ensure that the visual result remains the same:
   <img src="{{ site.url }}/img/pitl05/lists-rainbow-loop.png" />
 </figure>
 
-An `enumerate()` is, perhaps, the more elegant solution. If you ever find yourself weighing-up different approaches, read through [The Zen of Python](https://www.python.org/dev/peps/pep-0020/) -- a list of 19 one-line principles to help guide your coding.
+An `enumerate()` is, perhaps, the more elegant solution. If you ever find yourself weighing-up different approaches, take a quick read through [The Zen of Python](https://www.python.org/dev/peps/pep-0020/) -- a list of 19 one-line principles to help guide your coding.
 
-## Data Visualisation: Dimension
+After grasping the fundamentals of Python lists, the next step is to tackle lists of lists.
 
-BEFORE WRITING ANY LISTS IN LISTS ....
+## Data Visualisation
 
+Data visualisation is a recurring theme in these lessons. It relates neatly to a lot of the coding content and makes for some intriguing -- and often, enlightening -- visual output. At various points, you'll be provided brief introductions to useful 'data viz' concepts. Now seems an opportune time to review the role of dimension in data visualisation. Dimension relates to lists-of-lists as these are a means of managing multidimensional data. Before moving onto writing any code, though, we'll look at a hypothetical scenario demonstrating how list data translates into visual output.
 
+### Introduction
 
+Computers are remarkably efficient data processing tools. It's not surprising to discover that *VisiCalc*, a spreadsheet application released in 1979, is considered the world's first [killer application](https://en.wikipedia.org/wiki/Killer_application). Killer applications lead consumers to adopt new hard- or software platforms. Video game examples include Atari's port of *Space Invaders*, which quadrupled it's *VCS* console sales. *Tetris* is credited as the Nintendo *Gameboy*'s killer app and to date remains the product line's top-selling game of all time.
 
-
-Data visualisation is a recurring theme in these lessons. It relates neatly to a lot of the coding content, and makes for some intriguing -- and often, enlightening -- visual output. At various points in these lessons, you'll be provided some short introductions to useful concepts. This seems an opportune moment to look at visualising multi-dimensional data.
-
-Computers are remarkably efficient processing data tools. It's not surprising to discover that *VisiCalc*, a spreadsheet application released in 1979, is considered the world's first [killer application](https://en.wikipedia.org/wiki/Killer_application). Killer applications lead consumers to adopting new hard- or software platforms. For example, Atari quadrupled it's *VCS* console sales with a port of *Space Invaders*. *Tetris* is credited as the Nintendo *Gameboy*'s killer app and to date remains the product line's top-selling game of all time. Before email, many people felt they didn't need an Internet connection, or even a computer for that matter. Shortly after email went mainstream, web browsers converted many of the remaining holdouts.
-
-Websites have been tracking visitor traffic since the early days of the Web. Nowadays, smart devices gather information from machines, animals, and people. We are gathering vaster quantities of data, yet much of it remains unused. This presents a problem for visualisation to solve.
-
-Raw data is typically structured in a tabular type arrangement, which is easily dumped into a spreadsheet file. But, poring over the endless rows and columns is hardly an effective or engaging approach to analysis. Graphs help by presenting data more insightfully, also making it easier to present findings to others. *Lotus 1-2-3*, VisiCalc's usurper, introduced several graphing features. If you find that your modern spreadsheet solution lacks the chart you need, you'll likely find a web-app and programming library that suited to the task.
+Email is another killer app, albeit more of a messaging protocol. Before email, many people felt they didn't need an Internet connection, or even a computer for that matter. Shortly after email went mainstream, web browsers converted many of the remaining holdouts. Websites have been tracking visitor traffic since the early days of the Web. Nowadays, smart devices gather information from machines, animals, and people. We gather ever vaster quantities of data, yet much of it remains unused. Data visualisation presents opportunities to better utilise it.
 
 ### Visualising Tetris Scores
+
+Raw data is typically structured in a tabular type arrangement. It can be handwritten, or captured electronically (CSV files, databases, etc.), but ultimately, can be dumped into a spreadsheet without too much hassle. However, scrolling through endless rows and columns is hardly an effective or engaging approach to analysis. Graphs help by presenting data more insightfully, also making it easier to present findings to others. *Lotus 1-2-3*, VisiCalc's usurper, introduced several graphing features, and they have been common fixture ever since. If you find that your modern spreadsheet solution lacks the chart you need, you'll likely find a web-app and programming library that suited to the task. In this section, we'll be looking at analysing some gameplay data. The spreadsheet part is assumed complete; what you will instead focus on is the visualisation of this data. There is no need to write any code.
 
 The inaugural *Classic Tetris World Championship* (CTWC) was held in 2010. The organisers opted for the NES (8-bit Nintendo Entertainment System) version of Tetris, which is played on original hardware and CRT television screens. In 2017, one could [qualify with a score of around 500,000](https://youtu.be/9RaqVGzhQTM?t=1640). Now suppose you wished to enter the upcoming CTWC. You've bought a console, cartridge, and CRT television, and have trained for months. However, your high scores seem to have plateaued. To help analyse and (hopefully) improve your scores, you decide to visualise your performance using Python.
 

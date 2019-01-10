@@ -1207,7 +1207,7 @@ Below is the result, along with a grid-overlay and x-y coordinate label:
   <figcaption>A vertically-sheared red square.</figcaption>
 </figure>
 
-This section has introduced some fundamental transformation concepts using matrices while avoiding anything larger than 2 × 2 matrix. If you want to handle larger matrices, take a look at Python's *NumPy* library.
+This section has introduced some fundamental transformation concepts using matrices while avoiding anything larger than 2 × 2 matrix. If you want to handle larger matrices, take a look at Python's [NumPy](http://www.numpy.org/) library.
 
 Next up: performing all of the above transformations without having to worry about the math!
 

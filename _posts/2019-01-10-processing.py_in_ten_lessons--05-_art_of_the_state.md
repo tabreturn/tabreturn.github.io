@@ -404,21 +404,23 @@ After grasping the fundamentals of Python lists, the next step is to tackle list
 
 ## Data Visualisation
 
-Data visualisation is a recurring theme in these lessons. It relates neatly to a lot of the coding content and makes for some intriguing -- and often, enlightening -- visual output. At various points, you'll be provided brief introductions to useful 'data viz' concepts. Now seems an opportune time to review the role of dimension in data visualisation. Dimension relates to lists-of-lists as these are a means of managing multidimensional data. Before moving onto writing any code, though, we'll look at a hypothetical scenario demonstrating how list data translates into visual output.
+Data visualisation is a recurring theme in these lessons. It relates neatly to a lot of the coding content and makes for some intriguing -- and often, enlightening -- visual output. At various points, you'll be provided brief introductions to useful 'data viz' concepts. Lists-of-lists are a means of managing multidimensional data, so now seems an opportune time to review the role of dimension in data visualisation. Before moving onto writing any code, though, we'll look at a hypothetical scenario demonstrating how list data translates into visual output.
 
 ### Introduction
 
-Computers are remarkably efficient data processing tools. It's not surprising to discover that *VisiCalc*, a spreadsheet application released in 1979, is considered the world's first [killer application](https://en.wikipedia.org/wiki/Killer_application). Killer applications lead consumers to adopt new hard- or software platforms. Video game examples include Atari's port of *Space Invaders*, which quadrupled it's *VCS* console sales. *Tetris* is credited as the Nintendo *Gameboy*'s killer app and to date remains the product line's top-selling game of all time.
+Computers are remarkably efficient data processing tools. It's not surprising to discover that *VisiCalc*, a spreadsheet application released in 1979, is considered the world's first [killer application](https://en.wikipedia.org/wiki/Killer_application). Killer applications lead consumers to adopt new hard- or software platforms. Video game examples include the Atari 2600 port of *Space Invaders*, which the quadrupled console's sales. *Tetris* is credited as the Nintendo *Gameboy*'s killer app and to date remains the product line's top-selling game of all time.
 
-Email is another killer app, albeit more of a messaging protocol. Before email, many people felt they didn't need an Internet connection, or even a computer for that matter. Shortly after email went mainstream, web browsers converted many of the remaining holdouts. Websites have been tracking visitor traffic since the early days of the Web. Nowadays, smart devices gather information from machines, animals, and people. We gather ever vaster quantities of data, yet much of it remains unused. Data visualisation presents opportunities to better utilise it.
+Email is another killer app, albeit more of a messaging protocol. Before email, many people felt they didn't need an Internet connection, or even a computer for that matter. Shortly after email went mainstream, web browsers converted many remaining online holdouts. Websites have been tracking visitor traffic since the early days of the Web. Nowadays, smart devices gather information from machines, animals, and people. We gather ever vaster quantities of data, yet much of it remains unused. Data visualisation presents opportunities to better utilise it -- conveying concepts in a more accessible manner and even providing inputs to experiment with different scenarios.
+
+Raw data is typically structured in a tabular type arrangement. It can be handwritten or captured electronically (CSV files, databases, etc.), but ultimately, can be dumped into a spreadsheet without too much hassle. However, scrolling through endless rows and columns is hardly an effective or engaging approach to analysis. Graphs help by presenting data more insightfully, also making it easier to present findings to others. *Lotus 1-2-3*, VisiCalc's usurper, introduced several graphing features, which have been common spreadsheet fixtures ever since. If your spreadsheet software lacks the chart you need, you'll likely find an app/web-app or programming library suited to the task. [Plotly](https://plot.ly/create/) and [matplotlib](https://matplotlib.org/) are well worth exploring.
 
 ### Visualising Tetris Scores
 
-Raw data is typically structured in a tabular type arrangement. It can be handwritten, or captured electronically (CSV files, databases, etc.), but ultimately, can be dumped into a spreadsheet without too much hassle. However, scrolling through endless rows and columns is hardly an effective or engaging approach to analysis. Graphs help by presenting data more insightfully, also making it easier to present findings to others. *Lotus 1-2-3*, VisiCalc's usurper, introduced several graphing features, and they have been common fixture ever since. If you find that your modern spreadsheet solution lacks the chart you need, you'll likely find a web-app and programming library that suited to the task. In this section, we'll be looking at analysing some gameplay data. The spreadsheet part is assumed complete; what you will instead focus on is the visualisation of this data. There is no need to write any code.
+In this section, we'll be analysing some gameplay data. The focus is the visualisation of this data. There is no need to write any code, but you will need to read through some. In the next section, you will apply this theory in Processing.
 
-The inaugural *Classic Tetris World Championship* (CTWC) was held in 2010. The organisers opted for the NES (8-bit Nintendo Entertainment System) version of Tetris, which is played on original hardware and CRT television screens. In 2017, one could [qualify with a score of around 500,000](https://youtu.be/9RaqVGzhQTM?t=1640). Now suppose you wished to enter the upcoming CTWC. You've bought a console, cartridge, and CRT television, and have trained for months. However, your high scores seem to have plateaued. To help analyse and (hopefully) improve your scores, you decide to visualise your performance using Python.
+In 2010, the inaugural *Classic Tetris World Championship* (CTWC) took place in Los Angeles, California. The organisers opted for the NES (8-bit Nintendo Entertainment System) version of Tetris, played on original hardware connected to a CRT television screen. The event has run annually ever since, although the venue has moved to Portland, Oregon. In 2017, one could [qualify with a score of around 500,000](https://youtu.be/9RaqVGzhQTM?t=1640). Now, suppose you wished to enter the upcoming CTWC. You’ve bought a console, cartridge, and CRT television, and have trained for months. However, your high scores seem to have plateaued. To help analyse and (hopefully) improve your scores, you decide to visualise your performance using Python.
 
-To begin, you create a list containing all of the dates you have played.
+To begin, you create a list containing all the dates you have played.
 
 {% highlight py %}
 dates = [ 'Jan 28', 'Feb 04', ... ]
@@ -430,9 +432,11 @@ You then write some code that plots these values along a single axis labelled "D
   <img src="{{ site.url }}/img/pitl05/dimension-1-dimensional.svg" />
 </figure>
 
-From this one-dimensional plot, you can determine how frequently you play. For a solid blue line of dots, you'd have to have been playing daily. There are large gaps on either side (you purchased the equipment in late January; now it's almost mid-May) as well as sporadic intervals of non-play, although more so towards the start. Statisticians would refer to this as an example of *univariate* analysis -- as we are concerned with a single variable (the dates you have played). Such analysis is useful for describing features like central tendency (mean, median, mode) and dispersion (range, variance, standard deviation).
+From this one-dimensional plot, you can determine how frequently you play. For a solid blue line of dots, you'd have to have been playing daily. There are significant gaps on either end (you purchased the equipment in late January; now it's almost mid-May) as well as irregular intervals of non-play, but more prominently so towards the start. On average, you are playing around six days a month, and this is increasing. Statisticians would refer to this as an example of *univariate* analysis because we are concerned with a single variable (the dates you have played). Such analysis is useful for describing features like central tendency (mean, median, mode) and dispersion (range, variance, standard deviation).
 
- *Bivariate* analysis involves two variables, which helps identify relationships (if any) between quantitative variables -- such as, between dates and scores. You decide to add another dimension to your list (a list in a list) so that each element contains two values: a date and the highest score you accomplished that day.
+*Bivariate* analysis is the simultaneous analysis of two variables; this helps identify relationships (if any) between them. In this instance, we will explore the correlation between dates and scores.
+
+You decide to add another *dimension* to your list (a list in a list) so that each element contains two values: a date, and the highest score you accomplished that day. Think of it like this: you added a ("score") dimension to your data that is now mirrored in your code. Programmers will often refer to 1-dimensional, 2-dimensional -- or other higher dimensional -- lists to describe the formations of multidimensional arrays.
 
 {% highlight py %}
 scores = [
@@ -442,15 +446,15 @@ scores = [
 ]
 {% endhighlight %}
 
-Note that you have added a dimension to your data, and in turn, your list. To visualise this, you must add a dimension to your plot. You elect to use a *scatterplot*, placing each dot against a horizontal ("Date") and vertical ("Score") axis.
+To visualise this, you must add a dimension to your plot. You elect to use a *scatterplot*, placing each dot against a horizontal ("Date") and vertical ("Score") axis.
 
 <figure>
   <img src="{{ site.url }}/img/pitl05/dimension-2-dimensional.svg" />
 </figure>
 
-It would appear that playing more frequently leads to more erratic high scores. Perhaps, what is most noteworthy, is that you perform best after a few days break. The good news is that your all-time high scores do seem to be improving.
+It would appear that playing more frequently leads to more erratic high scores. Perhaps, what is most noteworthy, is that you perform best after stretches of no play (about week's break). The good news is that your all-time high scores do seem to be improving.
 
-You've recorded a lot of data -- the time of day, environmental factors, and more ... most of it superfluous -- but poring over the details you realise that there may be a third variable in play: coffee. You add another value to your sub-lists, much like adding a column to an existing spreadsheet or table. This additional figure indicates how many millilitres of coffee you drank (up to 2 cups, or 500ml) before posting a high score for the day.
+You have recorded a lot of data -- including the time of day, environmental factors, and more ... most of it superfluous -- but while poring over these details you realise that there may be a third variable in play: coffee. You add another value to your sub-lists; this is analogous to adding a column to an existing spreadsheet or table. The additional value indicates how many millilitres of coffee you drank (up to 2 cups, or 500ml) before posting a high score for that day.
 
 {% highlight py %}
 scores = [
@@ -460,13 +464,13 @@ scores = [
 ]
 {% endhighlight %}
 
-To accommodate the new coffee values, one can turn to *depth*. A third axis is now added to the scatterplot.
+To visually accommodate the new coffee values, one can simulate *depth*. You add a third ("Coffee") axis to the scatterplot.
 
 <figure>
   <img src="{{ site.url }}/img/pitl05/dimension-3-dimensional-depth.svg" />
 </figure>
 
-Some interesting patterns have appeared, but gauging the positions of the dots is tricky. Moreover, should the data grow more *multivariate*, you face the problem of having to visualise a fourth spatial dimension. But, there are visual notions that you can introduce. Consider, *facets*. We can 'unfold' the three-dimensional scatterplot, each facet as though we are viewing as a (six-sided) cube. The result is a *scatterplot matrix* -- or, acronymically, a SPLOM.
+Some interesting diagonal patterns have appeared, but gauging the positions of the dots is tricky. Moreover, should the data grow more *multivariate* -- i.e. another variable is introduced -- you face the problem of having to visualise a fourth spatial dimension. But, there are other visual notions to leverage. Consider, *facets*. Imagine the three-dimensional scatterplot as a cube (six-sided) with transparent walls. If you held it in your hand, it could be rotated to reveal a distinct graph on each side. Now, suppose that you 'unfolded' this cube and it laid flat, then separated each facet and arranged them on a grid. The result is a *scatterplot matrix* -- or, acronymically, a SPLOM.
 
 <figure>
   <img src="{{ site.url }}/img/pitl05/dimension-3-dimensional-facets.svg" class="fullwidth" />
@@ -478,79 +482,77 @@ A three-dimensional SPLOM is three rows wide and three columns high. Should you 
 <figure>
   <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/ScagnosticsExampleSplom.svg" />
   <figcaption>
-    A scatterplot matrix of scagnostics measures for the Boston Housing data set.<br />
+    A scatterplot matrix of scagnostics measures for the Boston Housing data set. Note that each sub-plot need not be represented a scatterplot. Within the matrix, one can <a href="{{ site.url }}/img/pitl05/dimension-code/t-piece-splom.png">select a mix</a> of bar, line, scatterplot, and other chart types.<br />
     source: <a href="https://commons.wikimedia.org/wiki/File:ScagnosticsExampleSplom.svg">Wikimedia Commons</a>
   </figcaption>
 </figure>
 
-One is not restricted to scatterplots; within the matrix, one can elect for a mix of bar, line, and other chart types. Facets are but one approach, though. *Size* is another option. You revert to the two-dimensional scatterplot, then represent the "Coffee" dimension by adjusting the size of each dot.
+Facets are but one notion, though. *Size* is another option. You decide to revert to the two-dimensional scatterplot, then represent the "Coffee" dimension by adjusting the size of each dot accordingly.
 
 <figure>
   <img src="{{ site.url }}/img/pitl05/dimension-3-dimensional-scale.svg" />
 </figure>
 
-Each dot need not even be circular. A variety of *shapes* could represent a further dimension. Then, there's *colour*. Your friend Sam -- who is also an avid coffee drinker -- plans to enter the tournament, too. To compare progress, you add Sam's scores in orange.
+However, each does not have to be circular. By including a variety of different *shapes*, one can convey even more information. Then, there's *colour*. Your friend Sam -- who is also an avid coffee drinker -- plans to enter the tournament, too. To compare your progress, you plot Sam's scores in orange.
 
 <figure>
   <img src="{{ site.url }}/img/pitl05/dimension-4-dimensional-colour.svg" />
+  <figcaption>Your high scores are plotted in blue; Sam's in orange.</figcaption>
 </figure>
 
-array/list structures ...
-2d
-4d
-1d
+Alas, in focussing on visualisation we have drifted away from code snippets. So, how exactly would one structure a Python list to accommodate the scatterplot above? One approach is a 3-dimensional list:
 
+{% highlight py %}
+scores = [
+  # your scores
+  [
+    ['Jan 28', 120000, 220],
+    ['Feb 04', 80000,  260],
+    ...
+  ],
+  # sam's scores
+  [
+    ['Feb 07', 145000, 150],
+    ['Feb 09', 80100,  170],
+    ...
+  ]
+]
+{% endhighlight %}
 
+In this way, each player is a list element containing other nested lists. To return to the spreadsheet analogy: instead of adding another column, you have added a new sheet -- that is, one sheet for yourself and one for Sam.
 
-You can also use time as a dimension by making an animated plot for other attributes over time (considering time is a dimension in the data)
+Now look at a 2-dimensional alternative:
 
+{% highlight py %}
+scores = [
+  ['me', 'Jan 28', 120000, 220],
+  ['me', 'Feb 04', 80000,  260],
+  ...
+  ['sam', 'Feb 07', 145000, 150],
+  ['sam', 'Feb 09', 80100,  170],
+  ...
+]
+{% endhighlight %}
 
+In the three-dimensional version, your lists had been contained within one element, and Sam's within another. Now, each entry must include a name. The result is a lot of repetition. Less repetition is usually better.
 
-...
+If you really wanted to give yourself a headache, you could opt for a 1-dimensional list:
 
+{% highlight py %}
+scores = [
+  'me', 'Jan 28', 120000, 220, 'me', 'Feb 04', ...
+]
+{% endhighlight %}
 
+Values within the same category are now placed four positions apart from one another. Sure, you could write some loop that works with this ... but, eeew! Right?
 
-<figure>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Mosaic-big.png" class="fullwidth" />
-  <figcaption>
-    LBreakout2 &ndash; an open source Breakout clone.<br />
-    source: <a href="https://commons.wikimedia.org/wiki/File:Screenshot-LBreakout2.jpg">Seancarmody [CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0) or GFDL (http://www.gnu.org/copyleft/fdl.html)], from Wikimedia Commons</a>
-  </figcaption>
-</figure>
+Interestingly, the number of dimensions you express visually does not always reflect the number of dimensions that comprise your list. In fact, it's advisable to avoid using anything beyond a three-dimensional list. To return to the spreadsheet analogy one last time: consider adding another column to your existing sheets instead of creating more spreadsheet files.
 
-“The greatest value of a picture is when it forces us to notice what we never expected to see.”
-John W. Tukey Exploratory Data Analysis, 1977
+Effective data visualisation requires the application of art and science to represent multidimensional information structures within two-dimensional visual displays. These displays could be sheets of paper or computer screens. Additionally, though, screens cater to *time*. As an example, charts and figures can animate while you view them. Using mouse, keyboard, touch, speech, gesture and other input, viewers can explore data in an *interactive* manner. For some inspiration, take a look at Fathom's [project showcase](https://fathom.info/projects/#visualization). Ben Fry, the principal of Fathom, is also one of Processing's co-developers.
 
+## Lists of Lists
 
-Data visualisation Representing multidimensional information structures in a two- dimensional visual display
-
-One can think of a dimension as a thing in a thing.
-
-Now let's say you have
-Sure you could have and array that a single dimensional array and do some math to make it act multidimensional, but why?
-
-Your screen
-
-
- is not trivial. The design process requires both analytical and visual/spatial methods of reasoning. Graphic design in general, and information design in particular, depend upon cognitive processes and visual perception for both its creation (encoding) and its use (decoding). If the decoding process fails, the visualization fails.
-
-What do the paths that millions of visitors take through a web site look like? How do the 3.1 billion A, C, G, and T letters of the human genome compare to those of the chimp or the mouse? Out of a few hundred thousand files on your computer’s hard disk, which ones are taking up the most space, and how often do you use them? By applying methods from the fields of computer science, statistics, data mining, graphicdesign,andvisualization,wecanbegintoanswerthesequestionsinamean- ingful way that also makes the answers accessible to others.
-
-
-
-
-
-
-!!! inetaractivey another dimension
-
-
-
-
-
-
-### Lists of Lists
-
-Lists may contain other lists. While this may sound complicated at first, appropriately nested lists make complex data sets easier to manage. Programmers will often refer to 1-dimensional, 2-dimensional -- or other higher dimensional -- lists to describe the formations of multidimensional arrays. To introduce this concept, we will create a bar chart. Roughly speaking, something resembling the illustration below.
+While this may seem complicated at first, appropriately nested lists make complex data sets easier to manage. In this practical exercise, you will create a bar chart; roughly speaking, something resembling the illustration below.
 
 <figure>
   <img src="{{ site.url }}/img/pitl05/lists-of-lists-bar-chart.svg" />
@@ -560,7 +562,7 @@ Lists may contain other lists. While this may sound complicated at first, approp
 Create a new sketch and save it as "lists_of_lists". Add the following setup code:
 
 {% highlight py %}
-size(500, 380)
+size(500,380)
 background('#004477')
 noFill()
 stroke('#FFFFFF')
@@ -570,7 +572,7 @@ h = 50
 translate(100,40)
 {% endhighlight %}
 
-This is the start of a rainbow-coloured bar chart. The `h` variable and `translate()` function define the first bar's height and starting position, respectively. You will begin with some 0-dimensional data, working your way up to a 3-dimensional list as you progress. To begin, here is a 0-dimensional integer value:
+This is the start of a rainbow-coloured bar chart. The `h` variable and `translate()` function define the first bar's height and starting position, respectively. You will begin with some '0-dimensional' data, working your way up to a 3-dimensional list as you progress. To begin, here is a single integer value:
 
 {% highlight py %}
 ...
@@ -579,13 +581,13 @@ bands = 6
 rect(0,0, 40,h*bands)
 {% endhighlight %}
 
-Run the sketch. The result is a vertical bar representing the *number of bands* in the rainbow sequence.
+Add the above code and run the sketch. The result is a vertical bar representing the *number of bands* in the rainbow sequence. If `bands` were equal to seven, the bar would extend beyond the bottom of the display window.
 
 <figure>
   <img src="{{ site.url }}/img/pitl05/lists-of-lists-0-dimensional.png" />
 </figure>
 
-If `bands` was equal to seven, the bar would extend beyond the bottom of the display window. In order to describe the colour of each band, an additional dimension is required. A 1-dimensional variable can be expressed as a list. Add the following lines to the bottom of your working code:
+An additional dimension is required to describe the colour of each band. A 1-dimensional variable may be expressed as a list. Add the following lines to the bottom of your working code:
 
 {% highlight py %}
 # 1-dimensional
@@ -607,15 +609,15 @@ for i in range(len(bands)):
     rect(0,i*h, 40,h)
 {% endhighlight %}
 
-Run the sketch. The new strip is drawn precisely over the original bar, but is divided into six blocks of colour.
+Run the sketch. The new strip is drawn precisely over the original bar but is divided into six blocks of colour.
 
 <figure>
   <img src="{{ site.url }}/img/pitl05/lists-of-lists-1-dimensional.png" />
 </figure>
 
-The next step is to extend each block of colour, so as to form the horizontal bars. The width of each is to be determined by the brightness its respective colour. To calculate brightness, one can add the red, green, and blue values together. For example, consider white -- it is the brightest 'colour' on your screen; is represented in hexadecimal as `#FFFFFF`; and if converted to percentile values, is expressed as 100% red, 100% green, 100% blue. That is an overall brightness of 300%, or if you prefer to average it out, 300 divide by 3 = 100%.
+The next step is to extend each block of colour, so as to form the horizontal bars. The width of each bar is to be determined by the brightness of its respective colour. To calculate brightness, one can add the red, green, and blue values together. For example, consider white -- it is the brightest 'colour' on your screen; is represented in hexadecimal as `#FFFFFF`; and if converted to percentile values, is expressed as 100% red, 100% green, 100% blue. That is an overall brightness of 300%, or if you prefer to average it out, 300 divide by 3 = 100%.
 
-To manage the colours in as RGB percentages, one must substitute each hexadecimal string with a list of integers. The result is list of list elements -- a 2 dimensional array:
+To manage the colours in as RGB percentages, one must substitute each hexadecimal string with a list of integers. The result is list of lists -- a 2-dimensional array:
 
 {% highlight py %}
 # 2-dimensional
@@ -629,13 +631,13 @@ bands = [
 ]
 {% endhighlight %}
 
- Add the code above. To access a list element within another list, include a second pair of square brackets. For example, to retrieve the percentage of green in the second (orange) band, its:
+ Add the code above to the end of your working sketch. To access a list element within another list, include a second pair of square brackets. For example, to retrieve the percentage of green in the second (orange) band, its:
 
 {% highlight py %}
 print( bands[1][1] )    # displays 60
 {% endhighlight %}
 
-Now, set the `colorMode` to use values between zero and a hundred, and add a loop to draw the bars:
+Now, set the `colorMode` to use values between zero and one hundred, and add a loop to draw the bars:
 
 {% highlight py %}
 colorMode(RGB, 100)
@@ -650,20 +652,22 @@ for i in range(len(bands)):
     rect(0,i*h, sum,h)
 {% endhighlight %}
 
-Run the sketch. The width of each bar is governed by brightness -- that is, the sum of the `r`, `g`, and `b` values. The bars are filled in grey, so as to better indicate the relative brightness of each colour.
+Run the sketch. The width of each bar is governed by brightness -- that is, the sum of the `r`, `g`, and `b` values. The bars are filled with greys to indicate the relative brightness of each colour.
 
 <figure>
   <img src="{{ site.url }}/img/pitl05/lists-of-lists-2-dimensional-grey.png" />
 </figure>
 
-Oddly, the green bar (fourth from the top) is equivalent in brightness/darkness to red (top bar). To recall, here is a colour swatch of each:
+Oddly, the green bar (fourth from the top) is equivalent in brightness/darkness to the red (top) bar. To recall, here is a colour swatch of each:
 
 <figure style="word-spacing:0">
 <div style="background-color:#FF0000; display:inline-block; width:80px; height:2.5em"></div
 ><div style="background-color:#00FF00; display:inline-block; width:80px; height:2.5em"></div>
 </figure>
 
-This has to do with how the human eye perceives colour. We have a greater number of green receptors, so green is more prominent. There a ways to [compromise for this]({% post_url 2017-01-26-converting_css_colour_to_greyscale %}), but for now, our averaging formula will suffice. Adapt the existing loop:
+This has to do with how the human eye perceives colour. We have a greater number of green receptors, so green light appears more prominent. There a ways to [compromise for this]({% post_url 2017-01-26-converting_css_colour_to_greyscale %}), but for now, our averaging formula will suffice.
+
+Adapt the existing loop, so that each bar indicates the quantities of primary colour that comprise it:
 
 {% highlight py %}
     ...
@@ -680,24 +684,22 @@ This has to do with how the human eye perceives colour. We have a greater number
     rect(0+r+g,i*h, b,h)
 {% endhighlight %}
 
-Each bar now indicates the quantities of primary colour that comprise it.
-
 <figure>
   <img src="{{ site.url }}/img/pitl05/lists-of-lists-2-dimensional-colour.png" />
 </figure>
 
-Labels will help elucidate things. To add them, one could go another list deeper, for example:
+Labels will help elucidate things. To add some to the dataset, one could go another list deeper, for example:
 
 {% highlight py %}
 bands = [
-  [ [ 100, 0, 0   ], 'red'    ],
-  [ [ 100, 60, 0  ], 'orange' ],
+  [ [ 100, 0, 0  ], 'red'    ],
+  [ [ 100, 60, 0 ], 'orange' ],
   ...
 
 print( bands[1][0][1] ) # displays 60
 {% endhighlight %}
 
-However, the above code just overcomplicates matters. Adding another dimension is overkill; a fourth element is really all that is required. Instead, adapt your code as below:
+However, the above code just overcomplicates matters. Adding another dimension is overkill; a fourth element is all that is required. Adapt your code as below:
 
 {% highlight py %}
 bands = [
@@ -717,11 +719,11 @@ for i in range(len(bands)):
   <figcaption>Completed graph, with labels.</figcaption>
 </figure>
 
-Many lists work just fine with a single dimension -- take for example, a shopping list. You can think of a two-dimensional list as a grid or matrix. This makes them good for plotting 2D graphics, which is exactly what computer screen is comprised of. Three- and other higher-dimensional arrays have their place, but before employing such a structure, consider whether adding another position to your 2D array may be more sensible.
+Many lists work just fine with a single dimension -- take, for example, a shopping list. You can think of a two-dimensional list as a grid or table. This makes them useful for plotting 2D graphics. Three- and other higher-dimensional arrays have their place, but before employing such a structure, consider whether adding another position to your 2D array may be more sensible.
 
 ### Breakout Task
 
-In this challenge you will recreate a Breakout level. Some code will be provided to work from, and this include a three-dimensional array. Working with such a list requires a nested loop -- that is, a loop inside another loop.
+In this challenge, you will recreate a Breakout level. Some code will be provided to work with, and this will include a three-dimensional array. Working with such a list requires a nested loop -- that is, a loop inside another loop.
 
 Create a new sketch and save it as "breakout"; then, copy-paste in the code below:
 
@@ -754,11 +756,11 @@ bricks = [
 ]
 {% endhighlight %}
 
-In an attempt to make the code more readable, the `bricks` list has been typed-out in a fashion that reflects the positioning of each brick. In the following order, each brick contains a column-number, fill-colour, hit-count (for indicating how many hits are required to destroy it). Take the first brick as an example:  
+In an attempt to make the code more readable, the `bricks` list has been typed-out in a fashion that reflects the visual positioning of each brick. In the following order, each brick contains a: column-number; fill-colour; and hit-count (indicating how many hits are required to destroy it). Take the first brick as an example:  
 {% highlight py %}
 [0,r,1]
 {% endhighlight %}
-The brick is positioned in column 0, has a fill of red, and requires one (more) hit to destroy. Of course, the row position can be inferred from the list in which it resides. Add two `print()` statements to confirm this information:
+The brick is positioned in column 0, has a fill of red, and requires one (remaining) hit to destroy. Of course, one can infer the row position from the list in which the brick resides. Add two `print()` statements to confirm this information:
 
 {% highlight py %}
 ...
@@ -776,14 +778,14 @@ Should you wish to retrieve the colour of the first brick, it's:
 print( bricks[0][0][1] ) # displays #FF0000
 {% endhighlight %}
 
-Now, you must complete the task, as per the result below. Bricks with a hit-count of `2` have an additional shine effect.
+Now, you must complete the task as per the result below. Bricks with a hit-count of `2` have a shine effect.
 
 <figure>
   <img src="{{ site.url }}/img/pitl05/lists-breakout-result.png" />
-  <figcaption>The three centre bricks have a shine.</figcaption>
+  <figcaption>The correctly completed task. Note that the three centre bricks have a shine.</figcaption>
 </figure>
 
-As mentioned already, you will need employ a nested loop. If you are stumped, perhaps these few lines will get you going?
+As mentioned already, you will need to employ a nested loop. If you are stumped, perhaps these few lines will get you going?
 
 {% highlight py %}
 for row,bricks in enumerate(bricks):
@@ -794,13 +796,6 @@ for row,bricks in enumerate(bricks):
 {% endhighlight %}
 
 If you are more comfortable with a `range()` style approach, that should work fine too.
-
-
-
-
-
-### EXTRA
-??? comprehensions, tuples
 
 ## Dictionaries
 
@@ -831,10 +826,8 @@ If you are more comfortable with a `range()` style approach, that should work fi
 
 ## References
 
+* http://isabelmeirelles.com/book-design-for-information/
 * http://lgames.sourceforge.net/
-
 * https://py.processing.org/reference/
-
 * https://towardsdatascience.com/the-art-of-effective-visualization-of-multi-dimensional-data-6c7202990c57
-
 * https://www.python.org/dev/peps/pep-0020/

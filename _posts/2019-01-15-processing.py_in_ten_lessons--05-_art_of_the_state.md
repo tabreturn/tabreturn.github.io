@@ -893,7 +893,8 @@ Dictionaries are dynamic structures, so you can add and modify key-value pairs w
 
 {% highlight py %}
 studentdict['age'] = 25
-print( studentdict )          # {'name': 'Sam', 'age': 25}
+print(studentdict)
+# {'name': 'Sam', 'age': 25}
 {% endhighlight %}
 
 To add a new key-value pair, follow the same process.
@@ -908,7 +909,8 @@ To remove a key-value pair, use the `del` statement.
 
 {% highlight py %}
 del studentdict['age']
-print(studentdict)            # {'name': 'Sam', 'id': 19011501}
+print(studentdict)
+# {'name': 'Sam', 'id': 19011501}
 {% endhighlight %}
 
 If you need to add one dictionary to another, refer to the [`update()`](https://py.processing.org/reference/dict_update.html) method.
@@ -920,7 +922,8 @@ As with lists, Pythons can loop through dictionaries. Considering that a diction
 Firstly, let's print the dictionary to confirm what we are dealing with:
 
 {% highlight py %}
-print(studentdict)            # {'name': 'Sam', 'id': 19011501}
+print(studentdict)
+# {'name': 'Sam', 'id': 19011501}
 {% endhighlight %}
 
 Now, for a loop. Because the `keys()` method returns a list, it can be iterated like any other list. Of course, each iteration retrieves a key name.

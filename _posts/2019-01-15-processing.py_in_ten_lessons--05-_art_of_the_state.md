@@ -32,7 +32,7 @@ Here, `'Sam'` represents a student name -- or more technically speaking, some st
 student = ['Sam', 24]
 {% endhighlight %}
 
-The square-brackets contain both the string and integer values. You may never have used a list before, but can likely make some sense of the syntax? More on syntax shortly, though. You may also be wondering: wouldn't it be simpler to stick with the two separate variables? Perhaps. It really depends on the application. Lists are ordered, and ordering is significant in many situations -- for example, in this sequence of rainbow colours:
+The square brackets contain both the string and integer values. You may never have used a list before, but can likely make some sense of the syntax? More on syntax shortly, though. You may also be wondering: wouldn't it be simpler to stick with the two separate variables? Perhaps. It really depends on the application. Lists are ordered, and ordering is significant in many situations -- for example, in this sequence of rainbow colours:
 
 {% highlight py %}
 rainbow = [
@@ -404,7 +404,9 @@ After grasping the fundamentals of Python lists, the next step is to tackle list
 
 ## Data Visualisation
 
-Data visualisation is a recurring theme in these lessons. It relates neatly to a lot of the coding content and makes for some intriguing -- and often, enlightening -- visual output. At various points, you'll be provided brief introductions to useful 'data viz' concepts. Lists-of-lists are a means of managing multidimensional data, so now seems an opportune time to review the role of dimension in data visualisation. Before moving onto writing any code, though, we'll look at a hypothetical scenario demonstrating how list data translates into visual output.
+Data visualisation is a recurring theme in these lessons. It relates neatly to a lot of the coding content and makes for some intriguing -- and often, enlightening -- visual output. Writing Processing code provides you with full control over visual output. No longer shall you be limited to whatever Excel can conjure for you. Instead, you get to explore novel ways to visualise data -- ranging from highly abstract (like something you'd see in an art gallery) to highly informative, or anything in between.
+
+At various points, you'll be provided brief introductions to useful 'data viz' concepts. Lists-of-lists are a means of managing multidimensional data, so now seems an opportune time to review the role of dimension in data visualisation. Before moving onto writing any code, though, we'll look at a hypothetical scenario demonstrating how list data translates into visual output.
 
 ### Introduction
 
@@ -528,8 +530,8 @@ scores = [
   ['me', 'Jan 28', 120000, 220],
   ['me', 'Feb 04', 80000,  260],
   ...
-  ['sam', 'Feb 07', 145000, 150],
-  ['sam', 'Feb 09', 80100,  170],
+  ['Sam', 'Feb 07', 145000, 150],
+  ['Sam', 'Feb 09', 80100,  170],
   ...
 ]
 {% endhighlight %}
@@ -799,7 +801,140 @@ If you are more comfortable with a `range()` style approach, that should work fi
 
 ## Dictionaries
 
-...
+Dictionaries can be though of as an extension to the Python list concept. Now that you understand lists, grasping dictionaries should be easy. With lists, each value corresponds to a number indicting its position. One can, therefore, describe them as *numerically indexed*. With dictionaries, each value is instead associated with a keyword. Dictionaries, therefore, are collections of *key-value pairs*.
+
+If you want to experiment with the dictionary code below, you can create a new "dictionary" sketch now. However, you may find that reading over the content is enough to grasp it. Then, you can begin coding again when you encounter the coffee chart task.
+
+### Creating New Dictionaries
+
+Whereas lists are defined within square brackets, dictionaries rely on `{` braces `}`. The code below contrasts a list and dictionary used to store an individual students details.
+
+{% highlight py %}
+# list
+studentlist = ['Sam', 24]
+
+# dictionary
+studentdict = {'name':'Sam', 'age':24}
+{% endhighlight %}
+
+Each dictionary value is preceded by a key (in quotes) with colon. Each key-value pair is separated by a comma. Just like lists, the values may comprise a mix of data types and can include other dictionaries or lists. Or, maybe it's a list-of-dictionaries that you need?
+
+{% highlight py %}
+# list of dictionaries
+students = [
+  {'name':'Sam', 'age':24},
+  {'name':'Lee', 'age':18}
+]
+{% endhighlight %}
+
+You may store as many key-value pairs as you like in a dictionary. How you structure them ............
+
+### Accessing Dictionaries
+
+To access a dictionary element, specify the key within square brackets.
+
+{% highlight py %}
+print( studentdict['name'] )  # displays Sam
+print( studentdict['age'] )   # displays 24
+print( students[1]['name'] )  # displays Lee
+{% endhighlight %}
+
+To print the entire dictionary, omit the square brackets and key altogether.
+
+{% highlight py %}
+print( studentdict )          # {'name': 'Sam', 'age': 24}
+{% endhighlight %}
+
+These code snippets have highlighted the syntactical differences between lists and dictionaries. Many list methods -- such as `append()`, `extend()`, `index()`, `insert()`, and `remove()` -- do not work on dictionaries. However, dictionaries include their own set of methods. Those below are will be utilised further into this lesson. Any decent Python reference should cover the rest.
+
+#### `.keys()`
+<dd markdown="1">
+The keys method will return a list of all the dictionary's keys.
+
+{% highlight py %}
+print( studentdict.keys() )   # ['name', 'age']
+{% endhighlight %}
+</dd>
+
+#### `.values()`
+<dd markdown="1">
+The values method will return a list of all the dictionary's values.
+
+{% highlight py %}
+print( studentdict.values() ) # ['Sam', 24]
+{% endhighlight %}
+</dd>
+
+#### `.items()`
+<dd markdown="1">
+The `.items()` method returns a a list of all key-value pairs.
+
+{% highlight py %}
+print( studentdict )          # {'name': 'Sam', 'age': 24}
+print( studentdict.items() )  # [('name', 'Sam'), ('age', 24)]
+{% endhighlight %}
+
+The `items()` output may resemble a reformatted version of the line above it, but it is useful for iterating dictionaries (as you will soon see). Be warned, though: this method may return values in a seemingly arbitrary order (not always the order they appeared in when the dictionary was defined). This has to do with how Python stores dictionaries, which is beyond the scope of these tutorials.
+</dd>
+
+The round brackets -- i.e. `('name', 'Sam')` -- denote a *tuple*. Tuple can be pronounced as "too-ple" or "tuh-ple", depending on which camp you intend to offend. Tuples are not covered in this lesson, but for now, you can consider them as interchangeable with lists. For example:
+
+{% highlight py %}
+items = studentdict.items()
+print( items[0] )             # ('name', 'Sam')
+print( items[0][0] )          # name
+{% endhighlight %}
+
+For more on tuples, refer to the Processing [reference](https://py.processing.org/reference/tuple.html).
+
+### Modifying Dictionaries
+
+Dictionaries are dynamic structures, and you can add and modify key-value pairs whenever you please. To modify an existing value, simply reassign it as you would a list element except using a key.
+
+{% highlight py %}
+studentdict['age'] = 25
+print( studentdict )          # {'name': 'Sam', 'age': 25}
+{% endhighlight %}
+
+To add a new key-value pair, follow the same process.
+
+{% highlight py %}
+studentdict['id'] = 19011501
+print( studentdict )
+# {'name': 'Sam', 'id': 19011501, 'age': 25}
+{% endhighlight %}
+
+To remove a key-value pair, use the `del` statement.
+
+{% highlight py %}
+del studentdict['age']
+print(studentdict)            # {'name': 'Sam', 'id': 19011501}
+{% endhighlight %}
+
+If you need to add one dictionary to another, refer to the [`update()`](https://py.processing.org/reference/dict_update.html) method.
+
+# Loops + Dictionaries
+
+
+
+
+
+<pre style="font-size: 0.6em !important;">
+coffees = [
+  { 'name':'cafe con leche','espresso':50, 'hotwater':0, 'steamedmilk':30,'foamedmilk':0  },
+  { 'name':'espresso',      'espresso':60, 'hotwater':0, 'steamedmilk':0, 'foamedmilk':0  },
+  { 'name':'demi-creme',    'espresso':40, 'hotwater':0, 'steamedmilk':40,'foamedmilk':0  },
+  { 'name':'americano',     'espresso':60, 'hotwater':30,'steamedmilk':0, 'foamedmilk':0  },
+  { 'name':'capucchino',    'espresso':40, 'hotwater':0, 'steamedmilk':30,'foamedmilk':30 },
+  { 'name':'latte',         'espresso':35, 'hotwater':0, 'steamedmilk':10,'foamedmilk':30 },
+  { 'name':'ristretto',     'espresso':30, 'hotwater':0, 'steamedmilk':0, 'foamedmilk':0  },
+  { 'name':'macchiato',     'espresso':40, 'hotwater':0, 'steamedmilk':0, 'foamedmilk':60 },
+  { 'name':'flat white',    'espresso':40, 'hotwater':0, 'steamedmilk':60,'foamedmilk':0  }
+]
+</pre>
+
+
+
 
 ## External Data
 

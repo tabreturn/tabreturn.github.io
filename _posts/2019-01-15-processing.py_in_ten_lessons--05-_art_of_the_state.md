@@ -9,13 +9,11 @@ published: false
 ***Covered in this lesson:***  
 <a href="#lists"><em>lists</em></a> /
 <a href="#dictionaries"><em>dictionaries</em></a> /
-<a href="#external-data"><em>external data</em></a> /
-<a href="#pixels"><em>pixels</em></a>
+<a href="#external-data"><em>external data</em></a>
 
 ---
 &nbsp;  
-This tutorial introduces Python *lists* and *dictionaries*. These datatypes will unlock powerful ways to manage and manipulate collections of elements, as opposed to individual values.
-Following a review of the basics, you'll look at visualising data, reading in values from external files, and generating your very own 'Photoshop' filters.
+This tutorial introduces Python *lists* and *dictionaries*. These datatypes will unlock powerful ways to manage and manipulate collections of elements as opposed to individual values. Following a review of the basics, you'll look at employing these techniques to visualise data, and reading in values from external files.
 
 ## Lists
 
@@ -116,7 +114,7 @@ rainbow[0] = 'red'
 print(rainbow)      # ['red', 'orange', 'yellow']
 {% endhighlight %}
 
-The Processing [reference](https://py.processing.org/reference/) includes a number of *List Methods*.  Correctly speaking, these are standard (as opposed to Processing.py) Python features, functional in any Python environment. What follows below are descriptions for several such methods along with code to add to your working sketch. Each example builds on the code before it, so you’ll need to work through all of them, entering each line as you progress.
+The Processing [reference](https://py.processing.org/reference/) includes a number of *List Methods*. Correctly speaking, these are standard (as opposed to Processing.py) Python features, functional in any Python environment. What follows below are descriptions for several such methods along with code to add to your working sketch. Each example builds on the code before it, so you’ll need to work through all of them, entering each line as you progress.
 
 #### `.append()`
 <dd markdown="1">
@@ -801,13 +799,13 @@ If you are more comfortable with a `range()` style approach, that should work fi
 
 ## Dictionaries
 
-Dictionaries can be though of as an extension to the Python list concept. Now that you understand lists, grasping dictionaries should be easy. With lists, each value corresponds to a number indicting its position. One can, therefore, describe them as *numerically indexed*. With dictionaries, each value is instead associated with a keyword. Dictionaries, therefore, are collections of *key-value pairs*.
+Dictionaries can be thought of as an extension to the Python list concept. Now that you understand lists, grasping dictionaries should be easy. In a list, each value corresponds to a number indicating its position. One can, therefore, describe them as *numerically indexed*. With dictionaries, each value is instead associated with a keyword. Dictionaries, therefore, are collections of *key-value pairs*.
 
-If you want to experiment with the dictionary code below, you can create a new "dictionary" sketch now. However, you may find that reading over the content is enough to grasp it. Then, you can begin coding again when you encounter the coffee chart task.
+If you want to experiment with the dictionary code that follows, you can create a new "dictionary" sketch now. However, you may find that reading over the content is enough to grasp it. Then, you can begin coding again when you encounter the coffee chart task.
 
 ### Creating New Dictionaries
 
-Whereas lists are defined within square brackets, dictionaries rely on `{` braces `}`. The code below contrasts a list and dictionary used to store an individual students details.
+Whereas lists are defined within square brackets, dictionaries rely on `{` braces `}`. The code below contrasts a list and dictionary used to store an individual student's details.
 
 {% highlight py %}
 # list
@@ -817,7 +815,9 @@ studentlist = ['Sam', 24]
 studentdict = {'name':'Sam', 'age':24}
 {% endhighlight %}
 
-Each dictionary value is preceded by a key (in quotes) with colon. Each key-value pair is separated by a comma. Just like lists, the values may comprise a mix of data types and can include other dictionaries or lists. Or, maybe it's a list-of-dictionaries that you need?
+Preceding each dictionary value is a key (in quotes) and a colon. Separating each key-value pair is a comma. You may store as many key-value pairs as you like in a dictionary.
+
+Just like lists, dictionary values may comprise a mix of data types and can even include other dictionaries or lists. Lists, too, can contain dictionaries.
 
 {% highlight py %}
 # list of dictionaries
@@ -827,11 +827,11 @@ students = [
 ]
 {% endhighlight %}
 
-You may store as many key-value pairs as you like in a dictionary. What you name your keys should help relate your data to real-world models.
+What you name your keys -- i.e. name and age -- and how you nest collections of elements should help relate your data to real-world models.
 
 ### Accessing Dictionaries
 
-To access a dictionary element, specify the key within square brackets.
+To access a dictionary item, specify a key within square brackets.
 
 {% highlight py %}
 print( studentdict['name'] )  # displays Sam
@@ -845,7 +845,7 @@ To print the entire dictionary, omit the square brackets and key, leaving just t
 print( studentdict )          # {'name': 'Sam', 'age': 24}
 {% endhighlight %}
 
-These code snippets have highlighted the syntactical differences between lists and dictionaries. However, dictionaries also include their own set of methods. Many list methods -- such as `append()`, `extend()`, `index()`, `insert()`, and `remove()` -- will not work on dictionaries. Here a few we will be using in this lesson. Any decent Python reference should cover the rest.
+These code snippets highlight the syntactical differences between lists and dictionaries. Dictionaries also possess their own set of methods. Many list methods -- such as `append()`, `extend()`, `index()`, `insert()`, and `remove()` -- will not work on dictionaries. There are few important dictionary methods you will need in this lesson -- these are covered below. For other methods, refer to any decent Python reference.
 
 #### `.keys()`
 <dd markdown="1">
@@ -867,14 +867,14 @@ print( studentdict.values() ) # ['Sam', 24]
 
 #### `.items()`
 <dd markdown="1">
-The `.items()` method returns a list of all the key-value pairs.
+The `.items()` method returns a list of all the dictionary's key-value pairs.
 
 {% highlight py %}
 print( studentdict )          # {'name': 'Sam', 'age': 24}
 print( studentdict.items() )  # [('name', 'Sam'), ('age', 24)]
 {% endhighlight %}
 
-The `items()` output resembles a reformatted version of the line above it, but it is useful for iterating dictionaries (as you will soon see). Be warned, though: this method may return values in a seemingly arbitrary order, i.e not always the order in which they appeared when defining the dictionary. This has to do with how Python stores dictionaries (a topic beyond the scope of these tutorials).
+The `items()` output resembles the line above it, except reformatted with some square- and round brackets; this has its advantages and is especially useful for iterating dictionaries (as you will soon see). Be warned, though: this method may return values in a seemingly arbitrary order, i.e. not always the order in which they appeared when defining the dictionary. This has to do with how Python stores dictionaries (a topic beyond the scope of these tutorials).
 </dd>
 
 The round brackets -- i.e. `('name', 'Sam')` -- denote a *tuple*. Tuple can be pronounced as "too-ple" or "tuh-ple" depending on who you want to annoy. Tuples are not covered in this lesson, but for now, consider them as interchangeable with lists. For example:
@@ -885,11 +885,11 @@ print( items[0] )             # ('name', 'Sam')
 print( items[0][0] )          # name
 {% endhighlight %}
 
-In a nutshell, tuples are lists that, once defined, can never be modified. For more information, refer to the Processing [reference](https://py.processing.org/reference/tuple.html).
+Note how tuple elements are also numerically indexed, and how the same square bracket syntax is used to retrieve values. In a nutshell, the key difference is that, once defined, tuples are lists that cannot be modified. For more information, refer to the Processing [reference](https://py.processing.org/reference/tuple.html).
 
 ### Modifying Dictionaries
 
-Dictionaries are dynamic structures, so you can add and modify key-value pairs whenever you please. To modify an existing value, simply reassign it as you would a list element. Of course, you will be using a key instead of a numeric index.
+Dictionaries are dynamic structures, so you can add and modify key-value pairs whenever you please. To change an existing value, simply reassign it as you would a list element. Of course, you will be using a key name as opposed to a numeric index.
 
 {% highlight py %}
 studentdict['age'] = 25
@@ -913,20 +913,18 @@ print(studentdict)
 # {'name': 'Sam', 'id': 19011501}
 {% endhighlight %}
 
-If you need to add one dictionary to another, refer to the [`update()`](https://py.processing.org/reference/dict_update.html) method.
+If you need to add/combine one dictionary with another, refer to the [`update()`](https://py.processing.org/reference/dict_update.html) method.
 
 ### Loops + Dictionaries
 
-As with lists, Pythons can loop through dictionaries. Considering that a dictionary can hold thousands or even millions of key-value pairs, this is a powerful feature. Because of the key-value system, iterating dictionaries is a little different, and this is where the `keys()`, `values()`, and `items()` methods prove handy.
-
-Firstly, let's print the dictionary to confirm what we are dealing with:
+As with lists, there are many scenarios where you will want to loop through dictionaries. Considering that a dictionary can hold thousands or even millions of key-value pairs, this is a powerful feature. Because of the key-value system, though, iterating dictionaries is a little different than lists. You can iterate a dictionary's keys, iterate its values, or iterate its key-value pairs. This is where the `keys()`, `values()`, and `items()` methods prove particularly handy. We will explore an example of each approach. First, let's print `studentdict` to see what we are dealing with:
 
 {% highlight py %}
 print(studentdict)
 # {'name': 'Sam', 'id': 19011501}
 {% endhighlight %}
 
-Now, for a loop. Because the `keys()` method returns a list, it can be iterated like any other list. Of course, each iteration retrieves a key name.
+Because the `keys()` method returns a list, you can iterate it like any other list.
 
 {% highlight py %}
 for k in studentdict.keys():
@@ -935,11 +933,29 @@ for k in studentdict.keys():
 
 <figure>
   <img src="{{ site.url }}/img/pitl05/dictionaries-loop-keys.png" class="fullwidth" />
+  <figcaption>The Console displays:<br />
+    <code>name<br />id</code>
+  </figcaption>
 </figure>
 
-On the first iteration, the `print` line displays the value of `studentdict.keys()[0]`, followed by `studentdict.keys()[1]` on the second iteration -- that is "name" and "id" respectively.
+On the first iteration, the `print` line displays the value of `studentdict.keys()[0]`, and on the second iteration, `studentdict.keys()[1]`. This is confirmed in the Console, which displays "name" then "id". Iterating keys is the default loop behaviour, though. If you omit the `keys()` method, the result is the same.
 
-...
+{% highlight py %}
+#for k in studentdict.keys():
+for k in studentdict:
+    print(k)
+{% endhighlight %}
+
+<figure>
+  <img src="{{ site.url }}/img/pitl05/dictionaries-loop-keys-methodless.png" class="fullwidth" />
+  <figcaption>The Console displays:<br />
+    <code>name<br />id</code>
+  </figcaption>
+</figure>
+
+If you prefer a more explicit coding style, stick with the `keys()` method.
+
+The `values()` method can be used similarly to the `keys()`. Of course, this returns just the element values.
 
 {% highlight py %}
 for v in studentdict.values():
@@ -948,25 +964,86 @@ for v in studentdict.values():
 
 <figure>
   <img src="{{ site.url }}/img/pitl05/dictionaries-loop-values.png" class="fullwidth" />
+  <figcaption>The Console displays:<br />
+    <code>Sam<br />19011501</code>
+  </figcaption>
 </figure>
 
-...
+If you need to retrieve keys and values, use the `items()` method. In the example below, the loop prints a tuple holding the current iteration's key-value pair. Because the `items()` method returns both a key and value, you must provide two variable names (between the `for` and the `in` of the statement). You may name these whatever you like, but the order of assignment is always: key first, value second.
 
+{% highlight py %}
+for k,v in studentdict.items():
+    print(k,v)
+{% endhighlight %}
 
 <figure>
   <img src="{{ site.url }}/img/pitl05/dictionaries-loop-items.png" class="fullwidth" />
+  <figcaption>The Console displays:<br />
+    <code>('name', 'Sam')<br />('id', '19011501')</code>
+  </figcaption>
 </figure>
 
+If you want the loop to retrieve the keys in alphanumerical order, use the `sorted()` function.
 
+{% highlight py %}
+for k,v in sorted( studentdict.items() ):
+    print(k,v)
+# prints:
+# ('id', 19011501)
+# ('name', 'Sam')
+{% endhighlight %}
 
-
-
-
+Now, the "id" tuple appears first in the Console (before "name"). The `sorted()` accepts additional arguments (such as reverse ordering). The Processing [reference](https://py.processing.org/reference/sorted.html) includes more information on the `sorted()` function.
 
 ## Coffee Chart Task
 
+In this task, you will combine dictionaries, a list, and a loop. The result is a chart illustrating different [styles of coffee](https://realcoffee.co.nz/wp-content/uploads/2016/05/Fotolia_109706822_Subscription_Monthly_M.jpg) -- that is, the amount of espresso, hot-water, steamed-milk, and foamed-milk that comprise each type.
 
-<pre style="font-size: 0.6em !important;">
+Create a new sketch and save it as "coffee_chart". Add the following setup code:
+
+{% highlight py %}
+size(800,800)
+background('#004477')
+
+mug = 110
+col = 1
+row = 1
+coffees = [
+  'cafe con leche', 'espresso', 'demi-creme',
+  'americano', 'capucchino', 'latte',
+  'ristretto', 'macchiato', 'flat white'
+]
+
+for coffee in coffees:
+    x = width/4*col
+    y = height/4*row
+
+    # mug
+    stroke('#FFFFFF')
+    strokeWeight(4)
+    noFill()
+    arc(x+55,y, 40, 40, -HALF_PI, HALF_PI)
+    arc(x+55,y, 65, 65, -HALF_PI, HALF_PI)
+    rect(x-mug/2,y-mug/2, mug,mug)
+
+    if col%3 == 0:
+        row += 1
+        col = 1
+    else:
+        col += 1
+{% endhighlight %}
+
+Run the sketch. Nine empty mugs are rendered.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl05/coffee-chart-empty-mugs.png" />
+</figure>
+
+At this point, the `coffees` variable is nothing more than a list of names. Replace this with the list of dictionaries below. It is easiest to copy and paste it over the existing `coffees` list.
+
+<pre style="font-size: 0.6em !important">
+...
+row = 1
 coffees = [
   { 'name':'cafe con leche','espresso':50, 'hotwater':0, 'steamedmilk':30,'foamedmilk':0  },
   { 'name':'espresso',      'espresso':60, 'hotwater':0, 'steamedmilk':0, 'foamedmilk':0  },
@@ -978,22 +1055,44 @@ coffees = [
   { 'name':'macchiato',     'espresso':40, 'hotwater':0, 'steamedmilk':0, 'foamedmilk':60 },
   { 'name':'flat white',    'espresso':40, 'hotwater':0, 'steamedmilk':60,'foamedmilk':0  }
 ]
+
 </pre>
 
+The challenge is to add a label beneath each mug and to fill it using the relevant proportions of ingredients. The finished result looks like this:
 
+<figure>
+  <img src="{{ site.url }}/img/pitl05/coffee-chart-complete.png" />
+  <figcaption>
+    <span style="color:#322; text-shadow:1px 1px 1px #000">&#9632;</span> espresso &nbsp;
+    <span style="color:#09F; text-shadow:1px 1px 1px #000">&#9632;</span> hot-water &nbsp;
+    <span style="color:#FFF; text-shadow:1px 1px 1px #000">&#9632;</span> steamed-milk &nbsp;
+    <span style="color:#DDD; text-shadow:1px 1px 1px #000">&#9632;</span> foamed-milk
+  </figcaption>
+</figure>
 
+This code can easily be adapted to include a chart of twenty coffee mugs. However, the process of having to format the data using Python syntax, then copy-paste it in, can be optimised. In the next section, you will look at how Python can read in data from external files.
 
 ## External Data
 
-...
+You have already utilised external data in the form of images in your Processing sketches. Python -- and by extension, Processing -- is able to handle many types of files. You could create a game using Processing that incorporates various audio and video files, storing the multimedia files in your sketch's "data" directory. For now, though, we will look at text-based data in external files.
 
-## Pixels
+<sup markdown="1">Processing is **not** that great for developing games. There are plenty of better options out there. [LÖVE](https://love2d.org/) is a neat little 2D-engine programmed in a language called Lua. For something Python-based, you could try [Pygame](https://www.pygame.org/news).</sup>
 
-...
+A file format is a standardised means of storing a information on a digital storage medium. There are many formats, each designed to be interpreted differently. For example, applications are stored in executable formats, such as APK for Android or EXE for Windows. Then, there are multimedia formats, like MP3 for music or JPG for images. You can identify a file's format by its file extension. Frustratingly, many operating systems hide file extensions -- but, if you dig around in the settings you get them show in your file manager. File extensions are: (most often) three letters in length; always preceded by a full-stop/period; tacked onto the end of a file name. In the screenshot below, the file extensions have been revealed -- there are three files: an audio (`.mp3`), plain text (`.txt`) and image (`.jpg`) file.
 
+<figure>
+    <img src="{{ site.url }}/img/pitl05/data-file-extensions.png" class="fullwidth" />
+</figure>
 
+Your file manager uses file extensions to open files with an appropriate app, and also to generate appropriate icons. If you remove or rename a file extension, this association is lost. You may have tried to open an MP3 (or JPG) file in a text editor? If so, you'll know that all you get is a bunch of garbled text:
 
+<figure>
+    <img src="{{ site.url }}/img/pitl05/data-file-extensions-garbled.png" class="fullwidth" />
+</figure>
 
+The audio data has been interpreted as text, and while you might spot some intelligible metadata in there somewhere, it's 99% gobbledygook. But, open that same file in iTunes, Windows Media Player, or VLC, and you hear music.
+
+Some file formats are text-based. This means that you can open them in any text (or code) editor. To clarify: by text-based, I mean plain text -- like, not a Word document. "Plain" as is no bold, italic, varied fonts, etc. If you have written HTML before, you know what I'm talking about. So -- you may wonder -- what is plain text good for? Well, shopping lists ... and XML, CSV, JSON, and programming code, among other things. In fact, Processing files are plain text, albeit with a `.pyde` extension.
 
 
 ## Lesson 06

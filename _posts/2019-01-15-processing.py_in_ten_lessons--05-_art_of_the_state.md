@@ -719,7 +719,7 @@ for i in range(len(bands)):
   <figcaption>Completed graph, with labels.</figcaption>
 </figure>
 
-Many lists work just fine with a single dimension -- take, for example, a shopping list. You can think of a two-dimensional list as a grid or table. This makes them useful for plotting 2D graphics. Three- and other higher-dimensional arrays have their place, but before employing such a structure, consider whether adding another position to your 2D array may be more sensible.
+Many lists work just fine with a single dimension -- take, for instance, a shopping list. You can think of a two-dimensional list as a grid or table. This makes them useful for plotting 2D graphics. Three- and other higher-dimensional arrays have their place, but before employing such a structure, consider whether adding another position to your 2D array may be more sensible.
 
 ### Breakout Task
 
@@ -1106,14 +1106,14 @@ As an example, you wish to share your favourite music playlist on your blog. Man
   <title>Pink Floyd Playlist</title>
   <trackList>
     <track>
-      <location>file:///___/SpeakToMe.mp3</location>
+      <location>file:///music/SpeakToMe.mp3</location>
       <title>Speak to Me</title>
       <creator>Pink Floyd</creator>
       <album>The Dark Side of the Moon</album>
       <trackNum>1</trackNum>
     </track>
     <track>
-      <location>file:///___/Breathe.mp3</location>
+      <location>file:///music/Breathe.mp3</location>
       <title>Breathe</title>
       <creator>Pink Floyd</creator>
       <album>The Dark Side of the Moon</album>
@@ -1134,14 +1134,14 @@ Alternatively, you could elect to use *JavaScript Object Notation*. JSON files a
     "title"    : "Pink Floyd Playlist",
     "track"    : [
       {
-        "location"    : ["file:///___/SpeakToMe.mp3"],
+        "location"    : ["file:///music/SpeakToMe.mp3"],
         "title"       : "Speak to Me",
         "creator"     : "Pink Floyd",
         "album"       : "The Dark Side of the Moon"
         "trackNum"    : "1"
       },
       {
-        "location"    : ["file:///___/Breathe.mp3"],
+        "location"    : ["file:///music/Breathe.mp3"],
         "title"       : "Breathe",
         "creator"     : "Pink Floyd",
         "album"       : "The Dark Side of the Moon"
@@ -1153,13 +1153,13 @@ Alternatively, you could elect to use *JavaScript Object Notation*. JSON files a
 
 XML and JSON are excellent formats for exchanging information between applications. Unsurprisingly, many programming languages (including Python) provide libraries for generating and parsing XML and JSON files.
 
-To keep things simple, we will look at reading in data from another format: CSV. *Comma-Separated Value* files are, perhaps, the simplest means of formatting plain-text data. The file extension is -- yup, you guessed it -- `.csv`. Each line of a CSV file is a data entry. Each entry consists of one or more fields, separated by commas. Here is the same abridged playlist in CSV format:
+To keep things simple, we will look at reading in data from another format: CSV. *Comma-Separated Value* files are, perhaps, the simplest means of formatting plain-text data. Because of CSV's simplicity, and the uncomplicated playlist data, we can avoid library. The file extension is -- yup, you guessed it -- `.csv`. Each line of a CSV file is a data entry. Each entry consists of one or more fields, separated by commas. Here is the same abridged playlist in CSV format:
 
 <div style="font-size: 0.7em; line-height: 2em" markdown="1">
 {% highlight csv %}
-location,title,creator,album,tracNum
-file:///___/SpeakToMe.mp3,Speak to Me,Pink Floyd,The Dark Side of the Moon,1
-file:///___/Breathe.mp3,Breathe,Pink Floyd,The Dark Side of the Moon,2
+location,title,creator,album,trackNum
+file:///music/SpeakToMe.mp3,Speak to Me,Pink Floyd,The Dark Side of the Moon,1
+file:///music/Breathe.mp3,Breathe,Pink Floyd,The Dark Side of the Moon,2
 ...
 {% endhighlight %}
 </div>
@@ -1171,7 +1171,7 @@ The first line of the file contains the field headings. Lines two and three prov
     <figcaption>Opening the playlist.csv file in LibreOffice Calc.</figcaption>
 </figure>
 
-However, CSV files do not always rely on a comma to delimit each field. For example, tab and space-separated values are common, too. To read in text text-based files, Processing uses a `loadStrings()` function
+However, CSV files do not always rely on a comma to delimit each field. For instance, tab and space-separated values are common, too. To read in text text-based files, Processing uses a `loadStrings()` function
 
 If you want to experiment with the CSV code that follows, you can create a new "csv" sketch now. However, you may find that reading over the content is enough to grasp it. Then, you can begin coding again when you encounter the game sales chart task.
 
@@ -1234,11 +1234,26 @@ for l in lines:
     <img src="{{ site.url }}/img/pitl05/data-csv-split-index.png" class="fullwidth" />
 </figure>
 
-You will find that many
-You may also wish to store data using one of these formats.
+CSV, JSON, and XML each have their strengths and weaknesses. The beauty of CSV lies in its simplicity, but it does not support hierarchically-structured data. XML is an established, widely-supported, and flexible data exchange format, but it can turn out overly-complex and bloated at times. JSON is somewhat of a middle-ground, with a syntax thats more compact than XML; it is also very popular on the Web. You should weigh up the relative merits of each when considering what is best for your project.
 
 ### Game Sales Chart
 
+In this final challenge, you will generate a bar chart of the best selling games of all time.
+
+The list has been sourced from a [Wikipedia article](https://en.wikipedia.org/wiki/List_of_best-selling_video_games), and converted from an HTML table to a tab-delimited CSV file.
+
+<a href="{{ site.url }}/img/pitl05/list_of_best-selling_video_games.csv" download>list_of_best-selling_video_games.csv</a>
+
+I opted for tab-separated fields, in case the data contained commas. For instance, if
+
+<div style="font-size: 0.7em; line-height: 2em" markdown="1">
+{% highlight csv %}
+Rank 	Sales 	Title 	Developer 	Publisher
+1 	170000000 	Tetris 	Elektronorgtechnica 	Spectrum HoloByte
+2 	144000000 	Minecraft  	Mojang 	Mojang
+...
+{% endhighlight %}
+</div>
 
 int()
 
@@ -1248,14 +1263,13 @@ int()
 
 That's it for lesson 05! While it's to pickup lists and dictionaries, I know that combining them with loops is a little tricker to grasp, but well worth the effort considering how powerful it is. The next lesson is not really a 'lesson', per se -- more like some bonus content. You will look at reading values off pixels and creating your very own Photoshop-esque filters. It will be far shorter in length, with a higher proportion of code to copy-paste and adapt. For now, though, take a break -- you deserve it!
 
-http://setosa.io/ev/image-kernels/
-
 **Begin lesson 06:** Art of the State *(coming soon)*
 
 [Complete list of Processing lessons]({{ site.baseurl }}/#processing)
 
 ## References
 
+* https://en.wikipedia.org/wiki/List_of_best-selling_video_games
 * http://isabelmeirelles.com/book-design-for-information/
 * http://lgames.sourceforge.net/
 * https://py.processing.org/reference/

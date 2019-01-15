@@ -248,7 +248,7 @@ Of course, this all depends on the logic you intend to implement.
 
 #### Logical Operators
 
-Thus far, each of the `if`/`elif` statements have been based on the outcome of a single relational operation; for example:  
+Thus far, each of the `if`/`elif` statements have been based on the outcome of a single relational operation; for instance:  
 *is the mark greater-than-or-equal-to fifty?*
 
 However, there are many occasions where multiple relational operations must be evaluated within a single condition; for example:  
@@ -641,7 +641,7 @@ After successfully completing this, you should have a decent grasp of loops.
 
 The best a computer can do is simulate randomness. Think about this for a moment: if you request a random number from a computer, it will need to run some non-random set of instructions to pull a value. That said, computers can manage a pretty good job of this, relying on algorithms that generate *pseudorandom* numbers whose sequential appearance is statistically similar enough to a truly random sequence. This is okay for shuffling through your music collection, but best avoided for gambling and security applications.
 
-For 'true' random numbers, computers can rely on things like key-stroke timings. For example, you may have pressed your last key 0.654 milliseconds past the tick of the previous second. In the quest for true randomness, researchers have relied on everything from dice to roulette wheels, and between the mid-1920s and 50s one could even purchase special books full of random numbers. If you are really serious about plucking random numbers from the universe, there are hardware devices that rely on various quantum phenomena, like [radioactive decay](https://www.youtube.com/watch?v=SxP30euw3-0). However, for most applications, pseudorandomness will suffice.
+For 'true' random numbers, computers can rely on things like key-stroke timings. For instance, you may have pressed your last key 0.654 milliseconds past the tick of the previous second. In the quest for true randomness, researchers have relied on everything from dice to roulette wheels, and between the mid-1920s and 50s one could even purchase special books full of random numbers. If you are really serious about plucking random numbers from the universe, there are hardware devices that rely on various quantum phenomena, like [radioactive decay](https://www.youtube.com/watch?v=SxP30euw3-0). However, for most applications, pseudorandomness will suffice.
 
 So, what do random sequences look like? First, consider *Perlin noise*. In 1983, Ken Perlin developed an algorithm for synthesising organic textures and forms -- like terrains, fire, smoke, and clouds. The graphs below plot random points (vertical axis) over fixed intervals of time (horizontal axis). The upper line represents a sequence of 'purely' random points, whereas the lower line charts values generated with Perlin noise. From this, you can visually appreciate why the 'smoother' Perlin noise is better suited for generating something like a mountain range.
 

@@ -1518,7 +1518,7 @@ print(HALF_PI)
 print(QUARTER_PI)
 {% endhighlight %}
 
-These will prove handy for programming your clock. For example, rather than entering `PI/2` each time you want to rotate something 90 degrees, you can instead use `HALF_PI`. Regarding `TAU` ... well, there is this big, nerdy mathematician war raging over whether it is better to use pi or *tau*. Basically, π represents only *half* a circle in radians, so 2π tends to spring up in formulae all over the place, i.e. there are 2π radians in a circle. In 2001 it was proposed that a new constant be devised to represent a *full* circle; in 2010 it was decided that this value would be represented using the tau symbol (τ). The table below represents equivalent expressions using `TAU` and `PI` constants, additionally listing their approximate decimal values:
+These will prove handy for programming your clock. For instance, rather than entering `PI/2` each time you want to rotate something 90 degrees, you can instead use `HALF_PI`. Regarding `TAU` ... well, there is this big, nerdy mathematician war raging over whether it is better to use pi or *tau*. Basically, π represents only *half* a circle in radians, so 2π tends to spring up in formulae all over the place, i.e. there are 2π radians in a circle. In 2001 it was proposed that a new constant be devised to represent a *full* circle; in 2010 it was decided that this value would be represented using the tau symbol (τ). The table below represents equivalent expressions using `TAU` and `PI` constants, additionally listing their approximate decimal values:
 
 | `TAU`   | ` `=` ` | `TWO_PI`     | ` `=` ` | 6.284 |
 | `TAU/2` | ` `=` ` | `PI`         | ` `=` ` | 3.142 |

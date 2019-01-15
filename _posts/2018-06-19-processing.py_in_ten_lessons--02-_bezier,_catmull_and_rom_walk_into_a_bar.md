@@ -227,7 +227,7 @@ You can also develop your Bézier skills using [Inkscape](https://inkscape.org/)
 
 ## Vertices
 
-You can think of vertices as the dots in a connect-the-dots style drawing puzzle. A triangle requires three vertices; a pentagon, five; a five-pointed star (★), ten; and so forth. By connecting vertices using lines and curves, the shape possibilities become limitless. A *vertex* (singular) is not limited to two-dimensional space -- for example, Blender's Suzanne (a monkey head) has around five-hundred vertices positioned in 3D space.
+You can think of vertices as the dots in a connect-the-dots style drawing puzzle. A triangle requires three vertices; a pentagon, five; a five-pointed star (★), ten; and so forth. By connecting vertices using lines and curves, the shape possibilities become limitless. A *vertex* (singular) is not limited to two-dimensional space -- for instance, Blender's Suzanne (a monkey head) has around five-hundred vertices positioned in 3D space.
 
 <figure>
   <img src="{{ site.url }}/img/pitl02/vertices-blender.png" class="fullwidth" />
@@ -744,7 +744,7 @@ Monospaced fonts may also be serifed, but what defines them is how each characte
 mmm  
 iii
 
-That said, monospace fonts are more legible in certain situations -- for example, when it is helpful to have characters line-up in columns:
+That said, monospace fonts are more legible in certain situations -- for instance, when it is helpful to have characters line-up in columns:
 
 *monospaced*  
 `sam | jan | amy | tim`  

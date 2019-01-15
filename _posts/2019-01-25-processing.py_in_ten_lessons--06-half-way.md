@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title: "Processing.py in Ten Lessons -- Mid Course Break"
+title: "Processing.py in Ten Lessons -- 06: Half Way"
 categories: code processing python
 published: false
 ---

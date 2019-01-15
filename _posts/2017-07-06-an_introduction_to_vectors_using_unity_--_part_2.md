@@ -23,7 +23,7 @@ Normalizing vectors works on a similar principle: the length/magnitude of the ve
   <figcaption>With a magnitude of 1 (5 &#247; 5), the x side is equal to 0.8 (4 &#247; 5), and the y side is equal to 0.6 (3 &#247; 5).</figcaption>
 </figure>
 
-The result is referred to as a *unit vector*. Unit vectors are notated using a circumflex -- for example unit vector **u** would be written as **&#251;**.
+The result is referred to as a *unit vector*. Unit vectors are notated using a circumflex -- for instance unit vector **u** would be written as **&#251;**.
 
 ### Normalizing Nyan Cat's Key Input
 
@@ -162,7 +162,7 @@ Remove the `Debug.Log` line in the "Vectors" script now that it is no longer nec
 
 ## Acceleration
 
-The `velocity` represents the sum total of the all vectors acting on Nyan Cat. With each iteration of the `Update` function, it is recalculated and added to the cosmic feline's previous location. No matter how many forces are included, the same principle applies. Consider, for example, a scenario with additional updrafts, thrusters, propellers, and afterburners:
+The `velocity` represents the sum total of the all vectors acting on Nyan Cat. With each iteration of the `Update` function, it is recalculated and added to the cosmic feline's previous location. No matter how many forces are included, the same principle applies. Consider, for instance, a scenario with additional updrafts, thrusters, propellers, and afterburners:
 
 {% highlight js %}
   ...

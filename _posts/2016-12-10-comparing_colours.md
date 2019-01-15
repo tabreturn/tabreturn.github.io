@@ -129,7 +129,7 @@ The correct answer is ... the right swatch. Although both swatches contain no re
 
 ### Delta E
 
-Delta E (or *ΔE*, or *dE*) is the measure of change in *visual perception*. The earliest Delta E formula was simply a Euclidean distance calculation. However, the *Commission Internationale de l'Éclairage* (CIE) has extended upon and refined it (numerous times) to improve accuracy. For example: the RGB colour space is not perceptually uniform, so the Euclidean distance formula changes from:
+Delta E (or *ΔE*, or *dE*) is the measure of change in *visual perception*. The earliest Delta E formula was simply a Euclidean distance calculation. However, the *Commission Internationale de l'Éclairage* (CIE) has extended upon and refined it (numerous times) to improve accuracy. For instance: the RGB colour space is not perceptually uniform, so the Euclidean distance formula changes from:
 
 `SQRT( R^2 + G^2 + B^2 )`  
 to:  

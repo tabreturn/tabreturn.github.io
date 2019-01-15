@@ -1041,7 +1041,8 @@ Run the sketch. Nine empty mugs are rendered.
 
 At this point, the `coffees` variable is nothing more than a list of names. Replace this with the list of dictionaries below. It is easiest to copy and paste it over the existing `coffees` list.
 
-<pre style="font-size: 0.6em !important">
+<div style="font-size: 0.7em; line-height: 2em" markdown="1">
+{% highlight py %}
 ...
 row = 1
 coffees = [
@@ -1055,8 +1056,9 @@ coffees = [
   { 'name':'macchiato',     'espresso':40, 'hotwater':0, 'steamedmilk':0, 'foamedmilk':60 },
   { 'name':'flat white',    'espresso':40, 'hotwater':0, 'steamedmilk':60,'foamedmilk':0  }
 ]
-
-</pre>
+...
+{% endhighlight %}
+</div>
 
 The challenge is to add a label beneath each mug and to fill it using the relevant proportions of ingredients. The finished result looks like this:
 
@@ -1078,28 +1080,175 @@ You have already utilised external data in the form of images in your Processing
 
 <sup markdown="1">Processing is **not** that great for developing games. There are plenty of better options out there. [LÖVE](https://love2d.org/) is a neat little 2D-engine programmed in a language called Lua. For something Python-based, you could try [Pygame](https://www.pygame.org/news).</sup>
 
-A file format is a standardised means of storing a information on a digital storage medium. There are many formats, each designed to be interpreted differently. For example, applications are stored in executable formats, such as APK for Android or EXE for Windows. Then, there are multimedia formats, like MP3 for music or JPG for images. You can identify a file's format by its file extension. Frustratingly, many operating systems hide file extensions -- but, if you dig around in the settings you get them show in your file manager. File extensions are: (most often) three letters in length; always preceded by a full-stop/period; tacked onto the end of a file name. In the screenshot below, the file extensions have been revealed -- there are three files: an audio (`.mp3`), plain text (`.txt`) and image (`.jpg`) file.
+A file format is a standardised means of storing a information on a digital storage medium. There are many formats, each designed to be interpreted differently. For example, applications are stored in executable formats, such as APK for Android or EXE for Windows. Then, there are multimedia formats, like MP3 for music or JPG for images. You can identify a file's format by its file extension. Frustratingly, many operating systems hide file extensions -- but, if you dig around in your [Windows](https://support.microsoft.com/en-nz/help/4479981/windows-10-common-file-name-extensions) or Mac Finder settings, you can get them to show in your file manager. File extensions are: (most often) three letters in length; always preceded by a full-stop/period; tacked onto the end of a file name. In the screenshot below, the file extensions have been revealed -- there are three files: an audio (`.mp3`), plain text (`.txt`) and image (`.jpg`) file.
 
 <figure>
-    <img src="{{ site.url }}/img/pitl05/data-file-extensions.png" class="fullwidth" />
+    <img src="{{ site.url }}/img/pitl05/data-file-extensions.png" />
 </figure>
 
-Your file manager uses file extensions to open files with an appropriate app, and also to generate appropriate icons. If you remove or rename a file extension, this association is lost. You may have tried to open an MP3 (or JPG) file in a text editor? If so, you'll know that all you get is a bunch of garbled text:
+Your file manager uses file extensions to open files with an appropriate app, and also to generate appropriate icons. If you remove or rename a file extension, this association is lost. You may have tried to open an MP3 (or JPG) file in a text editor? If so, you'll know that all you get is a bunch of garbled characters:
 
 <figure>
     <img src="{{ site.url }}/img/pitl05/data-file-extensions-garbled.png" class="fullwidth" />
+    <figcaption>An MP3 file opened with a code editor (Atom).</figcaption>
 </figure>
 
-The audio data has been interpreted as text, and while you might spot some intelligible metadata in there somewhere, it's 99% gobbledygook. But, open that same file in iTunes, Windows Media Player, or VLC, and you hear music.
+The audio data has been interpreted as text, and while you might spot some intelligible metadata in there somewhere, it's 99% gobbledygook. Yet, if you open that same file in iTunes, Windows Media Player, or VLC, and you hear music.
 
-Some file formats are text-based. This means that you can open them in any text (or code) editor. To clarify: by text-based, I mean plain text -- like, not a Word document. "Plain" as is no bold, italic, varied fonts, etc. If you have written HTML before, you know what I'm talking about. So -- you may wonder -- what is plain text good for? Well, shopping lists ... and XML, CSV, JSON, and programming code, among other things. In fact, Processing files are plain text, albeit with a `.pyde` extension.
+Some file formats are text-based. This means that you can open them in any text (or code) editor and make some sense of the content. To clarify: by text-based, I mean plain text -- like, not a Word document. "Plain" is no bold, italic, varied fonts, etc. If you have written HTML before, you know what I'm talking about. So -- you may wonder -- what is plain text good for? Well, shopping lists ... and HTML, XML, CSV, JSON, and programming code, among other things. In fact, Processing files are plain text, albeit with a `.pyde` extension.
+
+As an example, you wish to share your favourite music playlist on your blog. Many players provide an 'export to XML' feature. XML (eXtensible Markup Language) files are named with a `.xml` extension. To give an idea of what this generates, here is a snippet of XML code:
+
+<div style="font-size: 0.7em; line-height: 2em" markdown="1">
+{% highlight xml %}
+<?xml version="1.0" encoding="UTF-8"?>
+<playlist version="1" xmlns="http://xspf.org/ns/0/">
+  <title>Pink Floyd Playlist</title>
+  <trackList>
+    <track>
+      <location>file:///___/SpeakToMe.mp3</location>
+      <title>Speak to Me</title>
+      <creator>Pink Floyd</creator>
+      <album>The Dark Side of the Moon</album>
+      <trackNum>1</trackNum>
+    </track>
+    <track>
+      <location>file:///___/Breathe.mp3</location>
+      <title>Breathe</title>
+      <creator>Pink Floyd</creator>
+      <album>The Dark Side of the Moon</album>
+      <trackNum>2</trackNum>
+    </track>
+    ...
+{% endhighlight %}
+</div>
+
+It is not important to master XML for this lesson -- but, although you may never have written or viewed any XML before, you can likely make some sense of the contents? The details of each track are contained within an opening and closing pair of track tags (`<track>...</track>`). Without getting into the technical details, it is relatively easy to parse this content using JavaScript so that it displays in a webpage (your blog).
+
+Alternatively, you could elect to use *JavaScript Object Notation*. JSON files are named with a `.json` extension.  as it is commonly referred to, closely resembles Python's dictionary syntax:
+
+<div style="font-size: 0.7em; line-height: 2em" markdown="1">
+{% highlight json %}
+{
+  "playlist" : {
+    "title"    : "Pink Floyd Playlist",
+    "track"    : [
+      {
+        "location"    : ["file:///___/SpeakToMe.mp3"],
+        "title"       : "Speak to Me",
+        "creator"     : "Pink Floyd",
+        "album"       : "The Dark Side of the Moon"
+        "trackNum"    : "1"
+      },
+      {
+        "location"    : ["file:///___/Breathe.mp3"],
+        "title"       : "Breathe",
+        "creator"     : "Pink Floyd",
+        "album"       : "The Dark Side of the Moon"
+        "trackNum"    : "2"
+      },
+      ...
+{% endhighlight %}
+</div>
+
+XML and JSON are excellent formats for exchanging information between applications. Unsurprisingly, many programming languages (including Python) provide libraries for generating and parsing XML and JSON files.
+
+To keep things simple, we will look at reading in data from another format: CSV. *Comma-Separated Value* files are, perhaps, the simplest means of formatting plain-text data. The file extension is -- yup, you guessed it -- `.csv`. Each line of a CSV file is a data entry. Each entry consists of one or more fields, separated by commas. Here is the same abridged playlist in CSV format:
+
+<div style="font-size: 0.7em; line-height: 2em" markdown="1">
+{% highlight csv %}
+location,title,creator,album,tracNum
+file:///___/SpeakToMe.mp3,Speak to Me,Pink Floyd,The Dark Side of the Moon,1
+file:///___/Breathe.mp3,Breathe,Pink Floyd,The Dark Side of the Moon,2
+...
+{% endhighlight %}
+</div>
+
+The first line of the file contains the field headings. Lines two and three provide the details of tracks 2 and 3 respectively. You will find that your spreadsheet software (Microsoft Excel, LibreOffice Calc, or similar) will associate itself with any files bearing the extension `.csv`. Opening any CSV in using spreadsheet software displays the information in the typical spreadsheet-style row-and-column arrangement. This useful for preparing CSV data -- but be aware that none of the styling (cell-sizes, font colours, etc.) will be retained in CSV files.
+
+<figure>
+    <img src="{{ site.url }}/img/pitl05/data-csv-spreadsheet.png" class="fullwidth" />
+    <figcaption>Opening the playlist.csv file in LibreOffice Calc.</figcaption>
+</figure>
+
+However, CSV files do not always rely on a comma to delimit each field. For example, tab and space-separated values are common, too. To read in text text-based files, Processing uses a `loadStrings()` function
+
+If you want to experiment with the CSV code that follows, you can create a new "csv" sketch now. However, you may find that reading over the content is enough to grasp it. Then, you can begin coding again when you encounter the game sales chart task.
+
+As with all external assets, the <a href="{{ site.url }}/img/pitl05/playlist.csv" download>playlist.csv</a> must be placed in the "data" sub-directory of your sketch. The `loadStrings()` function accepts a single argument: the path of your text file. It returns this file as a list of strings, each representing an individual line.
+
+{% highlight py %}
+lines = loadStrings('playlist.csv')
+print(lines)
+{% endhighlight %}
+
+<figure>
+    <img src="{{ site.url }}/img/pitl05/data-csv-loadstrings.png" class="fullwidth" />
+    <figcaption>The entire `lines` list printed to the Console.</figcaption>
+</figure>
+
+To separate out each line (list elements) use a loop.
+
+{% highlight py %}
+lines = loadStrings('playlist.csv')
+#print(lines)
+
+for l in lines:
+    print(l)
+{% endhighlight %}
+
+<figure>
+    <img src="{{ site.url }}/img/pitl05/data-csv-lines.png" class="fullwidth" />
+    <figcaption>The playlist.csv file printed line-by-line using a loop.</figcaption>
+</figure>
+
+The [`split()`](https://py.processing.org/reference/string_split.html) method can then be used to dice up each line into another list. This works using the delimiter argument you provide; in this case, a comma.
+
+{% highlight py %}
+lines = loadStrings('playlist.csv')
+#print(lines)
+
+for l in lines:
+    #print(l)
+    print( l.split(',') )
+{% endhighlight %}
+
+<figure>
+    <img src="{{ site.url }}/img/pitl05/data-csv-split.png" class="fullwidth" />
+    <figcaption>Each line is printed as a list of strings (note the square brackets at the start and end of each line).</figcaption>
+</figure>
+
+The `u` tags indicate unicode encoding. This is not important for now; everything will behave the same regardless. To print the title of each track, specify the index.
+
+{% highlight py %}
+lines = loadStrings('playlist.csv')
+#print(lines)
+
+for l in lines:
+    #print(l)
+    #print( l.split(',') )
+    print( l.split(',')[1] )
+{% endhighlight %}
+
+<figure>
+    <img src="{{ site.url }}/img/pitl05/data-csv-split-index.png" class="fullwidth" />
+</figure>
+
+You will find that many
+You may also wish to store data using one of these formats.
+
+### Game Sales Chart
+
+
+int()
+
 
 
 ## Lesson 06
 
-...
+That's it for lesson 05! While it's to pickup lists and dictionaries, I know that combining them with loops is a little tricker to grasp, but well worth the effort considering how powerful it is. The next lesson is not really a 'lesson', per se -- more like some bonus content. You will look at reading values off pixels and creating your very own Photoshop-esque filters. It will be far shorter in length, with a higher proportion of code to copy-paste and adapt. For now, though, take a break -- you deserve it!
 
-...
+http://setosa.io/ev/image-kernels/
 
 **Begin lesson 06:** Art of the State *(coming soon)*
 

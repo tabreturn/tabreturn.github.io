@@ -23,12 +23,14 @@ The best way to grasp curves is to draw a few, then manipulate their control poi
 
 <a href="{{ site.url }}/img/pitl02/grid.png" download>grid.png</a>
 
-Any additional sketch assets (images, fonts, and other media) should always be placed in a sub-folder named "data". Move the grid.png file to a sub-folder within your curves sketch named "data":
+Additional sketch assets (images, fonts, and other media) always belong in a sub-folder named "data". Create a new data folder within your curves sketch now and place the grid.png within it:
 
 <figure>
   <img src="{{ site.url }}/img/pitl02/curves-data-folder.png" />
   <figcaption>Note that the assets sub-folder is always named "data".</figcaption>
 </figure>
+
+Frustratingly, many operating systems hide file extensions -- that is, the `.png` part of the file. However, if you dig around in your [Windows](https://support.microsoft.com/en-nz/help/4479981/windows-10-common-file-name-extensions) or Mac Finder settings, you can get extensions to show in your file manager.
 
 This grid will lie beneath everything you draw, assisting you in gauging x/y-coordinates. Setup your sketch using the following code:
 
@@ -43,6 +45,8 @@ strokeWeight(3)
 <figure>
   <img src="{{ site.url }}/img/pitl02/curves-grid.png" />
 </figure>
+
+Note that it is essential to include the file extension (`'grid.png'`) when referencing the image file.
 
 ### Catmull-Rom Splines
 

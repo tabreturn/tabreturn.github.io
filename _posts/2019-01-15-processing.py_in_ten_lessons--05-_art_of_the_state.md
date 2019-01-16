@@ -210,7 +210,7 @@ Time to consolidate what has been covered thus far. In this challenge, you will 
 <figcaption>From left to right: indigo, dark-violet, and purple. According to your web browser.</figcaption>
 </figure>
 
-Purple is a combination of two *spectral* colours. There is no wavelength of purple light -- it only exists as a combination of red and blue waves. Violet, however, is an actual spectral colour with its own wavelength of approximately 380–420 nanometres. Indigo is positioned somewhere between blue and violet, but exactly where -- or if at all -- is a matter for debate. In his famous prism experiments, Isaac Newtown defined seven rainbow colours, squeezing indigo in just before violet. You may wonder, why seven colours from a blended array spanning the visible spectrum? This because seven had occult significance. It's no coincidence that there are seven colours in the rainbow, seven days of the week, and seven musical notes that make up the western major scale. Today, though, colour scientists are inclined to divide the spectrum at violet and blue, leaving no room for indigo.
+Purple is a combination of two *spectral* colours. There is no wavelength of purple light -- it only exists as a combination of red and blue waves. Violet, however, is an actual spectral colour with its own wavelength of approximately 380–420 nanometres. Indigo is positioned somewhere between blue and violet, but exactly where -- or if at all -- is a matter for debate. In his famous prism experiments, Isaac Newtown defined seven rainbow colours, squeezing indigo in just before violet. You may wonder, why seven colours from a blended array spanning the visible spectrum? This because seven had occult significance. It's no coincidence that there are seven colours in the rainbow, seven days of the week, and seven musical notes that make up the Western major scale. Today, though, colour scientists are inclined to divide the spectrum at violet and blue, leaving no room for indigo.
 
 In these lessons, we will drop indigo in favour of a six colour rainbow (just like Pink Floyd did).
 
@@ -482,7 +482,7 @@ A three-dimensional SPLOM is three rows wide and three columns high. Should you 
 <figure>
   <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/ScagnosticsExampleSplom.svg" />
   <figcaption>
-    A scatterplot matrix of scagnostics measures for the Boston Housing data set. Note that each sub-plot need not be represented a scatterplot. Within the matrix, one can <a href="{{ site.url }}/img/pitl05/dimension-code/t-piece-splom.png">select a mix</a> of bar, line, scatterplot, and other chart types.<br />
+    A scatterplot matrix of scagnostics measures for the Boston Housing data set. Note that each sub-plot need not be represented as a scatterplot. Within the matrix, one can <a href="{{ site.url }}/img/pitl05/dimension-code/t-piece-splom.png">select a mix</a> of bar, line, scatterplot, and other chart types.<br />
     source: <a href="https://commons.wikimedia.org/wiki/File:ScagnosticsExampleSplom.svg">Wikimedia Commons</a>
   </figcaption>
 </figure>
@@ -548,7 +548,7 @@ Values within the same category are now placed four positions apart from one ano
 
 Interestingly, the number of dimensions you express visually does not always reflect the number of dimensions that comprise your list. In fact, it's advisable to avoid using anything beyond a three-dimensional list. To return to the spreadsheet analogy one last time: consider adding another column to your existing sheets instead of creating more spreadsheet files.
 
-Effective data visualisation requires the application of art and science to represent multidimensional information structures within two-dimensional visual displays. These displays could be sheets of paper or computer screens. Additionally, though, screens cater to *time*. As an example, charts and figures can animate while you view them. Using mouse, keyboard, touch, speech, gesture and other input, viewers can explore data in an *interactive* manner. For some inspiration, take a look at Fathom's [project showcase](https://fathom.info/projects/#visualization). Ben Fry, the principal of Fathom, is also one of Processing's co-developers.
+Effective data visualisation requires the application of art and science to represent multidimensional information structures within two-dimensional visual displays. These displays could be sheets of paper or computer screens. Additionally, though, screens cater to *time*. As an example, charts and figures can animate while you view them. Using mouse, keyboard, touch, speech, gesture and other input, viewers can explore data in an *interactive* fashion. For some inspiration, take a look at Fathom's [project showcase](https://fathom.info/projects/#visualization). Ben Fry, the principal of Fathom, is also one of Processing's co-developers.
 
 ## Lists of Lists
 
@@ -799,13 +799,13 @@ If you are more comfortable with a `range()` style approach, that should work fi
 
 ## Dictionaries
 
-Dictionaries can be thought of as an extension to the Python list concept. Now that you understand lists, grasping dictionaries should be easy. In a list, each value corresponds to a number indicating its position. One can, therefore, describe them as *numerically indexed*. With dictionaries, each value is instead associated with a keyword. Dictionaries, therefore, are collections of *key-value pairs*.
+Dictionaries can be thought of as an extension to the Python list concept. Now that you understand lists, grasping dictionaries should be easy. In a list, each value corresponds to a number indicating its position. One can, therefore, describe lists as *numerically indexed*. With dictionaries, each value is instead associated with a keyword. Dictionaries, therefore, are collections of *key-value pairs*.
 
-If you want to experiment with the dictionary code that follows, you can create a new "dictionary" sketch now. However, you may find that reading over the content is enough to grasp it. Then, you can begin coding again when you encounter the coffee chart task.
+If you want to experiment with the dictionary code that follows, create a new "dictionary" sketch now. However, you may find that reading over the content is enough to grasp it. Then you can begin coding again when you encounter the coffee chart task.
 
 ### Creating New Dictionaries
 
-Whereas lists are defined within square brackets, dictionaries rely on `{` braces `}`. The code below contrasts a list and dictionary used to store an individual student's details.
+Whereas lists are defined within square brackets, dictionaries rely on `{` braces `}`. The code below contrasts a list and a dictionary used to store an individual student's details.
 
 {% highlight py %}
 # list
@@ -815,28 +815,15 @@ studentlist = ['Sam', 24]
 studentdict = {'name':'Sam', 'age':24}
 {% endhighlight %}
 
-Preceding each dictionary value is a key (in quotes) and a colon. Separating each key-value pair is a comma. You may store as many key-value pairs as you like in a dictionary.
-
-Just like lists, dictionary values may comprise a mix of data types and can even include other dictionaries or lists. Lists, too, can contain dictionaries.
-
-{% highlight py %}
-# list of dictionaries
-students = [
-  {'name':'Sam', 'age':24},
-  {'name':'Lee', 'age':18}
-]
-{% endhighlight %}
-
-What you name your keys -- i.e. name and age -- and how you nest collections of elements should help relate your data to real-world models.
+Preceding each dictionary value is a key (in quotes) and a colon. Separating each key-value pair is a comma. You may store as many key-value pairs as you like in a dictionary -- although, technically speaking, this is limited by how free much RAM/memory is available on your computer.
 
 ### Accessing Dictionaries
 
-To access a dictionary item, specify a key within square brackets.
+To access a dictionary item, specify its key within square brackets.
 
 {% highlight py %}
 print( studentdict['name'] )  # displays Sam
 print( studentdict['age'] )   # displays 24
-print( students[1]['name'] )  # displays Lee
 {% endhighlight %}
 
 To print the entire dictionary, omit the square brackets and key, leaving just the variable name.
@@ -845,7 +832,7 @@ To print the entire dictionary, omit the square brackets and key, leaving just t
 print( studentdict )          # {'name': 'Sam', 'age': 24}
 {% endhighlight %}
 
-These code snippets highlight the syntactical differences between lists and dictionaries. Dictionaries also possess their own set of methods. Many list methods -- such as `append()`, `extend()`, `index()`, `insert()`, and `remove()` -- will not work on dictionaries. There are few important dictionary methods you will need in this lesson -- these are covered below. For other methods, refer to any decent Python reference.
+You now understand the syntactical differences between lists and dictionaries. Dictionaries also possess their own set of methods. Many list methods -- such as `append()`, `extend()`, `index()`, `insert()`, and `remove()` -- will not work on dictionaries. There are few important dictionary methods you will need in this lesson, which are covered below. For more methods, refer to any decent Python reference.
 
 #### `.keys()`
 <dd markdown="1">
@@ -870,14 +857,12 @@ print( studentdict.values() ) # ['Sam', 24]
 The `.items()` method returns a list of all the dictionary's key-value pairs.
 
 {% highlight py %}
-print( studentdict )          # {'name': 'Sam', 'age': 24}
 print( studentdict.items() )  # [('name', 'Sam'), ('age', 24)]
 {% endhighlight %}
 
-The `items()` output resembles the line above it, except reformatted with some square- and round brackets; this has its advantages and is especially useful for iterating dictionaries (as you will soon see). Be warned, though: this method may return values in a seemingly arbitrary order, i.e. not always the order in which they appeared when defining the dictionary. This has to do with how Python stores dictionaries (a topic beyond the scope of these tutorials).
-</dd>
+This method is especially useful for iterating dictionaries (as you will soon see). Be warned, though: it may return values in a seemingly arbitrary order, i.e. not always the order in which they appeared when defining the dictionary. This has to do with how Python stores dictionaries (a topic beyond the scope of these tutorials).
 
-The round brackets -- i.e. `('name', 'Sam')` -- denote a *tuple*. Tuple can be pronounced as "too-ple" or "tuh-ple" depending on who you want to annoy. Tuples are not covered in this lesson, but for now, consider them as interchangeable with lists. For example:
+Round brackets denote a *tuple*. Tuple can be pronounced as "too-ple" or "tuh-ple" depending on who you want to annoy. Tuples are not covered in this lesson, but for now, consider them as interchangeable with lists. For example:
 
 {% highlight py %}
 items = studentdict.items()
@@ -885,11 +870,12 @@ print( items[0] )             # ('name', 'Sam')
 print( items[0][0] )          # name
 {% endhighlight %}
 
-Note how tuple elements are also numerically indexed, and how the same square bracket syntax is used to retrieve values. In a nutshell, the key difference is that, once defined, tuples are lists that cannot be modified. For more information, refer to the Processing [reference](https://py.processing.org/reference/tuple.html).
+Note how tuple elements are also numerically indexed, and how list syntax is used to retrieve values. In a nutshell, the key difference is that tuples, once defined, cannot be modified. For more information, refer to the Processing [reference](https://py.processing.org/reference/tuple.html).
+</dd>
 
 ### Modifying Dictionaries
 
-Dictionaries are dynamic structures, so you can add and modify key-value pairs whenever you please. To change an existing value, simply reassign it as you would a list element. Of course, you will be using a key name as opposed to a numeric index.
+Dictionaries are dynamic structures. You can add and modify key-value pairs whenever you please. To change an existing value, simply reassign it as you would a list element. Of course, you will use a key name as opposed to a numeric index.
 
 {% highlight py %}
 studentdict['age'] = 25
@@ -915,6 +901,32 @@ print(studentdict)
 
 If you need to add/combine one dictionary with another, refer to the [`update()`](https://py.processing.org/reference/dict_update.html) method.
 
+### Nested Dictionaries
+
+As with lists, dictionary values may comprise a mix of data types and can even include other dictionaries or lists.
+
+{% highlight py %}
+# dictionary of lists
+students = {
+  'names':['Sam', 'Lee'],
+  'ages':[24, 18]
+}
+print( students['names'][1] ) # displays Lee
+{% endhighlight %}
+
+Lists can also contain dictionaries.
+
+{% highlight py %}
+# list of dictionaries
+students = [
+  {'name':'Sam', 'age':24},
+  {'name':'Lee', 'age':18}
+]
+print( students[1]['name'] )  # displays Lee
+{% endhighlight %}
+
+What you name your keys -- i.e. name and age -- and how you nest collections of elements should help relate your data to real-world models.
+
 ### Loops + Dictionaries
 
 As with lists, there are many scenarios where you will want to loop through dictionaries. Considering that a dictionary can hold thousands or even millions of key-value pairs, this is a powerful feature. Because of the key-value system, though, iterating dictionaries is a little different than lists. You can iterate a dictionary's keys, iterate its values, or iterate its key-value pairs. This is where the `keys()`, `values()`, and `items()` methods prove particularly handy. We will explore an example of each approach. First, let's print `studentdict` to see what we are dealing with:
@@ -924,7 +936,7 @@ print(studentdict)
 # {'name': 'Sam', 'id': 19011501}
 {% endhighlight %}
 
-Because the `keys()` method returns a list, you can iterate it like any other list.
+Because the `keys()` method returns a list, you can use it to iterate a dictionary's keys.
 
 {% highlight py %}
 for k in studentdict.keys():
@@ -938,7 +950,7 @@ for k in studentdict.keys():
   </figcaption>
 </figure>
 
-On the first iteration, the `print` line displays the value of `studentdict.keys()[0]`, and on the second iteration, `studentdict.keys()[1]`. This is confirmed in the Console, which displays "name" then "id". Iterating keys is the default loop behaviour, though. If you omit the `keys()` method, the result is the same.
+On the first iteration, the `print` line displays the value of `studentdict.keys()[0]`, and on the second iteration, `studentdict.keys()[1]`. This is confirmed in the Console, which displays "name" then "id". Key iteration, however, automatically occurs when you combine a loop and a dictionary. If you omit the `keys()` method in the previous example, the result is the same.
 
 {% highlight py %}
 #for k in studentdict.keys():
@@ -969,7 +981,7 @@ for v in studentdict.values():
   </figcaption>
 </figure>
 
-If you need to retrieve keys and values, use the `items()` method. In the example below, the loop prints a tuple holding the current iteration's key-value pair. Because the `items()` method returns both a key and value, you must provide two variable names (between the `for` and the `in` of the statement). You may name these whatever you like, but the order of assignment is always: key first, value second.
+If you need to retrieve keys and values, use the `items()` method. In the example below, the loop prints a tuple holding the current iteration's key-value pair. Because the `items()` method returns both a key and a value, you must include two variable names (between the `for` and `in` of the statement). You may name these whatever you like, but the order of assignment is always: key first, value second.
 
 {% highlight py %}
 for k,v in studentdict.items():
@@ -993,7 +1005,7 @@ for k,v in sorted( studentdict.items() ):
 # ('name', 'Sam')
 {% endhighlight %}
 
-Now, the "id" tuple appears first in the Console (before "name"). The `sorted()` accepts additional arguments (such as reverse ordering). The Processing [reference](https://py.processing.org/reference/sorted.html) includes more information on the `sorted()` function.
+The "id" tuple now appears first in the Console (before "name"). The `sorted()` function accepts additional arguments (such as `reverse` ordering). The Processing [reference](https://py.processing.org/reference/sorted.html) includes more information.
 
 ## Coffee Chart Task
 

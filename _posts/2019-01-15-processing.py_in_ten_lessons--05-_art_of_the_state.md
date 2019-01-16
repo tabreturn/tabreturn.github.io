@@ -1238,13 +1238,19 @@ CSV, JSON, and XML each have their strengths and weaknesses. The beauty of CSV l
 
 ### Game Sales Chart
 
-In this final challenge, you will generate a bar chart of the best selling games of all time.
+In this final challenge, you will generate a bar chart of the best selling games of all time. Create a new sketch and save it as "game_sales_chart". Add some basic setup code:
 
-The list has been sourced from a [Wikipedia article](https://en.wikipedia.org/wiki/List_of_best-selling_video_games), and converted from an HTML table to a tab-delimited CSV file.
+{% highlight py %}
+size(800,800)
+background('#004477')
+noStroke()
+{% endhighlight %}
+
+The games list has been sourced from a [Wikipedia article](https://en.wikipedia.org/wiki/List_of_best-selling_video_games) (which may have shuffled since) and converted from an HTML table to a tab-delimited CSV file. Download a copy for your sketch and place it in the "data" directory.
 
 <a href="{{ site.url }}/img/pitl05/list_of_best-selling_video_games.csv" download>list_of_best-selling_video_games.csv</a>
 
-I opted for tab-separated fields, in case the data contained commas. For instance, if
+I have opted for tab-separated fields. It's highly unlikely that any game titles or studio/publisher names will contain tab characters, but there may commas that would interfere with the `split()` step. Here are the first few lines of the of file:
 
 <div style="font-size: 0.7em; line-height: 2em" markdown="1">
 {% highlight csv %}
@@ -1254,6 +1260,8 @@ Rank 	Sales 	Title 	Developer 	Publisher
 ...
 {% endhighlight %}
 </div>
+
+There are fifty games in all.
 
 int()
 

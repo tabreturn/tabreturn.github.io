@@ -1348,7 +1348,7 @@ Not only does this explain the origins of the 12-hour clock, but also the *dozen
 If the twelve-hour clocks make time tricky to deal with, time zones only complicate matters further. Given that the earth is a spinning ball circling the sun, it's always noon along some longitudinal arc of the planet's surface. Because the earth must rotate a full 360 degrees to complete one day, 'noon' moves across the planet's surface at 15 degrees (360 ÷ 24) each hour, giving rise to 24 *solar* time zones. But whether or not your watch reads 12:00 depends on the *local* time zone in which you find yourself. For example, Australia has three such local time zones whereas China has one, despite the latter straddling four solar time zones.
 
 <figure>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Standard_World_Time_Zones.png/1280px-Standard_World_Time_Zones.png" class="fullwidth" />
+  <img src="{{ site.url }}/img/pitl04/wikimedia-backup/1280px-Standard_World_Time_Zones.png" class="fullwidth" />
   <figcaption>
     Standard world time zones.<br />
     source: <a href="https://commons.wikimedia.org/wiki/File:Standard_World_Time_Zones.png">Wikipedia Commons</a>
@@ -1436,7 +1436,7 @@ The `millis()` function operates independently of frame rate (which is prone to 
 A *sprite* is a single graphic comprised of pixels. Multiple sprites can be combined to create a scene like that of this *Mario Bros.* level:
 
 <figure>
-  <img src="https://upload.wikimedia.org/wikipedia/en/c/cf/Mario_Bros._Gameplay.gif" />
+  <img src="{{ site.url }}/img/pitl04/wikimedia-backup/Mario_Bros._Gameplay.gif" />
   <figcaption>
     Mario Bros.<br />
     Source: <a href="https://en.wikipedia.org/wiki/Mario_Bros.#/media/File:Mario_Bros._Gameplay.gif">Wikipedia</a>
@@ -1583,7 +1583,7 @@ Remember [SOHCAHTOA](https://en.wikipedia.org/wiki/Mnemonics_in_trigonometry) (s
 | <b>t</b>angent | ` `=` ` | <b>o</b>pposite ÷ <b>a</b>djacent   |
 
 <figure>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/TrigonometryTriangle.svg" />
+  <img src="{{ site.url }}/img/pitl04/wikimedia-backup/TrigonometryTriangle.svg" />
   <figcaption>
     Source: <a href="https://commons.wikimedia.org/wiki/File:TrigonometryTriangle.svg">Wikimedia Commons</a>
   </figcaption>
@@ -1666,7 +1666,7 @@ From the Console output, one can see that **sin** *θ* returns a value of `0.7`,
 To understand how this all works, look at this cool animation for about ten seconds:
 
 <figure>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Circle_cos_sin.gif" class="fullwidth" style="padding-right:1.7%; box-sizing:border-box" />
+  <img src="{{ site.url }}/img/pitl04/wikimedia-backup/Circle_cos_sin.gif" class="fullwidth" style="padding-right:1.7%; box-sizing:border-box" />
   <figcaption>
     Source: <a href="https://commons.wikimedia.org/wiki/File:Circle_cos_sin.gif">Wikimedia Commons</a>
   </figcaption>
@@ -1726,7 +1726,7 @@ Sine (and cosine) wave patterns are studied in various fields, including physics
 Tangent (*tan*) functions do not produce wave-like graphs. Perhaps one of the neatest practical examples of tan is *xeyes*, albeit an application of tan's inverse function, *arctangent*. Since the early days of the Linux *X Window System*, developers have included a feature that places a pair of eyes somewhere on the desktop to help users locate the mouse cursor. This is especially handy for multi-head arrangements where there is some distance between displays.
 
 <figure>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Blackbox-Fenstermanager.png/512px-Blackbox-Fenstermanager.png" />
+  <img src="{{ site.url }}/img/pitl04/wikimedia-backup/512px-Blackbox-Fenstermanager.png" />
   <figcaption>
     The (x)eyes, at the lower-right, rotate to follow the mouse cursor.<br />
     Source: <a href="https://commons.wikimedia.org/wiki/File:Blackbox-Fenstermanager.png">Wikimedia Commons</a>

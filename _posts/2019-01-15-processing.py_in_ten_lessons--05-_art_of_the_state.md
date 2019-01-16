@@ -98,7 +98,7 @@ Should you specify an index beyond the bounds of the list -- say, `rainbow[3]` o
 Many lists are dynamic in nature. Consider a game like *Breakout* (image below). A list stores the bricks comprising the wall; hitting a brick removes it from this list. In some levels, additional bricks may appear during play, thereby inserting new list elements.
 
 <figure>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Screenshot-LBreakout2.jpg" />
+  <img src="{{ site.url }}/img/pitl05/wikimedia-backup/Screenshot-LBreakout2.jpg" />
   <figcaption>
     LBreakout2 &ndash; an open source Breakout clone.<br />
     source: <a href="https://commons.wikimedia.org/wiki/File:Screenshot-LBreakout2.jpg">Wikimedia Commons</a>
@@ -215,7 +215,7 @@ Purple is a combination of two *spectral* colours. There is no wavelength of pur
 In these lessons, we will drop indigo in favour of a six colour rainbow (just like Pink Floyd did).
 
 <figure>
-  <img src="https://upload.wikimedia.org/wikipedia/en/3/3b/Dark_Side_of_the_Moon.png" />
+  <img src="{{ site.url }}/img/pitl05/wikimedia-backup/Dark_Side_of_the_Moon.png" />
   <figcaption>
     <em>The Dark Side of the Moon</em> album cover depicts a prism splitting a beam of white light into its constituent colours. Pink Floyd's designer, Storm Thorgerson, opted for a six-colour, indigo-less rainbow.<br />
     source: <a href="https://en.wikipedia.org/wiki/File:Dark_Side_of_the_Moon.png">Wikipedia</a>
@@ -480,7 +480,7 @@ Some interesting diagonal patterns have appeared, but gauging the positions of t
 A three-dimensional SPLOM is three rows wide and three columns high. Should you wish to add further variables to the dataset, the matrix can expand to accommodate them.
 
 <figure>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/ScagnosticsExampleSplom.svg" />
+  <img src="{{ site.url }}/img/pitl05/wikimedia-backup/2000px-ScagnosticsExampleSplom.svg.png" />
   <figcaption>
     A scatterplot matrix of scagnostics measures for the Boston Housing data set. Note that each sub-plot need not be represented as a scatterplot. Within the matrix, one can <a href="{{ site.url }}/img/pitl05/dimension-code/t-piece-splom.png">select a mix</a> of bar, line, scatterplot, and other chart types.<br />
     source: <a href="https://commons.wikimedia.org/wiki/File:ScagnosticsExampleSplom.svg">Wikimedia Commons</a>

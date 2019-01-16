@@ -385,7 +385,7 @@ Consider that you wish to tile a floor. Starting in one corner, you place a sing
 Tasks like tiling can be tedious work, though. Humans are exemplary in reasoning and creative thought, and if not sufficiently stimulated, lose interest in performing such repetitive tasks. Computers, however, excel in performing monotonous duties rapidly and accurately -- especially where numbers are involved. Interestingly enough, the term "computer" originally referred to a person who performs mathematical calculations. Much of the work carried-out by 'human computers' involved calculating *mathematical tables*. These tables of numbers would be compiled into printed volumes that were used to simplify and speed-up other computations. As an example, *logarithm tables* were used extensively in sciences, engineering, and navigation.
 
 <figure>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/APN2002_Table_1%2C_1000-1500.agr.tiff/lossless-page1-789px-APN2002_Table_1%2C_1000-1500.agr.tiff.png" />
+  <img src="{{ site.url }}/img/pitl03/wikimedia-backup/lossless-page1-789px-APN2002_Table_1%2C_1000-1500.agr.tiff.png" />
   <figcaption>
     A logarithms table from American Practical Navigator.<br />
     source: <a href="https://commons.wikimedia.org/wiki/File:APN2002_Table_1,_1000-1500.agr.tiff">Wikimedia Commons</a>

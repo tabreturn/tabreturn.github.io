@@ -1209,6 +1209,8 @@ Below is the result, along with a grid-overlay and x-y coordinate label:
 
 This section has introduced some fundamental transformation concepts using matrices while avoiding anything larger than 2 × 2 matrix. If you want to handle larger matrices, take a look at Python's [NumPy](http://www.numpy.org/) library.
 
+<sup>In programming, a *library* is a collection of prewritten code. Instead of you having to write everything from scratch, Python provides a system for utilising packages of other people's code. We will be leveraging a few different libraries in these lessons.</sup>
+
 Next up: performing all of the above transformations without having to worry about the math!
 
 #### Processing Transform Functions

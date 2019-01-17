@@ -1183,7 +1183,7 @@ The first line of the file contains the field headings. Lines two and three prov
     <figcaption>Opening the playlist.csv file in LibreOffice Calc.</figcaption>
 </figure>
 
-CSV files do not always rely on a comma to delimit each field. For instance, tab and space-separated values are common, too.
+CSV files do not always rely on a comma to delimit each field. For instance, tab and space-separated values are standard, too.
 
 To read in text-based files, Processing uses a `loadStrings()` function. If you want to experiment with the CSV code that follows, you can create a new "csv" sketch now. However, you may find that reading over the content is enough to grasp it. Then, you can begin coding again when you encounter the Game Sales Chart task.
 
@@ -1199,7 +1199,7 @@ print(csv)
     <figcaption>The entire <code>csv</code> list printed to the Console.</figcaption>
 </figure>
 
-To separate out each line (list elements) use a loop.
+To separate out each line (the list's elements) use a loop.
 
 {% highlight py %}
 csv = loadStrings('playlist.csv')
@@ -1214,7 +1214,7 @@ for entry in csv:
     <figcaption>The playlist.csv file printed line-by-line using a loop.</figcaption>
 </figure>
 
-The [`split()`](https://py.processing.org/reference/string_split.html) method can then be used to dice up each line into another list. This works using the delimiter argument you provide; in this case, a comma.
+The [`split()`](https://py.processing.org/reference/string_split.html) method can now be used to dice up each line into further lists. This works using the delimiter argument of your preference -- in this case, a comma.
 
 {% highlight py %}
 csv = loadStrings('playlist.csv')
@@ -1227,10 +1227,10 @@ for entry in csv:
 
 <figure>
     <img src="{{ site.url }}/img/pitl05/data-csv-split.png" class="fullwidth" />
-    <figcaption>Each entry is printed as a list of strings (note the square brackets at the start and end of each line).</figcaption>
+    <figcaption>Each entry printed as a list of strings (note the square brackets at the start and end of each line).</figcaption>
 </figure>
 
-The `u` tags indicate unicode encoding. This is not important for now; everything will behave the same regardless. To print the title of each track, specify the index.
+The `u` tags indicate *unicode* character representation. This is not important for now; unicode is effectively string data and everything will behave the same, regardless. To print the title of each track, retrieve the field with an index of `[1]`.
 
 {% highlight py %}
 csv = loadStrings('playlist.csv')
@@ -1246,11 +1246,17 @@ for entry in csv:
   <img src="{{ site.url }}/img/pitl05/data-csv-split-index.png" class="fullwidth" />
 </figure>
 
-CSV, JSON, and XML each have their strengths and weaknesses. The beauty of CSV lies in its simplicity, but it does not support hierarchically-structured data. XML is an established, widely-supported, and flexible data exchange format, but it can turn out overly-complex and bloated at times. JSON is somewhat of a middle-ground, with a syntax thats more compact than XML; it is also very popular on the Web. You should weigh up the relative merits of each when considering what is best for your project.
+CSV, JSON, and XML each have their strengths and weaknesses. The beauty of CSV lies in its simplicity, but it does not support hierarchically-structured data. XML is an established, widely-supported, and flexible data exchange format, but it can turn out overly-complex and bloated at times. JSON is somewhat of a middle-ground, with a syntax that's more compact than XML; JSON is also growing increasingly popular on the Web. You should weigh up the relative merits of each when considering what is best for your projects.
 
 ### Game Sales Chart Task
 
-In this final challenge, you will generate a bar chart of the best selling games of all time. Create a new sketch and save it as "game_sales_chart". Add some basic setup code:
+In this final challenge, you will generate a bar chart of the best selling games of all time. Create a new sketch and save it as "game_sales_chart".
+
+The games list has been sourced from a [Wikipedia article](https://en.wikipedia.org/wiki/List_of_best-selling_video_games) (which may well have shuffled since) and converted from an HTML table to a tab-delimited CSV file. Download a copy for your sketch and place it in the "data" sub-directory:
+
+<a href="{{ site.url }}/img/pitl05/list_of_best-selling_video_games.csv" download>list_of_best-selling_video_games.csv</a>
+
+Add some basic setup code:
 
 {% highlight py %}
 size(800,800)
@@ -1259,11 +1265,7 @@ noStroke()
 csv = loadStrings('list_of_best-selling_video_games.csv')
 {% endhighlight %}
 
-The games list has been sourced from a [Wikipedia article](https://en.wikipedia.org/wiki/List_of_best-selling_video_games) (which may well have shuffled since) and converted from an HTML table to a tab-delimited CSV file. Download a copy for your sketch and place it in the "data" directory.
-
-<a href="{{ site.url }}/img/pitl05/list_of_best-selling_video_games.csv" download>list_of_best-selling_video_games.csv</a>
-
-I have opted for tab-separated fields. It's highly unlikely that any game titles or studio/publisher names will contain tab characters, but there may commas that would interfere with the `split()` step. Here are the first few lines of the of file:
+I have opted for tab-separated values. It's highly unlikely that any game titles or studio/publisher names will contain tab characters, but there may commas that could interfere with the `split()` step. Here are the first few lines of the of CSV file; the tabs do not always form perfect columns, but, more importantly, there is a single (invisible) tab character between each field.
 
 <div style="font-size: 0.7em; line-height: 2em" markdown="1">
 {% highlight csv %}
@@ -1274,7 +1276,7 @@ Rank 	Sales 	Title 	Developer 	Publisher
 {% endhighlight %}
 </div>
 
-There are fifty games in all. The width of each bar in your chart will be determined by the respective sales figure. The, however, presents a (small) problem. You will need to perform some mathematical calculation to scale the bars relative to the display window -- but the figures are actually stored as 'text'. In other words, you cannot perform mathematical operations on *string* data. To demonstrate, add this code to the bottom of your sketch:
+You may want to open the CSV file for yourself to inspect the values. There are fifty games in all. The respective sales figure will determine the width of each bar in your chart. You will need to perform some mathematical calculation to scale the bars relative to the display window -- but, while the "Sales" figures appear to be numbers, they are actually stored as 'text'. In other words, you cannot perform mathematical operations on *string* data. To demonstrate, add this code to the bottom of your sketch:
 
 {% highlight py %}
 tetrisentry = csv[1].split('\t')
@@ -1287,7 +1289,7 @@ print( tetrissales )
   <figcaption>The Console displays: 170000000</figcaption>
 </figure>
 
-Okay, so everything seems fine, for now. You retrieved the Tetris sales figure and printed it to the Console. Now try some arithmetic:
+Okay, so everything seems fine, for now. You retrieved the Tetris sales figure and printed it to the Console. Next, try some arithmetic:
 
 {% highlight py %}
 ...
@@ -1296,16 +1298,17 @@ print( tetrissales + 1 )
 
 <figure>
   <img src="{{ site.url }}/img/pitl05/game-sales-chart-print-error.png" class="fullwidth" />
+  <figcaption>TypeError: cannot concatenate 'unicode' and 'int' objects</figcaption>
 </figure>
 
-Fortunately, there is an easy fix. One must convert the data to something numeric. The `int()` and `float()` functions convert to integer and floating point types, respectively.
+As reported in the Console, Python is unable to add together the unicode and integer data. Fortunately, there is an easy fix. One must convert the unicode data to something numeric. The `int()` and `float()` functions convert various data types to integer and floating point values, respectively.
 
 {% highlight py %}
 ...
 print( int(tetrissales) + 1 )
 {% endhighlight %}
 
-Run the sketch. The Console is now error-free (it instead displays `170000001`).
+Run the sketch. The Console is now error-free and displays `170000001`.
 
 Now, complete the chart as per the screenshot below.
 
@@ -1313,13 +1316,13 @@ Now, complete the chart as per the screenshot below.
   <img src="{{ site.url }}/img/pitl05/game-sales-chart-complete.png" class="fullwidth" />
 </figure>
 
-It is probably best to begin with a loop that prints each entry. Then, get the labels displaying (before the bars). Once you have labels, add plain white bars of the correct width, before getting the rainbow sequence effect.
+Begin with a loop that prints each entry. Then, get the labels displaying (before the bars). Once you have labels, add plain white bars of the correct width, then finish off with the rainbow sequence effect.
 
 ## Lesson 06
 
-That's it for lesson 05! While it's to difficult to pickup lists and dictionaries, combining them with loops is a little tricker to grasp, but well worth the effort considering how powerful it is. The next lesson is not really a 'lesson', per se -- more like some bonus content. You will look at reading values off pixels and creating your very own Photoshop-esque filters. It will be far shorter in length, with a higher proportion of code to copy-paste and adapt. For now, though, take a break -- you deserve it!
+That's it for lesson 05! Lists and dictionaries are relatively straight-forward. Combining collections of values with loops is a trickier concept to grasp, but your perseverance has paid off! The next lesson is not really a 'lesson', per se -- more like some bonus content. You will look at reading values off pixels and creating your very own Photoshop-esque filters. It will be far shorter in length, with a higher proportion of code to copy-paste and adapt.
 
-**Begin lesson 06:** Art of the State *(coming soon)*
+**Begin lesson 06:** Extra Bytes *(coming soon)*
 
 [Complete list of Processing lessons]({{ site.baseurl }}/#processing)
 

@@ -1820,7 +1820,7 @@ That's it for lesson 04. If you have made it this far -- the next lesson should 
 
 You have dealt with string, integer, floating-point, and boolean datatypes. In the next lesson, you will explore datatypes that hold a collection of elements -- namely Python *list* and *dictionary* types. If you have some programming experience, you may have encountered something similar (*arrays*) in other languages? If not, do not stress -- we will begin with the very basics. As this subject matter works nicely with graphs, we will also explore interesting to visualise data.
 
-**Begin lesson 05:** Art of the State *(coming soon)*
+**Begin lesson 05:** [Art of the State]({% post_url 2019-01-15-processing.py_in_ten_lessons--05-_art_of_the_state %})
 
 [Complete list of Processing lessons]({{ site.baseurl }}/#processing)
 

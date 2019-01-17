@@ -3,7 +3,6 @@ layout: post
 comments: true
 title: "Processing.py in Ten Lessons -- 05: Art of the State"
 categories: code processing python
-published: false
 ---
 
 ***Covered in this lesson:***  

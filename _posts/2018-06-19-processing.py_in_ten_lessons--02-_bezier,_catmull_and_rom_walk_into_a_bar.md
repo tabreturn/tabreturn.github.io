@@ -934,7 +934,7 @@ Notice how straight-line connections between pairs of control points ensure smoo
 
 That's it for lesson 02. I hope it was enjoyable if a little tedious. If you are familiar with any markup languages -- such as HTML, XML, or SVG in particular -- you have probably been cruising through the tutorials thus far. In lesson 03 we'll begin to look at what really separates a programming language from markup; this includes topics like conditional statements and iteration. You will also explore randomness -- one of the most powerful and exciting tools in the creative programmer's tool-set. For now, though, take a break -- you deserve it!
 
-**Begin lesson 03:** [\<randomly generated lesson title\>]({% post_url 2018-07-01-processing.py_in_ten_lessons--03-_randomly-generated-lesson-title %})
+**Begin Lesson 03:** [\<randomly generated lesson title\>]({% post_url 2018-07-01-processing.py_in_ten_lessons--03-_randomly-generated-lesson-title %})
 
 [Complete list of Processing lessons]({{ site.baseurl }}/#processing)
 

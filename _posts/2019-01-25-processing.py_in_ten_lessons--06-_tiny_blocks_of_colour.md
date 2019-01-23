@@ -1,17 +1,17 @@
 ---
 layout: post
 comments: true
-title: "Processing.py in Ten Lessons -- Tiny Blocks of Colour"
+title: "Processing.py in Ten Lessons -- 06: Tiny Blocks of Colour"
 categories: code processing python
 published: false
 ---
 
 ***Covered in this lesson:***  
-<a href="#image-file-formats"><em>image file formats</em></a> /
+<a href="#image-file-formats"><em>image formats</em></a> /
 <a href="#colour-channels"><em>colour channels</em></a> /
 <a href="#halftones"><em>halftones</em></a> /
-<a href="#tint-and-transparency"><em>tint-and-transparency</em></a> /
-<a href="#image-kernels"><em>image-kernels</em></a>
+<a href="#tint-and-transparency"><em>tint and transparency</em></a> /
+<a href="#image-kernels"><em>image kernels</em></a>
 
 ---
 &nbsp;  
@@ -19,7 +19,7 @@ In this tutorial we will look at a few cool image processing techniques. You are
 
 To begin, we will peek under the hood of some image file formats. This will provide useful insights into how the colour of each pixel is controlled.
 
-# Image File Formats
+# Image Formats
 
 Each time you run your Processing sketch, a new Display window is spawned. Like a GIF, JPG, or PNG image, the graphic in the Display window is raster-based. Using the [`saveFrame()`](http://localhost:4000/code/processing/python/2018/08/10/processing.py_in_ten_lessons-04-_beta_eq_fps_gt_12.html#saving-frames) function one can save the frame in TIFF (`.tif`) format. If it's not a TIFF you desire, then provide a (file name) argument ending in `.gif`, `.jpg`, or `png`. TIFF, however, employs no compression, resulting larger files. Processing also supports Targa (.tga), but the lessons thus far have avoided making mention of it, in favour of focussing on the common web-browser-supported formats.
 
@@ -135,7 +135,7 @@ Binary &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;| Decimal
                                          |
 ---------------------------------------- | -------
 
-Note how 255 is the highest decimal that can be represented using 8-bits. It is no coincidence that the brightest red your screen can display is expressed as `(255, 0, 0)`. Or that white is `(255, 255, 255)`. Under the hood, these are all converted to binary. The table above shows that 255 is represented as eight `1`s in binary. Let us rewrite red in binary:
+Note how 255 is the highest decimal that can be represented using 8-bits. It is no coincidence that the brightest red your screen can display is expressed as `(255, 0, 0)`. Or that white is `(255, 255, 255)`. At a hardware level, these are all converted to binary. The table above shows that 255 is represented as eight `1`s in binary. Let us rewrite red in binary:
 
 <code><span style="color:#FF0000">11111111</span><span style="color:#00FF00">00000000</span><span style="color:#0000FF">00000000</span></code>
 
@@ -177,8 +177,13 @@ So what was stored in bytes 0 to 768? The beginning section of the file contains
 
 ### GIF vs JPG vs PNG
 
+<figure>
+  <img src="{{ site.url }}/img/pitl06/image-formats-bands-gif.png" class="fullwidth" />
+</figure>
 
+the palette highlighter ...  is actually limited to 256 colours ... https://en.wikipedia.org/wiki/Run-length_encoding
 
+jpg lossey -- opening and closing recompresses image
 
 Formats like PNG include a transparency (alpha) value
 
@@ -261,6 +266,7 @@ https://py.processing.org/reference/ -- creating and reading
 https://py.processing.org/reference/ -- pixels
 
 http://setosa.io/ev/image-kernels/
+https://en.wikipedia.org/wiki/Kernel_(image_processing)
 
 
 

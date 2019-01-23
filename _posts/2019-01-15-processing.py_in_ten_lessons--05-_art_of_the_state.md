@@ -1319,9 +1319,9 @@ Begin with a loop that prints each entry. Then, get the labels displaying (befor
 
 ## Extra Bytes
 
-That's it for lesson 05! Lists and dictionaries are relatively straight-forward. Combining collections of values with loops is a trickier concept to grasp, though, but your perseverance has paid off! The next lesson (titled *Extra Bytes*) is not really a 'lesson', per se -- more like some bonus content. You will look at reading values off pixels and creating your very own Photoshop-esque filters. It will be far shorter in length, with a higher proportion of code to copy-paste and adapt.
+That's it for lesson 05! Lists and dictionaries are relatively straight-forward, though combining collections of values with loops is a trickier concept to grasp. That said, what you have learned here is vital for what lies ahead -- both in these lessons and beyond. In the next tutorial, we'll zoom-in further, like, to pixel level. You'll pick up some neat new skills, like how to read values off pixels to create your very own Photoshop-esque filters.
 
-**Begin Extra Bytes:** Pixels *(coming soon)*
+**Begin Lesson 06:** Tiny Blocks of Colour *(coming soon)*
 
 [Complete list of Processing lessons]({{ site.baseurl }}/#processing)
 

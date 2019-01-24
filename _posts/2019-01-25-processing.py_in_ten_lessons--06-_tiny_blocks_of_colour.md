@@ -26,7 +26,7 @@ Each time you run your Processing sketch, a new Display window is spawned. Like 
 Below is a screenshot of a sketch. The code is not important. Instead, focus on what what the Display window renders (a red and white striped pattern) and the file sizes of each version saved.
 
 <figure>
-  <img src="{{ site.url }}/img/pitl06/image-formats-sizes.png" class="fullwidth" />
+  <img src="{{ site.url }}/img/pitl06/image-formats-stripes-file-sizes.png" class="fullwidth" />
   <figcaption>
     <table>
       <tr><td> bands.gif </td><td>&ndash; 298 bytes </td></tr>
@@ -142,7 +142,7 @@ Note how 255 is the highest decimal that can be represented using 8-bits. It is 
 I have padded the green and blue bits with zeroes. White would be a complete string of ones. In all, there are 8 × 3 = 24 bits. That's 24-bit colour, which can describe a whopping 256 × 256 × 256 = 16,777,216 possible (yet not necessarily distinguishable) colours. As you will recall, the Processing sketch produces the following result:
 
 <figure>
-  <img src="{{ site.url }}/img/pitl06/image-formats-graphic.png" style="max-width:100px" />
+  <img src="{{ site.url }}/img/pitl06/image-formats-stripes.png" style="max-width:100px" />
 </figure>
 
 The size of the (uncompressed) TIFF file is 31 KB. Here's why:
@@ -156,39 +156,76 @@ The size of the (uncompressed) TIFF file is 31 KB. Here's why:
 Okay, so we have accounted for 30 KB, but what about the extra 1 KB?. I have used [Hex Fiend](https://ridiculousfish.com/hexfiend/) -- an open source hex editor -- to open and inspect the raw data of the "bands.tif" file. Of course, the data is ultimately stored binary, but hexadecimal values make it easier to make sense of.
 
 <figure>
-  <img src="{{ site.url }}/img/pitl06/image-formats-bands-tiff.png" class="fullwidth" />
-  <figcaption>The "band.tif" file opened in Hex Fiend. Scrolling down reveals alternating clusters of <code>FF0000</code> and <code>FFFFFF</code> values.</figcaption>
+  <img src="{{ site.url }}/img/pitl06/image-formats-tiff-hex.png" class="fullwidth" />
+  <figcaption>The "bands.tif" file opened in Hex Fiend. Scrolling down reveals alternating clusters of <code>FF0000</code> and <code>FFFFFF</code> values.</figcaption>
 </figure>
 
 The numbers appear in byte groupings of three (six `0`--`F` numbers in a group). Scrolling through the file reveals alternating clusters of `FF0000` and `FFFFFF` values -- that is, red and white respectively. This is what we would expect, after all, the graphic is a pattern of alternating white and red strips. However, the first three lines contain a bunch of seemingly random numbers, then there's `000000`s up to and including byte 768 (as indicated by the line numbers in the left margin). At the bottom of the window you can spot the file size in bytes.
 
 <figure>
-  <img src="{{ site.url }}/img/pitl06/image-formats-bands-tiff-size.png" />
+  <img src="{{ site.url }}/img/pitl06/image-formats-tiff-hex-size.png" />
 </figure>
 
 That is 768 bytes over our expected 30,000. This accounts for the extra 1 KB, which the file manager has simply rounded-up to 31 KB. Removing everything up to where the first `FF0000` cluster reduces the file size to exactly 30 KB.
 
 <figure>
-  <img src="{{ site.url }}/img/pitl06/image-formats-bands-tiff-adjusted.png" />
+  <img src="{{ site.url }}/img/pitl06/image-formats-tiff-hex-adjusted.png" />
   <figcaption>Everything up to the first <code>FF0000</code> instance has been deleted. The file size is now exactly 30,0000 bytes.</figcaption>
 </figure>
 
 So what was stored in bytes 0 to 768? The beginning section of the file contains important information to identify it as a TIFF and provide important information, including but not limited to the image width, height, bit-depth, and orientation. Leaving this information out will 'break' the graphic.
 
+Processing generates TIFF files using the most basic of the format's baseline features. Nonetheless, the TIFF 6.0 specification supports various compression schemes, layers, deep colour (16- as opposed to 8-bits per channel), transparency, pages, and multiple colour models (RGB, CMYK, LAB, etc.). Be aware, though, that many of these features are extensions, and reader support will vary. Overall, TIFF is versatile format, well suited for working on graphics between different applications, and for archiving purposes. Essentially, it rolls all of GIF, JPG, and PNG's features into a single format. However, it's not supported on the Web.
+
 ### GIF vs JPG vs PNG
 
+GIF, JPG, and PNG are popular image formats on the Web. File size is important to consider when you are transferring files across an internet connection. Smaller equals faster, so all three formats employ some form of compression.
+
 <figure>
-  <img src="{{ site.url }}/img/pitl06/image-formats-bands-gif.png" class="fullwidth" />
+  <img src="{{ site.url }}/img/pitl06/image-formats-gif-jpg-png.png" class="fullwidth" />
+  <figcaption>A web-page that includes a GIF, JPG, and PNG image</figcaption>
 </figure>
 
-the palette highlighter ...  is actually limited to 256 colours ... https://en.wikipedia.org/wiki/Run-length_encoding
+The details of data compression are complicated, mathematical, and beyond the scope of these lessons. Nonetheless, you'll gain a high-level insight into how the compression algorithms are operating. The main focus, though, is on why you would elect to use one over the other two. If you are familiar with some raster editing software, such as GIMP of Photoshop, it's a good idea to play around with the export options to see how the different GIF, JPG, and PNG parameters affect the quality and size of these files.
 
-jpg lossey -- opening and closing recompresses image
+#### GIF
+
+GIF is the oldest of the three formats. There's an ongoing war over whether it is pronounced "**g**if" (with a hard *g*, like in *gift*) or "**j**iff". The format utilises the *Lempel–Ziv–Welch* (LZW) data compression scheme. Our image is a sequence of red and white stripes, and this is just the type of graphic to which GIF is best suited. That is, images consisting primarily of areas filled in flat colours. For instance, graphs, diagrams, text and line art. Unsurprisingly, it outperforms JPG and PNG for our stripy red pattern, consuming just 298 bytes. Opening the "bands.gif" file in a hex editor reveals how small it is, and also some insight into how the format works.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl06/image-formats-gif-hex.png" class="fullwidth" />
+  <figcaption>The hexadecimal values for red (<code>FF0000</code>) and white (<code>FFFFFF</code>) have been outlined in green.</figcaption>
+</figure>
+
+Despite there being thousands of red and white pixels in the graphic, the hex editor contains a single instance of `FF0000` and `FFFFFF`. This pair of colour values make up the image's *colour table*. What precedes the colour table identifies the file as GIF and describes the width and other characteristics. What follows the colour table (after the `2C` and up to the final `00 3B`) is compressed graphic data. Rather than specifying the value of each pixel, the LZW compression describes the coordinates for areas of colour. In this case, something like: the first ten rows of pixels are equal to the first value in the colour table (`FF0000`); rows ten to twenty are filled with the second value in the colour table (`FFFFFF`); and so forth.
+
+GIF has its limitations. Most notably, the colour table is limited to 256 colours. To get smaller GIF files, one reduces the palette further. Placing different colour pixels in checkerboard-type arrangements -- a technique known as *dithering* -- helps make up for the limited colour table, but it's often easy to discern this pattern. Transparency is supported, but the level of opacity must be either 0% or 100% and nothing between.
+
+<figure>
+  <img style="background-position:0px -80px; background-image:url({{ site.url }}/img/pitl06/image-formats-gif-jpg-png.png); height:300px" />
+  <figcaption>The dithering pattern can be discerned wherever colours blend into other colours (e.g. the yellow to orange blend running down the letters). GIF cannot support the semi-transparent blues in the glow, so it fades to white before up to where transparency begins (and the starry background beneath shows through).</figcaption>
+</figure>
+
+GIF also supports animation, which is handy for short loops of cats doing silly things.
+
+#### JPG
+
+JPG (pronounced "jay-peg", often bearing the extension `.jpeg`) uses a *lossy* compression that does not support any transparency. Unlike *lossless* GIFs or PNGs, each time you reopen and save a JPG file, the image quality degrades further. The compression algorithm works by taking advantage of the human psychovisual system, disregarding information we are less likely to visually detect. Humans are more sensitive to [differences in brightness than differences in colour](https://en.wikipedia.org/wiki/Chroma_subsampling), an characteristic that JPG can take advantage of. The format works well for images with graduated colour, like photographs, but causes noticeable *artefacts* to appear wherever there is sharp contrast.
+
+<figure>
+  <img style="background-position:-432px -80px; background-image:url({{ site.url }}/img/pitl06/image-formats-gif-jpg-png.png); height:300px" />
+  <figcaption>A highly compressed JPG. The artefacts are most apparent around the edges of the letters. As there is no support for transparency, a white background extends to the boundaries of the graphic.</figcaption>
+</figure>
+
+Most raster software provides some kind of quality 'slider' when exporting to JPG format. Less quality equals smaller file size, but you will find that certain photographs/graphics can handle more compression than others before they begin to look horrible.
+
+#### PNG
+
 
 Formats like PNG include a transparency (alpha) value
 
 <figure>
-  <img src="{{ site.url }}/img/pitl06/image-formats-bands-tiff.png" />
+  <img style="background-position:-864px -80px; background-image:url({{ site.url }}/img/pitl06/image-formats-gif-jpg-png.png); height:300px" />
 </figure>
 
 

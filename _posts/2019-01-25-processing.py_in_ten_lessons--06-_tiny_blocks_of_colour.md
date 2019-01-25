@@ -179,7 +179,7 @@ Processing generates TIFF files using the most basic of the format's baseline fe
 
 ### GIF vs JPG vs PNG
 
-GIF, JPG, and PNG are popular image formats on the Web. File size is important to consider when you are transferring files across an internet connection. Smaller equals faster, so all three formats employ some form of compression.
+If you are looking at any image on a web-page, chances are it's either a GIF, JPG, or PNG. *SVG* (Scalable Vector Graphics) are also popular, but not for raster graphics. Size is important to consider when you are transferring files across an internet connection. Smaller equals faster, so all three formats employ some form of compression.
 
 <figure>
   <img src="{{ site.url }}/img/pitl06/image-formats-gif-jpg-png.png" class="fullwidth" />
@@ -197,13 +197,13 @@ GIF is the oldest of the three formats. There's an ongoing war over whether it i
   <figcaption>The hexadecimal values for red (<code>FF0000</code>) and white (<code>FFFFFF</code>) have been outlined in green.</figcaption>
 </figure>
 
-Despite there being thousands of red and white pixels in the graphic, the hex editor contains a single instance of `FF0000` and `FFFFFF`. This pair of colour values make up the image's *colour table*. What precedes the colour table identifies the file as GIF and describes the width and other characteristics. What follows the colour table (after the `2C` and up to the final `00 3B`) is compressed graphic data. Rather than specifying the value of each pixel, the LZW compression describes the coordinates for areas of colour. In this case, something like: the first ten rows of pixels are equal to the first value in the colour table (`FF0000`); rows ten to twenty are filled with the second value in the colour table (`FFFFFF`); and so forth.
+Despite there being thousands of red and white pixels in the graphic, the hex editor contains a single instance of `FF0000` and `FFFFFF`. This pair of colour values make up the image's *colour table*. What precedes the colour table identifies the file as GIF and describes the width, height, and other characteristics. What follows the colour table (after the `2C` and terminating with a `3B`) is compressed graphic data. Rather than specifying the value of each pixel, the LZW algorithm matches each pixel with one of the two colour table entries. But LZW can this another step further. Each red stripe is a continuous string of 100 × 10 = 1000 hexadecimal values. This string can in-turn be stored in table, so that each time it reappears, the relevant table entry can be recalled.
 
-GIF has its limitations. Most notably, the colour table is limited to 256 colours. To get smaller GIF files, one reduces the palette further. Placing different colour pixels in checkerboard-type arrangements -- a technique known as *dithering* -- helps make up for the limited colour table, but it's often easy to discern this pattern. Transparency is supported, but the level of opacity must be either 0% or 100% and nothing between.
+GIF has its limitations. Most notably, there is a 256 colour limit on the number of values you can pick for the colour table. To get smaller GIF files, one reduces this palette further. Placing alternating colours in checkerboard-type arrangements -- a technique known as *dithering* -- helps make up for the limited colour table, but it's often easy to discern this pattern and it works against the compressibility. Transparency is supported, but the level of opacity is either 0% or 100% and nothing between.
 
 <figure>
   <img style="background-position:0px -80px; background-image:url({{ site.url }}/img/pitl06/image-formats-gif-jpg-png.png); height:300px" />
-  <figcaption>The dithering pattern can be discerned wherever colours blend into other colours (e.g. the yellow to orange blend running down the letters). GIF cannot support the semi-transparent blues in the glow, so it fades to white before up to where transparency begins (and the starry background beneath shows through).</figcaption>
+  <figcaption>The dithering pattern can be discerned wherever colours blend into other colours (e.g. the yellow to orange blend running down the letters). GIF cannot support the semi-transparent blues in the glow, so it fades to white before up to the point where transparency begins (and the starry background beneath can show through).</figcaption>
 </figure>
 
 GIF also supports animation, which is handy for short loops of cats doing silly things.
@@ -221,20 +221,26 @@ Most raster software provides some kind of quality 'slider' when exporting to JP
 
 #### PNG
 
+PNG -- pronounced "pee-en-jee" or "ping" -- was developed as a replacement for the proprietary GIF format. GIF patents actually expired in 2004, but PNG introduced a number of compelling improvements. Like GIF, PNG compression is lossless, but the PNG palette is not restricted to 256 colours. Moreover, transparency can range from 0% to 100%, allowing for semi-opaque pixels. This is accomplished using an additional *alpha* channel. For instance, an opaque blue (with no alpha channel) is expressed as:
 
-Formats like PNG include a transparency (alpha) value
+<code><span style="color:#FF0000">00</span><span style="color:#00FF00">00</span><span style="color:#0000FF">FF</span></code>  
+Or, in binary:  
+<code><span style="color:#FF0000">00000000</span><span style="color:#00FF00">00000000</span><span style="color:#0000FF">11111111</span></code>
+
+That is 24-bits in all. However, a 32-bit value can provide room for the additional alpha channel -- of course, this consumes more storage, too. The same blue with an opacity of around 25% is therefore stored as:
+
+<code><span style="color:#FF0000">00000000</span><span style="color:#00FF00">00000000</span><span style="color:#0000FF">11111111</span><span style="color:#999999">01000001</span></code>
+
+This alpha feature is especially handy for placing images seamlessly over other background images.
 
 <figure>
   <img style="background-position:-864px -80px; background-image:url({{ site.url }}/img/pitl06/image-formats-gif-jpg-png.png); height:300px" />
+  <figcaption>The PNG produces smooth gradients using a large (greater than 256) pallet of colours. One cannot detect the boundaries of the graphic. The glow is comprised of many levels of semi-opaque blues, and blends beautifully over the starry background.</figcaption>
 </figure>
 
+Notably, PNGs do not support animation. The APNG (Animated Portable Network Graphics) format has failed to gain traction with some major Web Browsers. When dealing with photographs, JPGs tend to trump PNGs in terms of quality-for-size. PNGs, however excel for 'richly coloured' GIF-type graphics, like screenshots.
 
-
-<code><span style="color:#FF0000">11111111</span><span style="color:#00FF00">00000000</span><span style="color:#0000FF">00000000</span>10000000</code>
-
-
-gif/jpg/png transparency, etc.
-
+To reiterate, it's best to experiment with the different formats to see which is most appropriate for the graphic you wish to optimise.
 
 ## Colour Channels
 
@@ -307,12 +313,12 @@ https://en.wikipedia.org/wiki/Kernel_(image_processing)
 
 
 
-## Lesson 06
+## Lesson 07
 
 ...
 
 
-**Begin Lesson 06:** Soft-Faces *(coming soon)*
+**Begin Lesson 07:** Soft-Faces *(coming soon)*
 
 [Complete list of Processing lessons]({{ site.baseurl }}/#processing)
 

@@ -1075,7 +1075,7 @@ coffees = [
 The challenge is to fill each mug with the relevant proportions of ingredients. Begin with the labels (beneath each mug). The finished result looks like this:
 
 <figure>
-  <img src="{{ site.url }}/img/pitl05/coffee-chart-complete.png" />
+  <img src="{{ site.url }}/img/pitl05/coffee-chart-complete.png" class="fullwidth" />
   <figcaption>
     <span style="color:#322; text-shadow:1px 1px 1px #000">&#9632;</span> espresso &nbsp;
     <span style="color:#09F; text-shadow:1px 1px 1px #000">&#9632;</span> hot-water &nbsp;

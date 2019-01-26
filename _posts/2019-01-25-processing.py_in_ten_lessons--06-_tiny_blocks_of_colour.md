@@ -217,32 +217,314 @@ JPG (pronounced "jay-peg", often bearing the extension `.jpeg`) uses a *lossy* c
   <figcaption>A highly compressed JPG. The artefacts are most apparent around the edges of the letters. As there is no support for transparency, a white background extends to the boundaries of the graphic.</figcaption>
 </figure>
 
-Most raster software provides some kind of quality 'slider' when exporting to JPG format. Less quality equals smaller file size, but you will find that certain photographs/graphics can handle more compression than others before they begin to look horrible.
+Most raster software provides some kind of quality 'slider' when exporting to JPG format. Less quality equals smaller file size, but you will find that certain photographs/graphics can handle more compression before they begin to look horrible.
 
 #### PNG
 
-PNG -- pronounced "pee-en-jee" or "ping" -- was developed as a replacement for the proprietary GIF format. GIF patents actually expired in 2004, but PNG introduced a number of compelling improvements. Like GIF, PNG compression is lossless, but the PNG palette is not restricted to 256 colours. Moreover, transparency can range from 0% to 100%, allowing for semi-opaque pixels. This is accomplished using an additional *alpha* channel. For instance, an opaque blue (with no alpha channel) is expressed as:
+PNG -- pronounced "pee-en-jee" or "ping" -- was developed as a replacement for the proprietary GIF format. GIF patents actually expired in 2004, but PNG introduced a number of compelling improvements. Like GIF, PNG compression is lossless, but the PNG palette is not restricted to 256 colours. Moreover, transparency can range from 0% to 100%, allowing for semi-opaque pixels. This is accomplished using an additional *alpha* channel. For instance, an opaque blue (i.e. no alpha) can be expressed as:
 
 <code><span style="color:#FF0000">00</span><span style="color:#00FF00">00</span><span style="color:#0000FF">FF</span></code>  
 Or, in binary:  
 <code><span style="color:#FF0000">00000000</span><span style="color:#00FF00">00000000</span><span style="color:#0000FF">11111111</span></code>
 
-That is 24-bits in all. However, a 32-bit value can provide room for the additional alpha channel -- of course, this consumes more storage, too. The same blue with an opacity of around 25% is therefore stored as:
+That is 24 bits in all -- with 8 bits for each R/G/B *channel*. A 32-bit hexadecimal value provides room for the additional alpha channel; of course, this consumes more storage, too. The same blue with an opacity of around 25% is hence stored as:
 
 <code><span style="color:#FF0000">00000000</span><span style="color:#00FF00">00000000</span><span style="color:#0000FF">11111111</span><span style="color:#999999">01000001</span></code>
 
-This alpha feature is especially handy for placing images seamlessly over other background images.
+This alpha feature is especially handy for placing images seamlessly above other background images.
 
 <figure>
   <img style="background-position:-864px -80px; background-image:url({{ site.url }}/img/pitl06/image-formats-gif-jpg-png.png); height:300px" />
   <figcaption>The PNG produces smooth gradients using a large (greater than 256) pallet of colours. One cannot detect the boundaries of the graphic. The glow is comprised of many levels of semi-opaque blues, and blends beautifully over the starry background.</figcaption>
 </figure>
 
-Notably, PNGs do not support animation. The APNG (Animated Portable Network Graphics) format has failed to gain traction with some major Web Browsers. When dealing with photographs, JPGs tend to trump PNGs in terms of quality-for-size. PNGs, however excel for 'richly coloured' GIF-type graphics, like screenshots.
+Notably, PNGs do not support animation. The APNG (Animated Portable Network Graphics) is an extension to the format, but it has failed to gain traction with some major Web Browsers (Microsoft).
 
-To reiterate, it's best to experiment with the different formats to see which is most appropriate for the graphic you wish to optimise.
+When dealing with photographs, JPGs tend to trump PNGs in terms of quality-for-size. PNGs, however excel when you require transparency, or desire GIF-style sharpness with a greater range of colour.
+
+There are a few up-and-coming Web image formats (WEBP, HEIC) that promise even smaller file sizes and better quality. Whether they gain traction depends largely on support from authoring tools and browsers. To reiterate, though, it's best to experiment with the different formats to see how they work and which is most appropriate for a given graphic you wish to optimise.
 
 ## Colour Channels
+
+Each pixel is mixed using three primary colours: red, green, and blue. Another way to think of this is three monochrome images (or *channels*) combined together.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl06/colour-channels-channels.png" class="fullwidth" />
+  <figcaption>Auguste Macke's Modefenster separated into red, green, and blue channels.</figcaption>
+</figure>
+
+Sometimes it is preferable to work with four channels. For instance, you may need an alpha channel for transparency. Another scenario is print design. Colour printers use a four-colour *CMYK* model: cyan, magenta, yellow, and black. For this reason, desktop publishing formats can denote colours using 32-bit values. For instance, a blue mixed with 100% cyan and 50% magenta is:
+
+<code><span style="color:#0EE">FF</span><span style="color:magenta">80</span><span style="color:#EE0">00</span><span style="color:black">00</span></code>
+
+<figure>
+  <img src="{{ site.url }}/img/pitl06/colour-channels-cmyk.png" class="fullwidth" />
+  <figcaption>
+  Mixing colour CMYK using Krita. Note the Channels panel to the lower-right; whiter areas indicate more ink. The painting is Hokusai's <a href="https://commons.wikimedia.org/wiki/File:Tsunami_by_hokusai_19th_century.jpg">The Great Wave off Kanagawa</a>.
+  </figcaption>
+</figure>
+
+Note Krita's *Channels* panel to the lower-right. Whiter areas indicate higher values for the respective channel. For instance, the Cyan channel's intense areas of white correspond to the blue areas in the wave. The Magenta channel appears like a duller copy of the Cyan channel, i.e the blue is largely a mix of about 100% cyan and 50% magenta. By manipulating colour channels you can manipulate the overall hue, saturation, and lightness. If you are familiar with software like GIMP or Photoshop, you will be familiar with such operations.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl06/colour-channels-gimp.png" class="fullwidth" />
+  <figcaption>GIMP's Hue-Saturation tool. In this instance, the saturation has been reduced to -85. GIMP's Channels panel (to the lower right) separate the image values into Red, Green, Blue, and Alpha.</figcaption>
+</figure>
+
+Processing has various functions for manipulating colour channels. Experimenting with these is a great to peak into the inner workings of applications like Photoshop.
+
+### RGB Channels
+
+ Create a new sketch and save it as "colour_channels". Download this copy of August Macke's *Modefenster* and place it your sketch's "data" sub-directory:
+
+<a href="{{ site.url }}/img/pitl06/wikimedia-backup/modefenster.png" download>modefenster.png</a>
+
+Add the following setup code:
+
+{% highlight py %}
+size(1000,720)
+background('#004477')
+noStroke()
+modefenster = loadImage('modefenster.png')
+image(modefenster, 0,0)
+{% endhighlight %}
+
+<figure>
+  <img src="{{ site.url }}/img/pitl06/colour-channels-setup.png" />
+</figure>
+
+We will be sampling parts of the painting and placing the processed output in the empty blue area to the right. The first function you need to know is the [`get()`](https://py.processing.org/reference/get.html). This is used to read colours of pixels in the Display window. First, grab a section of pixels by adding a `get()` to the bottom of your code:
+
+{% highlight py %}
+grab = get(0,0, 200,200)
+{% endhighlight %}
+
+The arguments are the same as those of the `rect()` function, i.e., the variable `grab` is assigned a copy of all the pixels within a rectangular area beginning at the top left (`0,0`) and extending 200 pixels across and 200 pixels down (`200,200`). Add an `image()` line to draw the pixels into the empty area on the right:
+
+{% highlight py %}
+grab = get(0,0, 200,200)
+image(grab, 600,100)
+{% endhighlight %}
+
+<figure>
+  <img src="{{ site.url }}/img/pitl06/colour-channels-get-area.png" />
+</figure>
+
+Alternatively, you can make use of the [`copy()`](https://py.processing.org/reference/copy.html) function, which also provides arguments for the destination scale.
+
+{% highlight py %}
+copy(0,0,200,200, 600,600,100,100)
+{% endhighlight %}
+
+<figure>
+  <img src="{{ site.url }}/img/pitl06/colour-channels-copy.png" />
+</figure>
+
+To grab an retrieve a single pixel's colour, leave out the width and height arguments. If the any pixel sampled is outside of the image window, black is returned.
+
+{% highlight py %}
+singlepixel = get(190,200)
+fill(singlepixel)
+rect(700,300, 200,200)
+{% endhighlight %}
+
+<figure>
+  <img src="{{ site.url }}/img/pitl06/colour-channels-get-single.png" />
+</figure>
+
+Interestingly, if you print the `singlepixel` variable a (negative) integer appears. This is how Processing stores colours in memory. You do not need to understand how this works because there are functions for converting these integer-based data types to more familiar schemes.
+
+{% highlight py %}
+print(singlepixel) # -248272
+{% endhighlight %}
+
+We can now build a duplicate image on the right by sampling each pixel and placing its clone 500 pixels (half the width of the Display) to the right. Sure, it would be easier to just grab the whole area of the painting, but the pixel-by-pixel approach is necessary for the upcoming steps. Add this loop to the bottom of your code:
+
+{% highlight py %}
+halfwidth = width/2
+x = 0
+y = 0
+
+for i in range(halfwidth*height):
+
+    if i%halfwidth==0 and i!=0:
+        y += 1
+        x = 0
+    x += 1
+
+    pixel = get(x,y)
+    set(x+halfwidth, y, pixel)
+{% endhighlight %}
+
+You should be quite comfortable with loops now. In this instance, the `range` is half the Display window's with by its full height. In a pixel-by-pixel, row-by-row manner, the loop gets each pixel and `set`s its clone accordingly. The `set()` function accepts three arguments: an x-coordinate, then y-coordinate, then colour. Run the sketch. The new pixels are drawn over your earlier experiments.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl06/colour-channels-get-set.png" />
+</figure>
+
+Now, with each iteration, we will separate the pixel values into the independent R, G, and B channels.  Comment out the existing `set()` line and add a `red()`, `green()` and `blue()` function to extract the three channel values.
+
+{% highlight py %}
+    ...
+
+    pixel = get(x,y)
+    #set(x+halfwidth, y, pixel)
+
+    r = red(pixel)
+    g = green(pixel)
+    b = blue(pixel)
+{% endhighlight %}
+
+With each iteration, variables `r`, `g`, and `b` are each assigned a value between `0` and `255`. Excellent! That's a familiar range, right? Remember, `255` equals `FF` equals `11111111`. Let's visualise the channels, beginning with red. Recall that the Channels panels in both Krita and GIMP (and Photoshop, for that matter) appear as greyscale thumbnails. Add the following lines to your loop:
+
+{% highlight py %}
+    channelr = color(r, r, r)
+    set( x+halfwidth, y, color(r,r,r) )
+{% endhighlight %}
+
+The [`color()`](https://py.processing.org/reference/color.html) function converts the RGB values into the integer types that `get()` and `set()` work with (the way Processing stores colours in memory). If the current pixel is bright red, the `color(r, r, r)` line is equivalent to `color(255, 255, 255)`. This means that the brightest reds should appear as white; no red is black; and everything else is some shade of grey. Run the code.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl06/colour-channels-red.png" />
+  <figcaption>Red channel (right).</figcaption>
+</figure>
+
+Observe how the red "MODE" sign registers as white; this indicates red values of around 100%. The yellow stripes in the awning over the window are also white; this is because yellow is mixed using 100% red and 100% green. Comment out the red `set()` line and try a green channel instead.
+
+{% highlight py %}
+    #set( x+halfwidth, y, color(r,r,r) )
+    set( x+halfwidth, y, color(g,g,g) )
+{% endhighlight %}
+
+<figure>
+  <img src="{{ site.url }}/img/pitl06/colour-channels-green.png" />
+  <figcaption>Green channel (right).</figcaption>
+</figure>
+
+The green channel confirms the prominence of green in the awning. The sign, however, has very little green -- or blue. You can add a `set()` line for blue if you wish to confirm this. Any area that is grey, white, or black, will possess equal quantities of red, green, and blue.
+
+To covert the image to greyscale, rather than greyscale representations of each channel, we average out the three values.
+
+{% highlight py %}
+...
+channelavg = (r + g + b) / 3
+greyscale = color(channelavg, channelavg, channelavg)
+set( x+halfwidth, y, greyscale )
+{% endhighlight %}
+
+Or, to accommodate for the greater number of green receptors in the human eye, include the following coefficients. The yellows otherwise won't appear bright enough:
+
+{% highlight py %}
+channelavg = (r*0.89 + g*1.77 + b*0.33) / 3
+{% endhighlight %}
+
+In the image below, the area within the green brackets exhibits the calibrated values. Note how the awning's bright yellow and darker orange strip appear as the same shade of grey using straight-forward averaged values.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl06/colour-channels-greyscale.png" />
+  <figcaption>Greyscale conversion (right).</figcaption>
+</figure>
+
+To invert the colours (like a [film negative](https://en.wikipedia.org/wiki/Negative_(photography))), subtract the `r`/`g`/`b` from the maximum channel value of 255.
+
+{% highlight py %}
+...
+invcolour = color(255-r, 255-g, 255-b)
+set( x+halfwidth, y, invcolour )
+{% endhighlight %}
+
+<figure>
+  <img src="{{ site.url }}/img/pitl06/colour-channels-invert.png" />
+  <figcaption>Inverted image channels (right).</figcaption>
+</figure>
+
+See if you can work out how to create an inverted greyscale version.
+
+### HSB Channels
+
+In the very first lesson, you were introduced to Processing's various [colour modes]({% post_url 2018-06-12-processing.py_in_ten_lessons--01-_hello_world %}#colour-mode). Using the `colorMode()` function, the colour mixing scheme can be switched from RGB to HSB (Hue, Saturation, Brightness). You can think of HSB as an alternative set of channels. Switch the `colorMode` to HSB and add a new loop to the end of your existing "colour_channels" code.
+
+{% highlight py %}
+colorMode(HSB, 360, 100, 100)
+x = 0
+y = 0
+
+for i in range(halfwidth*height):
+
+    if i%halfwidth==0 and i!=0:
+        y += 1
+        x = 0
+    x += 1
+{% endhighlight %}
+
+Working in HSB makes it far easier to shift hues, adjust saturation, and alter brightness. As the `colorMode()` aguments have set Processing to operate like the GIMP colour mixer depicted below:
+
+<figure>
+  <img src="{{ site.url }}/img/pitl01/colour-gimp-mixer.png" />
+  <figcaption>GIMP colour mixer with the HSB values highlighted.</figcaption>
+</figure>
+
+If you wish to, you can comment out the previous loop -- or instead, not bother and just allow the new loop to draw over what's there already. Use the `hue()`, `saturation()`, and `brightness()` functions to separate the pixel values into three HSB channels.
+
+{% highlight py %}
+    ...
+    pixel = get(x,y)
+    h = hue(pixel)
+    s = saturation(pixel)
+    b = brightness(pixel)
+{% endhighlight %}
+
+To create an exact copy of the painting, use a `set()` line with the `h`/`s`/`b` variables as arguments:
+
+{% highlight py %}
+    set( x+halfwidth,y, color(h, s, b) )
+{% endhighlight %}
+
+Adjusting the hue is akin to taking each pixel's value and rotating the triangle to produce a new rotation value between 0 and 360 degrees. This is the same as shifting a hue slider in GIMP or Photoshop.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl06/colour-channels-gimp-hs.png" class="fullwidth" />
+  <figcaption>Adjusting the Hue slider.</figcaption>
+</figure>
+
+But simply adding degrees of rotation to the `h` variable is problematic. For example, what if the `h` is `40` and we subtracted `50`. The result is 40 - 50 = -10 degrees, which lands outside of the permitted range. Instead, rotating past 0 or 360 should reset the degrees to zero, then subtract/add the remaining difference. This way 40 - 50 = 350 degrees. This is an example of *clock arithmetic*. The 'wrap-around' concept is nothing new to you. If it is currently three AM, and somebody asks what time was it four hours ago, you wouldn't say "minus one AM"? Moreover, clock arithmetic is an application of *modular arithmetic* -- the favourite pastime of our good friend the modulo operator! Add a new `set()` line that subtracts `50` from the hue, and performs a `%360` on the result.
+
+{% highlight py %}
+    #set( x+halfwidth,y, color(h, s, b) )
+    set( x+halfwidth,y, color((h-50)%360, s, b) )
+{% endhighlight %}
+
+<figure>
+  <img src="{{ site.url }}/img/pitl06/colour-channels-hue.png" />
+  <figcaption>Rotating/shifting the hue channel by 50°.</figcaption>
+</figure>
+
+To invert the colour, but keep the same brightness, pick the colour on the opposite side of the colour wheel by adding 180°.
+
+{% highlight py %}
+    set( x+halfwidth,y, color((h+180)%360, s, b) )
+{% endhighlight %}
+
+For the most vivid colours possible, set the saturation value to maximum (100%) for every pixel.
+
+{% highlight py %}
+    set( x+halfwidth,y, color(h, 100, b) )
+{% endhighlight %}
+
+<figure>
+  <img src="{{ site.url }}/img/pitl06/colour-channels-saturation.png" />
+  <figcaption>The hue remains the same but the saturation has been pushed to maximum.</figcaption>
+</figure>
+
+You are now familiar with how colour channels are managed. This knowledge allows you to make all sorts of colour adjustments, but also lays the foundation for the next section where we will look a Photoshop-esque filter-type effects. There are a few other functions for the color data type that we did not cover. These omissions include:
+
+* [`alpha()`](https://py.processing.org/reference/alpha.html), for extracting alpha (transparency) values;
+* [`blendColor()`](https://py.processing.org/reference/blendColor.html), for blending two colours together using a selection of modes;
+* [`lerpColor()`](https://py.processing.org/reference/lerpColor.html), for calculating the colour that lies between two other colours;
+* [`loadPixels()`](https://py.processing.org/reference/lerpColor.html), [`pixels()`](https://py.processing.org/reference/pixels.html), and [`updatePixels()`](https://py.processing.org/reference/updateYixels.html) work together to load load and manipulate pixels in the display window. This is a faster, albeit more complicated, alternative to using `get()` and `set()`.
+
+https://py.processing.org/reference/pixels.html
+
 
 
 
@@ -325,3 +607,7 @@ https://en.wikipedia.org/wiki/Kernel_(image_processing)
 ## References
 
 * ...
+
+https://medium.freecodecamp.org/best-image-format-for-web-in-2019-jpeg-webp-heic-avif-41ba0c1b2789
+http://setosa.io/ev/image-kernels/
+https://en.wikipedia.org/wiki/Kernel_(image_processing)

@@ -286,7 +286,7 @@ background('#004477')
 </figure>
 
 
-### Color Mode
+### Colour Mode
 
 You have been using hexadecimal values to represent colour thus far. We will stick to them for the rest of the lesson, but before moving along, here is a quick introduction to some other approaches. There is no need to write any code for this section -- just read through it to gain a basic grasp of the concepts involved.
 

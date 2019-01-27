@@ -560,7 +560,7 @@ Add the following setup code:
 {% highlight py%}
 size(1000,720)
 background('#004477')
-noStroke() <----------------------------------------- ???
+noFill()
 monalisa = loadImage('mona-lisa.png')
 image(monalisa, 0,0)
 {% endhighlight %}
@@ -571,39 +571,93 @@ As with the previous sketch, we will be drawing the processed version in the emp
   <img src="{{ site.url }}/img/pitl06/halftone-effects-setup.png" />
 </figure>
 
-Our first halftone will consist of amplitude-modulated circles. We will begin with the loop. There is a `res` variable for controlling the 'resolution' of the halftone. In this instance, it has been set to `12`. With each iteration, `res` is added to `x` or `y` so that the loop samples every twelfth pixel. This way, we will avoid ....
+Our first halftone will consist of amplitude-modulated circles. We will begin by adding the global variables and main loop. The image will be divided into 'cells'. In effect, these cells control the 'resolution' of the halftone.
 
 {% highlight py%}
 halfwidth = width/2
-res = 12
-x = 0
-y = 0
+coltotal = 50.0                  # number of cells per row
+cellsize = halfwidth/coltotal    # width/height of each cell
+rowtotal = ceil(height/cellsize) # cells per column
+col = 0
+row = 0
 
-translate(halfwidth,0)
-fill('#FFFFFF')
+for i in range( int(coltotal*rowtotal) ):
 
-for i in range(halfwidth*height):
+    x = int(col*cellsize)
+    y = int(row*cellsize)
+    col += 1
 
-    if i%halfwidth==0 and i!=0:
-        y += res
-        x = 0
-    x += res
+    if col >= coltotal:
+        col = 0
+        row += 1
+
+    rect(x,y, cellsize,cellsize)
 {% endhighlight %}
 
-We can now add out halftone code. Because of the `translate` line, each new pixel is automatically drawn relative to the horizontal centre of the display window.
+Most of this code should look familiar, although the [`ceil()`](https://py.processing.org/reference/ceil.html) function may be new to you. This is the *ceiling* function; it performs a round up on floating point values. For example, `ceil(9.1)` would return `10`. It is necessary to employ it here so that any half rows are prevented from stopping short of the bottom of the display window. A `rect()` line has been included to visualise the cells. Run the code.
 
+<figure>
+  <img src="{{ site.url }}/img/pitl06/halftone-effects-setup-cells.png" />
+</figure>
 
+For the halftone effect, we want to sample the pixel a the centre of each cell. To accomplish this, add half the width/height to x/y coordinate. Also, comment out the `rect()` line.
 
+{% highlight py%}
+    #rect(x,y, cellsize,cellsize)
+    x = int(x+cellsize/2)
+    y = int(y+cellsize/2)
+    pixel = get(x,y)
+{% endhighlight %}
 
+Next, using the brightness value of each pixel sampled, we calculate an amplitude (`amp`) for each halftone dot. The value, however, must be reduced by a factor of `200` so that the dots are not too large.
 
+{% highlight py%}
+    ...
+    pixel = get(x,y)
+    b = brightness(pixel)
+    amp = 10*b/200.0
+{% endhighlight %}
 
+Finally, add the relevant stroke and fill properties, then the ellipse/circle itself.
 
+{% highlight py%}
+    noStroke()
+    fill('#FFFFFF')
+    ellipse(x+halfwidth,y, amp,amp)
+{% endhighlight %}
 
+<figure>
+  <img src="{{ site.url }}/img/pitl06/halftone-effects-circles.png" />
+  <figcaption>The completed circular halftone effect.</figcaption>
+</figure>
 
+You are not limited to circles, or white as a fill. In the next two tasks, you be challenged to replicate two other halftone effects.
 
+### Pixel Art Task
 
+Using the same "haltones" sketch you have been working on, recreate the pixelated effect below.
 
+<figure>
+  <img src="{{ site.url }}/img/pitl06/halftone-effects-pixelated.png" />
+  <figcaption>Pixelated halftone effect.</figcaption>
+</figure>
 
+Before beginning the next task, comment out the circular halftone and pixel art specific lines. You should still be able to make use of the existing loop.
+
+### ASCII Art Task
+
+For ASCII art, you will need to decide on a set of characters to serve as your colour ramp. For ten shades, you can use the following sequence (which begins with a space character):
+
+` .:-=+*#%@`
+
+The final result should look something like this:
+
+<figure>
+  <img src="{{ site.url }}/img/pitl06/halftone-effects-ascii.png" />
+  <figcaption>Pixelated ASCII art effect (zoomed in).</figcaption>
+</figure>
+
+There are many halftone effects to explore. By combining the techniques covered here, you can come up with all sorts of interesting results. As a staring point, you can see what happens when you combine the circular, pixel, and ASCII effects.
 
 ## Tint and Transparency
 

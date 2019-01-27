@@ -15,15 +15,15 @@ published: false
 
 ---
 &nbsp;  
-In this tutorial we will look at a few cool image processing techniques. You are already familiar with the `image()` function, which you have used in combination with `loadImage()` to draw image files to the Display window. GIF, JPG, and PNG files are all [*raster*](https://en.wikipedia.org/wiki/Raster_graphics) graphic formats -- that is, digital images comprised of a pixel grid. We will look at reading values off individual- as well as groups of pixels, and then manipulating them to create Photoshop-esque filters. To manage these arrays of pixel values, we'll rely on a number of the techniques you picked up in [lesson 05]({% post_url 2019-01-15-processing.py_in_ten_lessons--05-_art_of_the_state %}), particularly the combining of loops with lists.
+In this tutorial we will look at a few cool image processing techniques. You are already familiar with the `image()` function, which you have used in combination with `loadImage()` to draw image files to the display window. GIF, JPG, and PNG files are all [*raster*](https://en.wikipedia.org/wiki/Raster_graphics) graphic formats -- that is, digital images comprised of a pixel grid. We will look at reading values off individual- as well as groups of pixels, and then manipulating them to create Photoshop-esque filters. To manage these arrays of pixel values, we'll rely on a number of the techniques you picked up in [lesson 05]({% post_url 2019-01-15-processing.py_in_ten_lessons--05-_art_of_the_state %}), particularly the combining of loops with lists.
 
 To begin, we will peek under the hood of some image file formats. This will provide useful insights into how the colour of each pixel is controlled.
 
 # Image Formats
 
-Each time you run your Processing sketch, a new Display window is spawned. Like a GIF, JPG, or PNG image, the graphic in the Display window is raster-based. Using the [`saveFrame()`](http://localhost:4000/code/processing/python/2018/08/10/processing.py_in_ten_lessons-04-_beta_eq_fps_gt_12.html#saving-frames) function one can save the frame in TIFF (`.tif`) format. If it's not a TIFF you desire, then provide a (file name) argument ending in `.gif`, `.jpg`, or `png`. TIFF, however, employs no compression, resulting larger files. Processing also supports Targa (.tga), but the lessons thus far have avoided making mention of it, in favour of focussing on the common web-browser-supported formats.
+Each time you run your Processing sketch, a new display window is spawned. Like a GIF, JPG, or PNG image, the graphic in the display window is raster-based. Using the [`saveFrame()`](http://localhost:4000/code/processing/python/2018/08/10/processing.py_in_ten_lessons-04-_beta_eq_fps_gt_12.html#saving-frames) function one can save the frame in TIFF (`.tif`) format. If it's not a TIFF you desire, then provide a (file name) argument ending in `.gif`, `.jpg`, or `png`. TIFF, however, employs no compression, resulting larger files. Processing also supports Targa (.tga), but the lessons thus far have avoided making mention of it, in favour of focussing on the common web-browser-supported formats.
 
-Below is a screenshot of a sketch. The code is not important. Instead, focus on what what the Display window renders (a red and white striped pattern) and the file sizes of each version saved.
+Below is a screenshot of a sketch. The code is not important. Instead, focus on what what the display window renders (a red and white striped pattern) and the file sizes of each version saved.
 
 <figure>
   <img src="{{ site.url }}/img/pitl06/image-formats-stripes-file-sizes.png" class="fullwidth" />
@@ -293,7 +293,7 @@ image(modefenster, 0,0)
   <img src="{{ site.url }}/img/pitl06/colour-channels-setup.png" />
 </figure>
 
-We will be sampling parts of the painting and placing the processed output in the empty blue area to the right. The first function you need to know is the [`get()`](https://py.processing.org/reference/get.html). This is used to read colours of pixels in the Display window. First, grab a section of pixels by adding a `get()` to the bottom of your code:
+We will be sampling parts of the painting and placing the processed output in the empty blue area to the right. The first function you need to know is the [`get()`](https://py.processing.org/reference/get.html). This is used to read colours of pixels in the display window. First, grab a section of pixels by adding a `get()` to the bottom of your code:
 
 {% highlight py %}
 grab = get(0,0, 200,200)
@@ -310,10 +310,11 @@ image(grab, 600,100)
   <img src="{{ site.url }}/img/pitl06/colour-channels-get-area.png" />
 </figure>
 
-Alternatively, you can make use of the [`copy()`](https://py.processing.org/reference/copy.html) function, which also provides arguments for the destination scale.
+Alternatively, you can make use of the [`copy()`](https://py.processing.org/reference/copy.html) function which also provides arguments for the destination scale.
 
 {% highlight py %}
-copy(0,0,200,200, 600,600,100,100)
+#    src. coords --> dest. coords
+copy(0,0,200,200,    600,600,100,100)
 {% endhighlight %}
 
 <figure>
@@ -332,7 +333,7 @@ rect(700,300, 200,200)
   <img src="{{ site.url }}/img/pitl06/colour-channels-get-single.png" />
 </figure>
 
-Interestingly, if you print the `singlepixel` variable a (negative) integer appears. This is how Processing stores colours in memory. You do not need to understand how this works because there are functions for converting these integer-based data types to more familiar schemes.
+Intriguingly, if you print the `singlepixel` variable a (negative) integer appears. This is how Processing stores colours in memory. You do not need to understand how this works because there are functions for converting these integer-based data types to more familiar schemes.
 
 {% highlight py %}
 print(singlepixel) # -248272
@@ -356,7 +357,7 @@ for i in range(halfwidth*height):
     set(x+halfwidth, y, pixel)
 {% endhighlight %}
 
-You should be quite comfortable with loops now. In this instance, the `range` is half the Display window's with by its full height. In a pixel-by-pixel, row-by-row manner, the loop gets each pixel and `set`s its clone accordingly. The `set()` function accepts three arguments: an x-coordinate, then y-coordinate, then colour. Run the sketch. The new pixels are drawn over your earlier experiments.
+You should be quite comfortable with loops now. In this instance, the `range` is half the display window's with by its full height. In a pixel-by-pixel, row-by-row manner, the loop gets each pixel and `set`s its clone accordingly. The `set()` function accepts three arguments: an x-coordinate, then y-coordinate, then colour. Run the sketch. The new pixels are drawn over your earlier experiments.
 
 <figure>
   <img src="{{ site.url }}/img/pitl06/colour-channels-get-set.png" />
@@ -442,7 +443,7 @@ See if you can work out how to create an inverted greyscale version.
 
 ### HSB Channels
 
-In the very first lesson, you were introduced to Processing's various [colour modes]({% post_url 2018-06-12-processing.py_in_ten_lessons--01-_hello_world %}#colour-mode). Using the `colorMode()` function, the colour mixing scheme can be switched from RGB to HSB (Hue, Saturation, Brightness). You can think of HSB as an alternative set of channels. Switch the `colorMode` to HSB and add a new loop to the end of your existing "colour_channels" code.
+In the very first lesson, you were introduced to Processing's various [colour modes]({% post_url 2018-06-12-processing.py_in_ten_lessons--01-_hello_world %}#colour-mode). Using the `colorMode()` function, the colour mixing scheme can be switched from RGB to HSB (Hue, Saturation, Brightness). You can think of HSB as an alternative set of channels that may be more appropriate for what you need to accomplish. Switch the `colorMode` to HSB and add a new loop to the end of your existing "colour_channels" code.
 
 {% highlight py %}
 colorMode(HSB, 360, 100, 100)
@@ -516,21 +517,93 @@ For the most vivid colours possible, set the saturation value to maximum (100%) 
   <figcaption>The hue remains the same but the saturation has been pushed to maximum.</figcaption>
 </figure>
 
-You are now familiar with how colour channels are managed. This knowledge allows you to make all sorts of colour adjustments, but also lays the foundation for the next section where we will look a Photoshop-esque filter-type effects. There are a few other functions for the color data type that we did not cover. These omissions include:
+You are now familiar with how colour channels are managed. This theory can be used for all sorts of colour adjustments, but also lays the foundation for the next sections where we look at filter effects. There are a few other functions for the colour data type that we did not cover. These omissions include:
 
 * [`alpha()`](https://py.processing.org/reference/alpha.html), for extracting alpha (transparency) values;
 * [`blendColor()`](https://py.processing.org/reference/blendColor.html), for blending two colours together using a selection of modes;
 * [`lerpColor()`](https://py.processing.org/reference/lerpColor.html), for calculating the colour that lies between two other colours;
-* [`loadPixels()`](https://py.processing.org/reference/lerpColor.html), [`pixels()`](https://py.processing.org/reference/pixels.html), and [`updatePixels()`](https://py.processing.org/reference/updateYixels.html) work together to load load and manipulate pixels in the display window. This is a faster, albeit more complicated, alternative to using `get()` and `set()`.
+* [`loadPixels()`](https://py.processing.org/reference/lerpColor.html), [`pixels()`](https://py.processing.org/reference/pixels.html), and [`updatePixels()`](https://py.processing.org/reference/updateYixels.html) work together to load and manipulate pixels in the display window. This is a faster, albeit more complicated, alternative to using `get()` and `set()`.
 
-https://py.processing.org/reference/pixels.html
+## Halftone Effects
+
+Suppose that you have an image of continuous tones, i.e. an infinite range of blended greys. For the sake of example, we will use a photograph of Elisabet Ney's *Lady Macbeth* sculpture (below). The image is to appear in a newspaper, printed in black & white, so you convert the image to greyscale and email it off to the publishers.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl06/halftone-effects-lady-macbeth.png" />
+  <figcaption>
+    Elisabet Ney's Lady Macbeth in colour and greyscale.<br />
+    source: <a href="https://commons.wikimedia.org/wiki/File:Elisabet_Ney_-_Lady_Macbeth_-_Detail.jpg">Wikimedia Commons</a>
+  </figcaption>
+</figure>
+
+In the 1870s, it wasn't so simple. Of course, there was no email and, more critically, publishers were still figuring how to print photographs. However, printers could print illustrations. Illustrations were etched into wood then cast into metal plates; which could then be covered in ink to transfer images to paper. The challenge with photographs was continuous tones -- or more specifically, how to render solid black ink in so many shades of grey. The solution was *halftones*; tiny dots of varying size that create the illusion of grey when viewed from a sufficient distance. The exact details of the process are not important; suffice to say it is all handled digitally today.
+
+The images below depict four possible approaches to creating halftones. The simplest is approach is no halftones (top-left). Rather, each shade of grey is rendered as either black *or* white governed by whether it exceeds a given brightness threshold. The stochastic halftone (top-right) uses *dots of equal size*, adjusting their frequency for darker/lighter colours. Such dithering techniques can, therefore, be described as *frequency modulated*.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl06/halftone-effects-comparison.png" class="fullwidth" />
+  <figcaption>
+    Clockwise from the top-left: 50% threshold; stochastic halftone; halftone lines; halftone circles.
+  </figcaption>
+</figure>
+
+*Amplitude modulated* halftones (bottom-left and bottom-right) rely on dots of varying sizes, or lines of varying weight. Although, these could be any formed using various other shapes.
+
+### Halftone Circles
+
+Create a new sketch and save it as "halftones". Download this copy of Leonardo da Vinci's *Mona Lisa* and place it your sketch’s "data" sub-directory:
+
+<a href="{{ site.url }}/img/pitl06/wikimedia-backup/mona-lisa.png" download>mono-lisa.png</a>
+
+Add the following setup code:
+
+{% highlight py%}
+size(1000,720)
+background('#004477')
+noStroke() <----------------------------------------- ???
+monalisa = loadImage('mona-lisa.png')
+image(monalisa, 0,0)
+{% endhighlight %}
+
+As with the previous sketch, we will be drawing the processed version in the empty blue space on the right.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl06/halftone-effects-setup.png" />
+</figure>
+
+Our first halftone will consist of amplitude-modulated circles. We will begin with the loop. There is a `res` variable for controlling the 'resolution' of the halftone. In this instance, it has been set to `12`. With each iteration, `res` is added to `x` or `y` so that the loop samples every twelfth pixel. This way, we will avoid ....
+
+{% highlight py%}
+halfwidth = width/2
+res = 12
+x = 0
+y = 0
+
+translate(halfwidth,0)
+fill('#FFFFFF')
+
+for i in range(halfwidth*height):
+
+    if i%halfwidth==0 and i!=0:
+        y += res
+        x = 0
+    x += res
+{% endhighlight %}
+
+We can now add out halftone code. Because of the `translate` line, each new pixel is automatically drawn relative to the horizontal centre of the display window.
 
 
 
 
-## Halftones
 
-...
+
+
+
+
+
+
+
+
 
 ## Tint and Transparency
 

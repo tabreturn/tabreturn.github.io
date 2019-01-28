@@ -661,13 +661,44 @@ There are many halftone effects to explore. By combining the techniques covered 
 
 ## Tint and Transparency
 
-...
-https://py.processing.org/reference/tint.html
-...
+Processing's [`tint()`](https://py.processing.org/reference/tint.html) function tints images using a specified colour. This is like taking a sheet of colour transparency film and placing it over a given image. It's simple enough to use, and best explained with few code snippets.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl06/tints-red-transparent.png" class="fullwidth" />
+  <figcaption>
+    From left to right: standard image; red tint; 25% transparent.<br />
+    source: <a href="https://commons.wikimedia.org/wiki/File:Beijing_Forbidden_City_Imperial_Guardian_Lions.jpg">Wikimedia Commons</a>
+  </figcaption>
+</figure>
+
+The function accepts three `0`--`255` (RGB) values arguments.
+
+{% highlight py%}
+# no tint
+img = loadImage('guardian-lion.png')
+image(img, 0,0)
+
+# red tint
+tint(255,0,0)
+image(img, width/3,0)
+{% endhighlight %}
+
+The tint function also accepts a fourth (alpha) `0`--`255` argument for transparency. If you need to affect the image transparency but retain the colour, use white.
+
+{% highlight py%}
+# 25% transparent
+tint(255,255,255, 65)
+image(img, width/3*2,0)
+{% endhighlight %}
+
+Once you have set the tint, it remains in effect for any subsequent images -- unless you include another `tint()` line, or a [`noTint()`](https://py.processing.org/reference/noTint.html).
 
 ## Image Kernels
 
 ...
+
+
+[matrices]({% post_url 2018-08-10-processing.py_in_ten_lessons--04-_beta_eq_fps_gt_12 %}#matrices)
 
 <math>
   <mfenced open = "[" close="]">
@@ -712,14 +743,13 @@ https://py.processing.org/reference/tint.html
   </mfenced>
 </math>
 
-https://en.wikipedia.org/wiki/August_Macke
-
-https://py.processing.org/reference/ -- creating and reading
-https://py.processing.org/reference/ -- pixels
 
 http://setosa.io/ev/image-kernels/
 https://en.wikipedia.org/wiki/Kernel_(image_processing)
 
+
+## filters
+https://py.processing.org/reference/filter.html
 
 
 ## Lesson 07
@@ -733,8 +763,6 @@ https://en.wikipedia.org/wiki/Kernel_(image_processing)
 
 ## References
 
-* ...
-
-https://medium.freecodecamp.org/best-image-format-for-web-in-2019-jpeg-webp-heic-avif-41ba0c1b2789
-http://setosa.io/ev/image-kernels/
-https://en.wikipedia.org/wiki/Kernel_(image_processing)
+* http://setosa.io/ev/image-kernels/
+* https://medium.freecodecamp.org/best-image-format-for-web-in-2019-jpeg-webp-heic-avif-41ba0c1b2789
+* https://en.wikipedia.org/wiki/Kernel_(image_processing)

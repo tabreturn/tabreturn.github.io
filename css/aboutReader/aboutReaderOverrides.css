@@ -48,6 +48,10 @@ math, .mjx-chtml {
   margin-top: 0.2em !important;
 }
 
+.mjx-chtml.mjx-full-width {
+  display: inline-block !important;
+}
+
 pre, code {
   background-color: transparent;
   border: none;

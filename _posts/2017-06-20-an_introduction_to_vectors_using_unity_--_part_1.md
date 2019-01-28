@@ -199,15 +199,49 @@ Scalars represent a single value, but *vectors* represent multiple values -- and
 
 This example can be expressed as a vector using the following notation:
 
-<code>v&#8407; = (10, 4)</code>
+<math>
+  <mover>
+    <mi>v</mi>
+    <mo>&rarr;</mo>
+  </mover>
+  <mo>
+  = (10, 4)
+  </mo>
+</math>
 
 Note how an arrow is placed above the letter (a *v* in this case) to indicate it is a vector quantity. You can perform various types of arithmetic using vectors. For example, addition operations are calculated by adding the horizontal and vertical values of each vector:
 
-<code>a&#8407; = (4, 1)</code>  
-<code>b&#8407; = (6, 3)</code>  
-<code>c&#8407; = a&#8407; + b&#8407;</code>
+<math>
+  <mover>
+    <mi>a</mi>
+    <mo>&rarr;</mo>
+  </mover>
+  <mo> = (4, 1) </mo>
+  <mspace linebreak="newline" />
+  <mover>
+    <mi>b</mi>
+    <mo>&rarr;</mo>
+  </mover>
+  <mo> = (6, 3) </mo>
+  <mspace linebreak='newline' />
+  <mover>
+    <mi>c</mi>
+    <mo>&rarr;</mo>
+  </mover>
+  <mo> = </mo>
+  <mover>
+    <mi>a</mi>
+    <mo>&rarr;</mo>
+  </mover>
+  <mo> + </mo>
+  <mover>
+    <mi>b</mi>
+    <mo>&rarr;</mo>
+  </mover>
+</math>
 
-Therefore, <code>c&#8407;</code> is equal to `(10, 4)`:
+
+Therefore, vector *c* is equal to `(10, 4)`:
 
 <figure>
   <img src="{{ site.url }}/img/aitvuup1/18-vector-addition.svg" />
@@ -291,9 +325,24 @@ function add(v1:Vector, v2:Vector) {
 ...
 {% endhighlight %}
 
-Mathematically notated, you will now use this function to perform the following arithmetic (where *v* is velocity, *g* is gravity, and *w* is wind):
+In mathematical notation, you will now use this function to perform the following arithmetic (where *v* is velocity, *g* is gravity, and *w* is wind):
 
-<code>v&#8407; = g&#8407; + w&#8407;</code>
+<math>
+  <mover>
+    <mi>v</mi>
+    <mo>&rarr;</mo>
+  </mover>
+  <mo> = </mo>
+  <mover>
+    <mi>g</mi>
+    <mo>&rarr;</mo>
+  </mover>
+  <mo> + </mo>
+  <mover>
+    <mi>w</mi>
+    <mo>&rarr;</mo>
+  </mover>
+</math>
 
 However, this must occur with each new frame, so the `Update` function must be overhauled to include the `add` function, which in turn computes the values of the `velocity` and `location` variables:
 

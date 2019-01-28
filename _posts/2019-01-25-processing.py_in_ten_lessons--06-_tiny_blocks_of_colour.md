@@ -9,7 +9,7 @@ published: false
 ***Covered in this lesson:***  
 <a href="#image-file-formats"><em>image formats</em></a> /
 <a href="#colour-channels"><em>colour channels</em></a> /
-<a href="#halftones"><em>halftones</em></a> /
+<a href="#halftone"><em>halftone</em></a> /
 <a href="#tint-and-transparency"><em>tint and transparency</em></a> /
 <a href="#image-kernels"><em>image kernels</em></a>
 
@@ -253,7 +253,7 @@ Each pixel is mixed using three primary colours: red, green, and blue. Another w
   <figcaption>Auguste Macke's Modefenster separated into red, green, and blue channels.</figcaption>
 </figure>
 
-Sometimes it is preferable to work with four channels. For instance, you may need an alpha channel for transparency. Another scenario is print design. Colour printers use a four-colour *CMYK* model: cyan, magenta, yellow, and black. For this reason, desktop publishing formats can denote colours using 32-bit values. For instance, a blue mixed with 100% cyan and 50% magenta is:
+Sometimes it is preferable to work with four channels. For instance, you may need an alpha channel for transparency. Another scenario is print design. Colour printers use a four-colour *CMYK* model: <span style="color:#0EE">cyan</span>, <span style="color:magenta">magenta</span>, <span style="color:#EE0">yellow</span>, and **black**. If you have ever replaced ink cartridges in your printer, you have probably noticed this. For this reason, desktop publishing formats can denote colours using 32-bit values. For instance, a blue mixed with 100% cyan and 50% magenta is:
 
 <code><span style="color:#0EE">FF</span><span style="color:magenta">80</span><span style="color:#EE0">00</span><span style="color:black">00</span></code>
 
@@ -519,12 +519,12 @@ For the most vivid colours possible, set the saturation value to maximum (100%) 
 
 You are now familiar with how colour channels are managed. This theory can be used for all sorts of colour adjustments, but also lays the foundation for the next sections where we look at filter effects. There are a few other functions for the colour data type that we did not cover. These omissions include:
 
-* [`alpha()`](https://py.processing.org/reference/alpha.html), for extracting alpha (transparency) values;
+* [`alpha()`](#tint-and-transparency) for extracting alpha (transparency) values;
 * [`blendColor()`](https://py.processing.org/reference/blendColor.html), for blending two colours together using a selection of modes;
 * [`lerpColor()`](https://py.processing.org/reference/lerpColor.html), for calculating the colour that lies between two other colours;
 * [`loadPixels()`](https://py.processing.org/reference/lerpColor.html), [`pixels()`](https://py.processing.org/reference/pixels.html), and [`updatePixels()`](https://py.processing.org/reference/updateYixels.html) work together to load and manipulate pixels in the display window. This is a faster, albeit more complicated, alternative to using `get()` and `set()`.
 
-## Halftone Effects
+## Halftone
 
 Suppose that you have an image of continuous tones, i.e. an infinite range of blended greys. For the sake of example, we will use a photograph of Elisabet Ney's *Lady Macbeth* sculpture (below). The image is to appear in a newspaper, printed in black & white, so you convert the image to greyscale and email it off to the publishers.
 
@@ -536,20 +536,31 @@ Suppose that you have an image of continuous tones, i.e. an infinite range of bl
   </figcaption>
 </figure>
 
-In the 1870s, it wasn't so simple. Of course, there was no email and, more critically, publishers were still figuring how to print photographs. However, printers could print illustrations. Illustrations were etched into wood then cast into metal plates; which could then be covered in ink to transfer images to paper. The challenge with photographs was continuous tones -- or more specifically, how to render solid black ink in so many shades of grey. The solution was *halftones*; tiny dots of varying size that create the illusion of grey when viewed from a sufficient distance. The exact details of the process are not important; suffice to say it is all handled digitally today.
+In the 1870s, it wasn't so simple. Of course, there was no email and, more critically, publishers were still figuring how to print photographs. However, printers could print illustrations. Illustrations were etched into wood then cast into metal plates; which could then be covered in ink to transfer images to paper. The challenge with photographs was continuous tones -- or more specifically, how to render solid black ink in so many shades of grey. The solution was *halftone*; tiny dots of varying size that create the illusion of grey when viewed from a sufficient distance. The exact details of the process are not important; suffice to say it is all handled digitally today.
 
-The images below depict four possible approaches to creating halftones. The simplest is approach is no halftones (top-left). Rather, each shade of grey is rendered as either black *or* white governed by whether it exceeds a given brightness threshold. The stochastic halftone (top-right) uses *dots of equal size*, adjusting their frequency for darker/lighter colours. Such dithering techniques can, therefore, be described as *frequency modulated*.
+The images below depict four possible approaches to creating halftones. The simplest is approach is no halftone (top-left). Rather, each shade of grey is rendered as either black *or* white governed by whether it exceeds a given brightness threshold. The stochastic halftone (top-right) uses *dots of equal size*, adjusting their spacing for darker/lighter tones. Such dithering techniques can, therefore, be described as *frequency modulated*.
 
 <figure>
   <img src="{{ site.url }}/img/pitl06/halftone-effects-comparison.png" class="fullwidth" />
   <figcaption>
-    Clockwise from the top-left: 50% threshold; stochastic halftone; halftone lines; halftone circles.
+    Clockwise from the top-left: 50% threshold; stochastic halftone; halftone lines; round dots.
   </figcaption>
 </figure>
 
-*Amplitude modulated* halftones (bottom-left and bottom-right) rely on dots of varying sizes, or lines of varying weight. Although, these could be any formed using various other shapes.
+*Amplitude modulated* halftones (bottom-left and bottom-right) rely on varying sized dots of fixed spacing, or lines of varying weight. Although, these could be any formed using various other shapes (squares, ellipses, etc.).
 
-### Halftone Circles
+Halftone techniques remain an essential part of printing today. Halftone dots are produced for each of the CMYK primary channels, so that semi-opaque inks create the optical effect of full-colour imagery.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl06/wikimedia-backup/Halftoningcolor.svg" />
+  <figcaption>
+    Source: <a href="https://en.wikipedia.org/wiki/File:Halftoningcolor.svg">Wikimedia Commons</a>
+  </figcaption>
+</figure>
+
+Round dots are the most commonly used. If you magnify a print you should be able to *spot* them.
+
+### Halftone Dots
 
 Create a new sketch and save it as "halftones". Download this copy of Leonardo da Vinci's *Mona Lisa* and place it your sketch’s "data" sub-directory:
 
@@ -650,7 +661,7 @@ For ASCII art, you will need to decide on a set of characters to serve as your c
 
 ` .:-=+*#%@`
 
-The final result should look something like this:
+With so few shades, you can expect to lose a fair amount of detail. The final result should look something like this:
 
 <figure>
   <img src="{{ site.url }}/img/pitl06/halftone-effects-ascii.png" />
@@ -683,22 +694,38 @@ tint(255,0,0)
 image(img, width/3,0)
 {% endhighlight %}
 
-The tint function also accepts a fourth (alpha) `0`--`255` argument for transparency. If you need to affect the image transparency but retain the colour, use white.
+Alternatively, you could use a single argument if it is a `color()` data type:
+
+{% highlight py%}
+red = color(255,0,0)
+tint(red)  
+image(img, width/3,0)
+{% endhighlight %}
+
+The `tint` and `color` functions also accept a fourth (alpha) `0`--`255` argument for transparency. If you need to affect the image transparency but retain the colour, use white with an alpha.
 
 {% highlight py%}
 # 25% transparent
-tint(255,255,255, 65)
+transparent25 = color(255,255,255, 65)
+tint(transparent25)
 image(img, width/3*2,0)
 {% endhighlight %}
 
-Once you have set the tint, it remains in effect for any subsequent images -- unless you include another `tint()` line, or a [`noTint()`](https://py.processing.org/reference/noTint.html).
+To separate out an alpha from any `color` value, use the [`alpha()`](https://py.processing.org/reference/alpha.html) function.
+
+{% highlight py%}
+print( alpha(transparent25) ) # displays 65.0
+{% endhighlight %}
+
+Once you have set a tint, it remains in effect for any subsequent images -- unless you include another `tint()` line, or a [`noTint()`](https://py.processing.org/reference/noTint.html).
 
 ## Image Kernels
 
-...
+If you have ever sharpened or blurred a digital image, it's likely that the software you were using relied on *image kernel* to process the effect. In the fields of computer vision and machine learning, image kernels are utilised for feature- detection and extraction.
 
+An image kernel, put simply, is a [matrix]({% post_url 2018-08-10-processing.py_in_ten_lessons--04-_beta_eq_fps_gt_12 %}#matrices).
 
-[matrices]({% post_url 2018-08-10-processing.py_in_ten_lessons--04-_beta_eq_fps_gt_12 %}#matrices)
+matric pic
 
 <math>
   <mfenced open = "[" close="]">

@@ -747,9 +747,7 @@ This process proceeds pixel-by-pixel. In this instance, the kernel motion is lef
   <figcaption>When the kernel reaches the final pixel, the process is complete.</figcaption>
 </figure>
 
-The magic part is how the kernel combines the the nine value into one. The process is termed *convolution*. It involves adding each of the pixels to their local neighbours, applying a specific weighting scheme in the process.
-
-The kernel multiplies the nine values using a convolution ...
+The magic part is how the kernel combines the the nine value into one -- a form of mathematical *convolution*, where each pixel is weighted and then added to its local neighbours. In the illustration below, the source pixels are labelled *a*--*f* and the matrix, *1*--*9*.
 
 <style>
   #image-kernel-matrix-sample, #image-kernel-matrix-kernel {
@@ -780,6 +778,13 @@ The kernel multiplies the nine values using a convolution ...
     float: left;
     outline: #00FF00 2px solid;
   }
+  #image-kernel-matrix-result {
+    background-color: #795130;
+    float: left;
+    height: 40px;
+    margin-top: 40px;
+    width: 40px;
+  }
 </style>
 <div id="image-kernel-matrix-sample">
   <div style="background-color:#714931">a</div>
@@ -804,12 +809,14 @@ The kernel multiplies the nine values using a convolution ...
   <div>8</div>
   <div>9</div>
 </div>
+<div id="image-kernel-matrix-sign"> = </div>
+<div id="image-kernel-matrix-result"> </div>
 <br style="clear:both" />
 
-...
+The convolution is calculated as by multiplying each cell by its corresponding partner. So, a × 1, then b × 2, and so on though to i × 9. The result is the sum of all these multiplications.
 
 <math>
-  <mfenced open = "[" close="]">
+  <mfenced open="[" close="]">
     <mtable>
       <mtr>
         <mtd><mi>a</mi></mtd>
@@ -821,10 +828,15 @@ The kernel multiplies the nine values using a convolution ...
         <mtd><mi>e</mi></mtd>
         <mtd><mi>f</mi></mtd>
       </mtr>
+      <mtr>
+        <mtd><mi>g</mi></mtd>
+        <mtd><mi>h</mi></mtd>
+        <mtd><mi>i</mi></mtd>
+      </mtr>
     </mtable>
   </mfenced>
   <mo>×</mo>
-  <mfenced open = "[" close="]">
+  <mfenced open="[" close="]">
     <mtable>
       <mtr>
         <mtd><mi>1</mi></mtd>
@@ -836,13 +848,26 @@ The kernel multiplies the nine values using a convolution ...
         <mtd><mi>5</mi></mtd>
         <mtd><mi>6</mi></mtd>
       </mtr>
+      <mtr>
+        <mtd><mi>7</mi></mtd>
+        <mtd><mi>8</mi></mtd>
+        <mtd><mi>9</mi></mtd>
+      </mtr>
     </mtable>
   </mfenced>
+  <mo>=</mo>
+  <mrow>
+    <mfenced open="(" close=")" separators=""><mi>a</mi><mo>·</mo><mi>1</mi></mfenced>
+    <mo>+</mo>
+    <mfenced open="(" close=")" separators=""><mi>b</mi><mo>·</mo><mi>2</mi></mfenced>
+    <mo>+</mo>
+    <mo>&hellip;</mo>
+    <mo>+</mo>
+    <mfenced open="(" close=")" separators=""><mi>i</mi><mo>·</mo><mi>9</mi></mfenced>
+  </mrow>
 </math>
 
-
-http://setosa.io/ev/image-kernels/
-https://en.wikipedia.org/wiki/Kernel_(image_processing)
+<sup markdown="1">If you are a math/machine-learning/other nerd -- you may point out that that kernel has not been flipped, so this is, in fact, a *cross correlation* and not a convolution. You are correct. However, we will be using symmetrical kernels, so correlation and convolution coincide.</sup>
 
 
 ## filters

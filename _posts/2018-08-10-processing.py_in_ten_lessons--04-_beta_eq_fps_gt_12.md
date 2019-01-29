@@ -336,7 +336,7 @@ To calculate the coordinates for the *rotated + scaled* vertex positions, a *mat
 In mathematics, a matrix (plural: matrices) is a rectangular array of values. As an example, here is a two-by-three matrix (2 rows, 3 columns):
 
 <math>
-  <mfenced open = "[" close="]">
+  <mfenced open="[" close="]">
     <mtable>
       <mtr>
         <mtd><mn>2</mn></mtd>
@@ -413,7 +413,7 @@ The first transformation you will perform is a *translation*; this involves movi
 Firstly, take note of how the top-left vertex `(x, y)` determines the positions of the other three vertices. Therefore the only matrix operation you need to perform is on the top-left vertex -- the remaining vertices can be calculated by adding the relevant `w` and `h` values. The matrix you are manipulating can, hence, be expressed as:
 
 <math>
-  <mfenced open = "[" close="]">
+  <mfenced open="[" close="]">
     <mtable>
       <mtr>
         <mtd><mi>x</mi></mtd>
@@ -428,7 +428,7 @@ Firstly, take note of how the top-left vertex `(x, y)` determines the positions 
 Or, if you substitute the variable values:
 
 <math>
-  <mfenced open = "[" close="]">
+  <mfenced open="[" close="]">
     <mtable>
       <mtr>
         <mtd><mn>400</mn></mtd>
@@ -443,7 +443,7 @@ Or, if you substitute the variable values:
 To translate a matrix, add (or subtract) another matrix. To perform a matrix addition, add-up the values of each row:
 
 <math>
-  <mfenced open = "[" close="]">
+  <mfenced open="[" close="]">
     <mtable>
       <mtr>
         <mtd><mi>x</mi></mtd>
@@ -454,7 +454,7 @@ To translate a matrix, add (or subtract) another matrix. To perform a matrix add
     </mtable>
   </mfenced>
   <mo>+</mo>
-  <mfenced open = "[" close="]">
+  <mfenced open="[" close="]">
     <mtable>
       <mtr>
         <mtd><mi>a</mi></mtd>
@@ -465,7 +465,7 @@ To translate a matrix, add (or subtract) another matrix. To perform a matrix add
     </mtable>
   </mfenced>
   <mo>=</mo>
-  <mfenced open = "[" close="]">
+  <mfenced open="[" close="]">
     <mtable>
       <mtr>
         <mtd>
@@ -501,7 +501,7 @@ quad(
 Expressed in matrix notation, this is:
 
 <math>
-  <mfenced open = "[" close="]">
+  <mfenced open="[" close="]">
     <mtable>
       <mtr>
         <mtd><mn>400</mn></mtd>
@@ -512,7 +512,7 @@ Expressed in matrix notation, this is:
     </mtable>
   </mfenced>
   <mo>+</mo>
-  <mfenced open = "[" close="]">
+  <mfenced open="[" close="]">
     <mtable>
       <mtr>
         <mtd><mn>100</mn></mtd>
@@ -523,7 +523,7 @@ Expressed in matrix notation, this is:
     </mtable>
   </mfenced>
   <mo>=</mo>
-  <mfenced open = "[" close="]">
+  <mfenced open="[" close="]">
     <mtable>
       <mtr>
         <mtd>
@@ -554,7 +554,7 @@ Run the sketch. The new yellow square is drawn `100` pixels further right and `8
 To scale a shape, one must *multiply* the matrix you intend to transform by one describing a transformation. In mathematical notation, this can be expressed as:
 
 <math>
-  <mfenced open = "[" close="]">
+  <mfenced open="[" close="]">
     <mtable>
       <mtr>
         <mtd><mi>x</mi></mtd>
@@ -565,7 +565,7 @@ To scale a shape, one must *multiply* the matrix you intend to transform by one 
     </mtable>
   </mfenced>
   <mo>×</mo>
-  <mfenced open = "[" close="]">
+  <mfenced open="[" close="]">
     <mtable>
       <mtr>
         <mtd><mi>a</mi></mtd>
@@ -582,7 +582,7 @@ To scale a shape, one must *multiply* the matrix you intend to transform by one 
 And this is the point where the power of matrices becomes evident! Depending on the values you substitute for `a`, `b`, `c`, and `d`, the result will be either a scale, reflect, squeeze, rotate, or shear operation. Take a moment to study how matrix multiplication is performed:
 
 <math>
-  <mfenced open = "[" close="]">
+  <mfenced open="[" close="]">
     <mtable>
       <mtr>
         <mtd><mi>x</mi></mtd>
@@ -593,7 +593,7 @@ And this is the point where the power of matrices becomes evident! Depending on 
     </mtable>
   </mfenced>
   <mo>×</mo>
-  <mfenced open = "[" close="]">
+  <mfenced open="[" close="]">
     <mtable>
       <mtr>
         <mtd><mi>a</mi></mtd>
@@ -606,24 +606,36 @@ And this is the point where the power of matrices becomes evident! Depending on 
     </mtable>
   </mfenced>
   <mo>=</mo>
-  <mfenced open = "[" close="]">
+  <mfenced open="[" close="]">
     <mtable>
       <mtr>
         <mtd>
-          <mi>x</mi>
-          <mi>a</mi>
+          <mfenced open="(" close=")" separators="">
+            <mi>x</mi>
+            <mo>·</mo>
+            <mi>a</mi>
+          </mfenced>
           <mo>+</mo>
-          <mi>y</mi>
-          <mi>b</mi>
+          <mfenced open="(" close=")" separators="">
+            <mi>y</mi>
+            <mo>·</mo>
+            <mi>b</mi>
+          </mfenced>
         </mtd>
       </mtr>
       <mtr>
         <mtd>
-          <mi>x</mi>
-          <mi>c</mi>
+          <mfenced open="(" close=")" separators="">
+            <mi>x</mi>
+            <mo>·</mo>
+            <mi>c</mi>
+          </mfenced>
           <mo>+</mo>
-          <mi>y</mi>
-          <mi>d</mi>
+          <mfenced open="(" close=")" separators="">
+            <mi>y</mi>
+            <mo>·</mo>
+            <mi>d</mi>
+          </mfenced>
         </mtd>
       </mtr>
     </mtable>
@@ -633,7 +645,7 @@ And this is the point where the power of matrices becomes evident! Depending on 
 To perform a scale, value `a` multiplies the width, and value `d` multiplies the height. To half the square's width and height, use a matrix where both `a` and `d` are equal to `0.5`:
 
 <math>
-  <mfenced open = "[" close="]">
+  <mfenced open="[" close="]">
     <mtable>
       <mtr>
         <mtd><mn>400</mn></mtd>
@@ -644,7 +656,7 @@ To perform a scale, value `a` multiplies the width, and value `d` multiplies the
     </mtable>
   </mfenced>
   <mo>×</mo>
-  <mfenced open = "[" close="]">
+  <mfenced open="[" close="]">
     <mtable>
       <mtr>
         <mtd><mn>0.5</mn></mtd>
@@ -657,7 +669,7 @@ To perform a scale, value `a` multiplies the width, and value `d` multiplies the
     </mtable>
   </mfenced>   
   <mo>=</mo>
-  <mfenced open = "[" close="]">
+  <mfenced open="[" close="]">
     <mtable>
       <mtr>
         <mtd>
@@ -759,7 +771,7 @@ quad(
 Expressed in matrix notation, this is:
 
 <math>
-  <mfenced open = "[" close="]">
+  <mfenced open="[" close="]">
     <mtable>
       <mtr>
         <mtd><mn>400</mn></mtd>
@@ -770,7 +782,7 @@ Expressed in matrix notation, this is:
     </mtable>
   </mfenced>
   <mo>×</mo>
-  <mfenced open = "[" close="]">
+  <mfenced open="[" close="]">
     <mtable>
       <mtr>
         <mtd><mn>0.3</mn></mtd>
@@ -783,7 +795,7 @@ Expressed in matrix notation, this is:
     </mtable>
   </mfenced>   
   <mo>=</mo>
-  <mfenced open = "[" close="]">
+  <mfenced open="[" close="]">
     <mtable>
       <mtr>
         <mtd>
@@ -830,7 +842,7 @@ Reflecting a shape is a matter of scaling one axis by a negative value; then mul
 For a horizontal reflection use:
 
 <math>
-  <mfenced open = "[" close="]">
+  <mfenced open="[" close="]">
     <mtable>
       <mtr>
         <mtd><mi>x</mi></mtd>
@@ -841,7 +853,7 @@ For a horizontal reflection use:
     </mtable>
   </mfenced>
   <mo>×</mo>
-  <mfenced open = "[" close="]">
+  <mfenced open="[" close="]">
     <mtable>
       <mtr>
         <mtd><mo>-</mo><mi>a</mi></mtd>
@@ -858,7 +870,7 @@ For a horizontal reflection use:
 And for a vertical reflection:
 
 <math>
-  <mfenced open = "[" close="]">
+  <mfenced open="[" close="]">
     <mtable>
       <mtr>
         <mtd><mi>x</mi></mtd>
@@ -869,7 +881,7 @@ And for a vertical reflection:
     </mtable>
   </mfenced>
   <mo>×</mo>
-  <mfenced open = "[" close="]">
+  <mfenced open="[" close="]">
     <mtable>
       <mtr>
         <mtd><mn>1</mn></mtd>
@@ -900,7 +912,7 @@ quad(
 Expressed in matrix notation, this is:
 
 <math>
-  <mfenced open = "[" close="]">
+  <mfenced open="[" close="]">
     <mtable>
       <mtr>
         <mtd><mn>400</mn></mtd>
@@ -911,7 +923,7 @@ Expressed in matrix notation, this is:
     </mtable>
   </mfenced>
   <mo>×</mo>
-  <mfenced open = "[" close="]">
+  <mfenced open="[" close="]">
     <mtable>
       <mtr>
         <mtd><mn>-1</mn></mtd>
@@ -924,7 +936,7 @@ Expressed in matrix notation, this is:
     </mtable>
   </mfenced>   
   <mo>=</mo>
-  <mfenced open = "[" close="]">
+  <mfenced open="[" close="]">
     <mtable>
       <mtr>
         <mtd>
@@ -988,7 +1000,7 @@ quad(
 Expressed in matrix notation, this is:
 
 <math>
-  <mfenced open = "[" close="]">
+  <mfenced open="[" close="]">
     <mtable>
       <mtr>
         <mtd><mn>400</mn></mtd>
@@ -999,7 +1011,7 @@ Expressed in matrix notation, this is:
     </mtable>
   </mfenced>
   <mo>×</mo>
-  <mfenced open = "[" close="]">
+  <mfenced open="[" close="]">
     <mtable>
       <mtr>
         <mtd><mn>cos(0.785)</mn></mtd>
@@ -1016,7 +1028,7 @@ Expressed in matrix notation, this is:
 The result is a 'top-left' coordinate of roughly (141, 424).
 
 <math>
-  <mfenced open = "[" close="]">
+  <mfenced open="[" close="]">
     <mtable>
       <mtr>
         <mtd>
@@ -1035,7 +1047,7 @@ The result is a 'top-left' coordinate of roughly (141, 424).
     </mtable>
   </mfenced>
   <mo>=</mo>
-  <mfenced open = "[" close="]">
+  <mfenced open="[" close="]">
     <mtable>
       <mtr>
         <mtd>
@@ -1069,7 +1081,7 @@ Shearing a shape slants/skews it along the horizontal or vertical axis. The area
 To shear horizontally, use:
 
 <math>
-  <mfenced open = "[" close="]">
+  <mfenced open="[" close="]">
     <mtable>
       <mtr>
         <mtd><mi>x</mi></mtd>
@@ -1080,7 +1092,7 @@ To shear horizontally, use:
     </mtable>
   </mfenced>
   <mo>×</mo>
-  <mfenced open = "[" close="]">
+  <mfenced open="[" close="]">
     <mtable>
       <mtr>
         <mtd><mn>1</mn></mtd>
@@ -1097,7 +1109,7 @@ To shear horizontally, use:
 And for a vertical shear:
 
 <math>
-  <mfenced open = "[" close="]">
+  <mfenced open="[" close="]">
     <mtable>
       <mtr>
         <mtd><mi>x</mi></mtd>
@@ -1108,7 +1120,7 @@ And for a vertical shear:
     </mtable>
   </mfenced>
   <mo>×</mo>
-  <mfenced open = "[" close="]">
+  <mfenced open="[" close="]">
     <mtable>
       <mtr>
         <mtd><mn>1</mn></mtd>
@@ -1140,7 +1152,7 @@ quad(
 Expressed in matrix notation, this is:
 
 <math>
-  <mfenced open = "[" close="]">
+  <mfenced open="[" close="]">
     <mtable>
       <mtr>
         <mtd><mn>400</mn></mtd>
@@ -1151,7 +1163,7 @@ Expressed in matrix notation, this is:
     </mtable>
   </mfenced>
   <mo>×</mo>
-  <mfenced open = "[" close="]">
+  <mfenced open="[" close="]">
     <mtable>
       <mtr>
         <mtd><mn>1</mn></mtd>
@@ -1164,7 +1176,7 @@ Expressed in matrix notation, this is:
     </mtable>
   </mfenced>
   <mo>=</mo>
-  <mfenced open = "[" close="]">
+  <mfenced open="[" close="]">
     <mtable>
       <mtr>
         <mtd>

@@ -723,48 +723,118 @@ Once you have set a tint, it remains in effect for any subsequent images -- unle
 
 If you have ever sharpened or blurred a digital image, it's likely that the software you were using relied on *image kernel* to process the effect. In the fields of computer vision and machine learning, image kernels are utilised for feature- detection and extraction.
 
-An image kernel, put simply, is a [matrix]({% post_url 2018-08-10-processing.py_in_ten_lessons--04-_beta_eq_fps_gt_12 %}#matrices).
+An image kernel, put simply, is a small [matrix]({% post_url 2018-08-10-processing.py_in_ten_lessons--04-_beta_eq_fps_gt_12 %}#matrices) that passes over the pixels of your image, manipulating the values as it moves along. To illustrate, here is three-by-three blur kernel in action. The *kernel* (left) begins with its centre placed over the first (top-left) pixel of the source image. A new pixel colour value is calculated using the nine cells sampled by the kernel.
 
-matric pic
+<figure>
+  <img src="{{ site.url }}/img/pitl06/image-kernels-mona-lisa-1.png" class="fullwidth" />
+</figure>
+
+For any edge pixels, though, the kernel hangs over the boundary and samples empty cells. One common solution is to extend the borders pixels outward.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl06/image-kernels-mona-lisa-1-edge.png" class="fullwidth" />
+</figure>
+
+This process proceeds pixel-by-pixel. In this instance, the kernel motion is left-to-right, row-by-row -- although, as long as every pixel is processed, the sequence does not matter.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl06/image-kernels-mona-lisa-2.png" />
+  <figcaption>The kernel motion is left-to-right, row-by-row.</figcaption>
+</figure>
+
+<figure>
+  <img src="{{ site.url }}/img/pitl06/image-kernels-mona-lisa-3.png" />
+  <figcaption>When the kernel reaches the final pixel, the process is complete.</figcaption>
+</figure>
+
+The magic part is how the kernel combines the the nine value into one. The process is termed *convolution*. It involves adding each of the pixels to their local neighbours, applying a specific weighting scheme in the process.
+
+The kernel multiplies the nine values using a convolution ...
+
+<style>
+  #image-kernel-matrix-sample, #image-kernel-matrix-kernel {
+    color: #00FF00;
+    display: grid;
+    float: left;
+    font-style: italic;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    height: 120px;
+    overflow: hidden;
+    text-align: center;
+    width: 120px;
+  }
+  #image-kernel-matrix-sample div, #image-kernel-matrix-kernel div {
+    box-sizing: border-box;
+    padding-top: 7px;
+  }
+  #image-kernel-matrix-sign {
+    float: left;
+    font-size: 1.5em;
+    padding-top: 45px;
+    padding-right: 2px;
+    text-align: center;
+    width: 40px;
+  }
+  #image-kernel-matrix-kernel div {
+    float: left;
+    outline: #00FF00 2px solid;
+  }
+</style>
+<div id="image-kernel-matrix-sample">
+  <div style="background-color:#714931">a</div>
+  <div style="background-color:#623c2a">b</div>
+  <div style="background-color:#6b472f">c</div>
+  <div style="background-color:#7d5535">d</div>
+  <div style="background-color:#6d452d">e</div>
+  <div style="background-color:#6b462f">f</div>
+  <div style="background-color:#956935">g</div>
+  <div style="background-color:#885d31">h</div>
+  <div style="background-color:#744b2c">i</div>
+</div>
+<div id="image-kernel-matrix-sign"> × </div>
+<div id="image-kernel-matrix-kernel" style="outline:#00FF00 4px solid">
+  <div>1</div>
+  <div>2</div>
+  <div>3</div>
+  <div>4</div>
+  <div>5</div>
+  <div>6</div>
+  <div>7</div>
+  <div>8</div>
+  <div>9</div>
+</div>
+<br style="clear:both" />
+
+...
 
 <math>
   <mfenced open = "[" close="]">
     <mtable>
       <mtr>
-        <mtd><mi>x</mi></mtd>
-      </mtr>
-      <mtr>
-        <mtd><mi>y</mi></mtd>
-      </mtr>
-    </mtable>
-  </mfenced>
-  <mo>+</mo>
-  <mfenced open = "[" close="]">
-    <mtable>
-      <mtr>
         <mtd><mi>a</mi></mtd>
+        <mtd><mi>b</mi></mtd>
+        <mtd><mi>c</mi></mtd>
       </mtr>
       <mtr>
-        <mtd><mi>b</mi></mtd>
+        <mtd><mi>d</mi></mtd>
+        <mtd><mi>e</mi></mtd>
+        <mtd><mi>f</mi></mtd>
       </mtr>
     </mtable>
   </mfenced>
-  <mo>=</mo>
+  <mo>×</mo>
   <mfenced open = "[" close="]">
     <mtable>
       <mtr>
-        <mtd>
-          <mi>x</mi>
-          <mo>+</mo>
-          <mi>a</mi>
-        </mtd>
+        <mtd><mi>1</mi></mtd>
+        <mtd><mi>2</mi></mtd>
+        <mtd><mi>3</mi></mtd>
       </mtr>
       <mtr>
-        <mtd>
-          <mi>y</mi>
-          <mo>+</mo>
-          <mi>b</mi>
-        </mtd>
+        <mtd><mi>4</mi></mtd>
+        <mtd><mi>5</mi></mtd>
+        <mtd><mi>6</mi></mtd>
       </mtr>
     </mtable>
   </mfenced>

@@ -867,8 +867,38 @@ The convolution is calculated as by multiplying each cell by its corresponding p
   </mrow>
 </math>
 
-<sup markdown="1">If you are a math/machine-learning/other nerd -- you may point out that that kernel has not been flipped, so this is, in fact, a *cross correlation* and not a convolution. You are correct. However, we will be using symmetrical kernels, so correlation and convolution coincide.</sup>
+<sup markdown="1">If you are a math/ML/CV/other nerd -- you may point out that that kernel has not been flipped, so this is, in fact, a *cross correlation* and not a convolution. You are correct. However, we will be using symmetrical kernels, so correlation and convolution coincide.</sup>
 
+The numbers *1*--*9* are simply variables. One replaces them with actual kernel weightings. With the theory out the way, it's time to program your own image kernels so that you can experiment different weight combinations.
+
+### Roll Your Own Image Kernel
+
+Create a new sketch and save it as "image_kernels".
+
+Download this image of a Kuba poeple's *Mwaash aMbooy mask* and place it your sketch's "data" sub-directory:
+
+<a href="{{ site.url }}/img/pitl06/wikimedia-backup/mwaash-ambooy-grey.png" download>mwaash-ambooy-grey.png</a>
+
+Begin with the following code:
+
+{% highlight py %}
+size(1000,720)
+background('#004477')
+noStroke()
+mwaashambooy = loadImage('mwaash-ambooy-grey.png')
+image(mwaashambooy, 0,0)
+{% endhighlight py %}
+
+Run the sketch. The image is greyscale. To begin, a single colour channel is easier to manage.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl06/image-kernels-mwaashambooy-load.png" />
+  <figcaption>
+    Source: <a href="https://commons.wikimedia.org/wiki/File:Brooklyn_Museum_22.1582_Mwaash_aMbooy_Mask.jpg">Wikimedia Commons</a>
+  </figcaption>
+</figure>
+
+As with the prior task, the processed version will appear in the blue area to the right. 
 
 ## filters
 https://py.processing.org/reference/filter.html

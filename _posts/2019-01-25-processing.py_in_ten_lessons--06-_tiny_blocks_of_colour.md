@@ -898,7 +898,224 @@ Run the sketch. The image is greyscale. To begin, a single colour channel is eas
   </figcaption>
 </figure>
 
-As with the prior task, the processed version will appear in the blue area to the right. 
+As with the prior task, the processed version will appear in the blue area to the right. To begin, add a loop to your sketch:
+
+{% highlight py %}
+halfwidth = width/2
+x = 0
+y = 0
+
+for i in range(halfwidth*height):
+
+    if i%halfwidth==0 and i!=0:
+        y += 1
+        x = 0
+    x += 1
+{% endhighlight py %}
+
+Because we are sampling greyscale pixels, it does not matter if you extract the red, green, or blue channel; remember these are equal for shades of grey. Add this line to the end of the loop:
+
+{% highlight py %}
+    sample = red( get(x,y) )
+{% endhighlight py %}
+
+Next, create a new grey `color`, assign it to a variable named `kernel`, and use `set` to draw the corresponding pixel to the right half of the window:
+
+{% highlight py %}
+    kernel = color(sample,sample,sample)
+
+    set(x+halfwidth, y, kernel)
+{% endhighlight py %}
+
+We could simply use a `get(x,y)` as the third argument of the `set()` function and forgo the previous two lines. Moreover, the visual result is an exact duplicate of the source? The purpose of this seemingly redundant step is to verify that everything works for now, then adapt the code as we go.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl06/image-kernels-mwaashambooy-duplicate.png" />
+  <figcaption>Before proceeding, ensure that your Display window shows two greyscale masks.</figcaption>
+</figure>
+
+With each iteration, we must sample nine pixels. The loop begins with the top-left pixel, meaning that, on the first iteration, five 'empty' pixels beyond the edges are sampled. To keep things simple, we will not use the 'extend' trick, so Processing will record these as black. This will result in a 1 pixel darkened border, but you likely won't notice it.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl06/image-kernels-mwaashambooy-zoom.png" />
+</figure>
+
+Replace the `sample` variable with a list.
+
+{% highlight py %}
+    #sample = red( get(x,y) )
+    sample = [
+      red(get(x-1,y-1)), red(get(x,y-1)), red(get(x+1,y-1)),
+      red(get(x-1,y))  , red(get(x,y))  , red(get(x+1,y)),
+      red(get(x-1,y+1)), red(get(x,y+1)), red(get(x+1,y+1))
+    ]
+{% endhighlight py %}
+
+Next, replace the `kernel` variable with a list that multiplies the sample values with by the kernel weightings. To start, we will perform an *identity* operation -- which is math-speak "returns the same values it was provided".
+
+{% highlight py %}
+    #kernel = color(sample,sample,sample)
+    kernel = [
+      0*sample[0], 0*sample[1], 0*sample[2],
+      0*sample[3], 1*sample[4], 0*sample[5],
+      0*sample[6], 0*sample[7], 0*sample[8]
+    ]
+{% endhighlight py %}
+
+To illustrate this using the same matrix diagram from earlier, we have black left/top edge pixels and a matrix of zeroes with a `1` in the centre.
+
+<div id="image-kernel-matrix-sample">
+  <div style="background-color:#000000"></div>
+  <div style="background-color:#000000"></div>
+  <div style="background-color:#000000"></div>
+  <div style="background-color:#000000"></div>
+  <div style="background-color:#303030"></div>
+  <div style="background-color:#242424"></div>
+  <div style="background-color:#000000"></div>
+  <div style="background-color:#262626"></div>
+  <div style="background-color:#202020"></div>
+</div>
+<div id="image-kernel-matrix-sign"> × </div>
+<div id="image-kernel-matrix-kernel" style="outline:#00FF00 4px solid">
+  <div>0</div>
+  <div>0</div>
+  <div>0</div>
+  <div>0</div>
+  <div>1</div>
+  <div>0</div>
+  <div>0</div>
+  <div>0</div>
+  <div>0</div>
+</div>
+<br style="clear:both" />
+
+Recall though, that after multiplying, all the products must be added together. To make things easy for you, there is a Python `sum()` function that adds up all the numbers in a list. Replace the existing `set` line as below.
+
+{% highlight py %}
+    #set(x+halfwidth, y, kernel)
+    r = sum(kernel)
+    set( x+halfwidth, y, color(r, r, r) )
+{% endhighlight py %}
+
+Run the sketch. The results appear the same as before. You are now ready to begin experimenting with different kernel weightings.
+
+#### Box Blur
+
+<math>
+  <mfenced open="[" close="]">
+    <mtable>
+      <mtr>
+        <mtd><mi>0.11</mi></mtd>
+        <mtd><mi>0.11</mi></mtd>
+        <mtd><mi>0.11</mi></mtd>
+      </mtr>
+      <mtr>
+        <mtd><mi>0.11</mi></mtd>
+        <mtd><mi>0.11</mi></mtd>
+        <mtd><mi>0.11</mi></mtd>
+      </mtr>
+      <mtr>
+        <mtd><mi>0.11</mi></mtd>
+        <mtd><mi>0.11</mi></mtd>
+        <mtd><mi>0.11</mi></mtd>
+      </mtr>
+    </mtable>
+  </mfenced>
+</math>
+
+{% highlight py %}
+    kernel = [
+      0.11*sample[0], 0.11*sample[1], 0.11*sample[2],
+      0.11*sample[3], 0.11*sample[4], 0.11*sample[5],
+      0.11*sample[6], 0.11*sample[7], 0.11*sample[8]
+    ]
+{% endhighlight py %}
+
+<figure>
+  <img src="{{ site.url }}/img/pitl06/image-kernels-mwaashambooy-kernel-blur.png" />
+  <figcaption>Box blur.</figcaption>
+</figure>
+
+#### Edge Detection
+
+<math>
+  <mfenced open="[" close="]">
+    <mtable>
+      <mtr>
+        <mtd><mi>0</mi></mtd>
+        <mtd><mi>1</mi></mtd>
+        <mtd><mi>0</mi></mtd>
+      </mtr>
+      <mtr>
+        <mtd><mi>1</mi></mtd>
+        <mtd><mi>-4</mi></mtd>
+        <mtd><mi>1</mi></mtd>
+      </mtr>
+      <mtr>
+        <mtd><mi>0</mi></mtd>
+        <mtd><mi>1</mi></mtd>
+        <mtd><mi>0</mi></mtd>
+      </mtr>
+    </mtable>
+  </mfenced>
+</math>
+
+{% highlight py %}
+    kernel = [
+      0*sample[0], 0*sample[1], 0*sample[2],
+      1*sample[3],-4*sample[4], 1*sample[5],
+      0*sample[6], 0*sample[7], 0*sample[8]
+    ]
+{% endhighlight py %}
+
+<figure>
+  <img src="{{ site.url }}/img/pitl06/image-kernels-mwaashambooy-kernel-edge-detection.png" />
+  <figcaption>Edge detection.</figcaption>
+</figure>
+
+#### Sharpen
+
+<math>
+  <mfenced open="[" close="]">
+    <mtable>
+      <mtr>
+        <mtd><mi>0</mi></mtd>
+        <mtd><mi>-1</mi></mtd>
+        <mtd><mi>0</mi></mtd>
+      </mtr>
+      <mtr>
+        <mtd><mi>-1</mi></mtd>
+        <mtd><mi>5</mi></mtd>
+        <mtd><mi>-1</mi></mtd>
+      </mtr>
+      <mtr>
+        <mtd><mi>0</mi></mtd>
+        <mtd><mi>-1</mi></mtd>
+        <mtd><mi>0</mi></mtd>
+      </mtr>
+    </mtable>
+  </mfenced>
+</math>
+
+{% highlight py %}
+    kernel = [
+      0*sample[0],-1*sample[1], 0*sample[2],
+     -1*sample[3], 5*sample[4],-1*sample[5],
+      0*sample[6],-1*sample[7], 0*sample[8]
+    ]
+{% endhighlight py %}
+
+<figure>
+  <img src="{{ site.url }}/img/pitl06/image-kernels-mwaashambooy-kernel-sharpen.png" />
+  <figcaption>Sharpen.</figcaption>
+</figure>
+
+
+
+
+
+### tasks -- colour sharpen
+
 
 ## filters
 https://py.processing.org/reference/filter.html

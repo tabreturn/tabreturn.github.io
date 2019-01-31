@@ -7,11 +7,11 @@ published: false
 ---
 
 ***Covered in this lesson:***  
-<a href="#image-file-formats"><em>image formats</em></a> /
 <a href="#colour-channels"><em>colour channels</em></a> /
 <a href="#halftone"><em>halftone</em></a> /
 <a href="#tint-and-transparency"><em>tint and transparency</em></a> /
-<a href="#image-kernels"><em>image kernels</em></a>
+<a href="#image-kernels"><em>image kernels</em></a> /
+<a href="#filters-and-blends"><em>filters and blends</em></a>
 
 ---
 &nbsp;  
@@ -19,7 +19,7 @@ In this tutorial we will look at a few cool image processing techniques. You are
 
 To begin, we will peek under the hood of some image file formats. This will provide useful insights into how the colour of each pixel is controlled.
 
-# Image Formats
+### Image Formats
 
 Each time you run your Processing sketch, a new display window is spawned. Like a GIF, JPG, or PNG image, the graphic in the display window is raster-based. Using the [`saveFrame()`](http://localhost:4000/code/processing/python/2018/08/10/processing.py_in_ten_lessons-04-_beta_eq_fps_gt_12.html#saving-frames) function one can save the frame in TIFF (`.tif`) format. If it's not a TIFF you desire, then provide a (file name) argument ending in `.gif`, `.jpg`, or `png`. TIFF, however, employs no compression, resulting larger files. Processing also supports Targa (.tga), but the lessons thus far have avoided making mention of it, in favour of focussing on the common web-browser-supported formats.
 
@@ -976,7 +976,7 @@ To illustrate this using the same matrix diagram from earlier, we have black lef
   <div style="background-color:#202020"></div>
 </div>
 <div id="image-kernel-matrix-sign"> × </div>
-<div id="image-kernel-matrix-kernel" style="outline:#00FF00 4px solid">
+<div id="image-kernel-matrix-kernel" style="outline:#00FF00 4px solid; font-style:normal;">
   <div>0</div>
   <div>0</div>
   <div>0</div>
@@ -1001,23 +1001,25 @@ Run the sketch. The results appear the same as before. You are now ready to begi
 
 #### Box Blur
 
+The box blur is a simple kernel that averages adjacent pixel values. The result is a 'softer' image with lower contrast.
+
 <math>
   <mfenced open="[" close="]">
     <mtable>
       <mtr>
-        <mtd><mi>0.11</mi></mtd>
-        <mtd><mi>0.11</mi></mtd>
-        <mtd><mi>0.11</mi></mtd>
+        <mtd><mn>0.11</mn></mtd>
+        <mtd><mn>0.11</mn></mtd>
+        <mtd><mn>0.11</mn></mtd>
       </mtr>
       <mtr>
-        <mtd><mi>0.11</mi></mtd>
-        <mtd><mi>0.11</mi></mtd>
-        <mtd><mi>0.11</mi></mtd>
+        <mtd><mn>0.11</mn></mtd>
+        <mtd><mn>0.11</mn></mtd>
+        <mtd><mn>0.11</mn></mtd>
       </mtr>
       <mtr>
-        <mtd><mi>0.11</mi></mtd>
-        <mtd><mi>0.11</mi></mtd>
-        <mtd><mi>0.11</mi></mtd>
+        <mtd><mn>0.11</mn></mtd>
+        <mtd><mn>0.11</mn></mtd>
+        <mtd><mn>0.11</mn></mtd>
       </mtr>
     </mtable>
   </mfenced>
@@ -1038,23 +1040,25 @@ Run the sketch. The results appear the same as before. You are now ready to begi
 
 #### Edge Detection
 
+As the name implies, edge detection methods aim to identify edge points/boundaries within an image. The lighter the resultant pixel appears, the more pronounced the change is in image brightness.
+
 <math>
   <mfenced open="[" close="]">
     <mtable>
       <mtr>
-        <mtd><mi>0</mi></mtd>
-        <mtd><mi>1</mi></mtd>
-        <mtd><mi>0</mi></mtd>
+        <mtd><mn>0</mn></mtd>
+        <mtd><mn>1</mn></mtd>
+        <mtd><mn>0</mn></mtd>
       </mtr>
       <mtr>
-        <mtd><mi>1</mi></mtd>
-        <mtd><mi>-4</mi></mtd>
-        <mtd><mi>1</mi></mtd>
+        <mtd><mn>1</mn></mtd>
+        <mtd><mn>-4</mn></mtd>
+        <mtd><mn>1</mn></mtd>
       </mtr>
       <mtr>
-        <mtd><mi>0</mi></mtd>
-        <mtd><mi>1</mi></mtd>
-        <mtd><mi>0</mi></mtd>
+        <mtd><mn>0</mn></mtd>
+        <mtd><mn>1</mn></mtd>
+        <mtd><mn>0</mn></mtd>
       </mtr>
     </mtable>
   </mfenced>
@@ -1075,23 +1079,25 @@ Run the sketch. The results appear the same as before. You are now ready to begi
 
 #### Sharpen
 
+Sharpening makes light pixels lighter and dark pixels darker. The result is an increase contrast and 'crisper' edges. The kernel is, essentially, the inverse of an edge detect.
+
 <math>
   <mfenced open="[" close="]">
     <mtable>
       <mtr>
-        <mtd><mi>0</mi></mtd>
-        <mtd><mi>-1</mi></mtd>
-        <mtd><mi>0</mi></mtd>
+        <mtd><mn>0</mn></mtd>
+        <mtd><mn>-1</mn></mtd>
+        <mtd><mn>0</mn></mtd>
       </mtr>
       <mtr>
-        <mtd><mi>-1</mi></mtd>
-        <mtd><mi>5</mi></mtd>
-        <mtd><mi>-1</mi></mtd>
+        <mtd><mn>-1</mn></mtd>
+        <mtd><mn>5</mn></mtd>
+        <mtd><mn>-1</mn></mtd>
       </mtr>
       <mtr>
-        <mtd><mi>0</mi></mtd>
-        <mtd><mi>-1</mi></mtd>
-        <mtd><mi>0</mi></mtd>
+        <mtd><mn>0</mn></mtd>
+        <mtd><mn>-1</mn></mtd>
+        <mtd><mn>0</mn></mtd>
       </mtr>
     </mtable>
   </mfenced>
@@ -1110,16 +1116,90 @@ Run the sketch. The results appear the same as before. You are now ready to begi
   <figcaption>Sharpen.</figcaption>
 </figure>
 
+These are a few common kernel types. However, image kernels need not be limited to 3 × 3, symmetric matrices, and can operate on whatever channel(s) you feed them (full colour RGB, HSB, etc.). Like many things matrix-related, this stuff can get very involved. We will not venture any deeper, but in the final section of this lesson we'll cover Processing's [filter](#filters) functions.
 
+### Colour Emboss Task
 
+In this task, the challenge is to apply an emboss to a colour image. You may use your existing sketch or create a new one. Download the colour version of the *Mwaash aMbooy mask* and place it your sketch's "data" sub-directory:
 
+<a href="{{ site.url }}/img/pitl06/wikimedia-backup/mwaash-ambooy-colour.png" download>mwaash-ambooy-colour.png</a>
 
-### tasks -- colour sharpen
+Do not forget to load the colour image:
 
+{% highlight py %}
+...
+mwaashambooy = loadImage('mwaash-ambooy-colour.png')
+image(mwaashambooy, 0,0)
+...
+{% endhighlight py %}
 
-## filters
+The emboss kernel creates the illusion of depth by emphasising contrast in a given direction.
+
+<math>
+  <mfenced open="[" close="]">
+    <mtable>
+      <mtr>
+        <mtd><mn>2</mn></mtd>
+        <mtd><mn>1</mn></mtd>
+        <mtd><mn>0</mn></mtd>
+      </mtr>
+      <mtr>
+        <mtd><mn>1</mn></mtd>
+        <mtd><mn>1</mn></mtd>
+        <mtd><mn>-1</mn></mtd>
+      </mtr>
+      <mtr>
+        <mtd><mn>0</mn></mtd>
+        <mtd><mn>-1</mn></mtd>
+        <mtd><mn>-2</mn></mtd>
+      </mtr>
+    </mtable>
+  </mfenced>
+</math>
+
+The final result looks like this:
+
+<figure>
+  <img src="{{ site.url }}/img/pitl06/image-kernels-mwaashambooy-kernel-emboss-colour.png" class="fullwidth" />
+</figure>
+
+If you have no idea where to start, consider a separate kernel for each R/G/B channel.
+
+## Filters and Blends
+
+the above but less flexible ...
+
 https://py.processing.org/reference/filter.html
 
+
+<figure>
+  <img src="{{ site.url }}/img/pitl06/filters-start.png" />
+  Source: <a href="https://commons.wikimedia.org/wiki/File:Rubber_Duck_in_Sydney,_January_5,_2013.jpg">Wikimedia Commons</a>
+</figure>
+
+...
+
+<figure>
+  <img src="{{ site.url }}/img/pitl06/filters-types.png" class="fullwidth" />
+  <figcaption>
+    <table width="100%">
+      <tr>
+        <td colspan="3"><b>Corresponding filter code:</b></td>
+      </tr>
+      <tr>
+        <td>No filter</td><td><code>filter(BLUR,3)</code></td><td><code>filter(DILATE)</code> × 2</td>
+      </tr>
+      <tr>
+        <td><code>filter(ERODE)</code> × 2</td><td><code>filter(GRAY)</code></td><td><code>filter(INVERT)</code></td>
+      </tr>
+      <tr>
+        <td><code>filter(POSTERIZE,3)</code></td><td><code>filter(THRESHOLD)</code></td><td>Posterise and blur × 3</td>
+      </tr>
+    </table>
+  </figcaption>
+</figure>
+
+...
 
 ## Lesson 07
 

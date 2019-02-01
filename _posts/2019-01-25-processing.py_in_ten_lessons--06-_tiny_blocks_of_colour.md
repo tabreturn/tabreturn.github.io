@@ -9,9 +9,9 @@ published: false
 ***Covered in this lesson:***  
 <a href="#colour-channels"><em>colour channels</em></a> /
 <a href="#halftone"><em>halftone</em></a> /
-<a href="#tint-and-transparency"><em>tint and transparency</em></a> /
 <a href="#image-kernels"><em>image kernels</em></a> /
-<a href="#filters-and-blends"><em>filters and blends</em></a>
+<a href="#filters-and-blends"><em>filters and blends</em></a> /
+<a href="#tint-and-transparency"><em>tint and transparency</em></a>
 
 ---
 &nbsp;  
@@ -670,55 +670,6 @@ With so few shades, you can expect to lose a fair amount of detail. The final re
 
 There are many halftone effects to explore. By combining the techniques covered here, you can come up with all sorts of interesting results. As a staring point, you can see what happens when you combine the circular, pixel, and ASCII effects.
 
-## Tint and Transparency
-
-Processing's [`tint()`](https://py.processing.org/reference/tint.html) function tints images using a specified colour. This is like taking a sheet of colour transparency film and placing it over a given image. It's simple enough to use, and best explained with few code snippets.
-
-<figure>
-  <img src="{{ site.url }}/img/pitl06/tints-red-transparent.png" class="fullwidth" />
-  <figcaption>
-    From left to right: standard image; red tint; 25% transparent.<br />
-    source: <a href="https://commons.wikimedia.org/wiki/File:Beijing_Forbidden_City_Imperial_Guardian_Lions.jpg">Wikimedia Commons</a>
-  </figcaption>
-</figure>
-
-The function accepts three `0`--`255` (RGB) values arguments.
-
-{% highlight py%}
-# no tint
-img = loadImage('guardian-lion.png')
-image(img, 0,0)
-
-# red tint
-tint(255,0,0)
-image(img, width/3,0)
-{% endhighlight %}
-
-Alternatively, you could use a single argument if it is a `color()` data type:
-
-{% highlight py%}
-red = color(255,0,0)
-tint(red)  
-image(img, width/3,0)
-{% endhighlight %}
-
-The `tint` and `color` functions also accept a fourth (alpha) `0`--`255` argument for transparency. If you need to affect the image transparency but retain the colour, use white with an alpha.
-
-{% highlight py%}
-# 25% transparent
-transparent25 = color(255,255,255, 65)
-tint(transparent25)
-image(img, width/3*2,0)
-{% endhighlight %}
-
-To separate out an alpha from any `color` value, use the [`alpha()`](https://py.processing.org/reference/alpha.html) function.
-
-{% highlight py%}
-print( alpha(transparent25) ) # displays 65.0
-{% endhighlight %}
-
-Once you have set a tint, it remains in effect for any subsequent images -- unless you include another `tint()` line, or a [`noTint()`](https://py.processing.org/reference/noTint.html).
-
 ## Image Kernels
 
 If you have ever sharpened or blurred a digital image, it's likely that the software you were using relied on *image kernel* to process the effect. In the fields of computer vision and machine learning, image kernels are utilised for feature- detection and extraction.
@@ -1173,14 +1124,14 @@ https://py.processing.org/reference/filter.html
 
 
 <figure>
-  <img src="{{ site.url }}/img/pitl06/filters-start.png" />
+  <img src="{{ site.url }}/img/pitl06/filters-and-blends-filter-start.png" />
   Source: <a href="https://commons.wikimedia.org/wiki/File:Rubber_Duck_in_Sydney,_January_5,_2013.jpg">Wikimedia Commons</a>
 </figure>
 
 ...
 
 <figure>
-  <img src="{{ site.url }}/img/pitl06/filters-types.png" class="fullwidth" />
+  <img src="{{ site.url }}/img/pitl06/filters-and-blends-filter-types.png" class="fullwidth" />
   <figcaption>
     <table width="100%">
       <tr>
@@ -1200,6 +1151,128 @@ https://py.processing.org/reference/filter.html
 </figure>
 
 ...
+
+
+<figure>
+  <img src="{{ site.url }}/img/pitl06/filters-and-blends-blend-types.png" />
+  <figcaption>
+    ...
+  </figcaption>
+</figure>
+
+...
+
+
+
+
+
+
+
+
+
+
+
+## Tint and Transparency
+
+Processing's [`tint()`](https://py.processing.org/reference/tint.html) function tints images using a specified colour. This is like taking a sheet of colour transparency film and placing it over a given image. It's simple enough to use and best explained with few code snippets.
+
+Create a new sketch as save it as "tints". Download this guardian lion photograph (from the Forbidden City, Beijing) and place it your sketch's "data" sub-directory:
+
+<a href="{{ site.url }}/img/pitl06/wikimedia-backup/guardian-lion.png" download>guardian-lion.png</a>
+
+Start the sketch with the following code:
+
+{% highlight py%}
+size(1050,500)
+background('#004477')
+noStroke()
+img = loadImage('guardian-lion.png')
+image(img, 0,0)
+{% endhighlight %}
+
+<figure>
+  <img src="{{ site.url }}/img/pitl06/tint-and-transparency-setup.png" />
+  <figcaption>
+    source: <a href="https://commons.wikimedia.org/wiki/File:Beijing_Forbidden_City_Imperial_Guardian_Lions.jpg">Wikimedia Commons</a>
+  </figcaption>
+</figure>
+
+The tint function accepts three `0`--`255` (RGB) values as arguments.
+
+{% highlight py%}
+# orange tint
+tint(255,153,0)
+image(img, width/3,0)
+{% endhighlight %}
+
+Alternatively, you could use a single argument of the `color()` data type:
+
+{% highlight py%}
+orange = color(255,153,0)
+tint(orange)  
+image(img, width/3,0)
+{% endhighlight %}
+
+Both the `tint` and `color` functions can accept a fourth (*alpha*) `0`--`255` argument for transparency. If you need to affect the image transparency but retain the colour, use white tint with and your desired alpha value.
+
+{% highlight py%}
+# 50% transparent
+transparent50 = color(255,255,255, 123)
+tint(transparent50)
+image(img, width/3*2,0)
+{% endhighlight %}
+
+To separate out an alpha channel from a `color` value, use the [`alpha()`](https://py.processing.org/reference/alpha.html) function.
+
+{% highlight py%}
+print( alpha(transparent50) ) # displays 123.0
+{% endhighlight %}
+
+Once you have set a tint, it remains in effect for any further images, unless you include a subsequent `tint()` line or a [`noTint()`](https://py.processing.org/reference/noTint.html).
+
+
+
+
+
+
+
+
+
+....
+
+If you are wondering
+
+{% highlight py%}
+thirdwidth = width/3
+x = 0
+y = 0
+
+colorMode(RGB, 1,1,1,1);
+orange = color(1, 0.5, 0, 0.25)
+
+for i in range( thirdwidth*(height-50) ):
+
+    x += 1
+
+    if i%thirdwidth==0 and i!=0:
+        y += 1
+        x = 0
+
+    pixel = get(x,y)
+    r = red(pixel) * red(orange)
+    g = green(pixel) * green(orange)
+    b = blue(pixel) * blue(orange)
+    a = alpha(orange)
+
+    noSmooth()
+    strokeWeight(1)
+    stroke( color(r,g,b,a) )
+    point( x+width/2, y )
+{% endhighlight %}
+
+https://en.wikipedia.org/wiki/Blend_modes
+https://blog.frame.io/2017/11/01/how-to-use-blend-modes/
+https://nancyjoward.wordpress.com/2018/04/17/blend-modes-algorithms-explained/
 
 ## Lesson 07
 

@@ -1118,26 +1118,49 @@ If you have no idea where to start, consider a separate kernel for each R/G/B ch
 
 ## Filters and Blends
 
+Processing includes a number of different filter effects and blend modes. If you are a user of raster graphics software, such as GIMP or Photoshop, you have almost certainly encountered some of these before. On a technical level, blend modes, and most filters, operate on colour channels. Processing's filter and blend functions cover a selection of common image processing algorithms. Technically speaking, one can program these effects using the techniques covered thus far. In fact, we look at replicating a few of the simpler blend modes.
 
+### Filters
 
+Filters range from the utilitarian and understated to the hideously gaudy. To be fair, most have their place, but perhaps some users lack an understanding of how much of -- and to which parts of an image -- a given filter should be applied. That said, there are some impressive developments being made in this area, thanks in part to advances in artificial intelligence. Rather than list all of GIMP's filters, here are the top-level categories into which they are arranged: blur, enhance, distort, light and shadow, noise, edge detect, generic, combine, artistic, decor, map, render, web, and animation. On average, a category probably contains around ten, so that's a lot of filters! Processing has eight in total.
 
-the above but less flexible ...
+Filters are easy to use. The [`filter()`](https://py.processing.org/reference/filter.html) function requires a predefined filter name as an argument. Depending on the filter, there may be a second parameter. If you want to experiment, download this photo of Florentijn Hofman's *Rubber Duck*. However, you may prefer to just read over this section. An image comparing all of the effects is provided further along.
 
-### Images
+<a href="{{ site.url }}/img/pitl06/wikimedia-backup/480px-Rubber_Duck_in_Sydney,_January_5,_2013" download>480px-Rubber_Duck_in_Sydney,_January_5,_2013.png</a>
 
-<figure>
-  <img src="{{ site.url }}/img/pitl06/filters-and-blends-gimp-blending-modes.png" class="fullwidth" />
-</figure>
+If you have decided to write some code, place the image in the sketch's "data" sub-directory and add the following code:
 
-https://py.processing.org/reference/filter.html
-
+{% highlight py %}
+size(480,480)
+background('#004477')
+rubberduck = loadImage(
+  '480px-Rubber_Duck_in_Sydney,_January_5,_2013.jpg'
+)
+image(rubberduck, 0,0)
+textSize(28)
+text('Rubber Duck', 20,150)
+{% endhighlight %}
 
 <figure>
   <img src="{{ site.url }}/img/pitl06/filters-and-blends-filter-start.png" />
-  Source: <a href="https://commons.wikimedia.org/wiki/File:Rubber_Duck_in_Sydney,_January_5,_2013.jpg">Wikimedia Commons</a>
+  <figcaption>
+    Source: <a href="https://commons.wikimedia.org/wiki/File:Rubber_Duck_in_Sydney,_January_5,_2013.jpg">Wikimedia Commons</a>
+  </figcaption>
 </figure>
 
-...
+To blur the image, add the following line to the end of your code:
+
+{% highlight py %}
+filter(BLUR)
+{% endhighlight %}
+
+If you want more blurring, `BLUR` accepts an additional level parameter. For example:
+
+{% highlight py %}
+filter(BLUR)
+{% endhighlight %}
+
+Below is image comparing each of Processing's filter options. The corresponding function calls have been provided in the caption.
 
 <figure>
   <img src="{{ site.url }}/img/pitl06/filters-and-blends-filter-types.png" class="fullwidth" />
@@ -1159,6 +1182,37 @@ https://py.processing.org/reference/filter.html
   </figcaption>
 </figure>
 
+Everything drawn before the `filter` is manipulated by the effect. However, anything added after it is unaffected.
+
+{% highlight py %}
+...
+filter(BLUR)
+textSize(15)
+text('Sydney, 2013', 20,180)
+{% endhighlight %}
+
+<figure>
+  <img src="{{ site.url }}/img/pitl06/filters-and-blends-filter-ordering.png" />
+  <figcaption>The <q>Sydney, 2013</q> line comes after the filter and is, therefore, unaffected.</figcaption>
+</figure>
+
+....
+
+
+### Image Blend Modes
+
+<figure>
+  <img src="{{ site.url }}/img/pitl06/filters-and-blends-gimp-blending-modes.png" class="fullwidth" />
+</figure>
+
+https://py.processing.org/reference/filter.html
+
+
+
+
+...
+
+
 ...
 
 
@@ -1172,7 +1226,7 @@ https://py.processing.org/reference/filter.html
 ...
 
 
-### BlendMode()
+### Drawing Blend Modes
 
 modrian
 

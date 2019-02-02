@@ -1118,7 +1118,16 @@ If you have no idea where to start, consider a separate kernel for each R/G/B ch
 
 ## Filters and Blends
 
+
+
+
 the above but less flexible ...
+
+### Images
+
+<figure>
+  <img src="{{ site.url }}/img/pitl06/filters-and-blends-gimp-blending-modes.png" class="fullwidth" />
+</figure>
 
 https://py.processing.org/reference/filter.html
 
@@ -1163,9 +1172,9 @@ https://py.processing.org/reference/filter.html
 ...
 
 
+### BlendMode()
 
-
-
+modrian
 
 
 
@@ -1200,7 +1209,6 @@ image(img, 0,0)
 The tint function accepts three `0`--`255` (RGB) values as arguments.
 
 {% highlight py%}
-# orange tint
 tint(255,153,0)
 image(img, width/3,0)
 {% endhighlight %}
@@ -1208,47 +1216,42 @@ image(img, width/3,0)
 Alternatively, you could use a single argument of the `color()` data type:
 
 {% highlight py%}
+#tint(255,153,0)
 orange = color(255,153,0)
-tint(orange)  
+tint(orange)
 image(img, width/3,0)
 {% endhighlight %}
 
-Both the `tint` and `color` functions can accept a fourth (*alpha*) `0`--`255` argument for transparency. If you need to affect the image transparency but retain the colour, use white tint with and your desired alpha value.
+Run the code to confirm that the tint is working.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl06/tint-and-transparency-orange.png" />
+</figure>
+
+The `tint` function can accept a fourth `0`--`255` argument for transparency (*alpha*). Create a new `orange50` variable, with an opacity of 50% (255 ÷ 2); then add a new `tint` line followed by a second instance of the `image`.
 
 {% highlight py%}
-# 50% transparent
-transparent50 = color(255,255,255, 123)
-tint(transparent50)
+orange50 = color(255,255,255, 123)
+tint(orange50)
 image(img, width/3*2,0)
 {% endhighlight %}
 
-To separate out an alpha channel from a `color` value, use the [`alpha()`](https://py.processing.org/reference/alpha.html) function.
+<figure>
+  <img src="{{ site.url }}/img/pitl06/tint-and-transparency-orange-alpha.png" />
+  <figcaption>Left to right: no tint; orange tint; orange tint and 50% alpha.</figcaption>
+</figure>
+
+If you need to affect the image transparency but retain the colour, use a white tint and your desired alpha value. Once you have set a tint, it remains in effect for any further images, unless you include a subsequent `tint()` line or a [`noTint()`](https://py.processing.org/reference/noTint.html).
+
+If you are wondering to yourself, "this looks a lot like a multiply blend mode", you'd be correct. The effect can be replicated manually by replacing the final `image` line with this loop arrangement:
 
 {% highlight py%}
-print( alpha(transparent50) ) # displays 123.0
-{% endhighlight %}
+...
+#image(img, width/3*2,0)
 
-Once you have set a tint, it remains in effect for any further images, unless you include a subsequent `tint()` line or a [`noTint()`](https://py.processing.org/reference/noTint.html).
-
-
-
-
-
-
-
-
-
-....
-
-If you are wondering
-
-{% highlight py%}
 thirdwidth = width/3
 x = 0
 y = 0
-
-colorMode(RGB, 1,1,1,1);
-orange = color(1, 0.5, 0, 0.25)
 
 for i in range( thirdwidth*(height-50) ):
 
@@ -1258,21 +1261,18 @@ for i in range( thirdwidth*(height-50) ):
         y += 1
         x = 0
 
+    colorMode(RGB, 1,1,1,1)
     pixel = get(x,y)
-    r = red(pixel) * red(orange)
-    g = green(pixel) * green(orange)
-    b = blue(pixel) * blue(orange)
-    a = alpha(orange)
+    r = red(pixel) * red(orange50)
+    g = green(pixel) * green(orange50)
+    b = blue(pixel) * blue(orange50)
+    a = alpha(orange50)
 
-    noSmooth()
-    strokeWeight(1)
-    stroke( color(r,g,b,a) )
-    point( x+width/2, y )
+    fill( color(r,g,b,a) )
+    rect(x+width-thirdwidth, y, 1, 1)
 {% endhighlight %}
 
-https://en.wikipedia.org/wiki/Blend_modes
-https://blog.frame.io/2017/11/01/how-to-use-blend-modes/
-https://nancyjoward.wordpress.com/2018/04/17/blend-modes-algorithms-explained/
+This code should look pretty familiar by now, expect that you probably do not recognise the [`alpha()`](https://py.processing.org/reference/alpha.html) function? This is used to separate out an alpha channel from a `color` value. The `colorMode()` also accepts a fourth alpha argument, so that the `color()` function may cater for transparency.
 
 ## Lesson 07
 

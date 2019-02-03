@@ -1157,10 +1157,10 @@ filter(BLUR)
 If you want more blurring, `BLUR` accepts an additional level parameter. For example:
 
 {% highlight py %}
-filter(BLUR)
+filter(BLUR, 3)
 {% endhighlight %}
 
-Below is image comparing each of Processing's filter options. The corresponding function calls have been provided in the caption.
+Below is image comparing each of Processing's filters. The corresponding function calls have been provided in the caption.
 
 <figure>
   <img src="{{ site.url }}/img/pitl06/filters-and-blends-filter-types.png" class="fullwidth" />
@@ -1182,7 +1182,7 @@ Below is image comparing each of Processing's filter options. The corresponding 
   </figcaption>
 </figure>
 
-Everything drawn before the `filter` is manipulated by the effect. However, anything added after it is unaffected.
+Note that everything drawn before the `filter` is manipulated by the effect. However, anything added after it is unaffected. For example:
 
 {% highlight py %}
 ...
@@ -1193,31 +1193,96 @@ text('Sydney, 2013', 20,180)
 
 <figure>
   <img src="{{ site.url }}/img/pitl06/filters-and-blends-filter-ordering.png" />
-  <figcaption>The <q>Sydney, 2013</q> line comes after the filter and is, therefore, unaffected.</figcaption>
+  <figcaption>The <q>Sydney, 2013</q> line comes after the filter function and is, therefore, unaffected.</figcaption>
 </figure>
 
-....
-
+By mixing together multiple built-in filters, your own programmed effects, and even some animation, you can create some mesmerising effects. Explore the GIMP/Photoshop/Krita/etc. filters for more inspiration.
 
 ### Image Blend Modes
 
+When I began using raster graphics software (Photoshop 5.5 in 1999) I was thrilled with how I could manipulate photographs using various touch-up, filter, and distortion tools. Strangely, blend modes were something I just seemed to gloss over and never touch again. In time, I grew more accustomed to incorporating them in my workflow. Today, I swear by them. Before, I had always found their names confusing and never understood which blend to select for the desired effect; I'd simply cycle through them until I struck the right one. It was only when I learnt about colour channels that everything mades sense!
+
 <figure>
   <img src="{{ site.url }}/img/pitl06/filters-and-blends-gimp-blending-modes.png" class="fullwidth" />
+  <figcaption>GIMP's layer blend modes. What does "Addition" even mean, anyhow?</figcaption>
 </figure>
 
-https://py.processing.org/reference/filter.html
+Perhaps you have never used blend modes. Or, maybe you're that Photoshop whiz who knows exactly what mode to select, but can't begin to explain how it actually works? Today, we unravel the mystery.
 
+We will begin with by programming our own blending mode, then move onto Processing's built-in functions. Create a new sketch and save it as "blends". In the "data" sub-directory, add a copy of the <a href="{{ site.url }}/img/pitl06/wikimedia-backup/480px-Rubber_Duck_in_Sydney,_January_5,_2013.jpg" download>Rubber Duck</a> image file from the last exercise. Add some code to draw a rainbow and place the image.
 
+{% highlight py %}
+size(960,480)
+background('#004477')
+noStroke()
+halfwidth = width/2
 
+fill('#FF0000'); rect(0,0,width,80)
+fill('#FF9900'); rect(0,80,width,80)
+fill('#FFFF00'); rect(0,160,width,80)
+fill('#00FF00'); rect(0,240,width,80)
+fill('#0099FF'); rect(0,320,width,80)
+fill('#6633FF'); rect(0,400,width,80)
 
-...
+rubberduck = loadImage(
+  '480px-Rubber_Duck_in_Sydney,_January_5,_2013.jpg'
+)
+image(rubberduck, 0,0)
+{% endhighlight %}
 
-
-...
-
+Run the sketch. The result is duck (to the left) and a sequence of rainbow colours.
 
 <figure>
-  <img src="{{ site.url }}/img/pitl06/filters-and-blends-blend-types.png" />
+  <img src="{{ site.url }}/img/pitl06/filters-and-blends-blend-image-setup.png" />
+  <figcaption>
+    ...
+  </figcaption>
+</figure>
+
+As with the previous exercises, a duplicate of the duck will be drawn over the rainbow colours to the right. The difference this time, will be the blending modes you apply in the process. Start by changing the `colorMode`'s RGB values so that they range from `0`--`1` (as apposed to the default `0`--`255`). Add a red `c` variable using the new scheme.
+
+{% highlight py %}
+colorMode(RGB, 1)
+c = color(1,0,0) # red
+{% endhighlight %}
+
+Next, use a loop to draw an exact duplicate to the right.
+
+{% highlight py %}
+x = 0
+y = 0
+
+for i in range(halfwidth*height):
+
+    if i%halfwidth==0 and i!=0:
+        y += 1
+        x = 0
+    x += 1
+
+    pixel = get(x,y)
+    set( x+halfwidth, y, pixel )
+{% endhighlight %}
+
+Run the code to confirm the correct visual output.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl06/filters-and-blends-blend-image-duplicate.png" />
+  <figcaption>
+    Duplicate duck drawn to the right.
+  </figcaption>
+</figure>
+
+
+
+
+
+
+
+
+....
+
+<figure>
+  <img src="{{ site.url }}/img/pitl06/filters-and-blends-blend-image-types.png" />
   <figcaption>
     ...
   </figcaption>

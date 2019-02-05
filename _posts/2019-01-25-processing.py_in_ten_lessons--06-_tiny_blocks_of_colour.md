@@ -1348,16 +1348,16 @@ To 'reset' to the default, use a blend mode of `BLEND`:
 
 Below is a table of the various `blendMode()` arguments/modes and their calculations for the red channel (of course, blue and green would be similarly affected).
 
-`BLEND`          | the default/normal blend mode
-`ADD`            | `r = red(layer0) + red(layer1)`
-`DARKEST`        | `r = min( red(layer0), red(layer1) )`
-`DIFFERENCE``   `| `SUBTRACT` that switches operands to always get a positive value
-`EXCLUSION`      | `DIFFERENCE` with a lower contrast
-`LIGHTEST`       | `r = max( red(layer0), red(layer1) )`
-`MULTIPLY`       | `r = red(layer0) * red(layer1)`
-`REPLACE`        | `BLEND` with no alpha support
-`SCREEN`         | `r = 1-(1-red(layer0)) * (1-red(layer1))`
-`SUBTRACT`       | `r = red(layer0) - red(layer1)`
+`BLEND`          | *the default/normal blend mode*
+`ADD`            | *`r = red(layer0) + red(layer1)`*
+`DARKEST`        | *`r = min( red(layer0), red(layer1) )`*
+`DIFFERENCE``   `| *`SUBTRACT` that switches operands to always get a positive value*
+`EXCLUSION`      | *`DIFFERENCE` with a lower contrast*
+`LIGHTEST`       | *`r = max( red(layer0), red(layer1) )`*
+`MULTIPLY`       | *`r = red(layer0) * red(layer1)`*
+`REPLACE`        | *`BLEND` with no alpha support*
+`SCREEN`         | *`r = 1-(1-red(layer0)) * (1-red(layer1))`*
+`SUBTRACT`       | *`r = red(layer0) - red(layer1)`*
 |||
 
 The following image compares each of above-listed modes -- beginning with `BLEND` at the top-left, then proceeding left-to-right, row-by-row, ending on `SUBTRACT` at the bottom-right.
@@ -1382,17 +1382,109 @@ The following image compares each of above-listed modes -- beginning with `BLEND
   </figcaption>
 </figure>
 
-...
-
+Graphic designers, VFX artists, and animators rely on blending modes for many neat tricks. For instance, *multiply* and *subtract* are handy for extracting logos from white or black backgrounds; *darkest* is great for sky replacements; *difference* can be used for comparing and aligning video footage. With a bottom-up understanding of how blend modes work, you can take full advantage of them in your creative workflows.
 
 ## Mondrian Task
 
-modrian
+In this challenge you get to fix a partially complete Processing adaptation of Piet Mondrian's [*Composition with Red, Blue, and Yellow*](https://commons.wikimedia.org/wiki/File:Piet_Mondriaan,_1930_-_Mondrian_Composition_II_in_Red,_Blue,_and_Yellow.jpg).
 
+<figure>
+  <img src="{{ site.url }}/img/pitl06/mondrian-task-complete.png" />
+</figure>
 
+For this task, this smoothing will be disabled; this will result in sharper lines. If you are looking to disable *anti-aliasing* (default) then the [`noSmooth()`](https://py.processing.org/reference/noSmooth.html) function is what you are after. Anti-aliasing makes edges appear smoother by producing intermediate pixels that slightly blur the boundary.
 
+<figure>
+  <img src="{{ site.url }}/img/pitl06/mondrian-task-nosmooth.png" />
+  <figcaption>Zoomed-in versions of <code>smooth()</code> and <code>noSmooth()</code> edges (lower-left- and right respectively).</figcaption>
+</figure>
 
+...
 
+.........
+
+{% highlight py %}
+size(480,480)
+background('#004477')
+noSmooth()
+noStroke()
+
+# red square
+fill('#FF8800'); rect(0,0,width,350)
+blendMode(___)
+fill('#008800'); rect(0,0,width,350)
+
+# white bottom edge
+blendMode(___)
+fill('#FF0000'); rect(105,350,375,130)
+fill('#00BB00'); rect(105,350,375,130)
+fill('#000088'); rect(105,350,375,130)
+
+# yellow corner
+blendMode(___)
+fill('#FFFF00'); rect(435,0,45,height)
+
+# white right edge squares
+blendMode(___)
+noStroke()
+fill('#FFFFFF'); rect(435,350,45,54)
+rect(0,0,105,144); rect(0,167,105,183)
+
+# blue corner
+blendMode(___)
+fill('#0088FF'); rect(0,350,105,height)
+
+# unwanted circle
+blendMode(___)
+fill('#0099FF'); ellipse(70,414,120,120)
+# can't make the circle vanish?
+# are you sure the previous blend is correct?
+
+# thinner lines
+blendMode(___)
+stroke('#FFFFFF')
+strokeWeight(11); line(105,0,105,height)
+line(0,350,width,350); line(434,350,434,height)
+
+strokeWeight(23)
+strokeCap(SQUARE)
+
+# thicker line upper-left
+blendMode(___)
+stroke('#00FFFF'); line(0,155,100,155)
+
+# thicker line lower-right
+blendMode(___)
+stroke('#FFFF00'); line(440,415,width,415)
+'''
+{% endhighlight %}
+
+...
+
+{% highlight py %}
+size(480,480)
+background('#004477')
+noSmooth()
+noStroke()
+
+# red square
+fill('#FF8800'); rect(0,0,width,350)
+blendMode(SUBTRACT)
+fill('#008800'); rect(0,0,width,350)
+'''
+{% endhighlight %}
+
+<figure>
+  <img src="{{ site.url }}/img/pitl06/mondrian-task-red.png" />
+  <figcaption>
+  </figcaption>
+</figure>
+
+{% highlight py %}
+...
+{% endhighlight %}
+
+...
 
 ## Tint and Transparency
 
@@ -1500,4 +1592,5 @@ This code should look pretty familiar by now, expect that you probably do not re
 
 * http://setosa.io/ev/image-kernels/
 * https://medium.freecodecamp.org/best-image-format-for-web-in-2019-jpeg-webp-heic-avif-41ba0c1b2789
+* https://en.wikipedia.org/wiki/Blend_modes
 * https://en.wikipedia.org/wiki/Kernel_(image_processing)

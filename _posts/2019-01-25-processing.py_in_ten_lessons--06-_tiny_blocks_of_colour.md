@@ -1203,8 +1203,15 @@ By mixing together multiple built-in filters, your own programmed effects, and e
 When I began using raster graphics software (Photoshop 5.5 in 1999) I was thrilled with how I could manipulate photographs using various touch-up, filter, and distortion tools. Strangely, blend modes were something I just seemed to gloss over and never touch again. In time, I grew more accustomed to incorporating them in my workflow. Today, I swear by them. Before, I had always found their names confusing and never understood which blend to select for the desired effect; I'd simply cycle through them until I struck the right one. It was only when I learnt about colour channels that everything mades sense!
 
 <figure>
-  <img src="{{ site.url }}/img/pitl06/filters-and-blends-gimp-blending-modes.png" class="fullwidth" />
+  <img src="{{ site.url }}/img/pitl06/filters-and-blends-blend-gimp-blending-modes.png" class="fullwidth" />
   <figcaption>GIMP's layer blend modes. What does "Addition" even mean, anyhow?</figcaption>
+</figure>
+
+If you have no experience with blend modes, the screenshot below should help elucidate. Layers are an integral concept for raster graphic applications. Elements are placed on different layers so that they can be moved, scaled, and reordered to form a desired composition. By default, layers are opaque, obscuring what any layer that lies further down the 'stack'. By adjusting the blending mode, you control how the lower layers are effected. For example, a *multiply* blend mode has a tint-like effect.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl06/filters-and-blends-blend-gimp-multiply-blend.png" class="fullwidth" />
+  <figcaption>The top-most <q>red</q> layer has its blend <q>Mode</q> set to <i>Multiply</i>.</figcaption>
 </figure>
 
 Perhaps you have never used blend modes. Or, maybe you're that Photoshop whiz who knows exactly what mode to select, but can't begin to explain how it actually works? Today, we unravel the mystery.
@@ -1234,17 +1241,15 @@ Run the sketch. The result is duck (to the left) and a sequence of rainbow colou
 
 <figure>
   <img src="{{ site.url }}/img/pitl06/filters-and-blends-blend-image-setup.png" />
-  <figcaption>
-    ...
-  </figcaption>
 </figure>
 
-As with the previous exercises, a duplicate of the duck will be drawn over the rainbow colours to the right. The difference this time, will be the blending modes you apply in the process. Start by changing the `colorMode`'s RGB values so that they range from `0`--`1` (as apposed to the default `0`--`255`). Add a red `c` variable using the new scheme.
+As with the previous exercises, a duplicate of the duck will be drawn to the right -- in this case, over the rainbow colours. The difference this time will be the blending modes you apply in the process. Start by changing the `colorMode`'s RGB values so that they range from `0`--`1` (as apposed to the default `0`--`255`).
 
 {% highlight py %}
 colorMode(RGB, 1)
-c = color(1,0,0) # red
 {% endhighlight %}
+
+Using this new mixing scheme, bright red would be: `color(1,0,0)`. This will help when it comes to performing blend mode calculations.
 
 Next, use a loop to draw an exact duplicate to the right.
 
@@ -1260,10 +1265,14 @@ for i in range(halfwidth*height):
     x += 1
 
     pixel = get(x,y)
+    r = red(pixel)
+    g = green(pixel)
+    b = blue(pixel)
+    pixel = color(r, g, b)
     set( x+halfwidth, y, pixel )
 {% endhighlight %}
 
-Run the code to confirm the correct visual output.
+Splitting the `pixel` value into its composite channels, only to recombine them, seems redundant, but structures the code for the upcoming steps. Run the code to confirm the correct visual output.
 
 <figure>
   <img src="{{ site.url }}/img/pitl06/filters-and-blends-blend-image-duplicate.png" />
@@ -1272,14 +1281,41 @@ Run the code to confirm the correct visual output.
   </figcaption>
 </figure>
 
+This is the simplest blend mode, *normal*, where the upper 'layer' completely conceals anything beneath it. We may not have actual layers, but conceptually, this can be visualised as such.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl06/filters-and-blends-blend-normal.png" />
+  <figcaption>
+    Normal blend mode.
+  </figcaption>
+</figure>
+
+From here onward, we will make adjustments to the `r`/`g`/`b` variables to achieve different blends. Let's try a *multiply*. This gets its name from the arithmetic involved, where the corresponding channel values of the upper and lower layers are multiplied together.
+
+{% highlight py %}
+    ...
+    r = red(pixel) * red(c)
+    g = green(pixel) * green(c)
+    b = blue(pixel) * blue(c)
+    ...
+{% endhighlight %}
+
+The result is a rainbow-sequence of colour tints.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl06/filters-and-blends-blend-multiply.png" />
+  <figcaption>
+    Multiply blend mode.
+  </figcaption>
+</figure>
+
+I'm sure that you can guess how the *add*, and *subtract* modes work? You can try to programme you own implementation any built-in Processing blend mode. Alternatively, there is the [`blend()`](https://py.processing.org/reference/blend.html) function.
+
+Mode | Description | Calculation
+--- | --- | ---
+*ADD*
 
 
-
-
-
-
-
-....
 
 <figure>
   <img src="{{ site.url }}/img/pitl06/filters-and-blends-blend-image-types.png" />

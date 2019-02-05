@@ -1264,15 +1264,15 @@ for i in range(halfwidth*height):
         x = 0
     x += 1
 
-    pixel = get(x,y)
-    r = red(pixel)
-    g = green(pixel)
-    b = blue(pixel)
-    pixel = color(r, g, b)
-    set( x+halfwidth, y, pixel )
+    layer1 = get(x, y)
+    r = red(layer1)
+    g = green(layer1)
+    b = blue(layer1)
+    layer2 = color(r, g, b)
+    set( x+halfwidth, y, layer2 )
 {% endhighlight %}
 
-Splitting the `pixel` value into its composite channels, only to recombine them, seems redundant, but structures the code for the upcoming steps. Run the code to confirm the correct visual output.
+Splitting the `layer1` value into its composite channels, only to recombine them, seems redundant, but structures the code for the upcoming steps. Run the code to confirm the correct visual output.
 
 <figure>
   <img src="{{ site.url }}/img/pitl06/filters-and-blends-blend-image-duplicate.png" />
@@ -1294,9 +1294,10 @@ From here onward, we will make adjustments to the `r`/`g`/`b` variables to achie
 
 {% highlight py %}
     ...
-    r = red(pixel) * red(c)
-    g = green(pixel) * green(c)
-    b = blue(pixel) * blue(c)
+    layer0 = get(x+halfwidth, y)
+    r = red(layer0) * red(layer1)
+    g = green(layer0) * green(layer1)
+    b = blue(layer0) * blue(layer1)
     ...
 {% endhighlight %}
 
@@ -1309,25 +1310,82 @@ The result is a rainbow-sequence of colour tints.
   </figcaption>
 </figure>
 
-I'm sure that you can guess how the *add*, and *subtract* modes work? You can try to programme you own implementation any built-in Processing blend mode. Alternatively, there is the [`blend()`](https://py.processing.org/reference/blend.html) function.
+I'm sure that you can guess how the *add*, and *subtract* modes work? You can programme your own implementation the various blend modes. Alternatively, there are the Processing [`blend()`](https://py.processing.org/reference/blend.html) and [`blendMode()`](https://py.processing.org/reference/blendMode.html) functions. The `blend()` has a few more options, but the `blendMode()` is the approach recommended by Processing's developers.
 
-Mode | Description | Calculation
---- | --- | ---
-*ADD*
+The entire `for` loop can be replaced with this `blend()` and `image()` function.
 
+{% highlight py %}
+    blendMode(MULTIPLY)
+    image(rubberduck, halfwidth,0)
+{% endhighlight %}
 
+Be aware, thought, the the blend mode will persist for any further images or shapes that you draw. For example:
+
+{% highlight py %}
+    blendMode(MULTIPLY)
+    image(rubberduck, halfwidth,0)
+    fill('#FF0000')
+    ellipse(halfwidth,height/2, 300,300)
+{% endhighlight %}
 
 <figure>
-  <img src="{{ site.url }}/img/pitl06/filters-and-blends-blend-image-types.png" />
+  <img src="{{ site.url }}/img/pitl06/filters-and-blends-blend-multiply-persist.png" />
   <figcaption>
-    ...
+    Everything below the <code>blendMode(MULTIPLY)</code> line is blended with a mode of multiply.
+  </figcaption>
+</figure>
+
+To 'reset' to the default, use a blend mode of `BLEND`:
+
+{% highlight py %}
+    blendMode(MULTIPLY)
+    image(rubberduck, halfwidth,0)
+    fill('#FF0000')
+    ellipse(halfwidth,height/2, 300,300)
+    blendMode(BLEND)
+    # back to normal hereafter ...
+{% endhighlight %}
+
+Below is a table of the various `blendMode()` arguments/modes and their calculations for the red channel (of course, blue and green would be similarly affected).
+
+`BLEND`          | the default/normal blend mode
+`ADD`            | `r = red(layer0) + red(layer1)`
+`DARKEST`        | `r = min( red(layer0), red(layer1) )`
+`DIFFERENCE``   `| `SUBTRACT` that switches operands to always get a positive value
+`EXCLUSION`      | `DIFFERENCE` with a lower contrast
+`LIGHTEST`       | `r = max( red(layer0), red(layer1) )`
+`MULTIPLY`       | `r = red(layer0) * red(layer1)`
+`REPLACE`        | `BLEND` with no alpha support
+`SCREEN`         | `r = 1-(1-red(layer0)) * (1-red(layer1))`
+`SUBTRACT`       | `r = red(layer0) - red(layer1)`
+|||
+
+The following image compares each of above-listed modes -- beginning with `BLEND` at the top-left, then proceeding left-to-right, row-by-row, ending on `SUBTRACT` at the bottom-right.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl06/filters-and-blends-blend-image-types.png" class="fullwidth" />
+  <figcaption>
+    <table width="100%">
+      <tr>
+        <td colspan="3"><b>Corresponding blend code:</b></td>
+      </tr>
+      <tr>
+        <td><code>blendMode(BLEND)</code></td><td><code>blendMode(ADD)</code></td><td><code>blendMode(DARKEST)</code></td>
+      </tr>
+      <tr>
+        <td><code>blendMode(DIFFERENCE)</code></td><td><code>blendMode(EXCLUSION)</code></td><td><code>blendMode(LIGHTEST)</code></td>
+      </tr>
+      <tr>
+        <td><code>blendMode(MULTIPLY)</code></td><td><code>blendMode(SUBTRACT)</code></td><td><code>blendMode(SCREEN)</code></td>
+      </tr>
+    </table>
   </figcaption>
 </figure>
 
 ...
 
 
-### Drawing Blend Modes
+## Mondrian Task
 
 modrian
 

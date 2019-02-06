@@ -3,6 +3,7 @@ layout: post
 comments: true
 title: "An Introduction to Vectors Using Unity -- part 1"
 categories: code physics unity
+mathml: true
 ---
 
 <!-- unityscript error highlight conceal -->

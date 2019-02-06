@@ -3,6 +3,7 @@ layout: post
 comments: true
 title: "Processing.py in Ten Lessons -- 04:<code> β = fps > 12</code>"
 categories: code processing python
+mathml: true
 ---
 
 ***Covered in this lesson:***  

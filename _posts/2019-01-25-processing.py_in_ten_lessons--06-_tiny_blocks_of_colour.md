@@ -4,6 +4,7 @@ comments: true
 title: "Processing.py in Ten Lessons -- 06: Tiny Blocks of Colour"
 categories: code processing python
 published: false
+mathml: true
 ---
 
 ***Covered in this lesson:***  

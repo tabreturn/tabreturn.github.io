@@ -1389,7 +1389,10 @@ Graphic designers, VFX artists, and animators rely on blending modes for many ne
 In this challenge you get to fix a partially complete Processing adaptation of Piet Mondrian's [*Composition with Red, Blue, and Yellow*](https://commons.wikimedia.org/wiki/File:Piet_Mondriaan,_1930_-_Mondrian_Composition_II_in_Red,_Blue,_and_Yellow.jpg).
 
 <figure>
-  <img src="{{ site.url }}/img/pitl06/mondrian-task-complete.png" />
+  <img src="{{ site.url }}/img/pitl06/wikimedia-backup/1010px-Piet_Mondriaan,_1930_-_Mondrian_Composition_II_in_Red,_Blue,_and_Yellow.png" />
+  <figcaption>
+    Source: <a href="https://commons.wikimedia.org/wiki/File:Piet_Mondriaan,_1930_-_Mondrian_Composition_II_in_Red,_Blue,_and_Yellow.jpg">Wikimedia Commons</a>
+  </figcaption>
 </figure>
 
 For this task, this smoothing will be disabled; this will result in sharper lines. If you are looking to disable *anti-aliasing* (default) then the [`noSmooth()`](https://py.processing.org/reference/noSmooth.html) function is what you are after. Anti-aliasing makes edges appear smoother by producing intermediate pixels that slightly blur the boundary.
@@ -1399,16 +1402,14 @@ For this task, this smoothing will be disabled; this will result in sharper line
   <figcaption>Zoomed-in versions of <code>smooth()</code> and <code>noSmooth()</code> edges (lower-left- and right respectively).</figcaption>
 </figure>
 
-...
-
-.........
+Create a new sketch and save it as "mondrian". Copy-paste in all of the code below.
 
 {% highlight py %}
 size(480,480)
 background('#004477')
 noSmooth()
 noStroke()
-
+'''
 # red square
 fill('#FF8800'); rect(0,0,width,350)
 blendMode(___)
@@ -1459,32 +1460,30 @@ stroke('#FFFF00'); line(440,415,width,415)
 '''
 {% endhighlight %}
 
-...
+You should notice that most of the code is commented out using a pair of multi-line comments. Now, moving the opening `'''` down as you progress, replace each of the `___` arguments with the correct blend mode. To start you off, here is the red square solution:
 
 {% highlight py %}
-size(480,480)
-background('#004477')
-noSmooth()
-noStroke()
-
 # red square
 fill('#FF8800'); rect(0,0,width,350)
 blendMode(SUBTRACT)
 fill('#008800'); rect(0,0,width,350)
 '''
+# white bottom edge
+blendMode(___)
+...
 {% endhighlight %}
 
 <figure>
   <img src="{{ site.url }}/img/pitl06/mondrian-task-red.png" />
-  <figcaption>
-  </figcaption>
 </figure>
 
-{% highlight py %}
-...
-{% endhighlight %}
+Here is the final result for you to reference.
 
-...
+<figure>
+  <img src="{{ site.url }}/img/pitl06/mondrian-task-complete.png" />
+</figure>
+
+The remind you, the blending modes are: `BLEND`, `ADD`, `DARKEST`, `DIFFERENCE`, `EXCLUSION`, `LIGHTEST`, `MULTIPLY`, `REPLACE`, `SCREEN`, `SUBTRACT`.
 
 ## Tint and Transparency
 
@@ -1548,41 +1547,29 @@ image(img, width/3*2,0)
 
 If you need to affect the image transparency but retain the colour, use a white tint and your desired alpha value. Once you have set a tint, it remains in effect for any further images, unless you include a subsequent `tint()` line or a [`noTint()`](https://py.processing.org/reference/noTint.html).
 
-If you are wondering to yourself, "this looks a lot like a multiply blend mode", you'd be correct. The effect can be replicated manually by replacing the final `image` line with this loop arrangement:
+If you are wondering to yourself, "this looks a lot like a multiply blend mode", you'd be correct. The effect can be replicated manually by using the loop arrangements from before. This would entail an additional alpha argument in the `colorMode()` function, and some adapted loop code. For example:
 
 {% highlight py%}
+colorMode(RGB, 1,1,1,1)
+
 ...
-#image(img, width/3*2,0)
 
-thirdwidth = width/3
-x = 0
-y = 0
-
-for i in range( thirdwidth*(height-50) ):
-
-    x += 1
-
-    if i%thirdwidth==0 and i!=0:
-        y += 1
-        x = 0
-
-    colorMode(RGB, 1,1,1,1)
-    pixel = get(x,y)
-    r = red(pixel) * red(orange50)
-    g = green(pixel) * green(orange50)
-    b = blue(pixel) * blue(orange50)
+    layer1 = get(x,y)
+    r = red(orange50) * red(layer1)
+    g = green(orange50) * green(layer1)
+    b = blue(orange50) * blue(layer1)
     a = alpha(orange50)
-
     fill( color(r,g,b,a) )
     rect(x+width-thirdwidth, y, 1, 1)
 {% endhighlight %}
 
-This code should look pretty familiar by now, expect that you probably do not recognise the [`alpha()`](https://py.processing.org/reference/alpha.html) function? This is used to separate out an alpha channel from a `color` value. The `colorMode()` also accepts a fourth alpha argument, so that the `color()` function may cater for transparency.
+You probably do not recognise the [`alpha()`](https://py.processing.org/reference/alpha.html) function? This is used to separate out an alpha channel from a `color` value. With the fourth `colorMode()` argument, the `color()` function can now cater for transparency.
 
 ## Lesson 07
 
-...
+That concludes another lesson. You now understand how colour is managed on a channel and bit-level, as well possess insights into how popular image formats function.
 
+In the next lesson you will look at interactivity in Processing. As you will see, Processing is great for mouse, keyboard, and other interaction, but it's rather clumsy for building user interfaces. If you have any experience with programming interfaces in other languages (perhaps some JavaScript, etc.) you'll quickly realise what I mean. However, there are a number of useful Processing libraries that can be used to provide a set of turnkey GUI features.
 
 **Begin Lesson 07:** Soft-Faces *(coming soon)*
 

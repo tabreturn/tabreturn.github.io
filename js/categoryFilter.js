@@ -3,7 +3,8 @@ function categoryFilter(show_on_start) {
   // script variables:
 
   var category_buttons = document.querySelectorAll('#categories a');
-  var posts = document.querySelectorAll('.post');
+  var post_list = document.getElementById('post-list');
+  var posts = post_list.querySelectorAll('.post');
   var categories_selected = [];
 
   // highlighing & selection logic:
@@ -82,6 +83,19 @@ function categoryFilter(show_on_start) {
     postShowHide(categories_selected);
   }
 
+  function reversePosts() {
+    var parent_node = post_list.parentNode;
+    var next_sibling = post_list.nextSibling;
+    var frag = post_list.ownerDocument.createDocumentFragment();
+    parent_node.removeChild(post_list);
+    while (post_list.lastChild) {
+      frag.appendChild(post_list.lastChild);
+    }
+    post_list.appendChild(frag);
+    parent_node.insertBefore(post_list, next_sibling);
+    return post_list;
+  }
+
   for (var i=0; i<category_buttons.length; i++) {
     var cat_but = category_buttons[i];
     cat_but.addEventListener('click', function(e) {
@@ -90,7 +104,12 @@ function categoryFilter(show_on_start) {
   }
 
   for (var i=0; i<show_on_start.length; i++) {
-    var show = show_on_start[i];
-    categorySelect(show, category_buttons);
+    if (show_on_start[i] == 'reverse') {
+      reversePosts();
+    }
+    else {
+      var show = show_on_start[i];
+      categorySelect(show, category_buttons);
+    }
   }
 }

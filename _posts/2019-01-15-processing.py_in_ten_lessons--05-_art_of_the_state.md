@@ -1324,7 +1324,7 @@ That's it for lesson 05! Lists and dictionaries are relatively straight-forward,
 
 **Begin Lesson 06:** Tiny Blocks of Colour *(coming soon)*
 
-[Complete list of Processing lessons]({{ site.baseurl }}/#processing)
+[Complete list of Processing lessons]({{ site.baseurl }}/#processing%7Creverse)
 
 ## References
 

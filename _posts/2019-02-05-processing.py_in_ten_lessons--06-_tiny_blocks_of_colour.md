@@ -16,15 +16,15 @@ mathml: true
 
 ---
 &nbsp;  
-In this tutorial we will look at a few cool image processing techniques. You are already familiar with the `image()` function, which you have used in combination with `loadImage()` to draw image files to the display window. GIF, JPG, and PNG files are all [*raster*](https://en.wikipedia.org/wiki/Raster_graphics) graphic formats -- that is, digital images comprised of a pixel grid. We will look at reading values off individual- as well as groups of pixels, and then manipulating them to create Photoshop-esque filters. To manage these arrays of pixel values, we'll rely on a number of the techniques you picked up in [lesson 05]({% post_url 2019-01-15-processing.py_in_ten_lessons--05-_art_of_the_state %}), particularly the combining of loops with lists.
+In this tutorial, we will look at a few cool image processing techniques. You are already familiar with the `image()` function, which you have used in combination with `loadImage()` to draw image files to the display window. GIF, JPG, and PNG files are all [*raster*](https://en.wikipedia.org/wiki/Raster_graphics) graphics formats -- that is, digital images comprised of a pixel grid. We will look at reading values off individual- as well as groups of pixels and then manipulating them to create Photoshop-esque filters. To manage these arrays of pixel values, we'll rely on a number of the techniques that you picked up in [lesson 05]({% post_url 2019-01-15-processing.py_in_ten_lessons--05-_art_of_the_state %}), in particular, the combining of loops with lists.
 
-To begin, we will peek under the hood of some image file formats. This will provide useful insights into how the colour of each pixel is controlled.
+To begin, we will peek under the hood of some image file formats; this will provide useful insight into how the colours of individual pixels are controlled.
 
 ### Image Formats
 
-Each time you run your Processing sketch, a new display window is spawned. Like a GIF, JPG, or PNG image, the graphic in the display window is raster-based. Using the [`saveFrame()`](http://localhost:4000/code/processing/python/2018/08/10/processing.py_in_ten_lessons-04-_beta_eq_fps_gt_12.html#saving-frames) function one can save the frame in TIFF (`.tif`) format. If it's not a TIFF you desire, then provide a (file name) argument ending in `.gif`, `.jpg`, or `png`. TIFF, however, employs no compression, resulting larger files. Processing also supports Targa (.tga), but the lessons thus far have avoided making mention of it, in favour of focussing on the common web-browser-supported formats.
+Each time you run a sketch, Processing generates a new or updated display window. Like a GIF, JPG, or PNG image, the graphic presented in the display window is raster-based. Using the [`saveFrame()`](http://localhost:4000/code/processing/python/2018/08/10/processing.py_in_ten_lessons-04-_beta_eq_fps_gt_12.html#saving-frames) function one can capture the current frame in TIFF (`.tif`) format. Alternatively, a (filename) argument ending in `.gif`, `.jpg`, or `.png` produces a compressed image file. With TIFF, Processing employs no compression resulting in larger files. *TARGA* (.tga) is also an option, but these lessons avoid covering it in favour of focussing on the more common web-browser-supported formats.
 
-Below is a screenshot of a sketch. The code is not important. Instead, focus on what what the display window renders (a red and white striped pattern) and the file sizes of each version saved.
+Below is a screenshot of a sketch. The code is not important. Instead, focus on what the display window renders (a red and white striped pattern) and the file sizes of each version saved.
 
 <figure>
   <img src="{{ site.url }}/img/pitl06/image-formats-stripes-file-sizes.png" class="fullwidth" />
@@ -39,21 +39,21 @@ Below is a screenshot of a sketch. The code is not important. Instead, focus on 
   </figcaption>
 </figure>
 
-Before proceeding with an explanation of these differences, here is a 3-point file size primer:
+Before proceeding with an explanation for these differences, here is a 3-point primer on file size:
 
-* you know that digital information is stored as ones and zeroes (remember that the film, *The Matrix*?) and each `1` or `0` is referred to as a *bit* (a binary digit);
-* there are 8 bits in a *byte*, for example `10110110`;
+* you know that computers store digital information as ones and zeroes; you refer to each 1 or 0 as a *bit* (a binary digit);
+* there are 8 bits in a *byte*, for example, `10110110`;
 * a *kilobyte* (KB) is 1000 bytes.
 
-The "bands.tif" file is by far the largest file at 31 kilobytes. Recall that Processing uses no compression when saving TIFF files, so this comes as no surprise. But how exactly does a TIFF store pixel values, and how does this affect the size? To answer this question, one should begin with colour values. Consider the hexadecimal value for <span style="color:red">red</span>:
+The "bands.tif" file is by far the largest, weighing in at a comparatively hefty 31 kilobytes. Recall that Processing uses no compression when saving TIFF files, so this is no surprise. But how exactly does a TIFF store pixel values, and what is the relation to size? To begin to answer this question, consider the hexadecimal value for <span style="color:red">red</span>:
 
 <code>#<span style="color:#FF0000">FF</span><span style="color:#00FF00">00</span><span style="color:#0000FF">00</span></code>
 
-Each pair of digits has been coloured according to the RGB primary it controls. Using decimal values, we can rewrite this as:
+Each pair of digits has been coloured according to the RGB primary it controls. Alternatively, we could rewrite this using decimal values:
 
 <code>(<span style="color:#FF0000">255</span>, <span style="color:#00FF00">0</span>, <span style="color:#0000FF">0</span>)</code>
 
-But -- neither hexadecimal nor decimal numbers are expressed purely in ones and zeroes. In order to store this information digitally, the values must be converted to binary. It figures, right? Because binary is comprised of ones and zeroes, and so are bits. To convert from a zero in decimal to a zero binary is easy -- it's `0` in binary, too. The same goes for `1`. But what about `2`? Binary has only two digits to work with! Below is an abridged conversion table:
+But, this still isn't pure ones and zeroes. To store information digitally, decimal values require conversion to binary. It figures, right? Because binary comprises ones and zeroes, and so do bits. To convert from a zero in decimal to a zero in binary is easy -- it's `0` in both systems. The same goes for `1`. But what about `2`? Binary has only two digits to work with, whereas decimal has ten. Below is an abridged conversion table:
 
 Decimal &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;| Binary
 ----------------------------------------- | ------
@@ -1183,7 +1183,7 @@ Below is image comparing each of Processing's filters. The corresponding functio
   </figcaption>
 </figure>
 
-Note that everything drawn before the `filter` is manipulated by the effect. However, anything added after it is unaffected. For example:
+You already know how to programme a number of these filters yourself. If you are wondering how `DILATE` works, its a kernel that replaces the centre pixel with its brightest neighbour; the `ERODE` picks the darkest. Note that everything drawn before the `filter` is manipulated by the effect. However, anything added after it is unaffected. For example:
 
 {% highlight py %}
 ...
@@ -1196,6 +1196,8 @@ text('Sydney, 2013', 20,180)
   <img src="{{ site.url }}/img/pitl06/filters-and-blends-filter-ordering.png" />
   <figcaption>The <q>Sydney, 2013</q> line comes after the filter function and is, therefore, unaffected.</figcaption>
 </figure>
+
+If you are using animation, the filter effects become cumulative. In other words, a `filter(BLUR)` placed within a `draw()` block results in an image that is blurred more and more with each frame.
 
 By mixing together multiple built-in filters, your own programmed effects, and even some animation, you can create some mesmerising effects. Explore the GIMP/Photoshop/Krita/etc. filters for more inspiration.
 
@@ -1566,6 +1568,10 @@ colorMode(RGB, 1,1,1,1)
 
 You probably do not recognise the [`alpha()`](https://py.processing.org/reference/alpha.html) function? This is used to separate out an alpha channel from a `color` value. With the fourth `colorMode()` argument, the `color()` function can now cater for transparency.
 
+## Pimage Methods
+
+... .mask() .filter(OPAQUE)
+
 ## Lesson 07
 
 That concludes another lesson. You now understand how colour is managed on a channel and bit-level, as well possess insights into how popular image formats function.
@@ -1574,7 +1580,7 @@ In the next lesson you will look at interactivity in Processing. As you will see
 
 **Begin Lesson 07:** Soft-Faces *(coming soon)*
 
-[Complete list of Processing lessons]({{ site.baseurl }}/#processing)
+[Complete list of Processing lessons]({{ site.baseurl }}/#processing%7Creverse)
 
 ## References
 

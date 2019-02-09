@@ -6,7 +6,7 @@ layout: default
 
   <div id="intro">
     <img src="{{ site.url }}/img/logo.svg" alt="logo" style="width:60px; float:left; margin:0.15em 2em 0 0;" />
-    Welcome to my blog -- a collection of posts covering a blend of code, interactive design, and creative tech.
+    Welcome to my blog -- a collection of posts covering a blend of code, design, and creative tech.
   </div>
 
   <h1 id="reader-title">Posts</h1>
@@ -42,24 +42,26 @@ layout: default
 
 </div>
 
-{% for post in site.posts %}
+<div id="post-list">
 
-  {% assign sorted_categories = post.categories | sort %}
+  {% for post in site.posts %}
 
-  <p data-category="{{ sorted_categories | join:' ' }} {{ post.date | date:'%Y' }}" class="post">
-    <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-    <br />
-    <em class="post-meta">
-      {{ post.date | date:'%Y-%m-%d' }}
-      |
-      <span class="tag-{{ post.date | date:'%Y' }}">{{ post.date | date:'%Y' }}</span>
-      {% for tag in sorted_categories %}
-        <span class="tag-{{ tag }}">{{ tag }}</span>
-      {% endfor %}
-    </em>
-  </p>
+    {% assign sorted_categories = post.categories | sort %}
 
-{% endfor %}
+    <p data-category="{{ sorted_categories | join:' ' }} {{ post.date | date:'%Y' }}" class="post">
+      <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+      <br />
+      <em class="post-meta">
+        {{ post.date | date:'%Y-%m-%d' }}
+        |
+        <span class="tag-{{ post.date | date:'%Y' }}">{{ post.date | date:'%Y' }}</span>
+        {% for tag in sorted_categories %}
+          <span class="tag-{{ tag }}">{{ tag }}</span>
+        {% endfor %}
+      </em>
+    </p>
+
+  {% endfor %}
 
 <p></p>
 <hr/>
@@ -73,10 +75,13 @@ layout: default
 
 <script src="{{ "/js/categoryFilter.js" | prepend: site.baseurl }}"></script>
 <script>
-  var hash = location.hash.slice(1)
+  if (location.hash) {
+    var hash = location.hash.slice(1);
+    hash = hash.split('%7C');
+  }
 
   if (hash) {
-    categoryFilter([hash]);
+    categoryFilter(hash);
     document.getElementById('intro').innerHTML = '';
     document.getElementById('intro').style.paddingTop = 0;
     document.getElementById('reader-title').style.display = 'none';

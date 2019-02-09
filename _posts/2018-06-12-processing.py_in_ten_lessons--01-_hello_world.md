@@ -736,7 +736,7 @@ That's it for lesson 01. I hope it was enjoyable, if somewhat challenging. Take 
 **Begin Lesson 02:** [Bézier, Catmull, and Rom walk into a bar ...]({% post_url 2018-06-19-processing.py_in_ten_lessons--02-_bezier,_catmull_and_rom_walk_into_a_bar %})
 
 
-[Complete list of Processing lessons]({{ site.baseurl }}/#processing)
+[Complete list of Processing lessons]({{ site.baseurl }}/#processing%7Creverse)
 
 ## References
 

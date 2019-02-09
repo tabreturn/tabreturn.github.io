@@ -214,35 +214,35 @@ GIF is the oldest of the three formats. There's an ongoing war over whether it i
 
 Despite there being thousands of red and white pixels in the graphic, the hex editor contains a single instance of `FF0000` and `FFFFFF`. This pair of colour values makes up the image's *colour table*. What precedes the colour table identifies the file as GIF and describes the width, height, and other characteristics. What follows the colour table (after the `2C` and terminating with a `3B`) is compressed graphics data. Rather than specifying the value of each pixel, the LZW algorithm matches each pixel with one of the two colour table entries. But LZW can take this indexing system one step further. Each red stripe is a continuous string of 100 × 10 = 1000 hexadecimal values. This string can in-turn be stored in a table, so that each time the red stripe reappears, the relevant table entry is repeated.
 
-GIF has its limitations. Most notably, there is a 256 colour limit on the number of values you can pick for the colour table. To get smaller GIF files, one reduces this palette further. Placing alternating colours in checkerboard-type arrangements -- a technique known as *dithering* -- helps make up for the limited colour table, but it's often easy to discern this pattern and it works against the compressibility. Transparency is supported, but the level of opacity is either 0% or 100% and nothing between.
+GIF has its limitations. Most notably, the colour table may not exceed 256 colours. For greater GIF compression one reduces this palette further. The GIF below consists of around sixteen colours and the reduction in range is quite evident. Placing alternating colours in checkerboard-type arrangements -- called *dithering* -- helps make up for the limited colour table, but it's often easy to discern this pattern, and it works against the compressibility. GIF supports transparency, but the level of opacity is either 0% or 100% (nothing between).
 
 <figure>
   <img style="background-position:0px -80px; background-image:url({{ site.url }}/img/pitl06/image-formats-gif-jpg-png.png); height:300px" />
-  <figcaption>The dithering pattern can be discerned wherever colours blend into other colours (e.g. the yellow to orange blend running down the letters). GIF cannot support the semi-transparent blues in the glow, so it fades to white before up to the point where transparency begins (and the starry background beneath can show through).</figcaption>
+  <figcaption>The dithering pattern is most discernable wherever colours blend gradually into one another (e.g. the yellow to orange blend running down the letters). GIF cannot support the semi-transparent blues in the glow, so there is a fade to white up to the point where absolute transparency begins (and the starry background beneath shows through).</figcaption>
 </figure>
 
 GIF also supports animation, which is handy for short loops of cats doing silly things.
 
 #### JPG
 
-JPG (pronounced "jay-peg", often bearing the extension `.jpeg`) uses a *lossy* compression that does not support any transparency. Unlike *lossless* GIFs or PNGs, each time you reopen and save a JPG file, the image quality degrades further. The compression algorithm works by taking advantage of the human psychovisual system, disregarding information we are less likely to visually detect. Humans are more sensitive to [differences in brightness than differences in colour](https://en.wikipedia.org/wiki/Chroma_subsampling), an characteristic that JPG can take advantage of. The format works well for images with graduated colour, like photographs, but causes noticeable *artefacts* to appear wherever there is sharp contrast.
+JPG (pronounced "jay-peg"; often bearing the extension `.jpeg`) uses a *lossy* compression that does not support any type of transparency. Unlike *lossless* GIFs or PNGs, each time you reopen, perform a minuscule edit, and save a JPG file, the image quality degrades further. The compression algorithm works by taking advantage of the human psychovisual system, disregarding information we are less likely to detect visually. Humans are more sensitive to [differences in brightness than differences in colour](https://en.wikipedia.org/wiki/Chroma_subsampling), a characteristic that JPG leverages. The format works well for images with graduated colour, like photographs, but causes noticeable *artefacts* to appear wherever there is a sharp contrast.
 
 <figure>
   <img style="background-position:-432px -80px; background-image:url({{ site.url }}/img/pitl06/image-formats-gif-jpg-png.png); height:300px" />
   <figcaption>A highly compressed JPG. The artefacts are most apparent around the edges of the letters. As there is no support for transparency, a white background extends to the boundaries of the graphic.</figcaption>
 </figure>
 
-Most raster software provides some kind of quality 'slider' when exporting to JPG format. Less quality equals smaller file size, but you will find that certain photographs/graphics can handle more compression before they begin to look horrible.
+Most raster software provides some or other of quality 'slider' when exporting to JPG format. Less quality equals smaller file size, but you will find that certain photographs/graphics can handle more compression before they begin to look horrible.
 
 #### PNG
 
-PNG -- pronounced "pee-en-jee" or "ping" -- was developed as a replacement for the proprietary GIF format. GIF patents actually expired in 2004, but PNG introduced a number of compelling improvements. Like GIF, PNG compression is lossless, but the PNG palette is not restricted to 256 colours. Moreover, transparency can range from 0% to 100%, allowing for semi-opaque pixels. This is accomplished using an additional *alpha* channel. For instance, an opaque blue (i.e. no alpha) can be expressed as:
+PNG -- pronounced "pee-en-jee" or "ping" -- was developed as a replacement for the proprietary GIF format. Although GIF patents expired in 2004, PNG had introduced a number of compelling improvements. Like GIF, PNG compression is lossless, but the PNG with no 256 colours palette restriction. Moreover, transparency can range from anywhere between 0% to 100%, allowing for semi-opaque pixels. This is accomplished using an additional *alpha* channel. For instance, an opaque blue (i.e. no alpha) can be expressed as:
 
 <code><span style="color:#FF0000">00</span><span style="color:#00FF00">00</span><span style="color:#0000FF">FF</span></code>  
 Or, in binary:  
 <code><span style="color:#FF0000">00000000</span><span style="color:#00FF00">00000000</span><span style="color:#0000FF">11111111</span></code>
 
-That is 24 bits in all -- with 8 bits for each R/G/B *channel*. A 32-bit hexadecimal value provides room for the additional alpha channel; of course, this consumes more storage, too. The same blue with an opacity of around 25% is hence stored as:
+That is 24 bits in all -- with 8 bits for each R/G/B *channel*. A 32-bit hexadecimal value provides room for the additional alpha channel; of course, this consumes more storage/bandwidth too. The same blue with an opacity of around 25% is, hence, stored as:
 
 <code><span style="color:#FF0000">00000000</span><span style="color:#00FF00">00000000</span><span style="color:#0000FF">11111111</span><span style="color:#999999">01000001</span></code>
 
@@ -250,14 +250,14 @@ This alpha feature is especially handy for placing images seamlessly above other
 
 <figure>
   <img style="background-position:-864px -80px; background-image:url({{ site.url }}/img/pitl06/image-formats-gif-jpg-png.png); height:300px" />
-  <figcaption>The PNG produces smooth gradients using a large (greater than 256) pallet of colours. One cannot detect the boundaries of the graphic. The glow is comprised of many levels of semi-opaque blues, and blends beautifully over the starry background.</figcaption>
+  <figcaption>The PNG produces smooth gradients using a large (greater than 256) palette of colours. The glow is comprised of many levels of semi-opaque blues and blends beautifully over the starry background. As a result, one cannot detect the boundaries of the graphic. </figcaption>
 </figure>
 
-Notably, PNGs do not support animation. The APNG (Animated Portable Network Graphics) is an extension to the format, but it has failed to gain traction with some major Web Browsers (Microsoft).
+Notably, PNGs do not support animation. The APNG (Animated Portable Network Graphics) specification is an extension to the format, but it has failed to gain traction with some major (Microsoft) web browsers.
 
-When dealing with photographs, JPGs tend to trump PNGs in terms of quality-for-size. PNGs, however excel when you require transparency, or desire GIF-style sharpness with a greater range of colour.
+When dealing with photographs, JPGs tend to trump PNGs in terms of quality-for-size. PNGs, however, excel when you require transparency or desire GIF-style sharpness with a greater range of colour.
 
-There are a few up-and-coming Web image formats (WEBP, HEIC) that promise even smaller file sizes and better quality. Whether they gain traction depends largely on support from authoring tools and browsers. To reiterate, though, it's best to experiment with the different formats to see how they work and which is most appropriate for a given graphic you wish to optimise.
+There are a few up-and-coming Web image formats (WEBP, HEIC) that promise comparable quality in smaller files. Whether they gain traction depends largely on support from authoring tools and browsers. To reiterate, though, it's best to experiment with the different formats to see how they work and which is most appropriate for a given graphic you wish to optimise.
 
 ## Colour Channels
 

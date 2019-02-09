@@ -34,6 +34,7 @@ layout: default
     {% for category in sorted_categories %}
       <a class="disabled">{{ category | first }}</a>
     {% endfor %}
+      <a class="disabled" id="reverse-filter">reverse</a>
     </span>
 
   </p>
@@ -63,6 +64,8 @@ layout: default
 
   {% endfor %}
 
+</div>
+
 <p></p>
 <hr/>
 <p></p>
@@ -77,7 +80,8 @@ layout: default
 <script>
   if (location.hash) {
     var hash = location.hash.slice(1);
-    hash = hash.split('%7C');
+    hash = hash.split('-');
+
   }
 
   if (hash) {

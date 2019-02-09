@@ -879,7 +879,7 @@ If statements and loops will reappear throughout this course, which will give yo
 
 **Begin Lesson 04:** [β = fps > 12]({% post_url 2018-08-10-processing.py_in_ten_lessons--04-_beta_eq_fps_gt_12 %})
 
-[Complete list of Processing lessons]({{ site.baseurl }}/#processing%7Creverse)
+[Complete list of Processing lessons]({{ site.baseurl }}/#processing-reverse)
 
 ## References
 

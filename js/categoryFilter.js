@@ -99,6 +99,9 @@ function categoryFilter(show_on_start) {
   for (var i=0; i<category_buttons.length; i++) {
     var cat_but = category_buttons[i];
     cat_but.addEventListener('click', function(e) {
+      if (cat_but.getAttribute('id') == 'reverse-filter') {
+        reversePosts();
+      }
       categorySelect(e.target.innerHTML, category_buttons);
     });
   }
@@ -107,9 +110,7 @@ function categoryFilter(show_on_start) {
     if (show_on_start[i] == 'reverse') {
       reversePosts();
     }
-    else {
-      var show = show_on_start[i];
-      categorySelect(show, category_buttons);
-    }
+    var show = show_on_start[i];
+    categorySelect(show, category_buttons);
   }
 }

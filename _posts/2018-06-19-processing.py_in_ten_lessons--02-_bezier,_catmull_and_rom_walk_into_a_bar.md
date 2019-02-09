@@ -936,7 +936,7 @@ That's it for lesson 02. I hope it was enjoyable if a little tedious. If you are
 
 **Begin Lesson 03:** [\<randomly generated lesson title\>]({% post_url 2018-07-01-processing.py_in_ten_lessons--03-_randomly-generated-lesson-title %})
 
-[Complete list of Processing lessons]({{ site.baseurl }}/#processing%7Creverse)
+[Complete list of Processing lessons]({{ site.baseurl }}/#processing-reverse)
 
 ## References
 

@@ -1580,7 +1580,7 @@ In the next lesson you will look at interactivity in Processing. As you will see
 
 **Begin Lesson 07:** Soft-Faces *(coming soon)*
 
-[Complete list of Processing lessons]({{ site.baseurl }}/#processing%7Creverse)
+[Complete list of Processing lessons]({{ site.baseurl }}/#processing-reverse)
 
 ## References
 

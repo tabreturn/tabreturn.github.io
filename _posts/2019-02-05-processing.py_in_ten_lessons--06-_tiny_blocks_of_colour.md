@@ -53,10 +53,10 @@ Each pair of digits has been coloured according to the RGB primary it controls. 
 
 <code>(<span style="color:#FF0000">255</span>, <span style="color:#00FF00">0</span>, <span style="color:#0000FF">0</span>)</code>
 
-But, this still isn't pure ones and zeroes. To store information digitally, decimal values require conversion to binary. It figures, right? Because binary comprises ones and zeroes, and so do bits. To convert from a zero in decimal to a zero in binary is easy -- it's `0` in both systems. The same goes for `1`. But what about `2`? Binary has only two digits to work with, whereas decimal has ten. Below is an abridged conversion table:
+Alas, this still isn't pure ones and zeroes. Information stored digitally requires conversion to binary. It figures, right? Because binary comprises ones and zeroes, and so do bits. To convert from a zero in decimal to a zero in binary is easy -- it's `0` in both systems. The same goes for `1`. But what about `2`? Binary has only two digits to work with, whereas decimal has ten. Below is an abridged conversion table:
 
 Decimal &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;| Binary
------------------------------------------ | ------
+----------------------------------------- | ----------
 0                                         | `0`
 1                                         | `1`
 2                                         | `10`
@@ -64,10 +64,11 @@ Decimal &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;| Binary
 4                                         | `100`
 5                                         | `101`
 ...                                       |
+255                                       | `11111111`
                                           |
------------------------------------------ | ------
+----------------------------------------- | ----------
 
-Humans count on their fingers, so a base-10 (decimal) system is fitting. Suppose you are counting the number of people who pass you in the street. To keep track, you form a fist with each hand; when the first person passes you, you raise your left thumb. For the second person, you raise your left index finger; and so forth.
+We count on our fingers, so a base-10 (decimal) system is fitting. For instance, suppose you are counting the number of people who pass you in the street. To keep track, you begin by forming a fist with each hand; when the first person passes you, you raise your left thumb. For the second person, you extend your left index finger; and so forth. I know this seems menial but bear with me.
 
 <figure>
   <img src="{{ site.url }}/img/pitl06/image-formats-decimal-counting-7.svg" />
@@ -76,7 +77,7 @@ Humans count on their fingers, so a base-10 (decimal) system is fitting. Suppose
   </figcaption>
 </figure>
 
-You count up to ten, then run out of fingers. For eleven, you ask a friend sitting beside to 'store' a one on her fingers. You then close your fists beginning at one again (your left thumb). When you reach twenty, your friend lifts her left index finger, and you begin at one again. In all, twenty six people pass you.
+You reach ten people and have run out of fingers. For the eleventh passerby, you ask a friend sitting beside to 'store' a one on her fingers. You then close your fists beginning at one again (your left thumb). When you reach twenty, your friend extends her left index finger, and you start at one again. In all, twenty-six people pass you.
 
 <figure>
   <img src="{{ site.url }}/img/pitl06/image-formats-decimal-counting-26.svg" />
@@ -85,9 +86,9 @@ You count up to ten, then run out of fingers. For eleven, you ask a friend sitti
   </figcaption>
 </figure>
 
-Once you reach a hundred, you'll need to find another friend. From this, we can gather that for each power of ten you require an additional digit -- i.e. 10, 100, 1000.
+To proceed beyond a hundred with this system, you'll need to find another friend. From this exercise, we gather that for each power of ten you require an additional digit -- i.e. 10, 100, 1000.
 
-Now, imagine you had no fingers (or thumbs). Once you've counted to two, you've run out of 'stumps' to count on. When counting in *binary* (base-2), whenever you reach some power of two an additional digit is required. The table below provides binary-to-decimal conversions for powers of two.
+Now, imagine you had no fingers (or thumbs). Once you've counted to two, you run out of 'stumps' to count on. When counting in *binary* (base-2), every time you reach some power of two an additional digit is required. The table below provides binary-to-decimal conversions for powers of two.
 
 Binary &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;| Decimal
 ---------------------------------------- | -------
@@ -101,7 +102,9 @@ Binary &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;| Decimal
                                          |
 ---------------------------------------- | -------
 
-Have you been wondering where those letters in hexadecimal come from? Well, hexadecimal is a base-16 system. Just imagine some alien race with 16 fingers. To make accommodate the extra fingers, we use the letters `A` to `F`.
+If you were using your friends to help hold digits, counting to 32 requires five assistants. Don't worry, though, this conversion process is handled for you by Processing so that you will never need to deal directly with binary.
+
+In [lesson 01]({% post_url 2018-06-12-processing.py_in_ten_lessons--01-_hello_world %}#colour) you received little explanation for how hexadecimal actually works. You have probably been wondering where those letters from, right? Well, hexadecimal is a *base-16* system. Just imagine some alien race with sixteen fingers. To accommodate these extra fingers, we include the letters `A` to `F`.
 
 Hexadecimal &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;| Decimal
 --------------------------------------------- | -------
@@ -121,7 +124,9 @@ Hexadecimal &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;| Decimal
                                               |
 --------------------------------------------- | -------
 
-Humans have used all sorts of [numeral systems](https://en.wikipedia.org/wiki/List_of_numeral_systems#Standard_positional_numeral_systems). For example, the French use base-10 until seventy, after which point it's a mixture of base-10 and base-20. The *Telefol* and *Oksapmin* speaking people of Papua New Guinea use a *Heptavigesimal* (base-27) system, where the words for each number are named according to the 27 body parts they use for counting. Oh, and if you wondering, pi is irrational in all of them ... but, on second thought, what if pi were the base? 😕
+People have used all sorts of [numeral systems](https://en.wikipedia.org/wiki/List_of_numeral_systems#Standard_positional_numeral_systems). For example, the French use base-10 until seventy, after which point it's a mixture of base-10 and base-20. The *Telefol* and *Oksapmin* speaking people of Papua New Guinea use a *Heptavigesimal* (base-27) system, where the words for each number are named according to the 27 body parts they use for counting.
+
+<sup>If you are wondering, &#960; is irrational in every numeral system. But, on second thought, what if 3.141... were the base? 😕</sup>
 
 Let's return to binary numbers. Here are a few sequences:
 
@@ -136,17 +141,19 @@ Binary &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;| Decimal
                                          |
 ---------------------------------------- | -------
 
-Note how 255 is the highest decimal that can be represented using 8-bits. It is no coincidence that the brightest red your screen can display is expressed as `(255, 0, 0)`. Or that white is `(255, 255, 255)`. At a hardware level, these are all converted to binary. The table above shows that 255 is represented as eight `1`s in binary. Let us rewrite red in binary:
+Note how 255 is the highest decimal that can be represented using eight bits. It is no coincidence that you express the brightest red your screen can display as `(255, 0, 0)`. Or that white is `(255, 255, 255)`. At a hardware level, these integers are all converted to binary. As indicated in the table above, eight `1`s in binary is equivalent to 255 in decimal. Let us rewrite red in binary:
 
 <code><span style="color:#FF0000">11111111</span><span style="color:#00FF00">00000000</span><span style="color:#0000FF">00000000</span></code>
 
-I have padded the green and blue bits with zeroes. White would be a complete string of ones. In all, there are 8 × 3 = 24 bits. That's 24-bit colour, which can describe a whopping 256 × 256 × 256 = 16,777,216 possible (yet not necessarily distinguishable) colours. As you will recall, the Processing sketch produces the following result:
+I have padded the green and blue values with zeroes so that each colour is eight bits in length. White would be a complete string of ones. In all, there are 8 × 3 = 24 bits. Hence, this is 24-bit colour, which can describe a whopping 256 × 256 × 256 = 16,777,216 possible (yet not necessarily distinguishable) colour variations.
+
+Now, back to the sketch. To remind you, this the visual output we are dealing with:
 
 <figure>
   <img src="{{ site.url }}/img/pitl06/image-formats-stripes.png" style="max-width:100px" />
 </figure>
 
-The size of the (uncompressed) TIFF file is 31 KB. Here's why:
+The size of the (uncompressed) TIFF file is 31 KB. Here is why:
 
 * the graphic is 100 pixels wide by 100 pixels high, and therefore comprised of 100 × 100 = 10,000 pixels;
 * each pixel contains one 24-bit colour value;
@@ -154,27 +161,34 @@ The size of the (uncompressed) TIFF file is 31 KB. Here's why:
 * there are 8 bits in a byte, so that's 240,000 bits ÷ 8 = 30,000 bytes.
 * 30,000 bytes = 30 kilobytes (KB).
 
-Okay, so we have accounted for 30 KB, but what about the extra 1 KB?. I have used [Hex Fiend](https://ridiculousfish.com/hexfiend/) -- an open source hex editor -- to open and inspect the raw data of the "bands.tif" file. Of course, the data is ultimately stored binary, but hexadecimal values make it easier to make sense of.
+Okay, so we have accounted for 30 KB, but what about the extra 1 KB? I have used [Hex Fiend](https://ridiculousfish.com/hexfiend/) -- an open source hex editor -- to open and inspect the raw data of the "bands.tif" file. Of course, the data is ultimately stored as binary, but it is easier to make sense of hexadecimal. You can follow along using a hex editor too, but there is no need.
 
 <figure>
   <img src="{{ site.url }}/img/pitl06/image-formats-tiff-hex.png" class="fullwidth" />
   <figcaption>The "bands.tif" file opened in Hex Fiend. Scrolling down reveals alternating clusters of <code>FF0000</code> and <code>FFFFFF</code> values.</figcaption>
 </figure>
 
-The numbers appear in byte groupings of three (six `0`--`F` numbers in a group). Scrolling through the file reveals alternating clusters of `FF0000` and `FFFFFF` values -- that is, red and white respectively. This is what we would expect, after all, the graphic is a pattern of alternating white and red strips. However, the first three lines contain a bunch of seemingly random numbers, then there's `000000`s up to and including byte 768 (as indicated by the line numbers in the left margin). At the bottom of the window you can spot the file size in bytes.
+The numbers appear in byte groupings of three (clusters of six `0`--`F` numbers). Scrolling through the file reveals alternating stretches of `FF0000` and `FFFFFF` values -- that is, red and white respectively; this is what we would expect, after all, the graphic is a pattern of alternating white and red stripes. However, the first three lines contain a bunch of seemingly random numbers; then, there are `000000`s (black?) up to byte 768 (as indicated by the count in the left margin).
+
+<figure>
+  <img style="background-position:-40px -20px; background-size:300%; background-image:url({{ site.url }}/img/pitl06/image-formats-tiff-hex.png); height:400px" />
+  <figcaption>The first three lines contain no <code>FF0000</code> or <code>FFFFFF</code> values. The first stretch of <code>FF0000</code>'s appear at byte 768.</figcaption>
+</figure>
+
+At the bottom of the window, you can spot the file size in bytes.
 
 <figure>
   <img src="{{ site.url }}/img/pitl06/image-formats-tiff-hex-size.png" />
 </figure>
 
-That is 768 bytes over our expected 30,000. This accounts for the extra 1 KB, which the file manager has simply rounded-up to 31 KB. Removing everything up to where the first `FF0000` cluster reduces the file size to exactly 30 KB.
+That is 768 bytes over our expected 30,000. This accounts for the extra 1 KB, which the file manager has rounded-up to 31 KB. Removing everything up to where the first `FF0000` cluster reduces the file size to precisely 30 KB.
 
 <figure>
   <img src="{{ site.url }}/img/pitl06/image-formats-tiff-hex-adjusted.png" />
-  <figcaption>Everything up to the first <code>FF0000</code> instance has been deleted. The file size is now exactly 30,0000 bytes.</figcaption>
+  <figcaption>Deleting everything up to the first <code>FF0000</code> instance leaves you with a file of 30,0000 bytes.</figcaption>
 </figure>
 
-So what was stored in bytes 0 to 768? The beginning section of the file contains important information to identify it as a TIFF and provide important information, including but not limited to the image width, height, bit-depth, and orientation. Leaving this information out will 'break' the graphic.
+So what was stored in bytes 0 to 768? The beginning section of the file contains vital information to identify it as a TIFF and specify parameters for -- but not limited to -- width, height, bit-depth, and orientation. Leaving this information out will most certainly 'break' the graphic.
 
 Processing generates TIFF files using the most basic of the format's baseline features. Nonetheless, the TIFF 6.0 specification supports various compression schemes, layers, deep colour (16- as opposed to 8-bits per channel), transparency, pages, and multiple colour models (RGB, CMYK, LAB, etc.). Be aware, though, that many of these features are extensions, and reader support will vary. Overall, TIFF is versatile format, well suited for working on graphics between different applications, and for archiving purposes. Essentially, it rolls all of GIF, JPG, and PNG's features into a single format. However, it's not supported on the Web.
 

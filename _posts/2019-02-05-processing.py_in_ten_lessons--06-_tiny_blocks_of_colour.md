@@ -560,7 +560,7 @@ You are now familiar with colour channel management. You can apply this theory t
 
 ## Halftone
 
-Suppose that you have an image of continuous tones, i.e. an infinite range of blended greys. For the sake of example, we will use a photograph of Elisabet Ney's *Lady Macbeth* sculpture (below). The image is to appear in a newspaper, printed in black & white, so you convert the image to greyscale and email it off to the publishers.
+Suppose that you have an image of continuous tones, i.e. an infinite-like range of blended greys. For this example, we will use a photograph of Elisabet Ney's *Lady Macbeth* sculpture (below). The image is to appear in a newspaper printed in black & white, so you convert the image to greyscale and email it off to the publishers.
 
 <figure>
   <img src="{{ site.url }}/img/pitl06/halftone-effects-lady-macbeth.png" />
@@ -570,20 +570,20 @@ Suppose that you have an image of continuous tones, i.e. an infinite range of bl
   </figcaption>
 </figure>
 
-In the 1870s, it wasn't so simple. Of course, there was no email and, more critically, publishers were still figuring how to print photographs. However, printers could print illustrations. Illustrations were etched into wood then cast into metal plates; which could then be covered in ink to transfer images to paper. The challenge with photographs was continuous tones -- or more specifically, how to render solid black ink in so many shades of grey. The solution was *halftone*; tiny dots of varying size that create the illusion of grey when viewed from a sufficient distance. The exact details of the process are not important; suffice to say it is all handled digitally today.
+Of course, in the 1870s it wasn't this simple. There was no email and, more critically, publishers were still figuring how to print photographs. In spite of this limitation, printers managed to reproduce illustrations. Illustrations were etched into wood then cast into metal plates; which could then be coated in ink and used to transfer the images to paper. The challenge with photographs was continuous tones -- or more specifically, how to render solid black ink in a multitude of grey shades. The solution was *halftone*; tiny dots of varying size that create the illusion of grey when viewed from a sufficient distance. The exact details of the process are not important; suffice to say it is all handled digitally today.
 
-The images below depict four possible approaches to creating halftones. The simplest is approach is no halftone (top-left). Rather, each shade of grey is rendered as either black *or* white governed by whether it exceeds a given brightness threshold. The stochastic halftone (top-right) uses *dots of equal size*, adjusting their spacing for darker/lighter tones. Such dithering techniques can, therefore, be described as *frequency modulated*.
+The images below contrast four different halftone techniques. The simplest approach is no halftone (top-left). Here, a brightness threshold is used to determine which shades of grey are rendered black *or* white. The stochastic halftone (top-right) uses *dots of equal size*, adjusting their spacing to emulate darker/lighter tones. Such dithering techniques can, therefore, be described as *frequency modulated*.
 
 <figure>
   <img src="{{ site.url }}/img/pitl06/halftone-effects-comparison.png" class="fullwidth" />
   <figcaption>
-    Clockwise from the top-left: 50% threshold; stochastic halftone; halftone lines; round dots.
+    Clockwise starting top-left: 50% threshold; stochastic halftone; halftone lines; round dots.
   </figcaption>
 </figure>
 
-*Amplitude modulated* halftones (bottom-left and bottom-right) rely on varying sized dots of fixed spacing, or lines of varying weight. Although, these could be any formed using various other shapes (squares, ellipses, etc.).
+*Amplitude modulated* halftones (bottom-left and bottom-right) rely on varying sized dots in a grid-like arrangement, or evenly-spaced lines of variable weight. These patterns, however, can be formed using various other shapes (squares, ellipses, etc.).
 
-Halftone techniques remain an essential part of printing today. Halftone dots are produced for each of the CMYK primary channels, so that semi-opaque inks create the optical effect of full-colour imagery.
+Halftone techniques remain an essential part of printing today. Halftone separations for each CMYK channel create the optical effect of full-colour imagery when overlayed as semi-opaque inks.
 
 <figure>
   <img src="{{ site.url }}/img/pitl06/wikimedia-backup/Halftoningcolor.svg" />
@@ -592,7 +592,7 @@ Halftone techniques remain an essential part of printing today. Halftone dots ar
   </figcaption>
 </figure>
 
-Round dots are the most commonly used. If you magnify a print you should be able to *spot* them.
+Round dots are the most commonly used shapes. If you magnify a print you should be able to *spot* them.
 
 ### Halftone Dots
 
@@ -610,7 +610,7 @@ monalisa = loadImage('mona-lisa.png')
 image(monalisa, 0,0)
 {% endhighlight %}
 
-As with the previous sketch, we will be drawing the processed version in the empty blue space on the right.
+As with the previous sketch, we will be rendering a processed version in the empty blue space on the right.
 
 <figure>
   <img src="{{ site.url }}/img/pitl06/halftone-effects-setup.png" />
@@ -639,13 +639,13 @@ for i in range( int(coltotal*rowtotal) ):
     rect(x,y, cellsize,cellsize)
 {% endhighlight %}
 
-Most of this code should look familiar, although the [`ceil()`](https://py.processing.org/reference/ceil.html) function may be new to you. This is the *ceiling* function; it performs a round up on floating point values. For example, `ceil(9.1)` would return `10`. It is necessary to employ it here so that any half rows are prevented from stopping short of the bottom of the display window. A `rect()` line has been included to visualise the cells. Run the code.
+Most of this code should look familiar, although the [`ceil()`](https://py.processing.org/reference/ceil.html) function may be new to you. The *ceiling* function performs a round-up operation on floating point values. For example, `ceil(9.1)` would return `10`. It is necessary to employ it here to prevent any half rows from stopping short of the bottom of the display window. A `rect()` line is included to visualise the cells. Run the code.
 
 <figure>
   <img src="{{ site.url }}/img/pitl06/halftone-effects-setup-cells.png" />
 </figure>
 
-For the halftone effect, we want to sample the pixel a the centre of each cell. To accomplish this, add half the width/height to x/y coordinate. Also, comment out the `rect()` line.
+For the halftone effect, we want to sample the pixel a the centre of each cell. To accomplish this, add half the width/height to the x/y coordinate. Also, comment out the `rect()` line.
 
 {% highlight py%}
     #rect(x,y, cellsize,cellsize)
@@ -654,7 +654,7 @@ For the halftone effect, we want to sample the pixel a the centre of each cell. 
     pixel = get(x,y)
 {% endhighlight %}
 
-Next, using the brightness value of each pixel sampled, we calculate an amplitude (`amp`) for each halftone dot. The value, however, must be reduced by a factor of `200` so that the dots are not too large.
+Next, using the brightness value of each pixel sampled, we calculate an amplitude (`amp`) for each halftone dot. The amount, however, must be reduced by a factor of `200` so that the dots are not too large.
 
 {% highlight py%}
     ...
@@ -663,7 +663,7 @@ Next, using the brightness value of each pixel sampled, we calculate an amplitud
     amp = 10*b/200.0
 {% endhighlight %}
 
-Finally, add the relevant stroke and fill properties, then the ellipse/circle itself.
+Finally, add the relevant stroke and fill properties, then the ellipse/circle function.
 
 {% highlight py%}
     noStroke()
@@ -676,51 +676,52 @@ Finally, add the relevant stroke and fill properties, then the ellipse/circle it
   <figcaption>The completed circular halftone effect.</figcaption>
 </figure>
 
-You are not limited to circles, or white as a fill. In the next two tasks, you be challenged to replicate two other halftone effects.
+You are not limited to circles or white fills. In the next two tasks, you will be challenged to replicate two new halftone effects.
 
 ### Pixel Art Task
 
-Using the same "haltones" sketch you have been working on, recreate the pixelated effect below.
+Using the "haltones" sketch you have been working on, recreate the pixelated effect below.
 
 <figure>
   <img src="{{ site.url }}/img/pitl06/halftone-effects-pixelated.png" />
   <figcaption>Pixelated halftone effect.</figcaption>
 </figure>
 
-Before beginning the next task, comment out the circular halftone and pixel art specific lines. You should still be able to make use of the existing loop.
+You should be able to comment out the circular-halftone-specific lines and make use of the existing loop.
 
 ### ASCII Art Task
 
-For ASCII art, you will need to decide on a set of characters to serve as your colour ramp. For ten shades, you can use the following sequence (which begins with a space character):
+For ASCII art, you will need to decide on a set of characters to serve as your colour ramp. For ten shades, you can use the following sequence (which begins with a space character). The glyphs range from lightest on the left to darkest at the right.
 
 ` .:-=+*#%@`
 
-With so few shades, you can expect to lose a fair amount of detail. The final result should look something like this:
+With so few shades, expect substantial [*posterisation*](https://en.wikipedia.org/wiki/Posterization) -- the "conversion of a continuous gradation of tone to several regions of fewer tones, with abrupt changes from one tone to another" (Wikipedia). The final result should look something like this:
 
 <figure>
   <img src="{{ site.url }}/img/pitl06/halftone-effects-ascii.png" />
   <figcaption>Pixelated ASCII art effect (zoomed in).</figcaption>
 </figure>
 
-There are many halftone effects to explore. By combining the techniques covered here, you can come up with all sorts of interesting results. As a staring point, you can see what happens when you combine the circular, pixel, and ASCII effects.
+There are many halftone effects to explore. By riffing off the techniques covered here, you can come up with all sorts of interesting results. For example, see what happens when you combine the circular, pixel, and ASCII effects.
 
 ## Image Kernels
 
-If you have ever sharpened or blurred a digital image, it's likely that the software you were using relied on *image kernel* to process the effect. In the fields of computer vision and machine learning, image kernels are utilised for feature- detection and extraction.
+If you have ever sharpened or blurred a digital image, it's likely that the software you were using relied on an *image kernel* to process the effect. Moreover, the fields of computer vision and machine learning utilise image kernels for feature- detection and extraction.
 
-An image kernel, put simply, is a small [matrix]({% post_url 2018-08-10-processing.py_in_ten_lessons--04-_beta_eq_fps_gt_12 %}#matrices) that passes over the pixels of your image, manipulating the values as it moves along. To illustrate, here is three-by-three blur kernel in action. The *kernel* (left) begins with its centre placed over the first (top-left) pixel of the source image. A new pixel colour value is calculated using the nine cells sampled by the kernel.
+An image kernel, put simply, is a small [matrix]({% post_url 2018-08-10-processing.py_in_ten_lessons--04-_beta_eq_fps_gt_12 %}#matrices) that passes over the pixels of your image manipulating the values as it moves along. To illustrate, here is a three-by-three blur kernel in action. The *kernel* (left) begins with its centre placed over the first (top-left) pixel of the source image. A new (first) pixel value is calculated using the centre and eight neighbouring cells sampled in the kernel.
 
 <figure>
   <img src="{{ site.url }}/img/pitl06/image-kernels-mona-lisa-1.png" class="fullwidth" />
+  <figcaption>Left: kernel sample. Right: newly processed pixel.</figcaption>
 </figure>
 
-For any edge pixels, though, the kernel hangs over the boundary and samples empty cells. One common solution is to extend the borders pixels outward.
+For any edge pixels, though, the kernel 'hangs' over the boundary and samples empty cells. One common solution is to extend the borders pixels outward.
 
 <figure>
   <img src="{{ site.url }}/img/pitl06/image-kernels-mona-lisa-1-edge.png" class="fullwidth" />
 </figure>
 
-This process proceeds pixel-by-pixel. In this instance, the kernel motion is left-to-right, row-by-row -- although, as long as every pixel is processed, the sequence does not matter.
+This process advances pixel-by-pixel. In this instance, the kernel motion is left-to-right, row-by-row -- although, as long as every pixel is processed, the sequence does not matter.
 
 <figure>
   <img src="{{ site.url }}/img/pitl06/image-kernels-mona-lisa-2.png" />
@@ -732,7 +733,7 @@ This process proceeds pixel-by-pixel. In this instance, the kernel motion is lef
   <figcaption>When the kernel reaches the final pixel, the process is complete.</figcaption>
 </figure>
 
-The magic part is how the kernel combines the the nine value into one -- a form of mathematical *convolution*, where each pixel is weighted and then added to its local neighbours. In the illustration below, the source pixels are labelled *a*--*f* and the matrix, *1*--*9*.
+The magic part is how the kernel combines the nine values into one -- a form of mathematical *convolution*, where each pixel is weighted and then added to its local neighbours. In the illustration below, the source pixels are labelled *a*--*f* and the matrix cells, *1*--*9*.
 
 <style>
   #image-kernel-matrix-sample, #image-kernel-matrix-kernel {
@@ -798,7 +799,7 @@ The magic part is how the kernel combines the the nine value into one -- a form 
 <div id="image-kernel-matrix-result"> </div>
 <br style="clear:both" />
 
-The convolution is calculated as by multiplying each cell by its corresponding partner. So, a × 1, then b × 2, and so on though to i × 9. The result is the sum of all these multiplications.
+The convolution operation multiplies each cell by its corresponding partner. So, a × 1, then b × 2, and so on through to i × 9. The results of all these multiplications are then added together, producing a blurred colour value.
 
 <math>
   <mfenced open="[" close="]">
@@ -852,15 +853,15 @@ The convolution is calculated as by multiplying each cell by its corresponding p
   </mrow>
 </math>
 
-<sup markdown="1">If you are a math/ML/CV/other nerd -- you may point out that that kernel has not been flipped, so this is, in fact, a *cross correlation* and not a convolution. You are correct. However, we will be using symmetrical kernels, so correlation and convolution coincide.</sup>
+<sup markdown="1">If you are a math/ML/CV/other nerd -- you may point out that that kernel has not been flipped, so this is, in fact, a *cross-correlation* and not a convolution. You are correct. However, we will be using symmetrical kernels, so correlation and convolution coincide.</sup>
 
-The numbers *1*--*9* are simply variables. One replaces them with actual kernel weightings. With the theory out the way, it's time to program your own image kernels so that you can experiment different weight combinations.
+The numbers *1*--*9* are simply variables. With the theory out the way, it's time to program your own image kernels so that you can experiment with different combinations of weightings.
 
 ### Roll Your Own Image Kernel
 
 Create a new sketch and save it as "image_kernels".
 
-Download this image of a Kuba poeple's *Mwaash aMbooy mask* and place it your sketch's "data" sub-directory:
+Download this image of a Kuba people's *Mwaash aMbooy mask* and place it your sketch's "data" sub-directory:
 
 <a href="{{ site.url }}/img/pitl06/wikimedia-backup/mwaash-ambooy-grey.png" download>mwaash-ambooy-grey.png</a>
 
@@ -874,7 +875,7 @@ mwaashambooy = loadImage('mwaash-ambooy-grey.png')
 image(mwaashambooy, 0,0)
 {% endhighlight py %}
 
-Run the sketch. The image is greyscale. To begin, a single colour channel is easier to manage.
+The image has been greyscaled prior to loading. A single colour channel will be easier to manage at first.
 
 <figure>
   <img src="{{ site.url }}/img/pitl06/image-kernels-mwaashambooy-load.png" />
@@ -883,7 +884,7 @@ Run the sketch. The image is greyscale. To begin, a single colour channel is eas
   </figcaption>
 </figure>
 
-As with the prior task, the processed version will appear in the blue area to the right. To begin, add a loop to your sketch:
+As with the previous tasks, the processed version will appear in the blue area to the right. To begin, add a loop to your sketch.
 
 {% highlight py %}
 halfwidth = width/2
@@ -898,13 +899,13 @@ for i in range(halfwidth*height):
     x += 1
 {% endhighlight py %}
 
-Because we are sampling greyscale pixels, it does not matter if you extract the red, green, or blue channel; remember these are equal for shades of grey. Add this line to the end of the loop:
+Because we are sampling greyscale pixels, it does not matter if you extract the red, green, or blue channel -- remember that these are equal for any shade of grey. Add the following line to the loop:
 
 {% highlight py %}
     sample = red( get(x,y) )
 {% endhighlight py %}
 
-Next, create a new grey `color`, assign it to a variable named `kernel`, and use `set` to draw the corresponding pixel to the right half of the window:
+Next, create a new grey `color`, assign it to a variable named `kernel`, and use `set` to draw a corresponding pixel in the right half of the window:
 
 {% highlight py %}
     kernel = color(sample,sample,sample)
@@ -912,20 +913,21 @@ Next, create a new grey `color`, assign it to a variable named `kernel`, and use
     set(x+halfwidth, y, kernel)
 {% endhighlight py %}
 
-We could simply use a `get(x,y)` as the third argument of the `set()` function and forgo the previous two lines. Moreover, the visual result is an exact duplicate of the source? The purpose of this seemingly redundant step is to verify that everything works for now, then adapt the code as we go.
+We could use a `get(x,y)` as the third argument of the `set()` function and thereby forgo the previous two lines. The visual result is an exact duplicate of the source, anyhow. The purpose of these seemingly unnecessary steps is to verify that everything works for now; we will adapt this code as we go.
 
 <figure>
   <img src="{{ site.url }}/img/pitl06/image-kernels-mwaashambooy-duplicate.png" />
   <figcaption>Before proceeding, ensure that your Display window shows two greyscale masks.</figcaption>
 </figure>
 
-With each iteration, we must sample nine pixels. The loop begins with the top-left pixel, meaning that, on the first iteration, five 'empty' pixels beyond the edges are sampled. To keep things simple, we will not use the 'extend' trick, so Processing will record these as black. This will result in a 1 pixel darkened border, but you likely won't notice it.
+With each iteration, we must sample nine pixels for the kernel. The loop begins at the top-left pixel, meaning that, on the first iteration the kernel samples five 'empty' pixels the lie beyond the edges. To keep things simple, we will not use the 'extend' trick; rather, Processing will record these as black. This will result in slightly darkened border pixels, but nothing too noticeable.
 
 <figure>
   <img src="{{ site.url }}/img/pitl06/image-kernels-mwaashambooy-zoom.png" />
+  <figcaption>The loop begins at the top-left pixel.</figcaption>
 </figure>
 
-Replace the `sample` variable with a list.
+Replace the `sample` variable with a list. This new list structure grabs the nine pixels at once.
 
 {% highlight py %}
     #sample = red( get(x,y) )
@@ -936,7 +938,7 @@ Replace the `sample` variable with a list.
     ]
 {% endhighlight py %}
 
-Next, replace the `kernel` variable with a list that multiplies the sample values with by the kernel weightings. To start, we will perform an *identity* operation -- which is math-speak "returns the same values it was provided".
+Next, replace the `kernel` variable with a list that multiplies the sample values by some kernel weightings. To start, we will perform an *identity* operation -- which is math-speak for "returns the same values it was provided".
 
 {% highlight py %}
     #kernel = color(sample,sample,sample)
@@ -947,7 +949,7 @@ Next, replace the `kernel` variable with a list that multiplies the sample value
     ]
 {% endhighlight py %}
 
-To illustrate this using the same matrix diagram from earlier, we have black left/top edge pixels and a matrix of zeroes with a `1` in the centre.
+To illustrate this operation using the matrix diagram from earlier -- we have black left/top edge pixels and a matrix of zeroes with a `1` in the centre.
 
 <div id="image-kernel-matrix-sample">
   <div style="background-color:#000000"></div>
@@ -974,7 +976,7 @@ To illustrate this using the same matrix diagram from earlier, we have black lef
 </div>
 <br style="clear:both" />
 
-Recall though, that after multiplying, all the products must be added together. To make things easy for you, there is a Python `sum()` function that adds up all the numbers in a list. Replace the existing `set` line as below.
+Recall though, that after multiplying, we add-together the products. The Python `sum()` function makes things easy for you, adding up all the numbers in a list. Replace the existing `set` line as below.
 
 {% highlight py %}
     #set(x+halfwidth, y, kernel)
@@ -982,7 +984,7 @@ Recall though, that after multiplying, all the products must be added together. 
     set( x+halfwidth, y, color(r, r, r) )
 {% endhighlight py %}
 
-Run the sketch. The results appear the same as before. You are now ready to begin experimenting with different kernel weightings.
+Run the sketch. The results appear the same as before (an exact duplicate). You are now ready to begin experimenting with different kernel weightings.
 
 #### Box Blur
 

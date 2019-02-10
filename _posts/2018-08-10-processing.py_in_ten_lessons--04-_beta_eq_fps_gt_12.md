@@ -30,8 +30,8 @@ Consider that you displayed just circle 1 for a full four seconds, followed by j
 
 <figure>
   <script>
-    var gifanimation = "{{ site.url }}/img/pitl04/sequence-timings.gif";
-    var gitposter = "{{ site.url }}/img/pitl04/sequence-timings-poster.gif";
+    var gifanimation = '{{ site.url }}/img/pitl04/sequence-timings.gif';
+    var gitposter = '{{ site.url }}/img/pitl04/sequence-timings-poster.gif';
   </script>
   <img src="{{ site.url }}/img/pitl04/sequence-timings-poster.gif" class="fullwidth" style="cursor:pointer"
        onclick="this.src = this.src == gitposter ? gifanimation : gitposter;" />

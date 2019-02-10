@@ -1,4 +1,7 @@
 # tabreturn.github.io
+
+Reader-view-style jekyll template
+
 [Live website](https://tabreturn.github.io/)
 
 A Jekyll theme based on the Firefox Reader View, for a clean, clear,

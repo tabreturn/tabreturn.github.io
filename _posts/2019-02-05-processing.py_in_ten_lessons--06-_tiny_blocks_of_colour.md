@@ -1165,11 +1165,11 @@ Filters range from utilitarian and understated to hideously gaudy. To be fair, m
   <figcaption>Created with <a href="https://deepart.io/">DeepArt.io</a>.</figcaption>
 </figure>
 
-Rather than list all of GIMP's filters, here are the top-level categories into which they are arranged: blur, enhance, distort, light and shadow, noise, edge detect, generic, combine, artistic, decor, map, render, web, and animation. On average, a category probably contains around ten, so that's a lot of filters! Processing has eight in total.
+Rather than list all of GIMP's filters, here are the top-level categories into which they are arranged: blur, enhance, distort, light and shadow, noise, edge detect, generic, combine, artistic, decor, map, render, web, and animation. On average, a category contains around ten items, so that's a lot of filters! Processing has eight filters in total.
 
-Filters are easy to use. The [`filter()`](https://py.processing.org/reference/filter.html) function requires a predefined filter name as an argument. Depending on the filter, there may be a second parameter. If you want to experiment, download this photo of Florentijn Hofman's *Rubber Duck*. However, you may prefer to just read over this section. An image comparing all of the effects is provided further along.
+The Processing [`filter()`](https://py.processing.org/reference/filter.html) function requires a predefined filter name as an argument. Depending on the effect, there may be a second argument. If you want to experiment, download this photo of Florentijn Hofman's *Rubber Duck*. Alternatively, you may prefer just to read over this section. The tutorial provides an image comparing all of the effects further along.
 
-<a href="{{ site.url }}/img/pitl06/wikimedia-backup/480px-Rubber_Duck_in_Sydney,_January_5,_2013" download>480px-Rubber_Duck_in_Sydney,_January_5,_2013.png</a>
+<a href="{{ site.url }}/img/pitl06/wikimedia-backup/480px-Rubber_Duck_in_Sydney,_January_5,_2013.jpg" download>480px-Rubber_Duck_in_Sydney,_January_5,_2013.jpg</a>
 
 If you have decided to write some code, place the image in the sketch's "data" sub-directory and add the following code:
 
@@ -1197,13 +1197,13 @@ To blur the image, add the following line to the end of your code:
 filter(BLUR)
 {% endhighlight %}
 
-If you want more blurring, `BLUR` accepts an additional level parameter. For example:
+For more blurring, BLUR accepts an additional level parameter. For example:
 
 {% highlight py %}
 filter(BLUR, 3)
 {% endhighlight %}
 
-Below is image comparing each of Processing's filters. The corresponding function calls have been provided in the caption.
+The array of images below compares each of Processing's filter arguments. The caption beneath lists the corresponding function calls.
 
 <figure>
   <img src="{{ site.url }}/img/pitl06/filters-and-blends-filter-types.png" class="fullwidth" />
@@ -1219,13 +1219,13 @@ Below is image comparing each of Processing's filters. The corresponding functio
         <td><code>filter(ERODE)</code> × 2</td><td><code>filter(GRAY)</code></td><td><code>filter(INVERT)</code></td>
       </tr>
       <tr>
-        <td><code>filter(POSTERIZE,3)</code></td><td><code>filter(THRESHOLD)</code></td><td>Posterise and blur × 3</td>
+        <td><code>filter(POSTERIZE,3)</code></td><td><code>filter(THRESHOLD)</code></td><td>Posterise × 3 & blur × 3</td>
       </tr>
     </table>
   </figcaption>
 </figure>
 
-You already know how to programme a number of these filters yourself. If you are wondering how `DILATE` works, its a kernel that replaces the centre pixel with its brightest neighbour; the `ERODE` picks the darkest. Note that everything drawn before the `filter` is manipulated by the effect. However, anything added after it is unaffected. For example:
+You already know how to programme a number of these filters manually. If you are wondering how `DILATE` works, it's a kernel that replaces the matrix centre pixel with its brightest neighbour; the `ERODE`, on the other hand, picks the darkest. Note that the effect manipulates everything drawn before the `filter()` line. Any subsequent code is unaffected. For example:
 
 {% highlight py %}
 ...
@@ -1236,32 +1236,32 @@ text('Sydney, 2013', 20,180)
 
 <figure>
   <img src="{{ site.url }}/img/pitl06/filters-and-blends-filter-ordering.png" />
-  <figcaption>The <q>Sydney, 2013</q> line comes after the filter function and is, therefore, unaffected.</figcaption>
+  <figcaption>The <q>Sydney, 2013</q> line comes after the filter function and is therefore unaffected.</figcaption>
 </figure>
 
 If you are using animation, the filter effects become cumulative. In other words, a `filter(BLUR)` placed within a `draw()` block results in an image that is blurred more and more with each frame.
 
-By mixing together multiple built-in filters, your own programmed effects, and even some animation, you can create some mesmerising effects. Explore the GIMP/Photoshop/Krita/etc. filters for more inspiration.
+By combining multiple built-in filters, your own programmed effects, and even some animation, you can create some mesmerising effects. Explore the GIMP/Photoshop/Krita/etc. filters for more inspiration.
 
 ### Image Blend Modes
 
-When I began using raster graphics software (Photoshop 5.5 in 1999) I was thrilled with how I could manipulate photographs using various touch-up, filter, and distortion tools. Strangely, blend modes were something I just seemed to gloss over and never touch again. In time, I grew more accustomed to incorporating them in my workflow. Today, I swear by them. Before, I had always found their names confusing and never understood which blend to select for the desired effect; I'd simply cycle through them until I struck the right one. It was only when I learnt about colour channels that everything mades sense!
+When I began using raster graphics software (Photoshop 5.5 in 1999) I was thrilled with how I could manipulate photographs using a variety of touch-up, filter, and distortion tools. Initially, blend modes were something I seemed to gloss over and never touch again. In time, though, I grew more accustomed to incorporating them in my workflow. Today, I swear by them. Before, I had always found their names confusing and never understood which blend to select for the desired effect. Most of the time I'd simply cycle through them until I struck the right look. When I eventually learnt about the underlying math, everything made sense.
 
 <figure>
   <img src="{{ site.url }}/img/pitl06/filters-and-blends-blend-gimp-blending-modes.png" class="fullwidth" />
   <figcaption>GIMP's layer blend modes. What does "Addition" even mean, anyhow?</figcaption>
 </figure>
 
-If you have no experience with blend modes, the screenshot below should help elucidate. Layers are an integral concept for raster graphic applications. Elements are placed on different layers so that they can be moved, scaled, and reordered to form a desired composition. By default, layers are opaque, obscuring what any layer that lies further down the 'stack'. By adjusting the blending mode, you control how the lower layers are effected. For example, a *multiply* blend mode has a tint-like effect.
+If you have no experience with blend modes, the screenshot below should help explain how they work. Let me begin by stating that layers are an integral component of raster graphic applications. Elements are placed on different layers so that they can be moved, scaled, and reordered to form a desired composition. By default, layers are opaque, obscuring any elements that lie further down the 'stack'. By adjusting the blending mode, you control how the lower layers are affected. For example, a *multiply* blend mode has a tint-like effect.
 
 <figure>
   <img src="{{ site.url }}/img/pitl06/filters-and-blends-blend-gimp-multiply-blend.png" class="fullwidth" />
   <figcaption>The top-most <q>red</q> layer has its blend <q>Mode</q> set to <i>Multiply</i>.</figcaption>
 </figure>
 
-Perhaps you have never used blend modes. Or, maybe you're that Photoshop whiz who knows exactly what mode to select, but can't begin to explain how it actually works? Today, we unravel the mystery.
+Perhaps you have never used blend modes. Or, maybe you're that Photoshop whiz who intuitively selects modes but can't begin to explain how it they work? Today, we unravel the mystery.
 
-We will begin with by programming our own blending mode, then move onto Processing's built-in functions. Create a new sketch and save it as "blends". In the "data" sub-directory, add a copy of the <a href="{{ site.url }}/img/pitl06/wikimedia-backup/480px-Rubber_Duck_in_Sydney,_January_5,_2013.jpg" download>Rubber Duck</a> image file from the last exercise. Add some code to draw a rainbow and place the image.
+We will begin by programming our own blend mode, then move onto Processing's built-in functions. Create a new sketch and save it as "blends". In the "data" sub-directory, add a copy of the <a href="{{ site.url }}/img/pitl06/wikimedia-backup/480px-Rubber_Duck_in_Sydney,_January_5,_2013.jpg" download>Rubber Duck</a> image file from the last exercise. Add some code to draw a sequence of rainbow bands and place the image.
 
 {% highlight py %}
 size(960,480)
@@ -1282,19 +1282,20 @@ rubberduck = loadImage(
 image(rubberduck, 0,0)
 {% endhighlight %}
 
-Run the sketch. The result is duck (to the left) and a sequence of rainbow colours.
+Run the sketch and confirm that the visual output matches the image below.
 
 <figure>
   <img src="{{ site.url }}/img/pitl06/filters-and-blends-blend-image-setup.png" />
 </figure>
 
-As with the previous exercises, a duplicate of the duck will be drawn to the right -- in this case, over the rainbow colours. The difference this time will be the blending modes you apply in the process. Start by changing the `colorMode`'s RGB values so that they range from `0`--`1` (as apposed to the default `0`--`255`).
+As with the previous exercises, a duplicate of the duck will be drawn to the right -- in this case, over the rainbow colours. The difference this time will be the blending modes you apply in the process. Start by setting the `colorMode`'s RGB values so that they range from `0`--`1` (as opposed to the default `0`--`255`).
 
 {% highlight py %}
 colorMode(RGB, 1)
 {% endhighlight %}
 
-Using this new mixing scheme, bright red would be: `color(1,0,0)`. This will help when it comes to performing blend mode calculations.
+In this new mixing scheme, bright red is `color(1,0,0)`  
+This will help when it comes to performing blend mode calculations.
 
 Next, use a loop to draw an exact duplicate to the right.
 
@@ -1317,7 +1318,7 @@ for i in range(halfwidth*height):
     set( x+halfwidth, y, layer2 )
 {% endhighlight %}
 
-Splitting the `layer1` value into its composite channels, only to recombine them, seems redundant, but structures the code for the upcoming steps. Run the code to confirm the correct visual output.
+Splitting the `layer1` value into its composite channels only to recombine them seems redundant, but structures the code for the upcoming steps. Run the code to confirm the correct visual output.
 
 <figure>
   <img src="{{ site.url }}/img/pitl06/filters-and-blends-blend-image-duplicate.png" />
@@ -1326,7 +1327,7 @@ Splitting the `layer1` value into its composite channels, only to recombine them
   </figcaption>
 </figure>
 
-This is the simplest blend mode, *normal*, where the upper 'layer' completely conceals anything beneath it. We may not have actual layers, but conceptually, this can be visualised as such.
+This is the simplest blend mode, *normal*, where the upper 'layer' completely conceals everything beneath it (the rainbow colours). We may not have actual layers, but can conceptually visualise the idea as such:
 
 <figure>
   <img src="{{ site.url }}/img/pitl06/filters-and-blends-blend-normal.png" />
@@ -1335,14 +1336,18 @@ This is the simplest blend mode, *normal*, where the upper 'layer' completely co
   </figcaption>
 </figure>
 
-From here onward, we will make adjustments to the `r`/`g`/`b` variables to achieve different blends. Let's try a *multiply*. This gets its name from the arithmetic involved, where the corresponding channel values of the upper and lower layers are multiplied together.
+From here onward, we will make adjustments to the `r`/`g`/`b` variables to achieve different blends. Let's try a *multiply*. Multiply gets its name from the arithmetic involved, whereby the corresponding channel values of the upper and lower layers are multiplied together. Adapt your code:
 
 {% highlight py %}
     ...
+    layer1 = get(x, y)
+
     layer0 = get(x+halfwidth, y)
     r = red(layer0) * red(layer1)
     g = green(layer0) * green(layer1)
     b = blue(layer0) * blue(layer1)
+
+    layer2 = color(r, g, b)
     ...
 {% endhighlight %}
 
@@ -1355,43 +1360,7 @@ The result is a rainbow-sequence of colour tints.
   </figcaption>
 </figure>
 
-I'm sure that you can guess how the *add*, and *subtract* modes work? You can programme your own implementation the various blend modes. Alternatively, there are the Processing [`blend()`](https://py.processing.org/reference/blend.html) and [`blendMode()`](https://py.processing.org/reference/blendMode.html) functions. The `blend()` has a few more options, but the `blendMode()` is the approach recommended by Processing's developers.
-
-The entire `for` loop can be replaced with this `blend()` and `image()` function.
-
-{% highlight py %}
-    blendMode(MULTIPLY)
-    image(rubberduck, halfwidth,0)
-{% endhighlight %}
-
-Be aware, thought, the the blend mode will persist for any further images or shapes that you draw. For example:
-
-{% highlight py %}
-    blendMode(MULTIPLY)
-    image(rubberduck, halfwidth,0)
-    fill('#FF0000')
-    ellipse(halfwidth,height/2, 300,300)
-{% endhighlight %}
-
-<figure>
-  <img src="{{ site.url }}/img/pitl06/filters-and-blends-blend-multiply-persist.png" />
-  <figcaption>
-    Everything below the <code>blendMode(MULTIPLY)</code> line is blended with a mode of multiply.
-  </figcaption>
-</figure>
-
-To 'reset' to the default, use a blend mode of `BLEND`:
-
-{% highlight py %}
-    blendMode(MULTIPLY)
-    image(rubberduck, halfwidth,0)
-    fill('#FF0000')
-    ellipse(halfwidth,height/2, 300,300)
-    blendMode(BLEND)
-    # back to normal hereafter ...
-{% endhighlight %}
-
-Below is a table of the various `blendMode()` arguments/modes and their calculations for the red channel (of course, blue and green would be similarly affected).
+I'm sure that you can guess how the *add*, and *subtract* modes work? While you can manually programme your own blend modes, it's easier to reach for Processing's [`blend()`](https://py.processing.org/reference/blend.html) and [`blendMode()`](https://py.processing.org/reference/blendMode.html) functions. The `blend()` has a few more options, but `blendMode()` is the approach recommended by Processing's developers. Below is a table of the various `blendMode()` arguments/modes and their calculations on the red channel. Of course, blue and green channels would be likewise affected.
 
 `BLEND`          | *the default/normal blend mode*
 `ADD`            | *`r = red(layer0) + red(layer1)`*
@@ -1426,6 +1395,43 @@ The following image compares each of above-listed modes -- beginning with `BLEND
     </table>
   </figcaption>
 </figure>
+
+You can replace the entire `for` loop with this `blend()` and `image()` function.
+
+{% highlight py %}
+blendMode(MULTIPLY)
+image(rubberduck, halfwidth,0)
+'''
+x = 0
+...
+{% endhighlight %}
+
+Be aware, though, the blend mode will persist for any subsequent images or shapes that you draw. For example:
+
+{% highlight py %}
+blendMode(MULTIPLY)
+image(rubberduck, halfwidth,0)
+fill('#FF0000')
+ellipse(halfwidth,height/2, 300,300)
+{% endhighlight %}
+
+<figure>
+  <img src="{{ site.url }}/img/pitl06/filters-and-blends-blend-multiply-persist.png" />
+  <figcaption>
+    Everything below the <code>blendMode(MULTIPLY)</code> line exhibits multiply behaviour.
+  </figcaption>
+</figure>
+
+To 'reset' to the default, use the `blendMode` argument, `BLEND`
+
+{% highlight py %}
+    blendMode(MULTIPLY)
+    image(rubberduck, halfwidth,0)
+    fill('#FF0000')
+    ellipse(halfwidth,height/2, 300,300)
+    blendMode(BLEND)
+    # back to normal hereafter ...
+{% endhighlight %}
 
 Graphic designers, VFX artists, and animators rely on blending modes for many neat tricks. For instance, *multiply* and *subtract* are handy for extracting logos from white or black backgrounds; *darkest* is great for sky replacements; *difference* can be used for comparing and aligning video footage. With a bottom-up understanding of how blend modes work, you can take full advantage of them in your creative workflows.
 

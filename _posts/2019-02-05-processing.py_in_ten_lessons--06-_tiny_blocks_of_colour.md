@@ -1433,11 +1433,11 @@ To 'reset' to the default, use the `blendMode` argument, `BLEND`
     # back to normal hereafter ...
 {% endhighlight %}
 
-Graphic designers, VFX artists, and animators rely on blending modes for many neat tricks. For instance, *multiply* and *subtract* are handy for extracting logos from white or black backgrounds; *darkest* is great for sky replacements; *difference* can be used for comparing and aligning video footage. With a bottom-up understanding of how blend modes work, you can take full advantage of them in your creative workflows.
+Graphic designers, VFX artists, and animators rely on blending modes for many neat tricks. For instance, *multiply* and *subtract* are handy for extracting logos from white or black backgrounds; *darkest* is great for sky replacements; while *difference* is useful for comparing and aligning video footage. With a bottom-up understanding of how blend modes work, you can take full advantage of them in your creative workflows.
 
 ## Mondrian Task
 
-In this challenge you get to fix a partially complete Processing adaptation of Piet Mondrian's [*Composition with Red, Blue, and Yellow*](https://commons.wikimedia.org/wiki/File:Piet_Mondriaan,_1930_-_Mondrian_Composition_II_in_Red,_Blue,_and_Yellow.jpg).
+In this challenge, you get to fix a partially complete Processing adaptation of Piet Mondrian's [*Composition with Red, Blue, and Yellow*](https://commons.wikimedia.org/wiki/File:Piet_Mondriaan,_1930_-_Mondrian_Composition_II_in_Red,_Blue,_and_Yellow.jpg).
 
 <figure>
   <img src="{{ site.url }}/img/pitl06/wikimedia-backup/1010px-Piet_Mondriaan,_1930_-_Mondrian_Composition_II_in_Red,_Blue,_and_Yellow.png" />
@@ -1446,11 +1446,11 @@ In this challenge you get to fix a partially complete Processing adaptation of P
   </figcaption>
 </figure>
 
-For this task, this smoothing will be disabled; this will result in sharper lines. If you are looking to disable *anti-aliasing* (default) then the [`noSmooth()`](https://py.processing.org/reference/noSmooth.html) function is what you are after. Anti-aliasing makes edges appear smoother by producing intermediate pixels that slightly blur the boundary.
+For this task, the smoothing will be disabled; this will result in sharper lines. If you are looking to disable *anti-aliasing* (default setting), then the [`noSmooth()`](https://py.processing.org/reference/noSmooth.html) function is what you are after. Anti-aliasing makes edges appear smoother by producing intermediate blended pixels that slightly blur the boundary.
 
 <figure>
   <img src="{{ site.url }}/img/pitl06/mondrian-task-nosmooth.png" />
-  <figcaption>Zoomed-in versions of <code>smooth()</code> and <code>noSmooth()</code> edges (lower-left- and right respectively).</figcaption>
+  <figcaption>Zoomed-in versions of <code>smooth()</code> and <code>noSmooth()</code> on the lower-left- and right respectively.</figcaption>
 </figure>
 
 Create a new sketch and save it as "mondrian". Copy-paste in all of the code below.
@@ -1511,7 +1511,7 @@ stroke('#FFFF00'); line(440,415,width,415)
 '''
 {% endhighlight %}
 
-You should notice that most of the code is commented out using a pair of multi-line comments. Now, moving the opening `'''` down as you progress, replace each of the `___` arguments with the correct blend mode. To start you off, here is the red square solution:
+You should notice that most of the code is commented out using multi-line comments. Now, moving the opening `'''` down as you progress, replace each of the `___` arguments with the correct blend mode. To start you off, here is the first solution:
 
 {% highlight py %}
 # red square
@@ -1528,13 +1528,13 @@ blendMode(___)
   <img src="{{ site.url }}/img/pitl06/mondrian-task-red.png" />
 </figure>
 
-Here is the final result for you to reference.
+Here is the final result for your reference.
 
 <figure>
   <img src="{{ site.url }}/img/pitl06/mondrian-task-complete.png" />
 </figure>
 
-The remind you, the blending modes are: `BLEND`, `ADD`, `DARKEST`, `DIFFERENCE`, `EXCLUSION`, `LIGHTEST`, `MULTIPLY`, `REPLACE`, `SCREEN`, `SUBTRACT`.
+As a reminder, the blending modes are `BLEND`, `ADD`, `DARKEST`, `DIFFERENCE`, `EXCLUSION`, `LIGHTEST`, `MULTIPLY`, `REPLACE`, `SCREEN`, `SUBTRACT`.
 
 ## Tint and Transparency
 

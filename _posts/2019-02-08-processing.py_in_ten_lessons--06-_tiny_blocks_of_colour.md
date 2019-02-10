@@ -3,7 +3,6 @@ layout: post
 comments: true
 title: "Processing.py in Ten Lessons -- 06: Tiny Blocks of Colour"
 categories: code processing python
-published: false
 mathml: true
 ---
 
@@ -1437,7 +1436,7 @@ Graphic designers, VFX artists, and animators rely on blending modes for many ne
 
 ## Mondrian Task
 
-In this challenge, you get to fix a partially complete Processing adaptation of Piet Mondrian's [*Composition with Red, Blue, and Yellow*](https://commons.wikimedia.org/wiki/File:Piet_Mondriaan,_1930_-_Mondrian_Composition_II_in_Red,_Blue,_and_Yellow.jpg).
+In this challenge, you get to fix a partially complete Processing adaptation of Piet Mondrian's *Composition with Red, Blue, and Yellow*.
 
 <figure>
   <img src="{{ site.url }}/img/pitl06/wikimedia-backup/1010px-Piet_Mondriaan,_1930_-_Mondrian_Composition_II_in_Red,_Blue,_and_Yellow.png" />
@@ -1540,11 +1539,11 @@ As a reminder, the blending modes are `BLEND`, `ADD`, `DARKEST`, `DIFFERENCE`, `
 
 Processing's [`tint()`](https://py.processing.org/reference/tint.html) function tints images using a specified colour. This is like taking a sheet of colour transparency film and placing it over a given image. It's simple enough to use and best explained with few code snippets.
 
-Create a new sketch as save it as "tints". Download this guardian lion photograph (from the Forbidden City, Beijing) and place it your sketch's "data" sub-directory:
+Create a new sketch and save it as "tints". Download this guardian lion photograph (Forbidden City, Beijing) and place it your sketch's "data" sub-directory.
 
 <a href="{{ site.url }}/img/pitl06/wikimedia-backup/guardian-lion.png" download>guardian-lion.png</a>
 
-Start the sketch with the following code:
+Setup the sketch with the following code:
 
 {% highlight py%}
 size(1050,500)
@@ -1583,22 +1582,22 @@ Run the code to confirm that the tint is working.
   <img src="{{ site.url }}/img/pitl06/tint-and-transparency-orange.png" />
 </figure>
 
-The `tint` function can accept a fourth `0`--`255` argument for transparency (*alpha*). Create a new `orange50` variable, with an opacity of 50% (255 ÷ 2); then add a new `tint` line followed by a second instance of the `image`.
+The `tint` function can accept a fourth `0`--`255` argument for transparency (*alpha*). Create a new `orange50` variable, with an opacity of 50%, then add a new `tint` line followed by a second instance of the `image`.
 
 {% highlight py%}
-orange50 = color(255,255,255, 123)
+orange50 = color(255,153,0, 128) # 255 ÷ 2 ≈ 128
 tint(orange50)
 image(img, width/3*2,0)
 {% endhighlight %}
 
 <figure>
   <img src="{{ site.url }}/img/pitl06/tint-and-transparency-orange-alpha.png" />
-  <figcaption>Left to right: no tint; orange tint; orange tint and 50% alpha.</figcaption>
+  <figcaption>Left to right: no tint; orange tint; orange tint with 50% alpha.</figcaption>
 </figure>
 
-If you need to affect the image transparency but retain the colour, use a white tint and your desired alpha value. Once you have set a tint, it remains in effect for any further images, unless you include a subsequent `tint()` line or a [`noTint()`](https://py.processing.org/reference/noTint.html).
+If you need to affect the image transparency but retain the colour, use a white tint and your desired alpha value. Once you have set a tint it remains in effect for any further images, unless you include a subsequent `tint()` line or a [`noTint()`](https://py.processing.org/reference/noTint.html).
 
-If you are wondering to yourself, "this looks a lot like a multiply blend mode", you'd be correct. The effect can be replicated manually by using the loop arrangements from before. This would entail an additional alpha argument in the `colorMode()` function, and some adapted loop code. For example:
+If you are wondering to yourself, "this looks a lot like a multiply blend mode", you'd be correct. The effect can be replicated manually by using the loop arrangements from the "blend_modes" exercises. This would entail an additional alpha argument in the `colorMode()` function and some adapted loop code. For example:
 
 {% highlight py%}
 colorMode(RGB, 1,1,1,1)
@@ -1611,20 +1610,16 @@ colorMode(RGB, 1,1,1,1)
     b = blue(orange50) * blue(layer1)
     a = alpha(orange50)
     fill( color(r,g,b,a) )
-    rect(x+width-thirdwidth, y, 1, 1)
+    rect(x+width/3*2, y, 1, 1)
 {% endhighlight %}
 
-You probably do not recognise the [`alpha()`](https://py.processing.org/reference/alpha.html) function? This is used to separate out an alpha channel from a `color` value. With the fourth `colorMode()` argument, the `color()` function can now cater for transparency.
-
-## Pimage Methods
-
-... .mask() .filter(OPAQUE)
+The [`alpha()`](https://py.processing.org/reference/alpha.html) function is used to separate out an alpha channel from a `color` value.
 
 ## Lesson 07
 
-That concludes another lesson. You now understand how colour is managed on a channel and bit-level, as well possess insights into how popular image formats function.
+That concludes another lesson. You now understand how to manage colour on a channel and bit-level, and have gained insights into how popular image formats work along the way.
 
-In the next lesson you will look at interactivity in Processing. As you will see, Processing is great for mouse, keyboard, and other interaction, but it's rather clumsy for building user interfaces. If you have any experience with programming interfaces in other languages (perhaps some JavaScript, etc.) you'll quickly realise what I mean. However, there are a number of useful Processing libraries that can be used to provide a set of turnkey GUI features.
+In the next lesson, you will look at interactivity in Processing. As you will see, Processing is great for mouse, keyboard, and other interaction, but rather clumsy for building user interfaces. If you have any experience with programming interfaces in other languages (perhaps some JavaScript, etc.), you'll quickly realise what I mean. However, some useful Processing libraries provide an extended set of turnkey GUI features.
 
 **Begin Lesson 07:** Soft-Faces *(coming soon)*
 

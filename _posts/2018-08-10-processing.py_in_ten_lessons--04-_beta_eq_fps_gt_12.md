@@ -29,8 +29,16 @@ Take a moment to note the numbering sequence of the circles in the illustration 
 Consider that you displayed just circle 1 for a full four seconds, followed by just circle 5 for another four seconds, looping the sequence indefinitely (an effective frame rate of 0.25 fps). The result, most observers would agree, is a pair of alternating images depicting circles in different positions. However, speed up the frame rate to around 2.5 fps, and one begins to interpret the sequence as a circle bouncing between two points. Speed up the frame rate further, and the two circles seemingly flicker in sync.
 
 <figure>
-  <img src="{{ site.url }}/img/pitl04/sequence-timings.gif" class="fullwidth" />
-  <figcaption>Frame rates from left to right: 0.25 fps; 2.5 fps; 12 fps; 1 fps; 25 fps</figcaption>
+  <script>
+    var gifanimation = "{{ site.url }}/img/pitl04/sequence-timings.gif";
+    var gitposter = "{{ site.url }}/img/pitl04/sequence-timings-poster.gif";
+  </script>
+  <img src="{{ site.url }}/img/pitl04/sequence-timings-poster.gif" class="fullwidth" style="cursor:pointer"
+       onclick="this.src = this.src == gitposter ? gifanimation : gitposter;" />
+  <figcaption>
+    <strong>Click the image to begin the animation.</strong><br/>
+    Frame rates from left to right: 0.25 fps; 2.5 fps; 12 fps; 1 fps; 25 fps
+  </figcaption>
 </figure>
 
 The two rightmost animations (rings of circles) run at 1 and 25 fps. In the left/slower instance, the circle just ahead of a gap appears to jump into the void left by the vacant circle (if you didn't see it this way before, you should now). In the more rapid animation, a phantom white dot appears to obscure the circles beneath it as it races around the ring -- an illusion referred to as the *phi phenomenon*.

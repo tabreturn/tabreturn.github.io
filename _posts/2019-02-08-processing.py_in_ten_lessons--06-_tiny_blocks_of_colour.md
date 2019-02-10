@@ -310,7 +310,7 @@ image(modefenster, 0,0)
 {% endhighlight %}
 
 <figure>
-  <img src="{{ site.url }}/img/pitl06/colour-channels-setup.png" />
+  <img src="{{ site.url }}/img/pitl06/colour-channels-setup.jpg" />
 </figure>
 
 We will be sampling parts of the painting and placing the processed output in the empty blue area to the right. The first function you need to know is the [`get()`](https://py.processing.org/reference/get.html). This is used to read the colours of pixels that lie within the display window. First, grab a section of pixels by adding a `get()` to the bottom of your code:
@@ -327,7 +327,7 @@ image(grab, 600,100)
 {% endhighlight %}
 
 <figure>
-  <img src="{{ site.url }}/img/pitl06/colour-channels-get-area.png" />
+  <img src="{{ site.url }}/img/pitl06/colour-channels-get-area.jpg" />
 </figure>
 
 Alternatively, you can make use of the [`copy()`](https://py.processing.org/reference/copy.html) function which additionally accepts arguments for the destination coordinates and scale.
@@ -338,7 +338,7 @@ copy(0,0,200,200,    600,600,100,100)
 {% endhighlight %}
 
 <figure>
-  <img src="{{ site.url }}/img/pitl06/colour-channels-copy.png" />
+  <img src="{{ site.url }}/img/pitl06/colour-channels-copy.jpg" />
   <figcaption>A copy and scale (shrink) in one function.</figcaption>
 </figure>
 
@@ -351,7 +351,7 @@ rect(700,300, 200,200)
 {% endhighlight %}
 
 <figure>
-  <img src="{{ site.url }}/img/pitl06/colour-channels-get-single.png" />
+  <img src="{{ site.url }}/img/pitl06/colour-channels-get-single.jpg" />
   <figcaption>A square filled with the colour sampled from a single pixel.</figcaption>
 </figure>
 
@@ -382,7 +382,7 @@ for i in range(halfwidth*height):
 You should be quite comfortable with loops now. In this instance, the `range` is half the display window's width by the full height. In a pixel-by-pixel, row-by-row manner, the loop `get`s each pixel and `set`s its clone accordingly. The `set()` function accepts three arguments: an x-coordinate, then y-coordinate, then colour. Run the sketch. Your earlier experiments are drawn over with new pixels.
 
 <figure>
-  <img src="{{ site.url }}/img/pitl06/colour-channels-get-set.png" />
+  <img src="{{ site.url }}/img/pitl06/colour-channels-get-set.jpg" />
 </figure>
 
 With each iteration, we will now separate the pixel values into the independent R, G, and B channels.  Comment out the existing `set()` line and add a `red()`, `green()` and `blue()` function to extract the three channel values.
@@ -419,7 +419,7 @@ Now, let's visualise the channels beginning with red. Recall that the Channels p
 If the current iteration's pixel is bright red, the `color(r, r, r)` line is equivalent to `color(255, 255, 255)`. This means that the most vivid reds will appear as white, that no red is black, and that everything else is some shade of grey. Run the code.
 
 <figure>
-  <img src="{{ site.url }}/img/pitl06/colour-channels-red.png" />
+  <img src="{{ site.url }}/img/pitl06/colour-channels-red.jpg" />
   <figcaption>Red channel (right).</figcaption>
 </figure>
 
@@ -431,7 +431,7 @@ Note how the red "MODE" sign registers as white; this indicates red values of ne
 {% endhighlight %}
 
 <figure>
-  <img src="{{ site.url }}/img/pitl06/colour-channels-green.png" />
+  <img src="{{ site.url }}/img/pitl06/colour-channels-green.jpg" />
   <figcaption>Green channel (right).</figcaption>
 </figure>
 
@@ -455,7 +455,7 @@ channelavg = (r*0.89 + g*1.77 + b*0.33) / 3
 In the image below, the area within the green brackets exhibits the calibrated values. Note how the awning's bright yellow and darker orange strip appear as the same shade of grey with the straightforward averaged values.
 
 <figure>
-  <img src="{{ site.url }}/img/pitl06/colour-channels-greyscale.png" />
+  <img src="{{ site.url }}/img/pitl06/colour-channels-greyscale.jpg" />
   <figcaption>Greyscale conversion (right). Note the more pronounced stripes within the green brackets.</figcaption>
 </figure>
 
@@ -468,7 +468,7 @@ set( x+halfwidth, y, invcolour )
 {% endhighlight %}
 
 <figure>
-  <img src="{{ site.url }}/img/pitl06/colour-channels-invert.png" />
+  <img src="{{ site.url }}/img/pitl06/colour-channels-invert.jpg" />
   <figcaption>Inverted image channels (right).</figcaption>
 </figure>
 
@@ -529,7 +529,7 @@ But simply adding degrees of rotation to the `h` variable is problematic. For ex
 {% endhighlight %}
 
 <figure>
-  <img src="{{ site.url }}/img/pitl06/colour-channels-hue.png" />
+  <img src="{{ site.url }}/img/pitl06/colour-channels-hue.jpg" />
   <figcaption>Rotating/shifting the hue channel by 50°.</figcaption>
 </figure>
 
@@ -546,7 +546,7 @@ For the most vivid colours possible, set the saturation value to maximum (100%) 
 {% endhighlight %}
 
 <figure>
-  <img src="{{ site.url }}/img/pitl06/colour-channels-saturation.png" />
+  <img src="{{ site.url }}/img/pitl06/colour-channels-saturation.jpg" />
   <figcaption>The hue remains the same, but the saturation has been pushed to maximum.</figcaption>
 </figure>
 
@@ -562,7 +562,7 @@ You are now familiar with colour channel management. You can apply this theory t
 Suppose that you have an image of continuous tones, i.e. an infinite-like range of blended greys. For this example, we will use a photograph of Elisabet Ney's *Lady Macbeth* sculpture (below). The image is to appear in a newspaper printed in black & white, so you convert the image to greyscale and email it off to the publishers.
 
 <figure>
-  <img src="{{ site.url }}/img/pitl06/halftone-effects-lady-macbeth.png" />
+  <img src="{{ site.url }}/img/pitl06/halftone-effects-lady-macbeth.jpg" />
   <figcaption>
     Elisabet Ney's Lady Macbeth in colour and greyscale.<br />
     source: <a href="https://commons.wikimedia.org/wiki/File:Elisabet_Ney_-_Lady_Macbeth_-_Detail.jpg">Wikimedia Commons</a>
@@ -612,7 +612,7 @@ image(monalisa, 0,0)
 As with the previous sketch, we will be rendering a processed version in the empty blue space on the right.
 
 <figure>
-  <img src="{{ site.url }}/img/pitl06/halftone-effects-setup.png" />
+  <img src="{{ site.url }}/img/pitl06/halftone-effects-setup.jpg" />
 </figure>
 
 Our first halftone will consist of amplitude-modulated circles. We will begin by adding the global variables and main loop. The image will be divided into 'cells'. In effect, these cells control the 'resolution' of the halftone.
@@ -641,7 +641,7 @@ for i in range( int(coltotal*rowtotal) ):
 Most of this code should look familiar, although the [`ceil()`](https://py.processing.org/reference/ceil.html) function may be new to you. The *ceiling* function performs a round-up operation on floating point values. For example, `ceil(9.1)` would return `10`. It is necessary to employ it here to prevent any half rows from stopping short of the bottom of the display window. A `rect()` line is included to visualise the cells. Run the code.
 
 <figure>
-  <img src="{{ site.url }}/img/pitl06/halftone-effects-setup-cells.png" />
+  <img src="{{ site.url }}/img/pitl06/halftone-effects-setup-cells.jpg" />
 </figure>
 
 For the halftone effect, we want to sample the pixel a the centre of each cell. To accomplish this, add half the width/height to the x/y coordinate. Also, comment out the `rect()` line.
@@ -671,7 +671,7 @@ Finally, add the relevant stroke and fill properties, then the ellipse/circle fu
 {% endhighlight %}
 
 <figure>
-  <img src="{{ site.url }}/img/pitl06/halftone-effects-circles.png" />
+  <img src="{{ site.url }}/img/pitl06/halftone-effects-circles.jpg" />
   <figcaption>The completed circular halftone effect.</figcaption>
 </figure>
 
@@ -682,7 +682,7 @@ You are not limited to circles or white fills. In the next two tasks, you will b
 Using the "haltones" sketch you have been working on, recreate the pixelated effect below.
 
 <figure>
-  <img src="{{ site.url }}/img/pitl06/halftone-effects-pixelated.png" />
+  <img src="{{ site.url }}/img/pitl06/halftone-effects-pixelated.jpg" />
   <figcaption>Pixelated halftone effect.</figcaption>
 </figure>
 
@@ -877,7 +877,7 @@ image(mwaashambooy, 0,0)
 The image has been greyscaled prior to loading. A single colour channel will be easier to manage at first.
 
 <figure>
-  <img src="{{ site.url }}/img/pitl06/image-kernels-mwaashambooy-load.png" />
+  <img src="{{ site.url }}/img/pitl06/image-kernels-mwaashambooy-load.jpg" />
   <figcaption>
     Source: <a href="https://commons.wikimedia.org/wiki/File:Brooklyn_Museum_22.1582_Mwaash_aMbooy_Mask.jpg">Wikimedia Commons</a>
   </figcaption>
@@ -915,7 +915,7 @@ Next, create a new grey `color`, assign it to a variable named `kernel`, and use
 We could use a `get(x,y)` as the third argument of the `set()` function and thereby forgo the previous two lines. The visual result is an exact duplicate of the source, anyhow. The purpose of these seemingly unnecessary steps is to verify that everything works for now; we will adapt this code as we go.
 
 <figure>
-  <img src="{{ site.url }}/img/pitl06/image-kernels-mwaashambooy-duplicate.png" />
+  <img src="{{ site.url }}/img/pitl06/image-kernels-mwaashambooy-duplicate.jpg" />
   <figcaption>Before proceeding, ensure that your Display window shows two greyscale masks.</figcaption>
 </figure>
 
@@ -1020,7 +1020,7 @@ The box blur is a simple kernel that averages adjacent pixel values. The result 
 {% endhighlight py %}
 
 <figure>
-  <img src="{{ site.url }}/img/pitl06/image-kernels-mwaashambooy-kernel-blur.png" />
+  <img src="{{ site.url }}/img/pitl06/image-kernels-mwaashambooy-kernel-blur.jpg" />
   <figcaption>Box blur.</figcaption>
 </figure>
 
@@ -1059,7 +1059,7 @@ As the name implies, edge detection methods aim to identify edge points/boundari
 {% endhighlight py %}
 
 <figure>
-  <img src="{{ site.url }}/img/pitl06/image-kernels-mwaashambooy-kernel-edge-detection.png" />
+  <img src="{{ site.url }}/img/pitl06/image-kernels-mwaashambooy-kernel-edge-detection.jpg" />
   <figcaption>Edge detection.</figcaption>
 </figure>
 
@@ -1098,7 +1098,7 @@ Sharpening makes light pixels lighter and dark pixels darker. The result is an i
 {% endhighlight py %}
 
 <figure>
-  <img src="{{ site.url }}/img/pitl06/image-kernels-mwaashambooy-kernel-sharpen.png" />
+  <img src="{{ site.url }}/img/pitl06/image-kernels-mwaashambooy-kernel-sharpen.jpg" />
   <figcaption>Sharpen.</figcaption>
 </figure>
 
@@ -1146,7 +1146,7 @@ The emboss kernel creates the illusion of depth by emphasising contrast in a giv
 The final result looks like this:
 
 <figure>
-  <img src="{{ site.url }}/img/pitl06/image-kernels-mwaashambooy-kernel-emboss-colour.png" class="fullwidth" />
+  <img src="{{ site.url }}/img/pitl06/image-kernels-mwaashambooy-kernel-emboss-colour.jpg" class="fullwidth" />
 </figure>
 
 If you have no idea where to start, consider a separate kernel for each R/G/B channel.
@@ -1160,7 +1160,7 @@ If you are a user of raster graphics software, such as GIMP or Photoshop, you ha
 Filters range from utilitarian and understated to hideously gaudy. To be fair, most have their place, but perhaps some users lack an understanding of how much of -- and to which parts of an image -- a given filter should be applied. Some impressive developments are being made in this area thanks in part to advances in artificial intelligence. For instance, here is a Van Gogh style imitation of the Mwaash aMbooy mask created using [DeepArt.io](https://deepart.io/)'s neural algorithm.
 
 <figure>
-  <img src="{{ site.url }}/img/pitl06/filters-and-blends-filter-deepart.png" />
+  <img src="{{ site.url }}/img/pitl06/filters-and-blends-filter-deepart.jpg" />
   <figcaption>Created with <a href="https://deepart.io/">DeepArt.io</a>.</figcaption>
 </figure>
 
@@ -1184,7 +1184,7 @@ text('Rubber Duck', 20,150)
 {% endhighlight %}
 
 <figure>
-  <img src="{{ site.url }}/img/pitl06/filters-and-blends-filter-start.png" />
+  <img src="{{ site.url }}/img/pitl06/filters-and-blends-filter-start.jpg" />
   <figcaption>
     Source: <a href="https://commons.wikimedia.org/wiki/File:Rubber_Duck_in_Sydney,_January_5,_2013.jpg">Wikimedia Commons</a>
   </figcaption>
@@ -1205,7 +1205,7 @@ filter(BLUR, 3)
 The array of images below compares each of Processing's filter arguments. The caption beneath lists the corresponding function calls.
 
 <figure>
-  <img src="{{ site.url }}/img/pitl06/filters-and-blends-filter-types.png" class="fullwidth" />
+  <img src="{{ site.url }}/img/pitl06/filters-and-blends-filter-types.jpg" class="fullwidth" />
   <figcaption>
     <table width="100%">
       <tr>
@@ -1234,7 +1234,7 @@ text('Sydney, 2013', 20,180)
 {% endhighlight %}
 
 <figure>
-  <img src="{{ site.url }}/img/pitl06/filters-and-blends-filter-ordering.png" />
+  <img src="{{ site.url }}/img/pitl06/filters-and-blends-filter-ordering.jpg" />
   <figcaption>The <q>Sydney, 2013</q> line comes after the filter function and is therefore unaffected.</figcaption>
 </figure>
 
@@ -1284,7 +1284,7 @@ image(rubberduck, 0,0)
 Run the sketch and confirm that the visual output matches the image below.
 
 <figure>
-  <img src="{{ site.url }}/img/pitl06/filters-and-blends-blend-image-setup.png" />
+  <img src="{{ site.url }}/img/pitl06/filters-and-blends-blend-image-setup.jpg" />
 </figure>
 
 As with the previous exercises, a duplicate of the duck will be drawn to the right -- in this case, over the rainbow colours. The difference this time will be the blending modes you apply in the process. Start by setting the `colorMode`'s RGB values so that they range from `0`--`1` (as opposed to the default `0`--`255`).
@@ -1320,7 +1320,7 @@ for i in range(halfwidth*height):
 Splitting the `layer1` value into its composite channels only to recombine them seems redundant, but structures the code for the upcoming steps. Run the code to confirm the correct visual output.
 
 <figure>
-  <img src="{{ site.url }}/img/pitl06/filters-and-blends-blend-image-duplicate.png" />
+  <img src="{{ site.url }}/img/pitl06/filters-and-blends-blend-image-duplicate.jpg" />
   <figcaption>
     Duplicate duck drawn to the right.
   </figcaption>
@@ -1376,7 +1376,7 @@ I'm sure that you can guess how the *add*, and *subtract* modes work? While you 
 The following image compares each of above-listed modes -- beginning with `BLEND` at the top-left, then proceeding left-to-right, row-by-row, ending on `SUBTRACT` at the bottom-right.
 
 <figure>
-  <img src="{{ site.url }}/img/pitl06/filters-and-blends-blend-image-types.png" class="fullwidth" />
+  <img src="{{ site.url }}/img/pitl06/filters-and-blends-blend-image-types.jpg" class="fullwidth" />
   <figcaption>
     <table width="100%">
       <tr>
@@ -1415,7 +1415,7 @@ ellipse(halfwidth,height/2, 300,300)
 {% endhighlight %}
 
 <figure>
-  <img src="{{ site.url }}/img/pitl06/filters-and-blends-blend-multiply-persist.png" />
+  <img src="{{ site.url }}/img/pitl06/filters-and-blends-blend-multiply-persist.jpg" />
   <figcaption>
     Everything below the <code>blendMode(MULTIPLY)</code> line exhibits multiply behaviour.
   </figcaption>
@@ -1579,7 +1579,7 @@ image(img, width/3,0)
 Run the code to confirm that the tint is working.
 
 <figure>
-  <img src="{{ site.url }}/img/pitl06/tint-and-transparency-orange.png" />
+  <img src="{{ site.url }}/img/pitl06/tint-and-transparency-orange.jpg" />
 </figure>
 
 The `tint` function can accept a fourth `0`--`255` argument for transparency (*alpha*). Create a new `orange50` variable, with an opacity of 50%, then add a new `tint` line followed by a second instance of the `image`.
@@ -1591,7 +1591,7 @@ image(img, width/3*2,0)
 {% endhighlight %}
 
 <figure>
-  <img src="{{ site.url }}/img/pitl06/tint-and-transparency-orange-alpha.png" />
+  <img src="{{ site.url }}/img/pitl06/tint-and-transparency-orange-alpha.jpg" />
   <figcaption>Left to right: no tint; orange tint; orange tint with 50% alpha.</figcaption>
 </figure>
 

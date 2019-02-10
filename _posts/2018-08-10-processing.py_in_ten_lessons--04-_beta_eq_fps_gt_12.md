@@ -30,11 +30,11 @@ Consider that you displayed just circle 1 for a full four seconds, followed by j
 
 <figure>
   <script>
-    var gifanimation = '{{ site.url }}/img/pitl04/sequence-timings.gif';
-    var gitposter = '{{ site.url }}/img/pitl04/sequence-timings-poster.gif';
+    var gifanimation1 = '{{ site.url }}/img/pitl04/sequence-timings.gif';
+    var gitposter1 = '{{ site.url }}/img/pitl04/sequence-timings-poster.gif';
   </script>
   <img src="{{ site.url }}/img/pitl04/sequence-timings-poster.gif" class="fullwidth" style="cursor:pointer"
-       onclick="this.src = this.src == gitposter ? gifanimation : gitposter;" />
+       onclick="this.src = this.src == gitposter1 ? gifanimation1 : gitposter1;" />
   <figcaption>
     <strong>Click the image to begin the animation.</strong><br/>
     Frame rates from left to right: 0.25 fps; 2.5 fps; 12 fps; 1 fps; 25 fps
@@ -1686,11 +1686,16 @@ From the Console output, one can see that **sin** *θ* returns a value of `0.7`,
   <figcaption><b>Top-left:</b> <em>θ</em>=0; <b>top-right:</b> <em>θ</em>=π÷2; <b>bottom-left:</b> <em>θ</em>=π÷4; <b>bottom-right:</b> <em>θ</em>=π+0.3. These pairs can be multiplied to draw a circle of any radius</figcaption>
 </figure>
 
-To understand how this all works, look at this cool animation for about ten seconds:
+To understand how this all works, click the image below and watch the cool animation for about ten seconds.
 
 <figure>
-  <img src="{{ site.url }}/img/pitl04/wikimedia-backup/Circle_cos_sin.gif" class="fullwidth" style="padding-right:1.7%; box-sizing:border-box" />
+  <script>
+    var gifanimation2 = "{{ site.url }}/img/pitl04/wikimedia-backup/Circle_cos_sin.gif";
+    var gitposter2 = "{{ site.url }}/img/pitl04/wikimedia-backup/Circle_cos_sin-poster.gif";
+  </script>
+  <img src="{{ site.url }}/img/pitl04/wikimedia-backup/Circle_cos_sin-poster.gif" class="fullwidth" style="cursor:pointer" onclick="this.src = this.src == gitposter2 ? gifanimation2 : gitposter2;">
   <figcaption>
+    <strong>Click the image to begin the animation.</strong><br>
     Source: <a href="https://commons.wikimedia.org/wiki/File:Circle_cos_sin.gif">Wikimedia Commons</a>
   </figcaption>
 </figure>

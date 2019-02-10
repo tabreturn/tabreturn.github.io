@@ -1053,9 +1053,9 @@ As the name implies, edge detection methods aim to identify edge points/boundari
 
 {% highlight py %}
     kernel = [
-      0*sample[0], 0*sample[1], 0*sample[2],
+      0*sample[0], 1*sample[1], 0*sample[2],
       1*sample[3],-4*sample[4], 1*sample[5],
-      0*sample[6], 0*sample[7], 0*sample[8]
+      0*sample[6], 1*sample[7], 0*sample[8]
     ]
 {% endhighlight py %}
 
@@ -1066,7 +1066,7 @@ As the name implies, edge detection methods aim to identify edge points/boundari
 
 #### Sharpen
 
-Sharpening makes light pixels lighter and dark pixels darker. The result is an increase contrast and 'crisper' edges. The kernel is, essentially, the inverse of an edge detect.
+Sharpening makes light pixels lighter and dark pixels darker. The result is an increased contrast and 'crisper' edges. The kernel is, effectively, the inverse of an edge detect.
 
 <math>
   <mfenced open="[" close="]">
@@ -1103,7 +1103,7 @@ Sharpening makes light pixels lighter and dark pixels darker. The result is an i
   <figcaption>Sharpen.</figcaption>
 </figure>
 
-These are a few common kernel types. However, image kernels need not be limited to 3 × 3, symmetric matrices, and can operate on whatever channel(s) you feed them (full colour RGB, HSB, etc.). Like many things matrix-related, this stuff can get very involved. We will not venture any deeper, but in the final section of this lesson we'll cover Processing's [filter](#filters) functions.
+These are a few common kernel types. However, image kernels need not be limited to 3 × 3, symmetric matrices and can operate on whatever channel(s) you feed them (full-colour RGB, HSB, etc.). Like many things matrix-related, this stuff can get very involved. We will not venture any deeper, although the final section of this lesson covers Processing's [filter](#filters) functions, many of which rely on convolution matrices.
 
 ### Colour Emboss Task
 
@@ -1154,11 +1154,18 @@ If you have no idea where to start, consider a separate kernel for each R/G/B ch
 
 ## Filters and Blends
 
-Processing includes a number of different filter effects and blend modes. If you are a user of raster graphics software, such as GIMP or Photoshop, you have almost certainly encountered some of these before. On a technical level, blend modes, and most filters, operate on colour channels. Processing's filter and blend functions cover a selection of common image processing algorithms. Technically speaking, one can program these effects using the techniques covered thus far. In fact, we look at replicating a few of the simpler blend modes.
+If you are a user of raster graphics software, such as GIMP or Photoshop, you have almost certainly encountered filters and blend modes. On a technical level, blend modes -- and most filters -- operate on colour channels. Processing's filter and blend functions span a selection of common image processing algorithms. Technically speaking, one can program these effects using the techniques covered thus far. We look at replicating a few of the simpler blend modes.
 
 ### Filters
 
-Filters range from the utilitarian and understated to the hideously gaudy. To be fair, most have their place, but perhaps some users lack an understanding of how much of -- and to which parts of an image -- a given filter should be applied. That said, there are some impressive developments being made in this area, thanks in part to advances in artificial intelligence. Rather than list all of GIMP's filters, here are the top-level categories into which they are arranged: blur, enhance, distort, light and shadow, noise, edge detect, generic, combine, artistic, decor, map, render, web, and animation. On average, a category probably contains around ten, so that's a lot of filters! Processing has eight in total.
+Filters range from utilitarian and understated to hideously gaudy. To be fair, most have their place, but perhaps some users lack an understanding of how much of -- and to which parts of an image -- a given filter should be applied. Some impressive developments are being made in this area thanks in part to advances in artificial intelligence. For instance, here is a Van Gogh style imitation of the Mwaash aMbooy mask created using [DeepArt.io](https://deepart.io/)'s neural algorithm.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl06/filters-and-blends-filter-deepart.png" />
+  <figcaption>Created with <a href="https://deepart.io/">DeepArt.io</a>.</figcaption>
+</figure>
+
+Rather than list all of GIMP's filters, here are the top-level categories into which they are arranged: blur, enhance, distort, light and shadow, noise, edge detect, generic, combine, artistic, decor, map, render, web, and animation. On average, a category probably contains around ten, so that's a lot of filters! Processing has eight in total.
 
 Filters are easy to use. The [`filter()`](https://py.processing.org/reference/filter.html) function requires a predefined filter name as an argument. Depending on the filter, there may be a second parameter. If you want to experiment, download this photo of Florentijn Hofman's *Rubber Duck*. However, you may prefer to just read over this section. An image comparing all of the effects is provided further along.
 

@@ -83,6 +83,21 @@ function categoryFilter(show_on_start) {
     postShowHide(categories_selected);
   }
 
+  for (var i=0; i<category_buttons.length; i++) {
+    var cat_but = category_buttons[i];
+    cat_but.addEventListener('click', function(e) {
+      categorySelect(e.target.innerHTML, category_buttons);
+    });
+  }
+
+  for (var i=0; i<show_on_start.length; i++) {
+    if (show_on_start[i] == 'reverse') {
+      reversePosts();
+    }
+    var show = show_on_start[i];
+    categorySelect(show, category_buttons);
+  }
+
   function reversePosts() {
     var parent_node = post_list.parentNode;
     var next_sibling = post_list.nextSibling;
@@ -96,21 +111,8 @@ function categoryFilter(show_on_start) {
     return post_list;
   }
 
-  for (var i=0; i<category_buttons.length; i++) {
-    var cat_but = category_buttons[i];
-    cat_but.addEventListener('click', function(e) {
-      if (cat_but.getAttribute('id') == 'reverse-filter') {
-        reversePosts();
-      }
-      categorySelect(e.target.innerHTML, category_buttons);
-    });
-  }
+  document.getElementById('reverse-filter').addEventListener('click', function() {
+    reversePosts();
+  });
 
-  for (var i=0; i<show_on_start.length; i++) {
-    if (show_on_start[i] == 'reverse') {
-      reversePosts();
-    }
-    var show = show_on_start[i];
-    categorySelect(show, category_buttons);
-  }
 }

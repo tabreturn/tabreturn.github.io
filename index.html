@@ -9,12 +9,13 @@ layout: default
     Welcome to my blog -- a collection of posts covering a blend of code, design, and creative tech.
   </div>
 
-  <h1 id="reader-title">Posts</h1>
-  <div id="reader-credits" class="credits"></div>
+  <p style="text-align:right">
+    <em id="reverse-filter"><a>&#8644; reverse order</a></em>
+  </p>
 
   <p id="categories">
 
-    <strong>filter:</strong>
+    <strong>filter posts:</strong>
 
     {% assign sorted_categories = site.categories | sort %}
 
@@ -34,9 +35,7 @@ layout: default
     {% for category in sorted_categories %}
       <a class="disabled">{{ category | first }}</a>
     {% endfor %}
-      <a class="disabled" id="reverse-filter">reverse</a>
     </span>
-
   </p>
 
   <p></p>

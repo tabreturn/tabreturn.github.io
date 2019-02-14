@@ -302,7 +302,10 @@ The only the unfamiliar line is the `logo = None`. This line defines the `logo` 
 
 <figure>
   <img src="{{ site.url }}/img/pitl04/dvd-logo-setup.png" />
-  <figcaption>The motion trail indicates the left-to-right movement.</figcaption>
+  <figcaption>
+    The motion trail indicates the left-to-right movement of the DVD logo.<br />
+    DVD Forum [Public domain / filled in blue], <a href="https://commons.wikimedia.org/wiki/File:DVD_logo.svg">from Wikimedia Commons</a>
+  </figcaption>
 </figure>
 
 The logo should begin moving at an angle, rebounding off every wall it encounters. Your challenge is to complete the task.

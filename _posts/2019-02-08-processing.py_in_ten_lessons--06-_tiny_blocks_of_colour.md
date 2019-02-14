@@ -265,7 +265,7 @@ Each pixel on your screen is mixed using three primary colours: red, green, and 
 <figure>
   <img src="{{ site.url }}/img/pitl06/colour-channels-channels.png" class="fullwidth" />
   <figcaption>
-    <i>Modefenster</i> separated into red, green, and blue channels.<br />
+    <q>Modefenster</q> separated into red, green, and blue channels.<br />
     August Macke [Public domain]
   </figcaption>
 </figure>
@@ -283,7 +283,7 @@ In hexadecimal notation, it is:
 <figure>
   <img src="{{ site.url }}/img/pitl06/colour-channels-cmyk.png" class="fullwidth" />
   <figcaption>
-  Mixing CMYK colours using <a href="https://krita.org">Krita</a>. The painting is Hokusai's <a href="https://commons.wikimedia.org/wiki/File:Tsunami_by_hokusai_19th_century.jpg">The Great Wave off Kanagawa</a>.
+  Mixing CMYK colours using <a href="https://krita.org">Krita</a>. The painting is Hokusai's <q><a href="https://commons.wikimedia.org/wiki/File:Tsunami_by_hokusai_19th_century.jpg">The Great Wave off Kanagawa</a></q>.
   </figcaption>
 </figure>
 
@@ -567,7 +567,7 @@ Suppose that you have an image of continuous tones, i.e. an infinite-like range 
 <figure>
   <img src="{{ site.url }}/img/pitl06/halftone-effects-lady-macbeth.jpg" />
   <figcaption>
-    Elisabet Ney's Lady Macbeth in colour and greyscale.<br />
+    Elisabet Ney's <q>Lady Macbeth</q> in colour and greyscale.<br />
     <a href="https://de.wikipedia.org/wiki/User:Ingrid_Fisch" class="extiw" title="de:User:Ingrid Fisch">Ingrid Fisch</a> [<a href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>]
   </figcaption>
 </figure>
@@ -590,7 +590,7 @@ Halftone techniques remain an essential part of printing today. Halftone separat
 <figure>
   <img src="{{ site.url }}/img/pitl06/wikimedia-backup/Halftoningcolor.svg" />
   <figcaption>
-    Three examples of color halftoning with CMYK separations.<br />
+    Three examples of colour halftoning with CMYK separations.<br />
     Pbroks13d (SVG version) and Slippens (PNG original) [Public domain], <a href="https://commons.wikimedia.org/wiki/File:Halftoningcolor.svg">via Wikimedia Commons</a>
   </figcaption>
 </figure>
@@ -618,7 +618,7 @@ As with the previous sketch, we will be rendering a processed version in the emp
 <figure>
   <img src="{{ site.url }}/img/pitl06/halftone-effects-setup.jpg" />
   <figcaption>
-    Mona Lisa.<br />
+    <q>Mona Lisa</q><br />
     Leonardo da Vinci [Public domain]
   </figcaption>
 </figure>
@@ -887,8 +887,8 @@ The image has been greyscaled prior to loading. A single colour channel will be 
 <figure>
   <img src="{{ site.url }}/img/pitl06/image-kernels-mwaashambooy-load.jpg" />
   <figcaption>
-    Mwaash aMbooy mask. <br />
-    <a rel="nofollow" class="external text" href="http://www.brooklynmuseum.org">Brooklyn Museum</a> [<a href="https://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>]
+    Mwaash aMbooy mask<br />
+    <a rel="nofollow" class="external text" href="http://www.brooklynmuseum.org">Brooklyn Museum</a> [<a href="https://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> / converted to greyscale]
   </figcaption>
 </figure>
 
@@ -1197,8 +1197,8 @@ text('Rubber Duck', 20,150)
 <figure>
   <img src="{{ site.url }}/img/pitl06/filters-and-blends-filter-start.jpg" />
   <figcaption>
-    Rubber Duck, by Florentijn Hofman, in Darling Harbour as part of the 2013 Sydney Festival.<br />
-    Newtown grafitti [<a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a>], <a href="https://commons.wikimedia.org/wiki/File:Rubber_Duck_in_Sydney,_January_5,_2013.jpg">via Wikimedia Commons</a>
+    <q>Rubber Duck</q> by Florentijn Hofman, in Darling Harbour as part of the 2013 Sydney Festival.<br />
+    Newtown grafitti [<a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> / added title], <a href="https://commons.wikimedia.org/wiki/File:Rubber_Duck_in_Sydney,_January_5,_2013.jpg">via Wikimedia Commons</a>
   </figcaption>
 </figure>
 
@@ -1453,7 +1453,7 @@ In this challenge, you get to fix a partially complete Processing adaptation of 
 <figure>
   <img src="{{ site.url }}/img/pitl06/wikimedia-backup/1010px-Piet_Mondriaan,_1930_-_Mondrian_Composition_II_in_Red,_Blue,_and_Yellow.png" />
   <figcaption>
-    Composition II in Red, Blue, and Yellow.<br />
+    <q>Composition II in Red, Blue, and Yellow</q><br />
     Piet Mondrian [Public domain]
   </figcaption>
 </figure>
@@ -1569,7 +1569,7 @@ image(img, 0,0)
 <figure>
   <img src="{{ site.url }}/img/pitl06/tint-and-transparency-setup.png" />
   <figcaption>
-    Forbidden City Imperial Guardian Lion.<br />
+    A forbidden city imperial guardian lion.<br />
     Tang Zu-Ming [Public domain], <a href="https://commons.wikimedia.org/wiki/File:Beijing_Forbidden_City_Imperial_Guardian_Lions.jpg">via Wikimedia Commons</a>
   </figcaption>
 </figure>

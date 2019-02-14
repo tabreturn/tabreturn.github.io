@@ -265,8 +265,7 @@ Each pixel on your screen is mixed using three primary colours: red, green, and 
 <figure>
   <img src="{{ site.url }}/img/pitl06/colour-channels-channels.png" class="fullwidth" />
   <figcaption>
-    <q>Modefenster</q> separated into red, green, and blue channels.<br />
-    August Macke [Public domain]
+    August Macke's <q>Modefenster</q> separated into red, green, and blue channels.<br />
   </figcaption>
 </figure>
 
@@ -617,10 +616,6 @@ As with the previous sketch, we will be rendering a processed version in the emp
 
 <figure>
   <img src="{{ site.url }}/img/pitl06/halftone-effects-setup.jpg" />
-  <figcaption>
-    <q>Mona Lisa</q><br />
-    Leonardo da Vinci [Public domain]
-  </figcaption>
 </figure>
 
 Our first halftone will consist of amplitude-modulated circles. We will begin by adding the global variables and main loop. The image will be divided into 'cells'. In effect, these cells control the 'resolution' of the halftone.

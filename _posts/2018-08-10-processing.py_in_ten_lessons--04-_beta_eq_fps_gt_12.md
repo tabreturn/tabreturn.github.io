@@ -36,7 +36,7 @@ Consider that you displayed just circle 1 for a full four seconds, followed by j
   <img src="{{ site.url }}/img/pitl04/sequence-timings-poster.gif" class="fullwidth" style="cursor:pointer"
        onclick="this.src = this.src == gitposter1 ? gifanimation1 : gitposter1;" />
   <figcaption>
-    <strong>Click the image to begin the animation.</strong><br/>
+    <strong>Click the image to start the animation.</strong><br/>
     Frame rates from left to right: 0.25 fps; 2.5 fps; 12 fps; 1 fps; 25 fps
   </figcaption>
 </figure>
@@ -1700,7 +1700,7 @@ To understand how this all works, click the image below and watch the cool anima
   </script>
   <img src="{{ site.url }}/img/pitl04/wikimedia-backup/Circle_cos_sin-poster.gif" class="fullwidth" style="cursor:pointer" onclick="this.src = this.src == gitposter2 ? gifanimation2 : gitposter2;">
   <figcaption>
-    <strong>Click the image to begin the animation</strong>.<br>
+    <strong>Click the image to start the animation</strong>.<br>
     LucasVB [Public domain], <a href="https://commons.wikimedia.org/wiki/File:Circle_cos_sin.gif">from Wikimedia Commons</a>
   </figcaption>
 </figure>

@@ -328,4 +328,4 @@ Daniel Shiffman's [*Nature of Code*](http://natureofcode.com/) focuses on progra
 * http://natureofcode.com/book/chapter-1-vectors/
 * http://natureofcode.com/book/chapter-2-forces/
 * https://unity3d.com/learn/tutorials/topics/scripting/vector-maths
-* [Nyan Cat](https://youtube.com/watch?v=QH2-TGUlwu4) by prguitarman
+* [Nyan Cat](https://youtube.com/watch?v=QH2-TGUlwu4) by PRguitarman

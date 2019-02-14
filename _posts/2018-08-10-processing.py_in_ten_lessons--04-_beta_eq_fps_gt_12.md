@@ -1374,7 +1374,7 @@ If the twelve-hour clocks make time tricky to deal with, time zones only complic
   <img src="{{ site.url }}/img/pitl04/wikimedia-backup/1280px-Standard_World_Time_Zones.png" class="fullwidth" />
   <figcaption>
     Standard world time zones.<br />
-    source: <a href="https://commons.wikimedia.org/wiki/File:Standard_World_Time_Zones.png">Wikipedia Commons</a>
+    TimeZonesBoy [Public domain], <a href="https://commons.wikimedia.org/wiki/File:World_Time_Zones_Map.png">via Wikimedia Commons</a>
   </figcaption>
 </figure>
 
@@ -1462,7 +1462,7 @@ A *sprite* is a single graphic comprised of pixels. Multiple sprites can be comb
   <img src="{{ site.url }}/img/pitl04/wikimedia-backup/Mario_Bros._Gameplay.gif" />
   <figcaption>
     Mario Bros.<br />
-    Source: <a href="https://en.wikipedia.org/wiki/Mario_Bros.#/media/File:Mario_Bros._Gameplay.gif">Wikipedia</a>
+    Nintendo Co., Ltd. [Copyright], <a href="https://en.wikipedia.org/wiki/Mario_Bros.#/media/File:Mario_Bros._Gameplay.gif">from Wikipedia</a>
   </figcaption>
 </figure>
 
@@ -1471,7 +1471,8 @@ Study the screenshot above; notice how the blue bricks are all clones of one ano
 <figure>
   <img src="{{ site.url }}/img/pitl04/nyancat-spritesheet.gif" class="fullwidth" />
   <figcaption>
-    Source: <a href="https://www.youtube.com/watch?v=QH2-TGUlwu4">Nyan Cat</a>
+    Nyan Cat.<br />
+    PRguitarman [Standard YouTube License / redrawn as sprite sheet], <a href="https://www.youtube.com/watch?v=QH2-TGUlwu4">from Youtube</a>
   </figcaption>
 </figure>
 
@@ -1608,7 +1609,8 @@ Remember [SOHCAHTOA](https://en.wikipedia.org/wiki/Mnemonics_in_trigonometry) (s
 <figure>
   <img src="{{ site.url }}/img/pitl04/wikimedia-backup/TrigonometryTriangle.svg" />
   <figcaption>
-    Source: <a href="https://commons.wikimedia.org/wiki/File:TrigonometryTriangle.svg">Wikimedia Commons</a>
+    A simple trigonometric triangle. Note the naming of each side relative to the right angle.<br />
+    TheOtherJesse [Public domain], <a href="https://commons.wikimedia.org/wiki/File:TrigonometryTriangle.svg">from Wikimedia Commons</a>
   </figcaption>
 </figure>
 
@@ -1695,8 +1697,8 @@ To understand how this all works, click the image below and watch the cool anima
   </script>
   <img src="{{ site.url }}/img/pitl04/wikimedia-backup/Circle_cos_sin-poster.gif" class="fullwidth" style="cursor:pointer" onclick="this.src = this.src == gitposter2 ? gifanimation2 : gitposter2;">
   <figcaption>
-    <strong>Click the image to begin the animation.</strong><br>
-    Source: <a href="https://commons.wikimedia.org/wiki/File:Circle_cos_sin.gif">Wikimedia Commons</a>
+    <strong>Click the image to begin the animation</strong>.<br>
+    LucasVB [Public domain], <a href="https://commons.wikimedia.org/wiki/File:Circle_cos_sin.gif">from Wikimedia Commons</a>
   </figcaption>
 </figure>
 
@@ -1757,7 +1759,7 @@ Tangent (*tan*) functions do not produce wave-like graphs. Perhaps one of the ne
   <img src="{{ site.url }}/img/pitl04/wikimedia-backup/512px-Blackbox-Fenstermanager.png" />
   <figcaption>
     The (x)eyes, at the lower-right, rotate to follow the mouse cursor.<br />
-    Source: <a href="https://commons.wikimedia.org/wiki/File:Blackbox-Fenstermanager.png">Wikimedia Commons</a>
+    The original uploader was Choas at German Wikipedia. [<a href="http://www.gnu.org/licenses/gpl.html">GPL</a>], <a href="https://commons.wikimedia.org/wiki/File:Blackbox-Fenstermanager.png">via Wikimedia Commons</a>
   </figcaption>
 </figure>
 

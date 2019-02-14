@@ -101,7 +101,7 @@ Many lists are dynamic in nature. Consider a game like *Breakout* (image below).
   <img src="{{ site.url }}/img/pitl05/wikimedia-backup/Screenshot-LBreakout2.jpg" />
   <figcaption>
     LBreakout2 &ndash; an open source Breakout clone.<br />
-    source: <a href="https://commons.wikimedia.org/wiki/File:Screenshot-LBreakout2.jpg">Wikimedia Commons</a>
+    Wilinckx [<a href="http://www.gnu.org/licenses/gpl.html">GPL</a>], <a href="https://commons.wikimedia.org/wiki/File:Screenshot-LBreakout2.jpg">from Wikimedia Commons</a>
   </figcaption>
 </figure>
 
@@ -218,8 +218,7 @@ In these lessons, we will drop indigo in favour of a six colour rainbow (just li
   <img src="{{ site.url }}/img/pitl05/wikimedia-backup/Dark_Side_of_the_Moon.png" />
   <figcaption>
     <em>The Dark Side of the Moon</em> album cover depicts a prism splitting a beam of white light into its constituent colours. Pink Floyd's designer, Storm Thorgerson, opted for a six-colour, indigo-less rainbow.<br />
-    source: <a href="https://en.wikipedia.org/wiki/File:Dark_Side_of_the_Moon.png">Wikipedia</a>
-
+    Capitol Records [Copyright], <a href="http://www.pinkfloyd.com/">from prinkfloiyd.com</a>, <a href="https://en.wikipedia.org/wiki/File:Dark_Side_of_the_Moon.png">via Wikipedia</a>
   </figcaption>
 </figure>
 
@@ -483,7 +482,7 @@ A three-dimensional SPLOM is three rows wide and three columns high. Should you 
   <img src="{{ site.url }}/img/pitl05/wikimedia-backup/2000px-ScagnosticsExampleSplom.svg.png" />
   <figcaption>
     A scatterplot matrix of scagnostics measures for the Boston Housing data set. Note that each sub-plot need not be represented as a scatterplot. Within the matrix, one can <a href="{{ site.url }}/img/pitl05/dimension-code/t-piece-splom.png">select a mix</a> of bar, line, scatterplot, and other chart types.<br />
-    source: <a href="https://commons.wikimedia.org/wiki/File:ScagnosticsExampleSplom.svg">Wikimedia Commons</a>
+    Sigbert [<a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a>], <a href="https://commons.wikimedia.org/wiki/File:ScagnosticsExampleSplom.svg">from Wikimedia Commons</a>
   </figcaption>
 </figure>
 

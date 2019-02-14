@@ -388,7 +388,7 @@ Tasks like tiling can be tedious work, though. Humans are exemplary in reasoning
   <img src="{{ site.url }}/img/pitl03/wikimedia-backup/lossless-page1-789px-APN2002_Table_1%2C_1000-1500.agr.tiff.png" />
   <figcaption>
     A logarithms table from American Practical Navigator.<br />
-    source: <a href="https://commons.wikimedia.org/wiki/File:APN2002_Table_1,_1000-1500.agr.tiff">Wikimedia Commons</a>
+    Nathaniel Bowditch, originally; National Imagery and Mapping Agency, U.S. Government [Public domain], <a href="https://commons.wikimedia.org/wiki/File:APN2002_Table_1,_1000-1500.agr.tiff">via Wikimedia Commons</a>
   </figcaption>
 </figure>
 

@@ -264,7 +264,10 @@ Each pixel on your screen is mixed using three primary colours: red, green, and 
 
 <figure>
   <img src="{{ site.url }}/img/pitl06/colour-channels-channels.png" class="fullwidth" />
-  <figcaption>Auguste Macke's Modefenster separated into red, green, and blue channels.</figcaption>
+  <figcaption>
+    <i>Modefenster</i> separated into red, green, and blue channels.<br />
+    August Macke [Public domain]
+  </figcaption>
 </figure>
 
 Notice how the whiter areas of *Modefenster*, such as the foreground woman's face, appear solid for every channel. Recall that, to produce white, the red, green, and blue channels must combine at full intensity.
@@ -565,7 +568,7 @@ Suppose that you have an image of continuous tones, i.e. an infinite-like range 
   <img src="{{ site.url }}/img/pitl06/halftone-effects-lady-macbeth.jpg" />
   <figcaption>
     Elisabet Ney's Lady Macbeth in colour and greyscale.<br />
-    source: <a href="https://commons.wikimedia.org/wiki/File:Elisabet_Ney_-_Lady_Macbeth_-_Detail.jpg">Wikimedia Commons</a>
+    <a href="https://de.wikipedia.org/wiki/User:Ingrid_Fisch" class="extiw" title="de:User:Ingrid Fisch">Ingrid Fisch</a> [<a href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>]
   </figcaption>
 </figure>
 
@@ -587,7 +590,8 @@ Halftone techniques remain an essential part of printing today. Halftone separat
 <figure>
   <img src="{{ site.url }}/img/pitl06/wikimedia-backup/Halftoningcolor.svg" />
   <figcaption>
-    Source: <a href="https://en.wikipedia.org/wiki/File:Halftoningcolor.svg">Wikimedia Commons</a>
+    Three examples of color halftoning with CMYK separations.<br />
+    Pbroks13d (SVG version) and Slippens (PNG original) [Public domain], <a href="https://commons.wikimedia.org/wiki/File:Halftoningcolor.svg">via Wikimedia Commons</a>
   </figcaption>
 </figure>
 
@@ -613,6 +617,10 @@ As with the previous sketch, we will be rendering a processed version in the emp
 
 <figure>
   <img src="{{ site.url }}/img/pitl06/halftone-effects-setup.jpg" />
+  <figcaption>
+    Mona Lisa.<br />
+    Leonardo da Vinci [Public domain]
+  </figcaption>
 </figure>
 
 Our first halftone will consist of amplitude-modulated circles. We will begin by adding the global variables and main loop. The image will be divided into 'cells'. In effect, these cells control the 'resolution' of the halftone.
@@ -879,7 +887,8 @@ The image has been greyscaled prior to loading. A single colour channel will be 
 <figure>
   <img src="{{ site.url }}/img/pitl06/image-kernels-mwaashambooy-load.jpg" />
   <figcaption>
-    Source: <a href="https://commons.wikimedia.org/wiki/File:Brooklyn_Museum_22.1582_Mwaash_aMbooy_Mask.jpg">Wikimedia Commons</a>
+    Mwaash aMbooy mask. <br />
+    <a rel="nofollow" class="external text" href="http://www.brooklynmuseum.org">Brooklyn Museum</a> [<a href="https://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>]
   </figcaption>
 </figure>
 
@@ -1157,11 +1166,13 @@ If you are a user of raster graphics software, such as GIMP or Photoshop, you ha
 
 ### Filters
 
-Filters range from utilitarian and understated to hideously gaudy. To be fair, most have their place, but perhaps some users lack an understanding of how much of -- and to which parts of an image -- a given filter should be applied. Some impressive developments are being made in this area thanks in part to advances in artificial intelligence. For instance, here is a Van Gogh style imitation of the Mwaash aMbooy mask created using [DeepArt.io](https://deepart.io/)'s neural algorithm.
+Filters range from utilitarian and understated to hideously gaudy. To be fair, most have their place, but perhaps some users lack an understanding of how much of -- and to which parts of an image -- a given filter should be applied. Some impressive developments are being made in this area thanks in part to advances in artificial intelligence. For instance, here is a Vincent van Gogh imitation of the Mwaash aMbooy mask created using [DeepArt.io](https://deepart.io/)'s neural algorithm.
 
 <figure>
   <img src="{{ site.url }}/img/pitl06/filters-and-blends-filter-deepart.jpg" />
-  <figcaption>Created with <a href="https://deepart.io/">DeepArt.io</a>.</figcaption>
+  <figcaption>
+    Created with <a href="https://deepart.io/">DeepArt.io</a>.
+  </figcaption>
 </figure>
 
 Rather than list all of GIMP's filters, here are the top-level categories into which they are arranged: blur, enhance, distort, light and shadow, noise, edge detect, generic, combine, artistic, decor, map, render, web, and animation. On average, a category contains around ten items, so that's a lot of filters! Processing has eight filters in total.
@@ -1186,7 +1197,8 @@ text('Rubber Duck', 20,150)
 <figure>
   <img src="{{ site.url }}/img/pitl06/filters-and-blends-filter-start.jpg" />
   <figcaption>
-    Source: <a href="https://commons.wikimedia.org/wiki/File:Rubber_Duck_in_Sydney,_January_5,_2013.jpg">Wikimedia Commons</a>
+    Rubber Duck, by Florentijn Hofman, in Darling Harbour as part of the 2013 Sydney Festival.<br />
+    Newtown grafitti [<a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a>], <a href="https://commons.wikimedia.org/wiki/File:Rubber_Duck_in_Sydney,_January_5,_2013.jpg">via Wikimedia Commons</a>
   </figcaption>
 </figure>
 
@@ -1441,7 +1453,8 @@ In this challenge, you get to fix a partially complete Processing adaptation of 
 <figure>
   <img src="{{ site.url }}/img/pitl06/wikimedia-backup/1010px-Piet_Mondriaan,_1930_-_Mondrian_Composition_II_in_Red,_Blue,_and_Yellow.png" />
   <figcaption>
-    Source: <a href="https://commons.wikimedia.org/wiki/File:Piet_Mondriaan,_1930_-_Mondrian_Composition_II_in_Red,_Blue,_and_Yellow.jpg">Wikimedia Commons</a>
+    Composition II in Red, Blue, and Yellow.<br />
+    Piet Mondrian [Public domain]
   </figcaption>
 </figure>
 
@@ -1556,7 +1569,8 @@ image(img, 0,0)
 <figure>
   <img src="{{ site.url }}/img/pitl06/tint-and-transparency-setup.png" />
   <figcaption>
-    source: <a href="https://commons.wikimedia.org/wiki/File:Beijing_Forbidden_City_Imperial_Guardian_Lions.jpg">Wikimedia Commons</a>
+    Forbidden City Imperial Guardian Lion.<br />
+    Tang Zu-Ming [Public domain], <a href="https://commons.wikimedia.org/wiki/File:Beijing_Forbidden_City_Imperial_Guardian_Lions.jpg">via Wikimedia Commons</a>
   </figcaption>
 </figure>
 

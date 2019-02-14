@@ -20,7 +20,8 @@ In the next lesson, you will look at interactivity in Processing. As you will se
 <figure>
   <img src="{{ site.url }}/img/pitl07/wikimedia-backup/SRI_Computer_Mouse.jpg" />
   <figcaption>
-    source: <a href="https://en.wikipedia.org/wiki/File:SRI_Computer_Mouse.jpg">Wikimedia Commons</a>
+    SRI's first computer mouse prototype.<br />
+    SRI International [<a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a>], <a href="https://commons.wikimedia.org/wiki/File:SRI_Computer_Mouse.jpg">via Wikimedia Commons</a>
   </figcaption>
 </figure>
 

@@ -899,6 +899,10 @@ You will recreate the logo in Processing, such that the final result looks this:
 
 <figure>
   <img src="{{ site.url }}/img/pitl02/apple.png" />
+  <figcaption>
+    The Apple Computer rainbow colour logo, in use from 1977&ndash;1999.<br />
+    Rob Janoff [Public domain], <a href="https://commons.wikimedia.org/wiki/File:Apple_Computer_Logo_rainbow.svg">via Wikimedia Commons</a>
+  </figcaption>
 </figure>
 
 Create a new sketch and save it as "apple_logo". Within a "data" sub-folder, add the grid.png image, along with this apple.png file:

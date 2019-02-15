@@ -2,6 +2,12 @@ body {
   padding-left: 51px;
 }
 
+body.dark img {
+  background-color: #FFFFFF;
+  box-sizing: border-box;
+  padding: 6px;
+}
+
 a, button {
   cursor: pointer;
 }

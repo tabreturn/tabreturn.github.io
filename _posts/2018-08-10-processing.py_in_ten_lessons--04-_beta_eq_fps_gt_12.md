@@ -23,7 +23,7 @@ Before writing any animation code, consider how motion is perceived. The brain i
 Take a moment to note the numbering sequence of the circles in the illustration below.
 
 <figure>
-  <img src="{{ site.url }}/img/pitl04/sequence.svg" />
+  <img src="{{ site.url }}/img/pitl04/sequence.svg" style="max-width:280px;" />
 </figure>
 
 Consider that you displayed just circle 1 for a full four seconds, followed by just circle 5 for another four seconds, looping the sequence indefinitely (an effective frame rate of 0.25 fps). The result, most observers would agree, is a pair of alternating images depicting circles in different positions. However, speed up the frame rate to around 2.5 fps, and one begins to interpret the sequence as a circle bouncing between two points. Speed up the frame rate further, and the two circles seemingly flicker in sync.

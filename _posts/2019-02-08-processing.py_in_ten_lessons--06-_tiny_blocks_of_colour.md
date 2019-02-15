@@ -216,7 +216,7 @@ Despite there being thousands of red and white pixels in the graphic, the hex ed
 GIF has its limitations. Most notably, the colour table may not exceed 256 colours. For greater GIF compression one reduces this palette further. The GIF below consists of around sixteen colours and the reduction in range is quite evident. Placing alternating colours in checkerboard-type arrangements -- called *dithering* -- helps make up for the limited colour table, but it's often easy to discern this pattern, and it works against the compressibility. GIF supports transparency, but the level of opacity is either 0% or 100% (nothing between).
 
 <figure>
-  <img style="background-position:0px -80px; background-image:url({{ site.url }}/img/pitl06/image-formats-gif-jpg-png.png); height:300px" />
+  <div style="background-position:-5px -80px; background-image:url({{ site.url }}/img/pitl06/image-formats-gif-jpg-png.png); height:300px; max-width:400px"></div>
   <figcaption>The dithering pattern is most discernable wherever colours blend gradually into one another (e.g. the yellow to orange blend running down the letters). GIF cannot support the semi-transparent blues in the glow, so there is a fade to white up to the point where absolute transparency begins (and the starry background beneath shows through).</figcaption>
 </figure>
 
@@ -227,7 +227,7 @@ GIF also supports animation, which is handy for short loops of cats doing silly 
 JPG (pronounced "jay-peg"; often bearing the extension `.jpeg`) uses a *lossy* compression that does not support any type of transparency. Unlike *lossless* GIFs or PNGs, each time you reopen, perform a minuscule edit, and save a JPG file, the image quality degrades further. The compression algorithm works by taking advantage of the human psychovisual system, disregarding information we are less likely to detect visually. Humans are more sensitive to [differences in brightness than differences in colour](https://en.wikipedia.org/wiki/Chroma_subsampling), a characteristic that JPG leverages. The format works well for images with graduated colour, like photographs, but causes noticeable *artefacts* to appear wherever there is a sharp contrast.
 
 <figure>
-  <img style="background-position:-432px -80px; background-image:url({{ site.url }}/img/pitl06/image-formats-gif-jpg-png.png); height:300px" />
+  <div style="background-position:-432px -80px; background-image:url({{ site.url }}/img/pitl06/image-formats-gif-jpg-png.png); height:300px; max-width:400px"></div>
   <figcaption>A highly compressed JPG. The artefacts are most apparent around the edges of the letters. As there is no support for transparency, a white background extends to the boundaries of the graphic.</figcaption>
 </figure>
 
@@ -248,7 +248,7 @@ That is 24 bits in all -- with 8 bits for each R/G/B *channel*. A 32-bit hexadec
 This alpha feature is especially handy for placing images seamlessly above other background images.
 
 <figure>
-  <img style="background-position:-864px -80px; background-image:url({{ site.url }}/img/pitl06/image-formats-gif-jpg-png.png); height:300px" />
+  <div style="background-position:-864px -80px; background-image:url({{ site.url }}/img/pitl06/image-formats-gif-jpg-png.png); height:300px; max-width:400px"></div>
   <figcaption>The PNG produces smooth gradients using a large (greater than 256) palette of colours. The glow is comprised of many levels of semi-opaque blues and blends beautifully over the starry background. As a result, one cannot detect the boundaries of the graphic. </figcaption>
 </figure>
 

@@ -12,7 +12,7 @@ published: false
 
 ---
 &nbsp;  
-It is time to look at interactivity in Processing. You can programme Processing to work with a range of input, such as microphones, cameras, or even something you have built with an Arduino board. For this lesson, though, we'll stick to plain-old keyboard and mouse input. Most of the sketches are purely playful, but you'll also look and building a basic drawing application. You will discover that standard Processing functions were not purpose-designed for building interfaces, but there are is an introductory tutorial included that incorporates the *controlP5* graphical interface library.
+It is time to look at interactivity in Processing. You can programme Processing to work with a range of input, such as microphones, cameras, or even something you have built with an Arduino board. For this lesson, though, we'll stick to plain-old keyboard and mouse input. Most of the upcoming sketches are purely playful, but you'll also look and building a basic drawing application. You will discover that standard Processing functions were not purpose-designed for building interfaces. But, the lesson includes an introductory tutorial that incorporates the *controlP5* graphical interface library. This library includes a suit of essential input elements, such as buttons, checkboxes, sliders, toggles, and textfields.
 
 ### Interfaces
 
@@ -59,19 +59,9 @@ It is important to mention, though, that many CLI- and TUI-based computers were 
   </figcaption>
 </figure>
 
-A Graphical User Interface (GUI) allows for interaction though the manipulation of graphical elements. You routinely make of such interfaces to interact with your computer, web-pages, software, and mobile phone. To narrow down GUIs a bit, I'd like to focus on WIMP interfaces. The Windows/Icons/Menus/Pointer paradigm was developed by Xerox PARC and popularised by Apple. This approach has been massively influential on graphical user interface design, and the WIMP-meets-Desktop metaphor environment has not fundamentally changed since it's inception.
+A Graphical User Interface (GUI) allows for interaction though the manipulation of graphical elements. You routinely make of such interfaces to interact with your computer, web-pages, application software, and mobile phone. To narrow down GUIs a bit, I'd like to focus on WIMP interfaces. The Windows/Icons/Menus/Pointer paradigm was developed by Xerox PARC and popularised by Apple. This approach has been massively influential on graphical user interface design, and the WIMP-meets-Desktop metaphor environment has remained fundamentally unchanged since it's inception.
 
-...
-
-
-
-..
-
-
-
-
-
-If you have any experience with programming interfaces in other languages (perhaps some JavaScript, etc.), you'll quickly realise what I mean.
+Some important developments were necessary for the development of WIMP environments. Of course, computers first required raster-based displays along with sufficient memory and processing power. Arguably, though, it was the invention of the mouse set the process in motion.
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/wikimedia-backup/SRI_Computer_Mouse.jpg" />
@@ -80,6 +70,20 @@ If you have any experience with programming interfaces in other languages (perha
     SRI International [<a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a>], <a href="https://commons.wikimedia.org/wiki/File:SRI_Computer_Mouse.jpg">via Wikimedia Commons</a>
   </figcaption>
 </figure>
+
+Douglas Engelbart -- who had always envisioned the computer a tool for enhancing human intellect, rather than replacing it -- created the first mouse prototype. Alan Kay, of Xerox PARC, is widely credited as the architect of the overlapping windows. In reality, though, the development of GUIs involved many people over many years.
+
+
+..
+
+
+Touchpads work well for laptops (and nifty music synthesisers). Touchscreens really took-off with tablets and smartphones. Then there are gesture sensors, force feedback, voice recognition, GPS, and augmented reality. These are not new ideas, but they are now gaining a lot of traction.
+
+Mind control probably has some way to go.
+
+
+
+
 
 
 <!--
@@ -119,4 +123,4 @@ If you have any experience with programming interfaces in other languages (perha
 
 ## References
 
-* ...
+* http://www.designinginteractions.com/

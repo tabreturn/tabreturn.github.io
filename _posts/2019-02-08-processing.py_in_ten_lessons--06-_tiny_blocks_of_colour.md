@@ -170,7 +170,7 @@ Okay, so we have accounted for 30 KB, but what about the extra 1 KB? I have used
 The numbers appear in byte groupings of three (clusters of six `0`--`F` numbers). Scrolling through the file reveals alternating stretches of `FF0000` and `FFFFFF` values -- that is, red and white respectively; this is what we would expect, after all, the graphic is a pattern of alternating white and red stripes. However, the first three lines contain a bunch of seemingly random numbers; then, there are `000000`s (black?) up to byte 768 (as indicated by the count in the left margin).
 
 <figure>
-  <img style="background-position:-40px -20px; background-size:300%; background-image:url({{ site.url }}/img/pitl06/image-formats-tiff-hex.png); height:400px" />
+  <div style="background-position:-40px -20px; background-color:white; background-size:300%; background-image:url({{ site.url }}/img/pitl06/image-formats-tiff-hex.png); height:400px; max-width:400px"></div>
   <figcaption>The first three lines contain no <code>FF0000</code> or <code>FFFFFF</code> values. The first stretch of <code>FF0000</code>'s appear at byte 768.</figcaption>
 </figure>
 
@@ -1216,7 +1216,7 @@ The array of images below compares each of Processing's filter arguments. The ca
   <figcaption>
     <style>
       #filter-code { display:grid; grid-template-columns:1fr 1fr 1fr }
-      @media screen and (max-device-width:580px) {
+      @media screen and (max-width:580px) {
         #filter-code { grid-template-columns:1fr }
       }
     </style>
@@ -1391,7 +1391,7 @@ The following image compares each of above-listed modes -- beginning with `BLEND
   <figcaption>
     <style>
       #blend-code { display:grid; grid-template-columns:1fr 1fr 1fr }
-      @media screen and (max-device-width:580px) {
+      @media screen and (max-width:580px) {
         #blend-code { grid-template-columns:1fr }
       }
     </style>

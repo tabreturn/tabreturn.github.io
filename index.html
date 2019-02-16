@@ -5,7 +5,20 @@ layout: default
 <div id="reader-header" class="header">
 
   <div id="intro">
-    <img src="{{ site.url }}/img/logo.svg" alt="logo" style="width:60px; float:left; margin:0.15em 2em 0 0; border-radius:4px" />
+    <style>
+      #intro img {
+        width: 60px;
+        float: left;
+        margin: 0.15em 2em 0 0;
+      }
+      .dark #intro img {
+        border: solid white;
+        border-radius: 3px;
+        border-width: 4px 4px 2px 3px;
+        margin-top: -0.1em;
+      }
+    </style>
+    <img src="{{ site.url }}/img/logo.svg" alt="logo" />
     Welcome to my blog -- a collection of posts covering a blend of code, design, and creative tech.
   </div>
 

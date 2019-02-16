@@ -1214,20 +1214,24 @@ The array of images below compares each of Processing's filter arguments. The ca
 <figure>
   <img src="{{ site.url }}/img/pitl06/filters-and-blends-filter-types.jpg" class="fullwidth" />
   <figcaption>
-    <table width="100%">
-      <tr>
-        <td colspan="3"><b>Corresponding filter code:</b></td>
-      </tr>
-      <tr>
-        <td>No filter</td><td><code>filter(BLUR,3)</code></td><td><code>filter(DILATE)</code> × 2</td>
-      </tr>
-      <tr>
-        <td><code>filter(ERODE)</code> × 2</td><td><code>filter(GRAY)</code></td><td><code>filter(INVERT)</code></td>
-      </tr>
-      <tr>
-        <td><code>filter(POSTERIZE,3)</code></td><td><code>filter(THRESHOLD)</code></td><td>Posterise × 3 & blur × 3</td>
-      </tr>
-    </table>
+    <style>
+      #filter-code { display:grid; grid-template-columns:1fr 1fr 1fr }
+      @media screen and (max-device-width:580px) {
+        #filter-code { grid-template-columns:1fr }
+      }
+    </style>
+    <em>Corresponding filter code (left-to-right, row-by-row):</em>
+    <div id="filter-code">
+      <div>No filter</div>
+      <div><code>filter(BLUR,3)</code></div>
+      <div><code>filter(DILATE)</code> × 2</div>
+      <div><code>filter(ERODE)</code> × 2</div>
+      <div><code>filter(GRAY)</code></div>
+      <div><code>filter(INVERT)</code></div>
+      <div><code>filter(POSTERIZE,3)</code></div>
+      <div><code>filter(THRESHOLD)</code></div>
+      <div>Posterise × 3 & blur × 3</div>
+    </div>
   </figcaption>
 </figure>
 
@@ -1385,20 +1389,24 @@ The following image compares each of above-listed modes -- beginning with `BLEND
 <figure>
   <img src="{{ site.url }}/img/pitl06/filters-and-blends-blend-image-types.jpg" class="fullwidth" />
   <figcaption>
-    <table width="100%">
-      <tr>
-        <td colspan="3"><b>Corresponding blend code:</b></td>
-      </tr>
-      <tr>
-        <td><code>blendMode(BLEND)</code></td><td><code>blendMode(ADD)</code></td><td><code>blendMode(DARKEST)</code></td>
-      </tr>
-      <tr>
-        <td><code>blendMode(DIFFERENCE)</code></td><td><code>blendMode(EXCLUSION)</code></td><td><code>blendMode(LIGHTEST)</code></td>
-      </tr>
-      <tr>
-        <td><code>blendMode(MULTIPLY)</code></td><td><code>blendMode(SUBTRACT)</code></td><td><code>blendMode(SCREEN)</code></td>
-      </tr>
-    </table>
+    <style>
+      #blend-code { display:grid; grid-template-columns:1fr 1fr 1fr }
+      @media screen and (max-device-width:580px) {
+        #blend-code { grid-template-columns:1fr }
+      }
+    </style>
+    <em>Corresponding blend code (left-to-right, row-by-row):</em>
+    <div id="blend-code">
+      <div><code>blendMode(BLEND)</code></div>
+      <div><code>blendMode(ADD)</code></div>
+      <div><code>blendMode(DARKEST)</code></div>
+      <div><code>blendMode(DIFFERENCE)</code></div>
+      <div><code>blendMode(EXCLUSION)</code></div>
+      <div><code>blendMode(LIGHTEST)</code></div>
+      <div><code>blendMode(MULTIPLY)</code></div>
+      <div><code>blendMode(SUBTRACT)</code></div>
+      <div><code>blendMode(SCREEN)</code></div>
+    </div>
   </figcaption>
 </figure>
 

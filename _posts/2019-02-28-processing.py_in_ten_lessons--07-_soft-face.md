@@ -52,7 +52,7 @@ In text-mode, a computer display is measured in characters as opposed to pixels.
   <figcaption>Midnight Commander running in a hundred-column (approx.) display.</figcaption>
 </figure>
 
-It is important to mention, though, that many CLI- and TUI-based computers were not incapable of rendering raster graphics. There were text and graphic modes that the systems could switch between. Take games for example. Of course, text-mode games -- like the dungeon crawler, [Netchack](https://en.wikipedia.org/wiki/NetHack) -- operate in text mode, but for games with graphics the computer switches to addressing individual pixels.
+It is important to mention, though, that many CLI- and TUI-based operating systems were not incapable of rendering raster graphics. There were text and graphic modes that the systems could switch between. Take games for example. Of course, text-mode games -- like the dungeon crawler, [Netchack](https://en.wikipedia.org/wiki/NetHack) -- operate in text mode, but for games with graphics the computer switches to addressing individual pixels.
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/interface-text-and-graphic-modes.png" class="fullwidth" />
@@ -67,6 +67,15 @@ A Graphical User Interface (GUI) allows for interaction though the manipulation 
   <img src="{{ site.url }}/img/pitl07/interface-gem.png" />
   <figcaption>
     The OpenGEM GUI. The GEM Desktop 1.0 was released in February 1985. Apple Computer sued the developers (DRI) for copying their Macintosh interface.
+  </figcaption>
+</figure>
+
+Apple licensed certain GUI features to Microsoft for use in Windows 1.0, but sued them when features like overlapping windows appeared in Windows 2.0. The district court ruled in favour of Microsoft. Regardless, Windows 1.x and 2.x were slow, clumsy, and poorly received. Most users stuck with Microsoft's CLI environment, MS-DOS. With VGA-colour and mouse support, and lightning-fast performance thanks to low text-mode overhead, MS-DOS TUIs grew remarkably advanced.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl07/interface-dos-tui.png" />
+  <figcaption>
+    <a href="http://www.adlibtracker.net/">Adlib Tracker II</a>, a TUI music tracker (software for creating music) for Microsoft DOS.
   </figcaption>
 </figure>
 

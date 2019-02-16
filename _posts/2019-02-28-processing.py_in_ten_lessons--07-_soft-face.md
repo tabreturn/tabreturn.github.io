@@ -7,16 +7,16 @@ published: false
 ---
 
 ***Covered in this lesson:***  
-<a href="#..."><em>mouse interaction</em></a> /
-<a href="#..."><em>keyboard interaction</em></a> /
-<a href="#..."><em>drawing app</em></a> /
-<a href="#..."><em>controlp5</em></a>
+<a href="#mouse-interaction"><em>mouse interaction</em></a> /
+<a href="#keyboard-interaction"><em>keyboard interaction</em></a> /
+<a href="#drawing-app"><em>drawing app</em></a> /
+<a href="#controlp5"><em>controlp5</em></a>
 
 ---
 &nbsp;  
 It is time to look at interactivity in Processing. You can programme Processing to work with a range of input, such as microphones, cameras, or even something you have built with an Arduino board. For this lesson, though, we'll stick to plain-old keyboard and mouse input. Most of the upcoming sketches are purely playful, but you'll also look and building a basic drawing application. You will discover that standard Processing functions were not purpose-designed for building user interfaces. But, the lesson includes an introductory tutorial that incorporates the *controlP5* graphical user interface library. This library includes a suit of essential input elements, such as buttons, checkboxes, sliders, toggles, and textfields.
 
-### User Interfaces
+### Some User Interface History
 
 It may hard to believe, but there was a time when computers had no video displays. We'll skip over that early punch-card-and-blinking-lights-and-teleprinters chapter of computing history, though, and begin at the *Command Line Interface* (CLI). Early computer with monitors couldn't display much more than text and basic graphics but this was enough to support a handy CLI. By typing a series of commands, one could instruct a computer to perform its various functions. The CLI, however, is far from dead an buried. While it may no longer be the predominant means of interfacing with computing devices, system administrators and programmers still rely on it for many daily computing tasks. Indeed, you are likely to be surprised by how much can be accomplished just typing instructions. If you have mastered the command line, you will also find it more efficient in certain situations, particularly where repetitive tasks and batch processing are involved.
 
@@ -52,7 +52,7 @@ In text-mode, a computer display is measured in characters as opposed to pixels.
   <figcaption>Midnight Commander running in a hundred-column (approx.) display.</figcaption>
 </figure>
 
-It is important to mention, though, that many CLI- and TUI-based operating systems were not incapable of rendering raster graphics. There were text and graphic modes that the systems could switch between. Take games for example. Of course, text-mode games -- like the dungeon crawler, [Netchack](https://en.wikipedia.org/wiki/NetHack) -- operate in text mode, but for games with graphics the computer switches to addressing individual pixels.
+It is important to mention, though, that many CLI- and TUI-based operating systems were not incapable of rendering raster graphics. There were text and graphic modes that the systems could switch between. Take games for example. Of course, text-mode games -- like the dungeon crawler, [Netchack](https://en.wikipedia.org/wiki/NetHack) -- operate in text mode, but for games with graphics the computer switches to addressing individual pixels. Even today, PCs still boot in text mode.
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/interface-text-and-graphic-modes.png" class="fullwidth" />
@@ -70,7 +70,7 @@ A Graphical User Interface (GUI) allows for interaction though the manipulation 
   </figcaption>
 </figure>
 
-Apple licensed certain GUI features to Microsoft for use in Windows 1.0, but sued them when features like overlapping windows appeared in Windows 2.0. The district court ruled in favour of Microsoft. Regardless, Windows 1.x and 2.x were slow, clumsy, and poorly received. Most users stuck with Microsoft's CLI environment, MS-DOS. With VGA-colour and mouse support, and lightning-fast performance thanks to low text-mode overhead, MS-DOS TUIs grew remarkably advanced.
+Apple licensed certain GUI features to Microsoft for use in Windows 1.0, but sued them when features like overlapping windows appeared in Windows 2.0. The district court ruled in favour of Microsoft. Regardless, Windows 1.x and 2.x were slow, clumsy, and poorly received. Most Microsoft users stuck with the CLI environment, MS-DOS. With VGA-colour, fonts, mouse support, and lightning-fast performance thanks to text-mode, MS-DOS TUIs grew to become remarkably advanced.
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/interface-dos-tui.png" />
@@ -95,10 +95,21 @@ Of course, the advances in interaction design are not limited to software. Touch
 
 We will programme our own GUI in this lesson. We will stick to keyboard/mouse, but you are encouraged to explore other means of interaction in your own time. GUI programming features prominently in many software and web development projects, so there are plenty of GUI toolkits out there. HTML is purpose-built for constructing web-pages. You'll discover that programming basic buttons without any readymade widgets is painful enough, not to mention constructing checkboxes, sliders, drop-down lists, text fields, and windows. I'll try to provide a few tips on good user interface design in the process, but this is an area the requires another book(s) to cover in any proper detail.
 
-## ...
+## Mouse Interaction
+
 ...
 
+## Keyboard Interaction
 
+...
+
+## Drawing App
+
+...
+
+## controlP5
+
+...
 
 
 ## Lesson 08
@@ -112,5 +123,4 @@ We will programme our own GUI in this lesson. We will stick to keyboard/mouse, b
 ## References
 
 * http://www.designinginteractions.com/
-
 * https://www.interaction-design.org/literature/book/the-encyclopedia-of-human-computer-interaction-2nd-ed/human-computer-interaction-brief-intro

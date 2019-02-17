@@ -121,9 +121,9 @@ Run the sketch and move your mouse pointer about the display window. The `print`
   <img src="{{ site.url }}/img/pitl07/mouse-interaction-circles.png" />
 </figure>
 
-The `frameRate` is relatively slow (20 fps) so that rapid mouse movement results in circles distributed at larger intervals. There will always be a circle in the top-left corner because the pointer is assumed to be at (0, 0) until the pointer moves into the Display window.
+The `frameRate` is relatively slow (20 fps) so that rapid mouse movement results in circles distributed at larger intervals. There will always be a circle in the top-left corner because the pointer is assumed to be at (0, 0) until the pointer moves into the display window.
 
-The `pmouseX` and `pmouseY` system variables hold the mouse's x/y position from the previous frame. As per the code below, add the two new global variables (`rainbow` and `sw`), comment out the previous `draw` lines, and add the four new lines at the bottom:
+The `pmouseX` and `pmouseY` system variables hold the mouse's x/y position from the previous frame. In other words, if the `mouseX` is equal to the `mouseY` you know the mouse has not moved. As per the code below, add the two new global variables (`rainbow` and `sw`), comment out the previous `draw` lines, and add the four new lines at the bottom:
 
 {% highlight py %}
     ...
@@ -168,15 +168,63 @@ Run the sketch and test the left mouse button.
   <figcaption>You can determine the speed at which I drew by the colour intervals.</figcaption>
 </figure>
 
+Now restructure the `if` statement to accommodate a centre-click that sets the stroke-weight to 3, and a right-click that incrementally increases the stroke thickness.
 
+{% highlight py %}
+    ...
+    strokeWeight(sw)
 
-pmouse ... previous frame; if mouse==pmouse then no movement
+    if mousePressed:
+        if mouseButton == LEFT:
+            line(mouseX,mouseY, pmouseX,pmouseY)
+        if mouseButton == CENTER:
+            sw = 3
+        if mouseButton == RIGHT:
+            sw += 1
+{% endhighlight %}
+
+<figure>
+  <img src="{{ site.url }}/img/pitl07/mouse-interaction-lines-variable.png" />
+  <figcaption>Middle click sets the stroke-weight to 3; right-click increases it by 1-pixel with each click.</figcaption>
+</figure>
+
+The shapes need not persist. Play around to see what interesting effects you can create. As an example I have added this code to the `draw` function.
+
+{% highlight py %}
+    # variable background colours
+    colorMode(HSB, 360,100,100,100)
+    h = float(mouseX)/width*360
+    s = float(mouseY)/height*100
+    b = 100
+    a = 15
+    fill(h,s,b,a)
+    rect(-50,-50, width+100,height+100)
+
+    # rectangles
+    noCursor()
+    rectMode(CORNERS)
+    fill( rainbow[frameCount % len(rainbow)] )
+    rect( mouseX,mouseY, pmouseX,pmouseY )
+{% endhighlight %}
+
+The background now changes colour as you move towards different corners; the x mouse position shifts the hues while the y position adjusts the saturation. Rectangles appear as you move the mouse about then fade progressively as the frames advance. The [`noCursor()`](https://py.processing.org/reference/noCursor.html) function hides the mouse pointer in the display window.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl07/mouse-interaction-squares.png" />
+</figure>
+
+The right- and centre-click functions should still be operational so that you can increase the size of the squares by adjusting the stroke weight.
+
+## Drawing App
+
+We will now build a 
+
 
 ## Keyboard Interaction
 
 ...
 
-## Drawing App
+
 
 ...
 

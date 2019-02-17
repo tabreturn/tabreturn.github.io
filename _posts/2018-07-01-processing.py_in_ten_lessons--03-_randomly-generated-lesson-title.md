@@ -12,7 +12,13 @@ categories: code processing python
 
 ---
 &nbsp;  
-The programs you have written thus far execute line-by-line, beginning at the top of the code and ending at the bottom. You can visualise this flow as a set of steps chained together in a linear arrangement. However, a programmer can redefine this sequence, writing various calls and conditions to reorder the flow -- a concept referred to as *control flow* -- thereby directing the program to skip, jump to, and repeat lines.
+The programs you have written thus far execute line-by-line, beginning at the top of the code and ending at the bottom. You can visualise this flow as a set of steps chained together in a linear arrangement. In this lesson, we explore how to lay divergent paths for the program to follow.
+
+[Complete list of Processing lessons]({{ site.baseurl }}/#processing-reverse)
+
+### Control Flow
+
+A programmer can write various calls and conditions to reorder the linear sequence of execution -- a concept referred to as *control flow* -- thereby directing the program to skip, jump to, and repeat lines.
 
 <figure>
   <img src="{{ site.url }}/img/pitl03/intro-flowchart.svg" />
@@ -875,7 +881,6 @@ That's it for lesson 03. Kudos for getting through it -- control flow is a trick
 The next lesson deals with animation. There is a bit you need to know about matrices and trigonometry, though. If you find yourself experiencing disturbing flashbacks of high school math class – take a deep breath and relax. Lesson 04 will be a practical and visual reintroduction to these concepts, with Processing crunching all of the numbers for you.
 
 If statements and loops will reappear throughout this course, which will give you plenty of opportunities to master them. If you have some extra time, read up on the [continue](http://py.processing.org/reference/continue.html) and [break](http://py.processing.org/reference/break.html) statements. These are two useful loop techniques that allow one to skip over iterations, or to ‘break-out’ of loop structures.
-
 
 **Begin Lesson 04:** [`β = fps > 12`]({% post_url 2018-08-10-processing.py_in_ten_lessons--04-_beta_eq_fps_gt_12 %})
 

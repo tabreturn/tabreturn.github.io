@@ -15,6 +15,8 @@ categories: code processing python
 &nbsp;  
 [Lesson 01]({% post_url 2018-06-12-processing.py_in_ten_lessons--01-_hello_world %}) introduced a number of 2d primitives, namely: arcs, ellipses, lines, points, quads, rectangles, and triangles. However, many shapes do not fit into any such category -- like hearts (♥), stars (★), octagons, and Pikachu silhouettes, to name just a few. In this tutorial, you will look at drawing with points and curves, as opposed to more restrictive shape functions. Fonts also rely on curves to describe each glyph, and the latter part of this tutorial delves into Typography (and by extension, strings). Be forewarned: this lesson may be a little tedious, but is necessary to lay down important programming and drawing fundamentals for future lessons.
 
+[Complete list of Processing lessons]({{ site.baseurl }}/#processing-reverse)
+
 Processing deals with two types of curves: *Bézier* and *Catmull-Rom*. Both are named after the people who developed them, and both involve some complicated math. Fortunately, the complex underlying calculus is handled by Processing's various curve functions, leaving you to deal with just the coordinates of a few control points.
 
 ## Curves

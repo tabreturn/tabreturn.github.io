@@ -16,6 +16,8 @@ mathml: true
 &nbsp;  
 In this tutorial, you get to make things move. The content focuses primarily on animation, but also covers transformations, time & date functions, and some trigonometry. As you will discover, blending motion with math produces some exciting results.
 
+[Complete list of Processing lessons]({{ site.baseurl }}/#processing-reverse)
+
 ## Animation
 
 Before writing any animation code, consider how motion is perceived. The brain is fed a snapshot from your retina around ten times each second. The speed at which objects appear to be moving (or not moving) is determined by the difference between successive snapshots. So, provided your screen can display a sequence of static images at a rate exceeding ten cycles per second, the viewer will experience the illusion of smooth flowing movement. This illusion is referred to as *Beta movement* and occurs at frame rates of around 10-12 images per second (hence the lesson title) -- although higher frame rates will appear even smoother. That said, there is more to motion perception than frames per second (fps).

@@ -15,6 +15,8 @@ categories: code processing python
 &nbsp;  
 This tutorial introduces Python *lists* and *dictionaries*. These datatypes will unlock powerful ways to manage and manipulate collections of elements as opposed to individual values. Following a review of the basics, you'll look at employing these techniques to visualise data, and reading in values from external files.
 
+[Complete list of Processing lessons]({{ site.baseurl }}/#processing-reverse)
+
 ## Lists
 
 Unlike the datatypes you have encountered thus far, lists hold multiple values. To illustrate, consider these two variables:

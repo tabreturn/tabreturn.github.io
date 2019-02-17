@@ -17,6 +17,8 @@ mathml: true
 &nbsp;  
 In this tutorial, we will look at a few cool image processing techniques. You are already familiar with the `image()` function, which you have used in combination with `loadImage()` to draw image files to the display window. GIF, JPG, and PNG files are all [*raster*](https://en.wikipedia.org/wiki/Raster_graphics) graphics formats -- that is, digital images comprised of a pixel grid. We will look at reading values off individual- as well as groups of pixels and then manipulating them to create Photoshop-esque filters. To manage these arrays of pixel values, we'll rely on a number of the techniques that you picked up in [lesson 05]({% post_url 2019-01-15-processing.py_in_ten_lessons--05-_art_of_the_state %}), in particular, the combining of loops with lists.
 
+[Complete list of Processing lessons]({{ site.baseurl }}/#processing-reverse)
+
 To begin, we will peek under the hood of some image file formats; this will provide useful insight into how the colours of individual pixels are controlled.
 
 ### Image Formats
@@ -1235,7 +1237,7 @@ The array of images below compares each of Processing's filter arguments. The ca
   </figcaption>
 </figure>
 
-You already know how to programme a number of these filters manually. If you are wondering how `DILATE` works, it's a kernel that replaces the matrix centre pixel with its brightest neighbour; the `ERODE`, on the other hand, picks the darkest. Note that the effect manipulates everything drawn before the `filter()` line. Any subsequent code is unaffected. For example:
+You already know how to program a number of these filters manually. If you are wondering how `DILATE` works, it's a kernel that replaces the matrix centre pixel with its brightest neighbour; the `ERODE`, on the other hand, picks the darkest. Note that the effect manipulates everything drawn before the `filter()` line. Any subsequent code is unaffected. For example:
 
 {% highlight py %}
 ...
@@ -1370,7 +1372,7 @@ The result is a rainbow-sequence of colour tints.
   </figcaption>
 </figure>
 
-I'm sure that you can guess how the *add*, and *subtract* modes work? While you can manually programme your own blend modes, it's easier to reach for Processing's [`blend()`](https://py.processing.org/reference/blend.html) and [`blendMode()`](https://py.processing.org/reference/blendMode.html) functions. The `blend()` has a few more options, but `blendMode()` is the approach recommended by Processing's developers. Below is a table of the various `blendMode()` arguments/modes and their calculations on the red channel. Of course, blue and green channels would be likewise affected.
+I'm sure that you can guess how the *add*, and *subtract* modes work? While you can manually program your own blend modes, it's easier to reach for Processing's [`blend()`](https://py.processing.org/reference/blend.html) and [`blendMode()`](https://py.processing.org/reference/blendMode.html) functions. The `blend()` has a few more options, but `blendMode()` is the approach recommended by Processing's developers. Below is a table of the various `blendMode()` arguments/modes and their calculations on the red channel. Of course, blue and green channels would be likewise affected.
 
 `BLEND`          | *the default/normal blend mode*
 `ADD`            | *`r = red(layer0) + red(layer1)`*

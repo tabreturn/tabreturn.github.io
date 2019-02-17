@@ -135,7 +135,7 @@ if mark >= 50:
     print('Well done!')
 {% endhighlight %}
 
-But, the following code will print “Well done!” regardless of whether or not the mark exceeds fifty:
+But, the following code will print "Well done!" regardless of whether or not the mark exceeds fifty:
 
 {% highlight py %}
 mark = 20
@@ -162,6 +162,22 @@ if mark >= 50:
 {% endhighlight %}
 
 The above displays "Bien Hecho!".
+
+If you are evaluating a boolean value you may leave out the `==` operator. For example:
+
+{% highlight py %}
+ball_is_green = True
+
+if ball_is_green == True:
+    print('The ball is green')
+
+# is the same as:
+
+if ball_is_green:
+    print('The ball is green')
+{% endhighlight %}
+
+The `ball_is_green` variable is equal to `True`, so typing `ball_is_green == True` is equivalent to `True == True`. Either way, the answer is `True`! Still, if you find it helps to be more explicit, you can use the first version.
 
 #### Else-If Statements
 

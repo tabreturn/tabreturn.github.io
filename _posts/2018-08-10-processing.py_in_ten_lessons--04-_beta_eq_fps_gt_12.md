@@ -277,7 +277,7 @@ The [`save()`](http://py.processing.org/reference/save.html) function differs fr
 
 DVD players commonly feature a bouncing DVD logo as a screensaver, appearing after a given period of inactivity. You may also have seen some variation of this on another digital device, albeit with and different graphic. Intriguingly, people often find themselves staring at the pointless animation in the hope of witnessing the logo land perfectly in the corner of the screen. If you're interested to know how long you can expect to wait for such an occurrence, refer to this excellent [Lost Math Lessons article](http://lostmathlessons.blogspot.com/2016/03/bouncing-dvd-logo.html).
 
-Create a new sketch and save it as "dvd_screensaver". Within this, create a "data" folder. Download this “dvd-logo.png” file and place it in the data folder:
+Create a new sketch and save it as "dvd_screensaver". Within this, create a "data" folder. Download this "dvd-logo.png" file and place it in the data folder:
 
 <a href="{{ site.url }}/img/pitl04/dvd-logo.png" download>dvd-logo.png</a>
 

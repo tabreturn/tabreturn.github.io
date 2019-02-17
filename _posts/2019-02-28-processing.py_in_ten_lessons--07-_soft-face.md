@@ -99,7 +99,7 @@ We will program our own GUI in this lesson. We will stick to keyboard/mouse, but
 
 ## Mouse Interaction
 
-Processing provides five system variables for retrieving mouse attributes. These are: [`mouseX`](https://py.processing.org/reference/mouseX.html), [`mouseY`](https://py.processing.org/reference/mouseY.html), [`pmouseX`](https://py.processing.org/reference/pmouseX.html), [`pmouseY`](https://py.processing.org/reference/pmouseY.html), and [`mouseButton`](https://py.processing.org/reference/mouseButton.html). We will combine them all in one playful sketch.
+Processing provides five system variables for retrieving mouse attributes. These are: [`mouseX`](https://py.processing.org/reference/mouseX.html), [`mouseY`](https://py.processing.org/reference/mouseY.html), [`pmouseX`](https://py.processing.org/reference/pmouseX.html), [`pmouseY`](https://py.processing.org/reference/pmouseY.html), [`mousePressed`](https://py.processing.org/reference/mousePressed_var.html), and [`mouseButton`](https://py.processing.org/reference/mouseButton.html). We will combine them all in one playful sketch.
 
 Create a new file and save it as "mouse_toy". Add the following setup code:
 
@@ -122,6 +122,36 @@ Run the sketch and move your mouse pointer about the display window. The `print`
 </figure>
 
 The `frameRate` is relatively slow (20 fps) so that rapid mouse movement results in circles distributed at larger intervals. There will always be a circle in the top-left corner because the pointer is assumed to be at (0, 0) until the pointer moves into the Display window.
+
+The `pmouseX` and `pmouseY` system variables hold the mouse's x/y position from the previous frame. As per the code below, add the two new global variables (`rainbow` and `sw`), comment out the previous `draw` lines, and add the four new lines at the bottom:
+
+{% highlight py %}
+    ...
+
+rainbow = [
+  '#FF0000', '#FF9900', '#FFFF00',
+  '#00FF00', '#0099FF', '#6633FF'
+]
+sw = 7
+
+def draw():
+    #print('x:%s, y:%s' % (mouseX, mouseY))
+    #fill('#FFFFFF')
+    #ellipse(mouseX,mouseY, 20,20)
+
+    global sw
+    stroke( rainbow[frameCount % len(rainbow)] )
+    strokeWeight(sw)
+    line( mouseX,mouseY, pmouseX,pmouseY )
+{% endhighlight %}
+
+The `stroke()` line selects a new rainbow colour each time a new frame is drawn. The `line()` function draws a line between the current and previous frame's mouse coordinates. Recall that moving the mouse quickly increases distance between the x/y coordinates captured in successive frames. Run the sketch. As you move your mouse about a multicoloured line traces your path; you are able read the speed of movement by the length of each alternating band of rainbow colour.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl07/mouse-interaction-lines.png" />
+</figure>
+
+You currently have no way of controlling the flow of colour. Beginning at the top-left corner, the code continuous to connect your mouse locations with colourful lines. To 'turn' the flow on and off, we will activate the tool only while the mouse left-click button is depressed. If any mouse button is currently pressed, the `mousePressed` system variable is equal to `True`; the `mouseButton` will be equal to either `LEFT`, `RIGHT`, or `CENTER`, depending on which button it is that has been clicked. However, the `mousePressed` variable reverts to `False` once you have released, but `mouseButton` retains its value until another button is clicked. For this reason, its best to use these two variables in combination.
 
 pmouse ... previous frame; if mouse==pmouse then no movement
 

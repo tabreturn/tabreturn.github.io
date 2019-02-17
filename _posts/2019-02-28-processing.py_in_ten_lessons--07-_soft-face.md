@@ -79,7 +79,7 @@ Apple licensed certain GUI features to Microsoft for use in Windows 1.0, but sue
   </figcaption>
 </figure>
 
-Many important hard- and software developments paved the way for WIMP environments. Arguably, though, it was the invention of the mouse set the process in motion. It was Douglas Engelbart -- in collaboration with computer engineer, Bill English -- who created the first mouse prototype in 1964.
+Many important hard- and software developments paved the way for WIMP environments. Arguably, though, it was the invention of the mouse set that the process in motion. It was Douglas Engelbart -- in collaboration with computer engineer, Bill English -- who created the first mouse prototype in 1964.
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/wikimedia-backup/SRI_Computer_Mouse.jpg" />
@@ -89,15 +89,39 @@ Many important hard- and software developments paved the way for WIMP environmen
   </figcaption>
 </figure>
 
-In reality, though, the development of GUIs involved many people over many years. As the field developed, it spawned new disciplines. *Human Computer Interaction* (HCI) researchers emerged in the early 1980s. Bill Moggridge and Bill Verplank coined *Interaction Design* (IxD) in the mid-1980s to describe the practice of designing interactive digital products -- Moggridge felt this was an improvement over his earlier term, *Soft-Face*. Since then, *User Experience* (UX) designers, *User Interface* (UI) designers, *Information Architects* (IA) have all entered the scene. I'd imagine that some mutant Venn diagram exists that helps explain how all of these disciplines relate to one another.
+In reality, the development of GUIs involved many people over many years. As the field developed, it spawned new disciplines. *Human Computer Interaction* (HCI) researchers emerged in the early 1980s. Bill Moggridge and Bill Verplank coined *Interaction Design* (IxD) in the mid-1980s to describe the practice of designing interactive digital products -- Moggridge felt this was an improvement over his earlier term, *Soft-Face*. Since then, *User Experience* (UX) designers, *User Interface* (UI) designers, *Information Architects* (IA) have all entered the scene. I'd imagine that some mutant Venn diagram exists that helps explain how all of these disciplines relate to one another.
 
-Of course, the advances in interaction design are not limited to software. Touchpads found their niche in for laptops (and MP3 players and nifty music synthesisers). Touchscreens hit it big with tablets and smartphones. Then there is gesture recognition, force feedback, GPS, and augmented reality. Voice recognition has gained newfound traction thanks to improved natural language processing. In many respects, we've come full circle; instead of typing in commands at the CLI, we now issue instructions with voice!
+Of course, the advances in interaction design are not limited to software. Touchpads found their niche in for laptops (as well as MP3 players and nifty music synthesisers). Touchscreens hit it big with tablets and smartphones. Then there is gesture recognition, force feedback, GPS, and augmented reality. Voice recognition has gained newfound traction thanks to enhanced natural language processing. In some respects, we've come full circle -- instead of typing in commands at the CLI, we now issue them with voice!
 
 We will programme our own GUI in this lesson. We will stick to keyboard/mouse, but you are encouraged to explore other means of interaction in your own time. GUI programming features prominently in many software and web development projects, so there are plenty of GUI toolkits out there. HTML is purpose-built for constructing web-pages. You'll discover that programming basic buttons without any readymade widgets is painful enough, not to mention constructing checkboxes, sliders, drop-down lists, text fields, and windows. I'll try to provide a few tips on good user interface design in the process, but this is an area the requires another book(s) to cover in any proper detail.
 
 ## Mouse Interaction
 
-...
+Processing provides five system variables for retrieving mouse attributes. These are: [`mouseX`](https://py.processing.org/reference/mouseX.html), [`mouseY`](https://py.processing.org/reference/mouseY.html), [`pmouseX`](https://py.processing.org/reference/pmouseX.html), [`pmouseY`](https://py.processing.org/reference/pmouseY.html), and [`mouseButton`](https://py.processing.org/reference/mouseButton.html). We will combine them all in one playful sketch.
+
+Create a new file and save it as "mouse_toy". Add the following setup code:
+
+{% highlight py %}
+def setup():
+    size(600,600)
+    background('#004477')
+    frameRate(20)
+
+def draw():
+    print('x:%s, y:%s' % (mouseX, mouseY))
+    fill('#FFFFFF')
+    ellipse(mouseX,mouseY, 20,20)
+{% endhighlight %}
+
+Run the sketch and move your mouse pointer about the display window. The `print` function uses the `mouseX` and `mouseY` system variables to print the x/y-coordinates to the Console. The x/y position of the `ellipse` (circles) are also governed by `mouseX` and `mouseY`.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl07/mouse-interaction-circles.png" />
+</figure>
+
+The `frameRate` is relatively slow (20 fps) so that rapid mouse movement results in circles distributed at larger intervals. There will always be a circle in the top-left corner because the pointer is assumed to be at (0, 0) until the pointer moves into the Display window.
+
+pmouse ... previous frame; if mouse==pmouse then no movement
 
 ## Keyboard Interaction
 

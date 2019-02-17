@@ -1475,7 +1475,7 @@ Study the screenshot above; notice how the blue bricks are all clones of one ano
   <img src="{{ site.url }}/img/pitl04/nyancat-spritesheet.gif" class="fullwidth" />
   <figcaption>
     Nyan Cat.<br />
-    PRguitarman [Standard YouTube License / redrawn as sprite sheet], <a href="https://www.youtube.com/watch?v=QH2-TGUlwu4">from Youtube</a>
+    PRguitarman [Standard YouTube License / redrawn as 6-frame sprite sheet], <a href="https://www.youtube.com/watch?v=QH2-TGUlwu4">from Youtube</a>
   </figcaption>
 </figure>
 

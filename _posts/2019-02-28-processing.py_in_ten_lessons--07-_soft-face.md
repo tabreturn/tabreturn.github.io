@@ -151,7 +151,24 @@ The `stroke()` line selects a new rainbow colour each time a new frame is drawn.
   <img src="{{ site.url }}/img/pitl07/mouse-interaction-lines.png" />
 </figure>
 
-You currently have no way of controlling the flow of colour. Beginning at the top-left corner, the code continuous to connect your mouse locations with colourful lines. To 'turn' the flow on and off, we will activate the tool only while the mouse left-click button is depressed. If any mouse button is currently pressed, the `mousePressed` system variable is equal to `True`; the `mouseButton` will be equal to either `LEFT`, `RIGHT`, or `CENTER`, depending on which button it is that has been clicked. However, the `mousePressed` variable reverts to `False` once you have released, but `mouseButton` retains its value until another button is clicked. For this reason, its best to use these two variables in combination.
+You currently have no way of controlling the flow of colour. Beginning at the top-left corner, the code continuous to connect your mouse locations with colourful lines. To 'turn' the flow on and off, we will activate the tool only while the mouse left-click button is depressed. If any mouse button is currently pressed, the `mousePressed` system variable is equal to `True`; the `mouseButton` will be equal to either `LEFT`, `RIGHT`, or `CENTER`, depending on which button it is that has been clicked. However, the `mousePressed` variable reverts to `False` once you have released, but `mouseButton` retains its value until another button is clicked. For this reason, its best to use these two variables in combination. Now, insert an `if` statement to control the `line` function.
+
+{% highlight py %}
+    ...
+    strokeWeight(sw)
+
+    if mousePressed and mouseButton == LEFT:
+        line(mouseX,mouseY, pmouseX,pmouseY)
+{% endhighlight %}
+
+Run the sketch and test the left mouse button.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl07/mouse-interaction-left-button.png" />
+  <figcaption>You can determine the speed at which I drew by the colour intervals.</figcaption>
+</figure>
+
+
 
 pmouse ... previous frame; if mouse==pmouse then no movement
 

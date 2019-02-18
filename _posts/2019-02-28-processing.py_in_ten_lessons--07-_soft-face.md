@@ -148,7 +148,7 @@ def draw():
     global sw
     stroke( rainbow[frameCount % len(rainbow)] )
     strokeWeight(sw)
-    line( mouseX,mouseY, pmouseX,pmouseY )
+    line(mouseX,mouseY, pmouseX,pmouseY)
 {% endhighlight %}
 
 The `stroke()` line selects a new rainbow colour each time a new frame is drawn. The `line()` function draws a line between the current and previous frame's mouse coordinates. Recall that moving the mouse quickly increases distance between the x/y coordinates captured in successive frames. Run the sketch. As you move your mouse about a multicoloured line traces your path; you are able read the speed of movement by the length of each alternating band of rainbow colour.
@@ -235,8 +235,8 @@ Processing offers a selection of mouse *functions* -- which somewhat overlap in 
 [`mouseWheel()`](https://py.processing.org/reference/mouseWheel.html).
 We will combine them to create a simple drawing app that features a panel for selecting and adjusting brush properties.
 
-Create a new sketch and save it as "paint_app". Download the font, Wendy, from DaFont; extract it; then place the "wendy.ttf" in your data sub-directory.  
-[https://www.dafont.com/wendy.font](https://www.dafont.com/wendy.font)
+Create a new sketch and save it as "paint_app". Download the font, Ernest (by Marc André "mieps" Misman) from DaFont; extract it; then place the "Ernest.ttf" file in your data sub-directory.  
+[https://www.dafont.com/ernest.font](https://www.dafont.com/ernest.font)  
 
 Add the following setup code:
 
@@ -244,8 +244,8 @@ Add the following setup code:
 def setup():
     size(600,600)
     background('#004477')
-    wendy = createFont('wendy.ttf', 20)
-    textFont(wendy)
+    ernest = createFont('Ernest.ttf', 20)
+    textFont(ernest)
     noLoop()
 
 def draw():
@@ -291,7 +291,7 @@ def draw():
     stroke(brushcolor)
     strokeCap(brushshape)
     strokeWeight(brushsize)
-    line( mouseX,mouseY, pmouseX,pmouseY )
+    line(mouseX,mouseY, pmouseX,pmouseY)
 {% endhighlight %}
 
 Run the sketch and have a play. It works, but there are some issues.
@@ -307,12 +307,12 @@ The first point you lay is connected to the top-left corner via a straight line.
 def draw():
     print(frameCount)
 
-    global drawing
+    global drawing, drawmode
 
-    if drawing == False and frameCount > 1:
+    if not drawing and frameCount > 1:
         line(mouseX,mouseY, mouseX,mouseY)
         drawing = True
-    elif drawing == True:
+    elif drawing:
         stroke(brushcolor)
         strokeCap(brushshape)
         strokeWeight(brushsize)
@@ -326,13 +326,90 @@ def mouseReleased():
     drawing = False
 {% endhighlight %}
 
-Run the sketch to confirm that everything works. Read over these edits while simulating the process process in your mind paying careful attention to when `drawing` is in a true/false state. The `if` statement draws a line from the *current* x-y coords to the *current* x-y coords (not previous) if `drawing` is set to `False`. The `frameCount > 1` part solves the initial (0,0) problem.
+Run the sketch to confirm that everything works. Read over these edits while simulating the process process in your mind paying careful attention to when `drawing` is in a true/false state. The `if` statement draws a line from the *current* x/y coords to the *current* x/y coords (not previous) if `drawing` is set to `False`. The `frameCount > 1` part solves the initial (0,0) problem.
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/paint-app-first-paint-resolved.png" />
   <figcaption>Painting separate lines with no interconnecting straight lines.</figcaption>
 </figure>
 
+It is now time to create a panel from which the user can select colours and other brush features. Begin by adding a black panel and selectable colour swatches based on the rainbow list. The code must be added to the `draw` loop.
+
+{% highlight py %}
+        ...
+        line(mouseX,mouseY, pmouseX,pmouseY)
+
+    # black panel
+    noStroke()
+    fill('#000000');  rect(0,0, 60,height)
+
+    # color palette
+    fill(rainbow[0]); rect(0,0,  30,30)
+    fill(rainbow[1]); rect(0,30, 30,30)
+    fill(rainbow[2]); rect(0,60, 30,30)
+    fill(rainbow[3]); rect(30,0, 30,30)
+    fill(rainbow[4]); rect(30,30,30,30)
+    fill(rainbow[5]); rect(30,60,30,30)
+{% endhighlight %}
+
+By drawing the panel after the paint lines you avoid any strokes appearing over it.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl07/paint-app-panel.png" />
+  <figcaption>The panel is drawn over any painted elements.</figcaption>
+</figure>
+
+Selecting buttons is where things get a little clumsy. When you are programming with widget toolkits, every element in your interface is something that you can attach an event handler to. Consider your red button:
+
+{% highlight py %}
+fill(rainbow[0]); rect(0,0, 30,30)
+{% endhighlight %}
+
+Now suppose that you were using some GUI coding toolkit. The same code might look something like this:
+
+{% highlight py %}
+redbutton = createButton(0,0, 30,30, rainbow[0])
+{% endhighlight %}
+
+The position, size, and fill parameters are all handled in a single `createButton` function. That's neat, but it gets better. To add click events, there will be dedicated methods. For example, something like a `click()` method that acts upon the button you have already created:
+
+{% highlight py %}
+redbutton.click( setBrushColor(rainbow[0]) )
+{% endhighlight %}
+
+No matter where you place the button, clicking it will set the brush colour to red. To stress: this is not real code. However, we will look at controlP5 further into the lesson. The point is that there's no need to detect where the mouse is as this it's handled by the GUI library.
+
+The approach here will be like that of the [four-square task]({% post_url 2018-07-01-processing.py_in_ten_lessons--03-_randomly-generated-lesson-title %}#four-square-task) in lesson 03. Add the
+
+{% highlight py %}
+def mousePressed():
+    if mouseButton == LEFT:
+        loop()
+
+        global brushcolor, brushshape, brushsize
+
+        if mouseX < 30:
+            if mouseY < 30:
+                brushcolor = rainbow[0]
+            elif mouseY < 60:
+                brushcolor = rainbow[1]
+            elif mouseY < 90:
+                brushcolor = rainbow[2]
+        elif mouseX < 60:
+            if mouseY < 30:
+                brushcolor = rainbow[3]
+            elif mouseY < 60:
+                brushcolor = rainbow[4]
+            elif mouseY < 90:
+                brushcolor = rainbow[5]
+{% endhighlight %}
+
+The parent `< 30` and `< 30` conditions separate the two columns; the sub-conditions isolate the row. Run the sketch. You can now select different colours during your paint session.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl07/paint-app-colour-selection.png" />
+  <figcaption>Paint colours are selected from the palette at the top-left.</figcaption>
+</figure>
 
 
 ## Keyboard Interaction

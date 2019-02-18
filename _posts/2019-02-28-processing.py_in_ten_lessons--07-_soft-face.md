@@ -13,7 +13,7 @@ published: false
 
 ---
 &nbsp;  
-It is time to look at interactivity in Processing. You can program Processing to work with a range of input, such as microphones, cameras, or even something you have built with an Arduino board. For this lesson, though, we'll stick to plain-old keyboard and mouse input. Most of the upcoming sketches are purely playful, but you'll also look and building a basic drawing application. You will discover that standard Processing functions were not purpose-designed for building user interfaces. But, the lesson includes an introductory tutorial that incorporates the *controlP5* graphical user interface library. This library includes a suit of essential input elements, such as buttons, checkboxes, sliders, toggles, and textfields.
+It is time to look at interactivity in Processing. You can program Processing to work with a range of input, such as microphones, cameras, or even something you have built with an Arduino board. For this lesson, though, we'll stick to plain-old keyboard and mouse input. Most of the upcoming sketches are purely playful, but you'll also look and building a basic painting application. You will discover that standard Processing functions were not purpose-designed for building user interfaces. But, the lesson includes an introductory tutorial that incorporates the *controlP5* graphical user interface library. This library includes a suit of essential input elements, such as buttons, checkboxes, sliders, toggles, and textfields.
 
 [Complete list of Processing lessons]({{ site.baseurl }}/#processing-reverse)
 
@@ -233,7 +233,7 @@ Processing offers a selection of mouse *functions* -- which somewhat overlap in 
 [`mousePressed()`](https://py.processing.org/reference/mousePressed.html),
 [`mouseReleased()`](https://py.processing.org/reference/mouseReleased.html), and
 [`mouseWheel()`](https://py.processing.org/reference/mouseWheel.html).
-We will combine them to create a simple drawing app that features a panel for selecting and adjusting brush properties.
+We will combine them to create a simple paint app that features a panel for selecting and adjusting brush properties.
 
 Create a new sketch and save it as "paint_app". Download the font, Ernest (by Marc André "mieps" Misman) from DaFont; extract it; then place the "Ernest.ttf" file in your data sub-directory.  
 [https://www.dafont.com/ernest.font](https://www.dafont.com/ernest.font)  
@@ -264,8 +264,8 @@ rainbow = [
 brushcolor  = rainbow[0]
 brushshape  = ROUND
 brushsize   = 3
-drawing     = False
-drawmode    = 'free'
+painting    = False
+paintmode   = 'free'
 {% endhighlight %}
 
 The [`mousePressed()`](https://py.processing.org/reference/mousePressed.html) function is called once with every press of a mouse button. If you need to establish which button has been pressed you can use it in combination with the `mouseButton` variable. Add the code below. Ensure that the lines are flush left and that you have not placed the code within the `setup()` or `draw()`.
@@ -307,26 +307,27 @@ The first point you lay is connected to the top-left corner via a straight line.
 def draw():
     print(frameCount)
 
-    global drawing, drawmode
+    global painting, paintmode
 
-    if not drawing and frameCount > 1:
-        line(mouseX,mouseY, mouseX,mouseY)
-        drawing = True
-    elif drawing:
-        stroke(brushcolor)
-        strokeCap(brushshape)
-        strokeWeight(brushsize)
-        line(mouseX,mouseY, pmouseX,pmouseY)
+    if paintmode == 'free':
+      if not painting and frameCount > 1:
+          line(mouseX,mouseY, mouseX,mouseY)
+          painting = True
+      elif painting:
+          stroke(brushcolor)
+          strokeCap(brushshape)
+          strokeWeight(brushsize)
+          line(mouseX,mouseY, pmouseX,pmouseY)
 
 ...
 
 def mouseReleased():
     noLoop()
-    global drawing
-    drawing = False
+    global painting
+    painting = False
 {% endhighlight %}
 
-Run the sketch to confirm that everything works. Read over these edits while simulating the process process in your mind paying careful attention to when `drawing` is in a true/false state. The `if` statement draws a line from the *current* x/y coords to the *current* x/y coords (not previous) if `drawing` is set to `False`. The `frameCount > 1` part solves the initial (0,0) problem.
+Run the sketch to confirm that everything works. Read over these edits while simulating the process process in your mind paying careful attention to when `painting` is in a true/false state. The `if` statement draws a line from the *current* x/y coords to the *current* x/y coords (not previous) if `painting` is set to `False`. The `frameCount > 1` part solves the initial (0,0) problem. The `paintmode` will become relevant later when we begin add different paint-modes.
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/paint-app-first-paint-resolved.png" />
@@ -359,7 +360,7 @@ By drawing the panel after the paint lines you avoid any strokes appearing over 
   <figcaption>The panel is drawn over any painted elements.</figcaption>
 </figure>
 
-Selecting buttons is where things get a little clumsy. When you are programming with widget toolkits, every element in your interface is something that you can attach an event handler to. Consider your red button:
+Selecting buttons is where things get a little clumsy. When you are programming with widget toolkits, every element in your interface is something to which you can attach an event handler. Consider your red button:
 
 {% highlight py %}
 fill(rainbow[0]); rect(0,0, 30,30)
@@ -379,7 +380,7 @@ redbutton.click( setBrushColor(rainbow[0]) )
 
 No matter where you place the button, clicking it will set the brush colour to red. To stress: this is not real code. However, we will look at controlP5 further into the lesson. The point is that there's no need to detect where the mouse is as this it's handled by the GUI library.
 
-The approach here will be like that of the [four-square task]({% post_url 2018-07-01-processing.py_in_ten_lessons--03-_randomly-generated-lesson-title %}#four-square-task) in lesson 03. Add the
+The approach here will be similar to that of the [four-square task]({% post_url 2018-07-01-processing.py_in_ten_lessons--03-_randomly-generated-lesson-title %}#four-square-task) in lesson 03, detecting where the pointer is and within which square that is located. Add the the global line and everything beneath it to your `mousePressed()` function:
 
 {% highlight py %}
 def mousePressed():
@@ -404,12 +405,84 @@ def mousePressed():
                 brushcolor = rainbow[5]
 {% endhighlight %}
 
-The parent `< 30` and `< 30` conditions separate the two columns; the sub-conditions isolate the row. Run the sketch. You can now select different colours during your paint session.
+The parent `< 30` and `< 60` conditions separate the two columns; the sub-conditions isolate the row. Run the sketch. You can now select different colours during your paint session.
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/paint-app-colour-selection.png" />
   <figcaption>Paint colours are selected from the palette at the top-left.</figcaption>
 </figure>
+
+Next, we will add a feature for resizing the brush; this will be mapped to the scroll wheel. We will include a preview of the brush in the panel; this will indicate the colour, size, and shape. Locate the last line you wrote in the `draw()` function, and add everything from brush comment and onward:
+
+{% highlight py %}
+    ...
+    fill(rainbow[5]); rect(30,60,30,30)
+
+    # brush preview
+    fill(brushcolor)
+    if brushshape == ROUND:
+        ellipse(30,123, brushsize,brushsize)
+    paintmode = prevpaintmode
+{% endhighlight %}
+
+The last line does nothing for now, but it will be important for the next (sizing) step. The app now renders a brush preview in the panel. Although the size cannot be adjusted yet, the colour of the dot changes as you select different swatches.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl07/paint-app-brush-preview.png" />
+  <figcaption>The yellow dot in the left panel indicates the brush shape and colour.</figcaption>
+</figure>
+
+The [`mouseWheel()`](https://py.processing.org/reference/mouseWheel.html) function returns positive or negative values, depending on the direction you rotate the scroll wheel. Add the following lines to the very bottom of your code:
+
+{% highlight py %}
+
+prevpaintmode = 'free'
+
+def mouseWheel(e):
+    print(e)
+
+    global brushsize, paintmode, prevpaintmode
+
+    if prevpaintmode != 'select':
+        prevpaintmode = 'free'
+
+    paintmode = 'select'
+    brushsize += e.count
+
+    if brushsize < 3:
+        brushsize = 3
+    if brushsize > 45:
+        brushsize = 45
+
+    redraw()
+{% endhighlight %}
+
+Okay -- so there's a fair amount to explain here. Firstly, the `mouseWheel()` function has an argument of `e`. You may use any name you like for this argument; it is a variable to which all of the event's details are assigned. Printing `e` displays something like this in the Console:
+
+`<MouseEvent WHEEL@407,370 count:1 button:0>`
+
+From this line, one can establish the type of mouse event (`WHEEL`), the x/y coordinates at which it occurred (`@407,370`), and the number of scroll increments (`count:1`). If you added an `e` argument to one the other mouse functions, the `button` value would be some other integer. For example, a `mousePressed(e)` upon left-click would display something like `<MouseEvent PRESS@407,370 count:1 button:37>`.
+
+We do not want to paint while adjusting brush size, so the `prevpaintmode` variable is used temporarily store the current mode (`free`) while it is switched to `select`. This way, it can be switched back once the adjustment is complete. Recall that the switch-back happens in the `draw` loop.
+
+The `e.count` is used to retrieve the number of scroll increments from the mouse event. However, some there are some checks in place (`if` statements) to ensure that the size remains within a range of between `3` and `45`.
+
+The [`redraw()`](https://py.processing.org/reference/redraw.html) function executes the `draw()` code just once -- in contrast to a `loop()`, which will set it off continuously again.
+
+Run the sketch to confirm that you can resize the brush using the scroll wheel.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl07/paint-app-brush-preview-sized.png" />
+  <figcaption>The green circle in the left panel indicates the brush shape and colour.</figcaption>
+</figure>
+
+
+
+
+
+
+
+
 
 
 ## Keyboard Interaction

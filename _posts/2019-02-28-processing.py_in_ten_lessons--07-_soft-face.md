@@ -9,7 +9,6 @@ published: false
 ***Covered in this lesson:***  
 <a href="#mouse-interaction"><em>mouse interaction</em></a> /
 <a href="#keyboard-interaction"><em>keyboard interaction</em></a> /
-<a href="#drawing-app"><em>drawing app</em></a> /
 <a href="#controlp5"><em>controlp5</em></a>
 
 ---
@@ -99,7 +98,14 @@ We will program our own GUI in this lesson. We will stick to keyboard/mouse, but
 
 ## Mouse Interaction
 
-Processing provides five system variables for retrieving mouse attributes. These are: [`mouseX`](https://py.processing.org/reference/mouseX.html), [`mouseY`](https://py.processing.org/reference/mouseY.html), [`pmouseX`](https://py.processing.org/reference/pmouseX.html), [`pmouseY`](https://py.processing.org/reference/pmouseY.html), [`mousePressed`](https://py.processing.org/reference/mousePressed_var.html), and [`mouseButton`](https://py.processing.org/reference/mouseButton.html). We will combine them all in one playful sketch.
+Processing provides five system variables for retrieving mouse attributes. These are:
+[`mouseX`](https://py.processing.org/reference/mouseX.html),
+[`mouseY`](https://py.processing.org/reference/mouseY.html),
+[`pmouseX`](https://py.processing.org/reference/pmouseX.html),
+[`pmouseY`](https://py.processing.org/reference/pmouseY.html),
+[`mousePressed`](https://py.processing.org/reference/mousePressed_var.html), and
+[`mouseButton`](https://py.processing.org/reference/mouseButton.html).
+We will combine them all in one playful sketch.
 
 Create a new file and save it as "mouse_toy". Add the following setup code:
 
@@ -121,7 +127,7 @@ Run the sketch and move your mouse pointer about the display window. The `print`
   <img src="{{ site.url }}/img/pitl07/mouse-interaction-circles.png" />
 </figure>
 
-The `frameRate` is relatively slow (20 fps) so that rapid mouse movement results in circles distributed at larger intervals. There will always be a circle in the top-left corner because the pointer is assumed to be at (0, 0) until the pointer moves into the display window.
+The `frameRate` is relatively slow (20 fps) so that rapid mouse movement results in circles distributed at larger intervals. There will always be a circle in the top-left corner because the pointer is assumed to be at (0,0) until the pointer moves into the display window.
 
 The `pmouseX` and `pmouseY` system variables hold the mouse's x/y position from the previous frame. In other words, if the `mouseX` is equal to the `mouseY` you know the mouse has not moved. As per the code below, add the two new global variables (`rainbow` and `sw`), comment out the previous `draw` lines, and add the four new lines at the bottom:
 
@@ -185,7 +191,10 @@ Now restructure the `if` statement to accommodate a centre-click that sets the s
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/mouse-interaction-lines-variable.png" />
-  <figcaption>Middle click sets the stroke-weight to 3; right-click increases it by 1-pixel with each click.</figcaption>
+  <figcaption>
+    Middle click sets the stroke-weight to 3; right-click increases it by 1-pixel with each click.<br />
+    Can you figure out if I drew these lines left-to-right or vice versa? <span style="font-style:normal">🤔</span>
+  </figcaption>
 </figure>
 
 The shapes need not persist. Play around to see what interesting effects you can create. As an example I have added this code to the `draw` function.
@@ -215,9 +224,115 @@ The background now changes colour as you move towards different corners; the x m
 
 The right- and centre-click functions should still be operational so that you can increase the size of the squares by adjusting the stroke weight.
 
-## Drawing App
+### Paint App
 
-We will now build a 
+Processing offers a selection of mouse *functions* -- which somewhat overlap in functionality with the mouse variables -- but, are placed outside of the `draw()` function. These are:
+[`mouseClicked()`](https://py.processing.org/reference/mouseClicked.html),
+[`mouseDragged()`](https://py.processing.org/reference/mouseDragged.html),
+[`mouseMoved()`](https://py.processing.org/reference/mouseMoved.html),
+[`mousePressed()`](https://py.processing.org/reference/mousePressed.html),
+[`mouseReleased()`](https://py.processing.org/reference/mouseReleased.html), and
+[`mouseWheel()`](https://py.processing.org/reference/mouseWheel.html).
+We will combine them to create a simple drawing app that features a panel for selecting and adjusting brush properties.
+
+Create a new sketch and save it as "paint_app". Download the font, Wendy, from DaFont; extract it; then place the "wendy.ttf" in your data sub-directory.  
+[https://www.dafont.com/wendy.font](https://www.dafont.com/wendy.font)
+
+Add the following setup code:
+
+{% highlight py %}
+def setup():
+    size(600,600)
+    background('#004477')
+    wendy = createFont('wendy.ttf', 20)
+    textFont(wendy)
+    noLoop()
+
+def draw():
+    print(frameCount)
+{% endhighlight %}
+
+The [`noLoop()`](https://py.processing.org/reference/noLoop.html) function prevents Processing continually executing code within `draw()`. If you run the sketch, the Console displays a single "`1`", confirming that the `draw` ran just once. This may seem odd to you. After all, if you wanted to avoid frames, why would you include a `draw()` at all? Well, there is also a [`loop()`](https://py.processing.org/reference/loop.html) function to reactivate the standard `draw` behaviour. As you will come to see, controlling the loop behaviour with mouse functions is a neat approach to building the interface.
+
+Add some global variables. It shouldn't matter if you place these above or below the `setup()` code, as long the lines are flush against the left-edge. These variables will be used to adjust and monitor the state of the brush.
+
+{% highlight py %}
+rainbow = [
+  '#FF0000', '#FF9900', '#FFFF00',
+  '#00FF00', '#0099FF', '#6633FF'
+]
+brushcolor  = rainbow[0]
+brushshape  = ROUND
+brushsize   = 3
+drawing     = False
+drawmode    = 'free'
+{% endhighlight %}
+
+The [`mousePressed()`](https://py.processing.org/reference/mousePressed.html) function is called once with every press of a mouse button. If you need to establish which button has been pressed you can use it in combination with the `mouseButton` variable. Add the code below. Ensure that the lines are flush left and that you have not placed the code within the `setup()` or `draw()`.
+
+{% highlight py %}
+def mousePressed():
+    if mouseButton == LEFT:
+        loop()
+{% endhighlight %}
+
+Run the sketch. The moment you left-click within the display window frame numbers begin to count-up in the Console. To stop these once the mouse button has been released, use a The [`mouseReleased()`](https://py.processing.org/reference/mousePressed.html) function, which is called once with every release of a mouse button.
+
+{% highlight py %}
+def mouseReleased():
+    noLoop()
+{% endhighlight %}
+
+When you run the sketch, the frame-count only counts-up in the Console while you are holding the left mouse button down. Excellent! Now add some painting code to the `draw` function.
+
+{% highlight py %}
+def draw():
+    print(frameCount)
+    stroke(brushcolor)
+    strokeCap(brushshape)
+    strokeWeight(brushsize)
+    line( mouseX,mouseY, pmouseX,pmouseY )
+{% endhighlight %}
+
+Run the sketch and have a play. It works, but there are some issues.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl07/paint-app-first-paint.png" />
+  <figcaption>Note the straight lines drawn between where you stop and start painting again.</figcaption>
+</figure>
+
+The first point you lay is connected to the top-left corner via a straight line. This is because `pmouseX` and `pmouseY` grabbed their last x/y coordinates on frame 1, before your moused reached into the display window -- hence, the line's initial position of (0,0). Also, if you paint for a bit then release the mouse button, then click again to paint elsewhere, a straight line is drawn from where you last left-off to your new starting position. This is because the `draw()` code ceases to execute while the mouse button is lifted, so `pmouseX` and `pmouseY` hold coordinates captured prior to the loop's suspension. As per the code below, make the relevant adjustments to resolve these bugs.
+
+{% highlight py %}
+def draw():
+    print(frameCount)
+
+    global drawing
+
+    if drawing == False and frameCount > 1:
+        line(mouseX,mouseY, mouseX,mouseY)
+        drawing = True
+    elif drawing == True:
+        stroke(brushcolor)
+        strokeCap(brushshape)
+        strokeWeight(brushsize)
+        line(mouseX,mouseY, pmouseX,pmouseY)
+
+...
+
+def mouseReleased():
+    noLoop()
+    global drawing
+    drawing = False
+{% endhighlight %}
+
+Run the sketch to confirm that everything works. Read over these edits while simulating the process process in your mind paying careful attention to when `drawing` is in a true/false state. The `if` statement draws a line from the *current* x-y coords to the *current* x-y coords (not previous) if `drawing` is set to `False`. The `frameCount > 1` part solves the initial (0,0) problem.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl07/paint-app-first-paint-resolved.png" />
+  <figcaption>Painting separate lines with no interconnecting straight lines.</figcaption>
+</figure>
+
 
 
 ## Keyboard Interaction

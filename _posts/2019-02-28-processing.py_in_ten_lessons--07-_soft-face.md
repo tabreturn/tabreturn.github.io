@@ -233,9 +233,9 @@ Processing offers a selection of mouse *functions* -- which somewhat overlap in 
 [`mouseClicked()`](https://py.processing.org/reference/mouseClicked.html),
 [`mouseDragged()`](https://py.processing.org/reference/mouseDragged.html), and
 [`mouseMoved()`](https://py.processing.org/reference/mouseMoved.html).
-We will combine the first three to create a simple paint app that features a panel for selecting and adjusting brush properties. We also look at how to manually control Processing's `draw()` behaviour.
+We will combine the first three to create a simple paint app that features a panel for selecting and adjusting brush properties. Once you've grasped a few mouse functions, it's easy enough to [look up](https://py.processing.org/reference/) and figure out the others. We will also be controlling Processing's `draw()` behaviour manually.
 
-Create a new sketch and save it as "paint_app". Download the font, Ernest (by Marc André "mieps" Misman) from DaFont; extract it; then place the "Ernest.ttf" file in your data sub-directory.  
+Create a new sketch and save it as "paint_app". Download the font, *Ernest* (by Marc André 'mieps' Misman) from DaFont; extract it; then place the "Ernest.ttf" file in your data sub-directory.  
 [https://www.dafont.com/ernest.font](https://www.dafont.com/ernest.font)  
 
 Add the following setup code:
@@ -432,7 +432,7 @@ The last line does nothing for now, but it will be important for the next (sizin
 </figure>
 
 The [`mouseWheel()`](https://py.processing.org/reference/mouseWheel.html) function returns positive or negative values, depending on the direction you rotate the scroll wheel. Add the following lines to the very bottom of your code:
-z
+
 {% highlight py %}
 def mouseWheel(e):
     print(e)
@@ -515,14 +515,46 @@ def mousePressed():
 {% endhighlight %}
 
 
-I've tried to keep things orderly but it's all beginning to turn into [spaghetti code](https://en.wikipedia.org/wiki/Spaghetti_code).
-
-Also -- no hover effect
+The clear button has no hover effect. That is to say, when you position the mouse cursor above it there is no visible change.
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/paint-app-clear.png" />
   <figcaption>No hover effect for the clear button.</figcaption>
 </figure>
+
+It's good practice to always provide mouse hovering and pressed states for clickable interface elements. This provides visual feedback to the user indicating when he or she has something activated or is about to select something. A 'while pressing' state may seem redundant, but most buttons fire-off instructions when a user *releases* the click. In other words, you can click on any button -- and provided you keep your mouse button held down -- can then move out of the clickable zone and release without triggering anything. Try it on this link:
+
+<style>
+#testlink {
+  background-color: #BBB;
+  border: 4px solid #666;
+  border-left-color: #DDD;
+  border-top-color: #DDD;
+  color: #000;
+  display: inline-block;
+  font-family: sans-serif;
+  padding: 10px 20px;
+  text-decoration: none;
+}
+#testlink:hover {
+  background-color: #CCC;
+  border: 4px solid #777;
+  border-left-color: #EEE;
+  border-top-color: #EEE;
+}
+#testlink:active {
+  background-color: #888;
+  border: 4px solid #DDD;
+  border-left-color: #666;
+  border-top-color: #666;
+}
+</style>
+
+<a id="testlink" onmouseup="alert('You released while above me!\nTry again -- but this time click, hold, and release somewhere off to the side.')">some link</a>
+
+
+
+I've tried to keep things orderly but it's all beginning to turn into [spaghetti code](https://en.wikipedia.org/wiki/Spaghetti_code).
 
 
 

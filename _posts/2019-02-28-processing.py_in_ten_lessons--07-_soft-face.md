@@ -227,13 +227,13 @@ The right- and centre-click functions should still be operational so that you ca
 ### Paint App
 
 Processing offers a selection of mouse *functions* -- which somewhat overlap in functionality with the mouse variables -- but, are placed outside of the `draw()` function. These are:
-[`mouseClicked()`](https://py.processing.org/reference/mouseClicked.html),
-[`mouseDragged()`](https://py.processing.org/reference/mouseDragged.html),
-[`mouseMoved()`](https://py.processing.org/reference/mouseMoved.html),
 [`mousePressed()`](https://py.processing.org/reference/mousePressed.html),
-[`mouseReleased()`](https://py.processing.org/reference/mouseReleased.html), and
-[`mouseWheel()`](https://py.processing.org/reference/mouseWheel.html).
-We will combine them to create a simple paint app that features a panel for selecting and adjusting brush properties.
+[`mouseReleased()`](https://py.processing.org/reference/mouseReleased.html),
+[`mouseWheel()`](https://py.processing.org/reference/mouseWheel.html),
+[`mouseClicked()`](https://py.processing.org/reference/mouseClicked.html),
+[`mouseDragged()`](https://py.processing.org/reference/mouseDragged.html), and
+[`mouseMoved()`](https://py.processing.org/reference/mouseMoved.html).
+We will combine the first three to create a simple paint app that features a panel for selecting and adjusting brush properties. We also look at how to manually control Processing's `draw()` behaviour.
 
 Create a new sketch and save it as "paint_app". Download the font, Ernest (by Marc André "mieps" Misman) from DaFont; extract it; then place the "Ernest.ttf" file in your data sub-directory.  
 [https://www.dafont.com/ernest.font](https://www.dafont.com/ernest.font)  
@@ -306,7 +306,6 @@ The first point you lay is connected to the top-left corner via a straight line.
 {% highlight py %}
 def draw():
     print(frameCount)
-
     global painting, paintmode
 
     if paintmode == 'free':
@@ -422,7 +421,7 @@ Next, we will add a feature for resizing the brush; this will be mapped to the s
     fill(brushcolor)
     if brushshape == ROUND:
         ellipse(30,123, brushsize,brushsize)
-    paintmode = prevpaintmode
+    paintmode = 'free'
 {% endhighlight %}
 
 The last line does nothing for now, but it will be important for the next (sizing) step. The app now renders a brush preview in the panel. Although the size cannot be adjusted yet, the colour of the dot changes as you select different swatches.
@@ -433,18 +432,11 @@ The last line does nothing for now, but it will be important for the next (sizin
 </figure>
 
 The [`mouseWheel()`](https://py.processing.org/reference/mouseWheel.html) function returns positive or negative values, depending on the direction you rotate the scroll wheel. Add the following lines to the very bottom of your code:
-
+z
 {% highlight py %}
-
-prevpaintmode = 'free'
-
 def mouseWheel(e):
     print(e)
-
-    global brushsize, paintmode, prevpaintmode
-
-    if prevpaintmode != 'select':
-        prevpaintmode = 'free'
+    global brushsize, paintmode
 
     paintmode = 'select'
     brushsize += e.count
@@ -463,7 +455,7 @@ Okay -- so there's a fair amount to explain here. Firstly, the `mouseWheel()` fu
 
 From this line, one can establish the type of mouse event (`WHEEL`), the x/y coordinates at which it occurred (`@407,370`), and the number of scroll increments (`count:1`). If you added an `e` argument to one the other mouse functions, the `button` value would be some other integer. For example, a `mousePressed(e)` upon left-click would display something like `<MouseEvent PRESS@407,370 count:1 button:37>`.
 
-We do not want to paint while adjusting brush size, so the `prevpaintmode` variable is used temporarily store the current mode (`free`) while it is switched to `select`. This way, it can be switched back once the adjustment is complete. Recall that the switch-back happens in the `draw` loop.
+We do not want to paint while adjusting brush size, so the `paintmode` is switched to `select`. This way, it can be switched back once the adjustment is complete. Recall that the switch-back happens in the `draw` loop.
 
 The `e.count` is used to retrieve the number of scroll increments from the mouse event. However, some there are some checks in place (`if` statements) to ensure that the size remains within a range of between `3` and `45`.
 
@@ -476,12 +468,61 @@ Run the sketch to confirm that you can resize the brush using the scroll wheel.
   <figcaption>The green circle in the left panel indicates the brush shape and colour.</figcaption>
 </figure>
 
+This does cause a new problem, though. The pointer whenever you click, so when selecting swatches with a large brush leaves discernible blobs to that extend into the canvas area.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl07/paint-app-brush-preview-bug.png" />
+  <figcaption>A blue blob is painted as I click to select the blue swatch.</figcaption>
+</figure>
+
+To resolve this issue, add an `if` statement to the `draw()` that disables any painting while the mouse is over the panel, using the `paintmode` variable:
+
+{% highlight py %}
+def draw():
+    print(frameCount)
+    global painting, paintmode
+
+    if mouseX < 60:
+        paintmode = 'select'
+
+    ...
+{% endhighlight %}
+
+Next, we will add a clear button that wipes everything from the canvas.
+
+{% highlight py %}
+def draw():
+    ...
+
+    # clear button
+    global clearall
+    fill('#FFFFFF')
+    text('clear', 10,height-12)
+
+    if clearall:
+        fill('#004477')
+        rect(60,0, width,height)
+        clearall = False
+
+clearall = False
+
+def mousePressed():
+    ...
+    global clearall
+        if mouseY > height-30:
+            clearall = True
+            redraw()
+{% endhighlight %}
 
 
+I've tried to keep things orderly but it's all beginning to turn into [spaghetti code](https://en.wikipedia.org/wiki/Spaghetti_code).
 
+Also -- no hover effect
 
-
-
+<figure>
+  <img src="{{ site.url }}/img/pitl07/paint-app-clear.png" />
+  <figcaption>No hover effect for the clear button.</figcaption>
+</figure>
 
 
 
@@ -489,7 +530,7 @@ Run the sketch to confirm that you can resize the brush using the scroll wheel.
 
 ...
 
-
+explain functions, then have reader go back to paint app and add functions as per shortcuts in panel
 
 ...
 

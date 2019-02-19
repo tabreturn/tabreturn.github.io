@@ -522,7 +522,7 @@ The clear button has no hover effect. That is to say, when you position the mous
   <figcaption>No hover effect for the clear button.</figcaption>
 </figure>
 
-It's good practice to always provide mouse hovering and pressed states for clickable interface elements. This provides visual feedback to the user indicating when he or she has something activated or is about to select something. A 'while pressing' state may seem redundant, but most buttons fire-off instructions when a user *releases* the click. In other words, you can click on any button -- and provided you keep your mouse button held down -- can then move out of the clickable zone and release without triggering anything. Try it on this link:
+It's good practice to always provide mouse hovering and pressed states for clickable interface elements. This provides visual feedback to the user indicating when he or she has something activated or is about to select something. A 'while pressing' state may seem redundant, but most buttons fire-off instructions when a user *releases* the click. In other words, you can click on any interface element -- and provided you keep your mouse button held down -- can then move out of the clickable zone and release without triggering anything. Try it on this link:
 
 <style>
 #testlink {
@@ -552,9 +552,7 @@ It's good practice to always provide mouse hovering and pressed states for click
 
 <a id="testlink" onmouseup="alert('You released while above me!\nTry again -- but this time click, hold, and release somewhere off to the side.')">some link</a>
 
-
-
-I've tried to keep things orderly but it's all beginning to turn into [spaghetti code](https://en.wikipedia.org/wiki/Spaghetti_code).
+We *could* add hover effects to this paint app's interface, but it is going to get messy. I've tried to keep things orderly but it's beginning to turn into [spaghetti code](https://en.wikipedia.org/wiki/Spaghetti_code) already. Once again, this is where it helps to use a proper user interface markup language or GUI library.
 
 
 

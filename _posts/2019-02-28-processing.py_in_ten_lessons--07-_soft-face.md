@@ -564,6 +564,19 @@ explain functions, then have reader go back to paint app and add functions as pe
 
 ...
 
+<figure>
+  <img src="{{ site.url }}/img/pitl07/delta-time-nsnake.png" />
+  <figcaption>
+    <a href="https://github.com/alexdantas/nSnake">nSnake</a>, a classic snake game with text-based interface.
+  </figcaption>
+</figure>
+
+a word about games
+
+collision detection
+
+delta time
+
 ## controlP5
 
 ...

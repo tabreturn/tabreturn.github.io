@@ -554,15 +554,52 @@ It's good practice to always provide mouse hovering and pressed states for click
 
 We *could* add hover effects to this paint app's interface, but it is going to get messy. I've tried to keep things orderly but it's beginning to turn into [spaghetti code](https://en.wikipedia.org/wiki/Spaghetti_code) already. Once again, this is where it helps to use a proper user interface markup language or GUI library.
 
-
-
 ## Keyboard Interaction
 
+Computers inherited their keyboard designs from typewriters. In the process, though, keyboards picked-up various new keys -- like, the arrow keys for navigating text-based interfaces, escape and function keys, and a number pad for more efficient numeric entry. Of course, computers could perform a more diverse range of tasks, and this warranted the inclusion of further modifier keys (*Alt*, *Ctrl*, *⌘*, *Fn*) to be used in conjunction with character keys for performing specific operations. The Z, X, C, and V keys, for example, when combined with Ctrl or ⌘, perform undo/copy/cut/paste operations. Each modifier key, essentially, doubles the range of input without doubling the number of keys. The typewriter's *shift* key, however, could be credited as the original modifier key. The key got its name from how it physically shift-ed a substantial part of the typewriting mechanism into a position transferring capital letters.
+
+Over the years, keyboard layout and usage has evolved in interesting ways. The QWERTY arrangement was devised to avoid characters jamming on mechanical typewriters, so arguably there is room for optimisation in computer designs. On a typewriter, *backspace* literally tracked backwards a space so that diacritical marks could be placed above letters, i.e. typing **e**, then backspace, then **´**, resulted in **é**. On computers, the backspace key deletes characters to the left of the cursor; conversely, the *delete* key eliminates characters to the right (although, it formerly punched holes in stiff paper cards). The *escape* (Esc) key was originally included for controlling devices using "escape sequences", but application programmers commandeered it to stop or abort ('escape from') an active process. Arrow keys were popular for early computer games, but as more titles began to combine the mouse and keyboard, developers and players discovered that a *WASD* configuration provided a more ergonomic arrangement for right-handed mouse users.
+
+Keyboard input can be utilised in creative ways. For example, the rhythm game, [*Frets on Fire*](http://fretsonfire.sourceforge.net/), relies on the F1--F5 and Enter keys to emulate the form of a guitar. The mascot on the game's menu screen provides a good idea of how the keyboard is to be held.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl07/wikimedia-backup/Frets_on_fire_man.svg" style="width:155px;float:left" />
+  <img src="{{ site.url }}/img/pitl07/keyboard-frets-on-fire.png" style="width:245px" />
+  <br style="clear:both" />
+  <figcaption>
+    Left: Frets on Fire mascot. Right: gampeplay screenshot. The game was developed in Python using the <a href="https://www.pygame.org/news">Pygame</a> library.<br />
+    Unreal Voodoo (game author) [<a href="http://www.gnu.org/licenses/gpl.html">GPL</a>], <a href="https://commons.wikimedia.org/wiki/File:Frets_On_Fire_-_logo.png">via Wikimedia Commons</a>
+  </figcaption>
+</figure>
+
+In <a href="https://juegosrancheros.itch.io/fantastic-arcade-2016">ALPHABET</a>, a game by Keita Takahashi and Adam Saltsman, each letter is controlled by its corresponding key. The goal is to get all of the letters to the end of a whacky obstacle course.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl07/keyboard-alphabet.png" />
+  <figcaption>
+    <a href="https://juegosrancheros.itch.io/fantastic-arcade-2016">ALPHABET</a> screenshot.
+  </figcaption>
+</figure>
+
+Keyboard interaction in Processing works similarly to mouse interaction. There are a series of system variables -- [key](https://py.processing.org/reference/key.html/), [keyCode](https://py.processing.org/reference/keyCode.html), and [keyPressed](https://py.processing.org/reference/keyPressed_var.html) -- as well as listening functions -- [keyPressed()](https://py.processing.org/reference/keyPressed.html), [keyReleased()](9https://py.processing.org/reference/keyReleased.html), [keyTyped()](https://py.processing.org/reference/keyTyped.html).
+
+
+
+
+alphabet
+
+'sna' ...
 ...
 
 explain functions, then have reader go back to paint app and add functions as per shortcuts in panel
 
 ...
+
+a word about games
+
+collision detection
+
+delta time
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/delta-time-nsnake.png" />
@@ -571,11 +608,7 @@ explain functions, then have reader go back to paint app and add functions as pe
   </figcaption>
 </figure>
 
-a word about games
 
-collision detection
-
-delta time
 
 ## controlP5
 

@@ -585,6 +585,8 @@ Keyboard interaction in Processing works similarly to mouse interaction. There a
 
 We will create a simple game that controls a simple character using keyboard input. The closest game I can think of is *Snake*, although "Snake" is really more of a genre than a game. Many (most?) people are familiar with the game, largely thanks to the version Nokia preinstalled on its hugely successful mobile phones of the late nineties. Our game will be far simpler, though. It will be missing a number of key features so I have decided to name it, *Sna*.
 
+<sup>Ever tried to type "play snake" into Google's search engine?</sup>
+
 Create a new sketch and save it as "sna". Add the following setup code.
 {% highlight py %}
 def setup():

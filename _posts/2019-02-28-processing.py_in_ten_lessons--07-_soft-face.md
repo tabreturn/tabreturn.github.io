@@ -558,7 +558,7 @@ We *could* add hover effects to this paint app's interface, but it is going to g
 
 Computers inherited their keyboard designs from typewriters. In the process, though, keyboards picked-up various new keys -- like, the arrow keys for navigating text-based interfaces, escape and function keys, and a number pad for more efficient numeric entry. Of course, computers could perform a more diverse range of tasks, and this warranted the inclusion of further modifier keys (*Alt*, *Ctrl*, *⌘*, *Fn*) to be used in conjunction with character keys for performing specific operations. The Z, X, C, and V keys, for example, when combined with Ctrl or ⌘, perform undo/copy/cut/paste operations. Each modifier key, essentially, doubles the range of input without doubling the number of keys. The typewriter's *shift* key, however, could be credited as the original modifier key. The key got its name from how it physically shift-ed a substantial part of the typewriting mechanism into a position transferring capital letters.
 
-Over the years, keyboard layout and usage has evolved in interesting ways. The QWERTY arrangement was devised to avoid characters jamming on mechanical typewriters, so arguably there is room for optimisation in computer designs. On a typewriter, *backspace* literally tracked backwards a space so that diacritical marks could be placed above letters, i.e. typing **e**, then backspace, then **´**, resulted in **é**. On computers, the backspace key deletes characters to the left of the cursor; conversely, the *delete* key eliminates characters to the right (although, it formerly punched holes in stiff paper cards). The *escape* (Esc) key was originally included for controlling devices using "escape sequences", but application programmers commandeered it to stop or abort ('escape from') an active process. Arrow keys were popular for early computer games, but as more titles began to combine the mouse and keyboard, developers and players discovered that a *WASD* configuration provided a more ergonomic arrangement for right-handed mouse users.
+Over the years, keyboard layout and usage has evolved in interesting ways. The QWERTY arrangement was devised to avoid characters jamming on mechanical typewriters, so arguably there is room for optimisation in computer designs. On a typewriter, *backspace* literally tracked backwards a space so that diacritical marks could be placed above letters, i.e. typing **e**, then backspace, then **´**, resulted in **é**. On computers, the backspace key deletes characters to the left of the cursor; conversely, the *delete* key eliminates characters to the right (although, it formerly punched holes in stiff paper cards). To make things confusing, the backspace key is often labelled 'delete'. The *escape* (Esc) key was originally included for controlling devices using "escape sequences", but application programmers commandeered it to stop or abort ('escape from') an active process. Arrow keys were popular for early computer games, but as more titles began to combine the mouse and keyboard, developers and players discovered that a *WASD* configuration provided a more ergonomic arrangement for right-handed mouse users. Today, keyboard manufacturers offer a plethora of gaming-specific designs, including single-handed variations with less than half the usual compliment of keys.
 
 Keyboard input can be utilised in creative ways. For example, the rhythm game, [*Frets on Fire*](http://fretsonfire.sourceforge.net/), relies on the F1--F5 and Enter keys to emulate the form of a guitar. The mascot on the game's menu screen provides a good idea of how the keyboard is to be held.
 
@@ -583,13 +583,19 @@ In <a href="https://juegosrancheros.itch.io/fantastic-arcade-2016">ALPHABET</a>,
 
 Keyboard interaction in Processing works similarly to mouse interaction. There are a series of system variables -- [key](https://py.processing.org/reference/key.html/), [keyCode](https://py.processing.org/reference/keyCode.html), and [keyPressed](https://py.processing.org/reference/keyPressed_var.html) -- as well as listening functions -- [keyPressed()](https://py.processing.org/reference/keyPressed.html), [keyReleased()](9https://py.processing.org/reference/keyReleased.html), [keyTyped()](https://py.processing.org/reference/keyTyped.html).
 
+We will create a simple game that controls a simple character using keyboard input. The closest game I can think of is *Snake*, although "Snake" is really more of a genre than a game. Many (most?) people are familiar with the game, largely thanks to the version Nokia preinstalled on its hugely successful mobile phones of the late nineties. Our game will be far simpler, though. It will be missing a number of key features so I have decided to name it, *Sna*.
 
+Create a new sketch and save it as "sna". Add the following setup code.
+{% highlight py %}
+def setup():
+    size(600,600)
+    background('#004477')
 
+def draw():
+    pass
+{% endhighlight %}
 
-alphabet
-
-'sna' ...
-...
+https://py.processing.org/reference/pass.html
 
 explain functions, then have reader go back to paint app and add functions as per shortcuts in panel
 

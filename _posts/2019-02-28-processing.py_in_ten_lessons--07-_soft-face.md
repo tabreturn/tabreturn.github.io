@@ -581,7 +581,7 @@ In <a href="https://juegosrancheros.itch.io/fantastic-arcade-2016">ALPHABET</a>,
   </figcaption>
 </figure>
 
-Keyboard interaction in Processing works similarly to mouse interaction. There are a series of system variables -- [key](https://py.processing.org/reference/key.html/), [keyCode](https://py.processing.org/reference/keyCode.html), and [keyPressed](https://py.processing.org/reference/keyPressed_var.html) -- as well as listening functions -- [keyPressed()](https://py.processing.org/reference/keyPressed.html), [keyReleased()](9https://py.processing.org/reference/keyReleased.html), [keyTyped()](https://py.processing.org/reference/keyTyped.html).
+Keyboard interaction in Processing works similarly to mouse interaction. There are a series of system variables -- [key](https://py.processing.org/reference/key.html), [keyCode](https://py.processing.org/reference/keyCode.html), and [keyPressed](https://py.processing.org/reference/keyPressed_var.html) -- as well as listening functions -- [keyPressed()](https://py.processing.org/reference/keyPressed.html), [keyReleased()](https://py.processing.org/reference/keyReleased.html), [keyTyped()](https://py.processing.org/reference/keyTyped.html).
 
 We will create a simple game that controls a simple character using keyboard input. The closest game I can think of is *Snake*, although "Snake" is really more of a genre than a game. Many (most?) people are familiar with the game, largely thanks to the version Nokia preinstalled on its hugely successful mobile phones of the late nineties. Our game will be far simpler, though. It will be missing a number of key features so I have decided to name it, *Sna*.
 

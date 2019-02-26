@@ -581,11 +581,17 @@ In <a href="https://juegosrancheros.itch.io/fantastic-arcade-2016">ALPHABET</a>,
   </figcaption>
 </figure>
 
-Keyboard interaction in Processing works similarly to mouse interaction. There are a series of system variables -- [key](https://py.processing.org/reference/key.html), [keyCode](https://py.processing.org/reference/keyCode.html), and [keyPressed](https://py.processing.org/reference/keyPressed_var.html) -- as well as listening functions -- [keyPressed()](https://py.processing.org/reference/keyPressed.html), [keyReleased()](https://py.processing.org/reference/keyReleased.html), [keyTyped()](https://py.processing.org/reference/keyTyped.html).
+Keyboard interaction in Processing works similarly to mouse interaction. There are a series of system variables -- [`key`](https://py.processing.org/reference/key.html), [`keyCode`](https://py.processing.org/reference/keyCode.html), and [`keyPressed`](https://py.processing.org/reference/keyPressed_var.html) -- as well as listening functions -- [`keyPressed()`](https://py.processing.org/reference/keyPressed.html), [`keyReleased()`](https://py.processing.org/reference/keyReleased.html), [`keyTyped()`](https://py.processing.org/reference/keyTyped.html).
 
 We will create a simple game that controls a simple character using keyboard input. The closest game I can think of is *Snake*, although "Snake" is really more of a genre than a game. Many (most?) people are familiar with the game, largely thanks to the version Nokia preinstalled on its hugely successful mobile phones of the late nineties. Our game will be far simpler, though. It will be missing a number of key features so I have decided to name it, *Sna*.
 
-<sup>Ever tried to type "play snake" into Google's search engine?</sup>
+<figure>
+  <img src="{{ site.url }}/img/pitl07/delta-time-nsnake.png" />
+  <figcaption>
+    <a href="https://github.com/alexdantas/nSnake">nSnake</a>, a classic snake game with text-based interface. <br />
+    Have you ever tried to type "play snake" into Google's search engine?
+  </figcaption>
+</figure>
 
 Create a new sketch and save it as "sna". Add the following setup code.
 
@@ -618,7 +624,7 @@ Run the sketch. Confirm that you have a white square sitting in the middle of a 
   <img src="{{ site.url }}/img/pitl07/keyboard-sna-stage.png" />
 </figure>
 
-To control the movement of the cube -- or if you use your imagination, the 'snake' -- we'll use keyboard input. Add a [keyTyped()](https://py.processing.org/reference/keyTyped.html) function; this is called every-time a key is pressed. To establish which exactly which key has been pressed, print the [key](https://py.processing.org/reference/key.html) system variable, which always the most recent key you have used (whether currently pressed or released).
+To control the movement of the cube -- or if you use your imagination, the 'snake' -- we'll use keyboard input. Add a [`keyTyped()`](https://py.processing.org/reference/keyTyped.html) function; this is called every-time a key is pressed. To establish which exactly which key has been pressed, print the [`key`](https://py.processing.org/reference/key.html) system variable, which always the most recent key you have used (whether currently pressed or released).
 
 {% highlight py %}
 def keyTyped():
@@ -632,7 +638,7 @@ Run the sketch. Whenever you press a key, it appears in the Console. However, th
   <figcaption>Any keys you press appear in the Console, although some will appear to not register (e.g. arrow keys).</figcaption>
 </figure>
 
-For now, though, we will use `w` for moving up. We could use [keyPressed](https://py.processing.org/reference/keyPressed_var.html) system variable inside of the `draw` loop to monitor when a key has been pressed. Instead, though, we'll add a [keyPressed()](https://py.processing.org/reference/keyPressed.html) listener function. We can then test which key is pressed using a `if` statement and the `key` variable. the the Add the following code the bottom of your working file:
+For now, though, we will use `w` for moving up. We could use [`keyPressed`](https://py.processing.org/reference/keyPressed_var.html) system variable inside of the `draw` loop to monitor when a key has been pressed. Instead, though, we'll add a [`keyPressed()`](https://py.processing.org/reference/keyPressed.html) listener function. We can then test which key is pressed using a `if` statement and the `key` variable. the the Add the following code the bottom of your working file:
 
 {% highlight py %}
 def keyPressed():
@@ -664,7 +670,7 @@ The problem is that the square passes the top of the display window never to be 
         y = 0
 {% endhighlight %}
 
-Test the sketch. The cube will now teleport as it exits the display window. Adding left/right/down movement shouldn't be a challenge for you. But, rather than using a/d/s, we will employ the arrow keys. Recall that the `key` variable can manage letter-keys fine, but seems to ignore the arrow (and a some other) keys. The [keyCode](https://py.processing.org/reference/keyCode.html) system variable, however, can detect these special keys.
+Test the sketch. The cube will now teleport as it exits the display window. Adding left/right/down movement shouldn't be a challenge for you. But, rather than using a/d/s, we will employ the arrow keys. Recall that the `key` variable can manage letter-keys fine, but seems to ignore the arrow (and a some other) keys. The [`keyCode`](https://py.processing.org/reference/keyCode.html) system variable, however, can detect these special keys.
 
 {% highlight py %}
 def keyPressed():
@@ -679,9 +685,10 @@ Run the sketch. Every key that you press produces a corresponding number. The ar
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/keyboard-sna-keycode.png" class="fullwidth" />
+  <figcaption>As indicated in the Console, the arrow keys range is 37&ndash;40.</figcaption>
 </figure>
 
-You can use these numbers with `if` statement conditions to check whether a special key has been pressed. However, Processing also provides some keyword alternatives to codes, such as `ALT`, `CONTROL`, `SHIFT`, `LEFT`, `RIGHT`, `UP`, and `DOWN`.
+You can use these numbers with `if` statements to check whether a special key has been pressed. However, Processing also provides some keyword alternatives to the number codes, such as `ALT`, `CONTROL`, `SHIFT`, `LEFT`, `RIGHT`, `UP`, and `DOWN`. Add the following code to your `keyPressed()` function:
 
 {% highlight py %}
 def keyPressed():
@@ -704,8 +711,11 @@ def keyPressed():
         yspeed = 0
 {% endhighlight %}
 
+You now have four-way (with no diagonal) movement.
 
-
+<figure>
+  <img src="{{ site.url }}/img/pitl07/keyboard-sna-four-way.png" />
+</figure>
 
 
 
@@ -721,12 +731,7 @@ collision detection
 
 delta time
 
-<figure>
-  <img src="{{ site.url }}/img/pitl07/delta-time-nsnake.png" />
-  <figcaption>
-    <a href="https://github.com/alexdantas/nSnake">nSnake</a>, a classic snake game with text-based interface.
-  </figcaption>
-</figure>
+
 
 
 

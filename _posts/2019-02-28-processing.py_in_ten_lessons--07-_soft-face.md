@@ -624,21 +624,21 @@ Run the sketch. Confirm that you have a white square sitting in the middle of a 
   <img src="{{ site.url }}/img/pitl07/keyboard-sna-stage.png" />
 </figure>
 
-To control the movement of the cube -- or if you use your imagination, the 'snake' -- we'll use keyboard input. Add a [`keyTyped()`](https://py.processing.org/reference/keyTyped.html) function; this is called every-time a key is pressed. To establish which exactly which key has been pressed, print the [`key`](https://py.processing.org/reference/key.html) system variable, which always the most recent key you have used (whether currently pressed or released).
+To control the movement of the cube -- or if you use your imagination, the 'snake' -- we'll use keyboard input. Add a [`keyTyped()`](https://py.processing.org/reference/keyTyped.html) function; this is called every-time a key is pressed. Holding down a key results in repeated calls, the frequency of which is determined by your operating system. To establish which exactly which key has been pressed, print the [`key`](https://py.processing.org/reference/key.html) system variable, which will always hold the most recent key you have used (whether currently pressed or released).
 
 {% highlight py %}
 def keyTyped():
     print(key)
 {% endhighlight %}
 
-Run the sketch. Whenever you press a key, it appears in the Console. However, there will be certain keys that fail to register, and these include the arrow keys. You will see why this is and how to work around it, shortly.
+Run the sketch. Whichever key you press appears in the Console. However, there will be certain keys that fail to register and these include the arrow keys. You will see why this is and how to work around it, shortly.
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/keyboard-sna-keytyped.png" class="fullwidth" />
   <figcaption>Any keys you press appear in the Console, although some will appear to not register (e.g. arrow keys).</figcaption>
 </figure>
 
-For now, though, we will use `w` for moving up. We could use [`keyPressed`](https://py.processing.org/reference/keyPressed_var.html) system variable inside of the `draw` loop to monitor when a key has been pressed. Instead, though, we'll add a [`keyPressed()`](https://py.processing.org/reference/keyPressed.html) listener function. We can then test which key is pressed using a `if` statement and the `key` variable. the the Add the following code the bottom of your working file:
+For now, though, we will use `w` for moving up. One approach is to place a [`keyPressed`](https://py.processing.org/reference/keyPressed_var.html) system variable inside of the `draw` loop; this will return `True` when something is pressed. Instead, though, we'll employ a [`keyPressed()`](https://py.processing.org/reference/keyPressed.html) listener function. Add the following code the bottom of your working file:
 
 {% highlight py %}
 def keyPressed():
@@ -648,13 +648,13 @@ def keyPressed():
         yspeed = -4
 {% endhighlight %}
 
-Run the sketch. Pressing the w-key sends the 'snake' heading off in an upward direction. This is because the `yspeed` variable -- formerly equal to zero -- is assigned a value of `-4`, which is in-turn added to the `y` coordinate with each new frame.
+Ensure that this code is flush against the left-edge (not indented within the `draw()` function). The `if` statement and tests the `key` variable to determine if it is equal to `'w'`. Run the sketch. Pressing the w-key sends the 'snake' heading off in an upward direction. The `yspeed` variable -- formerly equal to zero -- is assigned a value of `-4`, which is in-turn added to the `y` coordinate with each new frame drawn.
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/keyboard-sna-up.png" />
 </figure>
 
-The problem is that the square passes the top of the display window never to be seen again. We will add some wrap-around walls, so that if the square exits at a given edge, it will reappear on the opposite side. Add some `if` statements to the `draw()` function for repositioning the cube.
+The problem is that the square passes through the top of the display window never to be seen again. We will add some wrap-around walls so that, if the square exits at a given edge, it reappears on the opposite side. Add some `if` statements to the `draw()` function to reposition the cube upon reaching the boundary.
 
 {% highlight py %}
     ...
@@ -668,9 +668,12 @@ The problem is that the square passes the top of the display window never to be 
         y = height
     if y > height:
         y = 0
+
+def keyPressed():
+    ...
 {% endhighlight %}
 
-Test the sketch. The cube will now teleport as it exits the display window. Adding left/right/down movement shouldn't be a challenge for you. But, rather than using a/d/s, we will employ the arrow keys. Recall that the `key` variable can manage letter-keys fine, but seems to ignore the arrow (and a some other) keys. The [`keyCode`](https://py.processing.org/reference/keyCode.html) system variable, however, can detect these special keys.
+Test the sketch. The cube will now teleport as it exits the display window. Adding left/right/down movement shouldn't be a challenge for you. But, rather than relying on the a/d/s keys, we will employ the arrow keys. Recall that the `key` variable can manage any of letter-keys fine, but ignores the arrow- and a some other special keys. For detecting special keys, one uses the [`keyCode`](https://py.processing.org/reference/keyCode.html) system variable. Add a line to print key-codes.
 
 {% highlight py %}
 def keyPressed():
@@ -681,7 +684,7 @@ def keyPressed():
     print(keyCode)
 {% endhighlight %}
 
-Run the sketch. Every key that you press produces a corresponding number. The arrow keys range is `37`--`40`.
+Run the sketch. Every key that you press produces a corresponding number. Most importantly, the arrow keys range is `37`--`40`.
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/keyboard-sna-keycode.png" class="fullwidth" />
@@ -717,8 +720,27 @@ You now have four-way (with no diagonal) movement.
   <img src="{{ site.url }}/img/pitl07/keyboard-sna-four-way.png" />
 </figure>
 
+Note, however, that `BACKSPACE`, `DELETE`, `ENTER`, `ESC`, `RETURN`, and `TAB` are not 'special' keys. As such, these are held by the `key` variable.
+
+{% highlight py %}
+if (
+      key == BACKSPACE or key == DELETE
+      or key == ENTER  or key == ESC
+      or key == TAB    or key == RETURN
+   ):
+    print('you pressed:')
+    print('backspace, delete, enter, esc, return, or tab')
+{% endhighlight %}
+
+Okay, so it's not the most advanced game. As has already ben mentioned, Processing does not include any built-in game features, but [Peter Lager (aka Quark)](http://www.lagers.org.uk/) has created a number of useful game libraries.
+
+### Collision Detection and Delta Time
 
 
+
+
+
+CURSOR FOR DRAWING?????
 
 
 explain functions, then have reader go back to paint app and add functions as per shortcuts in panel

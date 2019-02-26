@@ -588,16 +588,128 @@ We will create a simple game that controls a simple character using keyboard inp
 <sup>Ever tried to type "play snake" into Google's search engine?</sup>
 
 Create a new sketch and save it as "sna". Add the following setup code.
+
 {% highlight py %}
 def setup():
-    size(600,600)
-    background('#004477')
+    size(400,300)
+    frameRate(30)
+    noStroke()
+
+x = 195
+y = 145
+xspeed = 0
+yspeed = 0
 
 def draw():
-    pass
+    global x, y, xspeed, yspeed
+    x += xspeed
+    y += yspeed
+
+    fill(0x33004477)
+    rect(0,0, width,height)
+
+    fill('#FFFFFF')
+    rect(x,y, 10,10)
 {% endhighlight %}
 
-https://py.processing.org/reference/pass.html
+Run the sketch. Confirm that you have a white square sitting in the middle of a blue background.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl07/keyboard-sna-stage.png" />
+</figure>
+
+To control the movement of the cube -- or if you use your imagination, the 'snake' -- we'll use keyboard input. Add a [keyTyped()](https://py.processing.org/reference/keyTyped.html) function; this is called every-time a key is pressed. To establish which exactly which key has been pressed, print the [key](https://py.processing.org/reference/key.html) system variable, which always the most recent key you have used (whether currently pressed or released).
+
+{% highlight py %}
+def keyTyped():
+    print(key)
+{% endhighlight %}
+
+Run the sketch. Whenever you press a key, it appears in the Console. However, there will be certain keys that fail to register, and these include the arrow keys. You will see why this is and how to work around it, shortly.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl07/keyboard-sna-keytyped.png" class="fullwidth" />
+  <figcaption>Any keys you press appear in the Console, although some will appear to not register (e.g. arrow keys).</figcaption>
+</figure>
+
+For now, though, we will use `w` for moving up. We could use [keyPressed](https://py.processing.org/reference/keyPressed_var.html) system variable inside of the `draw` loop to monitor when a key has been pressed. Instead, though, we'll add a [keyPressed()](https://py.processing.org/reference/keyPressed.html) listener function. We can then test which key is pressed using a `if` statement and the `key` variable. the the Add the following code the bottom of your working file:
+
+{% highlight py %}
+def keyPressed():
+    global xspeed, yspeed
+
+    if key == 'w':
+        yspeed = -4
+{% endhighlight %}
+
+Run the sketch. Pressing the w-key sends the 'snake' heading off in an upward direction. This is because the `yspeed` variable -- formerly equal to zero -- is assigned a value of `-4`, which is in-turn added to the `y` coordinate with each new frame.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl07/keyboard-sna-up.png" />
+</figure>
+
+The problem is that the square passes the top of the display window never to be seen again. We will add some wrap-around walls, so that if the square exits at a given edge, it will reappear on the opposite side. Add some `if` statements to the `draw()` function for repositioning the cube.
+
+{% highlight py %}
+    ...
+    rect(x,y, 10,10)
+
+    if x > width:
+        x = 0
+    if x < 0:
+        x = width
+    if y < 0:
+        y = height
+    if y > height:
+        y = 0
+{% endhighlight %}
+
+Test the sketch. The cube will now teleport as it exits the display window. Adding left/right/down movement shouldn't be a challenge for you. But, rather than using a/d/s, we will employ the arrow keys. Recall that the `key` variable can manage letter-keys fine, but seems to ignore the arrow (and a some other) keys. The [keyCode](https://py.processing.org/reference/keyCode.html) system variable, however, can detect these special keys.
+
+{% highlight py %}
+def keyPressed():
+    global xspeed, yspeed
+
+    if key == 'w':
+        yspeed = -4
+    print(keyCode)
+{% endhighlight %}
+
+Run the sketch. Every key that you press produces a corresponding number. The arrow keys range is `37`--`40`.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl07/keyboard-sna-keycode.png" class="fullwidth" />
+</figure>
+
+You can use these numbers with `if` statement conditions to check whether a special key has been pressed. However, Processing also provides some keyword alternatives to codes, such as `ALT`, `CONTROL`, `SHIFT`, `LEFT`, `RIGHT`, `UP`, and `DOWN`.
+
+{% highlight py %}
+def keyPressed():
+    ...
+
+    if keyCode == UP:
+        xspeed = 0
+        yspeed = -4
+
+    elif keyCode == DOWN:
+        xspeed = 0
+        yspeed = 4
+
+    elif keyCode == LEFT:
+        xspeed = -4
+        yspeed = 0
+
+    elif keyCode == RIGHT:
+        xspeed = 4
+        yspeed = 0
+{% endhighlight %}
+
+
+
+
+
+
+
 
 explain functions, then have reader go back to paint app and add functions as per shortcuts in panel
 

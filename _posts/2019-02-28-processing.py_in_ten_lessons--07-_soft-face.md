@@ -577,6 +577,8 @@ There are six predefined cursors: `ARROW`, `CROSS`, `HAND`, `MOVE`, `TEXT`, and 
 
 The appearance of the predefined cursors will vary depending on your operating system. If you ever need to hide the mouse cursor altogether, use the [`noCursor()`](https://py.processing.org/reference/noCursor.html) function.
 
+In the next section, you will explore keyboard interaction. After that, you may want to add some shortcut keys to your drawing app, and maybe even some new features?
+
 ## Keyboard Interaction
 
 Computers inherited their keyboard designs from typewriters. In the process, though, keyboards picked-up various new keys -- like, the arrow keys for navigating text-based interfaces, escape and function keys, and a number pad for more efficient numeric entry. Of course, computers could perform a more diverse range of tasks, and this warranted the inclusion of further modifier keys (*Alt*, *Ctrl*, *⌘*, *Fn*) to be used in conjunction with character keys for performing specific operations. The Z, X, C, and V keys, for example, when combined with Ctrl or ⌘, perform undo/copy/cut/paste operations. Each modifier key, essentially, doubles the range of input without doubling the number of keys. The typewriter's *shift* key, however, could be credited as the original modifier key. The key got its name from how it physically shift-ed a substantial part of the typewriting mechanism into a position transferring capital letters.
@@ -757,9 +759,100 @@ if (
 
 Okay, so it's not the most advanced game. A proper game framework typically includes -- at the very least -- a built-in selection of rendering, physics, collision detection, audio, animation, and perhaps AI features. Processing has the renderer already, as well as support for some other essentials, like event handlers and graphics. What it lacks, though, can made up for using various [libraries](https://processing.org/reference/libraries/). We will be looking at a physics library in a few chapters time. For now, let us add some basic collision detection the Sna game. This will (a) provide some understanding of the concepts involved, and (b) help you appreciate all the heavy-lifting a game library undertakes.
 
-### Collision Detection and Delta Time
+### Collision Detection
 
-To establish if two or more shapes have intersected within a game, one performs various *collision detection* tests. There are many algorithms for collision detection
+To establish if two or more shapes have intersected within a game, one performs various *collision detection* tests. There are many algorithms for such a task -- the more accurate varieties, though, are more demanding on your system (and coding skills). We'll look at one of the most basic forms of collision detection: *axis-aligned bounding boxes*, also known as AABBs.
+
+With AABBs, every collide-able element is placed within a rectangular *bounding box*. Of course, many games assets will not be perfectly rectangular and one must sacrifice some accuracy.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl07/collision-detection-bounding-boxes.png" />
+  <figcaption>Invader: "What? Dude! That sooo didn't hit me!"</figcaption>
+</figure>
+
+We can attempt to improve the perceived accuracy by shrinking the bounding box, using multiple boxes, or employing a different yet comparably performant shape -- like, a circle. You could even mix multiple boxes and circles, but bear in mind that every shape must be tested against every obstacle, item, and enemy currently on screen. This can result in a significant increase in overhead, and as a result, slow or jerky performance.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl07/collision-detection-bounding-volumes.png" />
+  <figcaption>Left to right: smaller bounding box; multiple bounding boxes; a bounding circle.</figcaption>
+</figure>
+
+In a few chapters time, we'll look at a circular collision volumes. For even greater accuracy, there are polygonal bounding volumes that can accommodate just about any shape, but these require lots of involved math! For now, we'll add some AABB collision detection to our Sna game. To begin, add a collectable item -- a red square -- to the stage:
+
+{% highlight py %}
+def draw():
+    ...
+
+    fill('#FF0000')
+    rect(300,60, 10,10) # red item
+{% endhighlight %}
+
+<figure>
+  <img src="{{ site.url }}/img/pitl07/collision-detection-collectable-item.png" />
+</figure>
+
+The AABB collision detection will be handled using a single `if` statement. We will build-up the conditions one piece at a time. The snake's trail will not trigger any collisions, just the solid white square at its 'head'. Add the following code the end of the `draw()` function:
+
+{% highlight py %}
+    ...
+    rect(300,60, 10,10) # red item
+
+    if (
+          x+10 >= 300
+       ):
+        fill('#00FF00')
+        text('hit!', 370,20)
+{% endhighlight %}
+
+If the head is anywhere to the right of the red square, a hit is registered. The `rect()` draws squares from the top-left corner across-and-down, so it is necessary to use `x+10` (the x-coordinate plus the width of the head) to ascertain the x-coordinate of the head's right edge. Run the sketch to confirm that this is working. Should you venture anywhere to the right of an x-coordinate of `300`, a "hit!" appears in the top-left corner of the display window. The shaded green area in the image below highlights the 'collision' zone as it operates currently.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl07/collision-detection-aabb-1.png" />
+</figure>
+
+To refine this further, expand on the condition to test whether the player has ventured to far rightwards to trigger any possible collision.
+
+{% highlight py %}
+    ...
+    rect(300,60, 10,10) # red item
+
+    if (
+          x+10 >= 300 and x <= 300+10
+       ):
+        fill('#00FF00')
+        text('hit!', 370,20)
+{% endhighlight %}
+
+So, the `x+10 >= 300` checks if the *right edge of the head* is overlapping the *left edge of the item*; whereas the `x <= 300+10` checks if the *left edge of the head* is overlapping the *right edge of the item*.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl07/collision-detection-aabb-2.png" />
+</figure>
+
+The player no longer registers a hit once he or she has passed the right edge of the item. However, as indicated by the green area, the zones directly above or below the item's left/right edges still register as a hit. To resolve this, and additional checks for the y-axis:
+
+{% highlight py %}
+    ...
+    rect(300,60, 10,10) # red item
+
+    if (
+          x+10 >= 300 and x <= 300+10
+          and y+10 >= 60 and y <= 60+10
+       ):
+        fill('#00FF00')
+        text('hit!', 370,20)
+{% endhighlight %}
+
+Now that the collision detection is functioning properly, you can make the item disappear and add some type of power-up; perhaps, the snake's speed could increase? And a new item could appear at some random new location? Before you begin messing around, though, let us look at another important game programming concept: *delta time*.
+
+### Delta Time
+
+
+
+
+
+
+
 
 
 

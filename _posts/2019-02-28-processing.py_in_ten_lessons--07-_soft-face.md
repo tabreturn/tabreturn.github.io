@@ -552,7 +552,30 @@ It's good practice to always provide mouse hovering and pressed states for click
 
 <a id="testlink" onmouseup="alert('You released while above me!\nTry again -- but this time click, hold, and release somewhere off to the side.')">some link</a>
 
-We *could* add hover effects to this paint app's interface, but it is going to get messy. I've tried to keep things orderly but it's beginning to turn into [spaghetti code](https://en.wikipedia.org/wiki/Spaghetti_code) already. Once again, this is where it helps to use a proper user interface markup language or GUI library.
+We *could* add hover effects to this paint app's interface, but it is going to get messy. I've tried to keep things orderly but it's beginning to turn into [spaghetti code](https://en.wikipedia.org/wiki/Spaghetti_code) already. Once again, this is where it helps to use a proper user-interface markup language or GUI library.
+
+Another small tweak that will improve the interface is a custom mouse cursor. Processing's [`cursor()`](https://py.processing.org/reference/cursor.html) function can switch the the standard pointer for an image. Download the image below and add it to your data sub-directory.
+
+<a href="{{ site.url }}/img/pitl07/brush-cursor.png" download>brush-cursor.png</a>
+
+Then, add the following code to the end of your `draw()` function:
+
+{% highlight py%}
+    if brushsize < 15:
+        cursor(CROSS)
+    else:
+        mousecursor = loadImage('brush-cursor.png')
+        mousecursor.resize(brushsize, brushsize)
+        cursor(mousecursor)
+{% endhighlight %}
+
+There are six predefined cursors: `ARROW`, `CROSS`, `HAND`, `MOVE`, `TEXT`, and `WAIT`. In this case, a crosshair (`CROSS`) will appear for any brush sized less than 15 pixels. For anything larger, a custom image cursor (an empty circle) will instead appear to help gauge the brush size.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl07/mouse-interaction-cursor.png" />
+</figure>
+
+The appearance of the predefined cursors will vary depending on your operating system. If you ever need to hide the mouse cursor altogether, use the [`noCursor()`](https://py.processing.org/reference/noCursor.html) function.
 
 ## Keyboard Interaction
 
@@ -732,15 +755,22 @@ if (
     print('backspace, delete, enter, esc, return, or tab')
 {% endhighlight %}
 
-Okay, so it's not the most advanced game. As has already ben mentioned, Processing does not include any built-in game features, but [Peter Lager (aka Quark)](http://www.lagers.org.uk/) has created a number of useful game libraries.
+Okay, so it's not the most advanced game. A proper game framework typically includes -- at the very least -- a built-in selection of rendering, physics, collision detection, audio, animation, and perhaps AI features. Processing has the renderer already, as well as support for some other essentials, like event handlers and graphics. What it lacks, though, can made up for using various [libraries](https://processing.org/reference/libraries/). We will be looking at a physics library in a few chapters time. For now, let us add some basic collision detection the Sna game. This will (a) provide some understanding of the concepts involved, and (b) help you appreciate all the heavy-lifting a game library undertakes.
 
 ### Collision Detection and Delta Time
 
+To establish if two or more shapes have intersected within a game, one performs various *collision detection* tests. There are many algorithms for collision detection
 
 
 
 
-CURSOR FOR DRAWING?????
+
+
+
+
+
+
+
 
 
 explain functions, then have reader go back to paint app and add functions as per shortcuts in panel
@@ -773,4 +803,5 @@ delta time
 ## References
 
 * http://www.designinginteractions.com/
+* https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection
 * https://www.interaction-design.org/literature/book/the-encyclopedia-of-human-computer-interaction-2nd-ed/human-computer-interaction-brief-intro

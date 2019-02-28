@@ -626,21 +626,21 @@ def setup():
     frameRate(30)
     noStroke()
 
-x = 195
-y = 145
+playerx = 195
+playery = 145
 xspeed = 0
 yspeed = 0
 
 def draw():
-    global x, y, xspeed, yspeed
-    x += xspeed
-    y += yspeed
+    global playerx, playery, xspeed, yspeed
+    playerx += xspeed
+    playery += yspeed
 
     fill(0x33004477)
     rect(0,0, width,height)
 
     fill('#FFFFFF')
-    rect(x,y, 10,10)
+    rect(playerx, playery, 10, 10)
 {% endhighlight %}
 
 Run the sketch. Confirm that you have a white square sitting in the middle of a blue background.
@@ -682,20 +682,18 @@ Ensure that this code is flush against the left-edge (not indented within the `d
 The problem is that the square passes through the top of the display window never to be seen again. We will add some wrap-around walls so that, if the square exits at a given edge, it reappears on the opposite side. Add some `if` statements to the `draw()` function to reposition the cube upon reaching the boundary.
 
 {% highlight py %}
+def draw():
     ...
-    rect(x,y, 10,10)
+    rect(playerx, playery, 10, 10)
 
-    if x > width:
-        x = 0
-    if x < 0:
-        x = width
-    if y < 0:
-        y = height
-    if y > height:
-        y = 0
-
-def keyPressed():
-    ...
+    if playerx > width:
+        playerx = 0
+    if playerx < 0:
+        playerx = width
+    if playery < 0:
+        playery = height
+    if playery > height:
+        playery = 0
 {% endhighlight %}
 
 Test the sketch. The cube will now teleport as it exits the display window. Adding left/right/down movement shouldn't be a challenge for you. But, rather than relying on the a/d/s keys, we will employ the arrow keys. Recall that the `key` variable can manage any of letter-keys fine, but ignores the arrow- and a some other special keys. For detecting special keys, one uses the [`keyCode`](https://py.processing.org/reference/keyCode.html) system variable. Add a line to print key-codes.
@@ -748,14 +746,16 @@ You now have four-way (with no diagonal) movement.
 Note, however, that `BACKSPACE`, `DELETE`, `ENTER`, `ESC`, `RETURN`, and `TAB` are not 'special' keys. As such, these are held by the `key` variable.
 
 {% highlight py %}
-if (
-      key == BACKSPACE or key == DELETE
-      or key == ENTER  or key == ESC
-      or key == TAB    or key == RETURN
-   ):
-    print('you pressed:')
-    print('backspace, delete, enter, esc, return, or tab')
+    if (
+         key == BACKSPACE or key == DELETE
+         or key == ENTER  or key == ESC
+         or key == TAB    or key == RETURN
+       ):
+        print('you pressed:')
+        print('backspace, delete, enter, esc, return, or tab')
 {% endhighlight %}
+
+<sup>Using a pair of round brackets, one can break-up conditional expressions across multiple lines. This helps with code readability.</sup>
 
 Okay, so it's not the most advanced game. A proper game framework typically includes -- at the very least -- a built-in selection of rendering, physics, collision detection, audio, animation, and perhaps AI features. Processing has the renderer already, as well as support for some other essentials, like event handlers and graphics. What it lacks, though, can made up for using various [libraries](https://processing.org/reference/libraries/). We will be looking at a physics library in a few chapters time. For now, let us add some basic collision detection the Sna game. This will (a) provide some understanding of the concepts involved, and (b) help you appreciate all the heavy-lifting a game library undertakes.
 
@@ -783,8 +783,10 @@ In a few chapters time, we'll look at a circular collision volumes. For even gre
 def draw():
     ...
 
+    itemx = 300
+    itemy = 60
     fill('#FF0000')
-    rect(300,60, 10,10) # red item
+    rect(itemx, itemy, 10, 10) # red item
 {% endhighlight %}
 
 <figure>
@@ -795,10 +797,10 @@ The AABB collision detection will be handled using a single `if` statement. We w
 
 {% highlight py %}
     ...
-    rect(300,60, 10,10) # red item
+    rect(itemx, itemy, 10, 10) # red item
 
     if (
-          x+10 >= 300
+          playerx+10 >= itemx
        ):
         fill('#00FF00')
         text('hit!', 370,20)
@@ -814,40 +816,41 @@ To refine this further, expand on the condition to test whether the player has v
 
 {% highlight py %}
     ...
-    rect(300,60, 10,10) # red item
+    rect(itemx, itemy, 10, 10) # red item
 
     if (
-          x+10 >= 300 and x <= 300+10
+          playerx+10 >= itemx and playerx <= itemx+10
        ):
         fill('#00FF00')
         text('hit!', 370,20)
 {% endhighlight %}
 
-So, the `x+10 >= 300` checks if the *right edge of the head* is overlapping the *left edge of the item*; whereas the `x <= 300+10` checks if the *left edge of the head* is overlapping the *right edge of the item*.
+So, the `playerx+10 >= itemx` checks if the *right edge of the head* is overlapping the *left edge of the item*; whereas the `playerx <= itemx+10` checks if the *left edge of the head* is overlapping the *right edge of the item*.
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/collision-detection-aabb-2.png" />
+  <figcaption>Anywhere within the green strip registers as a hit.</figcaption>
 </figure>
 
-The player no longer registers a hit once he or she has passed the right edge of the item. However, as indicated by the green area, the zones directly above or below the item's left/right edges still register as a hit. To resolve this, and additional checks for the y-axis:
+The player no longer registers a hit once he or she has passed the right edge of the item. However, as indicated by the green area, the zones directly above or below the item's left/right edges still register as a hit. To resolve this, add additional checks for the y-axis:
 
 {% highlight py %}
     ...
-    rect(300,60, 10,10) # red item
+    rect(itemx, itemy, 10, 10) # red item
 
     if (
-          x+10 >= 300 and x <= 300+10
-          and y+10 >= 60 and y <= 60+10
+         playerx+10 >= itemx and playerx <= itemx+10
+     and playery+10 >= itemy and playery <= itemy+10
        ):
         fill('#00FF00')
         text('hit!', 370,20)
 {% endhighlight %}
 
-Now that the collision detection is functioning properly, you can make the item disappear and add some type of power-up; perhaps, the snake's speed could increase? And a new item could appear at some random new location? Before you begin messing around, though, let us look at another important game programming concept: *delta time*.
+The collision detection is now functioning properly. From here, you can make the item disappear and apply some type of power-up. For example, perhaps the snake's speed could increase? Then, after a short period of time, a new item could appear at some random location? Before you begin trying anything around, though, let's look at another important game programming concept: *delta time*.
 
 ### Delta Time
 
-
+Films run at a constant frame rate. Games attempt to run at a constant frame rate, but do not always manage maintain it. For instance, at some point in a game there may be a large number of enemies in play. More enemies means more collision detection
 
 
 

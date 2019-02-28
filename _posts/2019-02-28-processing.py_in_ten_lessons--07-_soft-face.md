@@ -850,7 +850,23 @@ The collision detection is now functioning properly. From here, you can make the
 
 ### Delta Time
 
-Films run at a constant frame rate. Games attempt to run at a constant frame rate, but do not always manage maintain it. For instance, at some point in a game there may be a large number of enemies in play. More enemies means more collision detection
+Films run at a constant frame rate. Games attempt to run at a constant frame rate, although there is often fluctuation. Your Sna game runs at a frame rate of 30 fps, as specified in the `setup` function. Your computer is likely powerful enough to check for key keyboard input, render the snake's new position, and detect a possible collision, without producing any noticeable lag. However, there are instances where your computer must perform many additional frame-by-frame computations. For instance, there may be twenty items scattered about the stage, therefore, an additional nineteen AABB collision tests must take place before each new frame can be displayed. More likely, though, it would take thousands of such collision tests to produce any perceivable slow-down. So, for the sake of example, add some highly demanding (if pointless) computational task to your `draw` loop:
+
+{% highlight py %}
+def draw():
+    ...
+    for i in range( ceil(random(700)) )
+            for j in range(i):
+                atan(12345*i) * tan(67890*i)
+{% endhighlight %}
+
+The `for` loop, literally, does nothing useful. It performs a bunch of intense trigonometry calculations, only to discard the values when complete. Kind of like math exams 🙃.
+
+Run the game. You should experience a noticeable reduction in frame rate. If you find that your computer is grinding to a near-halt, reduce the `700` to something a bit more manageable. Conversely, if everything seems to be running as smoothly as before, try doubling this value. You'll want to find some number that slows things down, but not too much. Note, however, that the loop employs a random function, so the effect is erratic. In other words, the snake will move smoothly, but then randomly struggle before speeding up again.  
+
+Early games were programmed for a specific processor.
+
+For instance, at some point in a game there may be a large number of enemies in play. More enemies means more collision detection
 
 
 

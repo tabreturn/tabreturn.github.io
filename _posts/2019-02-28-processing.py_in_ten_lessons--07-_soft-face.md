@@ -627,6 +627,7 @@ def setup():
     noStroke()
     ernest = createFont('Ernest.ttf', 30)
     textFont(ernest)
+    textAlign(CENTER)
 
 playerx = 195
 playery = 145
@@ -805,7 +806,7 @@ The AABB collision detection will be handled using a single `if` statement. We w
           playerx+10 >= itemx
        ):
         fill('#00FF00')
-        text('hit!', 355,28)
+        text('hit!', 373,28)
 {% endhighlight %}
 
 If the head is anywhere to the right of the red square, a hit is registered. The `rect()` draws squares from the top-left corner across-and-down, so it is necessary to use `x+10` (the x-coordinate plus the width of the head) to ascertain the x-coordinate of the head's right edge. Run the sketch to confirm that this is working. Should you venture anywhere to the right of an x-coordinate of `300`, a "hit!" appears in the top-left corner of the display window. The shaded green area in the image below highlights the 'collision' zone as it operates currently.
@@ -824,7 +825,7 @@ To refine this further, expand on the condition to test whether the player has v
           playerx+10 >= itemx and playerx <= itemx+10
        ):
         fill('#00FF00')
-        text('hit!', 370,20)
+        text('hit!', 373,28)
 {% endhighlight %}
 
 So, the `playerx+10 >= itemx` checks if the *right edge of the head* is overlapping the *left edge of the item*; whereas the `playerx <= itemx+10` checks if the *left edge of the head* is overlapping the *right edge of the item*.
@@ -845,7 +846,7 @@ The player no longer registers a hit once he or she has passed the right edge of
      and playery+10 >= itemy and playery <= itemy+10
        ):
         fill('#00FF00')
-        text('hit!', 370,20)
+        text('hit!', 373,28)
 {% endhighlight %}
 
 The collision detection is now functioning properly. From here, you can make the item disappear and apply some type of power-up. For example, perhaps the snake's speed could increase? Then, after a short period of time, a new item could appear at some random location? Before you begin trying anything around, though, let's look at another important game programming concept: *delta time*.
@@ -864,7 +865,52 @@ def draw():
 
 The `for` loop, literally, does nothing useful. It performs a bunch of intense trigonometry calculations, only to discard the values when complete. Kind of like math exams 🙃.
 
-Run the game. You should experience a noticeable reduction in frame rate. If you find that your computer is grinding to a near-halt, reduce the `700` to something a bit more manageable. Conversely, if everything seems to be running as smoothly as before, try doubling this value. You'll want to find some number that slows things down, but not too much. Note, however, that the loop employs a random function, so the effect is erratic. In other words, the snake will move smoothly, but then randomly struggle before speeding up again.  
+Run the game. You should experience a noticeable reduction in frame rate. Note, however, that the loop employs a random function, so the effect is erratic. In other words, the snake will move smoothly, but then randomly struggle before speeding up again. If you find that your computer is grinding to a near-halt, reduce the `700` to something a bit more manageable. Conversely, if everything seems to be running as smoothly as before, try doubling this value. You'll want to find some number where, roughly, the snake's average speed is halved.
+
+Now, edit the `yspeed` variable, so that the snake immediately heads upward when the sketch runs. In addition to this edit, add an `if` statement to the bottom of your draw function, to record the total milliseconds that have elapsed upon the snake reaching the top edge.
+
+{% highlight py %}
+...
+yspeed = -4
+
+def draw():
+    ...
+    if y > 145:
+        fill('#00FF00')
+        text(millis(), width/2,28)
+        noLoop()
+{% endhighlight %}
+
+Run the sketch. The snake heads-off as soon as it starts. Upon reaching the top-edge, the `noLoop()` halts everything and the millisecond count is displayed. This figure is likely greater than 2000, or even 3000 milliseconds.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl07/delta-time-slowest-time.png" />
+</figure>
+
+The fastest possible time that the snake can reach the boundary is 1125 milliseconds. This is because it has 300 ÷ 2 = 150 pixels to cover, travelling a speed of 4 pixels-per-frame. So, that's 150 pixels ÷ 4 pixels-per-frame = 37.5 frames to reach the edge. The game is running at 30 frames per second. 37.5 total frames ÷ 30 fps = 1.25 seconds -- or, 1125 milliseconds. Of course, the extra computational load is slowing it down. Change the `700` (or whatever figure you have used) in the `for` loop to a zero. Run the sketch. The game will now run at normal speed again. The snake should make it to the edge in less time, perhaps even under 2000 milliseconds.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl07/delta-time-normal.png" />
+</figure>
+
+Why not 1125 milliseconds? Well, the very first frame takes a some extra time because Processing needs to setup a few things.
+
+{% highlight py %}
+...
+currframe = 0
+lastframe = millis()
+
+def draw():
+    global currframe, lastframe, x
+    currframe = millis()
+    deltatime = (currframe-lastframe) / 1000.0 * 30
+    print(deltatime)
+
+    ...
+
+    lastframe = currframe
+{% endhighlight %}
+
 
 Early games were programmed for a specific processor.
 

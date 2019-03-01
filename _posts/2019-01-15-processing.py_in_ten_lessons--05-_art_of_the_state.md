@@ -1319,7 +1319,7 @@ Now, complete the chart as per the screenshot below.
 
 Begin with a loop that prints each entry. Then, get the labels displaying (before the bars). Once you have labels, add plain white bars of the correct width, then finish off with the rainbow sequence effect.
 
-## Extra Bytes
+## Lesson 06
 
 That's it for lesson 05! Lists and dictionaries are relatively straight-forward, though combining collections of values with loops is a trickier concept to grasp. That said, what you have learned here is vital for what lies ahead -- both in these lessons and beyond. In the next tutorial, we'll zoom-in further, like, to pixel level. You'll pick up some neat new skills, like how to read values off pixels to create your very own Photoshop-esque filters.
 

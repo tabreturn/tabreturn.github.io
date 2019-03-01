@@ -226,14 +226,14 @@ The right- and centre-click functions should still be operational so that you ca
 
 ### Paint App
 
-Processing offers a selection of mouse *functions* -- which somewhat overlap in functionality with the mouse variables -- but, are placed outside of the `draw()` function. These are:
+Processing offers a selection of mouse *event* functions -- which somewhat overlap in functionality with the mouse variables -- but, are placed outside of the `draw()` function. These are:
 [`mousePressed()`](https://py.processing.org/reference/mousePressed.html),
 [`mouseReleased()`](https://py.processing.org/reference/mouseReleased.html),
 [`mouseWheel()`](https://py.processing.org/reference/mouseWheel.html),
 [`mouseClicked()`](https://py.processing.org/reference/mouseClicked.html),
 [`mouseDragged()`](https://py.processing.org/reference/mouseDragged.html), and
 [`mouseMoved()`](https://py.processing.org/reference/mouseMoved.html).
-We will combine the first three to create a simple paint app that features a panel for selecting and adjusting brush properties. Once you've grasped a few mouse functions, it's easy enough to [look up](https://py.processing.org/reference/) and figure out the others. We will also be controlling Processing's `draw()` behaviour manually.
+We will combine the first three to create a simple paint app that features a panel for selecting and adjusting brush properties. These functions listen for specific mouse events, and once triggered, execute some code in response. Once you've grasped a few event functions, it's easy enough to [look up](https://py.processing.org/reference/) and figure out the others. We will also be controlling Processing's `draw()` behaviour manually, as opposed to having it automatically repeat according to the frame rate.
 
 Create a new sketch and save it as "paint_app". Download the font, *Ernest* (by Marc André 'mieps' Misman) from DaFont; extract it; then place the "Ernest.ttf" file in your data sub-directory.  
 [https://www.dafont.com/ernest.font](https://www.dafont.com/ernest.font)  
@@ -252,9 +252,9 @@ def draw():
     print(frameCount)
 {% endhighlight %}
 
-The [`noLoop()`](https://py.processing.org/reference/noLoop.html) function prevents Processing continually executing code within `draw()`. If you run the sketch, the Console displays a single "`1`", confirming that the `draw` ran just once. This may seem odd to you. After all, if you wanted to avoid frames, why would you include a `draw()` at all? Well, there is also a [`loop()`](https://py.processing.org/reference/loop.html) function to reactivate the standard `draw` behaviour. As you will come to see, controlling the loop behaviour with mouse functions is a neat approach to building the interface.
+The [`noLoop()`](https://py.processing.org/reference/noLoop.html) function prevents Processing continually executing code within `draw()`. If you run the sketch, the Console displays a single "`1`", confirming that the `draw` ran just once. This may seem odd to you. After all, if you wanted to avoid frames why would you include a `draw()` at all? Well, there is also a [`loop()`](https://py.processing.org/reference/loop.html) function to reactivate the standard `draw` behaviour. As you will come to see, controlling the `draw` behaviour with mouse functions is a neat approach to building the interface.
 
-Add some global variables. It shouldn't matter if you place these above or below the `setup()` code, as long the lines are flush against the left-edge. These variables will be used to adjust and monitor the state of the brush.
+Add some global variables. It shouldn't matter if you place these above or below the `setup()` code, as long the lines are flush against the left-edge of the editor. These variables will be used to adjust and monitor the state of the brush.
 
 {% highlight py %}
 rainbow = [
@@ -371,7 +371,7 @@ Now suppose that you were using some GUI coding toolkit. The same code might loo
 redbutton = createButton(0,0, 30,30, rainbow[0])
 {% endhighlight %}
 
-The position, size, and fill parameters are all handled in a single `createButton` function. That's neat, but it gets better. To add click events, there will be dedicated methods. For example, something like a `click()` method that acts upon the button you have already created:
+The position, size, and fill parameters are all handled in a single `createButton` function. That's neat, but it gets better. To listen for click events, there will be dedicated methods. For example, something like a `click()` method that acts upon the button you have already created:
 
 {% highlight py %}
 redbutton.click( setBrushColor(rainbow[0]) )
@@ -431,7 +431,7 @@ The last line does nothing for now, but it will be important for the next (sizin
   <figcaption>The yellow dot in the left panel indicates the brush shape and colour.</figcaption>
 </figure>
 
-The [`mouseWheel()`](https://py.processing.org/reference/mouseWheel.html) function returns positive or negative values, depending on the direction you rotate the scroll wheel. Add the following lines to the very bottom of your code:
+The [`mouseWheel()`](https://py.processing.org/reference/mouseWheel.html) event function returns positive or negative values, depending on the direction you rotate the scroll wheel. Add the following lines to the very bottom of your code:
 
 {% highlight py %}
 def mouseWheel(e):
@@ -606,7 +606,7 @@ In <a href="https://juegosrancheros.itch.io/fantastic-arcade-2016">ALPHABET</a>,
   </figcaption>
 </figure>
 
-Keyboard interaction in Processing works similarly to mouse interaction. There are a series of system variables -- [`key`](https://py.processing.org/reference/key.html), [`keyCode`](https://py.processing.org/reference/keyCode.html), and [`keyPressed`](https://py.processing.org/reference/keyPressed_var.html) -- as well as listening functions -- [`keyPressed()`](https://py.processing.org/reference/keyPressed.html), [`keyReleased()`](https://py.processing.org/reference/keyReleased.html), [`keyTyped()`](https://py.processing.org/reference/keyTyped.html).
+Keyboard interaction in Processing works similarly to mouse interaction. There are a series of system variables -- [`key`](https://py.processing.org/reference/key.html), [`keyCode`](https://py.processing.org/reference/keyCode.html), and [`keyPressed`](https://py.processing.org/reference/keyPressed_var.html) -- as well as event functions -- [`keyPressed()`](https://py.processing.org/reference/keyPressed.html), [`keyReleased()`](https://py.processing.org/reference/keyReleased.html), [`keyTyped()`](https://py.processing.org/reference/keyTyped.html).
 
 We will create a simple game that controls a simple character using keyboard input. The closest game I can think of is *Snake*, although "Snake" is really more of a genre than a game. Many (most?) people are familiar with the game, largely thanks to the version Nokia preinstalled on its hugely successful mobile phones of the late nineties. Our game will be far simpler, though. It will be missing a number of key features so I have decided to name it, *Sna*.
 
@@ -618,13 +618,15 @@ We will create a simple game that controls a simple character using keyboard inp
   </figcaption>
 </figure>
 
-Create a new sketch and save it as "sna". Add the following setup code.
+Create a new sketch and save it as "sna". Create a data sub-directory and place a copy of the ["Ernest"](https://www.dafont.com/ernest.font) font within it. Add the following setup code.
 
 {% highlight py %}
 def setup():
     size(400,300)
     frameRate(30)
     noStroke()
+    ernest = createFont('Ernest.ttf', 30)
+    textFont(ernest)
 
 playerx = 195
 playery = 145
@@ -649,7 +651,7 @@ Run the sketch. Confirm that you have a white square sitting in the middle of a 
   <img src="{{ site.url }}/img/pitl07/keyboard-sna-stage.png" />
 </figure>
 
-To control the movement of the cube -- or if you use your imagination, the 'snake' -- we'll use keyboard input. Add a [`keyTyped()`](https://py.processing.org/reference/keyTyped.html) function; this is called every-time a key is pressed. Holding down a key results in repeated calls, the frequency of which is determined by your operating system. To establish which exactly which key has been pressed, print the [`key`](https://py.processing.org/reference/key.html) system variable, which will always hold the most recent key you have used (whether currently pressed or released).
+To control the movement of the cube -- or if you use your imagination, the 'snake' -- we'll use keyboard input. Add a [`keyTyped()`](https://py.processing.org/reference/keyTyped.html) function; this is called every-time a key is pressed. Holding down a key likely results in repeated calls, the frequency of which is determined by your operating system. To establish which exactly which key has been pressed, print the [`key`](https://py.processing.org/reference/key.html) system variable, which will always hold the most recent key you have used (whether currently pressed or released).
 
 {% highlight py %}
 def keyTyped():
@@ -663,7 +665,7 @@ Run the sketch. Whichever key you press appears in the Console. However, there w
   <figcaption>Any keys you press appear in the Console, although some will appear to not register (e.g. arrow keys).</figcaption>
 </figure>
 
-For now, though, we will use `w` for moving up. One approach is to place a [`keyPressed`](https://py.processing.org/reference/keyPressed_var.html) system variable inside of the `draw` loop; this will return `True` when something is pressed. Instead, though, we'll employ a [`keyPressed()`](https://py.processing.org/reference/keyPressed.html) listener function. Add the following code the bottom of your working file:
+For now, though, we will use `w` for moving up. One approach is to place a [`keyPressed`](https://py.processing.org/reference/keyPressed_var.html) system variable inside of the `draw` loop; this will return `True` when something is pressed. Instead, though, we'll employ a [`keyPressed()`](https://py.processing.org/reference/keyPressed.html) event function. Add the following code the bottom of your working file:
 
 {% highlight py %}
 def keyPressed():
@@ -803,7 +805,7 @@ The AABB collision detection will be handled using a single `if` statement. We w
           playerx+10 >= itemx
        ):
         fill('#00FF00')
-        text('hit!', 370,20)
+        text('hit!', 355,28)
 {% endhighlight %}
 
 If the head is anywhere to the right of the red square, a hit is registered. The `rect()` draws squares from the top-left corner across-and-down, so it is necessary to use `x+10` (the x-coordinate plus the width of the head) to ascertain the x-coordinate of the head's right edge. Run the sketch to confirm that this is working. Should you venture anywhere to the right of an x-coordinate of `300`, a "hit!" appears in the top-left corner of the display window. The shaded green area in the image below highlights the 'collision' zone as it operates currently.
@@ -855,7 +857,7 @@ Films run at a constant frame rate. Games attempt to run at a constant frame rat
 {% highlight py %}
 def draw():
     ...
-    for i in range( ceil(random(700)) )
+    for i in range( ceil(random(700)) ):
             for j in range(i):
                 atan(12345*i) * tan(67890*i)
 {% endhighlight %}

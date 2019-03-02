@@ -16,7 +16,7 @@ mathml: true
 &nbsp;  
 In this tutorial, you get to make things move. The content focuses primarily on animation, but also covers transformations, time & date functions, and some trigonometry. As you will discover, blending motion with math produces some exciting results.
 
-[Complete list of Processing lessons]({{ site.baseurl }}/#processing-reverse)
+[Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)
 
 ## Animation
 
@@ -1855,7 +1855,7 @@ You have dealt with string, integer, floating-point, and boolean datatypes. In t
 
 **Begin Lesson 05:** [Art of the State]({% post_url 2019-01-15-processing.py_in_ten_lessons--05-_art_of_the_state %})
 
-[Complete list of Processing lessons]({{ site.baseurl }}/#processing-reverse)
+[Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)
 
 ## References
 

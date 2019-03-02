@@ -16,7 +16,7 @@ categories: code processing python
 &nbsp;  
 This series of tutorial posts covers *Processing.py*, with the purpose of introducing non-programmers to the fundamentals of computer programming in a visual context. If you're an artist, student, designer, researcher, or just somebody who is keen on learning how to code, Processing is a great place to start.
 
-[Complete list of Processing lessons]({{ site.baseurl }}/#processing-reverse)
+[Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)
 
 I would estimate each lesson to take around 2--4 hours to complete, of which a large part of that time will be spent on the tasks/challenges. The speed at which you get through the lessons is likely to be influenced by your prior experience in relatable areas. That said, it is not a race -- enjoy the ride and stop for breaks wherever. Hey, if you're really feeling inspired, feel free to head off-road!
 
@@ -737,7 +737,7 @@ That's it for lesson 01. I hope it was enjoyable, if somewhat challenging. Take 
 
 **Begin Lesson 02:** [Bézier, Catmull, and Rom walk into a bar ...]({% post_url 2018-06-19-processing.py_in_ten_lessons--02-_bezier,_catmull_and_rom_walk_into_a_bar %})
 
-[Complete list of Processing lessons]({{ site.baseurl }}/#processing-reverse)
+[Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)
 
 ## References
 

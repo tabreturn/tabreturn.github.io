@@ -14,7 +14,7 @@ categories: code processing python
 &nbsp;  
 The programs you have written thus far execute line-by-line, beginning at the top of the code and ending at the bottom. You can visualise this flow as a set of steps chained together in a linear arrangement. In this lesson, we explore how to lay divergent paths for the program to follow.
 
-[Complete list of Processing lessons]({{ site.baseurl }}/#processing-reverse)
+[Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)
 
 ### Control Flow
 
@@ -900,7 +900,7 @@ If statements and loops will reappear throughout this course, which will give yo
 
 **Begin Lesson 04:** [`β = fps > 12`]({% post_url 2018-08-10-processing.py_in_ten_lessons--04-_beta_eq_fps_gt_12 %})
 
-[Complete list of Processing lessons]({{ site.baseurl }}/#processing-reverse)
+[Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)
 
 ## References
 

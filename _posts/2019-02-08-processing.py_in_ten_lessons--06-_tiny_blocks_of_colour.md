@@ -17,7 +17,7 @@ mathml: true
 &nbsp;  
 In this tutorial, we will look at a few cool image processing techniques. You are already familiar with the `image()` function, which you have used in combination with `loadImage()` to draw image files to the display window. GIF, JPG, and PNG files are all [*raster*](https://en.wikipedia.org/wiki/Raster_graphics) graphics formats -- that is, digital images comprised of a pixel grid. We will look at reading values off individual- as well as groups of pixels and then manipulating them to create Photoshop-esque filters. To manage these arrays of pixel values, we'll rely on a number of the techniques that you picked up in [lesson 05]({% post_url 2019-01-15-processing.py_in_ten_lessons--05-_art_of_the_state %}), in particular, the combining of loops with lists.
 
-[Complete list of Processing lessons]({{ site.baseurl }}/#processing-reverse)
+[Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)
 
 To begin, we will peek under the hood of some image file formats; this will provide useful insight into how the colours of individual pixels are controlled.
 
@@ -1642,7 +1642,7 @@ In the next lesson, you will look at interactivity in Processing. As you will se
 
 **Begin Lesson 07:** Soft-Face *(coming soon)*
 
-[Complete list of Processing lessons]({{ site.baseurl }}/#processing-reverse)
+[Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)
 
 ## References
 

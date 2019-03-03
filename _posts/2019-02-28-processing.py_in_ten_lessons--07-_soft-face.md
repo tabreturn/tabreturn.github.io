@@ -17,6 +17,8 @@ It is time to look at interactivity in Processing. You can program Processing to
 
 [Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)
 
+We will also touch on a few game development concepts, namely *collision detection* and *delta time*.
+
 ### Some User Interface History
 
 It may hard to believe, but there was a time when computers had no video displays. We'll skip over that early punch-card-and-blinking-lights-and-teleprinters chapter of computing history, though, and begin at the *Command Line Interface* (CLI). Early computer with monitors couldn't display much more than text and basic graphics but this was enough to support a handy CLI. By typing a series of commands, one could instruct a computer to perform its various functions. The CLI, however, is far from dead an buried. While it may no longer be the predominant means of interfacing with computing devices, system administrators and programmers still rely on it for many daily computing tasks. Indeed, you are likely to be surprised by how much can be accomplished just typing instructions. If you have mastered the command line, you will also find it more efficient in certain situations, particularly where repetitive tasks and batch processing are involved.
@@ -849,11 +851,15 @@ The player no longer registers a hit once he or she has passed the right edge of
         text('hit!', 373,28)
 {% endhighlight %}
 
+<figure>
+  <img src="{{ site.url }}/img/pitl07/collision-detection-aabb-3.png" />
+</figure>
+
 The collision detection is now functioning properly. From here, you can make the item disappear and apply some type of power-up. For example, perhaps the snake's speed could increase? Then, after a short period of time, a new item could appear at some random location? Before you begin trying anything around, though, let's look at another important game programming concept: *delta time*.
 
 ### Delta Time
 
-Films run at a constant frame rate. Games attempt to run at a constant frame rate, although there is often fluctuation. Your Sna game runs at a frame rate of 30 fps, as specified in the `setup` function. Your computer is likely powerful enough to check for key keyboard input, render the snake's new position, and detect a possible collision, without producing any noticeable lag. However, there are instances where your computer must perform many additional frame-by-frame computations. For instance, there may be twenty items scattered about the stage, therefore, an additional nineteen AABB collision tests must take place before each new frame can be displayed. More likely, though, it would take thousands of such collision tests to produce any perceivable slow-down. So, for the sake of example, add some highly demanding (if pointless) computational task to your `draw` loop:
+Films run at a constant frame rate. Games attempt to run at a constant frame rate, but there is often fluctuation. Your Sna game runs at a frame rate of 30 fps, as specified in the `setup` function. Your computer is powerful enough to check for key input, render the snake's new position, and detect possible collisions, without producing any noticeable lag. However, there are instances where a game must perform many additional frame-by-frame calculations. For instance, there may be twenty collectable items scattered about the stage; in such a scenario, an additional nineteen AABB collision tests must take place before a new frame can be displayed. More likely, though, it would take thousands of collision tests per frame to produce any perceivable slow-down. Add a highly demanding (if pointless) computational task to your `draw` loop:
 
 {% highlight py %}
 def draw():
@@ -863,11 +869,11 @@ def draw():
                 atan(12345*i) * tan(67890*i)
 {% endhighlight %}
 
-The `for` loop, literally, does nothing useful. It performs a bunch of intense trigonometry calculations, only to discard the values when complete. Kind of like math exams 🙃.
+This new `for` loop does nothing useful. It performs a bunch of intense trigonometry calculations, only to discard the values when complete. A pointless task that will add to the computational load of each frame.
 
-Run the game. You should experience a noticeable reduction in frame rate. Note, however, that the loop employs a random function, so the effect is erratic. In other words, the snake will move smoothly, but then randomly struggle before speeding up again. If you find that your computer is grinding to a near-halt, reduce the `700` to something a bit more manageable. Conversely, if everything seems to be running as smoothly as before, try doubling this value. You'll want to find some number where, roughly, the snake's average speed is halved.
+Run the game. You should experience a noticeable reduction in frame rate. Note, however, that the loop employs a random function, so the lag effect is erratic -- it may run anywhere between zero and 700 times in a single frame. In other words, the snake will move smoothly, but then randomly struggle before speeding up again. If you find that your computer is grinding to a near-halt, reduce the `700` to something a bit more manageable. Conversely, if everything seems to be running as smoothly as before, try doubling this value. You'll want to find some number where, roughly, the snake's *average* speed is halved.
 
-Now, edit the `yspeed` variable, so that the snake immediately heads upward when the sketch runs. In addition to this edit, add an `if` statement to the bottom of your draw function, to record the total milliseconds that have elapsed upon the snake reaching the top edge.
+Now, edit the `yspeed` variable so that the snake immediately heads upward when the sketch runs. In addition to this edit, add an `if` statement to the bottom of your draw function to record the total milliseconds elapsed upon the snake reaching the top edge.
 
 {% highlight py %}
 ...
@@ -881,35 +887,69 @@ def draw():
         noLoop()
 {% endhighlight %}
 
-Run the sketch. The snake heads-off as soon as it starts. Upon reaching the top-edge, the `noLoop()` halts everything and the millisecond count is displayed. This figure is likely greater than 2000, or even 3000 milliseconds.
+Run the sketch. The snake heads-off as the display window opens. Upon reaching the top-edge, the `noLoop()` halts everything and the millisecond count is displayed. This figure is likely greater than 2000, or even 3000 milliseconds.
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/delta-time-slowest-time.png" />
 </figure>
 
-The fastest possible time that the snake can reach the boundary is 1125 milliseconds. This is because it has 300 ÷ 2 = 150 pixels to cover, travelling a speed of 4 pixels-per-frame. So, that's 150 pixels ÷ 4 pixels-per-frame = 37.5 frames to reach the edge. The game is running at 30 frames per second. 37.5 total frames ÷ 30 fps = 1.25 seconds -- or, 1125 milliseconds. Of course, the extra computational load is slowing it down. Change the `700` (or whatever figure you have used) in the `for` loop to a zero. Run the sketch. The game will now run at normal speed again. The snake should make it to the edge in less time, perhaps even under 2000 milliseconds.
+The fastest possible time that the snake can reach the boundary is 1125 milliseconds. This is because it has 300 ÷ 2 = 150 pixels to cover, travelling a speed of 4 pixels-per-frame. So, that's 150 pixels ÷ 4 pixels-per-frame = 37.5 frames to reach the edge. The game is running at 30 frames per second. 37.5 total frames ÷ 30 fps = 1.25 seconds -- or, 1125 milliseconds. Of course, it is the extra loop that is slowing it down. Change the `700` (or whatever figure you have used) in the `for` loop to a zero. Run the sketch. The game will now run at normal speed again. The snake should make it to the edge in less time, perhaps even under 2000 milliseconds.
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/delta-time-normal.png" />
 </figure>
 
-Why not 1125 milliseconds? Well, the very first frame takes a some extra time because Processing needs to setup a few things.
+Why not 1125 milliseconds? Well, the very first frame takes a some extra time because Processing needs to setup a few things. To measure the time elapsed between the drawing of each new frame, add the following code:
 
 {% highlight py %}
 ...
-currframe = 0
-lastframe = millis()
+lastframe = 0
 
 def draw():
     global currframe, lastframe, x
     currframe = millis()
-    deltatime = (currframe-lastframe) / 1000.0 * 30
+    deltatime = (currframe-lastframe)
     print(deltatime)
 
     ...
 
     lastframe = currframe
 {% endhighlight %}
+
+The `currframe` variable is used to record the current time, which can then compared with the `lastframe` variable. The difference between these to values is assigned to the `deltatime` variable. Run the sketch. Once the snake has reached the top edge, scroll back up through the Console output. The `deltatime` averages around 33 milliseconds -- because 1000 milliseconds divided by 30 (the frame rate) is 33.3 recurring. The exception is the very first value, which is something larger.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl07/delta-time-delayed-frame-1.png" class="fullwidth" />
+  <figcaption>The <code>deltatime</code> averages around 33 milliseconds. The first value, however, is significantly larger.</figcaption>
+</figure>
+
+Now set your `for` loop random figure back to whatever it was that you were using before zero (in my case, 700).
+
+{% highlight py %}
+    for i in range( ceil(random(700)) ):
+{% endhighlight %}
+
+Run the sketch. Notice how the `deltatime` values are far more erratic and generally larger? This is hardly surprising, as delta time is represents the time elapsed (in milliseconds) between each frame.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl07/delta-time-delayed-700.png" class="fullwidth" />
+  <figcaption>The <code>deltatime</code> values are now far more erratic.</figcaption>
+</figure>
+
+There are a
+
+<figure>
+  <img src="{{ site.url }}/img/pitl07/delta-time-applied.png" />
+  <figcaption>......</figcaption>
+</figure>
+
+
+
+
+
+
+
+
 
 
 Early games were programmed for a specific processor.
@@ -930,18 +970,6 @@ For instance, at some point in a game there may be a large number of enemies in 
 
 
 
-
-
-
-explain functions, then have reader go back to paint app and add functions as per shortcuts in panel
-
-...
-
-a word about games
-
-collision detection
-
-delta time
 
 
 

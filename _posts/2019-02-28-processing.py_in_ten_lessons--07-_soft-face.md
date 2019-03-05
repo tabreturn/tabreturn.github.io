@@ -620,7 +620,7 @@ We will create a simple game that controls a simple character using keyboard inp
   </figcaption>
 </figure>
 
-Create a new sketch and save it as "sna". Create a data sub-directory and place a copy of the ["Ernest"](https://www.dafont.com/ernest.font) font within it. Add the following setup code.
+Create a new sketch and save it as "sna". Create a "data" sub-directory and place a copy of the [Ernest](https://www.dafont.com/ernest.font) font within it. Add the following code to get started.
 
 {% highlight py %}
 def setup():
@@ -654,7 +654,7 @@ Run the sketch. Confirm that you have a white square sitting in the middle of a 
   <img src="{{ site.url }}/img/pitl07/keyboard-sna-stage.png" />
 </figure>
 
-To control the movement of the cube -- or if you use your imagination, the 'snake' -- we'll use keyboard input. Add a [`keyTyped()`](https://py.processing.org/reference/keyTyped.html) function; this is called every-time a key is pressed. Holding down a key likely results in repeated calls, the frequency of which is determined by your operating system. To establish which exactly which key has been pressed, print the [`key`](https://py.processing.org/reference/key.html) system variable, which will always hold the most recent key you have used (whether currently pressed or released).
+To control the movement of the cube -- or if you use your imagination, the 'snake' -- we'll use keyboard input. Add a [`keyTyped()`](https://py.processing.org/reference/keyTyped.html) function; this will be called every-time a key is pressed. Holding down a key likely results in repeated calls, the frequency of which is determined by your operating system. To establish which which key exactly has been pressed, print the [`key`](https://py.processing.org/reference/key.html) system variable which will always hold the most recent key you have used (whether currently pressed or released).
 
 {% highlight py %}
 def keyTyped():
@@ -668,7 +668,9 @@ Run the sketch. Whichever key you press appears in the Console. However, there w
   <figcaption>Any keys you press appear in the Console, although some will appear to not register (e.g. arrow keys).</figcaption>
 </figure>
 
-For now, though, we will use `w` for moving up. One approach is to place a [`keyPressed`](https://py.processing.org/reference/keyPressed_var.html) system variable inside of the `draw` loop; this will return `True` when something is pressed. Instead, though, we'll employ a [`keyPressed()`](https://py.processing.org/reference/keyPressed.html) event function. Add the following code the bottom of your working file:
+For now, though, we will use `w` for moving up. One approach is to place a [`keyPressed`](https://py.processing.org/reference/keyPressed_var.html) system variable inside of the `draw` loop, as this will return `True` when something is pressed. Instead, though, we'll employ a [`keyPressed()`](https://py.processing.org/reference/keyPressed.html) event function. Think of it this way: `mousePressed` is to `mousePressed()` what `keyPressed` is to `keyPressed()`.
+
+ Add the following code the end of your working file:
 
 {% highlight py %}
 def keyPressed():
@@ -678,13 +680,13 @@ def keyPressed():
         yspeed = -4
 {% endhighlight %}
 
-Ensure that this code is flush against the left-edge (not indented within the `draw()` function). The `if` statement and tests the `key` variable to determine if it is equal to `'w'`. Run the sketch. Pressing the w-key sends the 'snake' heading off in an upward direction. The `yspeed` variable -- formerly equal to zero -- is assigned a value of `-4`, which is in-turn added to the `y` coordinate with each new frame drawn.
+Ensure that this code is flush against the left-edge (not indented within the `draw()` function). The `if` statement tests the `key` variable to determine if it is equal to `'w'`. Run the sketch. Pressing the w-key sends the 'snake' heading off in an upward direction. The `yspeed` variable -- formerly equal to zero -- is assigned a value of `-4`, which is in-turn added to the `y` coordinate with each new frame drawn.
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/keyboard-sna-up.png" />
 </figure>
 
-The problem is that the square passes through the top of the display window never to be seen again. We will add some wrap-around walls so that, if the square exits at a given edge, it reappears on the opposite side. Add some `if` statements to the `draw()` function to reposition the cube upon reaching the boundary.
+However, the square passes straight through the top of the display window never to be seen again. We will add some wrap-around walls so that, if the square exits at a given edge, it reappears on the opposite side. Add some `if` statements to the `draw()` function to reposition the cube upon breaching the boundary.
 
 {% highlight py %}
 def draw():
@@ -701,7 +703,7 @@ def draw():
         playery = 0
 {% endhighlight %}
 
-Test the sketch. The cube will now teleport as it exits the display window. Adding left/right/down movement shouldn't be a challenge for you. But, rather than relying on the a/d/s keys, we will employ the arrow keys. Recall that the `key` variable can manage any of letter-keys fine, but ignores the arrow- and a some other special keys. For detecting special keys, one uses the [`keyCode`](https://py.processing.org/reference/keyCode.html) system variable. Add a line to print key-codes.
+Test the game. The cube will now teleport as it exits the display window. Adding left/right/down movement shouldn't be a challenge for you. But, rather than relying on the a/d/s keys, we will employ the arrow keys. Recall that the `key` variable registers any letter-keys fine, but ignores the arrow- and a some other special keys. For detecting special keys, one uses the [`keyCode`](https://py.processing.org/reference/keyCode.html) system variable. Add a line to print the key-code.
 
 {% highlight py %}
 def keyPressed():
@@ -712,14 +714,14 @@ def keyPressed():
     print(keyCode)
 {% endhighlight %}
 
-Run the sketch. Every key that you press produces a corresponding number. Most importantly, the arrow keys range is `37`--`40`.
+Run the sketch. Every key that you press produces a corresponding number. Importantly, the arrow keys range is `37`--`40`.
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/keyboard-sna-keycode.png" class="fullwidth" />
   <figcaption>As indicated in the Console, the arrow keys range is 37&ndash;40.</figcaption>
 </figure>
 
-You can use these numbers with `if` statements to check whether a special key has been pressed. However, Processing also provides some keyword alternatives to the number codes, such as `ALT`, `CONTROL`, `SHIFT`, `LEFT`, `RIGHT`, `UP`, and `DOWN`. Add the following code to your `keyPressed()` function:
+You can now use these numbers with `if` statements to check whether a special key has been pressed. However, Processing also provides some keyword alternatives to the number codes, such as `ALT`, `CONTROL`, `SHIFT`, `LEFT`, `RIGHT`, `UP`, and `DOWN`. Add some code for arrow-key movement:
 
 {% highlight py %}
 def keyPressed():
@@ -742,13 +744,13 @@ def keyPressed():
         yspeed = 0
 {% endhighlight %}
 
-You now have four-way (with no diagonal) movement.
+The game can now handle four-way (but not diagonal) movement.
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/keyboard-sna-four-way.png" />
 </figure>
 
-Note, however, that `BACKSPACE`, `DELETE`, `ENTER`, `ESC`, `RETURN`, and `TAB` are not 'special' keys. As such, these are held by the `key` variable.
+Note, however, that `BACKSPACE`, `DELETE`, `ENTER`, `ESC`, `RETURN`, and `TAB` are not 'special' keys. As such, these are held by the `key` variable (with all the other 'non-special' keys). If you wish to, you can add the following code to your `keyPressed()` function to test this out.
 
 {% highlight py %}
     if (
@@ -760,29 +762,31 @@ Note, however, that `BACKSPACE`, `DELETE`, `ENTER`, `ESC`, `RETURN`, and `TAB` a
         print('backspace, delete, enter, esc, return, or tab')
 {% endhighlight %}
 
-<sup markdown="1">By using a pair of round brackets with an `if` statement, one can break-up conditional expressions across multiple lines. This helps with code readability.</sup>
+<sup markdown="1">By using a pair of round brackets with an `if` statement, one can break-up conditional expressions across multiple lines. This helps with code readability in complex situations.</sup>
 
-Okay, so it's not the most advanced game. A proper game framework typically includes -- at the very least -- a built-in selection of rendering, physics, collision detection, audio, animation, and perhaps AI features. Processing has the renderer already, as well as support for some other essentials, like event handlers and graphics. What it lacks, though, can made up for using various [libraries](https://processing.org/reference/libraries/). We will be looking at a physics library in a few chapters time. For now, let us add some basic collision detection the Sna game. This will (a) provide some understanding of the concepts involved, and (b) help you appreciate all the heavy-lifting a game library undertakes.
+Okay, so it's not the most advanced game. A proper game framework typically includes (at the very least) a built-in selection of rendering, physics, collision detection, audio, animation, and perhaps AI features. Processing has the renderer already, as well as support for some other essentials, like event handlers and graphics. What it lacks, though, can made up for using various [libraries](https://processing.org/reference/libraries/), and we will be looking at a physics library in a few chapters time.
+
+In my experience, many people get excited about developing a game as soon as they have been introduced to handling mouse and keyboard interaction. So, we will press on a little further, adding some basic collision detection the Sna sketch. This will (a) provide insight into some further game programming concepts, and (b) help you appreciate all the heavy-lifting a game libraries can do for you.
 
 ### Collision Detection
 
-To establish if two or more shapes have intersected within a game, one performs various *collision detection* tests. There are many algorithms for such a task -- the more accurate varieties, though, are more demanding on your system (and coding skills). We'll look at one of the most basic forms of collision detection: *axis-aligned bounding boxes*, also known as AABBs.
+To establish if two or more shapes have intersected within a game, one performs a variety of *collision detection* tests. There are many algorithms for such a task -- the more accurate varieties, though, are more demanding on your system (and coding skills). We'll look at one of the most basic forms of collision detection techniques, namely, *axis-aligned bounding boxes* -- also known as AABBs.
 
-With AABBs, every collide-able element is placed within a rectangular *bounding box*. Of course, many games assets will not be perfectly rectangular and one must sacrifice some accuracy.
+With AABBs, every collide-able element is placed within a rectangular *bounding box*. Of course, many games assets are not perfectly rectangular and one must sacrifice some accuracy.
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/collision-detection-bounding-boxes.png" />
   <figcaption>Invader: "What? Dude! That sooo didn't hit me!"</figcaption>
 </figure>
 
-We can attempt to improve the perceived accuracy by shrinking the bounding box, using multiple boxes, or employing a different yet comparably performant shape -- like, a circle. You could even mix multiple boxes and circles, but bear in mind that every shape must be tested against every obstacle, item, and enemy currently on screen. This can result in a significant increase in overhead, and as a result, slow or jerky performance.
+We can attempt to improve the perceived accuracy by shrinking the bounding box, using multiple boxes, or employing a different yet comparably performant shape -- like, a circle. You could even mix multiple bounding- boxes and circles, but bear in mind that every shape must be tested against every obstacle, item, and enemy currently on screen. This can result in a significant increase in overhead, and as a result, slow or jerky performance.
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/collision-detection-bounding-volumes.png" />
   <figcaption>Left to right: smaller bounding box; multiple bounding boxes; a bounding circle.</figcaption>
 </figure>
 
-In a few chapters time, we'll look at a circular collision volumes. For even greater accuracy, there are polygonal bounding volumes that can accommodate just about any shape, but these require lots of involved math! For now, we'll add some AABB collision detection to our Sna game. To begin, add a collectable item -- a red square -- to the stage:
+In a few chapters time, we will take a proper look at a circular collision volumes. For even greater accuracy, there are polygonal bounding volumes that can accommodate just about any shape, but these require a heap of involved math! For now, we'll add some straight-forward AABB collision detection to the Sna game. To begin, add a collectable item -- a red square -- to the stage:
 
 {% highlight py %}
 def draw():
@@ -798,7 +802,7 @@ def draw():
   <img src="{{ site.url }}/img/pitl07/collision-detection-collectable-item.png" />
 </figure>
 
-The AABB collision detection will be handled using a single `if` statement. We will build-up the conditions one piece at a time. The snake's trail will not trigger any collisions, just the solid white square at its 'head'. Add the following code the end of the `draw()` function:
+The collision test will be handled using a single `if` statement, and we will build-up the conditions one piece at a time. The snake's trail will not trigger any collisions, just the solid white square at its 'head'. Add a new `if` statement to the `draw()` function:
 
 {% highlight py %}
     ...
@@ -811,7 +815,7 @@ The AABB collision detection will be handled using a single `if` statement. We w
         text('hit!', 373,28)
 {% endhighlight %}
 
-If the head is anywhere to the right of the red square, a hit is registered. The `rect()` draws squares from the top-left corner across-and-down, so it is necessary to use `x+10` (the x-coordinate plus the width of the head) to ascertain the x-coordinate of the head's right edge. Run the sketch to confirm that this is working. Should you venture anywhere to the right of an x-coordinate of `300`, a "hit!" appears in the top-left corner of the display window. The shaded green area in the image below highlights the 'collision' zone as it operates currently.
+If the any part of the head is anywhere to the right of the red square, a hit is registered. The `rect()` draws squares from the top-left corner across-and-down, so it is necessary to use `x+10` (the x-coordinate plus the width of the head) to ascertain the x-coordinate of the head's right edge. Run the sketch to confirm that this is working. Watch for the "HIT!" that appears in the top-left corner of the display window. The shaded green area in the image below highlights the 'collision' zone as it operates currently.
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/collision-detection-aabb-1.png" />
@@ -830,14 +834,18 @@ To refine this further, expand on the condition to test whether the player has v
         text('hit!', 373,28)
 {% endhighlight %}
 
-So, the `playerx+10 >= itemx` checks if the *right edge of the head* is overlapping the *left edge of the item*; whereas the `playerx <= itemx+10` checks if the *left edge of the head* is overlapping the *right edge of the item*.
+From the condition, one can establish that:  
+`playerx+10 >= itemx`  
+checks if the *right edge of the head* is overlapping the *left edge of the item*;  
+`playerx <= itemx+10`  
+checks if the *left edge of the head* is overlapping the *right edge of the item*.
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/collision-detection-aabb-2.png" />
   <figcaption>Anywhere within the green strip registers as a hit.</figcaption>
 </figure>
 
-The player no longer registers a hit once he or she has passed the right edge of the item. However, as indicated by the green area, the zones directly above or below the item's left/right edges still register as a hit. To resolve this, add additional checks for the y-axis:
+The head no longer registers a hit once it has passed the right edge of the item. However, as indicated by the green area, the zones directly above or below the item's left/right edges still register as a hit. To resolve this, add additional checks for the y-axis:
 
 {% highlight py %}
     ...
@@ -855,11 +863,11 @@ The player no longer registers a hit once he or she has passed the right edge of
   <img src="{{ site.url }}/img/pitl07/collision-detection-aabb-3.png" />
 </figure>
 
-The collision detection is now functioning properly. From here, you can make the item disappear and apply some type of power-up. For example, perhaps the snake's speed could increase? Then, after a short period of time, a new item could appear at some random location? Before you begin trying anything around, though, let's look at another important game programming concept: *delta time*.
+The collision detection is now functioning properly. From here, you could make the item disappear and apply some type of power-up. For example, perhaps the snake's speed could increase when it picks-up the red square? Then, perhaps, after a short period of time a new item could appear at some random new location? Before you begin trying anything around, though, let's look at one another important game programming concept: *delta time*.
 
 ### Delta Time
 
-Films run at a constant frame rate. Games attempt to run at a constant frame rate but there is often fluctuation. Your Sna game is ticking over at 30 fps, as specified in the `setup` function. Your computer is powerful enough to check for key input, render the snake's new position, and detect possible collisions -- every frame -- without producing any noticeable lag. However, there are instances where a game must perform many additional frame-by-frame calculations. For instance, there may be twenty collectable items scattered about the stage; in such a scenario, an additional nineteen AABB collision tests must take place before a new frame can be displayed. More likely, though, it would take thousands of collision tests per frame to produce any perceivable slow-down.
+Films run at a constant frame rate. Games attempt to run at a constant frame rate, but despite this, there is often fluctuation. Your Sna game is ticking over at 30 fps, as specified in the `setup` function. Your computer is powerful enough to check for key input, render the snake's new position, and detect possible collisions -- each and every frame -- without producing any noticeable lag. However, there are instances where a game must perform many additional frame-by-frame calculations. For instance, there may be twenty collectable items scattered about the stage; in such a scenario, an additional nineteen AABB collision tests must take place before a new frame can be displayed. More likely, though, it would take thousands of collision tests per frame to produce any perceivable slow-down.
 
 Edit the `yspeed` variable so that the snake immediately heads upward when the sketch runs. In addition to this edit, add an `if` statement to the bottom of your draw function to record the total milliseconds elapsed upon the snake reaching the top edge.
 
@@ -882,7 +890,7 @@ Run the sketch. The snake heads-off as the display window opens. Upon reaching t
   <figcaption>The quickest time my computer managed was 2833 milliseconds. Your computer may be somewhat slower or faster.</figcaption>
 </figure>
 
-The fastest possible time that the snake can reach the boundary is 2500 milliseconds. My computer managed 2833 milliseconds, but yours could be slower or faster. The snake has 300 ÷ 2 = 150 pixels to cover, travelling a speed of 2 pixels-per-frame. So, that's 150 pixels ÷ 2 pixels-per-frame = 75 frames to reach the edge. The game is running at 30 frames per second. 75 total frames ÷ 30 fps = 2.5 seconds, or, 2500 milliseconds. Why does it not manage 2500 milliseconds flat? Well, the very first frame takes some extra time because Processing needs to setup a few things.
+The fastest possible time that the snake can reach the boundary is 2500 milliseconds. My computer managed 2833 milliseconds, but your system could be slower or faster. The snake has 300 ÷ 2 = 150 pixels to cover, travelling a speed of 2 pixels-per-frame. So, that's 150 pixels ÷ 2 pixels-per-frame = 75 frames to reach the edge. Recall that the game is running at 30 frames per second. Therefore, 75 total frames ÷ 30 fps = 2.5 seconds, or, 2500 milliseconds. Why can't it manage 2500 milliseconds flat? Well, the very first frame takes some extra time because Processing needs to setup a few things.
 
 To measure the time elapsed between the drawing of each new frame, add the following code:
 
@@ -908,7 +916,7 @@ The `currframe` variable is used to record the current time, which can then comp
   <figcaption>The <code>deltatime</code> averages around 33 milliseconds. The first frame takes significantly longer.</figcaption>
 </figure>
 
-To emulate some heavier processing load, as if there were thousands of potential collisions to detect, add a highly demanding (if pointless) computational task to the end of your `draw` loop, just before the `lastframe = currentframe` line:
+To emulate some heavier processing load, as if there were thousands of potential collisions to detect, add a highly demanding (if pointless) computational task to the end of your `draw` loop just before the `lastframe = currentframe` line:
 
 {% highlight py %}
 def draw():
@@ -920,29 +928,23 @@ def draw():
     lastframe = currentframe
 {% endhighlight %}
 
-This new `for` loop does nothing useful. It performs a bunch of intense trigonometry calculations, only to discard the values when complete. Of course, all of this extra trig-crunching will slow things down. Run the sketch.
+This new `for` loop does nothing useful. It performs a bunch of intense trigonometry calculations only to discard the values when complete. Of course, all of this extra trig-crunching will slow things down. Run the sketch to see what happens.
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/delta-time-slowest-time.png" />
   <figcaption>With the extra processing load, the game is noticeably slower.</figcaption>
 </figure>
 
-You should experience a noticeable reduction in frame rate. Note, however, that the loop employs a random function, so the lag effect is erratic -- the loop may run anywhere between zero and 700 times in a single `draw`. In other words, the snake will move smoothly, but then randomly struggle before speeding up again. My computer clocked 3120 milliseconds for the boundary sprint, but yours could be slower or faster. If you find that your computer is grinding to a near-halt, reduce the `700` to something a bit more manageable. Conversely, if everything seems to be running as smoothly as before, try doubling this value. You'll want to find some number where, roughly speaking, the snake's average speed is halved.
+You should experience a noticeable reduction in frame rate. Note, however, that the loop employs a random function, so the lag effect is erratic as the loop may run anywhere between zero and 700 times in a single `draw`. In other words, the snake will move smoothly, but then randomly struggle before speeding up again. My computer clocked 5985 milliseconds for the boundary sprint, but yours could be much slower or faster. If you find that your computer is grinding to a near-halt, reduce the `700` to something a bit more manageable. Conversely, if everything seems to be running about as smoothly as before, try doubling this value. You'll want to find some number where, roughly speaking, the snake's average speed is halved.
 
-You will also notice that the `deltatime` (time elapsed between each frame) values are far more erratic and generally larger.
+You will also notice that the `deltatime` (the milliseconds elapsed between each frame) values are far more erratic and generally larger.
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/delta-time-delayed-700.png" class="fullwidth" />
   <figcaption>The <code>deltatime</code> values are now far more erratic as well as larger.</figcaption>
 </figure>
 
-
- Change the `700` (or whatever figure you have used) in the `for` loop to a zero
-
-
-
-
-Now set your `for` loop random figure back to whatever it was that you were using before zero (in my case, 700).
+This is where the *delta time* proves useful.
 
 {% highlight py %}
     for i in range(ceil(random( 700 )) ):
@@ -958,7 +960,7 @@ And this is where the `deltatime` variable comes in handy. Suppose that we wante
 </figure>
 
 
-
+3 side-by-side comparison
 
 
 

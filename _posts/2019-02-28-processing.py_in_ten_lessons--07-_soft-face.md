@@ -908,7 +908,7 @@ The `currframe` variable is used to record the current time, which can then comp
   <figcaption>The <code>deltatime</code> averages around 33 milliseconds. The first frame takes significantly longer.</figcaption>
 </figure>
 
-To emulate some heavier processing load, as if there were thousands of potential collisions to detect, add a highly demanding (if pointless) computational task to the end of your `draw` loop:
+To emulate some heavier processing load, as if there were thousands of potential collisions to detect, add a highly demanding (if pointless) computational task to the end of your `draw` loop, just before the `lastframe = currentframe` line:
 
 {% highlight py %}
 def draw():
@@ -916,6 +916,8 @@ def draw():
     for i in range(ceil(random( 700 ))):
             for j in range(i):
                 atan(12345*i) * tan(67890*i)
+
+    lastframe = currentframe
 {% endhighlight %}
 
 This new `for` loop does nothing useful. It performs a bunch of intense trigonometry calculations, only to discard the values when complete. Of course, all of this extra trig-crunching will slow things down. Run the sketch.
@@ -927,11 +929,11 @@ This new `for` loop does nothing useful. It performs a bunch of intense trigonom
 
 You should experience a noticeable reduction in frame rate. Note, however, that the loop employs a random function, so the lag effect is erratic -- the loop may run anywhere between zero and 700 times in a single `draw`. In other words, the snake will move smoothly, but then randomly struggle before speeding up again. My computer clocked 3120 milliseconds for the boundary sprint, but yours could be slower or faster. If you find that your computer is grinding to a near-halt, reduce the `700` to something a bit more manageable. Conversely, if everything seems to be running as smoothly as before, try doubling this value. You'll want to find some number where, roughly speaking, the snake's average speed is halved.
 
-You will also notice that the `deltatime` (time elapsed between each frame) values are far more erratic and generally bigger.
+You will also notice that the `deltatime` (time elapsed between each frame) values are far more erratic and generally larger.
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/delta-time-delayed-700.png" class="fullwidth" />
-  <figcaption>The <code>deltatime</code> values are now far more erratic.</figcaption>
+  <figcaption>The <code>deltatime</code> values are now far more erratic as well as larger.</figcaption>
 </figure>
 
 
@@ -943,7 +945,7 @@ You will also notice that the `deltatime` (time elapsed between each frame) valu
 Now set your `for` loop random figure back to whatever it was that you were using before zero (in my case, 700).
 
 {% highlight py %}
-    for i in range( ceil(random(700)) ):
+    for i in range(ceil(random( 700 )) ):
 {% endhighlight %}
 
 

@@ -760,7 +760,7 @@ Note, however, that `BACKSPACE`, `DELETE`, `ENTER`, `ESC`, `RETURN`, and `TAB` a
         print('backspace, delete, enter, esc, return, or tab')
 {% endhighlight %}
 
-<sup>Using a pair of round brackets, one can break-up conditional expressions across multiple lines. This helps with code readability.</sup>
+<sup markdown="1">By using a pair of round brackets with an `if` statement, one can break-up conditional expressions across multiple lines. This helps with code readability.</sup>
 
 Okay, so it's not the most advanced game. A proper game framework typically includes -- at the very least -- a built-in selection of rendering, physics, collision detection, audio, animation, and perhaps AI features. Processing has the renderer already, as well as support for some other essentials, like event handlers and graphics. What it lacks, though, can made up for using various [libraries](https://processing.org/reference/libraries/). We will be looking at a physics library in a few chapters time. For now, let us add some basic collision detection the Sna game. This will (a) provide some understanding of the concepts involved, and (b) help you appreciate all the heavy-lifting a game library undertakes.
 
@@ -859,7 +859,7 @@ The collision detection is now functioning properly. From here, you can make the
 
 ### Delta Time
 
-Films run at a constant frame rate. Games attempt to run at a constant frame rate, but there is often fluctuation. Your Sna game is ticking over at 30 fps, as specified in the `setup` function. Your computer is powerful enough to check for key input, render the snake's new position, and detect possible collisions, without producing any noticeable lag. However, there are instances where a game must perform many additional frame-by-frame calculations. For instance, there may be twenty collectable items scattered about the stage; in such a scenario, an additional nineteen AABB collision tests must take place before a new frame can be displayed. More likely, though, it would take thousands of collision tests per frame to produce any perceivable slow-down.
+Films run at a constant frame rate. Games attempt to run at a constant frame rate but there is often fluctuation. Your Sna game is ticking over at 30 fps, as specified in the `setup` function. Your computer is powerful enough to check for key input, render the snake's new position, and detect possible collisions -- every frame -- without producing any noticeable lag. However, there are instances where a game must perform many additional frame-by-frame calculations. For instance, there may be twenty collectable items scattered about the stage; in such a scenario, an additional nineteen AABB collision tests must take place before a new frame can be displayed. More likely, though, it would take thousands of collision tests per frame to produce any perceivable slow-down.
 
 Edit the `yspeed` variable so that the snake immediately heads upward when the sketch runs. In addition to this edit, add an `if` statement to the bottom of your draw function to record the total milliseconds elapsed upon the snake reaching the top edge.
 
@@ -869,7 +869,7 @@ yspeed = -2
 
 def draw():
     ...
-    if y > 145:
+    if playery > 145:
         fill('#00FF00')
         text(millis(), width/2,28)
         noLoop()
@@ -879,9 +879,12 @@ Run the sketch. The snake heads-off as the display window opens. Upon reaching t
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/delta-time-normal.png" />
+  <figcaption>The quickest time my computer managed was 2833 milliseconds. Your computer may be somewhat slower or faster.</figcaption>
 </figure>
 
-The fastest possible time that the snake can reach the boundary is 2500 milliseconds. This is because it has 300 ÷ 2 = 150 pixels to cover, travelling a speed of 2 pixels-per-frame. So, that's 150 pixels ÷ 2 pixels-per-frame = 75 frames to reach the edge. The game is running at 30 frames per second. 75 total frames ÷ 30 fps = 2.5 seconds -- or, 2500 milliseconds. Of course, it is the extra trig-crunching loop that is slowing it down. Change the `700` (or whatever figure you have used) in the `for` loop to a zero. Why does it not manage 2500 milliseconds flat? Well, the very first frame takes some extra time because Processing needs to setup a few things. To measure the time elapsed between the drawing of each new frame, add the following code:
+The fastest possible time that the snake can reach the boundary is 2500 milliseconds. My computer managed 2833 milliseconds, but yours could be slower or faster. The snake has 300 ÷ 2 = 150 pixels to cover, travelling a speed of 2 pixels-per-frame. So, that's 150 pixels ÷ 2 pixels-per-frame = 75 frames to reach the edge. The game is running at 30 frames per second. 75 total frames ÷ 30 fps = 2.5 seconds, or, 2500 milliseconds. Why does it not manage 2500 milliseconds flat? Well, the very first frame takes some extra time because Processing needs to setup a few things.
+
+To measure the time elapsed between the drawing of each new frame, add the following code:
 
 {% highlight py %}
 ...
@@ -905,30 +908,34 @@ The `currframe` variable is used to record the current time, which can then comp
   <figcaption>The <code>deltatime</code> averages around 33 milliseconds. The first frame takes significantly longer.</figcaption>
 </figure>
 
-To emulate some heavy processing load. Add a highly demanding (if pointless) computational task to your `draw` loop:
+To emulate some heavier processing load, as if there were thousands of potential collisions to detect, add a highly demanding (if pointless) computational task to the end of your `draw` loop:
 
 {% highlight py %}
 def draw():
     ...
-    for i in range( ceil(random(700)) ):
+    for i in range(ceil(random( 700 ))):
             for j in range(i):
                 atan(12345*i) * tan(67890*i)
 {% endhighlight %}
 
-This new `for` loop does nothing useful. It performs a bunch of intense trigonometry calculations, only to discard the values when complete. A pointless task that will add to the computational load of each frame.
-
-This figure is likely greater than 4000, or even 6000 milliseconds.
-
-Run the game. You should experience a noticeable reduction in frame rate. Note, however, that the loop employs a random function, so the lag effect is erratic -- the loop may run anywhere between zero and 700 times in a single frame. In other words, the snake will move smoothly, but then randomly struggle before speeding up again. If you find that your computer is grinding to a near-halt, reduce the `700` to something a bit more manageable. Conversely, if everything seems to be running as smoothly as before, try doubling this value. You'll want to find some number where, roughly, the snake's *average* speed is halved.
-
-
+This new `for` loop does nothing useful. It performs a bunch of intense trigonometry calculations, only to discard the values when complete. Of course, all of this extra trig-crunching will slow things down. Run the sketch.
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/delta-time-slowest-time.png" />
+  <figcaption>With the extra processing load, the game is noticeably slower.</figcaption>
+</figure>
+
+You should experience a noticeable reduction in frame rate. Note, however, that the loop employs a random function, so the lag effect is erratic -- the loop may run anywhere between zero and 700 times in a single `draw`. In other words, the snake will move smoothly, but then randomly struggle before speeding up again. My computer clocked 3120 milliseconds for the boundary sprint, but yours could be slower or faster. If you find that your computer is grinding to a near-halt, reduce the `700` to something a bit more manageable. Conversely, if everything seems to be running as smoothly as before, try doubling this value. You'll want to find some number where, roughly speaking, the snake's average speed is halved.
+
+You will also notice that the `deltatime` (time elapsed between each frame) values are far more erratic and generally bigger.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl07/delta-time-delayed-700.png" class="fullwidth" />
+  <figcaption>The <code>deltatime</code> values are now far more erratic.</figcaption>
 </figure>
 
 
-
+ Change the `700` (or whatever figure you have used) in the `for` loop to a zero
 
 
 
@@ -939,12 +946,7 @@ Now set your `for` loop random figure back to whatever it was that you were usin
     for i in range( ceil(random(700)) ):
 {% endhighlight %}
 
-Run the sketch. Notice how the `deltatime` values are far more erratic and generally larger? This is hardly surprising, as delta time is represents the time elapsed (in milliseconds) between each frame.
 
-<figure>
-  <img src="{{ site.url }}/img/pitl07/delta-time-delayed-700.png" class="fullwidth" />
-  <figcaption>The <code>deltatime</code> values are now far more erratic.</figcaption>
-</figure>
 
 And this is where the `deltatime` variable comes in handy. Suppose that we wanted the snake to reach the top edge as close to 1125
 

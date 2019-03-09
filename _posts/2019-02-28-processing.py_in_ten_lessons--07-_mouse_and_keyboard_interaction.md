@@ -974,12 +974,12 @@ That is as deep as we will venture into game development concepts. If it's games
 
 You will often find that you repeat the same, or very similar, lines of code within the same sketch. As your programs grow more complex, repetition tends to creep in more and more. For more modular and reusable code, one can employ *functions*. In the next chapter, you will look at how to define and work with functions. As a concept, you should grasp functions without much effort, especially considering what has been covered thus far. Nevertheless, there will be some crunchy tasks to keep you challenged.
 
-**Begin Lesson 08:** `parameterize(*args)` *(coming soon)*
+**Begin Lesson 08:** Functions *(coming soon)*
 
-*Coming later*  
-**Lesson 09:** *Object-orientation*  
-**Lesson 10:** *Some physics*  
-**Bonus Lesson:** *3D and shaders*  
+**Future Lessons**  
+*Lesson 09: Object-Orientation*  
+*Lesson 10: Some Physics*  
+*Bonus Lesson: 3D and Shaders*  
 
 [Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)
 

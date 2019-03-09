@@ -626,6 +626,7 @@ Create a new sketch and save it as "sna". Create a "data" sub-directory and plac
 def setup():
     size(400,300)
     frameRate(30)
+    background('#004477')
     noStroke()
     ernest = createFont('Ernest.ttf', 30)
     textFont(ernest)
@@ -802,7 +803,7 @@ def draw():
   <img src="{{ site.url }}/img/pitl07/collision-detection-collectable-item.png" />
 </figure>
 
-The collision test will be handled using a single `if` statement, and we will build-up the conditions one piece at a time. The snake's trail will not trigger any collisions, just the solid white square at its 'head'. Add a new `if` statement to the `draw()` function:
+The collision test will be handled using a single `if` statement and we will build-up the conditions one piece at a time. The snake's trail will not trigger any collisions, just the solid white square at its 'head'. Add a new `if` statement to the `draw()` function:
 
 {% highlight py %}
     ...
@@ -819,6 +820,7 @@ If the any part of the head is anywhere to the right of the red square, a hit is
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/collision-detection-aabb-1.png" />
+  <figcaption>The shaded green area highlights the effective 'collision' zone.</figcaption>
 </figure>
 
 To refine this further, expand on the condition to test whether the player has ventured to far rightwards to trigger any possible collision.
@@ -842,7 +844,7 @@ checks if the *left edge of the head* is overlapping the *right edge of the item
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/collision-detection-aabb-2.png" />
-  <figcaption>Anywhere within the green strip registers as a hit.</figcaption>
+  <figcaption>Anywhere within the shaded green strip registers as a hit.</figcaption>
 </figure>
 
 The head no longer registers a hit once it has passed the right edge of the item. However, as indicated by the green area, the zones directly above or below the item's left/right edges still register as a hit. To resolve this, add additional checks for the y-axis:
@@ -944,52 +946,24 @@ You will also notice that the `deltatime` (the milliseconds elapsed between each
   <figcaption>The <code>deltatime</code> values are now far more erratic as well as larger.</figcaption>
 </figure>
 
-This is where the *delta time* proves useful.
+This is where the *delta time* proves useful. The time between frames can be used to calculate where the snake's head should be, as opposed to where it may only manage to reach. To calculate the appropriate `playery` position, multiply it by `deltatime` divided by the number of frames per second (multiplied by 1000 for working in milliseconds).
 
 {% highlight py %}
-    for i in range(ceil(random( 700 )) ):
+    ...
+    playery += yspeed * (deltatime / (30 * 1000.0) )
+    ...
 {% endhighlight %}
 
-
-
-And this is where the `deltatime` variable comes in handy. Suppose that we wanted the snake to reach the top edge as close to 1125
+Run the sketch. The snake reaches the top-edge in around 2500 milliseconds, as if there were no lag at all. However, rather than having every square rendered two-pixels apart, the head 'leaps' in larger, unevenly-sized increments. The size of each leap is dependant on how much time is required to catch up. This results in a longer trail, as the starting position in now fewer frames from the ending position. Moreover, some discernible gaps may appear in the trail, although this will depend on how much your system struggles to match 30 frames per second.
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/delta-time-applied.png" />
-  <figcaption>......</figcaption>
+  <figcaption>Factoring in delta time, the snake reaches the top-edge in minimum time, but leaves a longer trail that may even contain gaps.</figcaption>
 </figure>
 
+Delta time, thus, helps maintain a constant game speed despite variations in frame rate. It may seem that we are 'dropping' frames to keep apace, but, ultimately, delta time helps smooth out the movement values. It can also be used to limit frame rates in cases where a game may run too fast. Generally speaking, the motions of any positioning, rotation, and scaling operations incorporate delta time. Conversely, games can behave very strangely if physics calculations mix with variable frame rates. Many game engines, hence, include fixed- and variable time-step functions to separate your physics and graphics code.
 
-3 side-by-side comparison
-
-
-
-
-
-
-
-Early games were programmed for a specific processor.
-
-For instance, at some point in a game there may be a large number of enemies in play. More enemies means more collision detection
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+That is as deep as we will venture into game development concepts. If it's games you are serious about, you will have to explore further elsewhere. That said, the concepts and techniques covered in these tutorials will prove integral for your path towards game development.
 
 ## controlP5
 

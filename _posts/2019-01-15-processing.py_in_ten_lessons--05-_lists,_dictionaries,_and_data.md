@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title: "Processing.py in Ten Lessons -- 05: Art of the State"
+title: "Processing.py in Ten Lessons -- 05: Lists, Dictionaries, and Data"
 categories: code processing python
 ---
 
@@ -292,7 +292,7 @@ fill(bricks[2]);  rect(60, 0, 30,10) # brick A3
 fill(bricks[59]); rect(270,50,30,10) # brick F10
 {% endhighlight %}
 
-This is hardly efficient, nor can it handle a list that is continually adapting in length. In a previous lesson covering [for loops]({% post_url 2018-07-01-processing.py_in_ten_lessons--03-_randomly-generated-lesson-title %}#for-loops), you looked at iterating integer values using a `range()` function. To perform something similar on a list, you will first need to determine its current length.
+This is hardly efficient, nor can it handle a list that is continually adapting in length. In a previous lesson covering [for loops]({% post_url 2018-07-01-processing.py_in_ten_lessons--03-_control_flow_and_randomness %}#for-loops), you looked at iterating integer values using a `range()` function. To perform something similar on a list, you will first need to determine its current length.
 
 Create a new sketch and save it as "iterating_lists". Add the following code:
 
@@ -1323,7 +1323,7 @@ Begin with a loop that prints each entry. Then, get the labels displaying (befor
 
 That's it for lesson 05! Lists and dictionaries are relatively straight-forward, though combining collections of values with loops is a trickier concept to grasp. That said, what you have learned here is vital for what lies ahead -- both in these lessons and beyond. In the next tutorial, we'll zoom-in further, like, to pixel level. You'll pick up some neat new skills, like how to read values off pixels to create your very own Photoshop-esque filters.
 
-**Begin Lesson 06:** [Tiny Blocks of Colour]({% post_url 2019-02-08-processing.py_in_ten_lessons--06-_tiny_blocks_of_colour %})
+**Begin Lesson 06:** [Pixels and Graphics]({% post_url 2019-02-08-processing.py_in_ten_lessons--06-_pixels_and_graphics %})
 
 [Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title: "Processing.py in Ten Lessons -- 07: Soft-Face"
+title: "Processing.py in Ten Lessons -- 07: Mouse and Keyboard Interaction"
 categories: code processing python
 published: false
 ---
@@ -381,7 +381,7 @@ redbutton.click( setBrushColor(rainbow[0]) )
 
 No matter where you place the button, clicking it will set the brush colour to red. To stress: this is not real code. However, we will look at controlP5 further into the lesson. The point is that there's no need to detect where the mouse is as this it's handled by the GUI library.
 
-The approach here will be similar to that of the [four-square task]({% post_url 2018-07-01-processing.py_in_ten_lessons--03-_randomly-generated-lesson-title %}#four-square-task) in lesson 03, detecting where the pointer is and within which square that is located. Add the the global line and everything beneath it to your `mousePressed()` function:
+The approach here will be similar to that of the [four-square task]({% post_url 2018-07-01-processing.py_in_ten_lessons--03-_control_flow_and_randomness %}#four-square-task) in lesson 03, detecting where the pointer is and within which square that is located. Add the the global line and everything beneath it to your `mousePressed()` function:
 
 {% highlight py %}
 def mousePressed():
@@ -972,9 +972,14 @@ That is as deep as we will venture into game development concepts. If it's games
 
 ## Lesson 08
 
-...
+You will often find that you repeat the same, or very similar, lines of code within the same sketch. As your programs grow more complex, repetition tends to creep in more and more. For more modular and reusable code, one can employ *functions*. In the next chapter, you will look at how to define and work with functions. As a concept, you should grasp functions without much effort, especially considering what has been covered thus far. Nevertheless, there will be some crunchy tasks to keep you challenged.
 
 **Begin Lesson 08:** `parameterize(*args)` *(coming soon)*
+
+*Coming later*  
+**Lesson 09:** *Object-orientation*  
+**Lesson 10:** *Some physics*  
+**Bonus Lesson:** *3D and shaders*  
 
 [Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)
 

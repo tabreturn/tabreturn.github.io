@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title: "Processing.py in Ten Lessons -- 06: Tiny Blocks of Colour"
+title: "Processing.py in Ten Lessons -- 06: Pixels and Graphics"
 categories: code processing python
 mathml: true
 ---
@@ -15,7 +15,7 @@ mathml: true
 
 ---
 &nbsp;  
-In this tutorial, we will look at a few cool image processing techniques. You are already familiar with the `image()` function, which you have used in combination with `loadImage()` to draw image files to the display window. GIF, JPG, and PNG files are all [*raster*](https://en.wikipedia.org/wiki/Raster_graphics) graphics formats -- that is, digital images comprised of a pixel grid. We will look at reading values off individual- as well as groups of pixels and then manipulating them to create Photoshop-esque filters. To manage these arrays of pixel values, we'll rely on a number of the techniques that you picked up in [lesson 05]({% post_url 2019-01-15-processing.py_in_ten_lessons--05-_art_of_the_state %}), in particular, the combining of loops with lists.
+In this tutorial, we will look at a few cool image processing techniques. You are already familiar with the `image()` function, which you have used in combination with `loadImage()` to draw image files to the display window. GIF, JPG, and PNG files are all [*raster*](https://en.wikipedia.org/wiki/Raster_graphics) graphics formats -- that is, digital images comprised of a pixel grid. We will look at reading values off individual- as well as groups of pixels and then manipulating them to create Photoshop-esque filters. To manage these arrays of pixel values, we'll rely on a number of the techniques that you picked up in [lesson 05]({% post_url 2019-01-15-processing.py_in_ten_lessons--05-_lists,_dictionaries,_and_data %}), in particular, the combining of loops with lists.
 
 [Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)
 
@@ -23,7 +23,7 @@ To begin, we will peek under the hood of some image file formats; this will prov
 
 ### Image Formats
 
-Each time you run a sketch, Processing generates a new or updated display window. Like a GIF, JPG, or PNG image, the graphic presented in the display window is raster-based. Using the [`saveFrame()`](http://localhost:4000/code/processing/python/2018/08/10/processing.py_in_ten_lessons-04-_beta_eq_fps_gt_12.html#saving-frames) function one can capture the current frame in TIFF (`.tif`) format. Alternatively, a (filename) argument ending in `.gif`, `.jpg`, or `.png` produces a compressed image file. With TIFF, Processing employs no compression resulting in larger files. *TARGA* (.tga) is also an option, but these lessons avoid covering it in favour of focussing on the more common web-browser-supported formats.
+Each time you run a sketch, Processing generates a new or updated display window. Like a GIF, JPG, or PNG image, the graphic presented in the display window is raster-based. Using the [`saveFrame()`](http://localhost:4000/code/processing/python/2018/08/10/processing.py_in_ten_lessons-04-_animation_and_transformation.html#saving-frames) function one can capture the current frame in TIFF (`.tif`) format. Alternatively, a (filename) argument ending in `.gif`, `.jpg`, or `.png` produces a compressed image file. With TIFF, Processing employs no compression resulting in larger files. *TARGA* (.tga) is also an option, but these lessons avoid covering it in favour of focussing on the more common web-browser-supported formats.
 
 Below is a screenshot of a sketch. The code is not important. Instead, focus on what the display window renders (a red and white striped pattern) and the file sizes of each version saved.
 
@@ -712,7 +712,7 @@ There are many halftone effects to explore. By riffing off the techniques covere
 
 If you have ever sharpened or blurred a digital image, it's likely that the software you were using relied on an *image kernel* to process the effect. Moreover, the fields of computer vision and machine learning utilise image kernels for feature- detection and extraction.
 
-An image kernel, put simply, is a small [matrix]({% post_url 2018-08-10-processing.py_in_ten_lessons--04-_beta_eq_fps_gt_12 %}#matrices) that passes over the pixels of your image manipulating the values as it moves along. To illustrate, here is a three-by-three blur kernel in action. The *kernel* (left) begins with its centre placed over the first (top-left) pixel of the source image. A new (first) pixel value is calculated using the centre and eight neighbouring cells sampled in the kernel.
+An image kernel, put simply, is a small [matrix]({% post_url 2018-08-10-processing.py_in_ten_lessons--04-_animation_and_transformation %}#matrices) that passes over the pixels of your image manipulating the values as it moves along. To illustrate, here is a three-by-three blur kernel in action. The *kernel* (left) begins with its centre placed over the first (top-left) pixel of the source image. A new (first) pixel value is calculated using the centre and eight neighbouring cells sampled in the kernel.
 
 <figure>
   <img src="{{ site.url }}/img/pitl06/image-kernels-mona-lisa-1.png" class="fullwidth" />
@@ -1640,7 +1640,7 @@ That concludes another lesson. You now understand how to manage colour on a chan
 
 In the next lesson, you will look at interactivity in Processing. As you will see, Processing is great for mouse, keyboard, and other interaction, but rather clumsy for building user interfaces. If you have any experience with programming interfaces in other languages (perhaps some JavaScript, etc.), you'll quickly realise what I mean. However, some useful Processing libraries provide an extended set of turnkey GUI features.
 
-**Begin Lesson 07:** Soft-Face *(coming soon)*
+**Begin Lesson 07:** Mouse and Keyboard Interaction *(coming soon)*
 
 [Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)
 

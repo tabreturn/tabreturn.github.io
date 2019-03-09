@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title: "Processing.py in Ten Lessons -- 03: &lt;randomly generated lesson title>"
+title: "Processing.py in Ten Lessons -- 03: Control Flow and Randomness"
 categories: code processing python
 ---
 
@@ -898,7 +898,7 @@ The next lesson deals with animation. There is a bit you need to know about matr
 
 If statements and loops will reappear throughout this course, which will give you plenty of opportunities to master them. If you have some extra time, read up on the [continue](http://py.processing.org/reference/continue.html) and [break](http://py.processing.org/reference/break.html) statements. These are two useful loop techniques that allow one to skip over iterations, or to ‘break-out’ of loop structures.
 
-**Begin Lesson 04:** [`β = fps > 12`]({% post_url 2018-08-10-processing.py_in_ten_lessons--04-_beta_eq_fps_gt_12 %})
+**Begin Lesson 04:** [Animation and Transformation]({% post_url 2018-08-10-processing.py_in_ten_lessons--04-_animation_and_transformation %})
 
 [Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)
 

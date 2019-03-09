@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title: "Processing.py in Ten Lessons -- 04:<code> β = fps > 12</code>"
+title: "Processing.py in Ten Lessons -- 04: Animation and Transformation"
 categories: code processing python
 mathml: true
 ---
@@ -20,7 +20,7 @@ In this tutorial, you get to make things move. The content focuses primarily on 
 
 ## Animation
 
-Before writing any animation code, consider how motion is perceived. The brain is fed a snapshot from your retina around ten times each second. The speed at which objects appear to be moving (or not moving) is determined by the difference between successive snapshots. So, provided your screen can display a sequence of static images at a rate exceeding ten cycles per second, the viewer will experience the illusion of smooth flowing movement. This illusion is referred to as *Beta movement* and occurs at frame rates of around 10-12 images per second (hence the lesson title) -- although higher frame rates will appear even smoother. That said, there is more to motion perception than frames per second (fps).
+Before writing any animation code, consider how motion is perceived. The brain is fed a snapshot from your retina around ten times each second. The speed at which objects appear to be moving (or not moving) is determined by the difference between successive snapshots. So, provided your screen can display a sequence of static images at a rate exceeding ten cycles per second, the viewer will experience the illusion of smooth flowing movement. This illusion is referred to as *Beta movement* and occurs at frame rates of around 10-12 images per second -- although higher frame rates will appear even smoother. That said, there is more to motion perception than frames per second (fps).
 
 Take a moment to note the numbering sequence of the circles in the illustration below.
 
@@ -1853,7 +1853,7 @@ That's it for lesson 04. If you have made it this far -- the next lesson should 
 
 You have dealt with string, integer, floating-point, and boolean datatypes. In the next lesson, you will explore datatypes that hold a collection of elements -- namely Python *list* and *dictionary* types. If you have some programming experience, you may have encountered something similar (*arrays*) in other languages? If not, do not stress -- we will begin with the very basics. As this subject matter works nicely with graphs, we will also explore interesting to visualise data.
 
-**Begin Lesson 05:** [Art of the State]({% post_url 2019-01-15-processing.py_in_ten_lessons--05-_art_of_the_state %})
+**Begin Lesson 05:** [Lists, Dictionaries, and Data]({% post_url 2019-01-15-processing.py_in_ten_lessons--05-_lists,_dictionaries,_and_data %})
 
 [Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)
 

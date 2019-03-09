@@ -6,10 +6,10 @@ categories: code processing python
 ---
 
 ***Covered in this lesson:***  
-<a href="#lists"><em>lists</em></a> /
-<a href="#dictionaries"><em>dictionaries</em></a> /
-<a href="#data-visualisation"><em>data visualisation</em></a> /
-<a href="#external-data"><em>external data</em></a>
+<a href="#lists"><em>Lists</em></a> /
+<a href="#dictionaries"><em>Dictionaries</em></a> /
+<a href="#data-visualisation"><em>Data Visualisation</em></a> /
+<a href="#external-data"><em>External Data</em></a>
 
 ---
 &nbsp;  

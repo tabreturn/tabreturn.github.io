@@ -6,10 +6,10 @@ categories: code processing python
 ---
 
 ***Covered in this lesson:***  
-<a href="#curves"><em>curves</em></a> /
-<a href="#vertices"><em>vertices</em></a> /
-<a href="#strings"><em>strings</em></a> /
-<a href="#typography"><em>typography</em></a>
+<a href="#curves"><em>Curves</em></a> /
+<a href="#vertices"><em>Vertices</em></a> /
+<a href="#strings"><em>Strings</em></a> /
+<a href="#typography"><em>Typography</em></a>
 
 ---
 &nbsp;  

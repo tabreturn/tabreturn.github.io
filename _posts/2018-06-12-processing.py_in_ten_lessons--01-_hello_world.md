@@ -6,11 +6,11 @@ categories: code processing python
 ---
 
 ***Covered in this lesson:***  
-<a href="#intro-to-processing"><em>intro to processing</em></a> /
-<a href="#colour"><em>colour</em></a> /
-<a href="#drawing"><em>drawing</em></a> /
-<a href="#variables"><em>variables</em></a> /
-<a href="#arithmetic-operators"><em>arithmetic-operators</em></a>
+<a href="#intro-to-processing"><em>Intro to Processing</em></a> /
+<a href="#colour"><em>Colour</em></a> /
+<a href="#drawing"><em>Drawing</em></a> /
+<a href="#variables"><em>Variables</em></a> /
+<a href="#arithmetic-operators"><em>Arithmetic-Operators</em></a>
 
 ---
 &nbsp;  

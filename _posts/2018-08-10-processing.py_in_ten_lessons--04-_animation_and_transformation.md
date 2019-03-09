@@ -7,10 +7,10 @@ mathml: true
 ---
 
 ***Covered in this lesson:***  
-<a href="#animation"><em>animation</em></a> /
-<a href="#transformations"><em>transformations</em></a> /
-<a href="#time-and-date"><em>time and date</em></a> /
-<a href="#animated-trigonometry"><em>animated trigonometry</em></a>
+<a href="#animation"><em>Animation</em></a> /
+<a href="#transformations"><em>Transformations</em></a> /
+<a href="#time-and-date"><em>Time and Date</em></a> /
+<a href="#animated-trigonometry"><em>Animated Trigonometry</em></a>
 
 ---
 &nbsp;  

@@ -7,11 +7,11 @@ mathml: true
 ---
 
 ***Covered in this lesson:***  
-<a href="#colour-channels"><em>colour channels</em></a> /
-<a href="#halftone"><em>halftone</em></a> /
-<a href="#image-kernels"><em>image kernels</em></a> /
-<a href="#filters-and-blends"><em>filters and blends</em></a> /
-<a href="#tint-and-transparency"><em>tint and transparency</em></a>
+<a href="#colour-channels"><em>Colour Channels</em></a> /
+<a href="#halftone"><em>Halftone</em></a> /
+<a href="#image-kernels"><em>Image Kernels</em></a> /
+<a href="#filters-and-blends"><em>Filters and Blends</em></a> /
+<a href="#tint-and-transparency"><em>Tint and Transparency</em></a>
 
 ---
 &nbsp;  

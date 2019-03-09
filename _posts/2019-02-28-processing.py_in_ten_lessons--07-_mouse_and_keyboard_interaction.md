@@ -7,9 +7,9 @@ published: false
 ---
 
 ***Covered in this lesson:***  
-<a href="#mouse-interaction"><em>mouse interaction</em></a> /
-<a href="#keyboard-interaction"><em>keyboard interaction</em></a> /
-<a href="#controlp5"><em>controlp5</em></a>
+<a href="#mouse-interaction"><em>Mouse Interaction</em></a> /
+<a href="#keyboard-interaction"><em>Keyboard Interaction</em></a> /
+<a href="#controlp5"><em>ControlP5</em></a>
 
 ---
 &nbsp;  
@@ -974,7 +974,7 @@ https://github.com/sojamo/controlp5
   <img src="{{ site.url }}/img/pitl07/controlp5-cp5-controllers.png" />
   <figcaption>
     Range of ControlP5 controllers.<br />
-    Andreas Schlegel [Copyright], <a href="https://github.com/sojamo/controlp5">Github</a>
+    Andreas Schlegel [Copyright], <a href="https://github.com/sojamo/controlp5">via Github</a>
   </figcaption>
 </figure>
 

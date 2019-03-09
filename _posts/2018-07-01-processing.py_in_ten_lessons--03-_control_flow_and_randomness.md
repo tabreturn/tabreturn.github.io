@@ -6,9 +6,9 @@ categories: code processing python
 ---
 
 ***Covered in this lesson:***  
-<a href="#conditional-statements"><em>conditional statements</em></a> /
-<a href="#iteration"><em>iteration</em></a> /
-<a href="#randomness"><em>randomness</em></a>
+<a href="#conditional-statements"><em>Conditional Statements</em></a> /
+<a href="#iteration"><em>Iteration</em></a> /
+<a href="#randomness"><em>Randomness</em></a>
 
 ---
 &nbsp;  

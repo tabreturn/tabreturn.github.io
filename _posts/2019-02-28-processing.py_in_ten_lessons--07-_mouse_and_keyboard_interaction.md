@@ -965,7 +965,18 @@ Delta time, thus, helps maintain a constant game speed despite variations in fra
 
 That is as deep as we will venture into game development concepts. If it's games you are serious about, you will have to explore further elsewhere. That said, the concepts and techniques covered in these tutorials will prove integral for your path towards game development.
 
-## controlP5
+## ControlP5
+
+
+https://github.com/sojamo/controlp5
+
+<figure>
+  <img src="{{ site.url }}/img/pitl07/controlp5-cp5-controllers.png" />
+  <figcaption>
+    Range of ControlP5 controllers.<br />
+    Andreas Schlegel [Copyright], <a href="https://github.com/sojamo/controlp5">Github</a>
+  </figcaption>
+</figure>
 
 ... identikit
 

@@ -13,7 +13,7 @@ published: false
 
 ---
 &nbsp;  
-It is time to look at interactivity in Processing. You can program Processing to work with a range of input, such as microphones, cameras, or even something you have built with an Arduino board. For this lesson, though, we'll stick to plain-old keyboard and mouse input. Most of the upcoming sketches are purely playful, but you'll also look and building a basic painting application. You will discover that standard Processing functions were not purpose-designed for building user interfaces. But, the lesson includes an introductory tutorial that incorporates the *controlP5* graphical user interface library. This library includes a suit of essential input elements, such as buttons, checkboxes, sliders, toggles, and textfields.
+It is time to look at interactivity in Processing. You can program Processing to work with a range of input, such as microphones, cameras, or even something you have built with an Arduino board. For this lesson, though, we'll stick to plain-old keyboard and mouse input. Most of the upcoming sketches are purely playful, but you'll also look and building a basic painting application. You will discover that standard Processing functions were not purpose-designed for building user interfaces. But, the lesson includes an introductory tutorial that incorporates the *ControlP5* graphical user interface library. This library includes a suit of essential input elements, such as buttons, checkboxes, sliders, toggles, and textfields.
 
 [Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)
 
@@ -379,7 +379,7 @@ The position, size, and fill parameters are all handled in a single `createButto
 redbutton.click( setBrushColor(rainbow[0]) )
 {% endhighlight %}
 
-No matter where you place the button, clicking it will set the brush colour to red. To stress: this is not real code. However, we will look at controlP5 further into the lesson. The point is that there's no need to detect where the mouse is as this it's handled by the GUI library.
+No matter where you place the button, clicking it will set the brush colour to red. To stress: this is not real code. However, we will look at ControlP5 further into the lesson. The point is that there's no need to detect where the mouse is as this it's handled by the GUI library.
 
 The approach here will be similar to that of the [four-square task]({% post_url 2018-07-01-processing.py_in_ten_lessons--03-_control_flow_and_randomness %}#four-square-task) in lesson 03, detecting where the pointer is and within which square that is located. Add the the global line and everything beneath it to your `mousePressed()` function:
 
@@ -967,18 +967,55 @@ That is as deep as we will venture into game development concepts. If it's games
 
 ## ControlP5
 
-
-https://github.com/sojamo/controlp5
+*ControlP5* is a Processing library that provides an extensive set of GUI widgets. This includes buttons, sliders, knobs, toggles, textfields, checkboxes, accordions, charts, timers, drop-downs, tab- and window-interfaces, and more. It's a feature-packed library, full of options to build, customise, and control custom user interfaces.
 
 <figure>
-  <img src="{{ site.url }}/img/pitl07/controlp5-cp5-controllers.png" />
+  <img src="{{ site.url }}/img/pitl07/controlp5-controllers-range.png" />
   <figcaption>
-    Range of ControlP5 controllers.<br />
+    Just some of controllers that ControlP5 offers.<br />
     Andreas Schlegel [Copyright], <a href="https://github.com/sojamo/controlp5">via Github</a>
   </figcaption>
 </figure>
 
-... identikit
+To begin using ControlP5, one must first install it. From the Processing menu bar, select **Sketch > Import Library... > Add Library...**
+
+This raises the Contribution Manager window; under the *Libraries* tab, locate and install ControlP5.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl07/controlp5-install-library.png" />
+</figure>
+
+Once you have the library installed, create a new sketch named "identikit". An identikit -- or *facial composite* -- is a portrait image reconstructed from the memory of one or many eyewitnesses. Composites can be rendered in various ways -- using sketch artists, transparencies, or software. Our identikit program will be no use for any real world application, but fun to play with, nonetheless. To get started, add the following code
+
+{% highlight py %}
+add_library('controlP5')
+
+def setup():
+    size(720,485)
+    global cp5
+    cp5 = ControlP5(this)
+
+def draw():
+    background('#004477')
+    stroke('#FFFFFF')
+    strokeWeight(3)
+    haxis = 250
+{% endhighlight %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+it can be styled but we will keep it simple
+refering to java examples
 
 
 ## Lesson 08

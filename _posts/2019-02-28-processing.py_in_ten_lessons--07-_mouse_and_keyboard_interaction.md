@@ -985,7 +985,7 @@ This raises the Contribution Manager window; under the *Libraries* tab, locate a
   <img src="{{ site.url }}/img/pitl07/controlp5-install-library.png" />
 </figure>
 
-Once you have the library installed, create a new sketch named "identikit". An identikit -- or *facial composite* -- is a portrait image reconstructed from the memory of one or many eyewitnesses. Composites can be rendered in various ways -- using sketch artists, transparencies, or software. Our identikit program will be no use for any real world application, but fun to play with, nonetheless. To get started, add the following code
+Once you have the library installed, create a new sketch named "identikit". An identikit -- or *facial composite* -- is a portrait image reconstructed from the memory of one or many eyewitnesses. Composites can be rendered in various ways -- using sketch artists, transparencies, or software. Our identikit program will be no use for any real world application, but fun to play with, nonetheless. To get started, add the following code.
 
 {% highlight py %}
 add_library('controlP5')
@@ -999,8 +999,52 @@ def draw():
     background('#004477')
     stroke('#FFFFFF')
     strokeWeight(3)
-    haxis = 250
+    axis = 250
+
+    # face
+    noFill()
+    ellipse(axis,220, 370,370)
 {% endhighlight %}
+
+The `add_library()` line is required for loading in ControlP5. A new ControlP5 instance is then assigned to a variable named `cp5`. From here on, any ContolP5 features can be accessed with a `cp5.` prefix; this will make sense a little further along when we begin to add controllers. The `axis` coordinate runs through the centre of the `ellipse` below, in other words it is the lies on horizontal centre of the 'face'. The face is positioned to the left of display in order to make room for control widgets on the right.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl07/controlp5-identikit-start.png" />
+  <figcaption>
+    The circle will serve as the outline of the face. The empty area to the right is for control widgets.
+  </figcaption>
+</figure>
+
+The first widget will be a textfield. Add the controller in `setup()` function. The brackets surrounding the `addTextfield()` lines may look odd, but this is necessary for breaking the method chain over multiple lines. Alternatively, you could write this on a single line but this may not be as readable.
+
+{% highlight py %}
+def setup():
+    ...
+    (cp5.addTextfield('alias')
+        .setPosition(500,20)
+        .setSize(200,25)
+    )
+{% endhighlight %}
+
+In the `draw` function, retrieve the captured input and render it using a `text()` function. The `getController()` method is used to access the properties of any controller, while the `getText()` chained onto the end isolates the text value specifically.
+
+{% highlight py %}
+def draw():
+    ...
+    # alias
+    fill('#FFFFFF')
+    textSize(20)
+    textAlign(CENTER)
+    alias = cp5.getController('alias').getText()
+    text(alias, axis,450)
+    noFill()
+{% endhighlight %}
+
+Test out the input. The alias you enter will appear beneath the face.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl07/controlp5-identikit-textfield.png" />
+</figure>
 
 
 

@@ -1015,7 +1015,7 @@ The `add_library()` line is required for loading in ControlP5. A new ControlP5 i
   </figcaption>
 </figure>
 
-The first widget will be a textfield. Add the controller in `setup()` function. The brackets surrounding the `addTextfield()` lines may look odd, but this is necessary for breaking the method chain over multiple lines. Alternatively, you could write this on a single line but this may not be as readable.
+The first widget will be a textfield. Add the controller in `setup()` function. The brackets surrounding the `addTextfield()` lines may look odd, but this is necessary to break the chain of [methods]({% post_url 2018-06-19-processing.py_in_ten_lessons--02-_bezier,_catmull_and_rom_walk_into_a_bar %}#string-methods) over multiple lines. Alternatively, you could write this on a single line but likely won't find it as readable. Whenever you create a new controller, specify a name in the first argument -- in this case, I have used `'alias'`. This name is used to reference the controller further along, as well as the default label for the field.
 
 {% highlight py %}
 def setup():
@@ -1026,7 +1026,7 @@ def setup():
     )
 {% endhighlight %}
 
-In the `draw` function, retrieve the captured input and render it using a `text()` function. The `getController()` method is used to access the properties of any controller, while the `getText()` chained onto the end isolates the text value specifically.
+In the `draw` function, retrieve the captured input and render it using a `text()` function. The `getController()` method is used to access the properties of any `cp5` controller (by its name), while the `getText()` chained onto it isolates the text value specifically.
 
 {% highlight py %}
 def draw():
@@ -1040,10 +1040,100 @@ def draw():
     noFill()
 {% endhighlight %}
 
-Test out the input. The alias you enter will appear beneath the face.
+Test out the input field. The alias you enter will appear beneath the face.
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/controlp5-identikit-textfield.png" />
+</figure>
+
+Next, we will a number of widgets for controlling the eyes. The additional methods, `setRange()` and `setValue()`, set the lower/upper value range and in the initial position, respectively.
+
+{% highlight py %}
+def setup():
+    ...
+    (cp5.addSlider('eye distance')
+        .setPosition(500,80)
+        .setSize(200,20)
+        .setRange(30,120)
+        .setValue(80)
+    )
+{% endhighlight %}
+
+<figure>
+  <img src="{{ site.url }}/img/pitl07/controlp5-identikit-slider-default-label.png" />
+</figure>
+
+The problem is that the default position for any slider label is to the right of the widget, which doesn't fit nicely in this layout. Add some code that adjusts the alignment and padding so that the label is repositioned at the bottom left.
+
+{% highlight py %}
+        ...
+        .setValue(80)
+    )
+    (cp5.getController('eye distance')
+        .getCaptionLabel()
+        .align(ControlP5.LEFT, ControlP5.BOTTOM_OUTSIDE)
+        .setPaddingX(0)
+    )
+{% endhighlight %}
+
+Before drawing the eyes on the face, add three more control widgets -- a knob and two toggles:
+
+{% highlight py %}
+def setup():
+    ...
+    (cp5.addKnob('eye size')
+        .setPosition(515,135)
+        .setRadius(35)
+        .setRange(10,60)
+        .setValue(50)
+    )
+
+    (cp5.addToggle('heavy brow')
+        .setPosition(635,138)
+        .setSize(20,20)
+    )
+
+    (cp5.addToggle('sleepless')
+        .setPosition(635,185)
+        .setSize(20,20)
+    )
+{% endhighlight %}
+
+<figure>
+  <img src="{{ site.url }}/img/pitl07/controlp5-identikit-eye-widgets.png" />
+</figure>
+
+To draw the eyes, add the following lines to your `draw` function. You will notice that the `getController()` is used to retrieve each of the controller properties -- but, unlike the text-field --- `getValue()` methods have been used in place of `getText()`.
+
+{% highlight py %}
+def draw():
+    ...
+    # eyes
+    eyedistance = cp5.getController('eye distance').getValue()
+    eyesize = cp5.getController('eye size').getValue()
+    ellipse(axis-eyedistance,180, eyesize,eyesize)
+    ellipse(axis+eyedistance,180, eyesize,eyesize)
+
+    if cp5.getController('heavy brow').getValue():
+        fill('#004477'); stroke('#004477')
+        rect(100,180-eyesize/2, 300,eyesize/2)
+        stroke('#FFFFFF')
+        line(
+          axis-eyedistance-eyesize/2-5, 180,
+          axis+eyedistance+eyesize/2+5, 180
+        )
+
+    if cp5.getController('sleepless').getValue():
+        noFill()
+        arc(axis-eyedistance,190, eyesize,eyesize, 0,HALF_PI)
+        arc(axis+eyedistance,190, eyesize,eyesize, HALF_PI,2.5)
+        fill('#004477')
+{% endhighlight %}
+
+Run the sketch a have a play with the various eye options.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl07/controlp5-identikit-eye-adjustments.png" />
 </figure>
 
 
@@ -1052,7 +1142,11 @@ Test out the input. The alias you enter will appear beneath the face.
 
 
 
-
+cp5.enableShortcuts()
+    Alt+mouseDragged to move controllers on the screen
+    Alt+Shift+h to show/hide controllers
+    Alt+Shift+s to save properties (what are properties? have a look at the properties examples)
+    Alt+Shift+l to load properties
 
 
 

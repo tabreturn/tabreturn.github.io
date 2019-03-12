@@ -1208,33 +1208,21 @@ Of course, we wish to save an image. Change the lambda line, replacing everythin
   <figcaption>The SAVE IMAGE button now saves a .tif file using the alias as a filename.</figcaption>
 </figure>
 
-...
+That is as far as we will venture into ControlP5. There's plenty more to explore, though. For instance,  controllers can be moved about the screen using the *Alt* key while click-and-dragging with the mouse. You can also hide the all of the controllers using *Alt+Shift+H*. To activate these shortcut features, add a `cp5.enableShortcuts()` line to the setup block.
 
 {% highlight py %}
 def setup():
-    size(720,485)
-    global cp5
-    cp5 = ControlP5(this)
+    ...
     cp5.enableShortcuts()
 {% endhighlight %}
 
-cp5.enableShortcuts()
-    Alt+mouseDragged to move controllers on the screen
-    Alt+Shift+h to show/hide controllers
-    Alt+Shift+s to save properties (what are properties? have a look at the properties examples)
-    Alt+Shift+l to load properties
-
-
-**File > Examples...**
+For more examples of how to use ControlP5, refer to the **File > Examples...** menu. In the window that pops-up, you'll find an extensive selection of sample sketches. Be warned though: almost all of these are written in Processing's Java language. In spite of this, it should be similar enough for you to understand and translate to Pyhton.
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/controlp5-examples.png" />
 </figure>
 
-
-it can be styled but we will keep it simple
-refering to java examples
-
+That's all for this lesson. You are encouraged to experiment and add additional features to the interfaces of the tasks you have completed.
 
 ## Lesson 08
 
@@ -1254,5 +1242,5 @@ You will often find that you repeat the same, or very similar, lines of code wit
 
 * http://www.designinginteractions.com/
 * http://www.sojamo.de/libraries/controlP5
-* https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection
+* https://developer.mozilla.org/Games/Techniques/2D_collision_detection
 * https://www.interaction-design.org/literature/book/the-encyclopedia-of-human-computer-interaction-2nd-ed/human-computer-interaction-brief-intro

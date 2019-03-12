@@ -1101,6 +1101,7 @@ def setup():
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/controlp5-identikit-eye-widgets.png" />
+  <figcaption>Click and hold down the knob, then pull left and right to adjust the values</figcaption>
 </figure>
 
 To draw the eyes, add the following lines to your `draw` function. You will notice that the `getController()` is used to retrieve each of the controller properties -- but, unlike the text-field --- `getValue()` methods have been used in place of `getText()`.
@@ -1130,18 +1131,90 @@ def draw():
         fill('#004477')
 {% endhighlight %}
 
-Run the sketch a have a play with the various eye options.
+Run the sketch a have a play with the various eye features.
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/controlp5-identikit-eye-adjustments.png" />
 </figure>
 
+For the nose, we will add a 2D slider. For the mouth, we will use a standard slider but with tick marks for set increments.
 
+{% highlight py %}
+def setup():
+    ...
+    (cp5.addSlider2D('nose position')
+        .setPosition(500,240)
+        .setSize(200,100)
+        .setMinMax(-30,-20,30,20)
+        .setValue(0,0)
+    )
 
+    (cp5.addSlider('mouth width')
+        .setPosition(500,375)
+        .setSize(200,20)
+        .setRange(10,200)
+        .setValue(124)
+        .setNumberOfTickMarks(6)
+        .setSliderMode(Slider.FLEXIBLE)
+    )
+    (cp5.getController('mouth width')
+        .getCaptionLabel()
+        .align(ControlP5.LEFT, ControlP5.BOTTOM_OUTSIDE)
+        .setPaddingX(0)
+        .setPaddingY(12)
+    )
 
+def draw():
+    ...
+    # nose
+    noseposition = cp5.getController('nose position')
+    nosex = noseposition.getArrayValue()[0]
+    nosey = noseposition.getArrayValue()[1]
+    line(axis-10+nosex,180+nosey, axis-10+nosex,300+nosey)
+    line(axis-10+nosex,300+nosey, axis-10+nosex+30,300+nosey)
 
+    # mouth
+    mouthwidth = cp5.getController('mouth width').getValue()
+    line(axis-mouthwidth/2,340, axis+mouthwidth/2,340)
+{% endhighlight %}
 
+The 2D slider holds two values in a list, hence the `.getArrayValue()` and square brackets. If you are confused about what the different methods control, try adjusting the the arguments to see what effect this has.
 
+<figure>
+  <img src="{{ site.url }}/img/pitl07/controlp5-identikit-nose-and-mouth.png" />
+</figure>
+
+We will add one final button widget. This will save the image to a TIFF file. Event handlers can be added like any other method. However, this requires a `lambda`. Lambdas are not reviewed in these lessons, but if you wish to explore them further, wait until after the next lesson on functions (they'll make far more sense, then). For now, all you need to know is where to write it, and the the `e` variable serves the same purpose its namesake in the mouse event examples from earlier. That is, you can name it whatever you wish, and it holds all of the properties related to the event (in this case, an `.onClick`). To provide some insight into what these are, we will begin by printing them to the console.
+
+{% highlight py %}
+(cp5.addButton('save image')
+    .setPosition(500,440)
+    .setSize(200,25)
+    .onClick( lambda e: println(e.getController().getInfo()) )
+)
+{% endhighlight %}
+
+<figure>
+  <img src="{{ site.url }}/img/pitl07/controlp5-identikit-lambda.png" class="fullwidth" />
+  <figcaption>Clicking the SAVE IMAGE button produces the following Console output.</figcaption>
+</figure>
+
+Of course, we wish to save an image. Change the lambda line, replacing everything after the colon with `save()` function that uses the alias input for a filename.
+
+    .onClick( lambda e: save(cp5.getController('alias').getText()) )
+
+<figure>
+  <img src="{{ site.url }}/img/pitl07/controlp5-identikit-save.png" class="fullwidth" />
+  <figcaption>The SAVE IMAGE button now saves a TIFF file using the alias.</figcaption>
+</figure>
+
+...
+
+def setup():
+    size(720,485)
+    global cp5
+    cp5 = ControlP5(this)
+    cp5.enableShortcuts()
 cp5.enableShortcuts()
     Alt+mouseDragged to move controllers on the screen
     Alt+Shift+h to show/hide controllers

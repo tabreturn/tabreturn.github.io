@@ -13,24 +13,34 @@ published: false
 
 ---
 &nbsp;  
-It is time to look at interactivity in Processing. You can program Processing to work with a range of input, such as microphones, cameras, or even something you have built with an Arduino board. For this lesson, though, we'll stick to plain-old keyboard and mouse input. Most of the upcoming sketches are purely playful, but you'll also look and building a basic painting application. You will discover that standard Processing functions were not purpose-designed for building user interfaces. But, the lesson includes an introductory tutorial that incorporates the *ControlP5* graphical user interface library. This library includes a suit of essential input elements, such as buttons, checkboxes, sliders, toggles, and textfields.
+It is time to look at interactivity in Processing. You can program Processing to work with a range of input devices, such as microphones, cameras, gamepads, or even something you have built with an [Arduino](https://www.arduino.cc/) board. For this lesson, though, we'll stick to plain-old keyboard and mouse input. You will look and building basic interfaces for painting freely and drawing faces. In the process, you will discover that Processing's standard functions are not exactly purpose-designed for constructing user interfaces. However, the lesson also includes an introduction to the *ControlP5* graphical user interface library. ContolP5 provides a suite of essential control widgets, such as buttons, checkboxes, sliders, toggles, and text-fields, thereby saving you the time and effort of having to create them from scratch.
 
 [Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)
 
-We will also touch on a few game development concepts, namely *collision detection* and *delta time*.
+We will also touch on a few game development concepts, specifically *collision detection* and *delta time*.
 
 ### Some User Interface History
 
-It may hard to believe, but there was a time when computers had no video displays. We'll skip over that early punch-card-and-blinking-lights-and-teleprinters chapter of computing history, though, and begin at the *Command Line Interface* (CLI). Early computer with monitors couldn't display much more than text and basic graphics but this was enough to support a handy CLI. By typing a series of commands, one could instruct a computer to perform its various functions. The CLI, however, is far from dead an buried. While it may no longer be the predominant means of interfacing with computing devices, system administrators and programmers still rely on it for many daily computing tasks. Indeed, you are likely to be surprised by how much can be accomplished just typing instructions. If you have mastered the command line, you will also find it more efficient in certain situations, particularly where repetitive tasks and batch processing are involved.
+It may hard to believe, but there was a time when computers had no video displays. We'll skip over that early chapter of computing history, though, and begin at the *Command Line Interface* (CLI). The first computer monitors couldn't display much more than text and basic graphics, but this was enough to support a handy CLI. By typing a series of commands, one could instruct a computer to perform its various functions.
+
+<figure>
+  <img src="{{ site.url }}/img/pitl07/wikimedia-backup/RT-11_help.jpg" />
+  <figcaption>
+    A VT100 computer (released 1978) displaying a list of commands.<br />
+    Autopilot [<a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a>], <a href="https://commons.wikimedia.org/wiki/File:RT-11_help.jpg">via Wikimedia Commons</a>
+  </figcaption>
+</figure>
+
+You may be surprised to hear that the CLI is far from dead an buried. While it may no longer be the predominant means of interfacing with computing devices, system administrators and programmers still rely on it for many daily computing tasks. Furthermore, you are likely to be surprised by how much can be accomplished just typing instructions. As anybody who has mastered the command line can testify, it's more efficient in various situations, particularly where repetitive tasks and batch processing are involved.
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/interface-terminal-wget.png" class="fullwidth" />
-  <figcaption>Linux command line.</figcaption>
+  <figcaption>Modern Linux command line.</figcaption>
 </figure>
 
-In the above example, you can spot two `$` symbols; each is referred to as a *prompt*, although the symbol will vary between operating systems. The prompt signifies that the computer is ready to accept input. Two commands have been used here: `cd` for changing directory; and `wget` for downloading a file from a web server. In this case, I'm downloading the command-line version of Processing.py to my Desktop. That's right -- Processing can be run without opening the editor.
+In the above example, you can spot two `$` symbols; each is referred to as a *prompt*, although the symbol displayed can vary between operating systems. The prompt signifies that the computer is ready to accept input. Two commands have been used here: `cd` for changing directory; and `wget` for downloading a file from a web server. In this case, I'm downloading the command-line version of Processing.py to my Desktop. That's right -- you can run Processing sketches from the command line without opening the editor.
 
-A Text-based User Interface (TUI) is a kind of blend between the CLI and modern graphical interface. For example, `w3m` is a text-mode web browser. Using the arrow keys and various one-character keyboard commands one can navigate websites, albeit in with limited styling and no images.
+A Text-based User Interface (TUI) is a kind of blend between the CLI and modern graphical interface. For example, take `w3m` -- a text-mode web browser. Using the arrow keys one can navigate websites, albeit in with limited styling and no images.
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/interface-terminal-w3m.png" class="fullwidth" />
@@ -39,7 +49,7 @@ A Text-based User Interface (TUI) is a kind of blend between the CLI and modern 
   </figcaption>
 </figure>
 
-For richer text-based interfaces, many old systems included *semigraphics*. You can think of semigraphics as extra characters that allow you to 'draw' with type. Many of these characters have been adopted in modern systems; for instance, you can copy-paste these symbols straight from your web browser into any text document: &#9824; &#9829; &#9830; &#9827;. Additionally, Unicode includes over a hundred box-drawing characters for constructing TUI interfaces.
+For richer text-based interfaces, many old systems included *semigraphics*. You can think of semigraphics as extra characters that allow you to 'draw' with type. Modern systems have adopted many of these characters; for instance, you can copy-paste these symbols straight from your web browser into any text document: &#9824; &#9829; &#9830; &#9827;. Additionally, *Unicode* (basically, a collection of all of the characters a computer can display) includes over a hundred box-drawing characters for constructing TUI interfaces.
 
 <figure>
   <code>┘ ┐┌└ ┼ ─ ├ ┤ ┴ ┬ │</code>
@@ -48,14 +58,14 @@ For richer text-based interfaces, many old systems included *semigraphics*. You 
   </figcaption>
 </figure>
 
-In text-mode, a computer display is measured in characters as opposed to pixels. For instance, the [ZX Spectrum](https://en.wikipedia.org/wiki/ZX_Spectrum), released in 1982, managed 32 columns × 24 rows of characters on a screen with a resolution of 256×192 pixels. Because text-mode environments rely on [mono-spaced]({% post_url 2018-06-19-processing.py_in_ten_lessons--02-_bezier,_catmull_and_rom_walk_into_a_bar %}#fonts) characters, box-drawing characters can always align perfectly.
+In text-mode, computer displays are measured in characters as opposed to pixels. For instance, the [ZX Spectrum](https://en.wikipedia.org/wiki/ZX_Spectrum), released in 1982, managed 32 *columns* by 24 *rows* of characters on a screen with a resolution of 256×192 pixels. Because text-mode environments rely on [mono-spaced]({% post_url 2018-06-19-processing.py_in_ten_lessons--02-_bezier,_catmull_and_rom_walk_into_a_bar %}#fonts) characters, box-drawing characters will always align perfectly.
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/interface-terminal-mc.png" class="fullwidth" />
   <figcaption>Midnight Commander running in a hundred-column (approx.) display.</figcaption>
 </figure>
 
-It is important to mention, though, that many CLI- and TUI-based operating systems were not incapable of rendering raster graphics. There were text and graphic modes that the systems could switch between. Take games for example. Of course, text-mode games -- like the dungeon crawler, [Netchack](https://en.wikipedia.org/wiki/NetHack) -- operate in text mode, but for games with graphics the computer switches to addressing individual pixels. Even today, PCs still boot in text mode.
+It is important to mention, though, that many CLI- and TUI-based systems were not incapable of rendering raster graphics. There were text and graphics modes that a system could switch between. Take games for instance. Of course, text-mode games -- like the dungeon crawler, [Netchack](https://en.wikipedia.org/wiki/NetHack) -- operate in text mode, but for games with graphics, the computer would switch to addressing individual pixels. Even today, PCs still boot in text mode, before shifting to graphics mode to load the desktop environment.
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/interface-text-and-graphic-modes.png" class="fullwidth" />
@@ -64,7 +74,7 @@ It is important to mention, though, that many CLI- and TUI-based operating syste
   </figcaption>
 </figure>
 
-A Graphical User Interface (GUI) allows for interaction though the manipulation of graphical elements. You routinely make of such interfaces to interact with your computer, web-pages, application software, and mobile phone. To narrow down GUIs a bit, I'd like to focus on WIMP interfaces. The Windows/Icons/Menus/Pointer paradigm was developed by Xerox PARC in 1973 and popularised by Apple's Macintosh in 1984. This approach has been massively influential on graphical user interface design, and the WIMP-meets-desktop environment has remained fundamentally unchanged since it's inception. The desktop metaphor was particularly intuitive as it mimicked the very items that computers sought to replace -- documents, folders, notepads, and the trashcan. Commands were replaced with gestures and operations listed within menus. For example, rather than typing `mv` commands, user can drag-and-drop files to move them between folders (directories).
+A Graphical User Interface (GUI) allows for interaction through the manipulation of graphical elements. You routinely make use of such interfaces to interact with your file manager, web-pages, application software, and mobile phone. To narrow down GUIs a bit, I'd like to focus on WIMP interfaces. The Windows/Icons/Menus/Pointer paradigm was developed by Xerox PARC in 1973 and popularised by Apple's Macintosh in 1984. This has been massively influential on graphical user interface design, and the WIMP-meets-desktop environment has remained fundamentally unchanged since it's inception. The desktop metaphor was particularly intuitive as it mimicked the very items that computers sought to replace -- documents, folders, notepads, and the forgiving trashcan for retrieving deleted files. With a GUI, gestures and menus replace CLI commands. For example, rather than typing `mv` commands, a user can drag-and-drop files to move them between folders (directories).
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/interface-gem.png" />

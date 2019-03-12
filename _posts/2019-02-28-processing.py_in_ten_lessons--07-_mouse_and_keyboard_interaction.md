@@ -1205,16 +1205,19 @@ Of course, we wish to save an image. Change the lambda line, replacing everythin
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/controlp5-identikit-save.png" class="fullwidth" />
-  <figcaption>The SAVE IMAGE button now saves a TIFF file using the alias.</figcaption>
+  <figcaption>The SAVE IMAGE button now saves a .tif file using the alias as a filename.</figcaption>
 </figure>
 
 ...
 
+{% highlight py %}
 def setup():
     size(720,485)
     global cp5
     cp5 = ControlP5(this)
     cp5.enableShortcuts()
+{% endhighlight %}
+
 cp5.enableShortcuts()
     Alt+mouseDragged to move controllers on the screen
     Alt+Shift+h to show/hide controllers
@@ -1222,7 +1225,11 @@ cp5.enableShortcuts()
     Alt+Shift+l to load properties
 
 
+**File > Examples...**
 
+<figure>
+  <img src="{{ site.url }}/img/pitl07/controlp5-examples.png" />
+</figure>
 
 
 it can be styled but we will keep it simple
@@ -1235,7 +1242,8 @@ You will often find that you repeat the same, or very similar, lines of code wit
 
 **Begin Lesson 08:** Functions *(coming soon)*
 
-**Future Lessons**  
+**In development**  
+*Lesson 08: Functions*  
 *Lesson 09: Object-Orientation*  
 *Lesson 10: Some Physics*  
 *Bonus Lesson: 3D and Shaders*  

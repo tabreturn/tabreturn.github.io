@@ -266,9 +266,9 @@ def draw():
     print(frameCount)
 {% endhighlight %}
 
-The [`noLoop()`](https://py.processing.org/reference/noLoop.html) function prevents Processing continually executing code within `draw()`. If you run the sketch, the Console displays a single "`1`", confirming that the `draw` ran just once. This may seem odd to you. After all, if you wanted to avoid frames why would you include a `draw()` at all? Well, there is also a [`loop()`](https://py.processing.org/reference/loop.html) function to reactivate the standard `draw` behaviour. As you will come to see, controlling the `draw` behaviour with mouse functions is a neat approach to building the interface.
+The [`noLoop()`](https://py.processing.org/reference/noLoop.html) function prevents Processing continually executing code within the `draw()` function. If you run the sketch, the Console displays a single "`1`", confirming that the `draw` ran just once. This may seem odd to you. After all, if you wanted to avoid frames why would you include a `draw()` at all? Well, there is also a [`loop()`](https://py.processing.org/reference/loop.html) function to reactivate the standard `draw` behaviour. As you will come to see, controlling the `draw` behaviour with mouse functions makes for a neat approach to building the app.
 
-Add some global variables. It shouldn't matter if you place these above or below the `setup()` code, as long the lines are flush against the left-edge of the editor. These variables will be used to adjust and monitor the state of the brush.
+Add some global variables. It shouldn't matter if you place these above or below the `setup()` code, as long the lines are flush against the left edge of the editor. These variables will be used to adjust and monitor the state of the brush. Perhaps somewhere near the top of your code makes more sense?
 
 {% highlight py %}
 rainbow = [
@@ -282,7 +282,7 @@ painting    = False
 paintmode   = 'free'
 {% endhighlight %}
 
-The [`mousePressed()`](https://py.processing.org/reference/mousePressed.html) function is called once with every press of a mouse button. If you need to establish which button has been pressed you can use it in combination with the `mouseButton` variable. Add the code below. Ensure that the lines are flush left and that you have not placed the code within the `setup()` or `draw()`.
+The [`mousePressed()`](https://py.processing.org/reference/mousePressed.html) function is called once with every press of a mouse button. If you need to establish which button has been pressed you can use it in combination with the `mouseButton` variable. Add the code below. Ensure that the lines are flush left and that you have not placed it within the `setup()` or `draw()`.
 
 {% highlight py %}
 def mousePressed():
@@ -290,7 +290,7 @@ def mousePressed():
         loop()
 {% endhighlight %}
 
-Run the sketch. The moment you left-click within the display window frame numbers begin to count-up in the Console. To stop these once the mouse button has been released, use a The [`mouseReleased()`](https://py.processing.org/reference/mousePressed.html) function, which is called once with every release of a mouse button.
+Run the sketch. The moment you left-click within the display window numbers begin to count-up in the Console. To stop this upon release of the mouse button, use a [`mouseReleased()`](https://py.processing.org/reference/mousePressed.html) function; this is called once every time a mouse button is released.
 
 {% highlight py %}
 def mouseReleased():
@@ -312,10 +312,10 @@ Run the sketch and have a play. It works, but there are some issues.
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/paint-app-first-paint.png" />
-  <figcaption>Note the straight lines drawn between where you stop and start painting again.</figcaption>
+  <figcaption>Note the straight lines drawn between where you stop and resume painting again.</figcaption>
 </figure>
 
-The first point you lay is connected to the top-left corner via a straight line. This is because `pmouseX` and `pmouseY` grabbed their last x/y coordinates on frame 1, before your moused reached into the display window -- hence, the line's initial position of (0,0). Also, if you paint for a bit then release the mouse button, then click again to paint elsewhere, a straight line is drawn from where you last left-off to your new starting position. This is because the `draw()` code ceases to execute while the mouse button is lifted, so `pmouseX` and `pmouseY` hold coordinates captured prior to the loop's suspension. As per the code below, make the relevant adjustments to resolve these bugs.
+The first point you lay connects to the top-left corner via a straight line. This is because `pmouseX` and `pmouseY` grabbed their last x/y coordinates on frame 1 before your moused reached into the display window -- hence, the line's initial position of (0,0). Also, if you paint for a bit then release the mouse button, then click again to paint elsewhere, a straight line is drawn from where you last left-off to your new starting position. While the mouse button is lifted, the `draw()` code ceases to execute, so `pmouseX` and `pmouseY` hold coordinates captured prior to the loop's suspension. Make the necessary adjustments to resolve these bugs:
 
 {% highlight py %}
 def draw():
@@ -340,7 +340,7 @@ def mouseReleased():
     painting = False
 {% endhighlight %}
 
-Run the sketch to confirm that everything works. Read over these edits while simulating the process process in your mind paying careful attention to when `painting` is in a true/false state. The `if` statement draws a line from the *current* x/y coords to the *current* x/y coords (not previous) if `painting` is set to `False`. The `frameCount > 1` part solves the initial (0,0) problem. The `paintmode` will become relevant later when we begin add different paint-modes.
+Run the sketch to confirm that everything works. Read over these edits while simulating the process in your mind, paying careful attention to when `painting` is in a true or false state. The `if not painting…` statement draws a line from the *current* x/y coords to the *current* x/y coords (not previous) if `painting` is `False`. The `frameCount > 1` part solves the initial (0,0) problem. The `paintmode` will become relevant later when we begin to add different paint-modes.
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/paint-app-first-paint-resolved.png" />

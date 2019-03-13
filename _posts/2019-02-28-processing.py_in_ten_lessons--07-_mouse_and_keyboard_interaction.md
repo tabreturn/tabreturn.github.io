@@ -31,7 +31,7 @@ It may hard to believe, but there was a time when computers had no video display
   </figcaption>
 </figure>
 
-You may be surprised to hear that the CLI is far from dead an buried. While it may no longer be the predominant means of interfacing with computing devices, system administrators and programmers still rely on it for many daily computing tasks. Furthermore, you are likely to be surprised by how much can be accomplished just typing instructions. As anybody who has mastered the command line can testify, it's more efficient in various situations, particularly where repetitive tasks and batch processing are involved.
+You may be surprised to hear that the CLI is far from dead and buried. While it may no longer be the predominant means of interfacing with computing devices, system administrators and programmers still rely on it for many daily computing tasks. Furthermore, you are likely to be surprised by how much can be accomplished just typing instructions. As anybody who has mastered the command line can testify, it's more efficient in various situations, particularly where repetitive tasks and batch processing are involved.
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/interface-terminal-wget.png" class="fullwidth" />
@@ -83,7 +83,7 @@ A Graphical User Interface (GUI) allows for interaction through the manipulation
   </figcaption>
 </figure>
 
-Apple licensed certain GUI features to Microsoft for use in Windows 1.0, but sued them when features like overlapping windows appeared in Windows 2.0. The district court ruled in favour of Microsoft. Regardless of the legal outcome, Windows 1.x and 2.x were slow, clumsy, and poorly received. Most Microsoft users elected to stick with the Microsoft text-mode environment, MS-DOS. With VGA-colour, fonts, mouse support, and lightning-fast performance thanks to text-mode, MS-DOS TUIs grew to become remarkably advanced.
+Apple licensed certain GUI features to Microsoft for use in Windows 1.0 but sued them when features like overlapping windows appeared in Windows 2.0. The district court ruled in favour of Microsoft. Regardless of the legal outcome, Windows 1.x and 2.x were slow, clumsy, and poorly received. Most Microsoft users elected to stick with the Microsoft text-mode environment, MS-DOS. With VGA-colour, fonts, mouse support, and lightning-fast performance thanks to text-mode, MS-DOS TUIs grew to become remarkably advanced.
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/interface-dos-tui.png" />
@@ -102,7 +102,7 @@ Many significant hard- and software developments paved the way for WIMP environm
   </figcaption>
 </figure>
 
-In reality, the development of GUIs involved many people over many years. As the field developed, it spawned new disciplines. *Human Computer Interaction* (HCI) researchers emerged in the early 1980s. Bill Moggridge and Bill Verplank coined *Interaction Design* (IxD) in the mid-1980s to describe the practice of designing interactive digital products -- Moggridge felt this was an improvement over his earlier term, *Soft-Face*. Since then, *User Experience* (UX) designers, *User Interface* (UI) designers, and *Information Architects* (IA) have all entered the scene. I'd imagine that some labyrinthine, mutant Venn diagram exists somewhere to help explain how all of these disciplines relate to one another.
+In reality, the development of GUIs involved many people over many years. As the field developed, it spawned new disciplines. *Human-Computer Interaction* (HCI) researchers emerged in the early 1980s. Bill Moggridge and Bill Verplank coined *Interaction Design* (IxD) in the mid-1980s to describe the practice of designing interactive digital products -- Moggridge felt this was an improvement over his earlier term, *Soft-Face*. Since then, *User Experience* (UX) designers, *User Interface* (UI) designers, and *Information Architects* (IA) have all entered the scene. I'd imagine that some labyrinthine, mutant Venn diagram exists somewhere to help explain how all of these disciplines relate to one another.
 
 Of course, advances in interaction design are not limited to software. Touchpads found their niche in laptops (as well as MP3 players and nifty music synthesisers). Touchscreens hit it big with tablets and smartphones. Then there is gesture recognition, force feedback, GPS, and augmented reality. Voice recognition has gained newfound traction thanks to enhanced natural language processing. In some respects, speech interfaces represent a coming full circle -- instead of typing in commands at the CLI, we now issue them with our voice!
 
@@ -163,7 +163,7 @@ def draw():
     line(mouseX,mouseY, pmouseX,pmouseY)
 {% endhighlight %}
 
-The `stroke()` line rotates the stroke colour each new frame. The `line()` function draws a line between the current and previous frame's mouse coordinates. Recall that rapid mouse movement increases distance between the x/y coordinates captured in successive frames. Run the sketch. As you move your mouse about a multicoloured line traces your path; you can gauge the speed of mouse movement by the length of each alternating band of rainbow colour.
+The `stroke()` line rotates the stroke colour each new frame. The `line()` function draws a line between the current and previous frame's mouse coordinates. Recall that rapid mouse movement increases the distance between the x/y coordinates captured in successive frames. Run the sketch. As you move your mouse about a multicoloured line traces your path; you can gauge the speed of mouse movement by the length of each alternating band of rainbow colour.
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/mouse-interaction-lines.png" />
@@ -171,7 +171,7 @@ The `stroke()` line rotates the stroke colour each new frame. The `line()` funct
 
 Currently, you have no means of controlling the flow of colour. To turn the brush on and off, we will add some code that activates it only while the mouse's left-click button is held down.
 
-While any mouse button is held down, the `mousePressed` system variable is equal to `True`. The `mouseButton` variable can be used to determine which button that is -- either `LEFT`, `RIGHT`, or `CENTER`. However, the `mousePressed` variable reverts to `False` once you have released, but `mouseButton` retains its value until another is clicked. For this reason, its best to use these two variables in combination with one another. Insert the following `if` statement to control when the `line` function is active.
+While any mouse button is held down, the `mousePressed` system variable is equal to `True`. The `mouseButton` variable can be used to determine which button that is -- either `LEFT`, `RIGHT`, or `CENTER`. However, the `mousePressed` variable reverts to `False` once you have released, but `mouseButton` retains its value until another is clicked. For this reason, it's best to use these two variables in combination with one another. Insert the following `if` statement to control when the `line` function is active.
 
 {% highlight py %}
     ...
@@ -236,7 +236,7 @@ The background now changes colour as you move towards different corners; the *x*
   <img src="{{ site.url }}/img/pitl07/mouse-interaction-squares.png" />
 </figure>
 
-The right- and centre-click functions should still be operational so that you can increase the size of the squares as you would adjust the stroke weight.
+The right- and centre-click functions will adjust of the squares.
 
 ### Paint App
 
@@ -247,7 +247,7 @@ Processing offers a selection of mouse *event* functions -- which somewhat overl
 [`mouseClicked()`](https://py.processing.org/reference/mouseClicked.html),
 [`mouseDragged()`](https://py.processing.org/reference/mouseDragged.html), and
 [`mouseMoved()`](https://py.processing.org/reference/mouseMoved.html).
-We will combine the first three to create a simple paint app that features a panel for selecting and adjusting brush properties. These functions listen for specific mouse events, and once triggered, execute some code in response. Once you've grasped a few event functions, it's easy enough to [look up](https://py.processing.org/reference/) and figure out the others. We will also be controlling Processing's `draw()` behaviour manually, as opposed to having it automatically repeat according to the frame rate.
+We will combine the first three to create a simple paint app that features a panel for selecting and adjusting brush properties. These functions listen for specific mouse events, and once triggered, execute some code in response. Once you've grasped a few event functions, it's easy enough to [look up](https://py.processing.org/reference/) and figure out the others. We will also be controlling Processing's `draw()` behaviour manually as opposed to having it automatically repeat per the frame rate.
 
 Create a new sketch and save it as "paint_app". Download the font, *Ernest* (by Marc André 'mieps' Misman) from DaFont; extract it; then place the "Ernest.ttf" file in your data sub-directory.  
 [https://www.dafont.com/ernest.font](https://www.dafont.com/ernest.font)  

@@ -106,7 +106,7 @@ In reality, the development of GUIs involved many people over many years. As the
 
 Of course, advances in interaction design are not limited to software. Touchpads found their niche in laptops (as well as MP3 players and nifty music synthesisers). Touchscreens hit it big with tablets and smartphones. Then there is gesture recognition, force feedback, GPS, and augmented reality. Voice recognition has gained newfound traction thanks to enhanced natural language processing. In some respects, speech interfaces represent a coming full circle -- instead of typing in commands at the CLI, we now issue them with our voice!
 
-Although we will stick to keyboard/mouse input in this lesson, you are encouraged to explore other means of interaction in your own time. GUI programming features prominently in many software and web development projects, so there are plenty of GUI toolkits out there. HTML is purpose-built for constructing web-pages. You'll discover that programming basic buttons without any readymade widgets is painful enough, not to mention constructing checkboxes, sliders, drop-down lists, text fields, and windows. I'll try to provide a few tips on good user interface design in the process, but this is an area the requires another book(s) to cover in any proper detail.
+Although we will stick to keyboard/mouse input in this lesson, you are encouraged to explore other means of interaction in your own time. GUI programming features prominently in many software and web development projects, so there are plenty of GUI toolkits out there. HTML, for example, is purpose-built for constructing web-pages. For Python, there's [PyQT](https://www.riverbankcomputing.com/software/pyqt/intro), [Tkinter](https://en.wikipedia.org/wiki/Tkinter), and [Kivy](https://kivy.org/), to name but a few. You'll discover that programming basic buttons without any readymade widgets is painful enough, not to mention checkboxes, sliders, drop-down lists, text-fields, and windows. I'll try to provide a few tips on good user interface design in the process, but this field really requires another book(s) to cover in any proper detail.
 
 ## Mouse Interaction
 
@@ -133,15 +133,15 @@ def draw():
     ellipse(mouseX,mouseY, 20,20)
 {% endhighlight %}
 
-Run the sketch and move your mouse pointer about the display window. The `print` function uses the `mouseX` and `mouseY` system variables to print the x/y-coordinates to the Console. The x/y position of the `ellipse` (circles) are also governed by `mouseX` and `mouseY`.
+Run the sketch and move your mouse pointer about the display window. The `print` function uses the `mouseX` and `mouseY` system variables to print the x/y-coordinates to the Console. These same values govern the x/y position of each `ellipse` (circle) drawn.
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/mouse-interaction-circles.png" />
 </figure>
 
-The `frameRate` is relatively slow (20 fps) so that rapid mouse movement results in circles distributed at larger intervals. There will always be a circle in the top-left corner because the pointer is assumed to be at (0,0) until the pointer moves into the display window.
+The `frameRate` is relatively slow (20 fps), so rapid mouse movement results in circles distributed at larger intervals. There will always be a circle in the top-left corner because the pointer is assumed to be at (0,0) until the mouse moves into the display window.
 
-The `pmouseX` and `pmouseY` system variables hold the mouse's x/y position from the previous frame. In other words, if the `mouseX` is equal to the `mouseY` you know the mouse has not moved. As per the code below, add the two new global variables (`rainbow` and `sw`), comment out the previous `draw` lines, and add the four new lines at the bottom:
+The `pmouseX` and `pmouseY` system variables hold the pointer's x/y position from the previous frame. In other words, if the `mouseX` is equal to the `mouseY` you know that the mouse hasn't moved since the last frame. As per the code below: add the two new global variables (`rainbow` and `sw`), comment out the previous `draw` lines, and add the four new lines at the bottom of the `draw`.
 
 {% highlight py %}
     ...
@@ -163,13 +163,15 @@ def draw():
     line(mouseX,mouseY, pmouseX,pmouseY)
 {% endhighlight %}
 
-The `stroke()` line selects a new rainbow colour each time a new frame is drawn. The `line()` function draws a line between the current and previous frame's mouse coordinates. Recall that moving the mouse quickly increases distance between the x/y coordinates captured in successive frames. Run the sketch. As you move your mouse about a multicoloured line traces your path; you are able read the speed of movement by the length of each alternating band of rainbow colour.
+The `stroke()` line rotates the stroke colour each new frame. The `line()` function draws a line between the current and previous frame's mouse coordinates. Recall that rapid mouse movement increases distance between the x/y coordinates captured in successive frames. Run the sketch. As you move your mouse about a multicoloured line traces your path; you can gauge the speed of mouse movement by the length of each alternating band of rainbow colour.
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/mouse-interaction-lines.png" />
 </figure>
 
-You currently have no way of controlling the flow of colour. Beginning at the top-left corner, the code continuous to connect your mouse locations with colourful lines. To 'turn' the flow on and off, we will activate the tool only while the mouse left-click button is depressed. If any mouse button is currently pressed, the `mousePressed` system variable is equal to `True`; the `mouseButton` will be equal to either `LEFT`, `RIGHT`, or `CENTER`, depending on which button it is that has been clicked. However, the `mousePressed` variable reverts to `False` once you have released, but `mouseButton` retains its value until another button is clicked. For this reason, its best to use these two variables in combination. Now, insert an `if` statement to control the `line` function.
+Currently, you have no means of controlling the flow of colour. To turn the brush on and off, we will add some code that activates it only while the mouse's left-click button is held down.
+
+While any mouse button is held down, the `mousePressed` system variable is equal to `True`. The `mouseButton` variable can be used to determine which button that is -- either `LEFT`, `RIGHT`, or `CENTER`. However, the `mousePressed` variable reverts to `False` once you have released, but `mouseButton` retains its value until another is clicked. For this reason, its best to use these two variables in combination with one another. Insert the following `if` statement to control when the `line` function is active.
 
 {% highlight py %}
     ...
@@ -179,11 +181,11 @@ You currently have no way of controlling the flow of colour. Beginning at the to
         line(mouseX,mouseY, pmouseX,pmouseY)
 {% endhighlight %}
 
-Run the sketch and test the left mouse button.
+Run the sketch to test how the left mouse button works.
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/mouse-interaction-left-button.png" />
-  <figcaption>You can determine the speed at which I drew by the colour intervals.</figcaption>
+  <figcaption>You can determine how I slowed down after each corner of the triangle (by the colour intervals).</figcaption>
 </figure>
 
 Now restructure the `if` statement to accommodate a centre-click that sets the stroke-weight to 3, and a right-click that incrementally increases the stroke thickness.
@@ -204,12 +206,12 @@ Now restructure the `if` statement to accommodate a centre-click that sets the s
 <figure>
   <img src="{{ site.url }}/img/pitl07/mouse-interaction-lines-variable.png" />
   <figcaption>
-    Middle click sets the stroke-weight to 3; right-click increases it by 1-pixel with each click.<br />
-    Can you figure out if I drew these lines left-to-right or vice versa? <span style="font-style:normal">🤔</span>
+    Centre-click sets the stroke-weight to 3; right-click increases it by a pixel with each press.<br />
+    Can you figure out if I drew these lines left-to-right or right-to-left? <span style="font-style:normal">🤔</span>
   </figcaption>
 </figure>
 
-The shapes need not persist. Play around to see what interesting effects you can create. As an example I have added this code to the `draw` function.
+The lines need not persist. Play around to see what interesting effects you can create. As an example, I have added this code to the `draw` function.
 
 {% highlight py %}
     # variable background colours
@@ -228,13 +230,13 @@ The shapes need not persist. Play around to see what interesting effects you can
     rect( mouseX,mouseY, pmouseX,pmouseY )
 {% endhighlight %}
 
-The background now changes colour as you move towards different corners; the x mouse position shifts the hues while the y position adjusts the saturation. Rectangles appear as you move the mouse about then fade progressively as the frames advance. The [`noCursor()`](https://py.processing.org/reference/noCursor.html) function hides the mouse pointer in the display window.
+The background now changes colour as you move towards different corners; the *x* mouse position shifts the hues while the *y* position adjusts the saturation. Colourful rectangles appear as you move the mouse about then fade progressively as the frames advance. The [`noCursor()`](https://py.processing.org/reference/noCursor.html) function hides the mouse pointer while it is over the display window.
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/mouse-interaction-squares.png" />
 </figure>
 
-The right- and centre-click functions should still be operational so that you can increase the size of the squares by adjusting the stroke weight.
+The right- and centre-click functions should still be operational so that you can increase the size of the squares as you would adjust the stroke weight.
 
 ### Paint App
 

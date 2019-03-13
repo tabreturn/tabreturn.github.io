@@ -65,25 +65,25 @@ In text-mode, computer displays are measured in characters as opposed to pixels.
   <figcaption>Midnight Commander running in a hundred-column (approx.) display.</figcaption>
 </figure>
 
-It is important to mention, though, that many CLI- and TUI-based systems were not incapable of rendering raster graphics. There were text and graphics modes that a system could switch between. Take games for instance. Of course, text-mode games -- like the dungeon crawler, [Netchack](https://en.wikipedia.org/wiki/NetHack) -- operate in text mode, but for games with graphics, the computer would switch to addressing individual pixels. Even today, PCs still boot in text mode, before shifting to graphics mode to load the desktop environment.
+It is important to mention, though, that many CLI- and TUI-based systems were not incapable of rendering raster graphics. There were text and graphics modes that a system could switch between. Take games for instance. Of course, text-mode games -- like the dungeon crawler, [NetHack](https://en.wikipedia.org/wiki/NetHack) -- operate in text mode, but for games with graphics, the computer would switch to addressing individual pixels. Even today, PCs still boot in text mode, before shifting to graphics mode to load the desktop environment.
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/interface-text-and-graphic-modes.png" class="fullwidth" />
   <figcaption>
-    Text-mode vs graphical games. Left: Netchack; right: Micropolis.
+    Text-mode vs graphical games. Left: NetHack; right: Micropolis.
   </figcaption>
 </figure>
 
-A Graphical User Interface (GUI) allows for interaction through the manipulation of graphical elements. You routinely make use of such interfaces to interact with your file manager, web-pages, application software, and mobile phone. To narrow down GUIs a bit, I'd like to focus on WIMP interfaces. The Windows/Icons/Menus/Pointer paradigm was developed by Xerox PARC in 1973 and popularised by Apple's Macintosh in 1984. This has been massively influential on graphical user interface design, and the WIMP-meets-desktop environment has remained fundamentally unchanged since it's inception. The desktop metaphor was particularly intuitive as it mimicked the very items that computers sought to replace -- documents, folders, notepads, and the forgiving trashcan for retrieving deleted files. With a GUI, gestures and menus replace CLI commands. For example, rather than typing `mv` commands, a user can drag-and-drop files to move them between folders (directories).
+A Graphical User Interface (GUI) allows for interaction through the manipulation of graphical elements. You routinely make use of such interfaces to interact with your file manager, web-pages, application software, and mobile phone. To narrow down GUIs a bit, I'd like to focus on WIMP interfaces. The Windows/Icons/Menus/Pointer paradigm was developed by Xerox PARC in 1973 and popularised by Apple's Macintosh in 1984. This has been massively influential on graphical user interface design, and the WIMP-meets-desktop environment has remained fundamentally unchanged since it's inception. The desktop metaphor was particularly intuitive as it mimicked the very items that computers sought to replace -- documents, folders, notepads, and the forgiving trashcan for retrieving deleted files. With a GUI, gestures and menus replace CLI commands. For example, rather than typing "`mv`" commands, a user can drag-and-drop files to move them between folders (directories).
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/interface-gem.png" />
   <figcaption>
-    The OpenGEM GUI. The GEM Desktop 1.0 was released in February 1985. Apple Computer sued the developers (DRI) for copying their Macintosh interface.
+    The OpenGEM GUI. DRI released GEM Desktop 1.0 in February 1985. Apple Computer sued the developers for copying their Macintosh interface.
   </figcaption>
 </figure>
 
-Apple licensed certain GUI features to Microsoft for use in Windows 1.0, but sued them when features like overlapping windows appeared in Windows 2.0. The district court ruled in favour of Microsoft. Regardless, Windows 1.x and 2.x were slow, clumsy, and poorly received. Most Microsoft users stuck with the CLI environment, MS-DOS. With VGA-colour, fonts, mouse support, and lightning-fast performance thanks to text-mode, MS-DOS TUIs grew to become remarkably advanced.
+Apple licensed certain GUI features to Microsoft for use in Windows 1.0, but sued them when features like overlapping windows appeared in Windows 2.0. The district court ruled in favour of Microsoft. Regardless of the legal outcome, Windows 1.x and 2.x were slow, clumsy, and poorly received. Most Microsoft users elected to stick with the Microsoft text-mode environment, MS-DOS. With VGA-colour, fonts, mouse support, and lightning-fast performance thanks to text-mode, MS-DOS TUIs grew to become remarkably advanced.
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/interface-dos-tui.png" />
@@ -92,7 +92,7 @@ Apple licensed certain GUI features to Microsoft for use in Windows 1.0, but sue
   </figcaption>
 </figure>
 
-Many important hard- and software developments paved the way for WIMP environments. Arguably, though, it was the invention of the mouse set that the process in motion. It was Douglas Engelbart -- in collaboration with computer engineer, Bill English -- who created the first mouse prototype in 1964.
+Many significant hard- and software developments paved the way for WIMP environments. Arguably, though, it was the invention of the mouse set that the process in motion. It was Douglas Engelbart -- in collaboration with computer engineer, Bill English -- who created the first mouse prototype in 1964.
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/wikimedia-backup/SRI_Computer_Mouse.jpg" />
@@ -102,11 +102,11 @@ Many important hard- and software developments paved the way for WIMP environmen
   </figcaption>
 </figure>
 
-In reality, the development of GUIs involved many people over many years. As the field developed, it spawned new disciplines. *Human Computer Interaction* (HCI) researchers emerged in the early 1980s. Bill Moggridge and Bill Verplank coined *Interaction Design* (IxD) in the mid-1980s to describe the practice of designing interactive digital products -- Moggridge felt this was an improvement over his earlier term, *Soft-Face*. Since then, *User Experience* (UX) designers, *User Interface* (UI) designers, *Information Architects* (IA) have all entered the scene. I'd imagine that some mutant Venn diagram exists that helps explain how all of these disciplines relate to one another.
+In reality, the development of GUIs involved many people over many years. As the field developed, it spawned new disciplines. *Human Computer Interaction* (HCI) researchers emerged in the early 1980s. Bill Moggridge and Bill Verplank coined *Interaction Design* (IxD) in the mid-1980s to describe the practice of designing interactive digital products -- Moggridge felt this was an improvement over his earlier term, *Soft-Face*. Since then, *User Experience* (UX) designers, *User Interface* (UI) designers, and *Information Architects* (IA) have all entered the scene. I'd imagine that some labyrinthine, mutant Venn diagram exists somewhere to help explain how all of these disciplines relate to one another.
 
-Of course, the advances in interaction design are not limited to software. Touchpads found their niche in for laptops (as well as MP3 players and nifty music synthesisers). Touchscreens hit it big with tablets and smartphones. Then there is gesture recognition, force feedback, GPS, and augmented reality. Voice recognition has gained newfound traction thanks to enhanced natural language processing. In some respects, we've come full circle -- instead of typing in commands at the CLI, we now issue them with voice!
+Of course, advances in interaction design are not limited to software. Touchpads found their niche in laptops (as well as MP3 players and nifty music synthesisers). Touchscreens hit it big with tablets and smartphones. Then there is gesture recognition, force feedback, GPS, and augmented reality. Voice recognition has gained newfound traction thanks to enhanced natural language processing. In some respects, speech interfaces represent a coming full circle -- instead of typing in commands at the CLI, we now issue them with our voice!
 
-We will program our own GUI in this lesson. We will stick to keyboard/mouse, but you are encouraged to explore other means of interaction in your own time. GUI programming features prominently in many software and web development projects, so there are plenty of GUI toolkits out there. HTML is purpose-built for constructing web-pages. You'll discover that programming basic buttons without any readymade widgets is painful enough, not to mention constructing checkboxes, sliders, drop-down lists, text fields, and windows. I'll try to provide a few tips on good user interface design in the process, but this is an area the requires another book(s) to cover in any proper detail.
+Although we will stick to keyboard/mouse input in this lesson, you are encouraged to explore other means of interaction in your own time. GUI programming features prominently in many software and web development projects, so there are plenty of GUI toolkits out there. HTML is purpose-built for constructing web-pages. You'll discover that programming basic buttons without any readymade widgets is painful enough, not to mention constructing checkboxes, sliders, drop-down lists, text fields, and windows. I'll try to provide a few tips on good user interface design in the process, but this is an area the requires another book(s) to cover in any proper detail.
 
 ## Mouse Interaction
 

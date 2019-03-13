@@ -21,3 +21,13 @@
 {% if site.isso_dataurl and page.comments %}
 <script data-isso="{{ site.isso_dataurl }}" src="{{ site.isso_sourcecurl }}"></script>
 {% endif %}
+
+<script>
+// external links open in new tab
+var links = document.links;
+for (var i=0, linksLength=links.length; i<linksLength; i++) {
+  if (links[i].hostname != window.location.hostname) {
+    links[i].target = '_blank';
+  }
+}
+</script>

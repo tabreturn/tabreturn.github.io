@@ -340,14 +340,14 @@ def mouseReleased():
     painting = False
 {% endhighlight %}
 
-Run the sketch to confirm that everything works. Read over these edits while simulating the process in your mind, paying careful attention to when `painting` is in a true or false state. The `if not painting…` statement draws a line from the *current* x/y coords to the *current* x/y coords (not previous) if `painting` is `False`. The `frameCount > 1` part solves the initial (0,0) problem. The `paintmode` will become relevant later when we begin to add different paint-modes.
+Run the sketch to confirm that everything works. Read over these edits while simulating the process in your mind, paying careful attention to when `painting` is in a true or false state. The `if not painting…` statement draws a line from the *current* x/y coords to the *current* x/y coords (not previous) if `painting` is `False`. The `frameCount > 1` part solves the initial (0,0) problem. The `paintmode` variable will become relevant later when we begin adding different paint-modes.
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/paint-app-first-paint-resolved.png" />
   <figcaption>Painting separate lines with no interconnecting straight lines.</figcaption>
 </figure>
 
-It is now time to create a panel from which the user can select colours and other brush features. Begin by adding a black panel and selectable colour swatches based on the rainbow list. The code must be added to the `draw` loop.
+The next step is to provide a panel from which the user can select colours and other brush features. Add the code below to the `draw()` loop. It places a black panel against the left edge, and within it, selectable colour swatches based on the `rainbow` list.
 
 {% highlight py %}
         ...
@@ -366,32 +366,32 @@ It is now time to create a panel from which the user can select colours and othe
     fill(rainbow[5]); rect(30,60,30,30)
 {% endhighlight %}
 
-By drawing the panel after the paint lines you avoid any strokes appearing over it.
+The panel code is placed below the paint code. In this way, Processing draws the panel last so that no paint strokes appear over it.
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/paint-app-panel.png" />
-  <figcaption>The panel is drawn over any painted elements.</figcaption>
+  <figcaption>The panel conceals any paint strokes below it.</figcaption>
 </figure>
 
-Selecting buttons is where things get a little clumsy. When you are programming with widget toolkits, every element in your interface is something to which you can attach an event handler. Consider your red button:
+Selecting buttons is where things get a little clumsy. When you are programming with GUI libraries, every element in your interface is something to which you can attach an *event handler*. Consider your red button:
 
 {% highlight py %}
 fill(rainbow[0]); rect(0,0, 30,30)
 {% endhighlight %}
 
-Now suppose that you were using some GUI coding toolkit. The same code might look something like this:
+Now suppose that you were using some GUI library. The same code might look something like this:
 
 {% highlight py %}
 redbutton = createButton(0,0, 30,30, rainbow[0])
 {% endhighlight %}
 
-The position, size, and fill parameters are all handled in a single `createButton` function. That's neat, but it gets better. To listen for click events, there will be dedicated methods. For example, something like a `click()` method that acts upon the button you have already created:
+The position, size, and fill parameters are all handled in a single `createButton` function. That's neat, but it gets better! There will be dedicated methods that listen for events. For example, something like a `click()` method that can be attached to any buttons you have created:
 
 {% highlight py %}
 redbutton.click( setBrushColor(rainbow[0]) )
 {% endhighlight %}
 
-No matter where you place the button, clicking it will set the brush colour to red. To stress: this is not real code. However, we will look at ControlP5 further into the lesson. The point is that there's no need to detect where the mouse is as this it's handled by the GUI library.
+To reiterate: this is not real code. However, we will look at one such library (ControlP5) further into this lesson. What I wish to highlight here is that there's no need to detect where the mouse is when the event listeners are handling things for you. In this task, however, we are required to detect what button (if any) the mouse pointer is placed over when the left button is clicked.
 
 The approach here will be similar to that of the [four-square task]({% post_url 2018-07-01-processing.py_in_ten_lessons--03-_control_flow_and_randomness %}#four-square-task) in lesson 03, detecting where the pointer is and within which square that is located. Add the the global line and everything beneath it to your `mousePressed()` function:
 

@@ -1,6 +1,6 @@
 ---
 layout: post
-comments: true
+comments: false
 title: "Processing.py in Ten Lessons -- 03: Control Flow and Randomness"
 categories: code processing python
 ---

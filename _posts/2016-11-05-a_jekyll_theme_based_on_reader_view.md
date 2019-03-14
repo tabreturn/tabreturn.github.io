@@ -1,6 +1,6 @@
 ---
 layout: post
-comments: true
+comments: false
 title: "A Jekyll Theme Based on Reader View"
 categories: jekyll random
 ---

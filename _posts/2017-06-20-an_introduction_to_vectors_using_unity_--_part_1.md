@@ -1,6 +1,6 @@
 ---
 layout: post
-comments: true
+comments: false
 title: "An Introduction to Vectors Using Unity -- part 1"
 categories: code physics unity
 mathml: true

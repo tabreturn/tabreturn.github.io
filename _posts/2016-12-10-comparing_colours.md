@@ -1,6 +1,6 @@
 ---
 layout: post
-comments: true
+comments: false
 title: "Comparing Colours"
 categories: code
 ---

@@ -16,5 +16,5 @@ matomo_siteid: 2
 
 # isso settings
 # remove/comment lines to disable
-isso_dataurl: "https://secure.tabreturn.com/"
-isso_sourcecurl: "https://secure.tabreturn.com/js/embed.min.js"
+isso_dataurl: "https://isso.tabreturn.com/"
+isso_sourcecurl: "https://isso.tabreturn.com/js/embed.min.js"

@@ -1,6 +1,6 @@
 ---
 layout: post
-comments: false
+comments: true
 title: "Converting CSS Colour to Greyscale"
 categories: code html javascript
 ---

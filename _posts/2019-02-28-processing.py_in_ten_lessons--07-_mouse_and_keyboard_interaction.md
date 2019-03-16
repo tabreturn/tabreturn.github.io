@@ -623,12 +623,12 @@ In <a href="https://juegosrancheros.itch.io/fantastic-arcade-2016">ALPHABET</a>,
 
 Keyboard interaction in Processing works similarly to mouse interaction. There are a series of system variables -- [`key`](https://py.processing.org/reference/key.html), [`keyCode`](https://py.processing.org/reference/keyCode.html), and [`keyPressed`](https://py.processing.org/reference/keyPressed_var.html) -- as well as event functions -- [`keyPressed()`](https://py.processing.org/reference/keyPressed.html), [`keyReleased()`](https://py.processing.org/reference/keyReleased.html), [`keyTyped()`](https://py.processing.org/reference/keyTyped.html).
 
-We will create a simple game that controls a simple character using keyboard input. The closest game I can think of is *Snake*, although "Snake" is really more of a genre than a game. Many (most?) people are familiar with the game, largely thanks to the version Nokia preinstalled on its hugely successful mobile phones of the late nineties. Our game will be far simpler, though. It will be missing a number of key features so I have decided to name it, *Sna*.
+We will create a simple game that controls a basic character using keyboard input. The closest game I can think of is *Snake*, although "Snake" is really more of a genre than a game. Many (most?) people are familiar with this game, largely thanks to the version Nokia preinstalled on its hugely successful mobile phones of the late nineties. Our game will be far simpler though, missing many key features. For this reason, it will be named *Sna*.
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/delta-time-nsnake.png" />
   <figcaption>
-    <a href="https://github.com/alexdantas/nSnake">nSnake</a>, a classic snake game with text-based interface. <br />
+    <a href="https://github.com/alexdantas/nSnake">nSnake</a>, a text-based snake game. <br />
     Have you ever tried to type "play snake" into Google's search engine?
   </figcaption>
 </figure>
@@ -668,21 +668,21 @@ Run the sketch. Confirm that you have a white square sitting in the middle of a 
   <img src="{{ site.url }}/img/pitl07/keyboard-sna-stage.png" />
 </figure>
 
-To control the movement of the cube -- or if you use your imagination, the 'snake' -- we'll use keyboard input. Add a [`keyTyped()`](https://py.processing.org/reference/keyTyped.html) function; this will be called every-time a key is pressed. Holding down a key likely results in repeated calls, the frequency of which is determined by your operating system. To establish which which key exactly has been pressed, print the [`key`](https://py.processing.org/reference/key.html) system variable which will always hold the most recent key you have used (whether currently pressed or released).
+To control the movement of the square -- or if you use your imagination, the 'snake' -- we'll use keyboard input. Add a [`keyTyped()`](https://py.processing.org/reference/keyTyped.html) function; this will be called every-time any key is pressed. Holding down a key results in repeated calls, the frequency of which is determined by your operating system. From here you can establish exactly which key been pressed by printing the [`key`](https://py.processing.org/reference/key.html) system variable; this always holds the most recent key you have used (whether currently pressed or released).
 
 {% highlight py %}
 def keyTyped():
     print(key)
 {% endhighlight %}
 
-Run the sketch. Whichever key you press appears in the Console. However, there will be certain keys that fail to register and these include the arrow keys. You will see why this is and how to work around it, shortly.
+Run the sketch. Whichever key you press appears in the Console. However, there will be specific keys that fail to register, and these include the arrow keys. You will see why this is and how to work around it shortly.
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/keyboard-sna-keytyped.png" class="fullwidth" />
-  <figcaption>Any keys you press appear in the Console, although some will appear to not register (e.g. arrow keys).</figcaption>
+  <figcaption>Any keys you press appear in the Console, although some do not register properly (e.g. arrow keys).</figcaption>
 </figure>
 
-For now, though, we will use `w` for moving up. One approach is to place a [`keyPressed`](https://py.processing.org/reference/keyPressed_var.html) system variable inside of the `draw` loop, as this will return `True` when something is pressed. Instead, though, we'll employ a [`keyPressed()`](https://py.processing.org/reference/keyPressed.html) event function. Think of it this way: `mousePressed` is to `mousePressed()` what `keyPressed` is to `keyPressed()`.
+For now, though, we will use the W key for moving up. One approach is to place a [`keyPressed`](https://py.processing.org/reference/keyPressed_var.html) system variable inside of the `draw` loop, then use an `if` statement to monitor for when it is equal to `True`. Instead, though, we'll employ a [`keyPressed()`](https://py.processing.org/reference/keyPressed.html) event function. Think of it this way: `mousePressed` is to `mousePressed()` what `keyPressed` is to `keyPressed()`.
 
  Add the following code the end of your working file:
 

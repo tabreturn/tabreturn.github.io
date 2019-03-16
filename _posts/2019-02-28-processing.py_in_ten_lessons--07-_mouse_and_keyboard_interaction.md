@@ -391,9 +391,7 @@ The position, size, and fill parameters are all handled in a single `createButto
 redbutton.click( setBrushColor(rainbow[0]) )
 {% endhighlight %}
 
-To reiterate: this is not real code. However, we will look at one such library (ControlP5) further into this lesson. What I wish to highlight here is that there's no need to detect where the mouse is when the event listeners are handling things for you. In this task, however, we are required to detect what button (if any) the mouse pointer is placed over when the left button is clicked.
-
-The approach here will be similar to that of the [four-square task]({% post_url 2018-07-01-processing.py_in_ten_lessons--03-_control_flow_and_randomness %}#four-square-task) in lesson 03, detecting where the pointer is and within which square that is located. Add the the global line and everything beneath it to your `mousePressed()` function:
+To reiterate: this is not real code. However, we will look at one such library (ControlP5) further into this lesson. What I wish to highlight here is that there is no need to detect the mouse position when event listeners are handling things for you. As this sketch employs no such library, we will adopt a similar approach to that of the [four-square task]({% post_url 2018-07-01-processing.py_in_ten_lessons--03-_control_flow_and_randomness %}#four-square-task) (lesson 03); that is, detecting within which square a pointer is positioned. Overhaul your `mousePressed()` function.
 
 {% highlight py %}
 def mousePressed():
@@ -418,14 +416,14 @@ def mousePressed():
                 brushcolor = rainbow[5]
 {% endhighlight %}
 
-The parent `< 30` and `< 60` conditions separate the two columns; the sub-conditions isolate the row. Run the sketch. You can now select different colours during your paint session.
+The outer `< 30` and `< 60` conditions separate the area into two columns; the sub-conditions isolate the row. Run the sketch. You can now select different colours for painting.
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/paint-app-colour-selection.png" />
-  <figcaption>Paint colours are selected from the palette at the top-left.</figcaption>
+  <figcaption>Select paint colours from the palette at the top-left.</figcaption>
 </figure>
 
-Next, we will add a feature for resizing the brush; this will be mapped to the scroll wheel. We will include a preview of the brush in the panel; this will indicate the colour, size, and shape. Locate the last line you wrote in the `draw()` function, and add everything from brush comment and onward:
+Next, we will add a feature for resizing the brush, mapping the function to the scroll wheel. In addition, there will be a profile of the brush below the swatches. This profile will reflect the active brush's colour, size, and shape. Locate the last line you wrote in the `draw()` function, and add the brush preview code the `draw` block.
 
 {% highlight py %}
     ...
@@ -438,14 +436,14 @@ Next, we will add a feature for resizing the brush; this will be mapped to the s
     paintmode = 'free'
 {% endhighlight %}
 
-The last line does nothing for now, but it will be important for the next (sizing) step. The app now renders a brush preview in the panel. Although the size cannot be adjusted yet, the colour of the dot changes as you select different swatches.
+The last line does nothing for now, but it will be important for the next (sizing) step. The app now renders a brush preview in the panel. Although the size cannot be adjusted yet, the colour of the dot changes as you click different swatches.
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/paint-app-brush-preview.png" />
   <figcaption>The yellow dot in the left panel indicates the brush shape and colour.</figcaption>
 </figure>
 
-The [`mouseWheel()`](https://py.processing.org/reference/mouseWheel.html) event function returns positive or negative values, depending on the direction you rotate the scroll wheel. Add the following lines to the very bottom of your code:
+The [`mouseWheel()`](https://py.processing.org/reference/mouseWheel.html) event function returns positive or negative values depending on the direction the scroll wheel is rotated. Add the following lines to the very bottom of your code.
 
 {% highlight py %}
 def mouseWheel(e):
@@ -463,17 +461,17 @@ def mouseWheel(e):
     redraw()
 {% endhighlight %}
 
-Okay -- so there's a fair amount to explain here. Firstly, the `mouseWheel()` function has an argument of `e`. You may use any name you like for this argument; it is a variable to which all of the event's details are assigned. Printing `e` displays something like this in the Console:
+This code requires some explanation. Firstly, there is the `e` argument within `mouseWheel()` brackets. You may use any name you like for this argument; it serves as a variable to which all of the event's details are assigned. Note how the Console displays something like this each time the scroll wheel rotates:
 
 `<MouseEvent WHEEL@407,370 count:1 button:0>`
 
-From this line, one can establish the type of mouse event (`WHEEL`), the x/y coordinates at which it occurred (`@407,370`), and the number of scroll increments (`count:1`). If you added an `e` argument to one the other mouse functions, the `button` value would be some other integer. For example, a `mousePressed(e)` upon left-click would display something like `<MouseEvent PRESS@407,370 count:1 button:37>`.
+From this output, one can establish the type of mouse event (`WHEEL`), the x/y coordinates at which it occurred (`@407,370`), and the number of scroll increments (`count:1`). If you added an `e` argument to one the other mouse functions -- i.e. `mousePressed()` or `mouseReleased()` -- the `button` value would be some integer. For example, a `mousePressed(e)` upon left-click would hold something like `<MouseEvent PRESS@407,370 count:1 button:37>`
 
-We do not want to paint while adjusting brush size, so the `paintmode` is switched to `select`. This way, it can be switched back once the adjustment is complete. Recall that the switch-back happens in the `draw` loop.
+We do not want to paint while adjusting the brush size, so the `paintmode` is switched to `select`. This way, it can be switched back once the adjustment is complete. The switch-back happens inside the `draw` loop.
 
-The `e.count` is used to retrieve the number of scroll increments from the mouse event. However, some there are some checks in place (`if` statements) to ensure that the size remains within a range of between `3` and `45`.
+The `e.count` is used to retrieve the number of scroll increments from the mouse event. It is necessary, however, to include some checks (`if` statements) to ensure that the new size remains within a range of between `3` and `45`.
 
-The [`redraw()`](https://py.processing.org/reference/redraw.html) function executes the `draw()` code just once -- in contrast to a `loop()`, which will set it off continuously again.
+The [`redraw()`](https://py.processing.org/reference/redraw.html) function executes the `draw()` code just once -- in contrast to a `loop()` that would set it to repeat continuously.
 
 Run the sketch to confirm that you can resize the brush using the scroll wheel.
 
@@ -482,14 +480,14 @@ Run the sketch to confirm that you can resize the brush using the scroll wheel.
   <figcaption>The green circle in the left panel indicates the brush shape and colour.</figcaption>
 </figure>
 
-This does cause a new problem, though. The pointer whenever you click, so when selecting swatches with a large brush leaves discernible blobs to that extend into the canvas area.
+There is one problem, though. When selecting swatches with a large brush a discernible blob of colour extends into the canvas area.
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/paint-app-brush-preview-bug.png" />
-  <figcaption>A blue blob is painted as I click to select the blue swatch.</figcaption>
+  <figcaption>Selecting a swatch with a large brush.</figcaption>
 </figure>
 
-To resolve this issue, add an `if` statement to the `draw()` that disables any painting while the mouse is over the panel, using the `paintmode` variable:
+To resolve this issue, add an `if` statement to the `draw()` that disables painting while the mouse is over the panel. Use the `paintmode` variable to control this.
 
 {% highlight py %}
 def draw():
@@ -502,9 +500,12 @@ def draw():
     ...
 {% endhighlight %}
 
-Next, we will add a clear button that wipes everything from the canvas.
+Next, add a clear button that wipes everything from the canvas. This requires a new `clearall` variable, as well as some additional code for the `draw()` and `mousePressed()` blocks.
 
 {% highlight py %}
+...
+clearall = False
+
 def draw():
     ...
 
@@ -518,25 +519,23 @@ def draw():
         rect(60,0, width,height)
         clearall = False
 
-clearall = False
-
 def mousePressed():
     ...
     global clearall
-        if mouseY > height-30:
-            clearall = True
-            redraw()
+    if mouseY > height-30:
+        clearall = True
+        redraw()
 {% endhighlight %}
 
 
-The clear button has no hover effect. That is to say, when you position the mouse cursor above it there is no visible change.
+The clear button has no hover effect. That is to say, when you position the mouse cursor above it, there is no visible change.
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/paint-app-clear.png" />
   <figcaption>No hover effect for the clear button.</figcaption>
 </figure>
 
-It's good practice to always provide mouse hovering and pressed states for clickable interface elements. This provides visual feedback to the user indicating when he or she has something activated or is about to select something. A 'while pressing' state may seem redundant, but most buttons fire-off instructions when a user *releases* the click. In other words, you can click on any interface element -- and provided you keep your mouse button held down -- can then move out of the clickable zone and release without triggering anything. Try it on this link:
+It's good practice always to provide mouse hover and pressed states for clickable interface elements. This provides visual feedback to the user indicating when he or she has something activated or is about to select something. A 'while pressed/pressing' state may seem redundant, but most buttons fire-off instructions when a user *releases* the click. In other words, you can click on any interface element -- and provided you keep your mouse button held down -- can then move out of the clickable zone and release without triggering anything. Try it on this link:
 
 <style>
 #testlink {
@@ -564,15 +563,15 @@ It's good practice to always provide mouse hovering and pressed states for click
 }
 </style>
 
-<a id="testlink" onmouseup="alert('You released while above me!\nTry again -- but this time click, hold, and release somewhere off to the side.')">some link</a>
+<a id="testlink" onmouseup="alert('You released while above me!\nTry again -- but this time click, hold, and release somewhere outside of the button.')">some link</a>
 
-We *could* add hover effects to this paint app's interface, but it is going to get messy. I've tried to keep things orderly but it's beginning to turn into [spaghetti code](https://en.wikipedia.org/wiki/Spaghetti_code) already. Once again, this is where it helps to use a proper user-interface markup language or GUI library.
+We *could* add hover effects to this paint app's interface, but it's going to get too messy. I've tried to keep things orderly, but the code is beginning to turn into [spaghetti](https://en.wikipedia.org/wiki/Spaghetti_code). Once again, this is where it helps to use a proper user-interface toolkit, markup language, or GUI library.
 
-Another small tweak that will improve the interface is a custom mouse cursor. Processing's [`cursor()`](https://py.processing.org/reference/cursor.html) function can switch the the standard pointer for an image. Download the image below and add it to your data sub-directory.
+Another small tweak that will improve the interface is a custom mouse cursor. Processing's [`cursor()`](https://py.processing.org/reference/cursor.html) function can switch the standard pointer for an image. Download the PNG file below and add it to your data sub-directory.
 
 <a href="{{ site.url }}/img/pitl07/brush-cursor.png" download>brush-cursor.png</a>
 
-Then, add the following code to the end of your `draw()` function:
+Then add the following code to the end of your `draw()` function:
 
 {% highlight py%}
     if brushsize < 15:
@@ -583,7 +582,7 @@ Then, add the following code to the end of your `draw()` function:
         cursor(mousecursor)
 {% endhighlight %}
 
-There are six predefined cursors: `ARROW`, `CROSS`, `HAND`, `MOVE`, `TEXT`, and `WAIT`. In this case, a crosshair (`CROSS`) will appear for any brush sized less than 15 pixels. For anything larger, a custom image cursor (an empty circle) will instead appear to help gauge the brush size.
+There are six predefined cursor arguments: `ARROW`, `CROSS`, `HAND`, `MOVE`, `TEXT`, and `WAIT`. In this case, a crosshair (`CROSS`) will appear for any brush sized less than 15 pixels. For anything larger, the PNG image cursor (an empty circle) appears instead to help gauge the brush size.
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/mouse-interaction-cursor.png" />
@@ -591,7 +590,7 @@ There are six predefined cursors: `ARROW`, `CROSS`, `HAND`, `MOVE`, `TEXT`, and 
 
 The appearance of the predefined cursors will vary depending on your operating system. If you ever need to hide the mouse cursor altogether, use the [`noCursor()`](https://py.processing.org/reference/noCursor.html) function.
 
-In the next section, you will explore keyboard interaction. After that, you may want to add some shortcut keys to your drawing app, and maybe even some new features?
+In the next section, you will explore keyboard interaction. After that, you may want to add some shortcut keys to your drawing app and maybe even some new features?
 
 ## Keyboard Interaction
 

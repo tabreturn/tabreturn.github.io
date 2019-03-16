@@ -58,7 +58,7 @@ For richer text-based interfaces, many old systems included *semigraphics*. You 
   </figcaption>
 </figure>
 
-In text-mode, computer displays are measured in characters as opposed to pixels. For instance, the [ZX Spectrum](https://en.wikipedia.org/wiki/ZX_Spectrum), released in 1982, managed 32 *columns* by 24 *rows* of characters on a screen with a resolution of 256×192 pixels. Because text-mode environments rely on [mono-spaced]({% post_url 2018-06-19-processing.py_in_ten_lessons--02-_bezier,_catmull_and_rom_walk_into_a_bar %}#fonts) characters, box-drawing characters will always align perfectly.
+In text-mode, computer displays are measured in characters as opposed to pixels. For instance, the [ZX Spectrum](https://en.wikipedia.org/wiki/ZX_Spectrum), released in 1982, managed 32 *columns* by 24 *rows* of characters on a screen with a resolution of 256×192 pixels. Because text-mode environments rely on [mono-spaced]({% post_url 2018-06-19-processing.py_in_ten_lessons--02-_bezier,_catmull,_and_rom_walk_into_a_bar %}#fonts) characters, box-drawing characters will always align perfectly.
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/interface-terminal-mc.png" class="fullwidth" />
@@ -1028,7 +1028,7 @@ The `add_library()` line is required for loading in ControlP5. A new ControlP5 i
   </figcaption>
 </figure>
 
-The first widget will be a textfield. Add the controller in `setup()` function. The brackets surrounding the `addTextfield()` lines may look odd, but this is necessary to break the chain of [methods]({% post_url 2018-06-19-processing.py_in_ten_lessons--02-_bezier,_catmull_and_rom_walk_into_a_bar %}#string-methods) over multiple lines. Alternatively, you could write this on a single line but likely won't find it as readable. Whenever you create a new controller, specify a name in the first argument -- in this case, I have used `'alias'`. This name is used to reference the controller further along, as well as the default label for the field.
+The first widget will be a textfield. Add the controller in `setup()` function. The brackets surrounding the `addTextfield()` lines may look odd, but this is necessary to break the chain of [methods]({% post_url 2018-06-19-processing.py_in_ten_lessons--02-_bezier,_catmull,_and_rom_walk_into_a_bar %}#string-methods) over multiple lines. Alternatively, you could write this on a single line but likely won't find it as readable. Whenever you create a new controller, specify a name in the first argument -- in this case, I have used `'alias'`. This name is used to reference the controller further along, as well as the default label for the field.
 
 {% highlight py %}
 def setup():

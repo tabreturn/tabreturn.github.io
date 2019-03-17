@@ -1640,7 +1640,7 @@ That concludes another lesson. You now understand how to manage colour on a chan
 
 In the next lesson, you will look at interactivity in Processing. As you will see, Processing is great for mouse, keyboard, and other interaction, but rather clumsy for building user interfaces. If you have any experience with programming interfaces in other languages (perhaps some JavaScript, etc.), you'll quickly realise what I mean. However, some useful Processing libraries provide an extended set of turnkey GUI features.
 
-**Begin Lesson 07:** Mouse and Keyboard Interaction *(coming soon)*
+**Begin Lesson 07:** [Mouse and Keyboard Interaction]({% post_url 2019-03-16-processing.py_in_ten_lessons--07-_mouse_and_keyboard_interaction %})
 
 [Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)
 

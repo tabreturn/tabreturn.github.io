@@ -1068,7 +1068,7 @@ Test out the input field. The alias you enter will appear beneath the face.
   <img src="{{ site.url }}/img/pitl07/controlp5-identikit-textfield.png" />
 </figure>
 
-Next, we will add widgets for controlling the eyes. The additional methods, `setRange()` and `setValue()`, set the lower/upper value range and in the initial position, respectively.
+Next, we will add widgets for controlling the eyes. The additional methods, `setRange()` and `setValue()`, set the lower/upper value range and in the initial value, respectively.
 
 {% highlight py %}
 def setup():
@@ -1085,7 +1085,7 @@ def setup():
   <img src="{{ site.url }}/img/pitl07/controlp5-identikit-slider-default-label.png" />
 </figure>
 
-The problem is that the default position for any slider label is to the right of the widget, which doesn't fit nicely in this layout. Add some code that adjusts the alignment and padding so that the label is repositioned at the bottom left.
+The problem is that the default position for any slider label is to the right of the widget, which doesn't fit nicely in this layout. Add some code that adjusts the alignment and padding to reposition the label at the bottom left.
 
 {% highlight py %}
         ...
@@ -1123,10 +1123,10 @@ def setup():
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/controlp5-identikit-eye-widgets.png" />
-  <figcaption>Click and hold down the knob, then pull left and right to adjust the values</figcaption>
+  <figcaption>To operate the knob, click and hold it, then pull left and right to adjust the value.</figcaption>
 </figure>
 
-To draw the eyes, add the following lines to your `draw` function. You will notice that the `getController()` is used to retrieve each of the controller properties -- but, unlike the text-field --- `getValue()` methods have been used in place of `getText()`.
+To draw the eyes, add the following lines to your `draw` function. You will notice that a `getController()` is used to retrieve each of the controller properties -- but, unlike the textfield -- there are `getValue()` methods in place of `getText()`.
 
 {% highlight py %}
 def draw():
@@ -1156,10 +1156,10 @@ def draw():
 Run the sketch a have a play with the various eye features.
 
 <figure>
-  <img src="{{ site.url }}/img/pitl07/controlp5-identikit-eye-adjustments.png" />
+  <img src="{{ site.url }}/img/pitl07/controlp5-identikit-eye-adjustments.png" class="fullwidth" />
 </figure>
 
-For the nose, we will add a 2D slider. For the mouth, we will use a standard slider but with tick marks for set increments.
+For the nose, we will add a 2D slider; for the mouth, a standard slider but with tick marks for set increments.
 
 {% highlight py %}
 def setup():
@@ -1200,13 +1200,22 @@ def draw():
     line(axis-mouthwidth/2,340, axis+mouthwidth/2,340)
 {% endhighlight %}
 
-The 2D slider holds two values in a list, hence the `.getArrayValue()` and square brackets. If you are confused about what the different methods control, try adjusting the the arguments to see what effect this has.
+The 2D slider holds two values in a list, hence the `.getArrayValue()` white square brackets. If you are confused about what the different methods control, try adjusting the arguments to see what effect this has.
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/controlp5-identikit-nose-and-mouth.png" />
 </figure>
 
-We will add one final button widget. This will save the image to a TIFF file. Event handlers can be added like any other method. However, this requires a `lambda`. Lambdas are not reviewed in these lessons, but if you wish to explore them further, wait until after the next lesson on functions (they'll make far more sense, then). For now, all you need to know is where to write it, and the the `e` variable serves the same purpose its namesake in the mouse event examples from earlier. That is, you can name it whatever you wish, and it holds all of the properties related to the event (in this case, an `.onClick`). To provide some insight into what these are, we will begin by printing them to the console.
+We will add one final button widget that will save the image as a TIFF file. Using the `.addButton()` method, place a new button at the lower right of the display window.
+
+{% highlight py %}
+(cp5.addButton('save image')
+    .setPosition(500,440)
+    .setSize(200,25)
+)
+{% endhighlight %}
+
+One can attach event handlers like any other method. These require a Python *lambda* -- but for now, all you need to know is where to write the lambda. We will not review lambdas in these lessons, but if you wish to explore them further, wait until after the next lesson on functions (they'll make far more sense, after that).
 
 {% highlight py %}
 (cp5.addButton('save image')
@@ -1216,12 +1225,14 @@ We will add one final button widget. This will save the image to a TIFF file. Ev
 )
 {% endhighlight %}
 
+The `e` variable serves the same role as in the mouse event examples from earlier. That is, it holds all of the properties related to the event (in this case, an `.onClick`). You may also name `e` whatever you wish. To provide some insight into what these properties are, we will print them to the console.
+
 <figure>
   <img src="{{ site.url }}/img/pitl07/controlp5-identikit-lambda.png" class="fullwidth" />
   <figcaption>Clicking the SAVE IMAGE button produces the following Console output.</figcaption>
 </figure>
 
-Of course, we wish to save an image. Change the lambda line, replacing everything after the colon with `save()` function that uses the alias input for a filename.
+Of course, we wish to save an image, so change the lambda line, replacing everything after the colon with a `save()` function that uses the alias input for a filename.
 
     .onClick( lambda e: save(cp5.getController('alias').getText()) )
 
@@ -1230,7 +1241,7 @@ Of course, we wish to save an image. Change the lambda line, replacing everythin
   <figcaption>The SAVE IMAGE button now saves a .tif file using the alias as a filename.</figcaption>
 </figure>
 
-That is as far as we will venture into ControlP5. There's plenty more to explore, though. For instance,  controllers can be moved about the screen using the *Alt* key while click-and-dragging with the mouse. You can also hide the all of the controllers using *Alt+Shift+H*. To activate these shortcut features, add a `cp5.enableShortcuts()` line to the setup block.
+That is as far as we will venture into ControlP5. There's plenty more to explore, though. For instance, while pressing the *Alt* key and click-and-dragging, controllers can be moved about the display. You can also hide all of the controllers using *Alt+Shift+H*. To activate these shortcut features, add a `cp5.enableShortcuts()` line somewhere in the setup block.
 
 {% highlight py %}
 def setup():
@@ -1238,17 +1249,17 @@ def setup():
     cp5.enableShortcuts()
 {% endhighlight %}
 
-For more examples of how to use ControlP5, refer to the **File > Examples...** menu. In the window that pops-up, you'll find an extensive selection of sample sketches. Be warned though: almost all of these are written in Processing's Java language. In spite of this, it should be similar enough for you to understand and translate to Pyhton.
+For more examples of how to use ControlP5, refer to the **File > Examples...** menu. In the window that pops-up, you'll find an extensive selection of sample sketches. Be warned though: almost all of these are written in Processing's Java language. In spite of this, it should be similar enough for you to understand and translate to Python.
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/controlp5-examples.png" />
 </figure>
 
-That's all for this lesson. You are encouraged to experiment and add additional features to the interfaces of the tasks you have completed.
+That's all for this lesson. Feel welcome to experiment with and add additional features to the tasks you have completed.
 
 ## Lesson 08
 
-You will often find that you repeat the same, or very similar, lines of code within the same sketch. As your programs grow more complex, repetition tends to creep in more and more. For more modular and reusable code, one can employ *functions*. In the next chapter, you will look at how to define and work with functions. As a concept, you should grasp functions without much effort, especially considering what has been covered thus far. Nevertheless, there will be some crunchy tasks to keep you challenged.
+You will often find that you repeat the same, or very similar, lines of code within the same sketch. Moreover, as your programs grow more complex, repetition tends to creep in more and more. For more modular and reusable code, one can employ *functions*. In the next chapter, you will look at how to define and work with functions. As a concept, you should grasp functions without much trouble, especially considering what you managed thus far. On the other hand, I'll still be throwing in some crunchy tasks to keep you challenged!
 
 **Begin Lesson 08:** Functions *(coming soon)*
 

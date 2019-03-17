@@ -968,20 +968,22 @@ This is where the *delta time* proves useful. The time between frames can be use
     ...
 {% endhighlight %}
 
-Run the sketch. The snake reaches the top-edge in around 2500 milliseconds, even slightly under, as if there were no lag at all. However, rather than having every square rendered two-pixels apart, the head 'leaps' in larger, unevenly-sized increments. The size of each leap is dependant on how much time is required to catch up. This results in a longer trail, as the starting position in now fewer frames from the ending position. Moreover, some discernible gaps may appear in the trail, although this will depend on how much your system struggles to match 30 frames per second.
+Run the sketch. The snake reaches the top-edge in around 2500 milliseconds, even slightly under, as if there were no lag at all. However, rather than rendering each successive head two-pixels apart, the head 'leaps' in larger, unevenly-sized increments. The size of each leap is dependant on how much time is required to catch up. This results in a longer trail, as the starting position in now fewer frames from the ending position. Moreover, some discernible gaps may appear in the trail, although this will depend on how much your system struggles to match 30 frames per second.
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/delta-time-applied.png" />
-  <figcaption>Factoring in delta time, the snake reaches the top-edge in minimum time, but leaves a longer trail that may even contain gaps.</figcaption>
+  <figcaption>Factoring in delta time, the snake reaches the top-edge 'on time', but leaves a longer trail that may contain gaps.</figcaption>
 </figure>
 
-Delta time, thus, helps maintain a constant game speed despite variations in frame rate. It may seem that we are 'dropping' frames to keep apace, but, ultimately, delta time helps smooth out the movement values. It can also be used to limit frame rates in cases where a game may run too fast. Generally speaking, the motions of any positioning, rotation, and scaling operations incorporate delta time. Conversely, games can behave very strangely if physics calculations mix with variable frame rates. Many game engines, hence, include fixed- and variable time-step functions to separate your physics and graphics code.
+You can now adjust the loop's `900` value as you wish and the snake still reaches the top edge in around 2500 milliseconds (give or take a few hundred).
 
-That is as deep as we will venture into game development concepts. If it's games you are serious about, you will have to explore further elsewhere. That said, the concepts and techniques covered in these tutorials will prove integral for your path towards game development.
+Delta time, thus, helps maintain a constant game speed despite variations in frame rate. We are 'dropping' frames to keep apace, but, ultimately, delta time helps smooth out the movement values. It can also be used to limit frame rates in cases where a game may run too fast. Generally speaking, the motions of any positioning, rotation, and scaling operations should incorporate delta time. On the other hand, games can behave very strangely if physics calculations mix with variable frame rates. Many game engines, hence, include fixed- and variable time-step functions -- like `draw()` -- to separate out physics and graphics code.
+
+That is as deep as we will venture into game development concepts. If it's games you are serious about, then you'll need to explore further using other resources. That said, the concepts and techniques covered in the previous and upcoming tutorials are integral to any journey towards game development.
 
 ## ControlP5
 
-*ControlP5* is a Processing library that provides an extensive set of GUI widgets. This includes buttons, sliders, knobs, toggles, textfields, checkboxes, accordions, charts, timers, drop-downs, tab- and window-interfaces, and more. It's a feature-packed library, full of options to build, customise, and control custom user interfaces.
+*ControlP5* is a feature-packed GUI library, full of options for building and customising user interfaces. It provides an extensive set of control widgets that include buttons, sliders, knobs, toggles, textfields, checkboxes, accordions, charts, timers, drop-downs, tab- and window-interfaces, and more.
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/controlp5-controllers-range.png" />
@@ -999,7 +1001,7 @@ This raises the Contribution Manager window; under the *Libraries* tab, locate a
   <img src="{{ site.url }}/img/pitl07/controlp5-install-library.png" />
 </figure>
 
-Once you have the library installed, create a new sketch named "identikit". An identikit -- or *facial composite* -- is a portrait image reconstructed from the memory of one or many eyewitnesses. Composites can be rendered in various ways -- using sketch artists, transparencies, or software. Our identikit program will be no use for any real world application, but fun to play with, nonetheless. To get started, add the following code.
+Once you have the library installed, create a new sketch named "identikit". An identikit -- or *facial composite* -- is a portrait image reconstructed from the memory of one or many eyewitnesses. You have probably seen criminal identikits in police stations or on the news. These are rendered in various ways, namely: by sketch artists; or using a system of overlaid transparencies; or computer software. Our identikit program will be no use for any real-world application, but fun to play with, nonetheless. To get started, add the following code.
 
 {% highlight py %}
 add_library('controlP5')

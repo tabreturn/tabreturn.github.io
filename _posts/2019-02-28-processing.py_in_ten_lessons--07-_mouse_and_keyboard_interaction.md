@@ -899,6 +899,8 @@ def draw():
         noLoop()
 {% endhighlight %}
 
+The `if` statement detects when the snake is somewhere below its starting position. In other words, just as the head teleports to the lower half of the stage, but before rendering it at the opposite edge.
+
 Run the sketch. The snake heads-off as soon as the display window opens. Upon reaching the top-edge, the `noLoop()` halts everything and the millisecond count is displayed.
 
 <figure>
@@ -960,11 +962,11 @@ You will also notice that the `deltatime` (the milliseconds elapsed between each
   <figcaption>The <code>deltatime</code> values are larger and more erratic.</figcaption>
 </figure>
 
-This is where the *delta time* proves useful. The time between frames can be used to calculate where the snake's head should be, as opposed to where it managed to reach. To calculate the projected `playery` position, multiply it by `deltatime` divided by the sketch frame rate.
+This is where the *delta time* proves useful. The time between frames can be used to calculate where the snake's head should be, as opposed to where it managed to reach. To calculate the projected `playery` position, multiply it by `deltatime` divided by the required frame interval (33.3 milliseconds).
 
 {% highlight py %}
     ...
-    playery += yspeed * (deltatime/30)
+    playery += yspeed * (deltatime/33.3)
     ...
 {% endhighlight %}
 
@@ -978,6 +980,8 @@ Run the sketch. The snake reaches the top-edge in around 2500 milliseconds, even
 You can now adjust the loop's `900` value as you wish and the snake still reaches the top edge in around 2500 milliseconds (give or take a few hundred).
 
 Delta time, thus, helps maintain a constant game speed despite variations in frame rate. We are 'dropping' frames to keep apace, but, ultimately, delta time helps smooth out the movement values. It can also be used to limit frame rates in cases where a game may run too fast. Generally speaking, the motions of any positioning, rotation, and scaling operations should incorporate delta time. On the other hand, games can behave very strangely if physics calculations mix with variable frame rates. Many game engines, hence, include fixed- and variable time-step functions -- like `draw()` -- to separate out physics and graphics code.
+
+If you wish to move the player around freely again, be sure to remove the `if playery > 145` code.
 
 That is as deep as we will venture into game development concepts. If it's games you are serious about, then you'll need to explore further using other resources. That said, the concepts and techniques covered in the previous and upcoming tutorials are integral to any journey towards game development.
 
@@ -1022,7 +1026,7 @@ def draw():
     ellipse(axis,220, 370,370)
 {% endhighlight %}
 
-Processing requires the `add_library()` line for loading in ControlP5. A new ControlP5 instance is then assigned to a variable named `cp5`. From here on, any ContolP5 features can be accessed with a `cp5.` prefix; this will make sense a little further along when we begin to add controllers. The `axis` coordinate runs through the centre of the `ellipse` below, in other words it is the lies on horizontal centre of the 'face'. The face is positioned to the left of display in order to make room for control widgets on the right.
+Processing requires the `add_library()` line for loading in ControlP5. In the `setup` block, a new ControlP5 instance is assigned to a variable named `cp5`. From here on, one can access ContolP5 features with a `cp5.` prefix; this will make sense a little further along when we begin to add controllers. The `axis` coordinate runs through the centre of the `ellipse`; in other words, it marks the horizontal centre of the circular 'face'. The face is positioned to the left of the display to make room for control widgets on the right.
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/controlp5-identikit-start.png" />
@@ -1031,7 +1035,7 @@ Processing requires the `add_library()` line for loading in ControlP5. A new Con
   </figcaption>
 </figure>
 
-The first widget will be a textfield. Add the controller in `setup()` function. The brackets surrounding the `addTextfield()` lines may look odd, but this is necessary to break the chain of [methods]({% post_url 2018-06-19-processing.py_in_ten_lessons--02-_bezier,_catmull,_and_rom_walk_into_a_bar %}#string-methods) over multiple lines. Alternatively, you could write this on a single line but likely won't find it as readable. Whenever you create a new controller, specify a name in the first argument -- in this case, I have used `'alias'`. This name is used to reference the controller further along, as well as the default label for the field.
+The first widget will be a textfield. The controller is added to the `setup` function.
 
 {% highlight py %}
 def setup():
@@ -1042,7 +1046,9 @@ def setup():
     )
 {% endhighlight %}
 
-In the `draw` function, retrieve the captured input and render it using a `text()` function. The `getController()` method is used to access the properties of any `cp5` controller (by its name), while the `getText()` chained onto it isolates the text value specifically.
+The brackets surrounding the `cp5.addTextfield()` lines may look odd, but this is necessary to break the chain of [methods]({% post_url 2018-06-19-processing.py_in_ten_lessons--02-_bezier,_catmull,_and_rom_walk_into_a_bar %}#string-methods) over multiple lines. Alternatively, you could write this all on a single line but likely won't find it as readable. Whenever you create a new controller, specify a name in the first argument -- in this case, I have used `'alias'`. This name is used to reference the controller further along and also serves as the default label for the field.
+
+In the `draw` function, retrieve the captured input and render it using a `text()` function. You use the `getController()` method to access the properties of any `cp5` controller (by its name), and chain a `getText()` onto this to isolate the text value.
 
 {% highlight py %}
 def draw():
@@ -1062,7 +1068,7 @@ Test out the input field. The alias you enter will appear beneath the face.
   <img src="{{ site.url }}/img/pitl07/controlp5-identikit-textfield.png" />
 </figure>
 
-Next, we will a number of widgets for controlling the eyes. The additional methods, `setRange()` and `setValue()`, set the lower/upper value range and in the initial position, respectively.
+Next, we will add widgets for controlling the eyes. The additional methods, `setRange()` and `setValue()`, set the lower/upper value range and in the initial position, respectively.
 
 {% highlight py %}
 def setup():

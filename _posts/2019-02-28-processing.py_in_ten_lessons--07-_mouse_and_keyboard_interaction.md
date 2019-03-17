@@ -282,7 +282,7 @@ painting    = False
 paintmode   = 'free'
 {% endhighlight %}
 
-The [`mousePressed()`](https://py.processing.org/reference/mousePressed.html) function is called once with every press of a mouse button. If you need to establish which button has been pressed you can use it in combination with the `mouseButton` variable. Add the code below. Ensure that the lines are flush left and that you have not placed it within the `setup()` or `draw()`.
+The [`mousePressed()`](https://py.processing.org/reference/mousePressed.html) function is called once with every press of a mouse button. If you need to establish which button has been pressed, you can use it in combination with the `mouseButton` variable. Add the code below. Ensure that the lines are flush left and that you have not placed it within the `setup()` or `draw()`.
 
 {% highlight py %}
 def mousePressed():
@@ -315,7 +315,7 @@ Run the sketch and have a play. It works, but there are some issues.
   <figcaption>Note the straight lines drawn between where you stop and resume painting again.</figcaption>
 </figure>
 
-The first point you lay connects to the top-left corner via a straight line. This is because `pmouseX` and `pmouseY` grabbed their last x/y coordinates on frame 1 before your moused reached into the display window -- hence, the line's initial position of (0,0). Also, if you paint for a bit then release the mouse button, then click again to paint elsewhere, a straight line is drawn from where you last left-off to your new starting position. While the mouse button is lifted, the `draw()` code ceases to execute, so `pmouseX` and `pmouseY` hold coordinates captured prior to the loop's suspension. Make the necessary adjustments to resolve these bugs:
+The first point you lay connects to the top-left corner via a straight line. This is because `pmouseX` and `pmouseY` grabbed their last x/y coordinates on frame 1 before your moused reached into the display window -- hence, the line's initial position of (0,0). Also, if you paint for a bit then release the mouse button, then click again to paint elsewhere, the app draws a straight line from where you last left-off to your new starting position. While the mouse button is raised, the `draw()` code ceases to execute, so `pmouseX` and `pmouseY` hold coordinates captured prior to the loop's suspension. Make the necessary adjustments to resolve these bugs:
 
 {% highlight py %}
 def draw():
@@ -694,7 +694,7 @@ def keyPressed():
         yspeed = -4
 {% endhighlight %}
 
-Ensure that this code is flush against the left-edge (not indented within the another function). The `if` statement tests the `key` variable to determine if it is equal to `'w'`. Run the sketch. Pressing the w-key sends the 'snake' heading off in an upward direction. The `yspeed` variable -- formerly equal to zero -- is assigned a value of `-4`, which is in turn added to the `y` coordinate with each new frame drawn.
+Ensure that this code is flush against the left-edge (not indented within another function). The `if` statement tests the `key` variable to determine if it is equal to `'w'`. Run the sketch. Pressing the w-key sends the 'snake' heading off in an upward direction. The `yspeed` variable -- formerly equal to zero -- is assigned a value of `-4`, which is in turn added to the `y` coordinate with each new frame drawn.
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/keyboard-sna-up.png" />
@@ -776,7 +776,7 @@ Note, however, that `BACKSPACE`, `DELETE`, `ENTER`, `ESC`, `RETURN`, and `TAB` a
 
 So far, it's not the most advanced game. Each feature we add must be programmed from the bottom-up, whereas a proper game framework would typically include (at the very least) a built-in selection of pre-programmed rendering, physics, collision detection, audio, animation, and perhaps AI features. Processing has the renderer already, as well as some support for other essentials, like event handlers and graphics. What it lacks, though, can be made up through the inclusion of various [libraries](https://processing.org/reference/libraries/).
 
-In my experience, many people get excited about developing a game when introduced to handling mouse and keyboard interaction. So, we will press on a little further, adding some basic collision detection the Sna sketch. This will (a) provide insight into some further game programming concepts, and (b) help you appreciate all the heavy-lifting a game library can do for you.
+In my experience, many people get excited about developing a game when introduced to handling mouse and keyboard interaction. So, we will press on a little further, adding some simple collision detection the Sna sketch. This will (a) provide insight into some further game programming concepts, and (b) help you appreciate all the heavy-lifting a game library can do for you.
 
 ### Collision Detection
 
@@ -852,7 +852,7 @@ checks if the *right edge of the head* is overlapping the *left edge of the red 
 `playerx <= itemx+10`  
 checks if the *left edge of the head* is overlapping the *right edge of the red item*.
 
-This constrains the hit zone to a vertical band as wide as the item.
+This constrains the hit-zone to a vertical band as wide as the item.
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/collision-detection-aabb-2.png" />
@@ -1001,7 +1001,7 @@ This raises the Contribution Manager window; under the *Libraries* tab, locate a
   <img src="{{ site.url }}/img/pitl07/controlp5-install-library.png" />
 </figure>
 
-Once you have the library installed, create a new sketch named "identikit". An identikit -- or *facial composite* -- is a portrait image reconstructed from the memory of one or many eyewitnesses. You have probably seen criminal identikits in police stations or on the news. These are rendered in various ways, namely: by sketch artists; or using a system of overlaid transparencies; or computer software. Our identikit program will be no use for any real-world application, but fun to play with, nonetheless. To get started, add the following code.
+Once you have the library installed, create a new sketch named "identikit". An identikit -- or *facial composite* -- is a portrait image reconstructed from the memory of one or many eyewitnesses. You have probably seen criminal identikits in police stations or on the news. These are rendered in various ways, namely: by sketch artists; or using a system of overlaid transparencies; or with computer software. Our identikit program will be no use for any real-world application, but fun to play with, nonetheless. To get started, add the following code.
 
 {% highlight py %}
 add_library('controlP5')
@@ -1022,7 +1022,7 @@ def draw():
     ellipse(axis,220, 370,370)
 {% endhighlight %}
 
-The `add_library()` line is required for loading in ControlP5. A new ControlP5 instance is then assigned to a variable named `cp5`. From here on, any ContolP5 features can be accessed with a `cp5.` prefix; this will make sense a little further along when we begin to add controllers. The `axis` coordinate runs through the centre of the `ellipse` below, in other words it is the lies on horizontal centre of the 'face'. The face is positioned to the left of display in order to make room for control widgets on the right.
+Processing requires the `add_library()` line for loading in ControlP5. A new ControlP5 instance is then assigned to a variable named `cp5`. From here on, any ContolP5 features can be accessed with a `cp5.` prefix; this will make sense a little further along when we begin to add controllers. The `axis` coordinate runs through the centre of the `ellipse` below, in other words it is the lies on horizontal centre of the 'face'. The face is positioned to the left of display in order to make room for control widgets on the right.
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/controlp5-identikit-start.png" />

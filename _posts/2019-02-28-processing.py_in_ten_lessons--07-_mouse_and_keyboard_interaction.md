@@ -604,7 +604,7 @@ One can utilise keyboard input in many creative ways. For example, the rhythm ga
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/wikimedia-backup/Frets_on_fire_man.svg" style="width:155px;float:left" />
-  <img src="{{ site.url }}/img/pitl07/keyboard-frets-on-fire.png" style="width:245px" />
+  <img src="{{ site.url }}/img/pitl07/keyboard-frets-on-fire.jpg" style="width:245px" />
   <br style="clear:both" />
   <figcaption>
     Left: Frets on Fire mascot. Right: gameplay screenshot. The game was developed in Python using the <a href="https://www.pygame.org/news">Pygame</a> library.<br />

@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title: "An Introduction to Vectors Using Unity -- part 3"
+title: "An Introduction to Vectors Using Unity – part 3"
 categories: code physics unity
 ---
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: false
-title: "Processing.py in Ten Lessons -- 01: Hello World"
+title: "Processing.py in Ten Lessons – 01: Hello World"
 categories: code processing python
 ---
 

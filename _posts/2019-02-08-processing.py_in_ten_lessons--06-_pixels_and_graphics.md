@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: false
-title: "Processing.py in Ten Lessons -- 06: Pixels and Graphics"
+title: "Processing.py in Ten Lessons – 06: Pixels and Graphics"
 categories: code processing python
 mathml: true
 ---

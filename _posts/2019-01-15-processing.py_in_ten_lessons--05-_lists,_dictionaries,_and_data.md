@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: false
-title: "Processing.py in Ten Lessons -- 05: Lists, Dictionaries, and Data"
+title: "Processing.py in Ten Lessons – 05: Lists, Dictionaries, and Data"
 categories: code processing python
 ---
 

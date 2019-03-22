@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: false
-title: "Processing.py in Ten Lessons -- 04: Animation and Transformation"
+title: "Processing.py in Ten Lessons – 04: Animation and Transformation"
 categories: code processing python
 mathml: true
 ---

@@ -23,6 +23,7 @@
 {% endif %}
 
 <script>
+
   // external links open in new tab
   var links = document.links;
   for (var i=0, linksLength=links.length; i<linksLength; i++) {
@@ -30,12 +31,11 @@
       links[i].target = '_blank';
     }
   }
-</script>
 
-<script>
-  // jump to anchor after page has fully loaded (so images do not shift things)
+  // jump to anchor after page has fully loaded (so that images do not shift things)
   window.onload = function() {
-    window.location.href = window.location.href;
+    document.location.hash = window.location.hash;
     document.documentElement.style.scrollBehavior = 'smooth';
-  };
+  }
+
 </script>

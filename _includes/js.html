@@ -31,3 +31,10 @@
     }
   }
 </script>
+
+<script>
+  // jump to anchor after page has fully loaded (so images do not shift things)
+  window.onload = function() {
+    window.location.href = window.location.href;
+  };
+</script>

@@ -26,7 +26,7 @@ Processing has been around since the early 2000's and is comprised of a programm
 
 As somebody teaching programming fundamentals to creative students -- who will proceed to take courses in web, game, and interactive design & development -- combining Processing with Python provides an ideal learning tool. What's more, Processing costs nothing, is open source; and runs on multiple platforms, including Windows, Mac, and Linux.
 
-You can think of Processing as a kind-of extension of the Python programming language, with all sorts of drawing features and an editor rolled-in. Sometimes it may seem that these notes use the terms "Processing" and "Python" interchangeably. I will usually refer to Processing-exclusive features in the context of "Processing"; and standard Python features in relation with the term Python. If this confuses you, think of them as one and the same! At this point, it is not important that you are able to distinguish Processing from Python, although you will come to understand the differences in time.
+You can think of Processing.py as a kind-of extension of the Python programming language, with all sorts of drawing features and an editor rolled-in. Sometimes it may seem that these notes use the terms "Processing" and "Python" interchangeably. I will usually refer to Processing-exclusive features in the context of "Processing"; and standard Python features in relation with the term Python. If this confuses you, think of them as one and the same! At this point, it is not important that you are able to distinguish Processing from Python, although you will come to understand the differences in time.
 
 ### Setup Processing
 

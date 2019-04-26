@@ -6,7 +6,7 @@ categories: code processing python
 ---
 
 ---
-&nbsp;
+&nbsp;  
 I must apologise: the development of these lessons is on hold for now.
 
 The good news is that I'm working on a book. It's tentatively titled *Processing.py: Learning

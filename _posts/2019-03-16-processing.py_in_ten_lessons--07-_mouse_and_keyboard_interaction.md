@@ -1260,13 +1260,7 @@ That's all for this lesson. Feel welcome to experiment with and add additional f
 
 You will often find that you repeat the same, or very similar, lines of code within the same sketch. Moreover, as your programs grow more complex, repetition tends to creep in more and more. For more modular and reusable code, one can employ *functions*. In the next chapter, you will look at how to define and work with functions. As a concept, you should grasp functions without much trouble, especially considering what you managed thus far. On the other hand, I'll still be throwing in some crunchy tasks to keep you challenged!
 
-**Begin Lesson 08:** Functions *(coming soon)*
-
-**In development**  
-*Lesson 08: Functions*  
-*Lesson 09: Object-Orientation*  
-*Lesson 10: Some Physics*  
-*Bonus Lesson: 3D and Shaders*  
+**Begin Lesson 08:** [Functions]({% post_url 2019-04-26-processing.py_in_ten_lessons--08-_functions %})
 
 [Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)
 

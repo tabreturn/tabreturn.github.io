@@ -7,7 +7,7 @@ categories: code processing python
 
 ---
 &nbsp;  
-I must apologise: development on these lessons is on hold for now.
+I must apologise: development of these lessons is on hold for now.
 
 **The good news is that I'm writing a book. It's tentatively titled *Processing.py: Learning Python the Visual Way***. I'll be working with the good folks at [No Starch Press](https://nostarch.com/), purveyors of the finest in geek entertainment. You can expect a refined and designed version of what I've provided online, printed in full colour with additional chapters and nice margins to scrawl in.
 

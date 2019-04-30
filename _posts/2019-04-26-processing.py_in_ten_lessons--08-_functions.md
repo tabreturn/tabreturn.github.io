@@ -17,6 +17,6 @@ I will finish off the remaining lessons (listed below), but cannot say exactly w
 *Lesson 08: Functions*  
 *Lesson 09: Object-Orientation*  
 *Lesson 10: Some Physics*  
-*Bonus Lesson: 3D and Shaders*  
+*Bonus Lesson: 3D and Shaders*
 
 [Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)

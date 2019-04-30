@@ -1258,7 +1258,7 @@ That's all for this lesson. Feel welcome to experiment with and add additional f
 
 ## Lesson 08
 
-You will often find that you repeat the same, or very similar, lines of code within the same sketch. Moreover, as your programs grow more complex, repetition tends to creep in more and more. For more modular and reusable code, one can employ *functions*. In the next chapter, you will look at how to define and work with functions. As a concept, you should grasp functions without much trouble, especially considering what you managed thus far. On the other hand, I'll still be throwing in some crunchy tasks to keep you challenged!
+You will often find that you repeat the same, or very similar, lines of code within a single sketch. Moreover, as your programs grow more complex, repetition tends to creep in. For more modular and reusable code, one can employ *functions*. In the next chapter, you will look at how to define and work with functions. As a concept, you should grasp functions without much trouble, especially considering what you managed thus far. On the other hand, I'll still be throwing in some crunchy tasks to keep you challenged!
 
 **Begin Lesson 08:** [Functions]({% post_url 2019-04-26-processing.py_in_ten_lessons--08-_functions %})
 

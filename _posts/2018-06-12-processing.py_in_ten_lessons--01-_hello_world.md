@@ -199,7 +199,7 @@ To see the fill colour in effect, add a rectangle. The `rect()` function is used
 
 `rect(x_coordinate, y_coordinate, width, height)`
 
-The x-coordinate values begin at the right-edge of the display window; and the y-coordinate from the top edge. Add the following code to your "hello_world" sketch; then run it to confirm that the output matches the image below:
+The x-coordinate values begin at the left-edge of the display window; and the y-coordinate from the top edge. Add the following code to your "hello_world" sketch; then run it to confirm that the output matches the image below:
 
 {% highlight py %}
 ...

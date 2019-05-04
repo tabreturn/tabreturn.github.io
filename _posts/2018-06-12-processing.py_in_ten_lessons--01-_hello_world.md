@@ -307,7 +307,7 @@ In the previous scenario, the Processing `colorMode()` was set to `RGB`. You did
 
 To mimic the GIMP mixer above, one must first set the colour mode accordingly using:  
 `colorMode(HSB, 360, 100, 100)`  
-To explain: `HSB` represents the mode; `360` represents the range of degrees; and the two `100` arguments a range of 0--100% for saturation and for brightness. You would now write a read fill as:  
+To explain: `HSB` represents the mode; `360` represents the range of degrees; and the two `100` arguments a range of 0--100% for saturation and for brightness. You would now write a red fill as:  
 `fill(360, 100, 100)`  
 This is because red lies at 360 degrees of rotation on the Hue ring (which begins at 'East' in the GIMP mixer) with the saturation and brightness set to 100%:
 

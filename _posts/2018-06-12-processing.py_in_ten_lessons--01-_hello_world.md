@@ -517,7 +517,6 @@ I'm guessing that did exactly what you expected? You can also subtract:
 rect(x,y, w,h)
 
 print(x + 2)       # displays 3
-print(x + 2)       # displays 3
 print(x - 2)       # displays -1
 {% endhighlight %}
 

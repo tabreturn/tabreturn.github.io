@@ -694,7 +694,7 @@ The green overlay helps illustrate how things work. The arc is drawn along the p
   </figcaption>
 </figure>
 
-There are plenty of online degree-to-radian converters out there, but it's good to know a few key measurements. For starters, zero degrees is equal to zero radians, and 180 degrees is equal to approximately 3.142 radians. You recognise that number? Yep, it's pi! Therefore, 360 degress is equal to 2π. Add the following code:
+There are plenty of online degree-to-radian converters out there, but it's good to know a few key measurements. For starters, zero degrees is equal to zero radians, and 180 degrees is equal to approximately 3.142 radians. You recognise that number? Yep, it's pi! Therefore, 360 degrees is equal to 2π. Add the following code:
 
 {% highlight py %}
 ...

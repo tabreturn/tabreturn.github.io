@@ -561,7 +561,7 @@ This displays the following line in the Console:
 Note how concatenating joins strings together exactly as they are defined, with no additional space characters. Spaces -- along with any other punctuation you desire -- must be explicitly included. Edit your code:
 
 {% highlight py %}
-hello + '. ' + whatsup + ' ' + question
+all = hello + '. ' + whatsup + ' ' + question
 print(all)
 {% endhighlight %}
 

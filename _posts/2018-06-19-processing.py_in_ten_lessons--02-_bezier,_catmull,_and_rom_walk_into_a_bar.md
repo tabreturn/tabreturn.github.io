@@ -384,13 +384,11 @@ bezierVertex(___,___, ___,___, 600,400)
 endShape()
 {% endhighlight %}
 
-
-
 #### Chinese Coin
 
 Round metal coins with square holes in the centre were first introduced in China many centuries ago. The violet-filled shape resembles such a coin, albeit with none of the relief/engraving. Its form requires that one shape be subtracted from another. Processing provides the `beginContour()` and `endContour()` functions for this purpose.
 
-The first challenge is the outer circle. The contour functions are used within a `beginShape()` and `beginShape()`, so using an `ellipse` function is not an option. However, circles can be drawn using Bézier curves:
+The first challenge is the outer circle. The contour functions are used within a `beginShape()` and `endShape()`, so using an `ellipse` function is not an option. However, circles can be drawn using Bézier curves:
 
 <figure>
   <img src="{{ site.url }}/img/pitl02/vertices-bezier-circle.png" />

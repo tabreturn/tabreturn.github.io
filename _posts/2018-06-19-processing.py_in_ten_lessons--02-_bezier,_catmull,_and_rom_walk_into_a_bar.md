@@ -498,7 +498,7 @@ The curves need not be pixel-perfect replicas, as this is just something to get 
 
 Before looking at Processing's functions for drawing text, an introduction to *strings* is required. This section covers some essential Python string operations.
 
-In programming terminology, text is referred to as string data. More correctly, on could refer to a string as a series of characters. You have already encountered this data type in lesson 01, and know that strings are to be wrapped in quotation marks. One may use single- or double-quotes, but always ensure that you close-off using the same type with which you opened.
+In programming terminology, text is referred to as string data. More correctly, one could refer to a string as a series of characters. You have already encountered this data type in lesson 01, and know that strings are to be wrapped in quotation marks. One may use single- or double-quotes, but always ensure that you close-off using the same type with which you opened.
 
 Create a new sketch and save it as "strings". Add the following code to get started:
 

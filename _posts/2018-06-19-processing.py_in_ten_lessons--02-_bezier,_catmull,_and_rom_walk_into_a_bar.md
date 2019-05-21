@@ -522,7 +522,7 @@ Add another string variable:
 whatsup = 'what's up!'
 ```
 
-Because of the apostrophe in `what's`, the string is closed before the `s`, leaving a dangling third quote with no closing counterpart. Run the sketch and observe the error message:
+Because of the apostrophe in `what's`, the string is closed before the `s`, leaving a dangling third quote with no counterpart. Run the sketch and observe the error message:
 
 <figure>
   <img src="{{ site.url }}/img/pitl02/string-quote-error.png" class="fullwidth" />

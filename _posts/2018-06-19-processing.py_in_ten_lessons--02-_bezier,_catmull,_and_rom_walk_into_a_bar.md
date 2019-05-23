@@ -807,7 +807,7 @@ text(razor, 0,100)
 
 ### `createFont()`
 <dd markdown="1">
-Converts a font to the format used by Processing. The two arguments represent the font name and size, respectively. For a list of fonts available on your computer, use `PFont.list()`. It is probably a good idea to place the font files (TTF or OTF) in the sketch's "data" directory, as not every computer is likely to have the font you have used installed. If you are loading fonts from the data directory, use the full file name (including the extension).
+Converts a font to the format used by Processing. The two arguments represent the font name and size, respectively. For a list of fonts available on your computer, use `PFont.list()`. It is probably a good idea to place the font files (TTF or OTF) in the sketch's "data" directory, as not every computer is likely to have the font you have used installed. If you are loading fonts from the data directory, use the full file name (including the extension).  
 *Reference link:*  [`createFont()`](http://py.processing.org/reference/createFont.html)
 
 {% highlight py %}

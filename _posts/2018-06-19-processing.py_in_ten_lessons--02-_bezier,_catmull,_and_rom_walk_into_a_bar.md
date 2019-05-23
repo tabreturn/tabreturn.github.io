@@ -797,7 +797,7 @@ Sets the font size (in pixels) to be used in all subsequent `text()` functions.
 
 {% highlight py %}
 textSize(20)
-text(razor, 0,50)
+text(razor, 0,100)
 {% endhighlight %}
 
 <figure>

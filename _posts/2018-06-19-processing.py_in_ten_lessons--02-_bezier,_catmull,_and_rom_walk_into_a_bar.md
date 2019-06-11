@@ -690,13 +690,13 @@ Returns the index of where the term (first) appears in the string. If the substr
 
 {% highlight py %}
 print( all.find('world') )   # 6
-print( all.find('lemon') )  # -1
+print( all.find('lemon') )   # -1
 {% endhighlight %}
 
 If the term appears multiple times, one can provide a second argument indicating the index from which the search should begin:
 
 {% highlight py %}
-print( all.find('world'),7 ) # 45
+print( all.find('world',7) ) # 45
 {% endhighlight %}
 
 A third argument can be provided to indicate where along the string the search terminates.

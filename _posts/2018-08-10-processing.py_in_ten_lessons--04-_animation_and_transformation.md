@@ -1002,7 +1002,7 @@ Add a pink version of the white square, rotated 45 degrees (roughly `0.785` radi
 {% highlight py %}
 a = cos(0.785); b = -sin(0.785)
 c = sin(0.785); d = cos(0.785)
-stroke('#00FF00')
+stroke('#FF99FF')
 quad(
   x*a + y*b,         x*c + y*d,
   x*a + (y+h)*b,     x*c + (y+h)*d,

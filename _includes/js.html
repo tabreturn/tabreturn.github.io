@@ -34,7 +34,9 @@
 
   // jump to anchor after page has fully loaded (so that images do not shift things)
   window.onload = function() {
-    document.location.hash = window.location.hash;
+    if (window.location.hash) {
+      document.location.hash = window.location.hash;
+    }
     document.documentElement.style.scrollBehavior = 'smooth';
   }
 

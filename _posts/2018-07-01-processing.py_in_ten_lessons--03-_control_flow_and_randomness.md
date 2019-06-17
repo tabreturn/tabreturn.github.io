@@ -257,7 +257,7 @@ else:
     print('FAIL')
 {% endhighlight %}
 
-The `else` statement need not necassarily follow an `elif`. For example:
+The `else` statement need not necessarily follow an `elif`. For example:
 
 {% highlight py %}
 if mark >= 50:

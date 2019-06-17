@@ -238,7 +238,7 @@ elif mark >= 50:
 
 To visually group the connected `if`/`elif` statements, the empty line between each has been removed; this is a matter of style, but you are welcome to add as many blank lines as you see fit. You may add as many additional `elif` statements as you need.
 
-A mark below `50` passes through all of the `if`/`elif` statements without invoking any action. To handle FAIL cases, one can employ `else` statement.
+A mark below `50` passes through all of the `if`/`elif` statements without invoking any action. To handle FAIL cases, one can employ the `else` statement.
 
 #### Else Statements
 

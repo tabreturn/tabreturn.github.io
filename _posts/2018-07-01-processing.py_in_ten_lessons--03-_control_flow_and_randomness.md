@@ -377,7 +377,7 @@ Your challenge is to write conditional statements to replace the `?` character w
   <figcaption>Listed counter-clockwise from the top-right, the (x,y) coordinates of each letter are:
   R = (400,100);
   B = (38,121);
-  P = (289,485);
+  P = (250,485);
   O = (338,485).
   </figcaption>
 </figure>

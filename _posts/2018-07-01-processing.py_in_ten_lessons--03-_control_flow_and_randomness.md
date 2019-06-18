@@ -320,7 +320,7 @@ else:
 
 The `not` operator has its uses but is awkward to apply in the working example. Instead, here is a one-line example of it in action:
 
-`print( not(False) )   # displays: True`
+`print( not False )   # displays: True`
 
 ## Four-Square Task
 

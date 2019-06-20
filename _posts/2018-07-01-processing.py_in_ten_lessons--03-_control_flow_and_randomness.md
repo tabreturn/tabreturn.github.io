@@ -459,10 +459,10 @@ Running the sketch prints endless lines of single `0` digits to the Console.
 
 <figure>
   <img src="{{ site.url }}/img/pitl03/iteration-crash.png" class="fullwidth" />
-  <figcaption>Notice the length of the Console scroll-track, and how the display window fails to render the background colour.</figcaption>
+  <figcaption>Notice the length of the Console scroll-track; the display window may also fail to render the background colour.</figcaption>
 </figure>
 
-This code has crashed your program by sending it into an infinitive loop. To explain, `i` is equal to zero, and therefore less-than to `24`. But, unlike an `if` statement, the `while` repeatedly executes the `print` line until the value of `i` reaches twenty-four -- which is never.
+This code has crashed your program by sending it into an infinitive loop. To explain, `i` is equal to zero, and therefore less-than `24`. But, unlike an `if` statement, the `while` repeatedly executes the `print` line until the value of `i` reaches twenty-four -- which is never.
 
 To increment `i` by one each time the line is printed, add one to it with each iteration of the loop:
 

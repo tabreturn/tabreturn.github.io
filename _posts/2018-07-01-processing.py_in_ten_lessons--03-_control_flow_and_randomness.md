@@ -619,7 +619,7 @@ for i in range(8,12):
 Provide three arguments for a start, end, and step-size:
 
 {% highlight py %}
-for i in range(0,24,2):
+for i in range(0,12,3):
     print(i)
     ellipse(width/2,height/2, 30*i,30*i)
 {% endhighlight %}

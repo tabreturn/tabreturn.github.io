@@ -872,7 +872,7 @@ for i in range(1,145):
   <figcaption>Randomised quarter-circle sketch.</figcaption>
 </figure>
 
-If you have ever played the strategy game [Trax](https://en.wikipedia.org/wiki/Trax_(game)), this pattern will look familiar. Another tile-based strategy game [Tantrix](https://en.wikipedia.org/wiki/Tantrix), uses a hexagonal adaption of a Truchet tile.
+If you have ever played the strategy game [Trax](https://en.wikipedia.org/wiki/Trax_(game)), this pattern will look familiar. Another tile-based strategy game, [Tantrix](https://en.wikipedia.org/wiki/Tantrix), uses a hexagonal adaption of a Truchet tile.
 
 Tiles are an exciting area to explore using Processing, and we'll look at other types in the lessons to come.
 

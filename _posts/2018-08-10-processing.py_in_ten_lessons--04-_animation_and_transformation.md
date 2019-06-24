@@ -20,7 +20,7 @@ In this tutorial, you get to make things move. The content focuses primarily on 
 
 ## Animation
 
-Before writing any animation code, consider how motion is perceived. The brain is fed a snapshot from your retina around ten times each second. The speed at which objects appear to be moving (or not moving) is determined by the difference between successive snapshots. So, provided your screen can display a sequence of static images at a rate exceeding ten cycles per second, the viewer will experience the illusion of smooth flowing movement. This illusion is referred to as *Beta movement* and occurs at frame rates of around 10-12 images per second -- although higher frame rates will appear even smoother. That said, there is more to motion perception than frames per second (fps).
+Before writing any animation code, consider how motion is perceived. The brain is fed a snapshot from your retina many times each second. The speed at which objects appear to be moving (or not moving) is determined by the difference between successive snapshots. So, provided your screen can display a sequence of static images at a rate exceeding ten cycles per second, the viewer will experience the illusion of smooth flowing movement. This illusion is referred to as *Beta movement* and occurs at frame rates of around 10-12 images per second -- although higher frame rates will appear even smoother. That said, there is more to motion perception than frames per second (fps).
 
 Take a moment to note the numbering sequence of the circles in the illustration below.
 

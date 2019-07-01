@@ -1474,7 +1474,7 @@ A *sprite* is a single graphic comprised of pixels. Multiple sprites can be comb
 Study the screenshot above; notice how the blue bricks are all clones of one another. Rather than place a unified environment image into the scene, the developer repeats a single blue brick at the positions necessary to form the platforms. The paved red surface is also formed using a repeating tile. Mario, the turtle, and the fireball are also sprites, although, unlike the environmental sprites, these are animated. Every frame that comprises Mario's walk-cycle is packed into a single *sprite sheet* -- like in this Nyan Cat example:
 
 <figure>
-  <img src="{{ site.url }}/img/pitl04/nyancat_spritesheet.gif" class="fullwidth" />
+  <img src="{{ site.url }}/img/pitl04/nyancat-spritesheet.gif" class="fullwidth" />
   <figcaption>
     Nyan Cat.<br />
     PRguitarman [Standard YouTube License / redrawn as 6-frame sprite sheet], <a href="https://www.youtube.com/watch?v=QH2-TGUlwu4">from Youtube</a>
@@ -1485,7 +1485,7 @@ By packing every frame into a single image, the developer need only load a singl
 
 To create a sprite sheet animation of your own, create a new sketch and save it as "spritesheet_animation". Within this, create a "data" folder. Download a copy of the Nyan Cat sprite sheet and place it in the data folder:
 
-<a href="{{ site.url }}/img/pitl04/nyancat_spritesheet.gif" download>nyancat_spritesheet.gif</a>  
+<a href="{{ site.url }}/img/pitl04/nyancat-spritesheet.gif" download>nyancat-spritesheet.gif</a>  
 
 Add the following code:
 
@@ -1505,7 +1505,7 @@ def draw():
   <img src="{{ site.url }}/img/pitl04/time-spritesheet.png" class="fullwidth" />
 </figure>
 
-A sprite sheet must move about within a containing box, as if behind a sort of mask. In this instance, the display window will serve as that 'mask'. The *nyancat_spritesheet.gif* is 1500 pixels wide and 138 pixels high. This means that each frame is 300 pixels wide (1500 ÷ 5), hence the `size(300,138)` line. To advance a frame, the *nyancat_spritesheet.gif* graphic needs to be shifted 300 pixels further left with each iteration of `draw()`. The position can be controlled using `frameCount`, but combined with a modulo operation to bring it back to zero every fifth frame:
+A sprite sheet must move about within a containing box, as if behind a sort of mask. In this instance, the display window will serve as that 'mask'. The *nyancat-spritesheet.gif* is 1500 pixels wide and 138 pixels high. This means that each frame is 300 pixels wide (1500 ÷ 5), hence the `size(300,138)` line. To advance a frame, the *nyancat-spritesheet.gif* graphic needs to be shifted 300 pixels further left with each iteration of `draw()`. The position can be controlled using `frameCount`, but combined with a modulo operation to bring it back to zero every fifth frame:
 
 {% highlight py %}
 def setup():

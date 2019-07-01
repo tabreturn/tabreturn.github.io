@@ -1514,7 +1514,7 @@ def setup():
 
 def draw():
     background('#004477')
-    nyan = loadImage('nyancat_spritesheet.gif')
+    nyan = loadImage('nyancat-spritesheet.gif')
     xpos = (frameCount % 5) * 300 * -1
     image(nyan, xpos,0)
 {% endhighlight %}

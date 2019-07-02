@@ -909,7 +909,7 @@ And for a vertical reflection:
   </mfenced>
 </math>
 
-Beware aware, though: reflection operations are relative to the origin (0,0). As an example, add a new red square that is a horizontal reflection of the white original:
+Be aware, though: reflection operations are relative to the origin (0,0). As an example, add a new red square that is a horizontal reflection of the white original:
 
 {% highlight py %}
 a = -1; b = 0

@@ -478,7 +478,7 @@ while i < 24:
   <img src="{{ site.url }}/img/pitl03/iteration-increment.png" class="fullwidth" />
 </figure>
 
-You may name this `i` variable whatever you wish, but it is a popular convention to represent the *iterator* value using an `i`.
+You may name this `i` variable whatever you wish, but it is a popular convention to represent the *counter* value using an `i`.
 
 The final line (`i = i + 1`) states that `i` is equal to itself plus one. Once `i` reaches twenty-four, the program can continue with any other code that follows beneath the loop structure. To draw twenty-four circles, place an `ellipse` function within the loop:
 
@@ -555,7 +555,7 @@ ellipse(100,100, 80,80)
 
 The following sequence of steps outlines the most straightforward approach to begin tackling this task:
 
-1. create a `while` structure that loops twelve times (consider using a `print()` to monitor your iterator);
+1. create a `while` structure that loops twelve times (consider using a `print()` to monitor your counter);
 2. using the loop, place the circles in one long row, extending past the right edge of the display window;
 3. once the above is working, use an `if` statement within the loop to detect when the second row must begin.
 
@@ -582,7 +582,7 @@ while i < 24:
     i += 1
 {% endhighlight %}
 
-Notice how the `i` variable is created to serve as an iterator. With each iteration of the loop, it is vital that you increment `i` to avoid entering an endless loop. The `for` loop does away with the need for iterator variables. Adapt your code to make use of a `for`:
+Notice how the `i` variable is created to serve as an counter. With each iteration of the loop, it is vital that you increment `i` to avoid entering an endless loop. The `for` loop does away with the need for counter variables. Adapt your code to make use of a `for`:
 
 {% highlight py %}
 size(500,500)
@@ -655,7 +655,7 @@ Here are a few clues to help you approach each pattern:
 
 * *Top-left pattern:* you should manage this without any hints; it has twelve lines if you must know.
 * *Top-right pattern:* the line spacing increases by a multiple of `1.5` with each iteration.
-* *Bottom-centre pattern*: consider using a modulo operator to establish `if` the iterator is odd or even.
+* *Bottom-centre pattern*: consider using a modulo operator to establish `if` the counter is odd or even.
 
 After successfully completing this, you should have a decent grasp of loops.
 

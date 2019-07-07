@@ -1614,7 +1614,7 @@ Remember [SOHCAHTOA](https://en.wikipedia.org/wiki/Mnemonics_in_trigonometry) (s
 <figure>
   <img src="{{ site.url }}/img/pitl04/wikimedia-backup/TrigonometryTriangle.svg" />
   <figcaption>
-    A simple trigonometric triangle. Note the naming of each side relative to the right angle.<br />
+    A simple trigonometric triangle. Note the naming of each side relative to angle A.<br />
     TheOtherJesse [Public domain], <a href="https://commons.wikimedia.org/wiki/File:TrigonometryTriangle.svg">from Wikimedia Commons</a>
   </figcaption>
 </figure>
@@ -1747,6 +1747,7 @@ def draw():
     ...
     ellipse(-width/2+40, y*s*-1, 10, 10)
     ellipse(x*s, -height/2+40, 10, 10)
+    ellipse(x*s, y*s*-1, 10, 10)
     theta += 0.05
 {% endhighlight %}
 

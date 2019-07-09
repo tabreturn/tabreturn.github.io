@@ -202,7 +202,7 @@ While you can override a global variable, you will find that you cannot write/re
   <img src="{{ site.url }}/img/pitl04/global-variables-error-no-global.png" class="fullwidth" />
 </figure>
 
-This is the point where the `global` keyword is useful. Edit your code, moving the `y = 1` line to the top of your code (into the global scope). Then, to modify this variable from within the `draw()` function, binding it to the `draw`'s local scope using the `global` keyword:
+This is the point where the `global` keyword is useful. Edit your code, moving the `y = 1` line to the top of your code (into the global scope). Then, to modify this variable from within the `draw()` function, bind it to the `draw`'s local scope using the `global` keyword:
 
 {% highlight py %}
 y = 1

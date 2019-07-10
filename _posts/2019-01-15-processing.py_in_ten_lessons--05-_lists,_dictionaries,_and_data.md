@@ -220,7 +220,7 @@ In these lessons, we will drop indigo in favour of a six colour rainbow (just li
   <img src="{{ site.url }}/img/pitl05/wikimedia-backup/Dark_Side_of_the_Moon.png" />
   <figcaption>
     <em>The Dark Side of the Moon</em> album cover depicts a prism splitting a beam of white light into its constituent colours. Pink Floyd's designer, Storm Thorgerson, opted for a six-colour, indigo-less rainbow.<br />
-    Capitol Records [Copyright], <a href="http://www.pinkfloyd.com/">from prinkfloiyd.com</a>, <a href="https://en.wikipedia.org/wiki/File:Dark_Side_of_the_Moon.png">via Wikipedia</a>
+    Capitol Records [Copyright], <a href="http://www.pinkfloyd.com/">from pinkfloyd.com</a>, <a href="https://en.wikipedia.org/wiki/File:Dark_Side_of_the_Moon.png">via Wikipedia</a>
   </figcaption>
 </figure>
 

@@ -374,7 +374,7 @@ for number,colour in enumerate(rainbow):
 
 In this instance, I have opted for the British spelling of col<ins>ou</ins>r to avoid confusing the variable with Processing's [`color()`](https://py.processing.org/reference/color.html) function.
 
-No single approach (range, range-less, or enumerate) is necessarily better than another. What you elect to use will depend on your coding style and what you need to accomplish.
+No single approach (range, enumerate, etc.) is necessarily better than another. What you elect to use will depend on your coding style and what you need to accomplish.
 
 ### Rainbow Sequence Loop Task
 

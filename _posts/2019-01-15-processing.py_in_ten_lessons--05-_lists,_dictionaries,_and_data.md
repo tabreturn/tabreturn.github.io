@@ -666,7 +666,7 @@ Oddly, the green bar (fourth from the top) is equivalent in brightness/darkness 
 ><div style="background-color:#00FF00; display:inline-block; width:80px; height:2.5em"></div>
 </figure>
 
-This has to do with how the human eye perceives colour. We have a greater number of green receptors, so green light appears more prominent. There a ways to [compromise for this]({% post_url 2017-01-26-converting_css_colour_to_greyscale %}), but for now, our averaging formula will suffice.
+This has to do with how the human eye perceives colour. We have a greater number of green receptors, so green light appears more prominent. There are ways to [compromise for this]({% post_url 2017-01-26-converting_css_colour_to_greyscale %}), but for now, our averaging formula will suffice.
 
 Adapt the existing loop, so that each bar indicates the quantities of primary colour that comprise it:
 
@@ -816,7 +816,7 @@ studentlist = ['Sam', 24]
 studentdict = {'name':'Sam', 'age':24}
 {% endhighlight %}
 
-Preceding each dictionary value is a key (in quotes) and a colon. Separating each key-value pair is a comma. You may store as many key-value pairs as you like in a dictionary -- although, technically speaking, this is limited by how free much RAM/memory is available on your computer.
+Preceding each dictionary value is a key (in quotes) and a colon. Separating each key-value pair is a comma. You may store as many key-value pairs as you like in a dictionary -- although, technically speaking, this is limited by how much free RAM/memory is available on your computer.
 
 ### Accessing Dictionaries
 
@@ -1266,7 +1266,7 @@ noStroke()
 csv = loadStrings('list_of_best-selling_video_games.csv')
 {% endhighlight %}
 
-I have opted for tab-separated values. It's highly unlikely that any game titles or studio/publisher names will contain tab characters, but there may commas that could interfere with the `split()` step. Here are the first few lines of the of CSV file; the tabs do not always form perfect columns, but, more importantly, there is a single (invisible) tab character between each field.
+I have opted for tab-separated values. It's highly unlikely that any game titles or studio/publisher names will contain tab characters, but there may be commas that could interfere with the `split()` step. Here are the first few lines of the of the CSV file; the tabs do not always form perfect columns, but, more importantly, there is a single (invisible) tab character between each field.
 
 <div style="font-size: 0.7em; line-height: 2em" markdown="1">
 {% highlight csv %}

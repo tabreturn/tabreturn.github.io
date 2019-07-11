@@ -94,7 +94,7 @@ def draw():
         print(frameCount)
 {% endhighlight %}
 
-With the `frameRate` set to `2.5`, the draw line runs two-and-a-half times every second; this means each frame is 4000 milliseconds (0.4 of a second) in duration. Because the `print` line executes on every second frame, a new line appears in the Console every 8000 milliseconds:
+With the `frameRate` set to `2.5`, the draw line runs two-and-a-half times every second; this means each frame is 400 milliseconds (0.4 of a second) in duration. Because the `print` line executes on every second frame, a new line appears in the Console every 800 milliseconds:
 
 <figure>
   <img src="{{ site.url }}/img/pitl04/animation-functions-framecount-evens.png" class="fullwidth" />

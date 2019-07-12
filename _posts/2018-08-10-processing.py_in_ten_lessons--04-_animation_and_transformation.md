@@ -246,7 +246,7 @@ Run the code. In the graphic below, a motion trail has been added to convey the 
 
 ### Saving Frames
 
-Processing provides two functions to save frames as image files: `save()` and `saveFrame()`
+Processing provides two functions to save frames as image files: `save()` and `saveFrame()`. The latter is more versatile, so I won't cover `save()`.
 
 Each time the `saveFrame()` function is called it saves a TIFF (.tif) file within the sketch folder, naming it using the current frame count. Add the following code to save every hundredth frame:
 
@@ -269,9 +269,7 @@ Run the code and monitor the sketch folder. As every hundredth frame is encounte
   <figcaption>Arranged left-to-right, top-to-bottom: frames 100, 200, 300 and 400.</figcaption>
 </figure>
 
-If you wish to save the file in some format other than TIFF -- such as JPEG, PNG, or TARGA -- refer to the [saveFrame()](http://py.processing.org/reference/saveFrame.html) reference entry.
-
-The [`save()`](http://py.processing.org/reference/save.html) function differs from `saveFrame()` in that it accepts a file-name argument -- however, it does not automatically append frame count digits.
+If you wish to save the file using a different name, and/or in some format other than TIFF -- such as JPEG, PNG, or TARGA -- refer to the [saveFrame()](http://py.processing.org/reference/saveFrame.html) reference entry.
 
 ## DVD Screensaver Task
 

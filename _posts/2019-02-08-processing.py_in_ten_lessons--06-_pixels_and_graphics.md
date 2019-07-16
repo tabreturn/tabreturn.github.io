@@ -737,7 +737,7 @@ This process advances pixel-by-pixel. In this instance, the kernel motion is lef
   <figcaption>When the kernel reaches the final pixel, the process is complete.</figcaption>
 </figure>
 
-The magic part is how the kernel combines the nine values into one -- a form of mathematical *convolution*, where each pixel is weighted and then added to its local neighbours. In the illustration below, the source pixels are labelled *a*--*f* and the matrix cells, *1*--*9*.
+The magic part is how the kernel combines the nine values into one -- a form of mathematical *convolution*, where each pixel is weighted and then added to its local neighbours. In the illustration below, the source pixels are labelled *a*--*i* and the matrix cells, *1*--*9*.
 
 <style>
   #image-kernel-matrix-sample, #image-kernel-matrix-kernel {
@@ -859,7 +859,7 @@ The convolution operation multiplies each cell by its corresponding partner. So,
 
 <sup markdown="1">If you are a math/ML/CV/other nerd -- you may point out that that kernel has not been flipped, so this is, in fact, a *cross-correlation* and not a convolution. You are correct. However, we will be using symmetrical kernels, so correlation and convolution coincide.</sup>
 
-The numbers *1*--*9* are simply variables. With the theory out the way, it's time to program your own image kernels so that you can experiment with different combinations of weightings.
+The numbers *1*--*9* are simply variables. With the theory out of the way, it's time to program your own image kernels so that you can experiment with different combinations of weightings.
 
 ### Roll Your Own Image Kernel
 
@@ -925,7 +925,7 @@ We could use a `get(x,y)` as the third argument of the `set()` function and ther
   <figcaption>Before proceeding, ensure that your Display window shows two greyscale masks.</figcaption>
 </figure>
 
-With each iteration, we must sample nine pixels for the kernel. The loop begins at the top-left pixel, meaning that, on the first iteration the kernel samples five 'empty' pixels the lie beyond the edges. To keep things simple, we will not use the 'extend' trick; rather, Processing will record these as black. This will result in slightly darkened border pixels, but nothing too noticeable.
+With each iteration, we must sample nine pixels for the kernel. The loop begins at the top-left pixel, meaning that, on the first iteration the kernel samples five 'empty' pixels that lie beyond the edges. To keep things simple, we will not use the 'extend' trick; rather, Processing will record these as black. This will result in slightly darkened border pixels, but nothing too noticeable.
 
 <figure>
   <img src="{{ site.url }}/img/pitl06/image-kernels-mwaashambooy-zoom.png" />
@@ -1271,7 +1271,7 @@ If you have no experience with blend modes, the screenshot below should help exp
   <figcaption>The top-most <q>red</q> layer has its blend <q>Mode</q> set to <i>Multiply</i>.</figcaption>
 </figure>
 
-Perhaps you have never used blend modes. Or, maybe you're that Photoshop whiz who intuitively selects modes but can't begin to explain how it they work? Today, we unravel the mystery.
+Perhaps you have never used blend modes. Or, maybe you're that Photoshop whiz who intuitively selects modes but can't begin to explain how they work? Today, we unravel the mystery.
 
 We will begin by programming our own blend mode, then move onto Processing's built-in functions. Create a new sketch and save it as "blends". In the "data" sub-directory, add a copy of the <a href="{{ site.url }}/img/pitl06/wikimedia-backup/480px-Rubber_Duck_in_Sydney,_January_5,_2013.jpg" download>Rubber Duck</a> image file from the last exercise. Add some code to draw a sequence of rainbow bands and place the image.
 

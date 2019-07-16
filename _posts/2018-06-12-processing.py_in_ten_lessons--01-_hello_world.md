@@ -20,6 +20,10 @@ This series of tutorial posts covers *Processing.py*, with the purpose of introd
 
 I would estimate each lesson to take around 2--4 hours to complete, of which a large part of that time will be spent on the tasks/challenges. The speed at which you get through the lessons is likely to be influenced by your prior experience in relatable areas. That said, it is not a race -- enjoy the ride and stop for breaks wherever. Hey, if you're really feeling inspired, feel free to head off-road!
 
+My thanks go to Åke Jonsson for his feedback on these lessons.
+
+Let's being.
+
 ## Intro to Processing
 
 Processing has been around since the early 2000's and is comprised of a programming language and an editor for writing and compiling code (IDE). The original programming language component is based on Java, but several other variants have been developed. These include a JavaScript ([p5.js](https://p5js.org/)), Ruby ([JRubyArt](https://ruby-processing.github.io/JRubyArt/)), and Python ([Processing.py](http://py.processing.org/)) version.

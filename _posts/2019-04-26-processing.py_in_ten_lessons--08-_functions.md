@@ -13,6 +13,8 @@ I must apologise: development of these lessons is on hold for now.
 
 I will finish off the remaining lessons (listed below), but cannot say exactly when. You can visit from time to time to check for updates, or <a href="{{ "/feed.xml" | prepend: site.baseurl }}">subscribe via RSS</a>.
 
+My thanks go to Åke Jonsson for his feedback on the lessons I've posted up to this point.
+
 **In development**  
 *Lesson 08: Functions*  
 *Lesson 09: Object-Orientation*  

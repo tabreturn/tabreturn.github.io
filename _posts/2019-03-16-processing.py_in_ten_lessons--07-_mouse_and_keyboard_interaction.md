@@ -248,8 +248,8 @@ Processing offers a selection of mouse *event* functions -- which somewhat overl
 [`mouseMoved()`](https://py.processing.org/reference/mouseMoved.html).
 We will combine the first three to create a simple paint app that features a panel for selecting and adjusting brush properties. These functions listen for specific mouse events, and once triggered, execute some code in response. Once you've grasped a few event functions, it's easy enough to [look up](https://py.processing.org/reference/) and figure out the others. We will also be controlling Processing's `draw()` behaviour manually as opposed to having it automatically repeat per the frame rate.
 
-Create a new sketch and save it as "paint_app". Download the font, *Ernest* (by Marc André 'mieps' Misman) from DaFont; extract it; then place the "Ernest.ttf" file in your data sub-directory.  
-[https://www.dafont.com/ernest.font](https://www.dafont.com/ernest.font)  
+Create a new sketch and save it as "paint_app". Download the font, *Ernest* (by Marc André 'mieps' Misman) from DaFont; extract it; then place the "Ernest.ttf" file in your data sub-directory:   
+[https://dl.dafont.com/dl/?f=ernest](https://dl.dafont.com/dl/?f=ernest)  
 
 Add the following setup code:
 
@@ -1268,5 +1268,5 @@ You will often find that you repeat the same, or very similar, lines of code wit
 
 * http://www.designinginteractions.com/
 * http://www.sojamo.de/libraries/controlP5
-* https://developer.mozilla.org/Games/Techniques/2D_collision_detection
+* https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection
 * https://www.interaction-design.org/literature/book/the-encyclopedia-of-human-computer-interaction-2nd-ed/human-computer-interaction-brief-intro

@@ -22,7 +22,7 @@ I would estimate each lesson to take around 2--4 hours to complete, of which a l
 
 My thanks go to Åke Jonsson for his feedback on these lessons.
 
-Let's being.
+Let's begin.
 
 ## Intro to Processing
 

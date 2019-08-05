@@ -695,7 +695,7 @@ x = random(5)
 print(x)
 {% endhighlight %}
 
-The above code will display a random floating point value between `0` and `5`. Two arguments represent an upper- and lower-limit respectively:
+The above code will display a random floating point value between `0` and `5` (starting at zero and up to, but not including, five). Two arguments represent an upper- and lower-limit respectively:
 
 {% highlight py %}
 x = random(5)

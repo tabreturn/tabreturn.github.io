@@ -632,7 +632,7 @@ bands = [
 ]
 {% endhighlight %}
 
- Add the code above to the end of your working sketch. To access a list element within another list, include a second pair of square brackets. For example, to retrieve the percentage of green in the second (orange) band, its:
+ Add the code above to the end of your working sketch. To access a list element within another list, include a second pair of square brackets. For example, to retrieve the percentage of green in the second (orange) band, it's:
 
 {% highlight py %}
 print( bands[1][1] )    # displays 60

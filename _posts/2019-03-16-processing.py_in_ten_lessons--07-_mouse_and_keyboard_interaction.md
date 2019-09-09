@@ -521,7 +521,7 @@ def draw():
 def mousePressed():
     ...
     global clearall
-    if mouseY > height-30:
+    if mouseX < 60 and mouseY > height-30:
         clearall = True
         redraw()
 {% endhighlight %}

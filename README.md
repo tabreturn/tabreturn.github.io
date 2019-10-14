@@ -1,7 +1,6 @@
 # Reader-View Jekyll Template
 
-A Jekyll theme based on the Firefox Reader View, for a clean, clear,
-customisable blog interface.
+*A Jekyll theme based on the Firefox Reader View, for a clean, clear, customisable blog interface*
 
 [live website](https://tabreturn.github.io/)
 

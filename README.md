@@ -1,6 +1,4 @@
-# tabreturn.github.io
-
-Reader-view-style jekyll template
+# Reader-view-style jekyll template
 
 [Live website](https://tabreturn.github.io/)
 

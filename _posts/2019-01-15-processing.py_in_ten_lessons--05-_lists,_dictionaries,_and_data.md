@@ -616,7 +616,7 @@ Run the sketch. The new strip is drawn precisely over the original bar but is di
   <img src="{{ site.url }}/img/pitl05/lists-of-lists-1-dimensional.png" />
 </figure>
 
-The next step is to extend each block of colour, so as to form the horizontal bars. The width of each bar is to be determined by the brightness of its respective colour. To calculate brightness, one can add the red, green, and blue values together. For example, consider white -- it is the brightest 'colour' on your screen; is represented in hexadecimal as `#FFFFFF`; and if converted to percentile values, is expressed as 100% red, 100% green, 100% blue. That is an overall brightness of 300%, or if you prefer to average it out, 300 divide by 3 = 100%.
+The next step is to extend each block of colour, so as to form the horizontal bars. The width of each bar is to be determined by the brightness of its respective colour. To calculate brightness, one can add the red, green, and blue values together. For example, consider white -- it is the brightest 'colour' on your screen; is represented in hexadecimal as `#FFFFFF`; and if converted to percentages, is expressed as 100% red, 100% green, 100% blue. That is an overall brightness of 300%, or if you prefer to average it out, 300 divide by 3 = 100%.
 
 To manage the colours in as RGB percentages, one must substitute each hexadecimal string with a list of integers. The result is list of lists -- a 2-dimensional array:
 

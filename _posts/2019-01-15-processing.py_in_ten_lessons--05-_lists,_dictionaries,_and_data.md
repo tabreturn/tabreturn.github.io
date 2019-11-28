@@ -46,7 +46,7 @@ rainbow = [
 ]
 {% endhighlight %}
 
-Moreover, lists (and dictionaries) are particularly powerful when combined with loop statements. Performing repetitive operations on diverse datasets is a common programming challenge. As an example: you are tasked with generating a population pyramid for each of the world's (195, or so) countries. Provided that you can write some loop that plots the chart using a list of Chinese population figures, the list values can be switched out for Transnistria.
+Moreover, lists (and dictionaries) are particularly powerful when combined with loop statements. Performing repetitive operations on diverse data sets is a common programming challenge. As an example: you are tasked with generating a population pyramid for each of the world's (195, or so) countries. Provided that you can write some loop that plots the chart using a list of Chinese population figures, the list values can be switched out for Transnistria.
 
 ### Working with Lists
 
@@ -478,7 +478,7 @@ Some interesting diagonal patterns have appeared, but gauging the positions of t
   <figcaption>The orange facet of the 3D scatterplot (left) corresponds to the orange subplot in the SPLOM (right).</figcaption>
 </figure>
 
-A three-dimensional SPLOM is three rows wide and three columns high. Should you wish to add further variables to the dataset, the matrix can expand to accommodate them.
+A three-dimensional SPLOM is three rows wide and three columns high. Should you wish to add further variables to the data set, the matrix can expand to accommodate them.
 
 <figure>
   <img src="{{ site.url }}/img/pitl05/wikimedia-backup/2000px-ScagnosticsExampleSplom.svg.png" />
@@ -689,7 +689,7 @@ Adapt the existing loop, so that each bar indicates the quantities of primary co
   <img src="{{ site.url }}/img/pitl05/lists-of-lists-2-dimensional-colour.png" />
 </figure>
 
-Labels will help elucidate things. To add some to the dataset, one could go another list deeper, for example:
+Labels will help elucidate things. To add some to the data set, one could go another list deeper, for example:
 
 {% highlight py %}
 bands = [

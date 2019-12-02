@@ -1,6 +1,6 @@
 ---
 layout: post
-comments: false
+comments: true
 title: "Processing.py in Ten Lessons – 08: Functions"
 categories: code processing python
 published: false
@@ -10,7 +10,7 @@ published: false
 &nbsp;  
 
 
-You will often find that you repeat the same, or very similar, lines of code within a single sketch. Moreover, as your programs grow more complex, repetition tends to creep in. For more modular and reusable code, one can employ *functions*. In the next chapter, you will look at how to define and work with functions. As a concept, you should grasp functions without much trouble, especially considering what you managed thus far. On the other hand, I'll still be throwing in some crunchy tasks to keep you challenged!
+You'll often find that you repeat the same, or very similar, lines of code within a single sketch. Moreover, as your programs grow more complex, repetition tends to creep in. For more modular and reusable code, one can employ *functions*. In the next chapter, you'll look at how to define and work with functions. As a concept, you should grasp functions without much trouble, especially considering what you managed thus far. On the other hand, I'll still be throwing in some crunchy tasks to keep you challenged!
 
 parametric equations
 retro screensaver
@@ -20,7 +20,7 @@ function naming conventions
 functions make code easier to write, read, test, fix.
 
 
-functions look familiar? you have already used them
+functions look familiar? you've already used them
 
 
 arguments
@@ -71,7 +71,7 @@ face(x,y,g)
 ~~~
 
 **In development**  
-*Lesson 09: Object-Orientation*  
+*Lesson 9: Object-Orientation*  
 *Lesson 10: Some Physics*  
 *Bonus Lesson: 3D and Shaders*
 

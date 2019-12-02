@@ -1,6 +1,6 @@
 ---
 layout: post
-comments: false
+comments: true
 title: "Flask in Five Lessons – 01: HTML"
 categories: code flask python
 published: false
@@ -17,7 +17,7 @@ published: false
 
 
 
-**Begin Lesson 02:** [Animation and Transformation]()
+**Begin Lesson 2:** [Animation and Transformation]()
 
 [Complete list of Processing.py lessons]()
 

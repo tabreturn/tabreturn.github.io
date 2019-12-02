@@ -12,7 +12,7 @@ This is the third and final part in an introductory series on vectors. The insta
 
 ## Replacing Components
 
-Unity includes built-in features for dealing with 2- and 3-dimensional vectors -- so when adding any components or code, you will need to ensure that you are using the variants relevant to your project. Furthermore, Unity naming conventions tend to 'assume' things are 3D by default -- for example, the *"Rigidbody"* component handles 3D physics, whereas the *"Rigidbody 2D"* is for 2D physics.
+Unity includes built-in features for dealing with 2- and 3-dimensional vectors -- so when adding any components or code, you'll need to ensure that you are using the variants relevant to your project. Furthermore, Unity naming conventions tend to 'assume' things are 3D by default -- for example, the *"Rigidbody"* component handles 3D physics, whereas the *"Rigidbody 2D"* is for 2D physics.
 
 Select Nyan Cat and disable/uncheck the existing *Vectors (Script)* component; then add a Rigidbody 2D component using **Add Component > Physics 2D > Rigidbody 2D**:
 
@@ -63,7 +63,7 @@ function Update () {
 }
 {% endhighlight %}
 
-Save and test the simulation. Unsurprisingly, the game fails to start and the Console panel lists multiple errors. To better understand how Unity's vector classes function, you will now replace the code a section at a time.
+Save and test the simulation. Unsurprisingly, the game fails to start and the Console panel lists multiple errors. To better understand how Unity's vector classes function, you'll now replace the code a section at a time.
 
 ## Replacing Code
 
@@ -145,7 +145,7 @@ Save and test. The reduced mass will ensure that Nyan Cat doesn't feel too 'heav
 
 ## Reconfiguring the HUD Script
 
-The HUD script requires a few edits to get it working again. Here is the amended version:
+The HUD script requires a few edits to get it working again. Here's the amended version:
 
 {% highlight js %}
 #pragma strict

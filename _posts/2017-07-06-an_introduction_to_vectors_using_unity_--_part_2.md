@@ -45,7 +45,7 @@ function Update () {
   ...
 {% endhighlight %}
 
-To ensure that Nyan Cat's thrust is limited to 12 in every direction, the input vector must be normalized *before* it is multiplied it by 12. Add a `normalize` function to perform the arithmetic (of dividing every side by the length), and employ it in the `Update` function:
+To ensure that Nyan Cat's thrust is limited to 12 in every direction, the input vector must be normalized *before* it's multiplied it by 12. Add a `normalize` function to perform the arithmetic (of dividing every side by the length), and employ it in the `Update` function:
 
 {% highlight js %}
 ...
@@ -94,7 +94,7 @@ function normalize(v:Vector) {
 }
 {% endhighlight %}
 
-Nyan Cat is moving again, but is unable to move diagonally-up-and-left (northwest) across the screen. (S)he can no longer achieve a diagonal input thrust of 16.7 -- instead maxing out at 12 -- and, as a result, is now overwhelmed by the combined forces of wind and gravity. You will also notice a slightly delayed reaction to releasing the arrow keys. This has nothing to do with your code, but is related to the input manager settings.
+Nyan Cat is moving again, but is unable to move diagonally-up-and-left (northwest) across the screen. (S)he can no longer achieve a diagonal input thrust of 16.7 -- instead maxing out at 12 -- and, as a result, is now overwhelmed by the combined forces of wind and gravity. You'll also notice a slightly delayed reaction to releasing the arrow keys. This has nothing to do with your code, but is related to the input manager settings.
 
 ### Adjusting Input Manager Settings
 
@@ -158,11 +158,11 @@ You should now have a functioning HUD, listing four forces in real-time:
   <img src="{{ site.url }}/img/aitvuup2/05-working-hud.png" class="fullwidth" />
 </figure>
 
-Remove the `Debug.Log` line in the "Vectors" script now that it is no longer necessary.
+Remove the `Debug.Log` line in the "Vectors" script now that it's no longer necessary.
 
 ## Acceleration
 
-The `velocity` represents the sum total of the all vectors acting on Nyan Cat. With each iteration of the `Update` function, it is recalculated and added to the cosmic feline's previous location. No matter how many forces are included, the same principle applies. Consider, for instance, a scenario with additional updrafts, thrusters, propellers, and afterburners:
+The `velocity` represents the sum total of the all vectors acting on Nyan Cat. With each iteration of the `Update` function, it's recalculated and added to the cosmic feline's previous location. No matter how many forces are included, the same principle applies. Consider, for instance, a scenario with additional updrafts, thrusters, propellers, and afterburners:
 
 {% highlight js %}
   ...
@@ -205,7 +205,7 @@ function Update () {
 }
 {% endhighlight %}
 
-As there is no friction or drag (yet), Nyan Cat will accumulate speed rapidly. Zero the *Gravity* and *Wind* using the Inspector, then test and monitor the HUD to see how the velocity is increased as you continue to add further input in the same direction:
+As there's no friction or drag (yet), Nyan Cat will accumulate speed rapidly. Zero the *Gravity* and *Wind* using the Inspector, then test and monitor the HUD to see how the velocity is increased as you continue to add further input in the same direction:
 
 <figure>
   <img src="{{ site.url }}/img/aitvuup2/06-test-acceleration.png" class="fullwidth" />
@@ -243,7 +243,7 @@ function Update () {
   ...
 {% endhighlight %}
 
-Save and test. You will notice that Nyan Cat accelerates more gradually. You can also adjust the *Mass* using the Inspector to see how different values affect the simulation.
+Save and test. You'll notice that Nyan Cat accelerates more gradually. You can also adjust the *Mass* using the Inspector to see how different values affect the simulation.
 
 ## Friction
 

@@ -48,9 +48,9 @@ red: FF
 green: 00  
 blue: 00
 
-Notice that instead of 100% for red, there is an `FF`; and that the 0%'s are now padded to `00` in order to fill two places. We can therefore surmise that *100%* is equal to FF, which is actually equal to **255** ... but, why not 100, or 99?
+Notice that instead of 100% for red, there's an `FF`; and that the 0%'s are now padded to `00` in order to fill two places. We can therefore surmise that *100%* is equal to FF, which is actually equal to **255** ... but, why not 100, or 99?
 
-To explain this as simply as possible: humans use a *base 10* (decimal) counting system. This system works nicely for counting on ten fingers -- but using *base 16* (hexadecimal) is like counting on sixteen fingers. To make up those extra digits (fingers?), hexadecimal adds a few letters. Below is a comparison: the first line counts up using decimal; the line below it is the equivalent in hexadecimal:
+To explain this as simply as possible: humans use a *base 10* (decimal) counting system. This system works nicely for counting on ten fingers -- but using *base 16* (hexadecimal) is like counting on sixteen fingers. To make up those extra digits (fingers?), hexadecimal adds a few letters. Below is a comparison: the first line counts up using decimal; the line below it's the equivalent in hexadecimal:
 
 `0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 ... 255`
 
@@ -111,7 +111,7 @@ Firstly, the image is a bit small. However, the script accepts a parameter for s
   <figcaption>Greyscale conversion using the averaged formula.</figcaption>
 </figure>
 
-The result is satisfactory, although there is room for improvement -- most notably, the <span style="color:#63F">purple</span> and <span style="color:#09F">blue</span> bands of the rainbow appear in the same shade of grey. This is, in some cases, unavoidable. After all, each RGB channel has 256 (0-255) levels, and as there are three, that's 16,777,216 (256 × 256 × 256) possible colours to be converted to just 256 possible greys. As a case in point, here's the math behind how the purple and blue land up the same:
+The result is satisfactory, although there's room for improvement -- most notably, the <span style="color:#63F">purple</span> and <span style="color:#09F">blue</span> bands of the rainbow appear in the same shade of grey. This is, in some cases, unavoidable. After all, each RGB channel has 256 (0-255) levels, and as there are three, that's 16,777,216 (256 × 256 × 256) possible colours to be converted to just 256 possible greys. As a case in point, here's the math behind how the purple and blue land up the same:
 
 * The <span style="color:#63F">purple</span> RGB value is `rgb(102,51,255)`, so  
   `(102 + 51 + 255) ÷ 3 = 136`  
@@ -137,7 +137,7 @@ The luminosity method incorporates the same coefficients as those implemented in
 
 `(red × 0.3 + green × 0.59 + blue × 0.11) = grey`
 
-'Coefficients' in this context refer to: *the weighting of the red, green, and blue channels when converting to a shade of grey*. Recall that the *averaging* method blended the RGB channels using a straight-forward **1:1:1** ratio -- that is 1 part red, to every 1 part green, and 1 part blue, respectively. However, because the human eye is most sensitive to green, and least sensitive to blue, the ratio should be **0.89 : 1.77 : 0.33**. The *averaged* and *luminosity* pie charts below illustrate this concept as applied for the colour <span style="color:#63F">`rgb(102,51,255)`</span>:
+'Coefficients' in this context refer to: *the weighting of the red, green, and blue channels when converting to a shade of grey*. Recall that the *averaging* method blended the RGB channels using a straight-forward **1:1:1** ratio -- that's 1 part red, to every 1 part green, and 1 part blue, respectively. However, because the human eye is most sensitive to green, and least sensitive to blue, the ratio should be **0.89 : 1.77 : 0.33**. The *averaged* and *luminosity* pie charts below illustrate this concept as applied for the colour <span style="color:#63F">`rgb(102,51,255)`</span>:
 
 <figure>
   <img src="{{ site.url }}/img/ccctg/coefficient-charts.svg" />

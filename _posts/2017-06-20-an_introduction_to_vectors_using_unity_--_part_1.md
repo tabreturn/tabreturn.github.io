@@ -53,7 +53,7 @@ Scale and position the platform as per the screenshot below:
   <figcaption>Note that you'll need to be in <b>Scene</b> view to use the visual move & scale tools.</figcaption>
 </figure>
 
-At this point you can test the scene (using the play button). You'll find that Nyan Cat and the platform remain suspended, seemingly frozen in the positions you have placed them.
+At this point you can test the scene (using the play button). You'll find that Nyan Cat and the platform remain suspended, seemingly frozen in the positions you've placed them.
 
 With your `nyan_cat` instance selected, using the **Add Component** button in the **Inspector** panel, select **Physics 2D > Rigidbody 2D**:
 
@@ -109,7 +109,7 @@ If you play the scene now, it should look something like this:
 
 However, everything appears to be moving far more slowly now, even though Nyan Cat is actually moving at the same speed as before. This is because (s)he is now 500 times larger -- about 500 m<sup>3</sup> in Unity physics! So, what was a cat falling a few meters, is something more like a massive meteor falling a few meters. In order to avoid your view being completely engulfed by Nyan Cat, you're now viewing things from far further away, and as a result, everything appears to be moving slower ... kind of like how an aeroplane high overhead crosses your field of view slower than a mobility scooter a few meters away.
 
-Remember, though, this scaling makes the math simpler, so it's all relative and won't actually make any difference when you start writing some code to replace Unity's physics with your own; and on that point, the final step here is to remove the **Rigidbody 2D** and **Box Collider 2D** components from both Nyan Cat and the platform. You can do this using the menu under the cog icon:
+Remember, though, this scaling makes the math simpler, so it's all relative and won't actually make any difference when you start writing some code to replace Unity's physics with your own; and on that point, the final step here's to remove the **Rigidbody 2D** and **Box Collider 2D** components from both Nyan Cat and the platform. You can do this using the menu under the cog icon:
 
 <figure>
   <img src="{{ site.url }}/img/aitvuup1/12-remove-component.png" class="fullwidth" />
@@ -189,7 +189,7 @@ According to [Wikipedia](https://en.wikipedia.org/wiki/Euclidean_vector), a Eucl
   <figcaption>The line stretches a distance of 10 units.</figcaption>
 </figure>
 
-Nyan Cat has moved from position **A** to **B**, covering a distance of 10 units in the process. This distance can be referred to as a *magnitude*. It is a *scalar* value that represents quantity of 10 units. Here's the thing, though: the magnitude gives no indication of which direction Nyan Cat has travelled, you just know that it is rightward from what you've gleaned visually.
+Nyan Cat has moved from position **A** to **B**, covering a distance of 10 units in the process. This distance can be referred to as a *magnitude*. It's a *scalar* value that represents quantity of 10 units. Here's the thing, though: the magnitude gives no indication of which direction Nyan Cat has travelled, you just know that it's rightward from what you've gleaned visually.
 
 Scalars represent a single value, but *vectors* represent multiple values -- and are thus able to represent both a magnitude and direction. Consider this example:
 
@@ -210,7 +210,7 @@ This example can be expressed as a vector using the following notation:
   </mo>
 </math>
 
-Note how an arrow is placed above the letter (a *v* in this case) to indicate it is a vector quantity. You can perform various types of arithmetic using vectors. For example, addition operations are calculated by adding the horizontal and vertical values of each vector:
+Note how an arrow is placed above the letter (a *v* in this case) to indicate it's a vector quantity. You can perform various types of arithmetic using vectors. For example, addition operations are calculated by adding the horizontal and vertical values of each vector:
 
 <math>
   <mover>
@@ -292,7 +292,7 @@ Your new vector variables will appear in the Inspector panel, with each comprisi
   <img src="{{ site.url }}/img/aitvuup1/19-vector-variables.png" class="fullwidth" />
 </figure>
 
-These new *Gravity* and *Wind* variables, of course, have no effect on Nyan Cat's movement, as this is still controlled using the original variables. Replace them with a new `velocity` (to which you will soon add the various forces acting on Nyan cat) and `location` vectors:
+These new *Gravity* and *Wind* variables, of course, have no effect on Nyan Cat's movement, as this is still controlled using the original variables. Replace them with a new `velocity` (to which you'll soon add the various forces acting on Nyan cat) and `location` vectors:
 
 {% highlight js %}
 ...
@@ -326,7 +326,7 @@ function add(v1:Vector, v2:Vector) {
 ...
 {% endhighlight %}
 
-In mathematical notation, you will now use this function to perform the following arithmetic (where *v* is velocity, *g* is gravity, and *w* is wind):
+In mathematical notation, you'll now use this function to perform the following arithmetic (where *v* is velocity, *g* is gravity, and *w* is wind):
 
 <math>
   <mover>
@@ -456,7 +456,7 @@ function Update () {
 }
 {% endhighlight %}
 
-To give the key input more power, each axis value is multiplied by *12*. `Input.GetAxis` returns a value between *1* and *-1*, meaning that the maximum horizontal or vertical thrust generated from key input is *12* (or -12) units. This stated, there is still a way Nyan Cat's input thrust can exceed 12 ...
+To give the key input more power, each axis value is multiplied by *12*. `Input.GetAxis` returns a value between *1* and *-1*, meaning that the maximum horizontal or vertical thrust generated from key input is *12* (or -12) units. This stated, there's still a way Nyan Cat's input thrust can exceed 12 ...
 
 ## Vector Magnitude
 

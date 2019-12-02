@@ -241,7 +241,7 @@ Begin with a loop that prints each entry. Then, get the labels displaying (befor
 
 That's it for lesson 5! Lists and dictionaries are relatively straight-forward, though combining collections of values with loops is a trickier concept to grasp. That said, what you've learned here's vital for what lies ahead -- both in these lessons and beyond. In the next tutorial, we'll zoom-in further, like, to pixel level. You'll pick up some neat new skills, like how to read values off pixels to create your very own Photoshop-esque filters.
 
-**Begin Lesson 6.1:** [Colour Channels]({% post_url 2019-02-07-processing.py_in_ten_lessons--6.1-_image_formats %})
+**Begin Lesson 6.1:** [Image Formats]({% post_url 2019-02-07-processing.py_in_ten_lessons--6.1-_image_formats %})
 
 [Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)
 

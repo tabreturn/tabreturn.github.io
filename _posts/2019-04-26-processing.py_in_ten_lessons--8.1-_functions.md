@@ -1,7 +1,7 @@
 ---
 layout: post
-comments: false
-title: "Processing.py in Ten Lessons – 08: Functions"
+comments: true
+title: "Processing.py in Ten Lessons – 8.1: Functions"
 categories: code processing python
 ---
 
@@ -16,8 +16,8 @@ I will finish off the remaining lessons (listed below), but cannot say exactly w
 My thanks go to Åke Jonsson for his feedback on the lessons I've posted up to this point.
 
 **In development**  
-*Lesson 08: Functions*  
-*Lesson 09: Object-Orientation*  
+*Lesson 8: Functions*  
+*Lesson 9: Object-Orientation*  
 *Lesson 10: Some Physics*  
 *Bonus Lesson: 3D and Shaders*
 

@@ -212,6 +212,6 @@ If you wish to move the player around freely again, be sure to remove the `if pl
 
 that's as deep as we'll venture into game development concepts. If it's games you are serious about, then you'll need to explore further using other resources. That said, the concepts and techniques covered in the previous and upcoming tutorials are integral to any journey towards game development.
 
-**Begin Lesson 7.4:** [ControlP5]({% post_url 2019-03-19-processing.py_in_ten_lessons--7.5-_controlp5 %})
+**Begin Lesson 7.5:** [ControlP5]({% post_url 2019-03-19-processing.py_in_ten_lessons--7.5-_controlp5 %})
 
 [Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)

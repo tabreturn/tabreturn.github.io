@@ -52,11 +52,11 @@
     input {
       @extend .outlined-inputs;
       color: inherit;
-    }
 
-    .post-action input {
-      background-color: #FBFBFB;
-      color: #737373;
+      &[type="button"], &[type="submit"] {
+        outline: 0;
+        text-decoration: underline;
+      }
     }
   }
 }

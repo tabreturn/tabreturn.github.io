@@ -15,7 +15,9 @@
         </div>
       </div>
 
-      {% include footer.html %}
+      {% if page.footer != 'none' %}
+        {% include footer.html %}
+      {% endif %}
 
     </div>
 

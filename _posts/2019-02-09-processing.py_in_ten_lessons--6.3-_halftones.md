@@ -153,6 +153,6 @@ With so few shades, expect substantial [*posterisation*](https://en.wikipedia.or
 
 There are many halftone effects to explore. By riffing off the techniques covered here, you can come up with all sorts of interesting results. For example, see what happens when you combine the circular, pixel, and ASCII effects.
 
-**Begin Lesson 6.3:** [Image Kernels]({% post_url 2019-02-10-processing.py_in_ten_lessons--6.4-_image_kernels %})
+**Begin Lesson 6.4:** [Image Kernels]({% post_url 2019-02-10-processing.py_in_ten_lessons--6.4-_image_kernels %})
 
 [Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)

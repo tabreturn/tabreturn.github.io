@@ -492,10 +492,3 @@ In the next section, you'll explore keyboard interaction. After that, you may wa
 **Begin Lesson 7.3:** [Keyboard Interaction]({% post_url 2019-03-17-processing.py_in_ten_lessons--7.3-_keyboard_interaction %})
 
 [Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)
-
-## References
-
-* http://www.designinginteractions.com/
-* http://www.sojamo.de/libraries/controlP5
-* https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection
-* https://www.interaction-design.org/literature/book/the-encyclopedia-of-human-computer-interaction-2nd-ed/human-computer-interaction-brief-intro

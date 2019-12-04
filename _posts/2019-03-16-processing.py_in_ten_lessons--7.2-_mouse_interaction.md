@@ -6,7 +6,7 @@ categories: code processing python
 ---
 
 <p style="text-align:right" markdown="1">
-[Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse) <br />
+[Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)<br />
 <a href="{{ page.previous.url }}">&laquo; {{ page.previous.title | split:'–'| last }}</a> |
 <a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }} &raquo;</a>
 </p>

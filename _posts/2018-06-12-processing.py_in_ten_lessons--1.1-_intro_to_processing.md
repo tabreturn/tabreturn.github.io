@@ -6,7 +6,7 @@ categories: code processing python
 ---
 
 <p style="text-align:right" markdown="1">
-[Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse) <br />
+[Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)<br />
 <a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }} &raquo;</a>
 </p>
 
@@ -173,9 +173,6 @@ Now run the code and observe the console output:
 Note the white-on-red suggestion. Pretty smart, huh? To be honest, the console is not always so clear or correct, but it usually provides a clue as to where to start looking for bugs.
 
 <p style="text-align:right" markdown="1">
-<a href="{{ page.previous.url }}">&laquo; {{ page.previous.title | split:'–'| last }}</a>
-|
-<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }} &raquo;</a>
-<br />
+<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }} &raquo;</a><br />
 [Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)
 </p>

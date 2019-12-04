@@ -5,6 +5,12 @@ title: "Processing.py in Ten Lessons – 1.4: Variables"
 categories: code processing python
 ---
 
+<p style="text-align:right" markdown="1">
+[Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse) <br />
+<a href="{{ page.previous.url }}">&laquo; {{ page.previous.title | split:'–'| last }}</a> |
+<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }} &raquo;</a>
+</p>
+
 ## Variables
 
 Variables are placeholders for information -- much like when you use letters in algebra to represent a value. In fact, Python variables look and behave similarly.

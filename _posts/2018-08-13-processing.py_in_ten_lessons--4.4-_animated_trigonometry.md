@@ -6,6 +6,12 @@ categories: code processing python
 mathml: true
 ---
 
+<p style="text-align:right" markdown="1">
+[Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse) <br />
+<a href="{{ page.previous.url }}">&laquo; {{ page.previous.title | split:'–'| last }}</a> |
+<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }} &raquo;</a>
+</p>
+
 ## Animated Trigonometry
 
 It's assumed that you possess some (if only a very little bit of) trigonometry knowledge. What follows is a practical and visual introduction to trigonometry in motion. Clock, metronome, and piston mechanisms all exhibit elegant rhythms that can be reproduced using sine and cosine functions.

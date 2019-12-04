@@ -5,6 +5,12 @@ title: "Processing.py in Ten Lessons – 7.5: ControlP5"
 categories: code processing python
 ---
 
+<p style="text-align:right" markdown="1">
+[Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse) <br />
+<a href="{{ page.previous.url }}">&laquo; {{ page.previous.title | split:'–'| last }}</a> |
+<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }} &raquo;</a>
+</p>
+
 ## ControlP5
 
 *ControlP5* is a feature-packed GUI library, full of options for building and customising user interfaces. It provides an extensive set of control widgets that include buttons, sliders, knobs, toggles, textfields, checkboxes, accordions, charts, timers, drop-downs, tab- and window-interfaces, and more.

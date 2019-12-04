@@ -5,6 +5,12 @@ title: "Processing.py in Ten Lessons – 5.5: External Data"
 categories: code processing python
 ---
 
+<p style="text-align:right" markdown="1">
+[Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse) <br />
+<a href="{{ page.previous.url }}">&laquo; {{ page.previous.title | split:'–'| last }}</a> |
+<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }} &raquo;</a>
+</p>
+
 ## External Data
 
 You've already utilised external data in the form of images in your Processing sketches. Python -- and by extension, Processing -- can handle many additional file types. For instance, you could create a game using Processing that incorporates various audio and video files, storing these multimedia assets in your sketch's "data" directory. For now, though, we'll look at text-based files.

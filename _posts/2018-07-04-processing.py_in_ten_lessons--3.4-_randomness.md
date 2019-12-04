@@ -5,6 +5,12 @@ title: "Processing.py in Ten Lessons – 3.4: Randomness"
 categories: code processing python
 ---
 
+<p style="text-align:right" markdown="1">
+[Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse) <br />
+<a href="{{ page.previous.url }}">&laquo; {{ page.previous.title | split:'–'| last }}</a> |
+<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }} &raquo;</a>
+</p>
+
 ## Randomness
 
 The best a computer can do is simulate randomness. Think about this for a moment: if you request a random number from a computer, it will need to run some non-random set of instructions to pull a value. That said, computers can manage a pretty good job of this, relying on algorithms that generate *pseudorandom* numbers whose sequential appearance is statistically similar enough to a truly random sequence. This is okay for shuffling through your music collection, but best avoided for gambling and security applications.

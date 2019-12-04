@@ -5,6 +5,12 @@ title: "Processing.py in Ten Lessons – 5.2: Data Visualisation"
 categories: code processing python
 ---
 
+<p style="text-align:right" markdown="1">
+[Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse) <br />
+<a href="{{ page.previous.url }}">&laquo; {{ page.previous.title | split:'–'| last }}</a> |
+<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }} &raquo;</a>
+</p>
+
 ## Data Visualisation
 
 Data visualisation is a recurring theme in these lessons. It relates neatly to a lot of the coding content and makes for some intriguing -- and often, enlightening -- visual output. Writing Processing code provides you with full control over visual output, so you're longer limited to whatever Excel can conjure. Instead, you get to explore novel ways to visualise data -- ranging from highly abstract (like something you'd see in an art gallery) to highly informative, or anything in between.

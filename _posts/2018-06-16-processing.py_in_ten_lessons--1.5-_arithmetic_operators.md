@@ -5,6 +5,12 @@ title: "Processing.py in Ten Lessons – 1.5: Arithmetic Operators"
 categories: code processing python
 ---
 
+<p style="text-align:right" markdown="1">
+[Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse) <br />
+<a href="{{ page.previous.url }}">&laquo; {{ page.previous.title | split:'–'| last }}</a> |
+<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }} &raquo;</a>
+</p>
+
 ## Arithmetic Operators
 
 Variables are far more useful when you perform arithmetic operations using them. Add the following code to your "variables" sketch:

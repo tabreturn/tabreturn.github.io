@@ -6,6 +6,12 @@ categories: code processing python
 mathml: true
 ---
 
+<p style="text-align:right" markdown="1">
+[Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse) <br />
+<a href="{{ page.previous.url }}">&laquo; {{ page.previous.title | split:'–'| last }}</a> |
+<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }} &raquo;</a>
+</p>
+
 ## Colour Channels
 
 Each pixel on your screen is mixed using three primary colours: red, green, and blue. Another way to think of this is three monochrome images (or *channels*) that control the levels of each primary, combined into one image.

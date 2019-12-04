@@ -5,6 +5,12 @@ title: "Processing.py in Ten Lessons – 1.2: Colour"
 categories: code processing python
 ---
 
+<p style="text-align:right" markdown="1">
+[Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse) <br />
+<a href="{{ page.previous.url }}">&laquo; {{ page.previous.title | split:'–'| last }}</a> |
+<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }} &raquo;</a>
+</p>
+
 ## Colour
 
 There are various ways to specify colour in Processing. To keep things simple, we'll stick with hexadecimal values for the first tutorial. If you are familiar with graphics software like Adobe Photoshop, Illustrator, Inkscape, or Gimp, you'll have seen these values in your colour mixer. Processing includes its own colour selector. To access this, select **Tools > Color Selector...**

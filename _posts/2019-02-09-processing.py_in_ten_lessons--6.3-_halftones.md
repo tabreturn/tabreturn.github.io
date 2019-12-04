@@ -6,6 +6,12 @@ categories: code processing python
 mathml: true
 ---
 
+<p style="text-align:right" markdown="1">
+[Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse) <br />
+<a href="{{ page.previous.url }}">&laquo; {{ page.previous.title | split:'–'| last }}</a> |
+<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }} &raquo;</a>
+</p>
+
 ## Halftones
 
 Suppose that you've an image of continuous tones, i.e. an infinite-like range of blended greys. For this example, we'll use a photograph of Elisabet Ney's *Lady Macbeth* sculpture (below). The image is to appear in a newspaper printed in black & white, so you convert the image to greyscale and email it off to the publishers.

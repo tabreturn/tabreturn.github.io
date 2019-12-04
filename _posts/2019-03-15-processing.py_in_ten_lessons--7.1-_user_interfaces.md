@@ -5,9 +5,13 @@ title: "Processing.py in Ten Lessons – 7.1: User Interfaces"
 categories: code processing python
 ---
 
-It's time to look at interactivity in Processing. You can program Processing to work with a range of input devices, such as microphones, cameras, gamepads, or even something you've built with an [Arduino](https://www.arduino.cc/) board. For this lesson, though, we'll stick to plain-old keyboard and mouse input. You'll look and building basic interfaces for painting freely and drawing faces. In the process, you'll discover that Processing's standard functions are not exactly purpose-designed for constructing user interfaces. However, the lesson also includes an introduction to the *ControlP5* graphical user interface library. ContolP5 provides a suite of essential control widgets, such as buttons, checkboxes, sliders, toggles, and text-fields, thereby saving you the time and effort of having to create them from scratch.
+<p style="text-align:right" markdown="1">
+[Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse) <br />
+<a href="{{ page.previous.url }}">&laquo; {{ page.previous.title | split:'–'| last }}</a> |
+<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }} &raquo;</a>
+</p>
 
-[Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)
+It's time to look at interactivity in Processing. You can program Processing to work with a range of input devices, such as microphones, cameras, gamepads, or even something you've built with an [Arduino](https://www.arduino.cc/) board. For this lesson, though, we'll stick to plain-old keyboard and mouse input. You'll look and building basic interfaces for painting freely and drawing faces. In the process, you'll discover that Processing's standard functions are not exactly purpose-designed for constructing user interfaces. However, the lesson also includes an introduction to the *ControlP5* graphical user interface library. ContolP5 provides a suite of essential control widgets, such as buttons, checkboxes, sliders, toggles, and text-fields, thereby saving you the time and effort of having to create them from scratch.
 
 We'll also touch on a few game development concepts, specifically *collision detection* and *delta time*.
 

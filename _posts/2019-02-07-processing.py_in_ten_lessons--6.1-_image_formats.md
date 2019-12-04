@@ -6,9 +6,13 @@ categories: code processing python
 mathml: true
 ---
 
-In this tutorial, we'll look at a few cool image processing techniques. You are already familiar with the `image()` function, which you've used in combination with `loadImage()` to draw image files to the display window. GIF, JPG, and PNG files are all [*raster*](https://en.wikipedia.org/wiki/Raster_graphics) graphics formats -- that's, digital images comprised of a pixel grid. We'll look at reading values off individual- as well as groups of pixels and then manipulating them to create Photoshop-esque filters. To manage these arrays of pixel values, we'll rely on a number of the techniques that you picked up in [lesson 5]({% post_url 2019-01-15-processing.py_in_ten_lessons--5.1-_lists %}), in particular, the combining of loops with lists.
+<p style="text-align:right" markdown="1">
+[Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse) <br />
+<a href="{{ page.previous.url }}">&laquo; {{ page.previous.title | split:'–'| last }}</a> |
+<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }} &raquo;</a>
+</p>
 
-[Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)
+In this tutorial, we'll look at a few cool image processing techniques. You are already familiar with the `image()` function, which you've used in combination with `loadImage()` to draw image files to the display window. GIF, JPG, and PNG files are all [*raster*](https://en.wikipedia.org/wiki/Raster_graphics) graphics formats -- that's, digital images comprised of a pixel grid. We'll look at reading values off individual- as well as groups of pixels and then manipulating them to create Photoshop-esque filters. To manage these arrays of pixel values, we'll rely on a number of the techniques that you picked up in [lesson 5]({% post_url 2019-01-15-processing.py_in_ten_lessons--5.1-_lists %}), in particular, the combining of loops with lists.
 
 To begin, we'll peek under the hood of some image file formats; this will provide useful insight into how the colours of individual pixels are controlled.
 

@@ -5,6 +5,11 @@ title: "Processing.py in Ten Lessons – 8.1: Functions"
 categories: code processing python
 ---
 
+<p style="text-align:right" markdown="1">
+[Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse) <br />
+<a href="{{ page.previous.url }}">&laquo; {{ page.previous.title | split:'–'| last }}</a>
+</p>
+
 ---
 &nbsp;  
 I must apologise: development of these lessons is on hold for now.

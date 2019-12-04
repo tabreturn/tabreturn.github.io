@@ -5,6 +5,12 @@ title: "Processing.py in Ten Lessons – 7.4: Collision Detection"
 categories: code processing python
 ---
 
+<p style="text-align:right" markdown="1">
+[Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse) <br />
+<a href="{{ page.previous.url }}">&laquo; {{ page.previous.title | split:'–'| last }}</a> |
+<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }} &raquo;</a>
+</p>
+
 ### Collision Detection
 
 To establish if two or more shapes have intersected within a game, one performs *collision detection* tests. There are many algorithms for this -- the more accurate types, though, are more demanding on your system (and coding skills). We'll look at one of the most basic forms of collision detection techniques, namely, *axis-aligned bounding boxes* (or AABBs).

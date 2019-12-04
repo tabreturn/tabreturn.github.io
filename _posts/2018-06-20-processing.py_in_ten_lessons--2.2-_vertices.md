@@ -5,6 +5,12 @@ title: "Processing.py in Ten Lessons – 2.2: Vertices"
 categories: code processing python
 ---
 
+<p style="text-align:right" markdown="1">
+[Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse) <br />
+<a href="{{ page.previous.url }}">&laquo; {{ page.previous.title | split:'–'| last }}</a> |
+<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }} &raquo;</a>
+</p>
+
 ## Vertices
 
 You can think of vertices as the dots in a connect-the-dots style drawing puzzle. A triangle requires three vertices; a pentagon, five; a five-pointed star (★), ten; and so forth. By connecting vertices using lines and curves, the shape possibilities become limitless. A *vertex* (singular) is not limited to two-dimensional space -- for instance, Blender's Suzanne (a monkey head) has around five-hundred vertices positioned in 3D space.

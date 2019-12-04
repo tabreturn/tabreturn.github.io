@@ -6,6 +6,12 @@ categories: code processing python
 mathml: true
 ---
 
+<p style="text-align:right" markdown="1">
+[Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse) <br />
+<a href="{{ page.previous.url }}">&laquo; {{ page.previous.title | split:'–'| last }}</a> |
+<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }} &raquo;</a>
+</p>
+
 ## Filters and Blends
 
 If you are a user of raster graphics software, such as GIMP or Photoshop, you've almost certainly encountered filters and blend modes. On a technical level, blend modes -- and most filters -- operate on colour channels. Processing's filter and blend functions span a selection of common image processing algorithms. Technically speaking, one can program these effects using the techniques covered thus far. We look at replicating a few of the simpler blend modes.

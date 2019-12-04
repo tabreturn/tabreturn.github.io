@@ -5,9 +5,13 @@ title: "Processing.py in Ten Lessons – 2.1: Curves"
 categories: code processing python
 ---
 
-[Lesson 1]({% post_url 2018-06-12-processing.py_in_ten_lessons--1.1-_intro_to_processing %}) introduced a number of 2d primitives, namely: arcs, ellipses, lines, points, quads, rectangles, and triangles. However, many shapes do not fit into any such category -- like hearts (♥), stars (★), octagons, and Pikachu silhouettes, to name just a few. In this tutorial, you'll look at drawing with points and curves, as opposed to more restrictive shape functions. Fonts also rely on curves to describe each glyph, and the latter part of this tutorial delves into Typography (and by extension, strings). Be forewarned: lesson 2 may be a little tedious, but is necessary to lay down important programming and drawing fundamentals for future lessons.
+<p style="text-align:right" markdown="1">
+[Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse) <br />
+<a href="{{ page.previous.url }}">&laquo; {{ page.previous.title | split:'–'| last }}</a> |
+<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }} &raquo;</a>
+</p>
 
-[Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)
+[Lesson 1]({% post_url 2018-06-12-processing.py_in_ten_lessons--1.1-_intro_to_processing %}) introduced a number of 2d primitives, namely: arcs, ellipses, lines, points, quads, rectangles, and triangles. However, many shapes do not fit into any such category -- like hearts (♥), stars (★), octagons, and Pikachu silhouettes, to name just a few. In this tutorial, you'll look at drawing with points and curves, as opposed to more restrictive shape functions. Fonts also rely on curves to describe each glyph, and the latter part of this tutorial delves into Typography (and by extension, strings). Be forewarned: lesson 2 may be a little tedious, but is necessary to lay down important programming and drawing fundamentals for future lessons.
 
 Processing deals with two types of curves: *Bézier* and *Catmull-Rom*. Both are named after the people who developed them, and both involve some complicated math. Fortunately, the complex underlying calculus is handled by Processing's various curve functions, leaving you to deal with just the coordinates of a few control points.
 

@@ -5,9 +5,13 @@ title: "Processing.py in Ten Lessons – 5.1: Lists"
 categories: code processing python
 ---
 
-This tutorial introduces Python *lists* and *dictionaries*. These datatypes will unlock powerful ways to manage and manipulate collections of elements as opposed to individual values. Following a review of the basics, you'll look at employing these techniques to visualise data, and reading in values from external files.
+<p style="text-align:right" markdown="1">
+[Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse) <br />
+<a href="{{ page.previous.url }}">&laquo; {{ page.previous.title | split:'–'| last }}</a> |
+<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }} &raquo;</a>
+</p>
 
-[Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)
+This tutorial introduces Python *lists* and *dictionaries*. These datatypes will unlock powerful ways to manage and manipulate collections of elements as opposed to individual values. Following a review of the basics, you'll look at employing these techniques to visualise data, and reading in values from external files.
 
 ## Lists
 

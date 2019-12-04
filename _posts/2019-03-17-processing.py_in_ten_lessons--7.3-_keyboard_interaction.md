@@ -5,6 +5,12 @@ title: "Processing.py in Ten Lessons – 7.3: Keyboard Interaction"
 categories: code processing python
 ---
 
+<p style="text-align:right" markdown="1">
+[Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse) <br />
+<a href="{{ page.previous.url }}">&laquo; {{ page.previous.title | split:'–'| last }}</a> |
+<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }} &raquo;</a>
+</p>
+
 ## Keyboard Interaction
 
 Computers inherited their keyboard designs from typewriters. In adapting, keyboards spawned various new keys -- like, the arrows for navigating text-based interfaces, escape and function keys, and a number pad for more efficient numeric entry. Of course, computers could also perform a more diverse range of tasks, and this warranted the inclusion of further modifier keys (*Alt*, *Ctrl*, *⌘*, *Fn*) to be used in conjunction with existing keys to perform specific operations. The Z, X, C, and V keys, for example, when combined with Ctrl or ⌘, perform undo/copy/cut/paste operations. Each modifier key, essentially, doubles the range of input with the addition of a single key. The typewriter's *shift* key, though, could be credited as the original modifier key. The key got its name from how it physically shift-ed a substantial part of the typewriting mechanism into a position for transferring capital letters.

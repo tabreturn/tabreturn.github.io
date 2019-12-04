@@ -6,6 +6,12 @@ categories: code processing python
 mathml: true
 ---
 
+<p style="text-align:right" markdown="1">
+[Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse) <br />
+<a href="{{ page.previous.url }}">&laquo; {{ page.previous.title | split:'–'| last }}</a> |
+<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }} &raquo;</a>
+</p>
+
 ## Tint and Transparency
 
 Processing's [`tint()`](https://py.processing.org/reference/tint.html) function tints images using a specified colour. This is like taking a sheet of colour transparency film and placing it over a given image. It's simple enough to use and best explained with few code snippets.

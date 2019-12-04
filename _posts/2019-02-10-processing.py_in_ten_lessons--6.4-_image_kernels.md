@@ -6,6 +6,12 @@ categories: code processing python
 mathml: true
 ---
 
+<p style="text-align:right" markdown="1">
+[Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse) <br />
+<a href="{{ page.previous.url }}">&laquo; {{ page.previous.title | split:'–'| last }}</a> |
+<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }} &raquo;</a>
+</p>
+
 ## Image Kernels
 
 If you've ever sharpened or blurred a digital image, it's likely that the software you were using relied on an *image kernel* to process the effect. Moreover, the fields of computer vision and machine learning utilise image kernels for feature- detection and extraction.

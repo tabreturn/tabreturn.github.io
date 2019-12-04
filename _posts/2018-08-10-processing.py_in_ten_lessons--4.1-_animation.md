@@ -6,9 +6,13 @@ categories: code processing python
 mathml: true
 ---
 
-In this tutorial, you get to make things move. The content focuses primarily on animation, but also covers transformations, time & date functions, and some trigonometry. As you'll discover, blending motion with math produces some exciting results.
+<p style="text-align:right" markdown="1">
+[Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse) <br />
+<a href="{{ page.previous.url }}">&laquo; {{ page.previous.title | split:'–'| last }}</a> |
+<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }} &raquo;</a>
+</p>
 
-[Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)
+In this tutorial, you get to make things move. The content focuses primarily on animation, but also covers transformations, time & date functions, and some trigonometry. As you'll discover, blending motion with math produces some exciting results.
 
 ## Animation
 

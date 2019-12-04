@@ -5,6 +5,12 @@ title: "Processing.py in Ten Lessons – 5.3: Lists of Lists"
 categories: code processing python
 ---
 
+<p style="text-align:right" markdown="1">
+[Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse) <br />
+<a href="{{ page.previous.url }}">&laquo; {{ page.previous.title | split:'–'| last }}</a> |
+<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }} &raquo;</a>
+</p>
+
 ## Lists of Lists
 
 While this may seem complicated at first, appropriately nested lists make complex data sets easier to manage. In this practical exercise, you'll create a bar chart; roughly speaking, something resembling the illustration below.

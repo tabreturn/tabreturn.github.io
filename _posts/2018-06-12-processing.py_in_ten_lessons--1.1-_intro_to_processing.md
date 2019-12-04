@@ -5,9 +5,12 @@ title: "Processing.py in Ten Lessons – 1.1: Intro to Processing"
 categories: code processing python
 ---
 
-This series of tutorial posts covers *Processing.py*, with the purpose of introducing non-programmers to the fundamentals of computer programming in a visual context. If you're an artist, student, designer, researcher, or just somebody who is keen on learning how to code, Processing is a great place to start.
+<p style="text-align:right" markdown="1">
+[Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse) <br />
+<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }} &raquo;</a>
+</p>
 
-[Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)
+This series of tutorial posts covers *Processing.py*, with the purpose of introducing non-programmers to the fundamentals of computer programming in a visual context. If you're an artist, student, designer, researcher, or just somebody who is keen on learning how to code, Processing is a great place to start.
 
 I'd estimate each complete lesson (eg. lesson 1.1 to 1.5) to take around 2--4 hours to complete, of which a large part of that time will be spent on the tasks/challenges. The speed at which you get through the lessons is likely to be influenced by your prior experience in relatable areas. That said, it's not a race -- enjoy the ride and stop for breaks wherever. Hey, if you're really feeling inspired, feel free to head off-road!
 
@@ -169,6 +172,10 @@ Now run the code and observe the console output:
 
 Note the white-on-red suggestion. Pretty smart, huh? To be honest, the console is not always so clear or correct, but it usually provides a clue as to where to start looking for bugs.
 
-**Begin Lesson 1.2:** [Colour]({% post_url 2018-06-13-processing.py_in_ten_lessons--1.2-_colour %})
-
+<p style="text-align:right" markdown="1">
+<a href="{{ page.previous.url }}">&laquo; {{ page.previous.title | split:'–'| last }}</a>
+|
+<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }} &raquo;</a>
+<br />
 [Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)
+</p>

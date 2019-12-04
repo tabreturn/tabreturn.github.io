@@ -6,6 +6,12 @@ categories: code processing python
 mathml: true
 ---
 
+<p style="text-align:right" markdown="1">
+[Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse) <br />
+<a href="{{ page.previous.url }}">&laquo; {{ page.previous.title | split:'–'| last }}</a> |
+<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }} &raquo;</a>
+</p>
+
 ## Time and Date
 
 There are twenty-four hours in a day. But why is this not ten, twenty, a hundred, or some other more 'rounded' number? To make things more confusing, these twenty-four hours are then split into twelve AM and twelve PM hours. To understand why this is, one must look back to where the system first originated -- around Mesopotamia and Ancient Egypt, circa 1500 BC. These civilisations relied on sundials and water-clocks for day- and night-time timekeeping, which explains the need for the two (AM/PM) cycles. The twelve figure arises from an ancient finger-counting system, where one uses the thumb to count up to twelve on the three bones of each finger.

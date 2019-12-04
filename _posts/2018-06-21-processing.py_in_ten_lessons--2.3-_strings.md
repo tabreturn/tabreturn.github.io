@@ -5,6 +5,12 @@ title: "Processing.py in Ten Lessons – 2.3: Strings"
 categories: code processing python
 ---
 
+<p style="text-align:right" markdown="1">
+[Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse) <br />
+<a href="{{ page.previous.url }}">&laquo; {{ page.previous.title | split:'–'| last }}</a> |
+<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }} &raquo;</a>
+</p>
+
 ## Strings
 
 Before looking at Processing's functions for drawing text, an introduction to *strings* is required. This section covers some essential Python string operations.

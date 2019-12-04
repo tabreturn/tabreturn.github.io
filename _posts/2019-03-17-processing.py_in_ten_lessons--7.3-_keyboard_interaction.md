@@ -5,10 +5,9 @@ title: "Processing.py in Ten Lessons – 7.3: Keyboard Interaction"
 categories: code processing python
 ---
 
-<p style="text-align:right" markdown="1">
-[Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)<br />
-<a href="{{ page.previous.url }}">&laquo; {{ page.previous.title | split:'–'| last }}</a> |
-<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }} &raquo;</a>
+<p markdown="1" style="text-align:right">
+&laquo; <a href="{{ page.previous.url }}">{{ page.previous.title | split:'–'| last }}</a> |
+<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }}</a> &raquo;<br />
 </p>
 
 ## Keyboard Interaction
@@ -197,6 +196,7 @@ So far, it's not the most advanced game. Each feature we add must be programmed 
 
 In my experience, many people get excited about developing a game when introduced to handling mouse and keyboard interaction. So, we'll press on a little further, adding some simple collision detection the Sna sketch. This will (a) provide insight into some further game programming concepts, and (b) help you appreciate all the heavy-lifting a game library can do for you.
 
-**Begin Lesson 7.4:** [Collision Detection]({% post_url 2019-03-18-processing.py_in_ten_lessons--7.4-_collision_detection %})
-
+<p style="text-align:right" markdown="1">
+<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }}</a> &raquo;<br />
 [Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)
+</p>

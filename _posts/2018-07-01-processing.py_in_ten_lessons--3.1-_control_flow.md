@@ -5,10 +5,9 @@ title: "Processing.py in Ten Lessons – 3.1: Control Flow"
 categories: code processing python
 ---
 
-<p style="text-align:right" markdown="1">
-[Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)<br />
-<a href="{{ page.previous.url }}">&laquo; {{ page.previous.title | split:'–'| last }}</a> |
-<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }} &raquo;</a>
+<p markdown="1" style="text-align:right">
+&laquo; <a href="{{ page.previous.url }}">{{ page.previous.title | split:'–'| last }}</a> |
+<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }}</a> &raquo;<br />
 </p>
 
 The programs you've written thus far execute line-by-line, beginning at the top of the code and ending at the bottom. You can visualise this flow as a set of steps chained together in a linear arrangement. In lesson 3, we explore how to lay divergent paths for the program to follow.
@@ -35,7 +34,7 @@ Lesson 3 covers topics involving conditional statements and iteration. Implement
 
 You'll also explore randomness -- one of the most powerful and exciting tools in the creative programmer's tool-set.
 
-**Begin Lesson 3.2:** [Conditional Statements]({% post_url 2018-07-02-processing.py_in_ten_lessons--3.2-_conditional_statements %})
-
-
+<p style="text-align:right" markdown="1">
+<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }}</a> &raquo;<br />
 [Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)
+</p>

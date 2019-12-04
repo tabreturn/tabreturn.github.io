@@ -5,10 +5,9 @@ title: "Processing.py in Ten Lessons – 3.3: Iteration"
 categories: code processing python
 ---
 
-<p style="text-align:right" markdown="1">
-[Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)<br />
-<a href="{{ page.previous.url }}">&laquo; {{ page.previous.title | split:'–'| last }}</a> |
-<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }} &raquo;</a>
+<p markdown="1" style="text-align:right">
+&laquo; <a href="{{ page.previous.url }}">{{ page.previous.title | split:'–'| last }}</a> |
+<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }}</a> &raquo;<br />
 </p>
 
 ## Iteration
@@ -270,11 +269,7 @@ Here are a few clues to help you approach each pattern:
 
 After successfully completing this, you should have a decent grasp of loops.
 
-**Begin Lesson 3.4:** [Randomness]({% post_url 2018-07-04-processing.py_in_ten_lessons--3.4-_randomness %})
-
+<p style="text-align:right" markdown="1">
+<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }}</a> &raquo;<br />
 [Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)
-
-## References
-
-* https://www.apress.com/us/book/9781430244646
-* https://www.youtube.com/watch?v=SxP30euw3-0
+</p>

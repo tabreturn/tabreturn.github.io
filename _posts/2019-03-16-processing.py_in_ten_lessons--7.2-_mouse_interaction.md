@@ -5,10 +5,9 @@ title: "Processing.py in Ten Lessons – 7.2: Mouse Interaction"
 categories: code processing python
 ---
 
-<p style="text-align:right" markdown="1">
-[Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)<br />
-<a href="{{ page.previous.url }}">&laquo; {{ page.previous.title | split:'–'| last }}</a> |
-<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }} &raquo;</a>
+<p markdown="1" style="text-align:right">
+&laquo; <a href="{{ page.previous.url }}">{{ page.previous.title | split:'–'| last }}</a> |
+<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }}</a> &raquo;<br />
 </p>
 
 ## Mouse Interaction
@@ -495,6 +494,7 @@ The appearance of the predefined cursors will vary depending on your operating s
 
 In the next section, you'll explore keyboard interaction. After that, you may want to add some shortcut keys to your drawing app and maybe even some new features?
 
-**Begin Lesson 7.3:** [Keyboard Interaction]({% post_url 2019-03-17-processing.py_in_ten_lessons--7.3-_keyboard_interaction %})
-
+<p style="text-align:right" markdown="1">
+<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }}</a> &raquo;<br />
 [Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)
+</p>

@@ -5,10 +5,9 @@ title: "Processing.py in Ten Lessons – 7.5: ControlP5"
 categories: code processing python
 ---
 
-<p style="text-align:right" markdown="1">
-[Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)<br />
-<a href="{{ page.previous.url }}">&laquo; {{ page.previous.title | split:'–'| last }}</a> |
-<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }} &raquo;</a>
+<p markdown="1" style="text-align:right">
+&laquo; <a href="{{ page.previous.url }}">{{ page.previous.title | split:'–'| last }}</a> |
+<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }}</a> &raquo;<br />
 </p>
 
 ## ControlP5
@@ -287,9 +286,10 @@ That's all for this lesson. Feel welcome to experiment with and add additional f
 
 You'll often find that you repeat the same, or very similar, lines of code within a single sketch. Moreover, as your programs grow more complex, repetition tends to creep in. For more modular and reusable code, one can employ *functions*. In the next chapter, you'll look at how to define and work with functions. As a concept, you should grasp functions without much trouble, especially considering what you managed thus far. On the other hand, I'll still be throwing in some crunchy tasks to keep you challenged!
 
-**Begin Lesson 8.1:** [Functions]({% post_url 2019-04-26-processing.py_in_ten_lessons--8.1-_functions %})
-
+<p style="text-align:right" markdown="1">
+<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }}</a> &raquo;<br />
 [Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)
+</p>
 
 ## References
 

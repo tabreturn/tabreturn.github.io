@@ -6,10 +6,9 @@ categories: code processing python
 mathml: true
 ---
 
-<p style="text-align:right" markdown="1">
-[Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)<br />
-<a href="{{ page.previous.url }}">&laquo; {{ page.previous.title | split:'–'| last }}</a> |
-<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }} &raquo;</a>
+<p markdown="1" style="text-align:right">
+&laquo; <a href="{{ page.previous.url }}">{{ page.previous.title | split:'–'| last }}</a> |
+<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }}</a> &raquo;<br />
 </p>
 
 ## Time and Date
@@ -176,6 +175,7 @@ Run the sketch to verify that Nyan Cat loops seamlessly.
 
 This was an elementary introduction to sprite sheets. It's hardly an ideal approach (that modulo operation only grows more demanding as the `frameCount` increases). Most sprite sheets are grid-like in appearance, with graphics arranged in rows and columns.  Should you wish to create 2D game -- using Processing or another platform -- you'll want to research this topic further.
 
-**Begin Lesson 4.4:** [Animated Trigonometry]({% post_url 2018-08-13-processing.py_in_ten_lessons--4.4-_animated_trigonometry %})
-
+<p style="text-align:right" markdown="1">
+<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }}</a> &raquo;<br />
 [Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)
+</p>

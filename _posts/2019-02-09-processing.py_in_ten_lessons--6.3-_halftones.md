@@ -6,11 +6,10 @@ categories: code processing python
 mathml: true
 ---
 
-<p style="text-align:right" markdown="1">
-[Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)<br />
-<a href="{{ page.previous.url }}">&laquo; {{ page.previous.title | split:'–'| last }}</a> |
-<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }} &raquo;</a>
-</p>
+<p markdown="1" style="text-align:right">
+&laquo; <a href="{{ page.previous.url }}">{{ page.previous.title | split:'–'| last }}</a> |
+<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }}</a> &raquo;<br />
+</p>>
 
 ## Halftones
 
@@ -159,6 +158,7 @@ With so few shades, expect substantial [*posterisation*](https://en.wikipedia.or
 
 There are many halftone effects to explore. By riffing off the techniques covered here, you can come up with all sorts of interesting results. For example, see what happens when you combine the circular, pixel, and ASCII effects.
 
-**Begin Lesson 6.4:** [Image Kernels]({% post_url 2019-02-10-processing.py_in_ten_lessons--6.4-_image_kernels %})
-
+<p style="text-align:right" markdown="1">
+<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }}</a> &raquo;<br />
 [Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)
+</p>

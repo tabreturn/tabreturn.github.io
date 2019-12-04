@@ -5,10 +5,9 @@ title: "Processing.py in Ten Lessons – 5.3: Lists of Lists"
 categories: code processing python
 ---
 
-<p style="text-align:right" markdown="1">
-[Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)<br />
-<a href="{{ page.previous.url }}">&laquo; {{ page.previous.title | split:'–'| last }}</a> |
-<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }} &raquo;</a>
+<p markdown="1" style="text-align:right">
+&laquo; <a href="{{ page.previous.url }}">{{ page.previous.title | split:'–'| last }}</a> |
+<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }}</a> &raquo;<br />
 </p>
 
 ## Lists of Lists
@@ -258,6 +257,7 @@ for row,bricks in enumerate(bricks):
 
 If you are more comfortable with a `range()` style approach, that should work fine too.
 
-**Begin Lesson 5.4:** [Dictionaries]({% post_url 2019-01-18-processing.py_in_ten_lessons--5.4-_dictionaries %})
-
+<p style="text-align:right" markdown="1">
+<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }}</a> &raquo;<br />
 [Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)
+</p>

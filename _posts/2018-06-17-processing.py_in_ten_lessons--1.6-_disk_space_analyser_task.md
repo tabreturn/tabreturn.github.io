@@ -5,10 +5,9 @@ title: "Processing.py in Ten Lessons – 1.6: Disk Space Analyser Task"
 categories: code processing python
 ---
 
-<p style="text-align:right" markdown="1">
-[Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)<br />
-<a href="{{ page.previous.url }}">&laquo; {{ page.previous.title | split:'–'| last }}</a> |
-<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }} &raquo;</a>
+<p markdown="1" style="text-align:right">
+&laquo; <a href="{{ page.previous.url }}">{{ page.previous.title | split:'–'| last }}</a> |
+<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }}</a> &raquo;<br />
 </p>
 
 ## Disk Space Analyser Task
@@ -98,9 +97,10 @@ A *disk usage analyser* presents a graphical representation of what is on a disk
 
 That's it for lesson 1. I hope it was enjoyable, if somewhat challenging. Take a break -- you deserve it! When you are ready to move on, proceed to lesson 2 using the link below. If you are familiar with vector graphics (Adobe Illustrator, Inkscape, etc.), you'll be gaining some new insight into their inner-workings.
 
-**Begin Lesson 2.1:** [Curves]({% post_url 2018-06-19-processing.py_in_ten_lessons--2.1-_curves %})
-
+<p style="text-align:right" markdown="1">
+<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }}</a> &raquo;<br />
 [Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)
+</p>
 
 ## References
 

@@ -6,10 +6,9 @@ categories: code processing python
 mathml: true
 ---
 
-<p style="text-align:right" markdown="1">
-[Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)<br />
-<a href="{{ page.previous.url }}">&laquo; {{ page.previous.title | split:'–'| last }}</a> |
-<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }} &raquo;</a>
+<p markdown="1" style="text-align:right">
+&laquo; <a href="{{ page.previous.url }}">{{ page.previous.title | split:'–'| last }}</a> |
+<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }}</a> &raquo;<br />
 </p>
 
 ## Tint and Transparency
@@ -99,9 +98,10 @@ That concludes another lesson. You now understand how to manage colour on a chan
 
 In lesson 7, you'll look at interactivity in Processing. As you'll see, Processing is great for mouse, keyboard, and other interaction, but rather clumsy for building user interfaces. If you've any experience with programming interfaces in other languages (perhaps some JavaScript, etc.), you'll quickly realise what I mean. However, some useful Processing libraries provide an extended set of turnkey GUI features.
 
-**Begin Lesson 7.1:** [User Interfaces]({% post_url 2019-03-15-processing.py_in_ten_lessons--7.1-_user_interfaces %})
-
+<p style="text-align:right" markdown="1">
+<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }}</a> &raquo;<br />
 [Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)
+</p>
 
 ## References
 

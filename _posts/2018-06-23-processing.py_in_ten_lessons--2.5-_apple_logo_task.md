@@ -5,10 +5,9 @@ title: "Processing.py in Ten Lessons – 2.5: Apple Logo Task"
 categories: code processing python
 ---
 
-<p style="text-align:right" markdown="1">
-[Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)<br />
-<a href="{{ page.previous.url }}">&laquo; {{ page.previous.title | split:'–'| last }}</a> |
-<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }} &raquo;</a>
+<p markdown="1" style="text-align:right">
+&laquo; <a href="{{ page.previous.url }}">{{ page.previous.title | split:'–'| last }}</a> |
+<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }}</a> &raquo;<br />
 </p>
 
 ## Apple Logo Task
@@ -60,9 +59,10 @@ Notice how straight-line connections between pairs of control points ensure smoo
 
 That's it for lesson 2. I hope it was enjoyable if a little tedious. If you are familiar with any markup languages -- such as HTML, XML, or SVG in particular -- you've probably been cruising through the tutorials thus far. In lesson 3 we'll begin to look at what really separates a programming language from markup; this includes topics like conditional statements and iteration. You'll also explore randomness -- one of the most powerful and exciting tools in the creative programmer's tool-set. For now, though, take a break -- you deserve it!
 
-**Begin Lesson 3.1:** [Control Flow]({% post_url 2018-07-01-processing.py_in_ten_lessons--3.1-_control_flow %})
-
+<p style="text-align:right" markdown="1">
+<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }}</a> &raquo;<br />
 [Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)
+</p>
 
 ## References
 

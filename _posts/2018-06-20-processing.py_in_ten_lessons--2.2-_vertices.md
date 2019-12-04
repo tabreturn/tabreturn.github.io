@@ -5,10 +5,9 @@ title: "Processing.py in Ten Lessons – 2.2: Vertices"
 categories: code processing python
 ---
 
-<p style="text-align:right" markdown="1">
-[Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)<br />
-<a href="{{ page.previous.url }}">&laquo; {{ page.previous.title | split:'–'| last }}</a> |
-<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }} &raquo;</a>
+<p markdown="1" style="text-align:right">
+&laquo; <a href="{{ page.previous.url }}">{{ page.previous.title | split:'–'| last }}</a> |
+<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }}</a> &raquo;<br />
 </p>
 
 ## Vertices
@@ -278,6 +277,7 @@ When you run the sketch, you'll see four Bézier curves. Recreate them using `be
 
 The curves need not be pixel-perfect replicas, as this is just something to get you used to working with them.
 
-**Begin Lesson 2.3:** [Strings]({% post_url 2018-06-21-processing.py_in_ten_lessons--2.3-_strings %})
-
+<p style="text-align:right" markdown="1">
+<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }}</a> &raquo;<br />
 [Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)
+</p>

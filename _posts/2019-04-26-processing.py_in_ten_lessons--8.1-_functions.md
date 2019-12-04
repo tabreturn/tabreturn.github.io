@@ -5,9 +5,8 @@ title: "Processing.py in Ten Lessons – 8.1: Functions"
 categories: code processing python
 ---
 
-<p style="text-align:right" markdown="1">
-[Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)<br />
-<a href="{{ page.previous.url }}">&laquo; {{ page.previous.title | split:'–'| last }}</a>
+<p markdown="1" style="text-align:right">
+&laquo; <a href="{{ page.previous.url }}">{{ page.previous.title | split:'–'| last }}</a>
 </p>
 
 ---
@@ -26,4 +25,6 @@ My thanks go to Åke Jonsson for his feedback on the lessons I've posted up to t
 *Lesson 10: Some Physics*  
 *Bonus Lesson: 3D and Shaders*
 
+<p style="text-align:right" markdown="1">
 [Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)
+</p>

@@ -5,10 +5,9 @@ title: "Processing.py in Ten Lessons – 1.5: Arithmetic Operators"
 categories: code processing python
 ---
 
-<p style="text-align:right" markdown="1">
-[Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)<br />
-<a href="{{ page.previous.url }}">&laquo; {{ page.previous.title | split:'–'| last }}</a> |
-<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }} &raquo;</a>
+<p markdown="1" style="text-align:right">
+&laquo; <a href="{{ page.previous.url }}">{{ page.previous.title | split:'–'| last }}</a> |
+<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }}</a> &raquo;<br />
 </p>
 
 ## Arithmetic Operators
@@ -159,9 +158,10 @@ Draw a centred ellipse with a width that's a fifth of the display window <code>w
 
 Clue: if this seems like a conspiracy, you may be on the right track.
 
-**Begin Lesson 1.6:** [Disk Space Analyser Task]({% post_url 2018-06-17-processing.py_in_ten_lessons--1.6-_disk_space_analyser_task %})
-
+<p style="text-align:right" markdown="1">
+<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }}</a> &raquo;<br />
 [Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)
+</p>
 
 ## References
 

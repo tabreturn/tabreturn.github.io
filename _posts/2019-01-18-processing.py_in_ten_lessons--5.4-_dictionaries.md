@@ -5,10 +5,9 @@ title: "Processing.py in Ten Lessons – 5.4: Dictionaries"
 categories: code processing python
 ---
 
-<p style="text-align:right" markdown="1">
-[Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)<br />
-<a href="{{ page.previous.url }}">&laquo; {{ page.previous.title | split:'–'| last }}</a> |
-<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }} &raquo;</a>
+<p markdown="1" style="text-align:right">
+&laquo; <a href="{{ page.previous.url }}">{{ page.previous.title | split:'–'| last }}</a> |
+<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }}</a> &raquo;<br />
 </p>
 
 ## Dictionaries
@@ -300,6 +299,7 @@ The challenge is to fill each mug with the relevant proportions of ingredients. 
 
 This code can easily be adapted to include as many coffee types as you desire, each with its own mug. However, the process of having to write and format the `coffees` data using Python syntax leaves room for improvement. In the next section, you'll look at how Python can read in data from external files.
 
-**Begin Lesson 5.5:** [External Data]({% post_url 2019-01-19-processing.py_in_ten_lessons--5.5-_external_data %})
-
+<p style="text-align:right" markdown="1">
+<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }}</a> &raquo;<br />
 [Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)
+</p>

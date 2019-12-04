@@ -6,10 +6,9 @@ categories: code processing python
 mathml: true
 ---
 
-<p style="text-align:right" markdown="1">
-[Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)<br />
-<a href="{{ page.previous.url }}">&laquo; {{ page.previous.title | split:'–'| last }}</a> |
-<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }} &raquo;</a>
+<p markdown="1" style="text-align:right">
+&laquo; <a href="{{ page.previous.url }}">{{ page.previous.title | split:'–'| last }}</a> |
+<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }}</a> &raquo;<br />
 </p>
 
 ## Animated Trigonometry
@@ -344,9 +343,10 @@ That's it for lesson 4. If you've made it this far -- the next lesson should be 
 
 You've dealt with string, integer, floating-point, and boolean datatypes. In lesson 4, you'll explore datatypes that hold a collection of elements -- namely Python *list* and *dictionary* types. If you've some programming experience, you may have encountered something similar (*arrays*) in other languages? If not, do not stress -- we'll begin with the very basics. As this subject matter works nicely with graphs, we'll also explore interesting to visualise data.
 
-**Begin Lesson 5.1:** [Lists]({% post_url 2019-01-15-processing.py_in_ten_lessons--5.1-_lists %})
-
+<p style="text-align:right" markdown="1">
+<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }}</a> &raquo;<br />
 [Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)
+</p>
 
 ## References
 

@@ -11,6 +11,8 @@ categories: code processing python
 
 This series of tutorial posts covers *Processing.py*, with the purpose of introducing non-programmers to the fundamentals of computer programming in a visual context. If you're an artist, student, designer, researcher, or just somebody who is keen on learning how to code, Processing is a great place to start.
 
+[Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)
+
 I'd estimate each complete lesson (eg. lesson 1.1 to 1.5) to take around 2--4 hours to complete, of which a large part of that time will be spent on the tasks/challenges. The speed at which you get through the lessons is likely to be influenced by your prior experience in relatable areas. That said, it's not a race -- enjoy the ride and stop for breaks wherever. Hey, if you're really feeling inspired, feel free to head off-road!
 
 My thanks go to Åke Jonsson for his feedback on these lessons.

@@ -180,7 +180,7 @@ for k in studentdict:
 
 If you prefer a more explicit coding style, stick with the `keys()` method.
 
-The `values()` method can be used similarly to the `keys()`. Of course, this returns just the element values.
+The `values()` method can be used similarly to the `keys()`. Of course, this returns just the item values.
 
 {% highlight py %}
 for v in studentdict.values():

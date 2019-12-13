@@ -131,7 +131,7 @@ Adapt the existing loop, so that each bar indicates the quantities of primary co
 
 {% highlight py %}
     ...
-    b = bands[i][2]
+    b = band[2]
     #sum = r + g + b
     #avg = sum / 3
     #fill(avg, avg, avg)

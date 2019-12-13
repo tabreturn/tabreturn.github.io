@@ -64,8 +64,8 @@ bands = [
 To render the bands, include a loop statement:
 
 {% highlight py %}
-for i in range(len(bands)):
-    fill(bands[i])
+for i,band in enumerate(bands):
+    fill(band)
     rect(0,i*h, 40,h)
 {% endhighlight %}
 
@@ -102,10 +102,10 @@ Now, set the `colorMode` to use values between zero and one hundred, and add a l
 {% highlight py %}
 colorMode(RGB, 100)
 
-for i in range(len(bands)):
-    r = bands[i][0]
-    g = bands[i][1]
-    b = bands[i][2]
+for i,band in enumerate(bands):
+    r = band[0]
+    g = band[1]
+    b = band[2]
     sum = r + g + b
     avg = sum / 3
     fill(avg, avg, avg)
@@ -167,11 +167,11 @@ bands = [
   [100, 60, 0, 'orange'],
   ...
 
-for i in range(len(bands)):
+for i,band in enumerate(bands):
     ...
     fill('#FFFFFF')
     textAlign(RIGHT)
-    text(bands[i][3], -20,i*h+30)
+    text(band[3], -20,i*h+30)
 {% endhighlight %}
 
 <figure>

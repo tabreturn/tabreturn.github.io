@@ -10,5 +10,5 @@ Isso (a Disqus alternative) and Matomo (open-source analytics platform).
 ![screenshot](screenshot.png)
 
 ## to-do
-* ~~mobile view style fixes for comment section~~
-* ~~topics filter to use url (e.g. #physics)~~
+- [x] mobile view style fixes for comment section 
+- [x] topics filter to use url (e.g. #physics)

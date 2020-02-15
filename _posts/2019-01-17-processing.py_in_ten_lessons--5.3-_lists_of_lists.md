@@ -125,7 +125,7 @@ Oddly, the green bar (fourth from the top) is equivalent in brightness/darkness 
 ><div style="background-color:#00FF00; display:inline-block; width:80px; height:2.5em"></div>
 </figure>
 
-This has to do with how the human eye perceives colour. We have a greater number of green receptors, so green light appears more prominent. There are ways to [compromise for this]({% post_url 2017-01-26-converting_css_colour_to_greyscale %}), but for now, our averaging formula will suffice.
+This has to do with how the human eye perceives colour. We have a greater number of green receptors, so green light appears more prominent. There are ways to compromise for this, but for now, our averaging formula will suffice.
 
 Adapt the existing loop, so that each bar indicates the quantities of primary colour that comprise it:
 

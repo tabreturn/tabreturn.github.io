@@ -1,6 +1,6 @@
 ---
 layout: post
-s: true
+comments: true
 title: "Portable Thonny and p5"
 categories: code python
 ---

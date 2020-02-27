@@ -107,11 +107,11 @@ Save this edit. You can now run p5 sketches in Thonny!
   <img src="{{ site.url }}/img/tap/done.png" class="fullwidth" />
 </figure>
 
-Check out the [p5 reference](https://p5.readthedocs.io) for more on how to use it.
+Check out the [p5 reference](https://p5.readthedocs.io) for more on how to use it. p5 code looks a little different than processing.py code, but if you have some experience with Processing Python Mode, it won't take long to pick up.
 
 ## Thonny + p5 on da USB Drive
 
-You can now copy your Thonny application folder to your USB drive. It may be quicker to zip/compress the folder first; this is also better for distributing it across the Web or a LAN.
+You can now copy your Thonny application folder to your USB drive. It may be quicker to zip/compress the folder first; this is also better for distributing it across the Web or a LAN. You can run Thonny+p5 right off the drive, or copy it to the Desktop your working on.
 
 <sup markdown="1">If you wish to, you can delete all of the *.pyc* files and *\__pycache\__* directories before you zip/compress the Thonny application folder. If you don't know how to do this, or what this even means -- don't worry about it, it's not a critical step.</sup>
 

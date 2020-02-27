@@ -15,7 +15,7 @@ This post covers how to roll-your-own portable Thonny + p5 IDE for Windows compu
 
 ## Thonny
 
-If you haven't heard about [Thonny](https://thonny.org/), it's a Python IDE catering to any beginners looking to dabble in Python. Thonny offers a quick and easy way to get coding in Python. In a downloadable zip file, less than 30 MB in size, you get a neat editor bundled with Python (version 3.7 at the time of writing). The user interface is stripped back, but you can display several extra panels, like a panel to list your variables, an outline panel for your functions, an object inspector, an interactive debugger, a shell, a plotter, and more. It's multi-platform (Windows, Mac, Linux), open-source, and there's a *portable* version too.
+If you haven't heard about [Thonny](https://thonny.org/), it's a Python IDE catering to any beginners looking to dabble in Python. Thonny offers a quick and easy way to get coding in Python. In a downloadable zip file, less than 30 MB in size, you get a neat editor bundled with Python (version 3.7 at the time of writing). The Thonny user interface is stripped back, but you can display several extra panels, like a panel to list your variables, an outline panel for your functions, an object inspector, an interactive debugger, a shell, a plotter, and more. It's multi-platform (Windows, Mac, Linux), open-source, and there's a *portable* version too.
 
 ## Portable Applications
 

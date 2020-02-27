@@ -5,7 +5,7 @@ title: "Portable Thonny and p5"
 categories: code python
 ---
 
-You can combine *Thonny* and *p5* for a Processing-esque, Python 3 development environment that runs off a USB drive. There are situations where you may prefer to use p5 over Processing Python Mode / processing.py, which I will review in this post. This Thonny-p5 combo is also handy for teaching programming in computer labs where students cannot install software, or any situation where you'd prefer to run an application in a portable fashion.
+You can combine *Thonny* and *p5* for a Processing-esque, Python 3 development environment that runs off a USB drive. There are situations where you may prefer to use p5 over Processing Python Mode / processing.py, which I will explain in this post. This Thonny-p5 combo is also handy for teaching programming in computer labs where students cannot install software, or any situation where you'd prefer to run an application in a portable fashion.
 
 <figure>
   <img src="{{ site.url }}/img/tap/header.png" class="fullwidth" />

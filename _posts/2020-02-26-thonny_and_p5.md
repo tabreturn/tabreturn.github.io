@@ -107,7 +107,7 @@ Save this edit. You can now run p5 sketches in Thonny!
   <img src="{{ site.url }}/img/tap/done.png" class="fullwidth" />
 </figure>
 
-Check out the [p5 reference](https://p5.readthedocs.io) for more on how to use it. p5 code looks a little different than processing.py code, but if you have some experience with Processing Python Mode, it won't take long to pick up.
+Check out the [p5 reference](https://p5.readthedocs.io) for more on how to use it. p5 code looks a little different than processing.py code, but if you have some experience with the latter, it won't take long to pick up.
 
 ## Thonny + p5 on da USB Drive
 

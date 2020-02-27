@@ -68,7 +68,7 @@ This will display a console window. Type `pip install p5` into the console and h
   <img src="{{ site.url }}/img/tap/p5-pip.png" class="fullwidth" />
 </figure>
 
-Close the console window once this is done. If there's some "`... Microsoft Visual C++ ...`" error, you'll need to [install the necessary build tools](https://www.scivision.dev/python-windows-visual-c-14-required/). Note that once you've successfully completed this step, you no longer require Microsoft Visual C++. Moreover, your portable Thonny + p5 will run on Windows computers without Microsoft Visual C++.
+Close the console window once this is done. If there's some "`... Microsoft Visual C++ ...`" error, you'll need to [install the necessary build tools](https://www.scivision.dev/python-windows-visual-c-14-required/) then run the pip command again. Note that once you've successfully completed this step, you no longer require Microsoft Visual C++. Moreover, your portable Thonny + p5 will run on Windows computers without Microsoft Visual C++ package.
 
 p5 uses VisPy, which requires GLFW. GLFW is an open-source library for OpenGL, OpenGL ES and Vulkan. Download the Windows pre-compiled binaries for GLFW from [https://www.glfw.org/download.html](https://www.glfw.org/download.html). I had issues using the 64-bit binaries, so I'm directing you to use the 32-bit version:
 

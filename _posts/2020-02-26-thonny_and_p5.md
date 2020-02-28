@@ -47,7 +47,7 @@ Extract the zip file you've downloaded, then run the *thonny.exe* file to launch
 At the first prompt, you may change the *Language setting*, but stick with the default *Initial Settings* (of *Standard*):
 
 <figure>
-  <img src="{{ site.url }}/img/tap/thonny-splash.png" style="max-width:330px" />
+  <img src="{{ site.url }}/img/tap/thonny-splash.png" style="max-width:340px" />
 </figure>
 
 Test out Thonny with a simple `print('hello world')`. You use the run button (green circle with the ▶ icon) to run your script. If you hover over any button, a tool-tip will display its associated keyboard shortcut (*F5* in this case). The first time you run a new script, Thonny will ask you to save the file. Thereafter, it auto-saves each time you run.

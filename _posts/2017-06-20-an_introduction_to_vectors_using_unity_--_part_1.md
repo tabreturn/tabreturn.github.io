@@ -373,7 +373,7 @@ Vectors can not only be added, but also subtracted, multiplied, and divided.
 
 ### Subtracting Vectors
 
-Consider a scenario where Nyan Cat and *nayN Cat* are cruising together through space, both propelled along a vector of `(2, 7)`. However, something's gone awry with nayN's rainbow propulsion drive, and as a result, nayN's vector is `(-2, 10)`. To compensate, the drive can be re-calibrated to take nayN's offset into account. This offset is equal to the *difference* between the desired and current vectors -- and like finding the difference between any scalar values, this can be calculated using subtraction:
+Consider a scenario where Nyan Cat and *nayN Cat* are cruising together through space, both propelled along a vector of `(7, 2)`. However, something's gone awry with nayN's rainbow propulsion drive, and as a result, nayN's vector is `(10, -2)`. To compensate, the drive can be re-calibrated to take nayN's offset into account. This offset is equal to the *difference* between the desired and current vectors -- and like finding the difference between any scalar values, this can be calculated using subtraction:
 
 <figure>
   <img src="{{ site.url }}/img/aitvuup1/21-vector-subtraction.svg" />

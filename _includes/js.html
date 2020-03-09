@@ -19,7 +19,7 @@
 {% endif %}
 
 {% if site.isso_dataurl and page.comments %}
-<script data-isso="{{ site.isso_dataurl }}" src="{{ site.isso_sourcecurl }}"></script>
+<script data-isso="{{ site.isso_dataurl }}" src="{{ site.isso_sourcecurl }}" data-isso-vote="{{ site.isso_vote }}"></script>
 {% endif %}
 
 <script>

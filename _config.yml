@@ -18,3 +18,4 @@ matomo_siteid: 2
 # remove/comment lines to disable
 isso_dataurl: "https://isso.tabreturn.com/"
 isso_sourcecurl: "https://isso.tabreturn.com/js/embed.min.js"
+isso_vote: "false"

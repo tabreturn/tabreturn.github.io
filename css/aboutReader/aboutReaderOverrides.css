@@ -56,6 +56,7 @@ math, .mjx-chtml {
 
 .mjx-chtml.mjx-full-width {
   display: inline-block !important;
+  max-width: 100% !important;
 }
 
 pre, code {

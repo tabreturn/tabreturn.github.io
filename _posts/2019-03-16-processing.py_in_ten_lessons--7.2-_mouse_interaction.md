@@ -430,7 +430,7 @@ def mousePressed():
 {% endhighlight %}
 
 
-The clear button has no hover effectThat's to say, when you position the mouse cursor above it, there's no visible change.
+The clear button has no hover effect. That's to say, when you position the mouse cursor above it, there's no visible change.
 
 <figure>
   <img src="{{ site.url }}/img/pitl07/paint-app-clear.png" />

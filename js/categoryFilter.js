@@ -97,10 +97,17 @@ function categoryFilter(show_on_start) {
     }
     post_list.appendChild(frag);
     parent_node.insertBefore(post_list, next_sibling);
-    return post_list;
   }
 
   // initialize
+
+  if (show_on_start == 'all') {
+    show_on_start = [];
+
+    category_buttons.forEach((cat) => {
+      show_on_start.push(cat.innerHTML);
+    });
+  }
 
   for (var i=0; i<show_on_start.length; i++) {
     if (show_on_start[i] == 'reverse') {
@@ -121,6 +128,30 @@ function categoryFilter(show_on_start) {
 
   document.getElementById('reverse-filter').addEventListener('click', function() {
     reversePosts();
+  });
+
+  document.getElementById('hide-all').addEventListener('click', function() {
+
+    category_buttons.forEach((but) => {
+
+      if (but.classList[0]!=='disabled') {
+        but.classList.add('disabled');
+      }
+
+      applySelection();
+    });
+  });
+
+  document.getElementById('show-all').addEventListener('click', function() {
+
+    category_buttons.forEach((but) => {
+
+      if (but.classList[0]==='disabled') {
+       but.classList.remove('disabled');
+      }
+
+      applySelection();
+    });
   });
 
 }

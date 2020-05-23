@@ -58,6 +58,19 @@ function categoryFilter(show_on_start) {
     tagHighlight(scat);
   }
 
+  function applySelection() {
+    categories_selected = [];
+
+    for (var i=0; i<category_buttons.length; i++) {
+      var cat = category_buttons[i];
+
+      if (cat.classList.value !== 'disabled')
+        categories_selected.push(cat.innerHTML);
+    }
+
+    postShowHide(categories_selected);
+  }
+
   function categorySelect(selected, buttons) {
 
     for (var i=0; i<buttons.length; i++) {
@@ -71,31 +84,7 @@ function categoryFilter(show_on_start) {
       }
     }
 
-    categories_selected = [];
-
-    for (var i=0; i<category_buttons.length; i++) {
-      var cat = category_buttons[i];
-
-      if (cat.classList.value !== 'disabled')
-        categories_selected.push(cat.innerHTML);
-    }
-
-    postShowHide(categories_selected);
-  }
-
-  for (var i=0; i<category_buttons.length; i++) {
-    var cat_but = category_buttons[i];
-    cat_but.addEventListener('click', function(e) {
-      categorySelect(e.target.innerHTML, category_buttons);
-    });
-  }
-
-  for (var i=0; i<show_on_start.length; i++) {
-    if (show_on_start[i] == 'reverse') {
-      reversePosts();
-    }
-    var show = show_on_start[i];
-    categorySelect(show, category_buttons);
+    applySelection();
   }
 
   function reversePosts() {
@@ -109,6 +98,25 @@ function categoryFilter(show_on_start) {
     post_list.appendChild(frag);
     parent_node.insertBefore(post_list, next_sibling);
     return post_list;
+  }
+
+  // initialize
+
+  for (var i=0; i<show_on_start.length; i++) {
+    if (show_on_start[i] == 'reverse') {
+      reversePosts();
+    }
+    var show = show_on_start[i];
+    categorySelect(show, category_buttons);
+  }
+
+  // event listeners
+
+  for (var i=0; i<category_buttons.length; i++) {
+    var cat_but = category_buttons[i];
+    cat_but.addEventListener('click', function(e) {
+      categorySelect(e.target.innerHTML, category_buttons);
+    });
   }
 
   document.getElementById('reverse-filter').addEventListener('click', function() {

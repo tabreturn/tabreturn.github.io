@@ -23,28 +23,16 @@ layout: default
   </div>
 
   <p style="text-align:right">
-    <em id="reverse-filter"><a>&#8644; reverse order</a></em>
+    <a id="reverse-filter">&#8644; reverse order</a> |
+    <a id="hide-all">hide all</a> |
+    <a id="show-all">show all</a>
   </p>
 
   <p id="categories">
 
     <strong>filter posts:</strong>
-
     {% assign sorted_categories = site.categories | sort %}
-
     <span>
-    {% assign most_recent_year = site.posts[0].date | date:'%Y' %}
-
-    <a class="disabled">{{ most_recent_year }}</a>
-
-    {% for post in site.posts %}
-      {% assign year = post.date | date:'%Y' %}
-      {% if year != most_recent_year %}
-        <a class="disabled">{{ year }}</a>
-        {% assign most_recent_year = year %}
-      {% endif %}
-    {% endfor %}
-
     {% for category in sorted_categories %}
       <a class="disabled">{{ category | first }}</a>
     {% endfor %}
@@ -83,7 +71,6 @@ layout: default
   if (location.hash) {
     var hash = location.hash.slice(1);
     hash = hash.split('-');
-
   }
 
   if (hash) {
@@ -93,6 +80,6 @@ layout: default
     document.getElementById('reader-title').style.display = 'none';
   }
   else {
-    categoryFilter(['2020', '2019', '2018', '2017', '2016', '2015']);
+    categoryFilter(['all']);
   }
 </script>

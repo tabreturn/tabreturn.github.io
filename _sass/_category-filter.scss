@@ -5,8 +5,12 @@
     @include user-select(none);
   }
 
-  a.disabled {
-    opacity: 0.25;
+  a {
+    padding: 0 0.07em;
+
+    &.disabled {
+      opacity: 0.25;
+    }
   }
 }
 

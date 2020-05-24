@@ -6,7 +6,6 @@ function categoryFilter(show_on_start) {
   var post_list = document.getElementById('post-list');
   var posts = post_list.querySelectorAll('.post');
   var categories_selected = [];
-  var reverse_button = document.getElementById('reverse-filter');
 
   // highlighing & selection logic:
 
@@ -113,7 +112,6 @@ function categoryFilter(show_on_start) {
   for (var i=0; i<show_on_start.length; i++) {
     if (show_on_start[i] == 'reverse') {
       reversePosts();
-      reverse_button.innerHTML = '⇄ newest first'
     }
     var show = show_on_start[i];
     categorySelect(show, category_buttons);
@@ -128,13 +126,8 @@ function categoryFilter(show_on_start) {
     });
   }
 
-  reverse_button.addEventListener('click', function(e) {
+  document.getElementById('reverse-filter').addEventListener('click', function() {
     reversePosts();
-
-    if (e.target.innerHTML == '⇄ oldest first')
-      e.target.innerHTML = '⇄ newest first';
-    else
-      e.target.innerHTML = '⇄ oldest first';
   });
 
   document.getElementById('hide-all').addEventListener('click', function() {
@@ -154,7 +147,7 @@ function categoryFilter(show_on_start) {
     category_buttons.forEach((but) => {
 
       if (but.classList[0]==='disabled') {
-        but.classList.remove('disabled');
+       but.classList.remove('disabled');
       }
 
       applySelection();

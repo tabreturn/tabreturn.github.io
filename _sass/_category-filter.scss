@@ -1,5 +1,7 @@
 #categories {
   @include user-select(none);
+  font-size: 0.9em;
+  font-style: italic;
 
   & * {
     @include user-select(none);

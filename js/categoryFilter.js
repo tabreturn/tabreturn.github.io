@@ -6,6 +6,7 @@ function categoryFilter(show_on_start) {
   var post_list = document.getElementById('post-list');
   var posts = post_list.querySelectorAll('.post');
   var categories_selected = [];
+  var reverse_button = document.getElementById('reverse-filter');
 
   // highlighing & selection logic:
 
@@ -126,7 +127,7 @@ function categoryFilter(show_on_start) {
     });
   }
 
-  document.getElementById('reverse-filter').addEventListener('click', function() {
+  reverse_button.addEventListener('click', function() {
     reversePosts();
   });
 

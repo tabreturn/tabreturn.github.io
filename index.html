@@ -30,7 +30,7 @@ layout: default
 
   <p id="categories">
 
-    <strong>filter posts:</strong>
+    <strong>tag filter:</strong>
     {% assign sorted_categories = site.categories | sort %}
     <span>
     {% for category in sorted_categories %}
@@ -53,9 +53,7 @@ layout: default
       <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
       <br />
       <em class="post-meta">
-        {{ post.date | date:'%Y-%m-%d' }}
-        |
-        <span class="tag-{{ post.date | date:'%Y' }}">{{ post.date | date:'%Y' }}</span>
+        tags:
         {% for tag in sorted_categories %}
           <span class="tag-{{ tag }}">{{ tag }}</span>
         {% endfor %}

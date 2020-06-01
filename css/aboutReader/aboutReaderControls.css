@@ -43,10 +43,8 @@
 }
 
 .domain {
-  font-size: 0.9em;
   line-height: 1.48em;
   padding-bottom: 4px;
-  font-family: Helvetica, Arial, sans-serif;
   text-decoration: none;
   border-bottom: 1px solid;
   color: #0095dd;

@@ -22,14 +22,13 @@ layout: default
     Welcome to my blog &ndash; a collection of posts covering a blend of technology, design, code, and creativity.
   </div>
 
-  <p style="text-align:right">
+  <p id="filter-options" style="text-align:right">
     <a id="reverse-filter">&#8644; reverse</a> |
     <a id="hide-all">hide all</a> |
     <a id="show-all">show all</a>
   </p>
 
   <p id="categories">
-
     tag filter:
     {% assign sorted_categories = site.categories | sort %}
     <span>

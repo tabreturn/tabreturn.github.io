@@ -4,6 +4,7 @@ email: github.tabreturn.io@tabreturn.com
 description: ""
 baseurl: "" # subpath, e.g. /blog
 github_username: tabreturn
+portfolio_website: http://portfolio.tabreturn.com
 
 # build settings
 markdown: kramdown

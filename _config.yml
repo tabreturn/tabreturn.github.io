@@ -2,6 +2,7 @@
 title: tabreturn // blog
 email: github.tabreturn.io@tabreturn.com
 description: "Welcome to my blog &ndash; a collection of posts covering a blend of technology, design, code, and creativity."
+logo: 'img/logo.svg'
 baseurl: "" # subpath, e.g. /blog
 github_username: tabreturn
 portfolio_website: http://portfolio.tabreturn.com

@@ -6,9 +6,11 @@ categories: code blender python
 published: false
 ---
 
+<!--
 <p markdown="1" style="text-align:right">
 <a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }}</a> &raquo;<br />
 </p>
+-->
 
 This series of tutorial posts introduce Blender as tool for creative coding. [Blender](https://www.blender.org/) is open-source software for 3D modelling and animation, that can also handle compositing, video editing, and 2D animation.
 

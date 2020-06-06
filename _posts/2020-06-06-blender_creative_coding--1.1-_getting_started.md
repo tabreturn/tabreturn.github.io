@@ -62,22 +62,23 @@ This will write in the path. Hit enter to change to the Blender directory. The p
   <figcaption>Figure 1-4: The prompt confirms that you're in the correct directory</figcaption>
 </figure>
 
-![](img/bcc01/getting-started-terminal-cd.png)  
-*Figure 1-3: *
+Open the Blender executable from the command line. On Windows, type `blender.exe`; for macOS/Linux, type `./blender`. This will open Blender from the terminal. The terminal window remains open (Figure 1-5).
 
-Open the Blender executable from the command line. On Windows, type `blender.exe`; for macOS/Linux, type `./blender`. This will open Blender from the terminal. The terminal window remains open.
+<figure>
+  <img src="{{ site.url }}/img/bcc01/getting-started-terminal-blender.png" class="fullwidth" />
+  <figcaption>Figure 1-5: Launching Blender from the terminal</figcaption>
+</figure>
 
-![](img/bcc01/getting-started-terminal-blender.png)  
-*Figure 1-4: Launching Blender from the terminal*
-
-You'll be using the terminal for developing Blender scripts.
+You'll be using the terminal while you develop Blender scripts.
 
 ## Your First Line of Blender Script
 
-Time to enter your first line of code! In Blender, switch to the *Scripting* tab, then click *New*:
+Time to enter your first line of code! In Blender, switch to the *Scripting* tab, then click *New* (Figure 1-6).
 
-![](img/bcc01/getting-started-new-script.png)  
-*Figure 1-5: Switch to the Scripting tab*
+<figure>
+  <img src="{{ site.url }}/img/bcc01/getting-started-new-script.png" class="fullwidth" />
+  <figcaption>Figure 1-6: Switch to the Scripting tab</figcaption>
+</figure>
 
 Type in: `print('Hello, World!')`. Then, run the script using **Alt-P** (or by clicking the *Run Script* button). The terminal should display a `Hello, World!`.
 

@@ -48,17 +48,22 @@ Once the download is complete, extract this wherever you like---on your desktop,
 
 Open your terminal. On Windows, it's called the *Command Prompt*; on macOS, it's called *Terminal*; Linux folk, you know about your terminal already ;)
 
-In a new terminal window, type `cd` (followed by a space), then drag the extracted folder into the terminal window. This will look a little different for each system, but the principle is the same. If you used the Blender installer (as opposed to the portable version), you'd need to locate the installed files on your system. On macOS you'll have to right-click on the Blender application, select *Show Package Contents*, navigate to *Contents* > *MacOS*, and drag this into the terminal.
+In a new terminal window, type `cd` (followed by a space), then drag the extracted folder into the terminal window (Figure 1-3). This will look a little different for each system, but the principle is the same. If you used the Blender installer (as opposed to the portable version), you'd need to locate the installed files on your system. On macOS, first you have to right-click on the Blender application, select *Show Package Contents*, navigate to *Contents* > *MacOS*, and drag the *MacOS* folder into the terminal.
 
 <figure>
   <img src="{{ site.url }}/img/bcc01/getting-started-terminal-drag.png" class="fullwidth" />
   <figcaption>Figure 1-3: Type <code>cd</code> and drag the folder into the terminal</figcaption>
 </figure>
 
-This will write in the path. Hit enter to change to the Blender directory. The prompt (text to the left of the cursor) will indicate that you're in the right place. Again, this will look a bit different on your system.
+This will write in the path. Hit enter to change to the Blender directory. The prompt (text to the left of the cursor) will indicate that you're in the right place (Figure 1-4). Again, this will look a bit different on your system.
+
+<figure>
+  <img src="{{ site.url }}/img/bcc01/getting-started-terminal-cd.png" class="fullwidth" />
+  <figcaption>Figure 1-4: The prompt confirms that you're in the correct directory</figcaption>
+</figure>
 
 ![](img/bcc01/getting-started-terminal-cd.png)  
-*Figure 1-3: The prompt confirms that you're in the correct directory*
+*Figure 1-3: *
 
 Open the Blender executable from the command line. On Windows, type `blender.exe`; for macOS/Linux, type `./blender`. This will open Blender from the terminal. The terminal window remains open.
 

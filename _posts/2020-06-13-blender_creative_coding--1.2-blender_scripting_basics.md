@@ -3,6 +3,7 @@ layout: post
 comments: true
 title: "Blender Creative Coding – 1.2: Blender Scripting Basics"
 categories: code blender python
+published: false
 ---
 
 <p markdown="1" style="text-align:right">

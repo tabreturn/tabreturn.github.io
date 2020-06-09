@@ -1,12 +1,14 @@
 ---
 layout: post
 comments: true
-title: "Blender Creative Coding – 1.2: ___"
+title: "Blender Creative Coding – 1.2: Blender Scripting Basics"
 categories: code blender python
-published: false
 ---
 
-
+<p markdown="1" style="text-align:right">
+&laquo; <a href="{{ page.previous.url }}">{{ page.previous.title | split:'–'| last }}</a> |
+<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }}</a> &raquo;<br />
+</p>
 
 
 
@@ -193,3 +195,12 @@ see heading *Standalone Modules*
 
 * **bmesh**: provides access to blenders bmesh data structures  
   https://docs.blender.org/api/blender2.8/bmesh.html
+
+
+<p style="text-align:right" markdown="1">
+<em>next lesson coming soon</em><br />
+<!--
+<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }}</a> &raquo;<br />
+-->
+[Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)
+</p>

@@ -3,6 +3,7 @@ layout: post
 comments: true
 title: "Blender Creative Coding – 2.0: A (Very Brief) Overview of Python"
 categories: code blender python
+published: false
 ---
 
 <p markdown="1" style="text-align:right">

@@ -22,8 +22,8 @@ My thanks go to Åke Jonsson for his feedback on the lessons I've posted up to t
 **In development**  
 *Lesson 8: Functions*  
 *Lesson 9: Object-Orientation*  
+*Lesson 10: Sound and Video*  
 *Lesson 10: Some Physics*  
-*Lesson 11: Sound and Video*  
 *Bonus Lesson: 3D and Shaders*
 
 <p style="text-align:right" markdown="1">

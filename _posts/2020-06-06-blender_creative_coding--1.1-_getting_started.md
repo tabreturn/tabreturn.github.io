@@ -75,11 +75,22 @@ Time to enter your first line of code! In Blender, switch to the *Scripting* tab
   <figcaption>Figure 1-6: Switch to the Scripting tab and start a new script</figcaption>
 </figure>
 
-Type in: `print('Hello, World!')`. Then, run the script using **Alt-P** (or clicking the *▶* button). The terminal should display a `Hello, World!` (Figure 1-7).
+<blockquote markdown="1">
+The Blender window is divided into **areas** that contain **editors**. An area is a rectangular partition that you can resize (or divide further). For example, the largest area in the Scripting workspace is for the **Text Editor**, which you'll use to enter code. Selecting any workspace will present a predefined arrangement of **editors**; there is a button to switch editors at the top-left corner of each area (Figure 1.7).
+
+ <figure>
+   <img src="{{ site.url }}/img/bcc01/getting-started-editors.png" class="fullwidth" />
+   <figcaption>Figure 1-8: The Editor Type selector</figcaption>
+ </figure>
+
+There's no need to change the Text Editor right now.
+</blockquote>
+
+Enter `print('Hello, World!')` into the text editor (Figure 1-8). Then, run the script using **Alt-P** (or clicking the *▶* button). The terminal should display a `Hello, World!`.
 
 <figure>
   <img src="{{ site.url }}/img/bcc01/getting-started-run-script.png" class="fullwidth" />
-  <figcaption>Figure 1-7: The terminal displays <code>Hello, World!</code> when you run the script</figcaption>
+  <figcaption>Figure 1-8: The terminal displays <code>Hello, World!</code> when you run the script</figcaption>
 </figure>
 
 Excellent! You've got a working Blender script. You'll use the terminal to monitor print statements and errors.

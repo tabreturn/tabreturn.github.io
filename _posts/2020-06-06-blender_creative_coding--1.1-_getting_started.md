@@ -20,13 +20,13 @@ I'm interested in creative coding using Python. I began experimenting with Blend
 
 I've meant to get into Blender for a while; this was just the nudge I needed. The tutorial series is a record of my learning and a guide for others. I'll add new posts as I progress.
 
-### What You Should Know Already
+**What You Should Know Already**
 
 If you have no programming experience, it's best to learn some Python first (using [Processing Python mode]({{ site.baseurl }}/#processing-reverse) or some other Python environment). I'll provide a brief overview of the Python language in lesson 2. If you're familiar with some other programming language, you should cope fine.
 
 Some Blender knowledge is useful, but not essential.
 
-# Getting Started
+## Getting Started
 
 In this section, I'll step you through installing Blender, launching it via the terminal, accessing its scripting interface, and running your first line of code. At the time of writing, Blender is on release 2.83.
 
@@ -39,7 +39,7 @@ Download Blender from the Blender website at [https://www.blender.org/download/]
 
 Once the download is complete, extract the archive wherever you like---on your desktop, in your documents folder, or wherever you prefer. The extracted folder contains the application files---everything you need to run Blender. On macOS, you choose where you store the application by dragging it to that location.
 
-## Launching Blender Using the Command Line
+### Launching Blender Using the Command Line
 
 The *command line* is a text interface to your computer, where you can perform different operations by typing commands. You access the command line using your *terminal* application. On Windows, the application is named *Command Prompt*; on macOS, it's called *Terminal*; Linux folk, you know about your terminal already ;)
 
@@ -66,7 +66,7 @@ Open the Blender executable from the command line. On Windows, type `blender.exe
 
 You'll be using the terminal while you develop Blender scripts.
 
-## Your First Line of Blender Script
+### Your First Line of Blender Script
 
 Time to enter your first line of code! In Blender, switch to the *Scripting* tab, then click *New* (Figure 1-6).
 

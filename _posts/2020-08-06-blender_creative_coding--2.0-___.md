@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title: "Blender Creative Coding – 2.0: A (Very Brief) Overview of Python"
+title: "Blender Creative Coding – 2.1: A (Very Brief) Overview of Python"
 categories: code blender python
 published: false
 ---

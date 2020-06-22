@@ -13,36 +13,40 @@ published: false
 
 In this lesson, you'll learn some Blender scripting basics---how to address, manipulate, and add 3D objects using code. You'll use Python commands to execute operations that you might otherwise perform with mouse clicks and keyboard shortcuts. You'll use the *Info* editor to glean what Python commands are associated with the different actions you perform using the graphic interface. I'll also introduce the Blender *Console*, a handy editor for entering line-by-line Python commands that apply immediately to your scene.
 
-## The Info Editor Type
+## The Info Editor
 
-The The Scripting workspace---which you can switch to using the *Scripting* tab---positions the Info area at the bottom-left of the Blender window (Figure 1-2).
+The Info editor will log any warnings or error messages. In addition, it logs the Python code for the operations you perform in Blender. In the Scripting workspace, You can locate the the Info area at the bottom-left of the Blender window (Figure 1.2.1).
 
 <figure>
-  <img src="{{ site.url }}/img/bcc01/info-area.png" class="fullwidth" />
-  <figcaption>Figure 1-2: The Info area highlighted in green</figcaption>
+  <img src="{{ site.url }}/img/bcc01/info-area-layout.png" class="fullwidth" />
+  <figcaption>Figure 1.2.1: The Info area highlighted in green</figcaption>
 </figure>
 
+Select the cube in 3D viewport (so it's outlined orange), and press the `G` key on your keyboard. You can now move the cube to a new position. When you place the cube (using your left-mouse click), the Info editor will display something like the code highlighted in Figure 1.2.2:
 
-## Importing bpy
+<figure>
+  <img src="{{ site.url }}/img/bcc01/info-area-operation.png" class="fullwidth" />
+  <figcaption>Figure 1.2.2: The Info area highlighted in green</figcaption>
+</figure>
 
-this makes the magic happen, etc.
+For now, it's not important to know how this code works. But, you'll use it to repeat the operation using the Python Console.
 
-* `import bpy`
+## The Python Console
 
+The Python Console is in the area just above the Info editor. You can use it to enter commands to execute them immediately. In other words, without having to write some code in the Text editor then run it. This is useful if to run any commands in a line-by-line fashion.
 
-## Addressing an Object
+You'll run the line from the Info editor in the Python Console. Right-click on the code in your Info editor and select *copy*. Alternatively, you can copy my code:
 
-...
-show the an image of the outliner (noting object names)
-...
+~~~
+bpy.ops.transform.translate(value=(1.4942, 3.95293, 0.462441), orient_type='GLOBAL', orient_matrix=((1, 0, 0), (0, 1, 0), (0, 0, 1)), orient_matrix_type='GLOBAL', mirror=True, use_proportional_edit=False, proportional_edit_falloff='SMOOTH', proportional_size=1, use_proportional_connected=False, use_proportional_projected=False)
+~~~
 
-```
-ob = bpy.data.objects.get('c')
-ob.location = (x, 0, 0)
-```
+This is one long line, not multiple. Paste this into the Python Console and hit enter (Figure 1.2.3). This will rerun the last move operation, repositioning the cube by the same increment as before.
 
-
-## The Console
+<figure>
+  <img src="{{ site.url }}/img/bcc01/console-copy-paste.png" class="fullwidth" />
+  <figcaption>Figure 1.2.3: The Info area highlighted in green</figcaption>
+</figure>
 
 quick, useful interface for one-liners
 great for inspecting the api (it has autocompletion)
@@ -108,6 +112,31 @@ bpy.data.objects['Cube'].location = 0, 0, 5
 bpy.data.objects['Cube'].location.z = 5
 ```
 ...
+
+
+
+
+
+
+
+## Importing bpy
+
+this makes the magic happen, etc.
+
+* `import bpy`
+
+
+## Addressing an Object
+
+...
+show the an image of the outliner (noting object names)
+...
+
+```
+ob = bpy.data.objects.get('c')
+ob.location = (x, 0, 0)
+```
+
 
 ## Using Another Editor
 

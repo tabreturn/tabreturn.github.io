@@ -11,16 +11,26 @@ published: false
 <a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }}</a> &raquo;<br />
 </p>
 
+In this lesson, you'll learn some Blender scripting basics---how to address, manipulate, and add 3D objects using code. You'll use Python commands to execute operations that you might otherwise perform with mouse clicks and keyboard shortcuts. You'll use the *Info* editor to glean what Python commands are associated with the different actions you perform using the graphic interface. I'll also introduce the Blender *Console*, a handy editor for entering line-by-line Python commands that apply immediately to your scene.
+
+## The Info Editor Type
+
+The The Scripting workspace---which you can switch to using the *Scripting* tab---positions the Info area at the bottom-left of the Blender window (Figure 1-2).
+
+<figure>
+  <img src="{{ site.url }}/img/bcc01/info-area.png" class="fullwidth" />
+  <figcaption>Figure 1-2: The Info area highlighted in green</figcaption>
+</figure>
 
 
-# Importing bpy
+## Importing bpy
 
 this makes the magic happen, etc.
 
 * `import bpy`
 
 
-# Addressing an Object
+## Addressing an Object
 
 ...
 show the an image of the outliner (noting object names)
@@ -32,7 +42,7 @@ ob.location = (x, 0, 0)
 ```
 
 
-# The Console
+## The Console
 
 quick, useful interface for one-liners
 great for inspecting the api (it has autocompletion)
@@ -68,7 +78,7 @@ now: `list(bpy.data.objects)` to get:
 pressing up to repeats a command
 
 
-# Addressing Objects (Accessing Members in a Collection)
+## Addressing Objects (Accessing Members in a Collection)
 ...
 
 type: `bpy.data.objects['` then press tab to get:
@@ -99,7 +109,7 @@ bpy.data.objects['Cube'].location.z = 5
 ```
 ...
 
-# Using Another Editor
+## Using Another Editor
 
 ...
 
@@ -111,7 +121,7 @@ removing the cube?
 
 
 
-# Templates
+## Templates
 
 Templates > Exmaples
 For more examples, the text menu has a templates section where some example operators can be found.
@@ -124,7 +134,7 @@ For more examples, the text menu has a templates section where some example oper
 
 
 
-# Application Modules
+## Application Modules
 
 https://docs.blender.org/api/blender2.8
 see heading *Application Modules*
@@ -159,7 +169,7 @@ these are the nine main application modules of bpy
   https://docs.blender.org/api/blender2.8/bpy.utils.html
 
 
-# Standalone Modules
+## Standalone Modules
 
 https://docs.blender.org/api/blender2.8
 see heading *Standalone Modules*

@@ -72,11 +72,10 @@ That's a list of three objects---the camera, cube, and a light. I'll get into mo
 There's another convenience variable that you should know about, `C`. This is equivalent to writing `bpy.context`. This is useful because it give you access to the active or selected object via `C.object`. For example, ensure that the cube is selected in the 3D viewport, then type:
 
 ~~~
-bpy.context.object.location = (0,0,0)
+C.object.location = (0, 0, 0)
 ~~~
 
 This will reposition the cube in the centre of the scene.
-
 
 ## Addressing Objects (Accessing Members in a Collection)
 

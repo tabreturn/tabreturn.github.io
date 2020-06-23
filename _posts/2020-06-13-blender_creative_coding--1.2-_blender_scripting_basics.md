@@ -22,7 +22,7 @@ The Info editor will log any warnings or error messages. In addition, it logs th
   <figcaption>Figure 1.2.1: The Info area highlighted in green</figcaption>
 </figure>
 
-Select the cube in 3D viewport (so it's outlined orange), and press the `G` key on your keyboard. You can now move the cube to a new position. When you place the cube (using your left-mouse click), the Info editor will display something like the code highlighted in Figure 1.2.2:
+Select the cube in the 3D viewport (so it's outlined orange), and press the `G` key on your keyboard. You can now move the cube to a new position. When you place the cube (using your left-mouse click), the Info editor will display something like the code highlighted in Figure 1.2.2:
 
 <figure>
   <img src="{{ site.url }}/img/bcc01/info-area-operation.png" class="fullwidth" />
@@ -33,7 +33,7 @@ For now, it's not important to know how this code works. But, you'll use it to r
 
 ## The Python Console
 
-The Python Console is in the area just above the Info editor. You can use it to enter commands to execute them immediately. In other words, without having to write some code in the Text editor then run it. This is useful if to run any commands in a line-by-line fashion.
+The Python Console is in the area just above the Info editor. You can use it to enter commands to execute them immediately. In other words, without having to write some code in the Text editor then run it. This is useful if to run any commands in a line-by-line fashion, which handy for testing code you might add to a larger script.
 
 You'll run the line from the Info editor in the Python Console. Right-click on the code in your Info editor and select *copy*. Alternatively, you can copy my code:
 
@@ -48,29 +48,38 @@ This is one long line, not multiple. Paste this into the Python Console and hit 
   <figcaption>Figure 1.2.3: The Info area highlighted in green</figcaption>
 </figure>
 
-quick, useful interface for one-liners
-great for inspecting the api (it has autocompletion)
+Most of the time, however, you'll type code into the Python Console (rather than paste it in).
 
-type: `bpy`, then hit tab to get:
+> To change the font-size in the Python console, hold the `ctrl` key while scrolling the mouse-wheel. Alternatively, you can click *View* then *Zoom In* or *Zoom Out*.
 
-```
->>> bpy.
-        app
-        context
-        data
-        msgbus
-        ops
-        path
-        props
-        types
-        utils
-```
+To assist you, there's an auto-completion feature. Type `bpy.` into the console, then hit the `tab` key to get Blender to list the auto-complete options (Figure 1.2.4).
 
+<figure>
+  <img src="{{ site.url }}/img/bcc01/console-auto-complete.png" class="fullwidth" />
+  <figcaption>Figure 1.2.4: Using the `tab` key to auto complete</figcaption>
+</figure>
 
-now: `bpy.data.objects` to get:
-```
+Now type `d`, then hit tab again. This will auto-complete to give you `bpy.data`. This module provides access to all of the data in your working file. That includes objects, textures, and scenes.
+
+To list the objects in your scene, type in `bpy.data.objects`. Whe you hit enter, you should see:
+
+~~~
 <bpy_collection[3], BlendDataObjects>
-```
+~~~
+
+That's a list of three objects---the camera, cube, and a light. I'll get into more detail about `bpy.data` shortly. It something you'll use extensively. In fact, Blender provides a *convenience variable*, `D`, to save you having to write out `bpy.data` in full. For example, `D.objects` is the same as writing `bpy.data.objects`.
+
+There's another convenience variable that you should know about, `C`. This is equivalent to writing `bpy.context`. This is useful because it give you access to the active or selected object via `C.object`. For example, ensure that the cube is selected in the 3D viewport, then type:
+
+~~~
+bpy.context.object.location = (0,0,0)
+~~~
+
+This will reposition the cube in the centre of the scene.
+
+
+## Addressing Objects (Accessing Members in a Collection)
+
 
 The python `list()` function creates a list object (maybe example with string?).
 
@@ -82,7 +91,6 @@ now: `list(bpy.data.objects)` to get:
 pressing up to repeats a command
 
 
-## Addressing Objects (Accessing Members in a Collection)
 ...
 
 type: `bpy.data.objects['` then press tab to get:

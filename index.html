@@ -52,8 +52,7 @@ layout: default
       <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
       <br />
       <em class="post-meta">
-        tags:
-        {% for tag in sorted_categories %}
+        {{ post.date | date:'%Y-%m-%d' }} · {% for tag in sorted_categories %}
           <span class="tag-{{ tag }}">{{ tag }}</span>
         {% endfor %}
       </em>

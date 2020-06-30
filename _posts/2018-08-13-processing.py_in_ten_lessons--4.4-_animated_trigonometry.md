@@ -253,11 +253,6 @@ Tangent (*tan*) functions do not produce wave-like graphs. Perhaps one of the ne
   </figcaption>
 </figure>
 
-    The (x)eyes, at the lower-right, rotate to follow the mouse cursor.<br />
-    The original uploader was Choas at German Wikipedia. [<a href="http://www.gnu.org/licenses/gpl.html">GPL</a>], <a href="https://commons.wikimedia.org/wiki/File:Blackbox-Fenstermanager.png">via Wikimedia Commons</a>
-  </figcaption>
-</figure>
-
 Processing provides a 2-argument arctangent function called `atan2()` which can be used to find an angle between two points. To see this in action, create a pair of xeyes of your own by adding the following code to your "sohcahtoa" sketch:
 
 {% highlight py %}

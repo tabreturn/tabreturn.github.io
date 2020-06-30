@@ -1,21 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- This Source Code Form is subject to the terms of the Mozilla Public
-   - License, v. 2.0. If a copy of the MPL was not distributed with this
-   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
-
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   viewBox="0 0 24 24"
-   version="1.1"
    id="svg6"
-   sodipodi:docname="RM-Type-Controls-Arrow.svg"
-   inkscape:version="0.92.3 (2405546, 2018-03-11)">
+   version="1.1"
+   viewBox="0 0 24 24">
   <metadata
      id="metadata12">
     <rdf:RDF>
@@ -24,39 +16,20 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
   <defs
      id="defs10" />
-  <sodipodi:namedview
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1"
-     objecttolerance="10"
-     gridtolerance="10"
-     guidetolerance="10"
-     inkscape:pageopacity="0"
-     inkscape:pageshadow="2"
-     inkscape:window-width="2057"
-     inkscape:window-height="1102"
-     id="namedview8"
-     showgrid="false"
-     inkscape:zoom="27.812867"
-     inkscape:cx="11.021454"
-     inkscape:cy="12.046507"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
-     inkscape:window-maximized="0"
-     inkscape:current-layer="svg6" />
   <polygon
-     points="16.583,23.985 16.583,0.015 16.569,0 4.583,12 16.569,24 "
-     id="polygon2"
+     transform="translate(-0.6112279)"
      style="opacity:0.22"
-     transform="translate(-0.6112279)" />
+     id="polygon2"
+     points="16.583,23.985 16.583,0.015 16.569,0 4.583,12 16.569,24 " />
   <polygon
-     points="16.591,22.994 16.575,1.021 16.561,1.008 5.583,12 16.577,23.008 "
-     id="polygon4"
+     transform="translate(0.3235913)"
      style="fill:#fbfbfb"
-     transform="translate(0.3235913)" />
+     id="polygon4"
+     points="16.591,22.994 16.575,1.021 16.561,1.008 5.583,12 16.577,23.008 " />
 </svg>

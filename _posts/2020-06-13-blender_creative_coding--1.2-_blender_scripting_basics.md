@@ -37,9 +37,9 @@ The Python Console is in the area just above the Info editor. You can use it to 
 
 You'll run the line from the Info editor in the Python Console. Right-click on the code in your Info editor and select *copy*. Alternatively, you can copy my code:
 
-~~~
+```
 bpy.ops.transform.translate(value=(1.4942, 3.95293, 0.462441), orient_type='GLOBAL', orient_matrix=((1, 0, 0), (0, 1, 0), (0, 0, 1)), orient_matrix_type='GLOBAL', mirror=True, use_proportional_edit=False, proportional_edit_falloff='SMOOTH', proportional_size=1, use_proportional_connected=False, use_proportional_projected=False)
-~~~
+```
 
 Note that this is one long, wrapped line (not multiple lines). Paste it into the Python Console and hit enter (Figure 1.2.3). This will rerun the move operation; Blender moves the cube another 'increment', the same distance and direction you first moved it.
 
@@ -61,9 +61,9 @@ The Python Console includes an auto-completion feature that assists you with typ
 
 Now everything that begins with `bpy.` is listed in the console. Type `d`, then hit tab again; you get `bpy.data`. The `bpy.data` module provides access to all of the data in your working file. That includes any objects, textures, and scenes. To list the objects in your scene, use `bpy.data.objects`. When you hit enter, you should see:
 
-~~~
+```
 <bpy_collection[3], BlendDataObjects>
-~~~
+```
 
 The `bpy_collection[3]` part indicates a list of three objects---the camera, cube, and a light. I'll get into more detail about `bpy.data` shortly. It's something you'll use a lot---so often that Blender provides a *convenience variable*, `D`, to save you having to write out `bpy.data` in full each time. As an example, `D.objects` is the same as writing `bpy.data.objects`.
 
@@ -71,9 +71,9 @@ The `bpy_collection[3]` part indicates a list of three objects---the camera, cub
 
 There's another convenience variable that you should know about, `C`. This is equivalent to writing `bpy.context`. You can use it to access an active/selected object via `C.object`. For example, ensure that the cube is selected in the 3D viewport, then type:
 
-~~~
+```
 C.object.location = (0, 0, 0)
-~~~
+```
 
 Hit enter, and this will reposition the cube in the centre of the scene.
 
@@ -108,40 +108,35 @@ The *Outliner* lists the data in your scene. You can use it to select different 
 
 You've seen that entering `D.objects` into the Python Console displays `<bpy_collection[3], BlendDataObjects>`. Those three objects are the same three objects listed in the Outliner. Use the Python `list()` function to display each item. Enter `list(D.objects)` into the Python Console and hit enter; it should display the following output:
 
-~~~
-[bpy.data.objects['Camera'], bpy.data.objects['Cube'], bpy.data.objects['Light']]
-~~~
-
-You can now address each item using a key or index---for example, reposition the cube in the centre of the scene using `D.object['Cube'].location = (0, 0, 2)` or `D.object[1].location = (0, 0, 2)`. Note, however, that the ordering may shift as you add or remove objects, so indices aren't as reliable.
-
-also, there's `bpy.data.objects.get('Cube')`
-
-These objects are all children of a single *collection*, named *Collection* in this instance. You can use collections to help organise your Blender.
-~~~
-
-The python `list()` function creates a list object (maybe example with string?).
-
-now: `list(bpy.data.objects)` to get:
 ```
 [bpy.data.objects['Camera'], bpy.data.objects['Cube'], bpy.data.objects['Light']]
 ```
 
+You can now address each item using a key or index---for example, reposition the cube in the centre of the scene using:
 
+`D.objects['Cube'].location = (0, 0, 2)`  
+*or*  
+`D.objects[1].location = (0, 0, 2)`
 
+If you add or remove objects, the ordering of may shift, so indices aren't as reliable. Another advantage of using keys over indices is the auto-completion support. For example, you can type:  
 
+```
+D.objects['
+```
 
+Then press tab to get the list of options:
 
-...
-
-type: `bpy.data.objects['` then press tab to get:
 ```
 >>> bpy.data.objects['
                       Camera']
                       Cube']
                       Light']
 ```
-sc  
-alternatively, you could use: `bpy.data.objects[1]`,
+
+...
+
+## Attributes and Methods
+
 
 try: `bpy.data.objects['Cube'].` then tab for a long list of attributes and methods
 you can find the corresponding documentation here: https://docs.blender.org/api/blender2.8/bpy.types.Object.html
@@ -175,10 +170,9 @@ ob.location = (x, 0, 0)
 
 this makes the magic happen, etc.
 
-* `import bpy`
-
-
-
+{% highlight py %}
+import bpy
+{% endhighlight %}
 
 
 ## Using Another Editor

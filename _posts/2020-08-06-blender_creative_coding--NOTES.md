@@ -2,6 +2,16 @@
 published: false
 ---
 
+## Animations
+
+https://docs.blender.org/api/current/info_quickstart.html#animation
+
+
+## Mathutils Types
+
+https://docs.blender.org/api/current/info_quickstart.html#mathutils-types
+
+
 ## Application Modules
 
 https://docs.blender.org/api/blender2.8

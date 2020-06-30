@@ -76,7 +76,7 @@ Time to enter your first line of code! In Blender, switch to the *Scripting* tab
 </figure>
 
 <blockquote markdown="1">
-The Blender window is divided into [**areas**](https://docs.blender.org/manual/en/latest/interface/window_system/areas.html) that contain [**editors**](https://docs.blender.org/manual/en/latest/editors/index.html). An area is a rectangular partition that you can resize (or divide further). For example, the largest area in the Scripting workspace is for the **Text Editor**, which you'll use to enter code. Selecting any workspace will present a predefined arrangement of **editors**; there is a button to switch editors at the top-left corner of each area (Figure 1.7).
+NOTE: The Blender window is divided into [**areas**](https://docs.blender.org/manual/en/latest/interface/window_system/areas.html) that contain [**editors**](https://docs.blender.org/manual/en/latest/editors/index.html). An area is a rectangular partition that you can resize (or divide further). For example, the largest area in the Scripting workspace is for the **Text Editor**, which you'll use to enter code. Selecting any workspace will present a predefined arrangement of **editors**; there is a button to switch editors at the top-left corner of each area (Figure 1.7).
 
  <figure>
    <img src="{{ site.url }}/img/bcc01/getting-started-editors.png" class="fullwidth" />

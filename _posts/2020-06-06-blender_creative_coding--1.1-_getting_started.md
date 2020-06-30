@@ -97,7 +97,6 @@ Excellent! You've got a working Blender script. You'll use the terminal to monit
 
 Just above where you entered `print('Hello, World!')`, there's a link to access a *Text* menu. Use the *Save As...* option to save the script as *hello_world.py*.
 
-
 You're all set up for developing Blender scripts. In the next lesson, you'll move onto some Blender scripting basics, manipulating 3D objects with code.
 
 <p style="text-align:right" markdown="1">

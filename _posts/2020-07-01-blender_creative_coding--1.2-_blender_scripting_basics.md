@@ -167,29 +167,26 @@ You can use your web browser's search function (`Ctrl+F` or `Cmd+F`) to quickly 
 
 Take note of the URL, specifically, everything after the last slash. There's `bpy` then `types` then `Object`. Using this pattern, it's easy enough to guess what the URL for the `context` module is (*/bpy.types.Context.html*). You can also navigate the reference using the search feature and links in the left column.
 
-how did i know that? `type(bpy.data.objects['Cube'])`
-
-try: `bpy.data.objects['Cube'].sca` then press tab to get `.scale`, then tab again to get `[0 1 2]`
-those are for the x/y/z-scale respectively
-double the size of the x-scale: `bpy.data.objects['Cube'].scale[0] = 2`
-
-now move the location. all of these lines will work:
-```
-bpy.data.objects['Cube'].location = Vector((0, 0, 5))
-bpy.data.objects['Cube'].location = (0, 0, 5)
-bpy.data.objects['Cube'].location = 0, 0, 5
-bpy.data.objects['Cube'].location.z = 5
-```
-...
-
+As the documentation indicates, the `location` attribute takes three floating-point values (an x, y, and z coordinate, respectively). Move the Cube to a position five units above the centre of the scene:
 
 ```
-ob = bpy.data.objects.get('c')
-ob.location = (x, 0, 0)
+D.objects['Cube'].location = (0, 0, 5)
 ```
 
+Alternatively, you could use any of the following lines:
 
+```
+D.objects['Cube'].location = 0, 0, 5
+D.objects['Cube'].location = Vector((0, 0, 5))
+D.objects['Cube'].location.z = 5
+```
 
+Now try a `scale` attribute. Type `D.objects['Cube'].scale` then press tab. The auto-complete option are `[0]`, `[1]`, or `[2]`; those represent the x, y, and z-scale respectively. Enter `D.objects['Cube'].scale[0] = 2` to double the width of the cube using the x-axis (Figure 1.2.9).
+
+<figure>
+  <img src="{{ site.url }}/img/bcc01/attributes-and-methods-location-and-scale.png" class="fullwidth" />
+  <figcaption>Figure 1.2.9: Manipulating the cube's location and scale attributes</figcaption>
+</figure>
 
 
 

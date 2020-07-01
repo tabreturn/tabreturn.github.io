@@ -139,13 +139,19 @@ Now, all you do to address the Cube is add `Cu` and hit tab again.
 
 If you're familiar with any object-oriented programming language, you've encountered attributes and methods before. Moreover, you've likely identified a few different attributes and methods in the code you've encountered thus far.
 
-I won't review every attribute and method in the Blender scripting API---there are just too many for that. Rather, I'll use an example here to help you discover what's available and how you can locate the relevant API documentation. Let's start with attributes for the Cube object. The Cube is a three-dimensional "primitive" mesh, composed of vertices. The Cube data type is `bpy_types.Object`; you can confirm this using `type(D.objects['Cube'])`. As you might expect, this data type includes attributes to change dimensions, location, scale, and more. In the Python Console, enter:
+I won't review every attribute and method in the Blender scripting API---there are just too many for that. Rather, I'll use an example here to help you discover what's available and how you can locate the relevant API documentation.
+
+### Attributes
+
+Attributes are like variables that belong to objects. An object's data type determines its attributes. For example, the Cube---a three-dimensional "primitive" mesh, composed of vertices---has includes attributes for its dimensions, location, scale, and so on. The Cube data type is `bpy_types.Object`; you can confirm this using `type(D.objects['Cube'])`.
+
+You'll explore some of the `Object` attributes using the Python Console. To begin, enter:
 
 ```
 `D.objects['Cube'].`
 ```
 
-Then press tab for a list of attributes and methods. It's a long, alphabetically arranged list. See if you can spot the `location` attribute:
+Then, press tab for a long, alphabetically arranged list of attributes (and methods). See if you can spot the `location` attribute (you'll probably need to scroll up/back through the output):
 
 ```
 >>> D.objects['Cube'].
@@ -181,14 +187,31 @@ D.objects['Cube'].location = Vector((0, 0, 5))
 D.objects['Cube'].location.z = 5
 ```
 
-Now try a `scale` attribute. Type `D.objects['Cube'].scale` then press tab. The auto-complete option are `[0]`, `[1]`, or `[2]`; those represent the x, y, and z-scale respectively. Enter `D.objects['Cube'].scale[0] = 2` to double the width of the cube using the x-axis (Figure 1.2.9).
+Now try a `scale` attribute. Type `D.objects['Cube'].scale` then press tab. The auto-complete option are `[0]`, `[1]`, or `[2]`; those indices represent the x, y, and z-scale respectively. Enter `D.objects['Cube'].scale[0] = 2` to double the width of the cube using the x-axis (Figure 1.2.9).
 
 <figure>
   <img src="{{ site.url }}/img/bcc01/attributes-and-methods-location-and-scale.png" class="fullwidth" />
   <figcaption>Figure 1.2.9: Manipulating the cube's location and scale attributes</figcaption>
 </figure>
 
+Now that you used a few different attributes, let's look at some methods.
 
+### Methods
+
+
+
+```
+>>> D.objects['Cube']transform.
+                              ...
+                              translate()
+                              ...
+```
+
+
+
+
+
+To recap, you've use the Python Console to work with the `data` and `context` modules. You know how to address objects via Python code, and manipulate
 
 ## Importing bpy
 

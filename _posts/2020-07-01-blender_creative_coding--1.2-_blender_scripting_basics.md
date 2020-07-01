@@ -198,18 +198,28 @@ Now that you used a few different attributes, let's look at some methods.
 
 ### Methods
 
-
+Methods are like functions that belong to objects. You can list the `Object` methods using the Python Console. Enter:
 
 ```
->>> D.objects['Cube']transform.
-                              ...
-                              translate()
-                              ...
+`D.objects['Cube'].`
 ```
 
+The methods are listed among the attributes; they're also covered in the [bpy.types.Object documentation](https://docs.blender.org/api/blender2.8/bpy.types.Object.html). You can distinguish methods by the parentheses on the end. See if you can spot the `select_set` method:
 
+```
+>>> D.objects['Cube'].
+                      ...
+                      select_set(
+                      ...
+```
 
+This `select_set` method selects or deselects objects in the viewport. Deselect the Cube using:
 
+```
+`D.objects['Cube'].select_set(False)`
+```
+
+To select the Cube again, use an argument of `True`.
 
 To recap, you've use the Python Console to work with the `data` and `context` modules. You know how to address objects via Python code, and manipulate
 
@@ -222,6 +232,19 @@ import bpy
 {% endhighlight %}
 
 
+
+
+## Templates
+
+Templates > Exmaples
+For more examples, the text menu has a templates section where some example operators can be found.
+
+
+
+
+
+
+
 ## Using Another Editor
 
 ...
@@ -229,15 +252,12 @@ import bpy
 
 
 
+
+
+
 removing the cube?
 
 
-
-
-## Templates
-
-Templates > Exmaples
-For more examples, the text menu has a templates section where some example operators can be found.
 
 
 

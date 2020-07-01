@@ -46,7 +46,6 @@ these are the nine main application modules of bpy
 * **utils**: contains utility functions to handle custom previews; behaves as a high-level ‘cached’ previews manager
   https://docs.blender.org/api/blender2.8/bpy.utils.html
 
-
 ## Standalone Modules
 
 https://docs.blender.org/api/blender2.8

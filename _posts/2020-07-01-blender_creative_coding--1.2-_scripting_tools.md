@@ -127,7 +127,7 @@ removing the cube?
 
 
 
-
+You're all set up for developing Blender scripts. In the next lesson, you'll move onto some Blender scripting basics, manipulating 3D objects with code.
 
 
 

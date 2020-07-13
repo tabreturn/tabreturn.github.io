@@ -9,28 +9,28 @@ categories: code blender python
 <a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }}</a> &raquo;<br />
 </p>
 
-In this series of tutorials, I'll introduce Blender as a tool for creative coding. [Blender](https://www.blender.org/) is open-source software for 3D modelling and animation that can also handle compositing, video editing, and 2D animation. Artists and animators operate Blender using a graphic user interface (Figure 1.1.1), but it also features a Python API that can do everything the GUI can and more. That means you can use Python code draw, position, animate, and manipulate 3D objects.
+In this series of tutorials, I'll introduce Blender as a tool for creative coding. [Blender](https://www.blender.org/) is open-source software for 3D modelling and animation that can also handle compositing, video editing, and 2D animation. Artists and animators operate Blender using a graphic user interface (Figure 1.1.1), but it also features a Python API that can do everything the GUI can and more. That means you can use Python code draw, animate, and manipulate 3D objects.
 
 <figure>
   <img src="{{ site.url }}/img/bcc01/getting-started-blender.png" class="fullwidth" />
   <figcaption>Figure 1.1.1: The Blender modelling interface</figcaption>
 </figure>
 
-I'm interested in creative coding using Python. I began experimenting with Blender scripting largely via *Processing Python Mode*. Processing Python Mode is a fantastic entry point into the world of creative coding, Python, and programming in general (I think it's so great that I wrote a [whole course]({{ site.baseurl }}/#processing-reverse) on it). You won't outgrow Processing, but you might have the urge to delve into some more advanced 3D stuff---particle systems, rigid-body/fluid/cloth dynamics, metaballs, volumetrics, and so on. With Blender scripting, you get access to all of that and a powerful render engine to output your creations in high-resolution image and video formats.
+I'm interested in creative coding using Python. I began experimenting with Blender scripting largely via *Processing Python Mode*. Processing Python Mode is a fantastic entry point into the world of creative coding, Python, and programming in general (I think it's so great that I wrote a [whole series of lessons]({{ site.baseurl }}/#processing-reverse) covering it). You won't outgrow Processing, but you might have the urge to delve into some more advanced 3D stuff---particle systems, rigid-body/fluid/cloth dynamics, metaballs, volumetrics, and so on. With Blender scripting, you get access to all of that and a powerful render engine to output your creations in high-resolution image and video formats.
 
-I've meant to get into Blender for a while; this was just the nudge I needed. The tutorial series is a record of my learning and a guide for others. I'll add new posts as I progress.
+I've meant to get into Blender for a while; the Python API was just the nudge I needed. This tutorial series serves as a record of my discoveries and a guide for others. I'll add new posts as I progress.
 
 **What You Should Know Already**
 
-If you have no programming experience, it's best to learn some Python first (using [Processing Python mode]({{ site.baseurl }}/#processing-reverse) or some other Python environment). I'll provide a brief overview of the Python language in lesson 2. If you're familiar with some other programming language, you should cope fine.
+If you have no programming experience, it's best to learn some Python first (using [Processing Python mode]({{ site.baseurl }}/#processing-reverse) or some other Python environment). I won't go into much depth about Python, but I'll provide a brief overview of the language in lesson 2. If you're familiar with some other programming language, you should cope fine.
 
-Some Blender knowledge is useful, but not essential.
+Some Blender knowledge is useful but not essential.
 
 ## Getting Started
 
 In this section, I'll step you through installing Blender, launching it via the terminal, accessing its scripting interface, and running your first line of code. At the time of writing, Blender is on release 2.83.
 
-Download Blender from the Blender website at [https://www.blender.org/download/](https://www.blender.org/download/). On the Download page, click the *other versions* option (Figure 1.1.2). I'm using a *portable* version. I prefer not to use installers if I can; this way, you know exactly where the Blender application is stored, which is useful for the command line step (coming up shortly). For Windows, download the *Portable(.zip)* file. For Linux, download the *non*-Snap-Store version. For macOS, there's just one option, which is the one you want.
+Download Blender from the Blender website at [https://www.blender.org/download/](https://www.blender.org/download/). On the Download page, click the *other versions* option (Figure 1.1.2). I'm using a *portable* version. I prefer not to use installers if I can; this way, I know exactly where the Blender application is stored, which is useful for the command line step (coming up shortly). For Windows, download the *Portable(.zip)* file. For Linux, download the *non*-Snap-Store version. For macOS, there's just one option, which is the one you want.
 
 <figure>
   <img src="{{ site.url }}/img/bcc01/getting-started-download-blender.png" class="fullwidth" />
@@ -76,7 +76,7 @@ Time to enter your first line of code! In Blender, switch to the *Scripting* tab
 </figure>
 
 <blockquote markdown="1">
-NOTE: The Blender window is divided into [**areas**](https://docs.blender.org/manual/en/latest/interface/window_system/areas.html) that contain [**editors**](https://docs.blender.org/manual/en/latest/editors/index.html). An area is a rectangular partition that you can resize (or divide further). For example, the largest area in the Scripting workspace is for the **Text Editor**, which you'll use to enter code. Selecting any workspace will present a predefined arrangement of **editors**; there is a button to switch editors at the top-left corner of each area (Figure 1.7).
+NOTE: The Blender window is divided into [**areas**](https://docs.blender.org/manual/en/latest/interface/window_system/areas.html) that contain [**editors**](https://docs.blender.org/manual/en/latest/editors/index.html). An area is a rectangular partition that you can resize (or divide further). For example, the largest area in the Scripting workspace is for the **Text Editor**, which you'll use to type code. Selecting any workspace will present a predefined arrangement of editors; there is a button to switch editors at the top-left corner of each area (Figure 1.7).
 
  <figure>
    <img src="{{ site.url }}/img/bcc01/getting-started-editors.png" class="fullwidth" />
@@ -86,14 +86,14 @@ NOTE: The Blender window is divided into [**areas**](https://docs.blender.org/ma
 There's no need to change the Text Editor right now.
 </blockquote>
 
-Enter `print('Hello, World!')` into the text editor (Figure 1.1.8). Then, run the script using **Alt-P** (or clicking the *▶* button). The terminal should display a `Hello, World!`.
+Enter `print('Hello, World!')` into the text editor (Figure 1.1.8); then run the script using **Alt-P** (or clicking the *▶* button). The terminal should display a `Hello, World!`.
 
 <figure>
   <img src="{{ site.url }}/img/bcc01/getting-started-run-script.png" class="fullwidth" />
   <figcaption>Figure 1.1.8: The terminal displays <code>Hello, World!</code> when you run the script</figcaption>
 </figure>
 
-Excellent! You've got a working Blender script. You'll use the terminal to monitor print statements and errors.
+Excellent! You've got a working Blender script, with a terminal window to monitor print statements and errors.
 
 Just above where you entered `print('Hello, World!')`, there's a link to access a *Text* menu. Use the *Save As...* option to save the script as *hello_world.py*.
 

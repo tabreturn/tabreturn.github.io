@@ -20,22 +20,22 @@ Before proceeding, open Blender. If you have it open already, create a new Blend
 The Info editor will log any warnings or error messages. It also logs the Python code for the operations you perform in Blender. In the Scripting workspace, you can locate the Info editor at the bottom-left of the Blender window (Figure 1.2.1).
 
 <figure>
-  <img src="{{ site.url }}/img/bcc01/info-area-layout.png" class="fullwidth" />
+  <img src="{{ site.url }}/img/bcc01/scripting-tools-info-area-layout.png" class="fullwidth" />
   <figcaption>Figure 1.2.1: The Info area labelled in green</figcaption>
 </figure>
 
 Select the cube in the 3D viewport (so it's outlined orange), and press the `G` key on your keyboard. You can now move the cube to a new position. When you place the cube (using your left-mouse click), the Info editor will display something like the code highlighted in Figure 1.2.2:
 
 <figure>
-  <img src="{{ site.url }}/img/bcc01/info-area-operation.png" class="fullwidth" />
+  <img src="{{ site.url }}/img/bcc01/scripting-tools-info-area-operation.png" class="fullwidth" />
   <figcaption>Figure 1.2.2: The code for the move operation (highlighted green)</figcaption>
 </figure>
 
-What you see in the Info editor is the Python code to perform that last move operation. In the next section, you'll use it to repeat the operation using the Python Console. For now, it's not important to know how this code works.
+What you see in the Info editor is the Python code to perform that last move operation. In the next section, you'll use it to repeat the operation with the Python Console. For now, it's not important to know how this code works.
 
 ## The Python Console
 
-The Python Console is located in the area just above the Info editor. You can use it to enter commands to execute them immediately---in other words, without having to write some code in the Text editor then run it. This is useful if to run commands in a line-by-line fashion, handy for testing bits of code you might add to a larger script.
+The Python Console is located in the area just above the Info editor. You can use it to enter commands to execute them immediately---in other words, without having to write some code in the Text editor then run it. This is useful to run commands in a line-by-line fashion, handy for testing bits of code you might add to a larger script.
 
 You'll use the Python Console to run the move code a second time. Right-click on the code in your Info editor and select *copy*. Alternatively, you can copy my code:
 
@@ -46,7 +46,7 @@ bpy.ops.transform.translate(value=(1.4942, 3.95293, 0.462441), orient_type='GLOB
 Note that this is one long, wrapped line (not multiple lines). Paste it into the Python Console and hit enter (Figure 1.2.3). This will rerun the move operation; Blender moves the cube another 'increment', the same distance in the same direction you moved it the first time.
 
 <figure>
-  <img src="{{ site.url }}/img/bcc01/console-copy-paste.png" class="fullwidth" />
+  <img src="{{ site.url }}/img/bcc01/scripting-tools-console-copy-paste.png" class="fullwidth" />
   <figcaption>Figure 1.2.3: Copy the code from the Info editor and paste it into the Python Console</figcaption>
 </figure>
 
@@ -57,7 +57,7 @@ Most of the time, you'll type code into the Python Console (rather than paste it
 The Python Console includes an auto-completion feature that assists you with typing in commands. Type `bpy` followed by a dot, then hit the `tab` key for the auto-completion to list options. Now everything that begins with `bpy.` is listed in the console (Figure 1.2.4).
 
 <figure>
-  <img src="{{ site.url }}/img/bcc01/console-auto-complete.png" class="fullwidth" />
+  <img src="{{ site.url }}/img/bcc01/scripting-tools-console-auto-complete.png" class="fullwidth" />
   <figcaption>Figure 1.2.4: Using the <code>tab</code> key to auto complete</figcaption>
 </figure>
 
@@ -69,7 +69,7 @@ The `bpy.data` module provides access to all of the data in your working file. T
 <bpy_collection[3], BlendDataObjects>
 ```
 
-The `bpy_collection[3]` part indicates there are three objects---the camera, cube, and a light. I'll get into more detail about `bpy.data` shortly. It's something you'll use a lot---so often that Blender provides a *convenience variable*, `D`, to save you having to write out `bpy.data` in full each time. As an example, `D.objects` is the same as writing `bpy.data.objects`.
+The `bpy_collection[3]` part indicates there are three objects---the camera, cube, and a light. I'll get into more detail about `bpy.data` shortly; it's something you'll use a lot---so often that Blender provides a *convenience variable*, `D`, to save you having to write out `bpy.data` in full each time. As an example, `D.objects` is the same as writing `bpy.data.objects`.
 
 There's another convenience variable that you should know about, `C`. This is equivalent to writing `bpy.context`. You can use it to access an active/selected object via `C.object`. Ensure that the cube is selected in the 3D viewport, then type:
 
@@ -77,61 +77,65 @@ There's another convenience variable that you should know about, `C`. This is eq
 C.object.location = (0, 0, 0)
 ```
 
-Hit enter, and this will reposition the cube in the centre of the scene.
+Hit enter; this will reposition the cube in the centre of the scene.
 
 ## Python Tooltips
 
 If you'd like to know what Python methods are associated with the different buttons in the Blender GUI, you can enable *Python Tooltips*. From the top-bar of the application, select *Edit > Preferences > Interface*; you should see a checkbox labelled *Python Tooltips* (Figure 1.2.5).
 
 <figure>
-  <img src="{{ site.url }}/img/bcc01/python-tool-tips-preferences.png" class="fullwidth" />
+  <img src="{{ site.url }}/img/bcc01/scripting-tools-python-tool-tips-preferences.png" class="fullwidth" />
   <figcaption>Figure 1.2.5: Enabling Python Tooltips in the Blender preferences</figcaption>
 </figure>
 
-Once you've enabled the Python tooltips, they'll appear when you hover over a button. For example, the *Move* option (under the *Object* menu) displays a `bpy.ops.transform.translate()` tooltip in (Figure 1.2.6):
+Once you've enabled the Python tooltips, they'll appear when you hover over a button (Figure 1.2.6). For example, the *Move* option (under the *Object* menu) displays a tooltip that reads `bpy.ops.transform.translate()`.
 
 <figure>
-  <img src="{{ site.url }}/img/bcc01/python-tool-tips-active.png" class="fullwidth" />
+  <img src="{{ site.url }}/img/bcc01/scripting-tools-python-tool-tips-active.png" class="fullwidth" />
   <figcaption>Figure 1.2.6: The Python Tooltip for <i>Move</i></figcaption>
 </figure>
 
-You know from an earlier example that this a method you use for moving objects.
-
-
-
-
-
-## Templates
-
-Templates > Exmaples
-For more examples, the text menu has a templates section where some example operators can be found.
-
-
-
-
-
-
-
-## Using Another Editor
-
-...
-
-
-
-
-
-
-
-removing the cube?
-
-
-
+You know from the earlier example that this a method you use for moving objects.
 
 You're all set up for developing Blender scripts. In the next lesson, you'll move onto some Blender scripting basics, manipulating 3D objects with code.
 
+## Text Editor Modifications
 
+Before moving onto the next lesson, there are a few useful Text editor features you should know about. 
 
-PNGYU images
+### Live Edit
+
+The *live edit* feature runs Python while you're editing code; so there's no need for you to manually run the script (using Alt-P or the ▶ button). I generally avoid using this, but is prove very handy in certain situations. 
+
+To active the live edit feature, create a new script, then select *Text > Live Edit* from the editor menu (Figure 1.2.7). 
+
+<figure>
+  <img src="{{ site.url }}/img/bcc01/scripting-tools-editor-live-edit-option.png" class="fullwidth" />
+  <figcaption>Figure 1.2.7: Enabling Live Edit</figcaption>
+</figure>
+
+You can test out a `print()` function. When you type the `p` in `print()`, the terminal displays a Python syntax error. You'll get errors until you've entered the closing parenthesis. Insert a number between the parentheses, and the terminal prints it; the terminal will print an additional line each time you add or change a digit (Figure 1.2.8).
+
+<figure>
+  <img src="{{ site.url }}/img/bcc01/scripting-tools-editor-live-edit-output.png" class="fullwidth" />
+  <figcaption>Figure 1.2.8: Adding digits to the <code>print()</code> function</figcaption>
+</figure>
+
+...
+
+### Using Another Code Editor
+
+...
+
+<figure>
+  <img src="{{ site.url }}/img/bcc01/scripting-tools-external-editor.png" class="fullwidth" />
+  <figcaption>Figure 1.2.6: The Python Tooltip for <i>Move</i></figcaption>
+</figure>
+
+external editor
+...
+.delete()
+removing the cube?
 
 
 

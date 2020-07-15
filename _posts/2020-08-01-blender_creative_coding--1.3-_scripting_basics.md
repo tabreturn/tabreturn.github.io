@@ -26,7 +26,7 @@ You've used the Python Console to affect the object you have selected in the 3D 
 The *Outliner* lists the data in your scene. You can use it to select, organise, hide, show, and delete objects. In the default scene, the Outliner lists a Camera, Cube, and Light (Figure 1.2.7):
 
 <figure>
-  <img src="{{ site.url }}/img/bcc01/addressing-objects-outliner.png" class="fullwidth" />
+  <img src="{{ site.url }}/img/bcc01/scripting-basics-addressing-objects-outliner.png" class="fullwidth" />
   <figcaption>Figure 1.2.7: The Outliner (listing a Camera, Cube, and Light)</figcaption>
 </figure>
 
@@ -91,7 +91,7 @@ You can you can find the relevant documentation for the `location` attribute her
 You can use your web browser's search function (`Ctrl+F` or `Cmd+F`) to quickly get to the `location` entry; there are multiple mentions of "location" on the page and it's about the fifth from the top (Figure 1.2.8).
 
 <figure>
-  <img src="{{ site.url }}/img/bcc01/attributes-and-methods-location.png" class="fullwidth" />
+  <img src="{{ site.url }}/img/bcc01/scripting-basics-attributes-and-methods-location.png" class="fullwidth" />
   <figcaption>Figure 1.2.8: The <code>location</code> entry in the online reference</figcaption>
 </figure>
 
@@ -114,7 +114,7 @@ D.objects['Cube'].location.z = 5
 Now try a `scale` attribute. Type `D.objects['Cube'].scale` then press tab. The auto-complete option are `[0]`, `[1]`, or `[2]`; those indices represent the x, y, and z-scale respectively. Enter `D.objects['Cube'].scale[0] = 2` to double the width of the cube using the x-axis (Figure 1.2.9).
 
 <figure>
-  <img src="{{ site.url }}/img/bcc01/attributes-and-methods-location-and-scale.png" class="fullwidth" />
+  <img src="{{ site.url }}/img/bcc01/scripting-basics-attributes-and-methods-location-and-scale.png" class="fullwidth" />
   <figcaption>Figure 1.2.9: Manipulating the cube's location and scale attributes</figcaption>
 </figure>
 
@@ -162,7 +162,21 @@ import bpy
 
 
 
+
+
+
+
+
+
+
+
+
 PNGYU images
+
+
+
+
+
 
 
 

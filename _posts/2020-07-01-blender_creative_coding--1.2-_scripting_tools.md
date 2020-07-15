@@ -21,7 +21,7 @@ The Info editor will log any warnings or error messages. It also logs the Python
 
 <figure>
   <img src="{{ site.url }}/img/bcc01/info-area-layout.png" class="fullwidth" />
-  <figcaption>Figure 1.2.1: The Info area highlighted in green</figcaption>
+  <figcaption>Figure 1.2.1: The Info area labelled in green</figcaption>
 </figure>
 
 Select the cube in the 3D viewport (so it's outlined orange), and press the `G` key on your keyboard. You can now move the cube to a new position. When you place the cube (using your left-mouse click), the Info editor will display something like the code highlighted in Figure 1.2.2:

@@ -28,7 +28,7 @@ Some Blender knowledge is useful but not essential.
 
 ## Getting Started
 
-In this section, I'll step you through installing Blender, launching it via the terminal, accessing its scripting interface, and running your first line of code. At the time of writing, Blender is on release 2.83.
+Here, I'll step you through installing Blender, launching it via the terminal, accessing its scripting interface, and running your first line of code. At the time of writing, Blender is on release 2.83.
 
 Download Blender from the Blender website at [https://www.blender.org/download/](https://www.blender.org/download/). On the Download page, click the *other versions* option (Figure 1.1.2). I'm using a *portable* version. I prefer not to use installers if I can; this way, I know exactly where the Blender application is stored, which is useful for the command line step (coming up shortly). For Windows, download the *Portable(.zip)* file. For Linux, download the *non*-Snap-Store version. For macOS, there's just one option, which is the one you want.
 
@@ -97,12 +97,13 @@ Excellent! You've got a working Blender script, with a terminal window to monito
 
 Just above where you entered `print('Hello, World!')`, there's a link to access a *Text* menu. Use the *Save As...* option to save the script as *hello_world.py*.
 
-You're all set up for developing Blender scripts. In the next lesson, I'll review some useful Blender features for writing code.
+## Section Summary
+
+You're all set up for developing Blender scripts. You've installed Blender, launched it from the terminal, and ran your first line of code.
+
+Next up, I'll review some useful Blender features for writing code.
 
 <p style="text-align:right" markdown="1">
-<em>next lesson coming soon</em><br />
-<!--
 <a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }}</a> &raquo;<br />
--->
 [Complete list of Blender Creative Coding lessons]({{ site.baseurl }}/#blender-reverse)
 </p>

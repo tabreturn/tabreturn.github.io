@@ -164,7 +164,8 @@ import bpy
 
 
 
-
+.delete()
+removing the cube?
 
 
 
@@ -175,9 +176,9 @@ PNGYU images
 
 
 
+## Lesson 1 Summary
 
-
-
+...
 
 
 <p style="text-align:right" markdown="1">

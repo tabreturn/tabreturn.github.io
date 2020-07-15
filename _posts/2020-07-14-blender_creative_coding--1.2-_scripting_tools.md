@@ -31,7 +31,7 @@ Select the cube in the 3D viewport (so it's outlined orange), and press the `G` 
   <figcaption>Figure 1.2.2: The code for the move operation (highlighted green)</figcaption>
 </figure>
 
-What you see in the Info editor is the Python code to perform that last move operation. In the next section, you'll use it to repeat the operation with the Python Console. For now, it's not important to know how this code works.
+What you see in the Info editor is the Python code to perform that last move operation. Next, you'll use it to repeat the operation with the Python Console. For now, it's not important to know how this code works.
 
 ## The Python Console
 
@@ -103,6 +103,8 @@ You're all set up for developing Blender scripts. In the next lesson, you'll mov
 
 Before moving onto the next lesson, there are a few useful Text editor features you should know about. 
 
+> NOTE: If the Text Editor font is too small, you can change the size by holding the `ctrl` key and scrolling the mouse wheel.
+
 ### Live Edit
 
 The *live edit* feature runs Python while you're editing code; so there's no need for you to manually run the script (using Alt-P or the ▶ button). I generally avoid using this, but is prove very handy in certain situations. 
@@ -114,28 +116,29 @@ To active the live edit feature, create a new script, then select *Text > Live E
   <figcaption>Figure 1.2.7: Enabling Live Edit</figcaption>
 </figure>
 
-You can test out a `print()` function. When you type the `p` in `print()`, the terminal displays a Python syntax error. You'll get errors until you've entered the closing parenthesis. Insert a number between the parentheses, and the terminal prints it; the terminal will print an additional line each time you add or change a digit (Figure 1.2.8).
+You can test out a `print()` function. When you type the `p` in `print()`, the terminal displays a Python syntax error. You'll get errors until you've entered the closing parenthesis. Insert a number between the parentheses and the terminal prints it. The terminal will print an additional line each time you add or change a digit (Figure 1.2.8).
 
 <figure>
   <img src="{{ site.url }}/img/bcc01/scripting-tools-editor-live-edit-output.png" class="fullwidth" />
   <figcaption>Figure 1.2.8: Adding digits to the <code>print()</code> function</figcaption>
 </figure>
 
-...
+Live Edit works with any code, not just print statements. You can enable and disable it at any time.
 
 ### Using Another Code Editor
 
-...
+You might prefer write your code in a different editor. This is simple enough. All you need to do is open the script (.py) file in your preferred code editor. Whenever you save the changes you've made, the Blender editor will display a *resolve conflict* icon; this a red book icon with a question mark on its cover (Figure 1.2.9). I've used [Atom](https://atom.io/) in this example:
 
 <figure>
   <img src="{{ site.url }}/img/bcc01/scripting-tools-external-editor.png" class="fullwidth" />
-  <figcaption>Figure 1.2.6: The Python Tooltip for <i>Move</i></figcaption>
+  <figcaption>Figure 1.2.9: The icon to resolve conflicts highlighted in green</figcaption>
 </figure>
 
-external editor
+You can click on this icon to update the Blender with the latest edits you've made in the external editor using the *Reload from disk* option. There's also an option to *Make text internal*, which saves the script in the .blend file (along with your  models, materials, and scene data). I prefer to store my Python scripts in separate files so that I have the additional option of working with code using external tools.
+
+# Section Summary
+
 ...
-.delete()
-removing the cube?
 
 
 

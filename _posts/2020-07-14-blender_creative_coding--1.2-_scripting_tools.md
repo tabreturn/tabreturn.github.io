@@ -136,7 +136,7 @@ You might prefer write your code in a different editor. This is simple enough. A
 
 You can click on this icon to update the Blender with the latest edits you've made in the external editor using the *Reload from disk* option. There's also an option to *Make text internal*, which saves the script in the .blend file (along with your  models, materials, and scene data). I prefer to store my Python scripts in separate files so that I have the additional option of working with code using external tools.
 
-# Section Summary
+## Section Summary
 
 ...
 

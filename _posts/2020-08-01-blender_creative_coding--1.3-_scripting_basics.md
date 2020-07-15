@@ -11,7 +11,7 @@ published: false
 <a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }}</a> &raquo;<br />
 </p>
 
-In this lesson, you'll learn some Blender scripting basics, like how to address, manipulate, and add 3D objects using code. I'll review some of Blender's  
+In this section, you'll learn some Blender scripting basics, like how to address, manipulate, and add 3D objects using code. I'll review some of Blender's  
 
 
 Before proceeding, open Blender. If you have it open already, create a new Blender file using *File* > *New* > *General*. You're looking at a new scene with a cube located at (0, 0, 0). 
@@ -186,5 +186,5 @@ PNGYU images
 <!--
 <a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }}</a> &raquo;<br />
 -->
-[Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)
+[Complete list of Blender Creative Coding lessons]({{ site.baseurl }}/#blender-reverse)
 </p>

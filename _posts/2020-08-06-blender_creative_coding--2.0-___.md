@@ -24,5 +24,5 @@ https://ehmatthes.github.io/pcc/cheatsheets/README.html
 <!--
 <a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }}</a> &raquo;<br />
 -->
-[Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)
+[Complete list of Blender Creative Coding lessons]({{ site.baseurl }}/#blender-reverse)
 </p>

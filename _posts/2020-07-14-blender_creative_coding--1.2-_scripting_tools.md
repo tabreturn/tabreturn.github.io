@@ -3,7 +3,6 @@ layout: post
 comments: true
 title: "Blender Creative Coding – 1.2: Scripting Tools"
 categories: code blender python
-published: false
 ---
 
 <p markdown="1" style="text-align:right">
@@ -97,55 +96,55 @@ Once you've enabled the Python tooltips, they'll appear when you hover over a bu
 
 You know from the earlier example that this a method you use for moving objects.
 
-You're all set up for developing Blender scripts. In the next lesson, you'll move onto some Blender scripting basics, manipulating 3D objects with code.
-
 ## Text Editor Modifications
 
-Before moving onto the next lesson, there are a few useful Text editor features you should know about. 
-
-> NOTE: If the Text Editor font is too small, you can change the size by holding the `ctrl` key and scrolling the mouse wheel.
+Before moving onto the next section, there are some useful Text editor features I should introduce.
 
 ### Live Edit
 
-The *live edit* feature runs Python while you're editing code; so there's no need for you to manually run the script (using Alt-P or the ▶ button). I generally avoid using this, but is prove very handy in certain situations. 
+The *live edit* feature runs Python while you're editing code; so there's no need for you to manually run the script (using Alt-P or the ▶ button). I generally avoid using this, but it's convenient in certain situations.
 
-To active the live edit feature, create a new script, then select *Text > Live Edit* from the editor menu (Figure 1.2.7). 
+To activate the live edit feature, create a new script, then check the *Live Edit* option in the *Text* menu (Figure 1.2.7). 
 
 <figure>
   <img src="{{ site.url }}/img/bcc01/scripting-tools-editor-live-edit-option.png" class="fullwidth" />
   <figcaption>Figure 1.2.7: Enabling Live Edit</figcaption>
 </figure>
 
-You can test out a `print()` function. When you type the `p` in `print()`, the terminal displays a Python syntax error. You'll get errors until you've entered the closing parenthesis. Insert a number between the parentheses and the terminal prints it. The terminal will print an additional line each time you add or change a digit (Figure 1.2.8).
+You can try this out with a `print()` function. When you type the `p` in `print()`, the terminal displays a Python syntax error. You’ll get errors until you've entirely typed the function name and closing parenthesis. 
+
+> NOTE: If the editor font is too small, you can change the size by holding the `ctrl` key and scrolling the mouse wheel.
+
+Enter a number between the empty parentheses and the terminal prints it. The terminal will print a new line each time you add or change a digit (Figure 1.2.8).
 
 <figure>
   <img src="{{ site.url }}/img/bcc01/scripting-tools-editor-live-edit-output.png" class="fullwidth" />
   <figcaption>Figure 1.2.8: Adding digits to the <code>print()</code> function</figcaption>
 </figure>
 
-Live Edit works with any code, not just print statements. You can enable and disable it at any time.
+Live Edit works with any code, not just `print()` functions. You can enable or disable it at any time.
 
 ### Using Another Code Editor
 
-You might prefer write your code in a different editor. This is simple enough. All you need to do is open the script (.py) file in your preferred code editor. Whenever you save the changes you've made, the Blender editor will display a *resolve conflict* icon; this a red book icon with a question mark on its cover (Figure 1.2.9). I've used [Atom](https://atom.io/) in this example:
+You might prefer to write your code in a different editor. This is simple enough. Save the script (with a .py extension), then open it in your preferred code editor. I've used [Atom](https://atom.io/) in this example, as depicted in Figure 1.2.9. I've edited the `print()` argument and saved the changes, which prompts the Blender editor to display a *resolve conflict* button (a red book icon with a question mark on its cover).
 
 <figure>
   <img src="{{ site.url }}/img/bcc01/scripting-tools-external-editor.png" class="fullwidth" />
-  <figcaption>Figure 1.2.9: The icon to resolve conflicts highlighted in green</figcaption>
+  <figcaption>Figure 1.2.9: The icon to resolve conflicts is highlighted in green</figcaption>
 </figure>
 
-You can click on this icon to update the Blender with the latest edits you've made in the external editor using the *Reload from disk* option. There's also an option to *Make text internal*, which saves the script in the .blend file (along with your  models, materials, and scene data). I prefer to store my Python scripts in separate files so that I have the additional option of working with code using external tools.
+If you click that button, there's a *Reload from disk* option; this will update Blender's Text Editor to reflect the changes you've made in your external editor (Atom?). There's also an option to *Make text internal*, which saves the Blender version of the script in the .blend file (along with the models, materials, and scene data). I prefer to store Python scripts in separate files so that I have the option of working with code using external tools.
 
 ## Section Summary
 
-...
+I've reviewed some Blender features to help you develop scripts. You can write your code in Blender or using an external code editor.
 
-
+In the next section, you’ll move onto some Blender scripting basics, manipulating 3D objects using code you write in the Text Editor.
 
 <p style="text-align:right" markdown="1">
-<em>next lesson coming soon</em><br />
+<em>next section coming soon</em><br />
 <!--
 <a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }}</a> &raquo;<br />
 -->
-[Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)
+[Complete list of Blender Creative Coding lessons]({{ site.baseurl }}/#blender-reverse)
 </p>

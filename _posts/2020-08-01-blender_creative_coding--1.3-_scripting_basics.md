@@ -18,6 +18,35 @@ Before proceeding, open Blender. If you have it open already, create a new Blend
 
 
 
+## Importing bpy
+
+this makes the magic happen, etc.
+
+{% highlight py %}
+import bpy
+{% endhighlight %}
+
+
+
+
+
+.delete()
+removing the cube?
+
+
+
+
+
+mathutils?
+
+
+
+
+
+extecuting scripts
+
+
+
 
 ## Addressing Objects
 
@@ -147,25 +176,6 @@ To select the Cube again, use an argument of `True`.
 
 To recap, you've use the Python Console to work with the `data` and `context` modules. You know how to address objects via Python code, and manipulate
 
-## Importing bpy
-
-this makes the magic happen, etc.
-
-{% highlight py %}
-import bpy
-{% endhighlight %}
-
-
-
-
-
-
-
-
-
-
-.delete()
-removing the cube?
 
 
 
@@ -173,7 +183,7 @@ removing the cube?
 
 
 PNGYU images
-
+ADD scripts to blender code repo
 
 
 ## Lesson 1 Summary

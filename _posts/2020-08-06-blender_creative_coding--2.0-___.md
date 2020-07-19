@@ -16,7 +16,7 @@ published: false
 
 https://ehmatthes.github.io/pcc/cheatsheets/README.html
 
-
+https://docs.blender.org/api/current/info_best_practice.html
 
 
 <p style="text-align:right" markdown="1">

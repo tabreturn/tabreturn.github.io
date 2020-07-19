@@ -43,12 +43,15 @@ mathutils?
 
 
 
-extecuting scripts
+executing scripts direct from command line (blender --python script_name.py)
 
 
 
 
 ## Addressing Objects
+
+
+*  Copy Data Path (from properties editor)
 
 You've used the Python Console to affect the object you have selected in the 3D viewport. More often, though, you'll want to address objects via Python scripts without relying on what's selected in the GUI. You can use Python to select objects by name, their position in a sequence of objects, or some other property.
 

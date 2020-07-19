@@ -96,6 +96,28 @@ Once you've enabled the Python tooltips, they'll appear when you hover over a bu
 
 You know from the earlier example that this a method you use for moving objects.
 
+## Developer Extras
+
+There's another useful feature you can enable in the Blender preferences, the *Developer Extras*. This activates several developer features, but I'll highlight two here---the online reference links and the option to copy Python commands which will both appear in the GUI context menus. 
+
+From the top-bar of the application, select *Edit > Preferences > Interface*; check the *Developer Extras* option (Figure 1.2.7).
+
+<figure>
+  <img src="{{ site.url }}/img/bcc01/scripting-tools-developer-extras-preferences.png" class="fullwidth" />
+  <figcaption>Figure 1.2.7: Enabling Developer Extras in the Blender preferences</figcaption>
+</figure>
+
+Now, when you right-click on elements in the Blender GUI, many will present an online reference link. In Figure 1.2.8, I've right-clicked on the *Move* option in the *Object > Transform* menu; this links to the [bpy.ops.transform.translate()](https://docs.blender.org/api/2.83/bpy.ops.transform.html#bpy.ops.transform.translate) entry on the API documentation website.
+
+<figure>
+  <img src="{{ site.url }}/img/bcc01/scripting-tools-developer-extras-preferences-enabled.png" class="fullwidth" />
+  <figcaption>Figure 1.2.8: Enabling Developer Extras in the Blender preferences</figcaption>
+</figure>
+
+Just beneath the *Online Python Reference* option is the *Copy Python Command*. If you click this, it'll copy that Python command---in this case, `bpy.ops.transform.translate()`---so that you can paste it into the Console or Text editor. 
+
+> NOTE: The reference entries can seem rather arcane when you're starting out, but they'll make more sense as you grow familiar with Blender's Python API. 
+
 ## Text Editor Modifications
 
 Before moving onto the next section, there are some useful Text editor features I should introduce.
@@ -104,33 +126,33 @@ Before moving onto the next section, there are some useful Text editor features 
 
 The *live edit* feature runs Python while you're editing code; so there's no need for you to manually run the script (using Alt-P or the ▶ button). I generally avoid using this, but it's convenient in certain situations.
 
-To activate the live edit feature, create a new script, then check the *Live Edit* option in the *Text* menu (Figure 1.2.7). 
+To activate the live edit feature, create a new script, then check the *Live Edit* option in the *Text* menu (Figure 1.2.9). 
 
 <figure>
   <img src="{{ site.url }}/img/bcc01/scripting-tools-editor-live-edit-option.png" class="fullwidth" />
-  <figcaption>Figure 1.2.7: Enabling Live Edit</figcaption>
+  <figcaption>Figure 1.2.9: Enabling Live Edit</figcaption>
 </figure>
 
-You can try this out with a `print()` function. When you type the `p` in `print()`, the terminal displays a Python syntax error. You’ll get errors until you've entirely typed the function name and closing parenthesis. 
+You can try this out with a `print()` function. When you type the `p` in `print()`, the terminal displays a Python syntax error. You'll get errors until you've entirely typed the function name and closing parenthesis. 
 
 > NOTE: If the editor font is too small, you can change the size by holding the `ctrl` key and scrolling the mouse wheel.
 
-Enter a number between the empty parentheses and the terminal prints it. The terminal will print a new line each time you add or change a digit (Figure 1.2.8).
+Enter a number between the empty parentheses and the terminal prints it. The terminal will print a new line each time you add or change a digit (Figure 1.2.10).
 
 <figure>
   <img src="{{ site.url }}/img/bcc01/scripting-tools-editor-live-edit-output.png" class="fullwidth" />
-  <figcaption>Figure 1.2.8: Adding digits to the <code>print()</code> function</figcaption>
+  <figcaption>Figure 1.2.10: Adding digits to the <code>print()</code> function</figcaption>
 </figure>
 
 Live Edit works with any code, not just `print()` functions. You can enable or disable it at any time.
 
 ### Using Another Code Editor
 
-You might prefer to write your code in a different editor. This is simple enough. Save the script (with a .py extension), then open it in your preferred code editor. I've used [Atom](https://atom.io/) in this example, as depicted in Figure 1.2.9. I've edited the `print()` argument and saved the changes, which prompts the Blender editor to display a *resolve conflict* button (a red book icon with a question mark on its cover).
+You might prefer to write your code in a different editor. This is simple enough. Save the script (with a .py extension), then open it in your preferred code editor. I've used [Atom](https://atom.io/) in this example, as depicted in Figure 1.2.11. I've edited the `print()` argument and saved the changes, which prompts the Blender editor to display a *resolve conflict* button (a red book icon with a question mark on its cover).
 
 <figure>
   <img src="{{ site.url }}/img/bcc01/scripting-tools-external-editor.png" class="fullwidth" />
-  <figcaption>Figure 1.2.9: The icon to resolve conflicts is highlighted in green</figcaption>
+  <figcaption>Figure 1.2.11: The icon to resolve conflicts is highlighted in green</figcaption>
 </figure>
 
 If you click that button, there's a *Reload from disk* option; this will update Blender's Text Editor to reflect the changes you've made in your external editor (Atom?). There's also an option to *Make text internal*, which saves the Blender version of the script in the .blend file (along with the models, materials, and scene data). I prefer to store Python scripts in separate files so that I have the option of working with code using external tools.

@@ -15,7 +15,7 @@ published: false
 
 
 
-
+https://docs.blender.org/api/current/info_tips_and_tricks.html
 
 
 

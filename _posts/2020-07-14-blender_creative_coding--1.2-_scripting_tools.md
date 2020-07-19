@@ -148,7 +148,7 @@ Live Edit works with any code, not just `print()` functions. You can enable or d
 
 ## Section Summary
 
-I've reviewed some Blender features to help you develop scripts. You'll make use these techniques while you work through the different lessons.
+I've reviewed some Blender features to help you develop scripts. You'll use these different techniques while you work through the lessons.
 
 In the next section, you’ll move onto some Blender scripting basics, manipulating 3D objects using code you write in the Text Editor.
 

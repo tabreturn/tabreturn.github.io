@@ -19,6 +19,14 @@ https://ehmatthes.github.io/pcc/cheatsheets/README.html
 https://docs.blender.org/api/current/info_best_practice.html
 
 
+
+
+
+PNGQUANT images
+ADD scripts to blender code repo
+
+
+
 <p style="text-align:right" markdown="1">
 <em>next lesson coming soon</em><br />
 <!--

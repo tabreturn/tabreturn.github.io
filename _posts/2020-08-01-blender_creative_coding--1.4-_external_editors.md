@@ -41,6 +41,15 @@ You can write your code in Blender or using an external code editor.
 ...
 
 
+
+
+
+
+PNGQUANT images
+ADD scripts to blender code repo
+
+
+
 <p style="text-align:right" markdown="1">
 <em>next lesson coming soon</em><br />
 <!--

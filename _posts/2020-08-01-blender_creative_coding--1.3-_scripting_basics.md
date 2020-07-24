@@ -185,7 +185,7 @@ To recap, you've use the Python Console to work with the `data` and `context` mo
 
 
 
-PNGYU images
+PNGQUANT images
 ADD scripts to blender code repo
 
 

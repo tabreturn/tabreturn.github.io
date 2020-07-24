@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title: "Blender Creative Coding – 1.3: External Editors"
+title: "Blender Creative Coding – 1.4: External Editors"
 categories: code blender python
 published: false
 ---

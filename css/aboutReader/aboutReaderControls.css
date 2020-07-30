@@ -249,8 +249,11 @@
 }
 
 /* Font sizes are different per-platform, so we need custom CSS to line them up. */
-#font-type-buttons > .sans-serif-button > .name {
-  margin-top: 14px;
+#font-type-buttons .name {
+  align-items: center;
+  display: flex;
+  margin-top: -0.1em;
+  justify-content: center;
 }
 
 #font-type-buttons > .sans-serif-button > .description {

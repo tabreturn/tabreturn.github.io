@@ -110,7 +110,8 @@ figure.highlight {
   justify-content: center;
 }
 
-#font-type-buttons > .sans-serif-button > .description {
+#font-type-buttons > .sans-serif-button > .description,
+#font-type-buttons > .serif-button > .name  {
   display: none;
 }
 

@@ -85,12 +85,33 @@ pre, code {
   padding-right: 11px;
 }
 
+.dropdown-popup {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.domain {
+  font-size: inherit;
+  font-family: inherit;
+}
+
 .highlight, .highlight * {
   background-color: transparent;
 }
 
 figure.highlight {
   padding-bottom: 0;
+}
+
+#font-type-buttons > .sans-serif-button > .name,
+#font-type-buttons > .serif-button > .name {
+  align-items: center;
+  display: flex;
+  margin-top: -0.1em;
+  justify-content: center;
+}
+
+#font-type-buttons > .sans-serif-button > .description {
+  display: none;
 }
 
 #moz-reader-content {

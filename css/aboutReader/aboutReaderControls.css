@@ -43,8 +43,10 @@
 }
 
 .domain {
+  font-size: 0.9em;
   line-height: 1.48em;
   padding-bottom: 4px;
+  font-family: Helvetica, Arial, sans-serif;
   text-decoration: none;
   border-bottom: 1px solid;
   color: #0095dd;
@@ -131,7 +133,7 @@
   border-radius: 4px;
   border: 1px solid #b5b5b5;
   border-bottom-width: 0;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 1px 12px #666;
 }
 
 .keep-open .dropdown-popup {
@@ -249,15 +251,15 @@
 }
 
 /* Font sizes are different per-platform, so we need custom CSS to line them up. */
-#font-type-buttons .name {
-  align-items: center;
-  display: flex;
-  margin-top: -0.1em;
-  justify-content: center;
+#font-type-buttons > .sans-serif-button > .name {
+  margin-top: 10px;
 }
 
 #font-type-buttons > .sans-serif-button > .description {
   margin-top: -4px;
+}
+#font-type-buttons > .serif-button > .name {
+  font-size: 63px;
 }
 
 .button:hover,

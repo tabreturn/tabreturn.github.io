@@ -111,7 +111,7 @@ figure.highlight {
 }
 
 #font-type-buttons > .sans-serif-button > .description,
-#font-type-buttons > .serif-button > .name  {
+#font-type-buttons > .serif-button > .description  {
   display: none;
 }
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title: "Blender Creative Coding – 1.2: Scripting Tools"
+title: "Blender Creative Coding – part 2"
 categories: code blender python
 ---
 
@@ -12,7 +12,7 @@ categories: code blender python
 
 In this tutorial, you'll learn about some useful Blender features for writing scripts. You'll use the *Info* editor to glean what Python commands are associated with the different actions you perform using the graphic interface. I'll also introduce the Blender *Console*, a handy editor for entering line-by-line Python commands that apply immediately to your scene. You'll use the Console to execute operations that you might otherwise perform with mouse clicks and keyboard shortcuts.
 
-Before proceeding, open Blender. If you have it open already, create a new Blender file using *File* > *New* > *General*. You're looking at a new scene with a cube located at (0, 0, 0). 
+Before proceeding, open Blender. If you have it open already, create a new Blender file using *File* > *New* > *General*. You're looking at a new scene with a cube located at (0, 0, 0).
 
 ## The Info Editor
 
@@ -98,7 +98,7 @@ You know from the earlier example that this a method you use for moving objects.
 
 ## Developer Extras
 
-There's another useful feature you can enable in the Blender preferences, the *Developer Extras*. This activates several developer features, but I'll highlight two here---the online reference links and the option to copy Python commands which will both appear in the GUI context menus. 
+There's another useful feature you can enable in the Blender preferences, the *Developer Extras*. This activates several developer features, but I'll highlight two here---the online reference links and the option to copy Python commands which will both appear in the GUI context menus.
 
 From the top-bar of the application, select *Edit > Preferences > Interface*; check the *Developer Extras* option (Figure 1.2.7).
 
@@ -114,9 +114,9 @@ Now, when you right-click on elements in the Blender GUI, many will present an o
   <figcaption>Figure 1.2.8: Enabling Developer Extras in the Blender preferences</figcaption>
 </figure>
 
-Just beneath the *Online Python Reference* option is the *Copy Python Command*. If you click this, it'll copy that Python command---in this case, `bpy.ops.transform.translate()`---so that you can paste it into the Console or Text editor. 
+Just beneath the *Online Python Reference* option is the *Copy Python Command*. If you click this, it'll copy that Python command---in this case, `bpy.ops.transform.translate()`---so that you can paste it into the Console or Text editor.
 
-> NOTE: The reference entries can seem rather arcane when you're starting out, but they'll make more sense as you grow familiar with Blender's Python API. 
+> NOTE: The reference entries can seem rather arcane when you're starting out, but they'll make more sense as you grow familiar with Blender's Python API.
 
 ## Text Editor Modifications
 
@@ -126,14 +126,14 @@ Before moving onto the next section, there are some useful Text editor features 
 
 The *live edit* feature runs Python while you're editing code; so there's no need for you to manually run the script (using Alt-P or the ▶ button). I generally avoid using this, but it's convenient in certain situations.
 
-To activate the live edit feature, create a new script, then check the *Live Edit* option in the *Text* menu (Figure 1.2.9). 
+To activate the live edit feature, create a new script, then check the *Live Edit* option in the *Text* menu (Figure 1.2.9).
 
 <figure>
   <img src="{{ site.url }}/img/bcc01/scripting-tools-editor-live-edit-option.png" class="fullwidth" />
   <figcaption>Figure 1.2.9: Enabling Live Edit</figcaption>
 </figure>
 
-You can try this out with a `print()` function. When you type the `p` in `print()`, the terminal displays a Python syntax error. You'll get errors until you've entirely typed the function name and closing parenthesis. 
+You can try this out with a `print()` function. When you type the `p` in `print()`, the terminal displays a Python syntax error. You'll get errors until you've entirely typed the function name and closing parenthesis.
 
 > NOTE: If the editor font is too small, you can change the size by holding the `ctrl` key and scrolling the mouse wheel.
 

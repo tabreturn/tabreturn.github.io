@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title: "Blender Creative Coding – 1.3: Scripting Basics"
+title: "Blender Creative Coding – part 3"
 categories: code blender python
 published: false
 ---
@@ -14,7 +14,7 @@ published: false
 In this section, you'll learn some Blender scripting basics, like how to address, manipulate, and add 3D objects using code. I'll review some of Blender's  
 
 
-Before proceeding, open Blender. If you have it open already, create a new Blender file using *File* > *New* > *General*. You're looking at a new scene with a cube located at (0, 0, 0). 
+Before proceeding, open Blender. If you have it open already, create a new Blender file using *File* > *New* > *General*. You're looking at a new scene with a cube located at (0, 0, 0).
 
 
 

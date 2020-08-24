@@ -1,14 +1,13 @@
 ---
 layout: post
 comments: true
-title: "Blender Creative Coding – 1.4: External Editors"
+title: "Blender Creative Coding – part 4"
 categories: code blender python
 published: false
 ---
 
 <p markdown="1" style="text-align:right">
-&laquo; <a href="{{ page.previous.url }}">{{ page.previous.title | split:'–'| last }}</a> |
-<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }}</a> &raquo;<br />
+&laquo; <a href="{{ page.previous.url }}">{{ page.previous.title | split:'–'| last }}</a><br />
 </p>
 
 
@@ -48,12 +47,8 @@ You can write your code in Blender or using an external code editor.
 PNGQUANT images
 ADD scripts to blender code repo
 
-
+*End*
 
 <p style="text-align:right" markdown="1">
-<em>next lesson coming soon</em><br />
-<!--
-<a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }}</a> &raquo;<br />
--->
 [Complete list of Blender Creative Coding lessons]({{ site.baseurl }}/#blender-reverse)
 </p>

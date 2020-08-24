@@ -22,7 +22,7 @@ I've meant to get into Blender for a while; the Python API was just the nudge I 
 
 **What You Should Know Already**
 
-If you have no programming experience, it's best to learn some Python first (using [Processing Python mode]({{ site.baseurl }}/#processing-reverse) or some other Python environment). I won't go into much depth about Python, but I'll provide a brief overview of the language in lesson 2. If you're familiar with some other programming language, you should cope fine.
+If you have no programming experience, it's best to learn some Python first (using [Processing Python mode]({{ site.baseurl }}/#processing-reverse) or some other Python environment). If you're familiar with some other programming language, you should cope fine. Eric Matthes has created a [useful collection of Python cheat sheets](https://ehmatthes.github.io/pcc/cheatsheets/README.html) you might find handy.
 
 Some Blender knowledge is useful but not essential.
 

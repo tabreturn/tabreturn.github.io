@@ -16,13 +16,13 @@ In this series of tutorials, I'll introduce Blender as a tool for creative codin
   <figcaption>Figure 1.1.1: The Blender modelling interface</figcaption>
 </figure>
 
-I'm interested in creative coding using Python. I began experimenting with Blender scripting largely via *Processing Python Mode*. Processing Python Mode is a fantastic entry point into the world of creative coding, Python, and programming in general (I think it's so great that I wrote a [whole series of lessons]({{ site.baseurl }}/#processing-reverse) covering it). You won't outgrow Processing, but you might have the urge to delve into some more advanced 3D stuff---particle systems, rigid-body/fluid/cloth dynamics, metaballs, volumetrics, and so on. With Blender scripting, you get access to all of that and a powerful render engine to output your creations in high-resolution image and video formats.
+I have an interest in creative coding using the Python programming language. I began experimenting with Blender scripting largely via *Python Mode for Processing*. Processing's Python Mode is a fantastic entry point into the world of creative coding, the Python language, and programming in general (I think it's so great that I wrote a [whole series of lessons]({{ site.baseurl }}/#processing-reverse) covering it). You won't outgrow Processing, but you might have the urge to delve into some more advanced 3D stuff---particle systems, rigid-body/fluid/cloth dynamics, metaballs, volumetrics, and so on. With Blender scripting, you get access to all of that and a powerful render engine to output your creations in high-resolution image and video formats.
 
 I've meant to get into Blender for a while; the Python API was just the nudge I needed. This tutorial series serves as a record of my discoveries and a guide for others. I'll add new posts as I progress.
 
 **What You Should Know Already**
 
-If you have no programming experience, it's best to learn some Python first (using [Processing Python mode]({{ site.baseurl }}/#processing-reverse) or some other Python environment). If you're familiar with some other programming language, you should cope fine. Eric Matthes has created a [useful collection of Python cheat sheets](https://ehmatthes.github.io/pcc/cheatsheets/README.html) you might find handy.
+If you have no programming experience, it's best to learn some Python first (using [Python Mode for Processing]({{ site.baseurl }}/#processing-reverse) or some other Python environment). If you're familiar with some other programming language (JavaScript, C#, etc.), you should cope fine; Eric Matthes has created a [useful collection of Python cheat sheets](https://ehmatthes.github.io/pcc/cheatsheets/README.html) you might find handy.
 
 Some Blender knowledge is useful but not essential.
 
@@ -99,7 +99,7 @@ Just above where you entered `print('Hello, World!')`, there's a link to access 
 
 ## Section Summary
 
-You're all set up for developing Blender scripts. You've installed Blender, launched it from the terminal, and ran your first line of code.
+You're all set up for developing Blender scripts. You installed Blender, launched it from the terminal, and ran your first line of code.
 
 Next up, I'll review some useful Blender features for writing code.
 

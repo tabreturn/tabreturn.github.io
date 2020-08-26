@@ -42,12 +42,52 @@ You can write your code in Blender or using an external code editor.
 
 
 
-
+https://www.youtube.com/watch?v=XqX5wh4YeRw
 
 PNGQUANT images
 ADD scripts to blender code repo
 
+# Resources
+
+
+If you're looking for more on the topic, you can try the following GitHub topic searches:
+
+* https://github.com/topics/blender-python
+* https://github.com/topics/blender-scripts
+
+You can find some inspiring work at:
+
+* https://blog.lightprocesses.com/
+* https://github.com/a1studmuffin/SpaceshipGenerator
+* https://github.com/manujarvinen/Blender-Python-scripts
+
+For assistance, try:
+
+* https://blender.stackexchange.com/questions/tagged/scripting
+
+
+
+
 *End*
+
+## References
+
+These Blender creative coding tutorials were put together with help from these valuable sources:
+
+* http://web.purplefrog.com/~thoth/blender/python-cookbook/
+* https://blenderscripting.blogspot.com/
+* https://cgcookie.com/articles/blender-2-8-python-scripting-superpowers-for-non-programmers
+* https://docs.blender.org/api/blender2.8/
+* https://docs.blender.org/api/master/
+* https://github.com/iklupiani/blenderscriptingwithpython
+* https://github.com/njanakiev/blender-scripting
+* https://github.com/zeffii/BlenderPythonRecipes/wiki
+* https://medium.com/@behreajj/creative-coding-in-blender-a-primer-53e79ff71e
+* https://towardsdatascience.com/@5agado
+
+
+
+
 
 <p style="text-align:right" markdown="1">
 [Complete list of Blender Creative Coding lessons]({{ site.baseurl }}/#blender-reverse)

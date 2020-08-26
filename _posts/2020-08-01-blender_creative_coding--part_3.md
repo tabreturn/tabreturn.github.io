@@ -11,7 +11,7 @@ published: false
 <a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }}</a> &raquo;<br />
 </p>
 
-In this section, you'll learn some Blender scripting basics, like how to address, manipulate, and add 3D objects using code. I'll review some of Blender's  
+In this installment, you'll learn some Blender scripting basics, like how to address, manipulate, and add 3D objects using code. I'll review some of Blender's  
 
 
 Before proceeding, open Blender. If you have it open already, create a new Blender file using *File* > *New* > *General*. You're looking at a new scene with a cube located at (0, 0, 0).
@@ -46,6 +46,7 @@ mathutils?
 executing scripts direct from command line (blender --python script_name.py)
 
 
+mention python comments
 
 
 ## Addressing Objects

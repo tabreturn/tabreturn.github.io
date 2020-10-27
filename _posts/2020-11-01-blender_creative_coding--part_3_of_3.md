@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title: "Blender Creative Coding – part 3"
+title: "Blender Creative Coding – part 3 of 3"
 categories: code blender python
 published: false
 ---
@@ -10,9 +10,9 @@ published: false
 &laquo; <a href="{{ page.previous.url }}">{{ page.previous.title | split:'–'| last }}</a>
 </p>
 
-In this, part 3 of an introduction to Blender creative coding, you'll learn some Blender scripting basics---like how to address, manipulate, and add 3D objects using code. I'll review the all-important `bpy` module, and some of the attributes and methods on offer. You use these to 
+In this, part 3 of an introduction to Blender creative coding, you'll learn some Blender scripting basics---like how to address, manipulate, and add 3D objects using code. I'll review the all-important `bpy` module, and some of the attributes and methods on offer. You use these to
 
-Before proceeding, open Blender (using the [command line]({% post_url 2020-06-06-blender_creative_coding--part_1 %}#launching-blender-using-the-command-line)). If you have it open already, create a new Blender file using *File* > *New* > *General*. You're looking at a new scene with a cube located at an x-y-z coordinate of (0, 0, 0).
+Before proceeding, open Blender (using the [command line]({% post_url 2020-06-06-blender_creative_coding--part_1_of_3 %}#launching-blender-using-the-command-line)). If you have it open already, create a new Blender file using *File* > *New* > *General*. You're looking at a new scene with a cube located at an x-y-z coordinate of (0, 0, 0).
 
 
 

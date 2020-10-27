@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title: "Blender Creative Coding – part 1"
+title: "Blender Creative Coding – part 1 of 3"
 categories: code blender python
 ---
 

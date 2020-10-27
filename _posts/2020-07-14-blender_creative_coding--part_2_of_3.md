@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title: "Blender Creative Coding – part 2"
+title: "Blender Creative Coding – part 2 of 3"
 categories: code blender python
 ---
 
@@ -12,21 +12,21 @@ categories: code blender python
 
 In this installment, you'll learn about some useful Blender features for writing scripts. You'll use the *Info* editor to glean what Python commands are associated with the different actions you perform using the graphic interface. I'll also introduce the Blender *Console*, a handy editor for entering line-by-line Python commands that apply immediately to your scene. You'll use the Console to execute operations that you might otherwise perform with mouse clicks and keyboard shortcuts.
 
-Before proceeding, open Blender (using the [command line]({% post_url 2020-06-06-blender_creative_coding--part_1 %}#launching-blender-using-the-command-line)). If you have it open already, create a new Blender file using *File* > *New* > *General*. You're looking at a new scene with a cube located at an x-y-z coordinate of (0, 0, 0).
+Before proceeding, open Blender (using the [command line]({% post_url 2020-06-06-blender_creative_coding--part_1_of_3 %}#launching-blender-using-the-command-line)). If you have it open already, create a new Blender file using *File* > *New* > *General*. You're looking at a new scene with a cube located at an x-y-z coordinate of (0, 0, 0).
 
 ## The Info Editor
 
 The Info editor will log any warnings or error messages. It also logs the Python code for the operations you perform in Blender. In the Scripting workspace, you can locate the Info editor at the bottom-left of the Blender window (Figure 2.1).
 
 <figure>
-  <img src="{{ site.url }}/img/bcc01/scripting-tools-info-area-layout.png" class="fullwidth" />
+  <img src="{{ site.url }}/img/bcc02/scripting-tools-info-area-layout.png" class="fullwidth" />
   <figcaption>Figure 2.1: The Info area labelled in green</figcaption>
 </figure>
 
 Select the cube in the 3D viewport (so it's outlined orange), and press the `G` key on your keyboard. You can now move the cube to a new position. When you place the cube (using your left-mouse click), the Info editor will display something like the code highlighted in Figure 2.2:
 
 <figure>
-  <img src="{{ site.url }}/img/bcc01/scripting-tools-info-area-operation.png" class="fullwidth" />
+  <img src="{{ site.url }}/img/bcc02/scripting-tools-info-area-operation.png" class="fullwidth" />
   <figcaption>Figure 2.2: The code for the move operation (highlighted green)</figcaption>
 </figure>
 
@@ -45,7 +45,7 @@ bpy.ops.transform.translate(value=(1.4942, 3.95293, 0.462441), orient_type='GLOB
 Note that this is one long, wrapped line (not multiple lines). Paste it into the Python Console and hit enter (Figure 2.3). This will rerun the move operation; Blender moves the cube another 'increment', the same distance in the same direction you moved it the first time.
 
 <figure>
-  <img src="{{ site.url }}/img/bcc01/scripting-tools-console-copy-paste.png" class="fullwidth" />
+  <img src="{{ site.url }}/img/bcc02/scripting-tools-console-copy-paste.png" class="fullwidth" />
   <figcaption>Figure 2.3: Copy the code from the Info editor and paste it into the Python Console</figcaption>
 </figure>
 
@@ -56,7 +56,7 @@ Most of the time, you'll type code into the Python Console (rather than paste it
 The Python Console includes an auto-completion feature that assists you with typing in commands. Type `bpy` followed by a dot, then hit the `tab` key for the auto-completion to list options. Now everything that begins with `bpy.` is listed in the console (Figure 2.4).
 
 <figure>
-  <img src="{{ site.url }}/img/bcc01/scripting-tools-console-auto-complete.png" class="fullwidth" />
+  <img src="{{ site.url }}/img/bcc02/scripting-tools-console-auto-complete.png" class="fullwidth" />
   <figcaption>Figure 2.4: Using the <code>tab</code> key to auto complete</figcaption>
 </figure>
 
@@ -83,14 +83,14 @@ Hit enter; this will reposition the cube in the centre of the scene.
 If you'd like to know what Python methods are associated with the different buttons in the Blender GUI, you can enable *Python Tooltips*. From the top-bar of the application, select *Edit > Preferences > Interface*; you should see a checkbox labelled *Python Tooltips* (Figure 2.5).
 
 <figure>
-  <img src="{{ site.url }}/img/bcc01/scripting-tools-python-tool-tips-preferences.png" class="fullwidth" />
+  <img src="{{ site.url }}/img/bcc02/scripting-tools-python-tool-tips-preferences.png" class="fullwidth" />
   <figcaption>Figure 2.5: Enabling Python Tooltips in the Blender preferences</figcaption>
 </figure>
 
 Once you've enabled the Python tooltips, they'll appear when you hover over a button (Figure 2.6). For example, the *Move* option (under the *Object* menu) displays a tooltip that reads `bpy.ops.transform.translate()`.
 
 <figure>
-  <img src="{{ site.url }}/img/bcc01/scripting-tools-python-tool-tips-active.png" class="fullwidth" />
+  <img src="{{ site.url }}/img/bcc02/scripting-tools-python-tool-tips-active.png" class="fullwidth" />
   <figcaption>Figure 2.6: The Python Tooltip for <i>Move</i></figcaption>
 </figure>
 
@@ -103,14 +103,14 @@ There's another useful feature you can enable in the Blender preferences, the *D
 From the top-bar of the application, select *Edit > Preferences > Interface*; check the *Developer Extras* option (Figure 2.7).
 
 <figure>
-  <img src="{{ site.url }}/img/bcc01/scripting-tools-developer-extras-preferences.png" class="fullwidth" />
+  <img src="{{ site.url }}/img/bcc02/scripting-tools-developer-extras-preferences.png" class="fullwidth" />
   <figcaption>Figure 2.7: Enabling Developer Extras in the Blender preferences</figcaption>
 </figure>
 
 Now, when you right-click on elements in the Blender GUI, many will present an online reference link. In Figure 2.8, I've right-clicked on the *Move* option in the *Object > Transform* menu; this links to the [bpy.ops.transform.translate()](https://docs.blender.org/api/2.83/bpy.ops.transform.html#bpy.ops.transform.translate) entry on the API documentation website.
 
 <figure>
-  <img src="{{ site.url }}/img/bcc01/scripting-tools-developer-extras-preferences-enabled.png" class="fullwidth" />
+  <img src="{{ site.url }}/img/bcc02/scripting-tools-developer-extras-preferences-enabled.png" class="fullwidth" />
   <figcaption>Figure 2.8: With the Developer Extras enabled, you can right-click on menu items for additional options</figcaption>
 </figure>
 
@@ -129,7 +129,7 @@ The *live edit* feature runs Python while you're editing code; so there's no nee
 To activate the live edit feature, create a new script, then check the *Live Edit* option in the *Text* menu (Figure 2.9).
 
 <figure>
-  <img src="{{ site.url }}/img/bcc01/scripting-tools-editor-live-edit-option.png" class="fullwidth" />
+  <img src="{{ site.url }}/img/bcc02/scripting-tools-editor-live-edit-option.png" class="fullwidth" />
   <figcaption>Figure 2.9: Enabling Live Edit</figcaption>
 </figure>
 
@@ -140,7 +140,7 @@ You can try this out with a `print()` function. When you type the `p` in `print(
 Enter a number between the empty parentheses and the terminal prints it. The terminal will print a new line each time you add or change a digit (Figure 2.10).
 
 <figure>
-  <img src="{{ site.url }}/img/bcc01/scripting-tools-editor-live-edit-output.png" class="fullwidth" />
+  <img src="{{ site.url }}/img/bcc02/scripting-tools-editor-live-edit-output.png" class="fullwidth" />
   <figcaption>Figure 2.10: Adding digits to the <code>print()</code> function</figcaption>
 </figure>
 

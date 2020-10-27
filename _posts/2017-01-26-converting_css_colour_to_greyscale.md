@@ -13,7 +13,7 @@ I've been playing around with colour conversion and comparison lately, and as a 
 
 ## So, How Do Monitors Display Greys?
 
-Simple -- the same way they display colour. As explained in a [older post]({% post_url 2016-12-10-comparing_colours %}), screens rely on three primary colours: red, green, and blue. Bright red, for example, is mixed using the following values:
+Simple -- the same way they display colour. As explained in a [older post]({% post_url 2016-12-10-comparing_colours-_an_intro_to_colour_distance %}), screens rely on three primary colours: red, green, and blue. Bright red, for example, is mixed using the following values:
 
 <div style="background-color:red; display:inline-block; width:80px; height:2em"></div>  
 red: 100%  
@@ -129,7 +129,7 @@ To take things a step further, I decided to throw a few more colours into the im
   <figcaption>Greyscale conversion using the averaged formula, on a rainbow background.</figcaption>
 </figure>
 
-This issue has something to do with how the [human eye is more sensitive to certain colours]({% post_url 2016-12-10-comparing_colours %}), but to address this, the next method takes human physiology into account to provide improved results.
+This issue has something to do with how the [human eye is more sensitive to certain colours]({% post_url 2016-12-10-comparing_colours-_an_intro_to_colour_distance %}), but to address this, the next method takes human physiology into account to provide improved results.
 
 ### The Luminosity Method
 

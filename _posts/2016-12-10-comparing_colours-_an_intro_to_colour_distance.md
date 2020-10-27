@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title: "Comparing Colours"
+title: "Comparing Colours: An Intro to Colour Distance"
 categories: code
 ---
 

@@ -28,7 +28,7 @@ Some Blender knowledge is useful but not essential.
 
 ## Getting Started
 
-Here, I'll step you through installing Blender, launching it via the terminal, accessing its scripting interface, and running your first line of code. At the time of writing, Blender is on release 2.83.
+Here, I'll step you through installing Blender, launching it via the terminal, accessing its scripting interface, and running your first line of code. At the time of writing, Blender is on release 2.83; this is also a long term support release ([LTS](https://www.blender.org/download/lts/)).
 
 Download Blender from the Blender website at [https://www.blender.org/download/](https://www.blender.org/download/). On the Download page, click the *other versions* option (Figure 1.2). I'm using a *portable* version. I prefer not to use installers if I can; this way, I know exactly where the Blender application is stored, which is useful for the command line step (coming up shortly). For Windows, download the *Portable(.zip)* file. For Linux, download the *non*-Snap-Store version. For macOS, there's just one option, which is the one you want.
 

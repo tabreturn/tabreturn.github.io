@@ -10,31 +10,41 @@ published: false
 &laquo; <a href="{{ page.previous.url }}">{{ page.previous.title | split:'–'| last }}</a>
 </p>
 
-In this final part, you'll learn some Blender scripting basics---like how to address, manipulate, and add 3D objects using code. To combine all of those techniques, you'll create a wavy pattern pattern of cone objects -- a cool-looking animation that you can convert into a looping GIF.
+In this final part, you'll learn some Blender scripting techniques---like how to address, manipulate, copy, and animate mesh primitives using code. To combine all of those techniques, you'll create a wavy pattern of cones -- a cool-looking animation that you can convert into a looping GIF.
 
-Of course, there's plenty more to creative coding with Blender, but this is all I cover in this short tutorial series.
-
-I'll review the all-important `bpy` library, and some of the attributes and methods on offer. You use these to
+I'll review the all-important `bpy` library using various attributes and methods. I'll also touch on how to import code from other Python files, as well as using other code editors to write your Blender code. Of course, there's plenty more to creative coding with Blender, but that's all I'll cover in this short series of tutorials.
 
 Before proceeding, open Blender (using the [command line]({% post_url 2020-06-06-a_quick_intro_to_blender_creative_coding--part_1_of_3 %}#launching-blender-using-the-command-line)). If you have it open already, create a new Blender file using *File* > *New* > *General*. You're looking at a new scene with a cube located at an x-y-z coordinate of (0, 0, 0).
 
-
-
-https://codepen.io/jllodra/pen/efsDd
-
-
-
 ## Importing bpy
 
-this makes the magic happen, etc.
+The `bpy` library is what makes all of the magic happen. It contains nine main modules that enable you to control Blender using Python; those are [`bpy.app`](https://docs.blender.org/api/blender2.8/bpy.app.html), [`bpy.context`](https://docs.blender.org/api/blender2.8/bpy.context.html), [`bpy.data`](https://docs.blender.org/api/blender2.8/bpy.data.html), [`bpy.msgbus`](https://docs.blender.org/api/blender2.8/bpy.msgbus.html), [`bpy.ops`](https://docs.blender.org/api/blender2.8/bpy.ops.html), [`bpy.path`](https://docs.blender.org/api/blender2.8/bpy.path.html), [`bpy.props`](https://docs.blender.org/api/blender2.8/bpy.props.html), [`bpy.types`](https://docs.blender.org/api/blender2.8/bpy.types.html), and [`bpy.utils`](https://docs.blender.org/api/blender2.8/bpy.utils.html). In the Python Console, the `bpy` library is automatically imported and available to use immediately. But when you're writing Python scripts in the Text Editor (or any other code editor), you must add the necessary `import` line(s) before you can utilise it.
+
+Switch to the Scripting tab, then click New in the Text Editor to create a new Python script. Import `bpy` and print a list of the objects in your scene:
 
 {% highlight py %}
 import bpy
+print(bpy.data.objects)
 {% endhighlight %}
 
+Run the script (using Alt-P or the ▶ button). Your terminal should display:
+
+```
+<bpy_collection[3], BlendDataObjects>
+```
+
+Recall that the `bpy_collection[3]` part indicates there are three objects---the camera, cube, and a light. If you added or removed anything from the scene, the `3` will change accordingly. The *Outliner* lists the data in your scene. You can use it to select, organise, hide, show, and delete objects (Figure 3.1).
+
+<figure>
+  <img src="{{ site.url }}/img/aqitbcc03/scripting-basics-addressing-objects-outliner.png" class="fullwidth" />
+  <figcaption>Figure 3.1: The Outliner (listing a Camera, Cube, and Light)</figcaption>
+</figure>
 
 
-
+<blockquote>
+mathutils note?
+https://docs.blender.org/api/current/index.html
+</blockquote>
 
 .delete()
 removing the cube?
@@ -43,7 +53,7 @@ removing the cube?
 
 
 
-mathutils?
+
 
 
 
@@ -62,12 +72,11 @@ mention python comments
 
 You've used the Python Console to affect the object you have selected in the 3D viewport. More often, though, you'll want to address objects via Python scripts without relying on what's selected in the GUI. You can use Python to select objects by name, their position in a sequence of objects, or some other property.
 
-The *Outliner* lists the data in your scene. You can use it to select, organise, hide, show, and delete objects. In the default scene, the Outliner lists a Camera, Cube, and Light (Figure 3.1):
 
-<figure>
-  <img src="{{ site.url }}/img/aqitbcc03/scripting-basics-addressing-objects-outliner.png" class="fullwidth" />
-  <figcaption>Figure 3.1: The Outliner (listing a Camera, Cube, and Light)</figcaption>
-</figure>
+
+
+
+
 
 You've seen that entering `D.objects` into the Python Console displays `<bpy_collection[3], BlendDataObjects>`. Those three objects are the same three objects listed in the Outliner. Use the Python `list()` function to display each item with its name. Enter `list(D.objects)` into the Python Console and hit enter; it should display the following output:
 

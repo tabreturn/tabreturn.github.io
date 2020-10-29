@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title: "Blender Creative Coding – part 3 of 3"
+title: "A Quick Intro to Blender Creative Coding – part 3 of 3"
 categories: code blender python
 published: false
 ---
@@ -10,9 +10,17 @@ published: false
 &laquo; <a href="{{ page.previous.url }}">{{ page.previous.title | split:'–'| last }}</a>
 </p>
 
-In this, part 3 of an introduction to Blender creative coding, you'll learn some Blender scripting basics---like how to address, manipulate, and add 3D objects using code. I'll review the all-important `bpy` module, and some of the attributes and methods on offer. You use these to
+In this final part, you'll learn some Blender scripting basics---like how to address, manipulate, and add 3D objects using code. To combine all of those techniques, you'll create a wavy pattern pattern of cone objects -- a cool-looking animation that you can convert into a looping GIF.
 
-Before proceeding, open Blender (using the [command line]({% post_url 2020-06-06-blender_creative_coding--part_1_of_3 %}#launching-blender-using-the-command-line)). If you have it open already, create a new Blender file using *File* > *New* > *General*. You're looking at a new scene with a cube located at an x-y-z coordinate of (0, 0, 0).
+Of course, there's plenty more to creative coding with Blender, but this is all I cover in this short tutorial series.
+
+I'll review the all-important `bpy` library, and some of the attributes and methods on offer. You use these to
+
+Before proceeding, open Blender (using the [command line]({% post_url 2020-06-06-a_quick_intro_to_blender_creative_coding--part_1_of_3 %}#launching-blender-using-the-command-line)). If you have it open already, create a new Blender file using *File* > *New* > *General*. You're looking at a new scene with a cube located at an x-y-z coordinate of (0, 0, 0).
+
+
+
+https://codepen.io/jllodra/pen/efsDd
 
 
 
@@ -54,11 +62,11 @@ mention python comments
 
 You've used the Python Console to affect the object you have selected in the 3D viewport. More often, though, you'll want to address objects via Python scripts without relying on what's selected in the GUI. You can use Python to select objects by name, their position in a sequence of objects, or some other property.
 
-The *Outliner* lists the data in your scene. You can use it to select, organise, hide, show, and delete objects. In the default scene, the Outliner lists a Camera, Cube, and Light (Figure 1.2.7):
+The *Outliner* lists the data in your scene. You can use it to select, organise, hide, show, and delete objects. In the default scene, the Outliner lists a Camera, Cube, and Light (Figure 3.1):
 
 <figure>
-  <img src="{{ site.url }}/img/bcc01/scripting-basics-addressing-objects-outliner.png" class="fullwidth" />
-  <figcaption>Figure 1.2.7: The Outliner (listing a Camera, Cube, and Light)</figcaption>
+  <img src="{{ site.url }}/img/aqitbcc03/scripting-basics-addressing-objects-outliner.png" class="fullwidth" />
+  <figcaption>Figure 3.1: The Outliner (listing a Camera, Cube, and Light)</figcaption>
 </figure>
 
 You've seen that entering `D.objects` into the Python Console displays `<bpy_collection[3], BlendDataObjects>`. Those three objects are the same three objects listed in the Outliner. Use the Python `list()` function to display each item with its name. Enter `list(D.objects)` into the Python Console and hit enter; it should display the following output:
@@ -119,11 +127,11 @@ You can you can find the relevant documentation for the `location` attribute her
 
 *[https://docs.blender.org/api/current/bpy.types.Object.html](https://docs.blender.org/api/blender2.8/bpy.types.Object.html)*
 
-You can use your web browser's search function (`Ctrl+F` or `Cmd+F`) to quickly get to the `location` entry; there are multiple mentions of "location" on the page and it's about the fifth from the top (Figure 1.2.8).
+You can use your web browser's search function (`Ctrl+F` or `Cmd+F`) to quickly get to the `location` entry; there are multiple mentions of "location" on the page and it's about the fifth from the top (Figure 3.2).
 
 <figure>
-  <img src="{{ site.url }}/img/bcc01/scripting-basics-attributes-and-methods-location.png" class="fullwidth" />
-  <figcaption>Figure 1.2.8: The <code>location</code> entry in the online reference</figcaption>
+  <img src="{{ site.url }}/img/aqitbcc03/scripting-basics-attributes-and-methods-location.png" class="fullwidth" />
+  <figcaption>Figure 3.2: The <code>location</code> entry in the online reference</figcaption>
 </figure>
 
 Take note of the URL, specifically, everything after the last slash. There's `bpy` then `types` then `Object`. Using this pattern, it's easy enough to guess what the URL for the `context` module is (*/bpy.types.Context.html*). You can also navigate the reference using the search feature and links in the left column.
@@ -142,11 +150,11 @@ D.objects['Cube'].location = Vector((0, 0, 5))
 D.objects['Cube'].location.z = 5
 ```
 
-Now try a `scale` attribute. Type `D.objects['Cube'].scale` then press tab. The auto-complete option are `[0]`, `[1]`, or `[2]`; those indices represent the x, y, and z-scale respectively. Enter `D.objects['Cube'].scale[0] = 2` to double the width of the cube using the x-axis (Figure 1.2.9).
+Now try a `scale` attribute. Type `D.objects['Cube'].scale` then press tab. The auto-complete option are `[0]`, `[1]`, or `[2]`; those indices represent the x, y, and z-scale respectively. Enter `D.objects['Cube'].scale[0] = 2` to double the width of the cube using the x-axis (Figure 3.3).
 
 <figure>
-  <img src="{{ site.url }}/img/bcc01/scripting-basics-attributes-and-methods-location-and-scale.png" class="fullwidth" />
-  <figcaption>Figure 1.2.9: Manipulating the cube's location and scale attributes</figcaption>
+  <img src="{{ site.url }}/img/aqitbcc03/scripting-basics-attributes-and-methods-location-and-scale.png" class="fullwidth" />
+  <figcaption>Figure 3.3: Manipulating the cube's location and scale attributes</figcaption>
 </figure>
 
 Now that you used a few different attributes, let's look at some methods.
@@ -182,17 +190,76 @@ To recap, you've use the Python Console to work with the `data` and `context` mo
 https://docs.blender.org/api/current/info_tips_and_tricks.html
 
 
+## Animation
+~~~
+import bpy
+from math import ceil
+
+x = 0.0
+ob = bpy.data.objects.get('c')
+ob.location = (x, 0, 0)
+
+# Animation variables.
+currframe = 0
+fcount = 10
+invfcount = 1.0 / (fcount - 1)
+frange = bpy.context.scene.frame_end - bpy.context.scene.frame_start
+if frange == 0:
+    bpy.context.scene.frame_end = 150
+    bpy.context.scene.frame_start = 0
+    frange = 150
+fincr = ceil(frange * invfcount)
+
+for i in range(0, fcount, 1):
 
 
+    # Track the current key frame.
+    currframe = bpy.context.scene.frame_start
+    #for f in range(0, fcount, 1):
+    bpy.context.scene.frame_set(currframe)
+    x += 5
+    ob.location = (x, 0, 0)
+    ob.keyframe_insert(data_path='location')
+    currframe += fincr
+~~~
+
+
+## Importing
+
+*a.py*
+~~~
+import bpy, sys, os, importlib
+
+dir = os.path.dirname(bpy.data.filepath)
+sys.path.append(dir)
+
+import b
+importlib.reload(b)
+
+y = b.test()
+y.bye()
+~~~
+
+
+*b.py*
+~~~
+import bpy
+
+class test():
+
+    @staticmethod
+    def bye():
+        print('bye!')
+~~~
 
 
 ### Using Another Code Editor
 
-You might prefer to write your code in a different editor. This is simple enough. Save the script (with a .py extension), then open it in your preferred code editor. I've used [Atom](https://atom.io/) in this example, as depicted in Figure 1.2.11. I've edited the `print()` argument and saved the changes, which prompts the Blender editor to display a *resolve conflict* button (a red book icon with a question mark on its cover).
+You might prefer to write your code in a different editor. This is simple enough. Save the script (with a .py extension), then open it in your preferred code editor. I've used [Atom](https://atom.io/) in this example, as depicted in Figure 3.4. I've edited the `print()` argument and saved the changes, which prompts the Blender editor to display a *resolve conflict* button (a red book icon with a question mark on its cover).
 
 <figure>
-  <img src="{{ site.url }}/img/bcc01/scripting-tools-external-editor.png" class="fullwidth" />
-  <figcaption>Figure 1.2.11: The icon to resolve conflicts is highlighted in green</figcaption>
+  <img src="{{ site.url }}/img/aqitbcc03/scripting-tools-external-editor.png" class="fullwidth" />
+  <figcaption>Figure 3.4: The icon to resolve conflicts is highlighted in green</figcaption>
 </figure>
 
 If you click that button, there's a *Reload from disk* option; this will update Blender's Text Editor to reflect the changes you've made in your external editor (Atom?). There's also an option to *Make text internal*, which saves the Blender version of the script in the .blend file (along with the models, materials, and scene data). I prefer to store Python scripts in separate files so that I have the option of working with code using external tools.
@@ -248,5 +315,5 @@ These Blender creative coding tutorials were put together with help from these v
 * https://github.com/iklupiani/blenderscriptingwithpython
 * https://github.com/njanakiev/blender-scripting
 * https://github.com/zeffii/BlenderPythonRecipes/wiki
-* https://medium.com/@behreajj/creative-coding-in-blender-a-primer-53e79ff71e
+* https://medium.com/@behreajj
 * https://towardsdatascience.com/@5agado

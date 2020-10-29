@@ -68,7 +68,7 @@ The `bpy.data` module provides access to all of the data in your working file. T
 <bpy_collection[3], BlendDataObjects>
 ```
 
-The `bpy_collection[3]` part indicates there are three objects---the camera, cube, and a light. I'll get into more detail about `bpy.data` shortly; it's something you'll use a lot---so often that Blender provides a *convenience variable*, `D`, to save you having to write out `bpy.data` in full each time. As an example, `D.objects` is the same as writing `bpy.data.objects`.
+The `bpy_collection[3]` part indicates there are three objects---the Camera, Cube, and Light. I'll get into more detail about `bpy.data` shortly; it's something you'll use a lot---so often that Blender provides a *convenience variable*, `D`, to save you having to write out `bpy.data` in full each time. As an example, `D.objects` is the same as writing `bpy.data.objects`.
 
 There's another convenience variable that you should know about, `C`. This is equivalent to writing `bpy.context`. You can use it to access an active/selected object via `C.object`. Ensure that the cube is selected in the 3D viewport, then type:
 

@@ -18,7 +18,7 @@ Before proceeding, open Blender (using the [command line]({% post_url 2020-06-06
 
 ## Importing bpy
 
-The `bpy` library is what makes all of the magic happen. It contains nine main modules that enable you to control Blender using Python; those are [`bpy.app`](https://docs.blender.org/api/blender2.8/bpy.app.html), [`bpy.context`](https://docs.blender.org/api/blender2.8/bpy.context.html), [`bpy.data`](https://docs.blender.org/api/blender2.8/bpy.data.html), [`bpy.msgbus`](https://docs.blender.org/api/blender2.8/bpy.msgbus.html), [`bpy.ops`](https://docs.blender.org/api/blender2.8/bpy.ops.html), [`bpy.path`](https://docs.blender.org/api/blender2.8/bpy.path.html), [`bpy.props`](https://docs.blender.org/api/blender2.8/bpy.props.html), [`bpy.types`](https://docs.blender.org/api/blender2.8/bpy.types.html), and [`bpy.utils`](https://docs.blender.org/api/blender2.8/bpy.utils.html). In the Python Console, the `bpy` library is automatically imported and available to use immediately. But when you're writing Python scripts in the Text Editor (or any other code editor), you must add the necessary `import` line(s) before you can utilise it.
+The `bpy` library is what makes all of the magic happen. It contains nine main modules that enable you to control Blender using Python; those are [`bpy.app`](https://docs.blender.org/api/blender2.8/bpy.app.html), [`bpy.context`](https://docs.blender.org/api/blender2.8/bpy.context.html), [`bpy.data`](https://docs.blender.org/api/blender2.8/bpy.data.html), [`bpy.msgbus`](https://docs.blender.org/api/blender2.8/bpy.msgbus.html), [`bpy.ops`](https://docs.blender.org/api/blender2.8/bpy.ops.html), [`bpy.path`](https://docs.blender.org/api/blender2.8/bpy.path.html), [`bpy.props`](https://docs.blender.org/api/blender2.8/bpy.props.html), [`bpy.types`](https://docs.blender.org/api/blender2.8/bpy.types.html), and [`bpy.utils`](https://docs.blender.org/api/blender2.8/bpy.utils.html). In the Python Console, the `bpy` library is automatically imported and available to use immediately. But when you're writing Python scripts in the Text Editor (or any other code editor), you must add the necessary `import` line(s) before you can utilise `bpy`.
 
 Switch to the Scripting tab, then click New in the Text Editor to create a new Python script. Import `bpy` and print a list of the objects in your scene:
 
@@ -33,12 +33,76 @@ Run the script (using Alt-P or the ▶ button). Your terminal should display:
 <bpy_collection[3], BlendDataObjects>
 ```
 
-Recall that the `bpy_collection[3]` part indicates there are three objects---the camera, cube, and a light. If you added or removed anything from the scene, the `3` will change accordingly. The *Outliner* lists the data in your scene. You can use it to select, organise, hide, show, and delete objects (Figure 3.1).
+Recall that the `bpy_collection[3]` part indicates there are three objects---a camera, cube, and a light (Figure 3.1). If you added or removed anything from the scene, the `3` will change accordingly.
 
 <figure>
   <img src="{{ site.url }}/img/aqitbcc03/scripting-basics-addressing-objects-outliner.png" class="fullwidth" />
-  <figcaption>Figure 3.1: The Outliner (listing a Camera, Cube, and Light)</figcaption>
+  <figcaption>Figure 3.1: The Outliner listing the Camera, Cube, and Light</figcaption>
 </figure>
+
+You can use `bpy.data.objects` to address anything in the Outliner listing.
+
+## Addressing Objects
+
+You've used the Python Console to affect the object you have selected in the 3D viewport. More often, though, you'll want to address objects via Python scripts without relying on what's selected in the GUI. You can use Python to select objects by name, their position in a sequence of objects, or some other property.
+
+You've seen that entering `D.objects` into the Python Console displays `<bpy_collection[3], BlendDataObjects>`. Those three objects are the same three objects listed in the Outliner. Use the Python `list()` function to display each item with its name. Enter `list(D.objects)` into the Python Console and hit enter; it should display the following output:
+
+```
+[bpy.data.objects['Camera'], bpy.data.objects['Cube'], bpy.data.objects['Light']]
+```
+
+You can now address any item using its key (item name) or index (order in the sequence). In Python, index values begin at zero---so the camera is item `0`, and the cube is item `1`. You can reposition the cube in the centre of the scene using:
+
+`D.objects['Cube'].location = (0, 0, 2)`  
+*or*  
+`D.objects[1].location = (0, 0, 2)`
+
+If you add or remove objects, the ordering of may shift, so indices may not be as reliable as keys. Another advantage of using keys is the auto-completion support. For instance, you can type:  
+
+```
+D.objects['
+```
+
+Then press tab to get the list of options:
+
+```
+>>> D.objects['
+               Camera']
+               Cube']
+               Light']
+```
+
+Now, all you do to address the Cube is add `Cu` and hit tab again.
+
+You've [enabled python tooltips]({% post_url 2020-07-14-a_quick_intro_to_blender_creative_coding--part_2_of_3 %}#python-tooltips), which is useful for accessing Blender objects via Python. If you hover any fields in the *Object Properties* panel, there's a tooltip to indicate how you address that specific attribute for that specific object in Python---in Figure 3.2, it's the x-coordinate for the cube.
+
+<figure>
+  <img src="{{ site.url }}/img/aqitbcc03/scripting-object-properties-panel.png" class="fullwidth" />
+  <figcaption>Figure 3.2: This x-coordinate for the Cube is stored in <code>bpy.data.objects["Cube"].location[0]</code></figcaption>
+</figure>
+
+If you're using `bpy.context`, you must select the cube in the 3D viewport (so it's outlined orange) to manipulate it with Python code. With `bpy.data.objects['Cube']`, you can address it regardless of what's active in the Blender graphic interface. To relocate the cube using its x-coordinate, add this line to your script (in the Text Editor):
+
+{% highlight py %}
+...
+bpy.data.objects['Cube'].location[0] = 3
+{% endhighlight %}
+
+Run the script and the cube should move to its new position (Figure 3.3), three units away from the centre of the scene:
+
+<figure>
+  <img src="{{ site.url }}/img/aqitbcc03/scripting-basics-addressing-location.png" class="fullwidth" />
+  <figcaption>Figure 3.3: This x-coordinate for the Cube is now 3</figcaption>
+</figure>
+
+
+
+
+
+
+
+
 
 
 <blockquote>
@@ -70,7 +134,6 @@ mention python comments
 
 *  Copy Data Path (from properties editor)
 
-You've used the Python Console to affect the object you have selected in the 3D viewport. More often, though, you'll want to address objects via Python scripts without relying on what's selected in the GUI. You can use Python to select objects by name, their position in a sequence of objects, or some other property.
 
 
 
@@ -78,34 +141,8 @@ You've used the Python Console to affect the object you have selected in the 3D 
 
 
 
-You've seen that entering `D.objects` into the Python Console displays `<bpy_collection[3], BlendDataObjects>`. Those three objects are the same three objects listed in the Outliner. Use the Python `list()` function to display each item with its name. Enter `list(D.objects)` into the Python Console and hit enter; it should display the following output:
 
-```
-[bpy.data.objects['Camera'], bpy.data.objects['Cube'], bpy.data.objects['Light']]
-```
 
-You can now address any item using its key (item name) or index (order in the sequence). In Python, index values begin at zero---so the camera is item `0`, and the cube is item `1`. You can reposition the cube in the centre of the scene using:
-
-`D.objects['Cube'].location = (0, 0, 2)`  
-*or*  
-`D.objects[1].location = (0, 0, 2)`
-
-If you add or remove objects, the ordering of may shift, so indices may not be as reliable as keys. Another advantage of using keys is the auto-completion support. For instance, you can type:  
-
-```
-D.objects['
-```
-
-Then press tab to get the list of options:
-
-```
->>> D.objects['
-               Camera']
-               Cube']
-               Light']
-```
-
-Now, all you do to address the Cube is add `Cu` and hit tab again.
 
 ## Attributes and Methods
 

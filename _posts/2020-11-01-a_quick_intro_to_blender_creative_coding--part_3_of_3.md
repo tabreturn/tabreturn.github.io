@@ -12,7 +12,7 @@ published: false
 
 In this final part, you'll learn some Blender scripting techniques---like how to address, manipulate, copy, and animate mesh primitives using code. To combine all of those techniques, you'll create a wavy pattern of cones -- a cool-looking animation that you can convert into a looping GIF.
 
-I'll review the all-important `bpy` library using various attributes and methods. I'll also touch on how to import code from other Python files, as well as using other code editors to write your Blender code. Of course, there's plenty more to creative coding with Blender, but that's all I'll cover in this short series of tutorials.
+I'll review the all-important `bpy` library using a selection of attributes and methods from the `bpy.data` module. I'll also touch on how to import code from other Python files, as well as using other code editors to write your Blender code. Of course, there's plenty more to creative coding with Blender, but that's all I'll cover in this short series of tutorials.
 
 Before proceeding, open Blender (using the [command line]({% post_url 2020-06-06-a_quick_intro_to_blender_creative_coding--part_1_of_3 %}#launching-blender-using-the-command-line)). If you have it open already, create a new Blender file using *File* > *New* > *General*. You're looking at a new scene with a cube located at an x-y-z coordinate of (0, 0, 0).
 
@@ -20,7 +20,14 @@ Before proceeding, open Blender (using the [command line]({% post_url 2020-06-06
 
 The `bpy` library is what makes all of the magic happen. It contains nine main modules that enable you to control Blender using Python; those are [`bpy.app`](https://docs.blender.org/api/blender2.8/bpy.app.html), [`bpy.context`](https://docs.blender.org/api/blender2.8/bpy.context.html), [`bpy.data`](https://docs.blender.org/api/blender2.8/bpy.data.html), [`bpy.msgbus`](https://docs.blender.org/api/blender2.8/bpy.msgbus.html), [`bpy.ops`](https://docs.blender.org/api/blender2.8/bpy.ops.html), [`bpy.path`](https://docs.blender.org/api/blender2.8/bpy.path.html), [`bpy.props`](https://docs.blender.org/api/blender2.8/bpy.props.html), [`bpy.types`](https://docs.blender.org/api/blender2.8/bpy.types.html), and [`bpy.utils`](https://docs.blender.org/api/blender2.8/bpy.utils.html). In the Python Console, the `bpy` library is automatically imported and available to use immediately. But when you're writing Python scripts in the Text Editor (or any other code editor), you must add the necessary `import` line(s) before you can utilise `bpy`.
 
-Switch to the Scripting tab, then click New in the Text Editor to create a new Python script. Import `bpy` and print a list of the objects in your scene:
+Switch to the Scripting tab in Blender (Figure 3.1), then click New in the Text Editor to create a new Python script.
+
+<figure>
+  <img src="{{ site.url }}/img/aqitbcc01/getting-started-new-script.png" class="fullwidth" />
+  <figcaption>Figure 3.1: Switch to the Scripting tab and start a new script</figcaption>
+</figure>
+
+Add the following lines to your new script to import `bpy` and print a list of the objects in your scene:
 
 {% highlight py %}
 import bpy
@@ -33,61 +40,47 @@ Run the script (using Alt-P or the ▶ button). Your terminal should display:
 <bpy_collection[3], BlendDataObjects>
 ```
 
-Recall that the `bpy_collection[3]` part indicates there are three objects---a camera, cube, and a light (Figure 3.1). If you added or removed anything from the scene, the `3` will change accordingly.
+Recall that the `bpy_collection[3]` part indicates there are three objects---a camera, cube, and a light (Figure 3.2). If you added or removed anything from the scene, the `3` will change to reflect the total number of objects.
 
 <figure>
   <img src="{{ site.url }}/img/aqitbcc03/scripting-basics-addressing-objects-outliner.png" class="fullwidth" />
-  <figcaption>Figure 3.1: The Outliner listing the Camera, Cube, and Light</figcaption>
+  <figcaption>Figure 3.2: The Outliner listing the Camera, Cube, and Light</figcaption>
 </figure>
 
-You can use `bpy.data.objects` to address anything in the Outliner listing.
+But there's much more you can do with `bpy.data.objects`. For instance, you can use it to address specific items in the Outliner listing.
 
 ## Addressing Objects
 
-You've used the Python Console to affect the object you have selected in the 3D viewport. More often, though, you'll want to address objects via Python scripts without relying on what's selected in the GUI. You can use Python to select objects by name, their position in a sequence of objects, or some other property.
+In [part 2]({% post_url 2020-07-14-a_quick_intro_to_blender_creative_coding--part_2_of_3 %}#the-python-console), you used the Python Console to affect the object selected in the 3D viewport. More often, though, you'll want to address objects via Python scripts without relying on what's selected in the GUI. You can use `bpy` to select objects by name, their position in a sequence of objects, or some other property. If you're using `bpy.context`, you must select the cube in the 3D viewport (so it's outlined orange) to manipulate it with Python code. With `bpy.data.objects`, you can address an object regardless of what's active in the Blender interface.
 
-You've seen that entering `D.objects` into the Python Console displays `<bpy_collection[3], BlendDataObjects>`. Those three objects are the same three objects listed in the Outliner. Use the Python `list()` function to display each item with its name. Enter `list(D.objects)` into the Python Console and hit enter; it should display the following output:
+Use the Python `list()` function with `bpy.data.objects` to display each item with its name. Add a `print()` line to test this out:
+
+{% highlight py %}
+...
+print( list(bpy.data.objects) )
+{% endhighlight %}
+
+When you run the script, it should display the following output in the terminal:
 
 ```
 [bpy.data.objects['Camera'], bpy.data.objects['Cube'], bpy.data.objects['Light']]
 ```
 
-You can now address any item using its key (item name) or index (order in the sequence). In Python, index values begin at zero---so the camera is item `0`, and the cube is item `1`. You can reposition the cube in the centre of the scene using:
+You can address any item using its *key* (item name) or *index* (order in the sequence). Index values begin at zero---so the camera is item `0`, the cube is item `1`, and so forth. For instance, you can use `bpy.data.objects['Cube']` or `bpy.data.objects[1]` to address the cube.
 
-`D.objects['Cube'].location = (0, 0, 2)`  
-*or*  
-`D.objects[1].location = (0, 0, 2)`
+Now that you can address different objects, you can manipulate them using their attributes and methods.
 
-If you add or remove objects, the ordering of may shift, so indices may not be as reliable as keys. Another advantage of using keys is the auto-completion support. For instance, you can type:  
+## Attributes and Methods
 
-```
-D.objects['
-```
+If you're familiar with any object-oriented programming language, you've encountered attributes and methods before. Moreover, you've likely identified a few examples of those in the code so far. I won't review every attribute and method in the Blender scripting API---there are far too many for that! Instead, I'll use a few examples to help you discover what's available; you can use the [API documentation](https://docs.blender.org/api/current/) to help you develop your own scripts.
 
-Then press tab to get the list of options:
+Attributes hold values that control the properties of any object---for example, there's a `location` attribute that hold the coordinates to position your cube, and you use this attribute to reposition objects. You can reposition the cube using:
 
-```
->>> D.objects['
-               Camera']
-               Cube']
-               Light']
-```
+`bpy.data.objects['Cube'].location = (3, 0, 0)`
 
-Now, all you do to address the Cube is add `Cu` and hit tab again.
+This positions the cube at the x-y-z coordinates (3, 0, 0). The cube was already positioned at (0, 0, 0), so you could alternatively use:
 
-You've [enabled python tooltips]({% post_url 2020-07-14-a_quick_intro_to_blender_creative_coding--part_2_of_3 %}#python-tooltips), which is useful for accessing Blender objects via Python. If you hover any fields in the *Object Properties* panel, there's a tooltip to indicate how you address that specific attribute for that specific object in Python---in Figure 3.2, it's the x-coordinate for the cube.
-
-<figure>
-  <img src="{{ site.url }}/img/aqitbcc03/scripting-object-properties-panel.png" class="fullwidth" />
-  <figcaption>Figure 3.2: This x-coordinate for the Cube is stored in <code>bpy.data.objects["Cube"].location[0]</code></figcaption>
-</figure>
-
-If you're using `bpy.context`, you must select the cube in the 3D viewport (so it's outlined orange) to manipulate it with Python code. With `bpy.data.objects['Cube']`, you can address it regardless of what's active in the Blender graphic interface. To relocate the cube using its x-coordinate, add this line to your script (in the Text Editor):
-
-{% highlight py %}
-...
-bpy.data.objects['Cube'].location[0] = 3
-{% endhighlight %}
+`bpy.data.objects['Cube'].location.x = 2`
 
 Run the script and the cube should move to its new position (Figure 3.3), three units away from the centre of the scene:
 
@@ -95,6 +88,46 @@ Run the script and the cube should move to its new position (Figure 3.3), three 
   <img src="{{ site.url }}/img/aqitbcc03/scripting-basics-addressing-location.png" class="fullwidth" />
   <figcaption>Figure 3.3: This x-coordinate for the Cube is now 3</figcaption>
 </figure>
+
+
+<blockquote markdown="1">
+  You've [enabled python tooltips]({% post_url 2020-07-14-a_quick_intro_to_blender_creative_coding--part_2_of_3 %}#python-tooltips), which is useful for accessing Blender objects via Python. For example,if you hover any fields in the *Object Properties* panel, there's a tooltip to indicate how you address that specific attribute for that specific object in Python---in Figure 3.2, it's the x-coordinate for the cube.
+
+  <figure>
+    <img src="{{ site.url }}/img/aqitbcc03/scripting-object-properties-panel.png" class="fullwidth" />
+    <figcaption>Figure 3.2: This x-coordinate for the Cube is stored in <code>bpy.data.objects["Cube"].location[0]</code></figcaption>
+  </figure>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+To relocate the cube using its x-coordinate, add this line to your script (in the Text Editor):
+
+{% highlight py %}
+...
+bpy.data.objects['Cube'].location[0] = 3
+{% endhighlight %}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -129,26 +162,12 @@ executing scripts direct from command line (blender --python script_name.py)
 mention python comments
 
 
-## Addressing Objects
-
-
-*  Copy Data Path (from properties editor)
 
 
 
 
 
 
-
-
-
-
-
-## Attributes and Methods
-
-If you're familiar with any object-oriented programming language, you've encountered attributes and methods before. Moreover, you've likely identified a few different attributes and methods in the code you've encountered thus far.
-
-I won't review every attribute and method in the Blender scripting API---there are just too many for that. Rather, I'll use an example here to help you discover what's available and how you can locate the relevant API documentation.
 
 ### Attributes
 

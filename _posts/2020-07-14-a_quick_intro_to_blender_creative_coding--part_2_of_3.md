@@ -150,7 +150,7 @@ Live Edit works with any code, not just `print()` functions. You can enable or d
 
 I've reviewed some Blender features to help you develop scripts. You'll use these different techniques while you work through the lessons.
 
-In the next section, you’ll move onto some Blender scripting basics, manipulating 3D objects using code you write in the Text Editor.
+In the next section, you'll move onto some Blender scripting basics, manipulating 3D objects using code you write in the Text Editor.
 
 <p style="text-align:right" markdown="1">
 <em>next section coming soon</em><br />

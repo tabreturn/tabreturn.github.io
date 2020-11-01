@@ -10,7 +10,7 @@ categories: code blender python
 <a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }}</a> &raquo;<br />
 </p>
 
-In this installment, you'll learn about some useful Blender features for writing scripts. You'll use the *Info* editor to glean what Python commands are associated with the different actions you perform using the graphic interface. I'll also introduce the Blender *Console*, a handy editor for entering line-by-line Python commands that apply immediately to your scene. You'll use the Console to execute operations that you might otherwise perform with mouse clicks and keyboard shortcuts.
+In this instalment, you'll learn about some useful Blender features for writing scripts. You'll use the *Info* editor to glean what Python commands are associated with the different actions you perform using the graphic interface. I'll also introduce the Blender *Console*, a handy editor for entering line-by-line Python commands that apply immediately to your scene. You'll use the Console to execute operations that you might otherwise perform with mouse clicks and keyboard shortcuts.
 
 Before proceeding, open Blender (using the [command line]({% post_url 2020-06-06-a_quick_intro_to_blender_creative_coding--part_1_of_3 %}#launching-blender-using-the-command-line)). If you have it open already, create a new Blender file using *File* > *New* > *General*. You're looking at a new scene with a cube located at an x-y-z coordinate of (0, 0, 0).
 

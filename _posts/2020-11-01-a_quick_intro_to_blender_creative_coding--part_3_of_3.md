@@ -208,14 +208,58 @@ You can decide how large or small you'd the key frame should be. This is a linea
 
 ## Wavy Cones (or Coney Waves?)
 
-Here's a script that combine all of the techniques in this tutorial to generate a wavy pattern of cones:
+Here's a script that combines all of the techniques in this tutorial to generate a wavy pattern of cones:
 
 {% highlight py %}
+import bpy
+from math import sin, tau
 
+# clear meshes in the scene
+for obj in bpy.data.objects:
+    if obj.type == 'MESH':
+        bpy.data.objects.remove(obj)
+
+# animation variables
+total_frames = 150
+theta = 0.0
+
+# define a one hundred frame timeline
+bpy.context.scene.frame_end = total_frames
+bpy.context.scene.frame_start = 0
+
+for x in range(30):
+    # generate grid of cones
+    for y in range(30):
+        cone = bpy.ops.mesh.primitive_cone_add()
+        cone = bpy.context.object
+        cone.name = 'Cone-{}-{}'.format(x, y)
+        cone.location[0] = x * 2
+        cone.location[1] = y * 2
+        # add keyframes
+        for frame in range(0, total_frames):
+            bpy.context.scene.frame_set(frame)
+            cone.location.z = sin(theta + x) * 2 - 1
+            cone.keyframe_insert(data_path='location')
+            scale = sin(theta + y)
+            cone.scale = (scale, scale, scale)
+            cone.keyframe_insert(data_path='scale')
+            theta += tau / total_frames
 {% endhighlight %}
 
 
+This might take little while to process. Reduce the 30s
 
+
+<figure>
+  <script>
+    var gifanimation1 = "{{ site.url }}/img/aqitbcc03/wavy-cone-animation.gif";
+    var gitposter1 = "{{ site.url }}/img/aqitbcc03/wavy-cone-poster.gif";
+  </script>
+  <img src="{{ site.url }}/img/aqitbcc03/wavy-cone-poster.gif" class="fullwidth" style="cursor:pointer" onclick="this.src = this.src == gitposter1 ? gifanimation1 : gitposter1;">
+  <figcaption>
+    ...
+  </figcaption>
+</figure>
 
 
 render guide https://docs.blender.org/manual/en/dev/render/index.html

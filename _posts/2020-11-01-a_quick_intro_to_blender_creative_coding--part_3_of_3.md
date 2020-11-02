@@ -56,7 +56,7 @@ In [part 2]({% post_url 2020-07-14-a_quick_intro_to_blender_creative_coding--par
 Use the Python `list()` function with `bpy.data.objects` to print a list of the objects in your scene:
 
 {% highlight py %}
-print( list(bpy.data.objects) )
+print(list(bpy.data.objects))
 {% endhighlight %}
 
 When you run the script, it should display the following output in the terminal:
@@ -65,169 +65,86 @@ When you run the script, it should display the following output in the terminal:
 [bpy.data.objects['Camera'], bpy.data.objects['Cube'], bpy.data.objects['Light']]
 ```
 
-You can address any item using its *key* (item name) or *index* (order in the sequence). Index values begin at zero---so the camera is item `0`, the cube is item `1`, and so forth. For instance, you can use `bpy.data.objects['Cube']` or `bpy.data.objects[1]` to address the cube. Next, you'll manipulate the cube using different attributes and methods.
+You can address any object using its *key* (item name) or *index* (order in the sequence). Index values begin at zero---so the camera is object `0`, the cube is object `1`, and so forth. For instance, you can use `bpy.data.objects['Cube']` or `bpy.data.objects[1]` to address the cube. Next, you'll manipulate the cube using different attributes and methods.
 
 ## Attributes and Methods
 
-If you're familiar with any object-oriented programming language, you've encountered attributes and methods before---and you've likely identified a few examples of these in the code so far. I won't review every attribute and method in the Blender scripting API---there are far too many for that! Instead, I'll use a few examples to help you discover what's available; you can use the [API documentation](https://docs.blender.org/api/current/) for the rest.
-
-Attributes hold values that control the properties of any object---for example, there's a `location` attribute that contains the coordinates for your cube, that you can use to reposition it. Try this code:
-
-`bpy.data.objects['Cube'].location = (3, 0, 0)`
-
-This positions the cube at the x-y-z coordinates (3, 0, 0). In this instance, you're only affecting the x-coordinate, so instead, you might use:
-
-`bpy.data.objects['Cube'].location.x = 3`
-
-Run the script and the cube should move to its new position (Figure 3.3), three units away from the centre of the scene:
-
-<figure>
-  <img src="{{ site.url }}/img/aqitbcc03/scripting-basics-addressing-location.png" class="fullwidth" />
-  <figcaption>Figure 3.3: This x-coordinate for the Cube is now 3</figcaption>
-</figure>
-
-
-You've [enabled python tooltips]({% post_url 2020-07-14-a_quick_intro_to_blender_creative_coding--part_2_of_3 %}#python-tooltips), so if you hover any fields in the *Object Properties* panel, there's a tooltip to indicate how you address that specific attribute for that specific object in Python. In Figure 3.2, it's the x-coordinate for the cube.
-
-<figure>
-  <img src="{{ site.url }}/img/aqitbcc03/scripting-object-properties-panel.png" class="fullwidth" />
-  <figcaption>Figure 3.2: This x-coordinate for the Cube is stored in <code>bpy.data.objects["Cube"].location[0]</code></figcaption>
-</figure>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<blockquote>
-mathutils note?
-https://docs.blender.org/api/current/index.html
-</blockquote>
-
-.delete()
-removing the cube?
-
-
-
-
-
-
-
-
-
-
-
-executing scripts direct from command line (blender --python script_name.py)
-
-
-mention python comments
-
-
-
-
-
-
-
-
+If you're familiar with any object-oriented programming language, you've encountered attributes and methods before (and you've likely identified a few examples of these in the code so far). I won't review every attribute and method in the Blender scripting API---there are far too many for that! Instead, I'll use a few examples to help you discover what's available; you can use the [API documentation](https://docs.blender.org/api/current/) for the rest.
 
 ### Attributes
 
-Attributes are like variables that belong to objects. An object's data type determines its attributes. For example, the Cube---a three-dimensional "primitive" mesh, composed of vertices---has includes attributes for its dimensions, location, scale, and so on. The Cube data type is `bpy_types.Object`; you can confirm this using `type(D.objects['Cube'])`.
+Attributes are like variables that belong to objects. An object's data type determines its attributes. For instance, the cube---a three-dimensional mesh, composed of vertices---includes attributes for its dimensions, coordinates, and so on. The cube data type is `bpy_types.Object`; you can confirm this by printing `bpy.data.objects['Cube']` in the terminal or console.
 
-You'll explore some of the `Object` attributes using the Python Console. To begin, enter:
+The `location` attribute---one of the many `bpy_types.Object` attributes---contains the coordinates for your cube, that you can use to reposition it:
 
-```
-`D.objects['Cube'].`
-```
+{% highlight py %}
+bpy.data.objects['Cube'].location = (3, 0, 0)
+{% endhighlight %}
 
-Then, press tab for a long, alphabetically arranged list of attributes (and methods). See if you can spot the `location` attribute (you'll probably need to scroll up/back through the output):
+This positions the cube at the x-y-z coordinates (3, 0, 0). In this case, you're only affecting the x-coordinate, so instead, you might use:
 
-```
->>> D.objects['Cube'].
-                      ...
-                      location
-                      ...
-```
+{% highlight py %}
+bpy.data.objects['Cube'].location[0] = 3
+{% endhighlight %}
 
-You can you can find the relevant documentation for the `location` attribute here:
+Note that `.location[0]` is the index of the first (x) value in `(3, 0, 0)`. Alternatively, you can try the `.location.x` attribute, which is arguably the most intuitive code to read:
 
-*[https://docs.blender.org/api/current/bpy.types.Object.html](https://docs.blender.org/api/blender2.8/bpy.types.Object.html)*
+{% highlight py %}
+bpy.data.objects['Cube'].location.x = 3
+{% endhighlight %}
 
-You can use your web browser's search function (`Ctrl+F` or `Cmd+F`) to quickly get to the `location` entry; there are multiple mentions of "location" on the page and it's about the fifth from the top (Figure 3.2).
+Run the script and the cube should move to its new position (Figure 3.3), three units away from the centre of the scene along the x-axis:
+
+<figure>
+  <img src="{{ site.url }}/img/aqitbcc03/scripting-basics-addressing-location.png" class="fullwidth" />
+  <figcaption>Figure 3.3: This x-coordinate for the cube is now 3</figcaption>
+</figure>
+
+
+You've [enabled python tooltips]({% post_url 2020-07-14-a_quick_intro_to_blender_creative_coding--part_2_of_3 %}#python-tooltips), so if you hover your mouse pointer over any fields in the *Object Properties* panel, there's a tooltip to indicate how you address that specific attribute for that particular object in Python. This panel is usually located in the lower-right area of the Blender interface, in both the Layout and Scripting workspaces. In Figure 3.4, the tooltip reveals the Python details for the cube's x-coordinate:
+
+<figure>
+  <img src="{{ site.url }}/img/aqitbcc03/scripting-object-properties-panel.png" class="fullwidth" />
+  <figcaption>Figure 3.4: This x-coordinate for the Cube is stored in <code>bpy.data.objects["Cube"].location[0]</code></figcaption>
+</figure>
+
+If you right-click on this field, there's a menu option named **Online Python Reference** that opens the relevant documentation for the `location` attribute in your web browser (Figure 3.5).
 
 <figure>
   <img src="{{ site.url }}/img/aqitbcc03/scripting-basics-attributes-and-methods-location.png" class="fullwidth" />
-  <figcaption>Figure 3.2: The <code>location</code> entry in the online reference</figcaption>
+  <figcaption>Figure 3.5: The <code>location</code> entry in the online reference</figcaption>
 </figure>
 
-Take note of the URL, specifically, everything after the last slash. There's `bpy` then `types` then `Object`. Using this pattern, it's easy enough to guess what the URL for the `context` module is (*/bpy.types.Context.html*). You can also navigate the reference using the search feature and links in the left column.
+Take note of the URL in the browser address bar: [https://docs.blender.org/api/2.83/bpy.types.Object.html#bpy.types.Object.location](https://docs.blender.org/api/2.83/bpy.types.Object.html#bpy.types.Object.location). Specifically, note everything after the last slash. There's `bpy.types.Object.html` to load the web page, followed by `#bpy.types.Object.location` to jump/scroll to the `location` description. You can also navigate the reference using the search feature and links in the left column. Sometimes it's handy to use your web browser search function (`Ctrl+F` or `Cmd+F`) to find something on a given page quickly.
 
-As the documentation indicates, the `location` attribute takes three floating-point values (an x, y, and z coordinate, respectively). Move the Cube to a position five units above the centre of the scene:
+If you'd like to experiment with another attribute, perhaps try [`scale`](https://docs.blender.org/api/2.83/bpy.types.Object.html#bpy.types.Object.scale).
 
-```
-D.objects['Cube'].location = (0, 0, 5)
-```
-
-Alternatively, you could use any of the following lines:
-
-```
-D.objects['Cube'].location = 0, 0, 5
-D.objects['Cube'].location = Vector((0, 0, 5))
-D.objects['Cube'].location.z = 5
-```
-
-Now try a `scale` attribute. Type `D.objects['Cube'].scale` then press tab. The auto-complete option are `[0]`, `[1]`, or `[2]`; those indices represent the x, y, and z-scale respectively. Enter `D.objects['Cube'].scale[0] = 2` to double the width of the cube using the x-axis (Figure 3.3).
-
-<figure>
-  <img src="{{ site.url }}/img/aqitbcc03/scripting-basics-attributes-and-methods-location-and-scale.png" class="fullwidth" />
-  <figcaption>Figure 3.3: Manipulating the cube's location and scale attributes</figcaption>
-</figure>
-
-Now that you used a few different attributes, let's look at some methods.
+Now that you've used a few different attributes, let's look at methods.
 
 ### Methods
 
-Methods are like functions that belong to objects. You can list the `Object` methods using the Python Console. Enter:
+Methods are like functions that belong to objects, that perform operations. For instance, the [`bpy.ops.mesh`](https://docs.blender.org/api/blender2.8/bpy.ops.mesh.html) module includes several methods for adding meshes to your scene. In this section, you'll different methods to add and remove objects in your scene.
 
-```
-`D.objects['Cube'].`
-```
+The [`primitive_cone_add()`](https://docs.blender.org/api/blender2.8/bpy.ops.mesh.html#bpy.ops.mesh.primitive_cone_add) will "construct a conic mesh"; in other words, you use this this method to add cones to your scene (Figure 3.6). Add cone using this code:
 
-The methods are listed among the attributes; they're also covered in the [bpy.types.Object documentation](https://docs.blender.org/api/blender2.8/bpy.types.Object.html). You can distinguish methods by the parentheses on the end. See if you can spot the `select_set` method:
+{% highlight py %}
+bpy.ops.mesh.primitive_cone_add()
+{% endhighlight %}
 
-```
->>> D.objects['Cube'].
-                      ...
-                      select_set(
-                      ...
-```
+<figure>
+  <img src="{{ site.url }}/img/aqitbcc03/scripting-methods-add-cone.png" class="fullwidth" />
+  <figcaption>Figure 3.6: Adding a cone using <code>primitive_cone_add()</code></figcaption>
+</figure>
 
-This `select_set` method selects or deselects objects in the viewport. Deselect the Cube using:
-
-```
-`D.objects['Cube'].select_set(False)`
-```
-
-To select the Cube again, use an argument of `True`.
-
-To recap, you've use the Python Console to work with the `data` and `context` modules. You know how to address objects via Python code, and manipulate
+The [`primitive_cone_add()`] method can also accept *arguments* to specify cone radius, depth, location, rotation, scale, and more. Add a second
 
 
-https://docs.blender.org/api/current/info_tips_and_tricks.html
+
+
+~~~
+
+
+
 
 
 ## Animation
@@ -262,6 +179,27 @@ for i in range(0, fcount, 1):
     ob.keyframe_insert(data_path='location')
     currframe += fincr
 ~~~
+
+
+
+
+
+
+<blockquote>
+mathutils note?
+https://docs.blender.org/api/current/index.html
+</blockquote>
+
+.delete()
+removing the cube?
+
+executing scripts direct from command line (blender --python script_name.py)
+
+mention python comments
+
+
+
+
 
 
 ## Importing

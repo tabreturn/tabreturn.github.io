@@ -125,7 +125,7 @@ Now that you've used a few different attributes, let's look at methods.
 
 Methods are like functions that belong to objects, that perform operations. For instance, the [`bpy.ops.mesh`](https://docs.blender.org/api/blender2.8/bpy.ops.mesh.html) module includes several methods for adding meshes to your scene. In this section, you'll different methods to add and remove objects in your scene.
 
-The [`primitive_cone_add()`](https://docs.blender.org/api/blender2.8/bpy.ops.mesh.html#bpy.ops.mesh.primitive_cone_add) will "construct a conic mesh"; in other words, you use this this method to add cones to your scene (Figure 3.6). Add cone using this code:
+The [`primitive_cone_add()`](https://docs.blender.org/api/blender2.8/bpy.ops.mesh.html#bpy.ops.mesh.primitive_cone_add) will "construct a conic mesh"; in other words, you use this this method to add cones to your scene (Figure 3.6). Add this new line to the end of your script:
 
 {% highlight py %}
 bpy.ops.mesh.primitive_cone_add()
@@ -136,16 +136,33 @@ bpy.ops.mesh.primitive_cone_add()
   <figcaption>Figure 3.6: Adding a cone using <code>primitive_cone_add()</code></figcaption>
 </figure>
 
-The [`primitive_cone_add()`] method can also accept *arguments* to specify cone radius, depth, location, rotation, scale, and more. Add a second
+The `primitive_cone_add()` method can also accept *arguments* to specify the cone radius, depth, location, rotation, scale, and more. Add a second cone line to your script, that includes arguments to control its location:
 
+{% highlight py %}
+bpy.ops.mesh.primitive_cone_add(location=(-3, 0, 0))
+{% endhighlight %}
 
+When you run the script, a new cone appears. But, if you check the Outliner panel (Figure 3.7), you'll notice there are now three cones. The extra cone is a duplicate of the one in the center of the stage. Each time you run the script you're adding duplicates!
 
+<figure>
+  <img src="{{ site.url }}/img/aqitbcc03/scripting-methods-add-cone-args.png" class="fullwidth" />
+  <figcaption>Figure 3.7: There are now three cones</figcaption>
+</figure>
 
-~~~
+To prevent this from happening, you can add a loop that check for- and removes any meshes. You don't need the cube or its code anymore, so the final script looks like this:
 
+{% highlight py %}
+import bpy
 
+for obj in bpy.data.objects:
+    if obj.type == 'MESH':
+        bpy.data.objects.remove(obj)
 
+bpy.ops.mesh.primitive_cone_add()
+bpy.ops.mesh.primitive_cone_add(location=(-3, 0, 0))
+{% endhighlight %}
 
+You can find many more `bpy.ops.mesh` methods in the [API documentation](https://docs.blender.org/api/blender2.8/bpy.ops.mesh.html).
 
 ## Animation
 ~~~

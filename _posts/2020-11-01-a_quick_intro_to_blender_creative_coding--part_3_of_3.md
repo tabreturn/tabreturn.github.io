@@ -154,52 +154,50 @@ To prevent this from happening, you can add a loop that check for- and removes a
 {% highlight py %}
 import bpy
 
+# clear meshes in the scene
 for obj in bpy.data.objects:
     if obj.type == 'MESH':
         bpy.data.objects.remove(obj)
 
+# add two cones
 bpy.ops.mesh.primitive_cone_add()
 bpy.ops.mesh.primitive_cone_add(location=(-3, 0, 0))
 {% endhighlight %}
 
+Now, each time you run the script, it removes the meshes in the scene before adding them again.
+
 You can find many more `bpy.ops.mesh` methods in the [API documentation](https://docs.blender.org/api/blender2.8/bpy.ops.mesh.html).
 
 ## Animation
-~~~
-import bpy
-from math import ceil
 
-x = 0.0
-ob = bpy.data.objects.get('c')
-ob.location = (x, 0, 0)
+....
 
-# Animation variables.
-currframe = 0
-fcount = 10
-invfcount = 1.0 / (fcount - 1)
-frange = bpy.context.scene.frame_end - bpy.context.scene.frame_start
-if frange == 0:
-    bpy.context.scene.frame_end = 150
-    bpy.context.scene.frame_start = 0
-    frange = 150
-fincr = ceil(frange * invfcount)
+{% highlight py %}
+...
 
-for i in range(0, fcount, 1):
+# animation variables
+total_frames = 100
+keyframe_interval = 10
 
+# define a one hundred frame timeline
+bpy.context.scene.frame_end = total_frames
+bpy.context.scene.frame_start = 0
 
-    # Track the current key frame.
-    currframe = bpy.context.scene.frame_start
-    #for f in range(0, fcount, 1):
-    bpy.context.scene.frame_set(currframe)
-    x += 5
-    ob.location = (x, 0, 0)
-    ob.keyframe_insert(data_path='location')
-    currframe += fincr
-~~~
+# add keyframes
+for frame in range(0, total_frames + 1, keyframe_interval):
+    bpy.context.scene.frame_set(frame)
+    cone = bpy.data.objects['Cone']
+    cone.location.x = frame / 25
+    cone.keyframe_insert(data_path='location')
+{% endhighlight %}
 
+...
+https://docs.blender.org/manual/en/latest/editors/dope_sheet/index.html
 
-
-
+<figure>
+  <img src="{{ site.url }}/img/aqitbcc03/scripting-animation.png" class="fullwidth" />
+  <figcaption>Figure 3.8: There are now three cones</figcaption>
+</figure>
 
 
 <blockquote>

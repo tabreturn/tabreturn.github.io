@@ -23,7 +23,7 @@ The Info editor will log any warnings or error messages. It also logs the Python
   <figcaption>Figure 2.1: The Info area labelled in green</figcaption>
 </figure>
 
-Select the cube in the 3D viewport (so it's outlined orange), and press the `G` key on your keyboard. You can now move the cube to a new position. When you place the cube (using your left-mouse click), the Info editor will display something like the code highlighted in Figure 2.2:
+Select the cube in the 3D Viewport (so it's outlined orange), and press the `G` key on your keyboard. You can now move the cube to a new position. When you place the cube (using your left-mouse click), the Info editor will display something like the code highlighted in Figure 2.2:
 
 <figure>
   <img src="{{ site.url }}/img/aqitbcc02/scripting-tools-info-area-operation.png" class="fullwidth" />
@@ -70,7 +70,7 @@ The `bpy.data` module provides access to all of the data in your working file. T
 
 The `bpy_collection[3]` part indicates there are three objects---the Camera, Cube, and Light. I'll get into more detail about `bpy.data` shortly; it's something you'll use a lot---so often that Blender provides a *convenience variable*, `D`, to save you having to write out `bpy.data` in full each time. As an example, `D.objects` is the same as writing `bpy.data.objects`.
 
-There's another convenience variable that you should know about, `C`. This is equivalent to writing `bpy.context`. You can use it to access an active/selected object via `C.object`. Ensure that the cube is selected in the 3D viewport, then type:
+There's another convenience variable that you should know about, `C`. This is equivalent to writing `bpy.context`. You can use it to access an active/selected object via `C.object`. Ensure that the cube is selected in the 3D Viewport, then type:
 
 ```
 C.object.location = (0, 0, 0)

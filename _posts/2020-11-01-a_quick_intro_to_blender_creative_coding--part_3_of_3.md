@@ -258,6 +258,11 @@ for x in range(30):
 {% endhighlight %}
 
 
+<figure>
+  <img src="{{ site.url }}/img/aqitbcc03/wavy-cone-editor.png" class="fullwidth" />
+  <figcaption>...... </figcaption>
+</figure>
+
 This might take little while to process. Reduce the 30s
 
 
@@ -318,6 +323,9 @@ mention python comments
 
 
 ## Importing
+
+
+CHECK bl.txt (on desktop)
 
 *a.py*
 ~~~

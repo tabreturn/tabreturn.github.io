@@ -51,7 +51,7 @@ But there's much more you can do with `bpy.data.objects`. For instance, you can 
 
 ## Addressing Objects
 
-In [part 2]({% post_url 2020-07-14-a_quick_intro_to_blender_creative_coding--part_2_of_3 %}#the-python-console), you used the Python Console to affect the object selected in the 3D viewport. More often, though, you'll want to address objects via Python scripts without relying on what's selected in the GUI. You can use `bpy` to select objects by name, their position in a sequence of objects, or some other property. If you're using `bpy.context`, you must select the cube in the 3D viewport (so it's outlined orange) to manipulate it with Python code. With `bpy.data.objects`, you can address an object regardless of what's active in the Blender interface.
+In [part 2]({% post_url 2020-07-14-a_quick_intro_to_blender_creative_coding--part_2_of_3 %}#the-python-console), you used the Python Console to affect the object selected in the 3D Viewport. More often, though, you'll want to address objects via Python scripts without relying on what's selected in the GUI. You can use `bpy` to select objects by name, their position in a sequence of objects, or some other property. If you're using `bpy.context`, you must select the cube in the 3D Viewport (so it's outlined orange) to manipulate it with Python code. With `bpy.data.objects`, you can address an object regardless of what's active in the Blender interface.
 
 Use the Python `list()` function with `bpy.data.objects` to print a list of the objects in your scene:
 
@@ -73,7 +73,7 @@ If you're familiar with any object-oriented programming language, you've encount
 
 ### Attributes
 
-Attributes are like variables that belong to objects. An object's data type determines its attributes. For instance, the cube---a three-dimensional mesh, composed of vertices---includes attributes for its dimensions, coordinates, and so on. The cube data type is `bpy_types.Object`; you can confirm this by printing `bpy.data.objects['Cube']` in the terminal or console.
+Attributes are like variables that belong to objects. An object's data type determines its attributes. For instance, a cube---a three-dimensional mesh, composed of vertices---includes attributes for its dimensions, coordinates, and so on. The cube data type is `bpy_types.Object`; you can confirm this by printing `type(bpy.data.objects['Cube'])` in the terminal or console.
 
 The `location` attribute---one of the many `bpy_types.Object` attributes---contains the coordinates for your cube, that you can use to reposition it:
 
@@ -115,7 +115,7 @@ If you right-click on this field, there's a menu option named **Online Python Re
   <figcaption>Figure 3.5: The <code>location</code> entry in the online reference</figcaption>
 </figure>
 
-Take note of the URL in the browser address bar: [https://docs.blender.org/api/2.83/bpy.types.Object.html#bpy.types.Object.location](https://docs.blender.org/api/2.83/bpy.types.Object.html#bpy.types.Object.location). Specifically, note everything after the last slash. There's `bpy.types.Object.html` to load the web page, followed by `#bpy.types.Object.location` to jump/scroll to the `location` description. You can also navigate the reference using the search feature and links in the left column. Sometimes it's handy to use your web browser search function (`Ctrl+F` or `Cmd+F`) to find something on a given page quickly.
+Take note of the URL in the browser address bar: [https://docs.blender.org/api/2.83/bpy.types.Object.html#bpy.types.Object.location](https://docs.blender.org/api/2.83/bpy.types.Object.html#bpy.types.Object.location). Specifically, everything after the last slash. There's **/bpy.types.Object.html** to load the web page, followed by **#bpy.types.Object.location** to jump/scroll to the `location` description. You can also navigate the reference using the search feature and links in the left column. Sometimes it's handy to use your web browser search function (`Ctrl+F` or `Cmd+F`) to find something on a given page quickly.
 
 If you'd like to experiment with another attribute, perhaps try [`scale`](https://docs.blender.org/api/2.83/bpy.types.Object.html#bpy.types.Object.scale).
 
@@ -123,33 +123,35 @@ Now that you've used a few different attributes, let's look at methods.
 
 ### Methods
 
-Methods are like functions that belong to objects, that perform operations. For instance, the [`bpy.ops.mesh`](https://docs.blender.org/api/blender2.8/bpy.ops.mesh.html) module includes several methods for adding meshes to your scene. In this section, you'll different methods to add and remove objects in your scene.
+Methods are like functions that belong to objects. Methods perform operations---for instance, the [`bpy.ops.mesh`](https://docs.blender.org/api/blender2.8/bpy.ops.mesh.html) module includes several methods for adding meshes to your scene. In this section, you'll use different methods to add and remove objects in your scene.
 
-The [`primitive_cone_add()`](https://docs.blender.org/api/blender2.8/bpy.ops.mesh.html#bpy.ops.mesh.primitive_cone_add) will "construct a conic mesh"; in other words, you use this this method to add cones to your scene (Figure 3.6). Add this new line to the end of your script:
+The [`primitive_cone_add()`](https://docs.blender.org/api/blender2.8/bpy.ops.mesh.html#bpy.ops.mesh.primitive_cone_add) will "construct a conic mesh"; in other words, you use this method to add cones to your scene (Figure 3.6). Add this new line to the end of your script:
 
 {% highlight py %}
 bpy.ops.mesh.primitive_cone_add()
 {% endhighlight %}
+
+This should add a new cone when you run it.
 
 <figure>
   <img src="{{ site.url }}/img/aqitbcc03/scripting-methods-add-cone.png" class="fullwidth" />
   <figcaption>Figure 3.6: Adding a cone using <code>primitive_cone_add()</code></figcaption>
 </figure>
 
-The `primitive_cone_add()` method can also accept *arguments* to specify the cone radius, depth, location, rotation, scale, and more. Add a second cone line to your script, that includes arguments to control its location:
+The `primitive_cone_add()` method can also accept *arguments* to specify the cone radius, depth, location, rotation, scale, and more. Add a second cone line to your script that includes an argument to control its location:
 
 {% highlight py %}
 bpy.ops.mesh.primitive_cone_add(location=(-3, 0, 0))
 {% endhighlight %}
 
-When you run the script, a new cone appears. But, if you check the Outliner panel (Figure 3.7), you'll notice there are now three cones. The extra cone is a duplicate of the one in the center of the stage. Each time you run the script you're adding duplicates!
+When you run the script, a new cone appears. But, if you check the Outliner panel (Figure 3.7), you'll notice there are now three cones in the scene. The extra cone is a duplicate of the one in the centre of the stage. Each time you run the script you're adding further duplicates!
 
 <figure>
   <img src="{{ site.url }}/img/aqitbcc03/scripting-methods-add-cone-args.png" class="fullwidth" />
-  <figcaption>Figure 3.7: There are now three cones</figcaption>
+  <figcaption>Figure 3.7: The Outliner panel indicates there are three cones (although it looks like there are two)</figcaption>
 </figure>
 
-To prevent this from happening, you can add a loop that check for- and removes any meshes. You don't need the cube or its code anymore, so the final script looks like this:
+To prevent this duplication occurring, you can add a loop that checks for- and removes any meshes. You don't need the cube or its code anymore, so the final script looks like this:
 
 {% highlight py %}
 import bpy
@@ -164,17 +166,18 @@ bpy.ops.mesh.primitive_cone_add()
 bpy.ops.mesh.primitive_cone_add(location=(-3, 0, 0))
 {% endhighlight %}
 
-Now, each time you run the script, it removes the meshes in the scene before adding them again.
+The `remove()` method removes the object (in the parentheses) from the scene. Now, each time you run the script, it clears out the meshes before adding them again.
 
 You can find many more `bpy.ops.mesh` methods in the [API documentation](https://docs.blender.org/api/blender2.8/bpy.ops.mesh.html).
 
 ## Animation
 
-....
+Programming animations in Blender is immensely satisfying. You can create stunning animations that combine the robust Python API, powerful rendering, and simulation features. What follows is an elementary example, that builds of your existing script, to get you started with multiple frames.
+
+Add the following code to the end of your script:
 
 {% highlight py %}
 ...
-
 # animation variables
 total_frames = 100
 keyframe_interval = 10
@@ -191,22 +194,71 @@ for frame in range(0, total_frames + 1, keyframe_interval):
     cone.keyframe_insert(data_path='location')
 {% endhighlight %}
 
-...
-https://docs.blender.org/manual/en/latest/editors/dope_sheet/index.html
+There are comment lines (starting with a `#`) to help explain each step. The `for` loop inserts a new key frame every 10 frames (`keyframe_interval`), across a timeline that spans from frame 0 to frame 100 (`total_frames`). The cone advances 0.04 units along the x-axis between key frames; Blender will interpolate/tween this movement to smooth it out.
+
+To help visualise how what's happening, I've switched out the Console panel in the area below the 3D Viewport for the [Dope Sheet](https://docs.blender.org/manual/en/latest/editors/dope_sheet/index.html). You can see each key frame represented as a yellow dot (Figure 3.8). If you hit the space key, the animation will loop and the blue playhead line will indicate which frame is playing.
 
 <figure>
   <img src="{{ site.url }}/img/aqitbcc03/scripting-animation.png" class="fullwidth" />
-  <figcaption>Figure 3.8: There are now three cones</figcaption>
+  <figcaption>Figure 3.8: The cone animation </figcaption>
 </figure>
 
+You can decide how large or small you'd the key frame should be. This is a linear motion that, really, only requires a key frame on frames 0 and 100. But I wanted to demonstrate how you can add many more key frames using a loop.
+
+
+## Wavy Cones (or Coney Waves?)
+
+Here's a script that combine all of the techniques in this tutorial to generate a wavy pattern of cones:
+
+{% highlight py %}
+
+{% endhighlight %}
+
+
+
+
+
+render guide https://docs.blender.org/manual/en/dev/render/index.html
+a cool-looking animation that you can convert into a looping GIF.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<hr style="padding-bottom:300px"/>
 
 <blockquote>
 mathutils note?
 https://docs.blender.org/api/current/index.html
 </blockquote>
 
-.delete()
-removing the cube?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 executing scripts direct from command line (blender --python script_name.py)
 

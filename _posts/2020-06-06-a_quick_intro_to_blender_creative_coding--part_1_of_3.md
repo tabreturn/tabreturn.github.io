@@ -9,6 +9,8 @@ categories: code blender python
 <a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }}</a> &raquo;<br />
 </p>
 
+ *At the time of writing, Blender is on release 2.83; this is also a long term support release ([LTS](https://www.blender.org/download/lts/)).*
+
 In this series of tutorials, I'll introduce Blender as a tool for creative coding. [Blender](https://www.blender.org/) is open-source software for 3D modelling and animation that can also handle compositing, video editing, and 2D animation. Artists and animators operate Blender using a graphic user interface (Figure 1.1), but it also features a Python API that can do everything the GUI can and more. That means you can use Python code draw, animate, and manipulate 3D objects.
 
 <figure>
@@ -28,7 +30,7 @@ Some Blender knowledge is useful but not essential.
 
 ## Getting Started
 
-Here, I'll step you through installing Blender, launching it via the terminal, accessing its scripting interface, and running your first line of code. At the time of writing, Blender is on release 2.83; this is also a long term support release ([LTS](https://www.blender.org/download/lts/)).
+Here, I'll step you through installing Blender, launching it via the terminal, accessing its scripting interface, and running your first line of code.
 
 Download Blender from the Blender website at [https://www.blender.org/download/](https://www.blender.org/download/). On the Download page, click the *other versions* option (Figure 1.2). I'm using a *portable* version. I prefer not to use installers if I can; this way, I know exactly where the Blender application is stored, which is useful for the command line step (coming up shortly). For Windows, download the *Portable(.zip)* file. For Linux, download the *non*-Snap-Store version. For macOS, there's just one option, which is the one you want.
 

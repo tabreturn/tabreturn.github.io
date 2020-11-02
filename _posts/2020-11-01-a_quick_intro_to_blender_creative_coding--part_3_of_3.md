@@ -210,6 +210,17 @@ You can decide how large or small you'd the key frame should be. This is a linea
 
 Here's a script that combines all of the techniques in this tutorial to generate a wavy pattern of cones:
 
+<figure>
+  <script>
+    var gifanimation1 = "{{ site.url }}/img/aqitbcc03/wavy-cone-animation.gif";
+    var gitposter1 = "{{ site.url }}/img/aqitbcc03/wavy-cone-poster.gif";
+  </script>
+  <img src="{{ site.url }}/img/aqitbcc03/wavy-cone-poster.gif" class="fullwidth" style="cursor:pointer" onclick="this.src = this.src == gitposter1 ? gifanimation1 : gitposter1;">
+  <figcaption>
+    ...
+  </figcaption>
+</figure>
+
 {% highlight py %}
 import bpy
 from math import sin, tau
@@ -250,16 +261,9 @@ for x in range(30):
 This might take little while to process. Reduce the 30s
 
 
-<figure>
-  <script>
-    var gifanimation1 = "{{ site.url }}/img/aqitbcc03/wavy-cone-animation.gif";
-    var gitposter1 = "{{ site.url }}/img/aqitbcc03/wavy-cone-poster.gif";
-  </script>
-  <img src="{{ site.url }}/img/aqitbcc03/wavy-cone-poster.gif" class="fullwidth" style="cursor:pointer" onclick="this.src = this.src == gitposter1 ? gifanimation1 : gitposter1;">
-  <figcaption>
-    ...
-  </figcaption>
-</figure>
+ I messed around abit with lighting and materials ...
+
+
 
 
 render guide https://docs.blender.org/manual/en/dev/render/index.html
@@ -399,8 +403,7 @@ These Blender creative coding tutorials were put together with help from these v
 * http://web.purplefrog.com/~thoth/blender/python-cookbook/
 * https://blenderscripting.blogspot.com/
 * https://cgcookie.com/articles/blender-2-8-python-scripting-superpowers-for-non-programmers
-* https://docs.blender.org/api/blender2.8/
-* https://docs.blender.org/api/master/
+* https://docs.blender.org/api/current/
 * https://github.com/iklupiani/blenderscriptingwithpython
 * https://github.com/njanakiev/blender-scripting
 * https://github.com/zeffii/BlenderPythonRecipes/wiki

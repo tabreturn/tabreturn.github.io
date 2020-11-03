@@ -18,6 +18,7 @@ blockquote figure {
 
 blockquote p {
   margin: 0;
+  padding-left: 0;
 }
 
 a, button {

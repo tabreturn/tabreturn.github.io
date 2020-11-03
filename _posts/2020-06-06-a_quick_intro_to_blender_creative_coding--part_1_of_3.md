@@ -78,16 +78,12 @@ Time to enter your first line of code! In Blender, switch to the *Scripting* tab
 </figure>
 
 <blockquote markdown="1">
-  <p>
   NOTE: The Blender window is divided into [**areas**](https://docs.blender.org/manual/en/latest/interface/window_system/areas.html) that contain [**editors**](https://docs.blender.org/manual/en/latest/editors/index.html). An area is a rectangular partition that you can resize (or divide further). For example, the largest area in the Scripting workspace is for the **Text Editor**, which you'll use to type code. Selecting any workspace will present a predefined arrangement of editors; there is a button to switch editors at the top-left corner of each area (Figure 1.7).
-  </p>
   <figure>
    <img src="{{ site.url }}/img/aqitbcc01/getting-started-editors.png" class="fullwidth" />
    <figcaption>Figure 1.7: The Editor Type selector</figcaption>
   </figure>
-  <p>
   There's no need to change the Text Editor right now.
-  </p>
 </blockquote>
 
 Enter `print('Hello, World!')` into the text editor (Figure 1.8); then run the script using **Alt-P** (or clicking the *▶* button). The terminal should display a `Hello, World!`.

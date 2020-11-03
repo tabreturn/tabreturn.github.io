@@ -202,12 +202,16 @@ for frame in range(0, total_frames + 1, keyframe_interval):
 
 There are comment lines (starting with a `#`) to help explain each step. The `for` loop inserts a new keyframe every 10 frames (`keyframe_interval`), across a timeline that spans from frame 0 to frame 100 (`total_frames`). The cone advances 0.04 units along the x-axis between keyframes; Blender will interpolate/tween this movement to smooth it out.
 
-To help visualise how what's happening, I've switched out the Console panel (in the area below the 3D Viewport) for the [*Dope Sheet*](https://docs.blender.org/manual/en/latest/editors/dope_sheet/index.html). You can see each keyframe represented as a yellow dot (Figure 3.8). If you hit the space key, the animation will loop; the position of the blue playhead line indicates which frame is playing.
+To help visualise how what's happening, I've switched out the Console panel (in the area below the 3D Viewport) for the [*Dope Sheet*](https://docs.blender.org/manual/en/latest/editors/dope_sheet/index.html). You can see each keyframe represented as a yellow dot (Figure 3.8). You press the space key to start and stop the animation; the position of the blue playhead line indicates which frame is playing.
 
 <figure>
   <img src="{{ site.url }}/img/aqitbcc03/scripting-animation.png" class="fullwidth" />
   <figcaption>Figure 3.8: The Dope Sheet for the cone animation</figcaption>
 </figure>
+
+<blockquote>
+NOTE: When you start the animation using the space key, it'll loop when it reaches the end. It's handy to leave it looping while you code so that when you rerun the script, the animation automatically refreshes the preview.
+</blockquote>
 
 You can decide how small or large the keyframe intervals should be. By default, the movement between keyframes is linear---so, really, this animation only requires a keyframe on frames 0 and 100. But I wanted to demonstrate how you can add many more keyframes using a loop. If you wish to tweak the animation curves, you can do so using the [Graph Editor](https://docs.blender.org/manual/en/dev/editors/graph_editor/).
 
@@ -368,9 +372,12 @@ bpy.context.scene.render.filepath = '/home/tabreturn/Desktop/output.jpg'
 bpy.ops.render.render(write_still = True)
 {% endhighlight %}
 
-<path_to_blender_directory>/blender --background --python foo.py
-<path_to_blender_directory>/blender bar.blend --background --python foo.py
+path_to_blender_directory/blender --background --python foo.py
+path_to_blender_directory/blender bar.blend --background --python foo.py
 
+automatically refreshes the preview.
+
+figure of setup
 
 https://docs.blender.org/api/current/info_tips_and_tricks.html
 

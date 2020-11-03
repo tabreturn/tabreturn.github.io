@@ -300,11 +300,11 @@ importlib.reload(bar)
 print(bar.greeting)
 {% endhighlight %}
 
-My blender (.blend) file, *foo.py*, and *bar.py* are all saved in the same folder; the `dir` variable points to that location. The `dir` path is appended to the `sys.path` so that I can import any python files in the folder. If I change the `greeting` value in *bar.py*, the `print()` line will print the updated value---but, only because I've included an `importlib.reload(bar)` line.
+My blender (.blend) file, *foo.py*, and *bar.py* are all saved in the same folder; the `dir` variable points to that location. The `dir` path is appended to the `sys.path` so that I can import any python files in that folder. If I change the `greeting` value in *bar.py*, the `print()` line will print the updated value---but, only because I've included an `importlib.reload(bar)` line.
 
 **You can use pip (the de-facto Python package installer)** for managing 3rd party packages, but you should use the version included with Blender. Here's a demonstration for installing the [*cowsay*](https://pypi.org/project/cowsay/) package.
 
- First, open your terminal and `cd` to your Blender install directory, then `cd` into the *2.83* directory therein (or whatever version number is applicable). Now enter line 1, hit return, then enter line 2 and return:
+First, open your terminal and `cd` to your Blender install directory, then `cd` into the *2.83* directory therein (or whatever version number is applicable). Now enter the following commands one after the other:
 
 ```
 1. python/bin/python3.7m python/lib/python3.7/ensurepip
@@ -359,11 +359,12 @@ You might prefer to write your code in a different editor. This is simple enough
   <figcaption>Figure 3.11: The icon to resolve conflicts is highlighted in green</figcaption>
 </figure>
 
-If you click that button, there's a *Reload from disk* option; this will update Blender's Text Editor to reflect the changes you've made in your external editor (Atom?). There's also an option to *Make text internal*, which saves the Blender version of the script in the .blend file (along with the models, materials, and scene data). I prefer to store Python scripts in separate files so that I have the option of working with code using external tools, and switching out scripts as I please.
+If you click that button, there's a *Reload from disk* option; this will update Blender's Text Editor to reflect the changes you've made in your external editor (Atom?). There's also an option to *Make text internal*, which saves the Blender version of the script in the .blend file (along with the models, materials, and scene data). I prefer to store Python scripts in separate files so that I have the option of working with code using external tools and switching out scripts as I please.
 
-You can also **execute scripts directly from the command line**, without having to launch Blender at all. You'll have to add some code to render the output, though:
+You can also **execute scripts directly from the command line**, without having to fully launch Blender. You'll have to add some code to render the output/visual result, though:
 
 {% highlight py %}
+# foo.py
 import bpy
 bpy.ops.mesh.primitive_cone_add(location=(-3, 0, 0))
 output = '/home/nuc/Desktop/render.png'
@@ -371,7 +372,7 @@ bpy.context.scene.render.filepath = output
 bpy.ops.render.render(write_still=True)
 {% endhighlight %}
 
-This script adds a cone to the standard scene then renders it to a file named `render.png` (on my Desktop). To run this, I `cd` to my Desktop directory and execute the following command:
+This script adds a cone to the standard scene then renders it to a file named `render.png` (on my Desktop). Note that I've also saved the script to my Desktop. To run this, I `cd` to my Desktop directory and execute the following command:
 
 ```
 <blender_dir>/blender --background --python foo.py
@@ -395,15 +396,16 @@ If you want a scene with some data you can manipulate, add the .blend file to th
 ```
 <blender_dir>/blender bar.blend --background --python foo.py
 ```
+
 The Blender website has more [tips and tricks](https://docs.blender.org/api/current/info_tips_and_tricks.html) for your coding setup.
 
 ## Summary
 
-In this short tutorial series, I've introduced some Blender scripting fundamentals---the Python Console for one-liners, options you can set to enable Python tooltips and developer extras, the `bpy` module and some of its attributes and methods, and how to programming animation. I also covered some techniques for importing Python code from other files and using external code editors.
+In this short tutorial series, I've introduced some Blender scripting fundamentals---the Python Console for one-liners, options you can set to enable Python tooltips and developer extras, the `bpy` module and some of its attributes and methods, and how to program animation. I also covered some techniques for importing Python code from other files and using external code editors.
 
-But there's so much to explore in Blender for creative coding. Just about anything you can do in the GUI, you can replicate using Python code, then take that a step further with the algorithms you devise. Blender's [Shader Node](https://docs.blender.org/manual/en/latest/render/shader_nodes/index.html) system is terrific for creating all sorts of visual effects using a visual scripting language (think: connecting nodes as opposed to writing code).
+But there's so much to explore in Blender for creative coding. Just about anything you can do in the GUI, you can replicate using Python code, then take that a step further with algorithms you devise. Blender's [Shader Node](https://docs.blender.org/manual/en/latest/render/shader_nodes/index.html) system is terrific for creating shaders using a visual scripting language (think: connecting nodes as opposed to writing code).
 
-If you're looking for more on Blender scripting, you can try the following GitHub topic searches: [blender-python](https://github.com/topics/blender-python) and [blender-scripts](https://github.com/topics/blender-scripts). For some inspiring creative code projects, check out: [blog.lightprocesses.com](https://blog.lightprocesses.com/); [Manu Järvinen's](https://github.com/manujarvinen/Blender-Python-scripts) and [Nikolai Janakiev's](https://github.com/njanakiev/blender-scripting) Blender scripts; [Michael Davies' spaceship generator](https://github.com/a1studmuffin/SpaceshipGenerator). If you're stuck or have burning questions, there's always [Blender's StackExchange](https://blender.stackexchange.com/questions/tagged/scripting).
+If you're looking for cool Blender scripts, you can try the following GitHub topic searches: [blender-python](https://github.com/topics/blender-python) and [blender-scripts](https://github.com/topics/blender-scripts). For some inspiring projects, check out: [blog.lightprocesses.com](https://blog.lightprocesses.com/); [Manu Järvinen's](https://github.com/manujarvinen/Blender-Python-scripts) and [Nikolai Janakiev's](https://github.com/njanakiev/blender-scripting) Blender scripts; [Michael Davies' spaceship generator](https://github.com/a1studmuffin/SpaceshipGenerator). If you're stuck or have burning technical questions, there's always [Blender's StackExchange](https://blender.stackexchange.com/questions/tagged/scripting).
 
 If you create anything cool, please share it with me!
 

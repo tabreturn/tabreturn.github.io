@@ -8,6 +8,14 @@ body.dark img {
   padding: 6px;
 }
 
+blockquote {
+  margin-left: 0;
+}
+
+blockquote p {
+  margin: 0;
+}
+
 a, button {
   cursor: pointer;
 }

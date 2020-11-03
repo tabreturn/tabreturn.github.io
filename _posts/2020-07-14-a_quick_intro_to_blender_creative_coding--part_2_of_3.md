@@ -153,9 +153,6 @@ I've reviewed some Blender features to help you develop scripts. You'll use thes
 In the next section, you'll move onto some Blender scripting basics, manipulating 3D objects using code you write in the Text Editor.
 
 <p style="text-align:right" markdown="1">
-<em>next section coming soon</em><br />
-<!--
 <a href="{{ page.next.url }}">{{ page.next.title | split:'–'| last }}</a> &raquo;<br />
--->
 [Complete list of Blender Creative Coding lessons]({{ site.baseurl }}/#blender-reverse)
 </p>

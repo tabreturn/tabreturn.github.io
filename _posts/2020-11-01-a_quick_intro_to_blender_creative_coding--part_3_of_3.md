@@ -20,6 +20,10 @@ Before proceeding, open Blender (using the [command line]({% post_url 2020-06-06
 
 The `bpy` library is what makes all of the magic happen. It contains nine main modules that enable you to control Blender using Python; those are [`bpy.app`](https://docs.blender.org/api/blender2.8/bpy.app.html), [`bpy.context`](https://docs.blender.org/api/blender2.8/bpy.context.html), [`bpy.data`](https://docs.blender.org/api/blender2.8/bpy.data.html), [`bpy.msgbus`](https://docs.blender.org/api/blender2.8/bpy.msgbus.html), [`bpy.ops`](https://docs.blender.org/api/blender2.8/bpy.ops.html), [`bpy.path`](https://docs.blender.org/api/blender2.8/bpy.path.html), [`bpy.props`](https://docs.blender.org/api/blender2.8/bpy.props.html), [`bpy.types`](https://docs.blender.org/api/blender2.8/bpy.types.html), and [`bpy.utils`](https://docs.blender.org/api/blender2.8/bpy.utils.html). In the Python Console, the `bpy` library is automatically imported and available to use immediately. But when you're writing Python scripts in the Text Editor (or any other code editor), you must add the necessary `import` line(s) before you can utilise `bpy`.
 
+<blockquote markdown="1">
+In addition to `bpy`, Blender includes several standalone modules, like [`aud`](https://docs.blender.org/api/current/aud.html) for audio, and [`mathutils`](https://docs.blender.org/api/current/mathutils.html) for manipulating matrices, eulers, quaternions and vectors.
+</blockquote>
+
 Switch to the Scripting tab (Figure 3.1), then click New in the Text Editor to create a new Python script.
 
 <figure>
@@ -115,7 +119,7 @@ If you right-click on this field, there's a menu option named **Online Python Re
   <figcaption>Figure 3.5: The <code>location</code> entry in the online reference</figcaption>
 </figure>
 
-Take note of the URL in the browser address bar: [https://docs.blender.org/api/2.83/bpy.types.Object.html#bpy.types.Object.location](https://docs.blender.org/api/2.83/bpy.types.Object.html#bpy.types.Object.location). Specifically, everything after the last slash. There's **/bpy.types.Object.html** to load the web page, followed by **#bpy.types.Object.location** to jump/scroll to the `location` description. You can also navigate the reference using the search feature and links in the left column. Sometimes it's handy to use your web browser search function (`Ctrl+F` or `Cmd+F`) to find something on a given page quickly.
+Take note of the URL in the browser address bar: <span style="word-wrap: break-word">[https://docs.blender.org/api/2.83/bpy.types.Object.html#bpy.types.Object.location](https://docs.blender.org/api/2.83/bpy.types.Object.html#bpy.types.Object.location)</span>. Specifically, everything after the last slash. There's **/bpy.types.Object.html** to load the web page, followed by **#bpy.types.Object.location** to jump/scroll to the `location` description. You can also navigate the reference using the search feature and links in the left column. Sometimes it's handy to use your web browser search function (`Ctrl+F` or `Cmd+F`) to find something on a given page quickly.
 
 If you'd like to experiment with another attribute, perhaps try [`scale`](https://docs.blender.org/api/2.83/bpy.types.Object.html#bpy.types.Object.scale).
 
@@ -172,7 +176,11 @@ You can find many more `bpy.ops.mesh` methods in the [API documentation](https:/
 
 ## Animation
 
-Programming animations in Blender is immensely satisfying. You can create stunning animations that combine the robust Python API, powerful rendering, and simulation features. What follows is an elementary example, that builds of your existing script, to get you started with multiple frames.
+Programming animations in Blender is immensely satisfying. You can create stunning animations that combine the robust Python API, a powerful renderer, and simulation features. Bear in mind, though, this isn't a 'real-time' engine. You'll define your keyframes up-front, and render them completely, to produce a sequence of frames that form an animation. What follows is an elementary example, that builds of your existing script, to get you started with multiple frames.
+
+<blockquote markdown="1">
+Blender did include a [game engine](https://en.wikipedia.org/wiki/Blender_Game_Engine), a feature that has since been discontinued. However, you can investigate [UPBGE](https://upbge.org/) and [Armory](https://armory3d.org/) that aim to provide a complete game development solutions within the Blender environment.
+</blockquote>
 
 Add the following code to the end of your script:
 
@@ -194,32 +202,33 @@ for frame in range(0, total_frames + 1, keyframe_interval):
     cone.keyframe_insert(data_path='location')
 {% endhighlight %}
 
-There are comment lines (starting with a `#`) to help explain each step. The `for` loop inserts a new key frame every 10 frames (`keyframe_interval`), across a timeline that spans from frame 0 to frame 100 (`total_frames`). The cone advances 0.04 units along the x-axis between key frames; Blender will interpolate/tween this movement to smooth it out.
+There are comment lines (starting with a `#`) to help explain each step. The `for` loop inserts a new keyframe every 10 frames (`keyframe_interval`), across a timeline that spans from frame 0 to frame 100 (`total_frames`). The cone advances 0.04 units along the x-axis between keyframes; Blender will interpolate/tween this movement to smooth it out.
 
-To help visualise how what's happening, I've switched out the Console panel in the area below the 3D Viewport for the [Dope Sheet](https://docs.blender.org/manual/en/latest/editors/dope_sheet/index.html). You can see each key frame represented as a yellow dot (Figure 3.8). If you hit the space key, the animation will loop and the blue playhead line will indicate which frame is playing.
+To help visualise how what's happening, I've switched out the Console panel in the area below the 3D Viewport for the [Dope Sheet](https://docs.blender.org/manual/en/latest/editors/dope_sheet/index.html). You can see each keyframe represented as a yellow dot (Figure 3.8). If you hit the space key, the animation will loop and the blue playhead line will indicate which frame is playing.
 
 <figure>
   <img src="{{ site.url }}/img/aqitbcc03/scripting-animation.png" class="fullwidth" />
   <figcaption>Figure 3.8: The cone animation </figcaption>
 </figure>
 
-You can decide how large or small you'd the key frame should be. This is a linear motion that, really, only requires a key frame on frames 0 and 100. But I wanted to demonstrate how you can add many more key frames using a loop.
-
+You can decide how large or small you'd the keyframe should be. This is a linear motion that, really, only requires a keyframe on frames 0 and 100. But I wanted to demonstrate how you can add many more keyframes using a loop. If you wish to tweak tweening behaviour, you can do so using the [Graph Editor](https://docs.blender.org/manual/en/dev/editors/graph_editor/).
 
 ## Wavy Cones (or Coney Waves?)
 
-Here's a script that combines all of the techniques in this tutorial to generate a wavy pattern of cones:
+Here's a script that combines all of the techniques in this tutorial to generate a wavy pattern of cones. Click on the image below (Figure 3.9) to view the result you are working toward:
 
 <figure>
   <script>
     var gifanimation1 = "{{ site.url }}/img/aqitbcc03/wavy-cone-animation.gif";
-    var gitposter1 = "{{ site.url }}/img/aqitbcc03/wavy-cone-poster.gif";
+    var gitposter1 = "{{ site.url }}/img/aqitbcc03/wavy-cone-poster.png";
   </script>
-  <img src="{{ site.url }}/img/aqitbcc03/wavy-cone-poster.gif" class="fullwidth" style="cursor:pointer" onclick="this.src = this.src == gitposter1 ? gifanimation1 : gitposter1;">
+  <img src="{{ site.url }}/img/aqitbcc03/wavy-cone-poster.png" class="fullwidth" style="cursor:pointer" onclick="this.src = this.src == gitposter1 ? gifanimation1 : gitposter1;">
   <figcaption>
-    ...
+    Figure 3.9: Click the image to play the animation
   </figcaption>
 </figure>
+
+Here's the code for the animation:
 
 {% highlight py %}
 import bpy
@@ -257,104 +266,88 @@ for x in range(30):
             theta += tau / total_frames
 {% endhighlight %}
 
+In this instance, I haven't used a keyframe interval. I've used a `sin()` function to generate sine-wave motion; I must import this from the `math` library, along with `tau` (which is equal to 2π). The Dope Sheet (Figure 3.10) reveals that there is a separate keyframe for each of the 150 frames. Running the script can take a while, depending on how powerful your computer is. You can reduce the `30` values (in each `range()` function) to speed things up.
 
 <figure>
   <img src="{{ site.url }}/img/aqitbcc03/wavy-cone-editor.png" class="fullwidth" />
-  <figcaption>...... </figcaption>
+  <figcaption>Figure 3-10: Every frame has its own keyframe</figcaption>
 </figure>
 
-This might take little while to process. Reduce the 30s
+Now you can render the animation. I don't cover how to do this here, but you can refer to [the Blender manual](https://docs.blender.org/manual/en/dev/render/index.html) for guidance. I also added some lighting and material effects, hence the black cones and white background. I used [GIMP](https://www.gimp.org/) to compile the frames (PNGs) into a looping GIF animation.
 
+## A Few More Words On Importing
 
- I messed around abit with lighting and materials ...
+There are a few things you should know about importing non-Blender modules. This includes splitting you script into multiple Python files, and using other 3rd-party packages (libraries and modules).
 
+**You must reload your any Python code you import** using `importlib.reload()`. For example, here is a file named *bar.py* file that contains a `greeting` variable:
 
+*bar.py*
+{% highlight py %}
+greeting = 'Hello, world!'
+{% endhighlight %}
 
+I import `bar` into my main script, named *foo.py*, so that I can use the `greeting` value:
 
-render guide https://docs.blender.org/manual/en/dev/render/index.html
-a cool-looking animation that you can convert into a looping GIF.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<hr style="padding-bottom:300px"/>
-
-<blockquote>
-mathutils note?
-https://docs.blender.org/api/current/index.html
-</blockquote>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-executing scripts direct from command line (blender --python script_name.py)
-
-mention python comments
-
-
-
-
-
-
-## Importing
-
-
-CHECK bl.txt (on desktop)
-
-*a.py*
-~~~
+*foo.py*
+{% highlight py %}
 import bpy, sys, os, importlib
-
 dir = os.path.dirname(bpy.data.filepath)
 sys.path.append(dir)
 
-import b
-importlib.reload(b)
+import bar
+importlib.reload(bar)
+print(bar.greeting)
+{% endhighlight %}
 
-y = b.test()
-y.bye()
-~~~
+My blender file, *foo.py*, and *bar.py* are all saved in the same folder (so that all of the paths work). If I change the `greeting` value in *bar.py*, the `print()` line will print the new value. But, only because I've included a `importlib.reload(bar)` line.
 
+**You can use pip (the de facto Python package installer)** for managing 3rd party modules. Here is a demonstration of to use use it to install the package [*cowsay*](https://pypi.org/project/cowsay/). Open your terminal and `cd` to your Blender install, then into the `2.83` directory therein (or whatever version number is applicable). Then enter the following:
 
-*b.py*
-~~~
-import bpy
+```
+python/bin/python3.7m python/lib/python3.7/ensurepip
+python/bin/pip3 install cowsay --target python/lib/python3.7/
+```
 
-class test():
+On Windows, you'll enter:
 
-    @staticmethod
-    def bye():
-        print('bye!')
-~~~
+```
+python\bin\python.exe python\lib\ensurepip
+python\bin\python.exe -m pip install cowsay --target python\lib
+```
 
+You can list the packages you've installed using `python/bin/pip3 list` (or `python\bin\python.exe -m pip list` on Windows). The terminal should display something like this:
 
-### Using Another Code Editor
+```
+Package    Version
+---------- -------
+cowsay     2.0.3
+pip        19.0.3
+setuptools 40.8.0
+```
+
+If you're dying to find out what cowsay does, you can run a new Blender script with the following code:
+
+{% highlight py %}
+import cowsay
+cowsay.cow('Blender is rad!')
+{% endhighlight %}
+
+... which will print a talking cow in the terminal:
+
+```
+  _______________
+< Blender is rad! >
+  ===============
+                   \
+                    \
+                      ^__^
+                      (oo)\_______
+                      (__)\       )\/\
+                          ||----w |
+                          ||     ||
+```
+
+## Using Another Code Editor
 
 You might prefer to write your code in a different editor. This is simple enough. Save the script (with a .py extension), then open it in your preferred code editor. I've used [Atom](https://atom.io/) in this example, as depicted in Figure 3.4. I've edited the `print()` argument and saved the changes, which prompts the Blender editor to display a *resolve conflict* button (a red book icon with a question mark on its cover).
 
@@ -366,34 +359,40 @@ You might prefer to write your code in a different editor. This is simple enough
 If you click that button, there's a *Reload from disk* option; this will update Blender's Text Editor to reflect the changes you've made in your external editor (Atom?). There's also an option to *Make text internal*, which saves the Blender version of the script in the .blend file (along with the models, materials, and scene data). I prefer to store Python scripts in separate files so that I have the option of working with code using external tools.
 
 
+executing scripts direct from command line (blender --python script_name.py)
+
+
+
+<hr style="padding-bottom:300px"/>
+
 
 
 PNGQUANT images
 ADD scripts to blender code repo
 
-
-## Lesson Summary
-
-...
+FIX NEXT LINK FROM PART 2
 
 
-# Resources
+## Summary
 
+In this short tutorial series, I've introduced some Blender script fundamentals---the Python Console, Python tooltips and developer extras, code editing features and options, the `bpy` module and some of it's attributes and methods, programming animation
+importing
+
+There is so much to explore in Blender. The [Shader Node](https://docs.blender.org/manual/en/latest/render/shader_nodes/index.html) system is awesome for creating all sorts of visual effects using a visual scripting languages (think: connecting nodes as opposed to writing code).
 
 If you're looking for more on the topic, you can try the following GitHub topic searches:
 
-* https://github.com/topics/blender-python
-* https://github.com/topics/blender-scripts
+GitHub topics [blender-python](https://github.com/topics/blender-python) and [blender-scripts](https://github.com/topics/blender-scripts)
 
 You can find some inspiring work at:
 
-* https://blog.lightprocesses.com/
-* https://github.com/a1studmuffin/SpaceshipGenerator
-* https://github.com/manujarvinen/Blender-Python-scripts
+* [blog.lightprocesses.com](https://blog.lightprocesses.com/)
+* [Michael Davies' spaceship generator](https://github.com/a1studmuffin/SpaceshipGenerator)
+* [Manu Järvinen's Blender scripts](https://github.com/manujarvinen/Blender-Python-scripts)
 
 For assistance, try:
 
-* https://blender.stackexchange.com/questions/tagged/scripting
+* [StackExchange](https://blender.stackexchange.com/questions/tagged/scripting)
 
 
 

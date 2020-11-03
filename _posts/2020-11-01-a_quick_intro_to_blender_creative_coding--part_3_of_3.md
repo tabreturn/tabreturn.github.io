@@ -9,7 +9,7 @@ categories: code blender python
 &laquo; <a href="{{ page.previous.url }}">{{ page.previous.title | split:'–'| last }}</a>
 </p>
 
-In this final part, you'll learn some Blender scripting techniques---like how to address, manipulate, copy, and animate mesh primitives using code. To combine all of those techniques, you'll create a wavy pattern of cones -- a cool-looking animation that you can convert into a looping GIF.
+In this final part, you'll learn some Blender scripting techniques---like how to address, manipulate, copy, and animate mesh primitives using code. To combine all of those techniques, you'll create a wavy pattern of cones---a cool-looking animation that you can convert into a looping GIF.
 
 I'll review the all-important `bpy` library using a selection of attributes and methods from the `bpy.data` module. I'll also touch on how to import code from other Python files, as well as using other code editors to write your Blender code. Of course, there's plenty more to creative coding with Blender, but that's all I cover in this short series of tutorials.
 

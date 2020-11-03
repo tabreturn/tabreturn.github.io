@@ -21,7 +21,7 @@ Before proceeding, launch Blender (using the [command line]({% post_url 2020-06-
 The `bpy` library is what makes all of the magic happen. It contains nine main modules that enable you to control Blender using Python; those are [`bpy.app`](https://docs.blender.org/api/blender2.8/bpy.app.html), [`bpy.context`](https://docs.blender.org/api/blender2.8/bpy.context.html), [`bpy.data`](https://docs.blender.org/api/blender2.8/bpy.data.html), [`bpy.msgbus`](https://docs.blender.org/api/blender2.8/bpy.msgbus.html), [`bpy.ops`](https://docs.blender.org/api/blender2.8/bpy.ops.html), [`bpy.path`](https://docs.blender.org/api/blender2.8/bpy.path.html), [`bpy.props`](https://docs.blender.org/api/blender2.8/bpy.props.html), [`bpy.types`](https://docs.blender.org/api/blender2.8/bpy.types.html), and [`bpy.utils`](https://docs.blender.org/api/blender2.8/bpy.utils.html). In the Python Console, the `bpy` library is automatically imported and available to use immediately. But when you're writing Python scripts in the Text Editor (or any other code editor), you must add the necessary `import` line(s) before you can utilise `bpy`.
 
 <blockquote markdown="1">
-In addition to `bpy`, Blender includes several standalone modules, like [`aud`](https://docs.blender.org/api/current/aud.html) for audio, and [`mathutils`](https://docs.blender.org/api/current/mathutils.html) for manipulating matrices, eulers, quaternions and vectors.
+NOTE: In addition to `bpy`, Blender includes several standalone modules, like [`aud`](https://docs.blender.org/api/current/aud.html) for audio, and [`mathutils`](https://docs.blender.org/api/current/mathutils.html) for manipulating matrices, eulers, quaternions and vectors.
 </blockquote>
 
 Switch to the Scripting tab (Figure 3.1), then click New in the Text Editor to create a new Python script.
@@ -177,7 +177,7 @@ You can find many more `bpy.ops.mesh` methods in the [API documentation](https:/
 Programming animations in Blender is immensely satisfying. You can create stunning moving images that combine the Python API, a powerful renderer, and simulation features. Bear in mind that this isn't a 'real-time rendering' approach. You'll define your keyframes up-front and render them out completely to produce a sequence of frames that form an animation. This isn't interactive, like something you might create in <a href="{{ site.baseurl }}/#processing-reverse">Processing</a> or some game engine. What follows is an elementary example to get you started with multi-frame programming, that builds on your existing script.
 
 <blockquote markdown="1">
-Blender once included a [game engine](https://en.wikipedia.org/wiki/Blender_Game_Engine), a feature that has since been discontinued. However, [UPBGE](https://upbge.org/) (a fork of the old Blender game engine project) and [Armory](https://armory3d.org/) now aim to provide complete game development solutions within the Blender environment.
+NOTE: Blender once included a [game engine](https://en.wikipedia.org/wiki/Blender_Game_Engine), a feature that has since been discontinued. However, [UPBGE](https://upbge.org/) (a fork of the old Blender game engine project) and [Armory](https://armory3d.org/) now aim to provide complete game development solutions within the Blender environment.
 </blockquote>
 
 Add the following code to the end of your script:

@@ -12,6 +12,11 @@ blockquote {
   margin-left: 0;
 }
 
+blockquote figure {
+  margin-left: 0;
+  margin-right: 0;
+}
+
 blockquote p {
   margin: 0;
 }

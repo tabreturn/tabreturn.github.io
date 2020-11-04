@@ -14,6 +14,7 @@ blockquote {
 
 blockquote figure {
   margin: 0;
+  padding-left: 0;
 }
 
 blockquote p {

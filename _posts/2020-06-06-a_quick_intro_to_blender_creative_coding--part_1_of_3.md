@@ -15,7 +15,7 @@ In this series of tutorials, I'll introduce Blender as a tool for creative codin
 
 <figure>
   <img src="{{ site.url }}/img/aqitbcc01/getting-started-blender.png" class="fullwidth" />
-  <figcaption>Figure 1.1: The Blender modelling interface</figcaption>
+  <figcaption>Figure 1.1: The Blender modelling layout with a panel for editing code</figcaption>
 </figure>
 
 I have an interest in creative coding using the Python programming language. I began experimenting with Blender scripting largely via *Python Mode for Processing*. Processing's Python Mode is a fantastic entry point into the world of creative coding, the Python language, and programming in general (I think it's so great that I wrote a [whole series of lessons]({{ site.baseurl }}/#processing-reverse) covering it). You won't outgrow Processing, but you might have the urge to delve into some more advanced 3D stuff---particle systems, rigid-body/fluid/cloth dynamics, metaballs, volumetrics, and so on. With Blender scripting, you get access to all of that and a powerful render engine to output your creations in high-resolution image and video formats.

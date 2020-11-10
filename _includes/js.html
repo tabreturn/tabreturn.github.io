@@ -41,3 +41,45 @@
   }
 
 </script>
+
+<script>
+
+  // for loading and playing a gif after clicking its poster image
+  // how to use:
+  /*
+  <figure>
+    <img src="<initial_poster>" style="cursor:pointer"
+         onclick="playGif(event, '<replay_poster>', '<animated_gif>')" />
+    ...
+  </figure>
+  */
+
+  function playGif(e, replay_poster, animated_gif) {
+    let gif_img = new Image();
+
+    if (e.target.src == replay_poster) {
+      e.target.style.opacity = 0.2;
+      let gif_loading = document.createElement('div');
+      gif_loading.className = 'loading-message';
+      gif_loading.innerHTML = 'loading ...';
+      gif_loading.style.backgroundColor = window.getComputedStyle(document.body, null).getPropertyValue('background-color');
+      gif_loading.style.color = e.target.parentElement.style.color;
+      gif_loading.style.display = 'inline-block';
+      gif_loading.style.padding = '0.8em';
+      gif_loading.style.paddingTop = '0.4em';
+      gif_loading.style.position = 'absolute';
+      gif_loading.style.zIndex = 10;
+      e.target.parentElement.prepend(gif_loading);
+      gif_img.onload = () => {
+        e.target.style.opacity = 1;
+        e.target.src = animated_gif;
+        e.target.parentElement.querySelector('.loading-message').remove();
+      }
+      gif_img.src = animated_gif;
+    }
+    else {
+      e.target.src = replay_poster;
+    }
+  }
+
+</script>

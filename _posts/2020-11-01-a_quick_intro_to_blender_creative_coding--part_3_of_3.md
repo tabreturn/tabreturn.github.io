@@ -219,11 +219,8 @@ You can decide how small or large the keyframe intervals should be. By default, 
 Here's a script that combines all of the techniques in this tutorial to generate a wavy pattern of made of cones. Click on the image below (Figure 3.9) to view the result you are working toward:
 
 <figure>
-  <script>
-    var gifanimation1 = "{{ site.url }}/img/aqitbcc03/wavy-cone-animation.gif";
-    var gitposter1 = "{{ site.url }}/img/aqitbcc03/wavy-cone-poster.png";
-  </script>
-  <img src="{{ site.url }}/img/aqitbcc03/wavy-cone-poster.png" class="fullwidth" style="cursor:pointer" onclick="this.src = this.src == gitposter1 ? gifanimation1 : gitposter1;">
+  <img src="{{ site.url }}/img/aqitbcc03/wavy-cone-poster.png" class="fullwidth" style="cursor:pointer"
+       onclick="playGif(event, '{{ site.url }}/img/aqitbcc03/wavy-cone-poster.png', '{{ site.url }}/img/aqitbcc03/wavy-cone-animation.gif')" />
   <figcaption>
     Figure 3.9: Click the image to play the animation
   </figcaption>

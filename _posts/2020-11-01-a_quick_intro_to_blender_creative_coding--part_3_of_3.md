@@ -386,7 +386,7 @@ NOTE: You can press the up arrow key to repeat any command in the terminal.
 
 <figure>
   <img src="{{ site.url }}/img/aqitbcc03/scripting-tools-external-editor-headless.png" class="fullwidth" />
-  <figcaption>Figure 3.12: Running Blender 'headless' with an image viewer and Atom</figcaption>
+  <figcaption>Figure 3.12: Running Blender 'headless' with an image viewer (<i>gThumb</i>) and Atom</figcaption>
 </figure>
 
 Better yet, you can additionally configure your code editor to run this command using a keyboard shortcut (rather than the terminal).

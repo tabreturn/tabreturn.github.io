@@ -14,8 +14,135 @@ published: false
 </figure>
 
 
-SVG
-===
+
+
+<div id="coffeeDemo">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+
+  <style>
+    #coffeeDemo svg {
+      background-color: #888;
+      outline: 1px dashed #666;
+    }
+    #coffeeDemo svg .stroked {
+      stroke: #000;
+      stroke-width: 15;
+    }
+    #coffeeDemo #portafilter, #coffeeDemo #startbutton, #coffeeDemo #cup {
+      cursor: pointer;
+    }
+  </style>
+
+  <svg width="800" height="395" viewBox="0 0 800 395">
+    <rect x="260" y="115" width="280" height="200" fill="maroon" class="stroked" />
+
+    <!-- coffee machine (maroon and steel with a red button) -->
+    <linearGradient id="steel">
+      <stop offset="0%"   style="stop-color:#666" />
+      <stop offset="50%"  style="stop-color:#FFF" />
+      <stop offset="65%"  style="stop-color:#888" />
+      <stop offset="100%" style="stop-color:#FFF" />
+    </linearGradient>
+    <rect x="250" y="35"  rx="5" ry="5" width="300" height="80" class="stroked" fill="url(#steel)" />
+    <rect x="250" y="315" rx="5" ry="5" width="300" height="45" class="stroked" fill="url(#steel)" />
+    <ellipse cx="290" cy="75" rx="15" ry="15" id="startbutton"  class="stroked" fill="#F00" />
+    <rect x="350" y="115" rx="5" ry="5" width="100" height="45" class="stroked" fill="url(#steel)" />
+
+    <!-- coffee cup shape -->
+    <path
+      stroke-linejoin="round"
+      class="stroked"
+      fill="#0EE" fill-opacity="0.4"
+      id="cup"
+      d="M335 230
+         L465 230
+         C465 230, 465 310, 400 310
+         C335 310, 335 230, 335 230
+         Z"
+    />
+
+    <!-- portafilter -->
+    <g class="stroked" id="portafilter">
+      <line x1="50" y1="160" x2="200" y2="160" stroke-linecap="round" />
+      <polygon
+        stroke-linejoin="round"
+        fill="url(#steel)"
+        points="120,160
+                130,205
+                190,205
+                200,160"
+      />
+    </g>
+
+    <!-- coffee in the coffee cup -->
+    <path
+      clip-path="url(#cupmask)"
+      class="stroked"
+      fill="#421"
+      d="M335 230
+         L465 230
+         C465 230, 465 310, 400 310
+         C335 310, 335 230, 335 230
+         Z"
+    />
+    <defs>
+      <clipPath id="cupmask">
+        <rect id="cuplevel" x="325" y="310" width="150" height="60" fill="#F00" />
+      </clipPath>
+    </defs>
+  </svg>
+
+  <script>
+    // dock portafilter
+    document.getElementById('portafilter').addEventListener('click', function dockPortafilter() {
+      gsap.to('#portafilter', 1, { x:240, onComplete:activateButton });
+      this.removeEventListener('click', dockPortafilter);
+      this.style.cursor = 'default';
+    });
+
+    let sb = document.getElementById('startbutton');
+    // activate green button
+    function activateButton() {
+      sb.setAttribute('fill', '#0F0');
+      sb.addEventListener('click', function greenStartButton() {
+        gsap.to('#cuplevel', 2, { y:-60, onComplete:deactivateButton });
+        this.removeEventListener('click', greenStartButton);
+        this.style.cursor = 'default';
+      });
+    }
+    // deactivate green button
+    function deactivateButton() {
+      sb.setAttribute('fill','#F00');
+      // add frothy milk
+      document.getElementById('cup').addEventListener('click', function addMilk() {
+        let milk = document.createElementNS('http://www.w3.org/2000/svg','line')
+        milk.setAttribute('stroke', '#FFF');
+        milk.setAttribute('stroke-opacity', '0.4');
+        milk.setAttribute('stroke-width', '15');
+        milk.setAttribute('stroke-linecap', 'round');
+        milk.setAttribute('x1', 353);
+        milk.setAttribute('y1', 250);
+        milk.setAttribute('x2', 447);
+        milk.setAttribute('y2', 250);
+        document.querySelector('svg').appendChild(milk);
+        this.removeEventListener('click', addMilk);
+        this.style.cursor = 'default';
+      });
+    }
+  </script>
+
+</div>
+
+
+
+
+
+
+
+
+## SVG
+
 
 "Scalable Vector Graphics (SVG) is an XML-based markup language for describing two-dimensional based vector graphics. SVG is, essentially, to graphics what HTML is to text."  
 -- https://developer.mozilla.org/en-US/docs/Web/SVG

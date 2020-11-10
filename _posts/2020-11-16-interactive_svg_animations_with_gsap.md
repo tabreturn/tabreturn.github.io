@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title: "interactive SVG Animations with GSAP"
+title: "Interactive SVG Animation with GSAP"
 categories: code javascript
 published: false
 ---

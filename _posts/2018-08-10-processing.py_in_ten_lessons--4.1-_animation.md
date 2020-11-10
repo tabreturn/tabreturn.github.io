@@ -26,12 +26,8 @@ Take a moment to note the numbering sequence of the circles in the illustration 
 Consider that you displayed just circle 1 for a full four seconds, followed by just circle 5 for another four seconds, looping the sequence indefinitely (an effective frame rate of 0.25 fps). The result, most observers would agree, is a pair of alternating images depicting circles in different positions. However, speed up the frame rate to around 2.5 fps, and one begins to interpret the sequence as a circle bouncing between two points. Speed up the frame rate further, and the two circles seemingly flicker in sync.
 
 <figure>
-  <script>
-    var gifanimation1 = '{{ site.url }}/img/pitl04/sequence-timings.gif';
-    var gitposter1 = '{{ site.url }}/img/pitl04/sequence-timings-poster.gif';
-  </script>
   <img src="{{ site.url }}/img/pitl04/sequence-timings-poster.gif" class="fullwidth" style="cursor:pointer"
-       onclick="this.src = this.src == gitposter1 ? gifanimation1 : gitposter1;" />
+       onclick="playGif(event, '{{ site.url }}/img/pitl04/sequence-timings-poster.gif', '{{ site.url }}/img/pitl04/sequence-timings.gif')" />
   <figcaption>
     <strong>Click the image to start the animation.</strong><br/>
     Frame rates from left to right: 0.25 fps; 2.5 fps; 12 fps; 1 fps; 25 fps

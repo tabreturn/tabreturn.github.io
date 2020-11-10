@@ -63,7 +63,7 @@ Open the Blender executable from the command line. On Windows, type `blender.exe
 
 <figure>
   <img src="{{ site.url }}/img/aqitbcc01/getting-started-terminal-blender.png" class="fullwidth" />
-  <figcaption>Figure 1.5: Launching Blender from the terminal</figcaption>
+  <figcaption>Figure 1.5: Launching Blender from the terminal on Linux</figcaption>
 </figure>
 
 You'll be using the terminal while you develop Blender scripts.

@@ -1,7 +1,7 @@
 # site settings
 title: tabreturn // blog
 email: github.tabreturn.io@tabreturn.com
-description: "Welcome to my blog&mdash;a collection of posts covering a blend of technology, design, code, and creativity."
+description: "Welcome to my blog& -- a collection of posts covering a blend of technology, design, code, and creativity."
 logo: 'img/logo.svg'
 baseurl: "" # subpath, e.g. /blog
 github_username: tabreturn

@@ -180,11 +180,8 @@ From the Console output, one can see that **sin** *θ* returns a value of `0.7`,
 To understand how this all works, click the image below and watch the cool animation for about ten seconds.
 
 <figure>
-  <script>
-    var gifanimation2 = "{{ site.url }}/img/pitl04/wikimedia-backup/Circle_cos_sin.gif";
-    var gitposter2 = "{{ site.url }}/img/pitl04/wikimedia-backup/Circle_cos_sin-poster.gif";
-  </script>
-  <img src="{{ site.url }}/img/pitl04/wikimedia-backup/Circle_cos_sin-poster.gif" class="fullwidth" style="cursor:pointer" onclick="this.src = this.src == gitposter2 ? gifanimation2 : gitposter2;">
+  <img src="{{ site.url }}/img/pitl04/wikimedia-backup/Circle_cos_sin-poster.gif" class="fullwidth" style="cursor:pointer"
+       onclick="playGif(event, '{{ site.url }}/img/pitl04/wikimedia-backup/Circle_cos_sin-poster.gif', '{{ site.url }}/img/pitl04/wikimedia-backup/Circle_cos_sin.gif')" />
   <figcaption>
     <strong>Click the image to start the animation</strong>.<br>
     LucasVB [Public domain], <a href="https://commons.wikimedia.org/wiki/File:Circle_cos_sin.gif">from Wikimedia Commons</a>

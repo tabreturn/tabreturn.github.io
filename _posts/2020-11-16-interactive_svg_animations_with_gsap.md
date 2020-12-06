@@ -121,7 +121,7 @@ You'll recreate the following graphic using SVG markup, which will include anima
 <figcaption>At the time of writing, version 3.2.6 is the latest release</figcaption>
 </figure>
 
-I like the [MDN web docs] definition of SVG, which states that "Scalable Vector Graphics (SVG) is an XML-based markup language for describing two-dimensional based vector graphics. SVG is, essentially, to graphics what HTML is to text." For this task, you'll use various SVG elements, but only a small subset of what's available. For a complete reference of SVG elements and attributes, you can refer to the [MDN documentation]().
+I like the [MDN web docs](https://developer.mozilla.org/en-US/docs/Web/SVG) definition of SVG, which states that "Scalable Vector Graphics (SVG) is an XML-based markup language for describing two-dimensional based vector graphics. SVG is, essentially, to graphics what HTML is to text." For this task, you'll use various SVG elements, but only a small subset of what's available. For a complete reference of SVG elements and attributes, you can refer to the [MDN documentation](https://developer.mozilla.org/en-US/docs/Web/SVG/).
 
 You can add SVG images to web-pages in various ways; for this task, you'll use *inline* SVG (writing the SVG code among the HTML). For the other ways, refer to the [MDN documentation on adding SVGs to web-pages](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Adding_vector_graphics_to_the_Web).
 
@@ -540,18 +540,7 @@ See if you can add the following features:
 * a stream of coffee, from the portafilter to the mug, while the mug is filling-up;
 * add some button to reset the process.
 
-
-212 Arcade
-==========
-
-Convert your *212 Arcade* div-based graphs to an SVG solution.
-
-*end*
-
-
-
-
-
+*End*
 
 ## References
 

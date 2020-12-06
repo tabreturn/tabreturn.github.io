@@ -6,20 +6,13 @@ categories: code javascript
 published: false
 ---
 
-...
+In this post, I'll create an interactive espresso machine using SVG animations powered by GSAP. GIFs are probably the easiest way to get animation into a web-page, but with SVG, you get vector graphics that scale to any size with no discernible loss in quality. What's more, SVG data usually consumes less bandwidth than a GIF, and you can add interactivity to SVGs using JavaScript.
+
+You'll recreate the following graphic using SVG markup, which will include animation:
 
 <figure>
-  <img src="{{ site.url }}/img/tap/thonny-download.png" class="fullwidth" />
-  <figcaption>At the time of writing, version 3.2.6 is the latest release</figcaption>
-</figure>
-
-
-
-
 <div id="coffeeDemo">
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
-
   <style>
     #coffeeDemo svg {
       background-color: #888;
@@ -33,10 +26,8 @@ published: false
       cursor: pointer;
     }
   </style>
-
   <svg width="800" height="395" viewBox="0 0 800 395">
     <rect x="260" y="115" width="280" height="200" fill="maroon" class="stroked" />
-
     <!-- coffee machine (maroon and steel with a red button) -->
     <linearGradient id="steel">
       <stop offset="0%"   style="stop-color:#666" />
@@ -48,7 +39,6 @@ published: false
     <rect x="250" y="315" rx="5" ry="5" width="300" height="45" class="stroked" fill="url(#steel)" />
     <ellipse cx="290" cy="75" rx="15" ry="15" id="startbutton"  class="stroked" fill="#F00" />
     <rect x="350" y="115" rx="5" ry="5" width="100" height="45" class="stroked" fill="url(#steel)" />
-
     <!-- coffee cup shape -->
     <path
       stroke-linejoin="round"
@@ -61,7 +51,6 @@ published: false
          C335 310, 335 230, 335 230
          Z"
     />
-
     <!-- portafilter -->
     <g class="stroked" id="portafilter">
       <line x1="50" y1="160" x2="200" y2="160" stroke-linecap="round" />
@@ -74,7 +63,6 @@ published: false
                 200,160"
       />
     </g>
-
     <!-- coffee in the coffee cup -->
     <path
       clip-path="url(#cupmask)"
@@ -92,7 +80,6 @@ published: false
       </clipPath>
     </defs>
   </svg>
-
   <script>
     // dock portafilter
     document.getElementById('portafilter').addEventListener('click', function dockPortafilter() {
@@ -100,7 +87,6 @@ published: false
       this.removeEventListener('click', dockPortafilter);
       this.style.cursor = 'default';
     });
-
     let sb = document.getElementById('startbutton');
     // activate green button
     function activateButton() {
@@ -131,36 +117,29 @@ published: false
       });
     }
   </script>
-
 </div>
+<figcaption>At the time of writing, version 3.2.6 is the latest release</figcaption>
+</figure>
 
-
-
-
-
-
-
-
-## SVG
-
-
-"Scalable Vector Graphics (SVG) is an XML-based markup language for describing two-dimensional based vector graphics. SVG is, essentially, to graphics what HTML is to text."  
--- https://developer.mozilla.org/en-US/docs/Web/SVG
-
-In this lesson, you'll look at writing SVG code to draw shapes. To animate the shapes, you'll employ a JavaScript library named *GSAP*.
-
-You'll use various SVG elements, but only a small subset of what's available. For a complete reference of SVG elements and attributes, you can refer to the MDN documentation:
-
-* https://developer.mozilla.org/en-US/docs/Web/SVG/Element
-* https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute
+I like the [MDN web docs] definition of SVG, which states that "Scalable Vector Graphics (SVG) is an XML-based markup language for describing two-dimensional based vector graphics. SVG is, essentially, to graphics what HTML is to text." For this task, you'll use various SVG elements, but only a small subset of what's available. For a complete reference of SVG elements and attributes, you can refer to the [MDN documentation]().
 
 You can add SVG images to web-pages in various ways; for this task, you'll use *inline* SVG (writing the SVG code among the HTML). For the other ways, refer to the [MDN documentation on adding SVGs to web-pages](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Adding_vector_graphics_to_the_Web).
 
 There are SVG attributes to control how your SVG graphics scale/respond to resizing. Many vector graphics editors provide export options to set those parameters, although you can code them manually.
 
-You'll recreate the following graphic using SVG markup, which will include animation:
+As the GSAP developers put it, "GSAP as the Swiss Army Knife of JavaScript animation...but better. It animates anything JavaScript can touch." If you're not convinced, they list a bunch more reasons on their website.
 
-![](00-complete.png)
+
+
+
+
+
+
+
+
+
+
+
 
 Setup an HTML Document
 ----------------------
@@ -576,4 +555,5 @@ Convert your *212 Arcade* div-based graphs to an SVG solution.
 
 ## References
 
-*
+* https://developer.mozilla.org/en-US/docs/Web/SVG/Element
+* https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute

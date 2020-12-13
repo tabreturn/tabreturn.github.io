@@ -102,7 +102,7 @@ In this tutorial, you'll create an interactive espresso machine using SVG, JavaS
         gsap.to('#portafilter', 1, { x:240, onComplete:activateButton });
         this.removeEventListener('click', dockPortafilter);
         document.getElementById('step1').style.opacity = 0;
-        gsap.to('#step2', 0.5, { opacity:1, delay:1.5 });
+        gsap.to('#step2', 0.5, { opacity:1, delay:0.5 });
       });
       let sb = document.getElementById('startbutton');
       // activate green button
@@ -112,7 +112,7 @@ In this tutorial, you'll create an interactive espresso machine using SVG, JavaS
           gsap.to('#cuplevel', 2, { y:-60, onComplete:deactivateButton });
           this.removeEventListener('click', greenStartButton);
           document.getElementById('step2').style.opacity = 0;
-          gsap.to('#step3', 0.5, { opacity:1, delay:1.5 });
+          gsap.to('#step3', 0.5, { opacity:1, delay:0.5 });
         });
       }
       // deactivate green button
@@ -140,11 +140,11 @@ In this tutorial, you'll create an interactive espresso machine using SVG, JavaS
     // reset code
     gsap.to('#restart', 0, { y:450 });
     document.getElementById('restart').addEventListener('click', () => {
-      gsap.to('#portafilter', 0.5, { x:0 });
+      gsap.to('#portafilter', 0.2, { x:0 });
       document.getElementById('portafilter').style.cursor = 'pointer';
-      gsap.to('#cuplevel', 0.5, { y:0 });
+      gsap.to('#cuplevel', 0.2, { y:0 });
       document.getElementById('milk').remove();
-      gsap.to('#step1', 0.5, { opacity:1, delay:1.5 });
+      gsap.to('#step1', 0.2, { opacity:1, delay:0.5 });
       document.getElementById('step3').style.opacity = 0;
       gsap.to('#restart', 0, { y:450 });
       start();

@@ -6,9 +6,7 @@ categories: code javascript
 published: false
 ---
 
-In this post, I'll create an interactive espresso machine using SVG animations powered by GSAP. GIFs are probably the easiest way to get animation into a web-page, but with SVG, you get vector graphics that scale to any size with no discernible loss in quality. What's more, SVG data usually consumes less bandwidth than a GIF, and you can add interactivity to SVGs using JavaScript.
-
-You'll recreate the following graphic using SVG markup, which will include animation:
+In this tutorial, you'll create an interactive espresso machine using SVG, JavaScript, and the GSAP library for animation. You'll draw the coffee machine using SVG code; once that's complete, you'll add the JavaScript/GSAP code to make it animate. The final result looks like this (you can click ):
 
 <figure>
 <div id="coffeeDemo">
@@ -79,47 +77,86 @@ You'll recreate the following graphic using SVG markup, which will include anima
         <rect id="cuplevel" x="325" y="310" width="150" height="60" fill="#F00" />
       </clipPath>
     </defs>
+    <!-- number balls -->
+    <g id="step1">
+      <ellipse cx="120" cy="125" rx="15" ry="15" fill="#0F0"></ellipse>
+      <text x="115" y="131" style="fill:#000; font:italic 18px serif; user-select:none">1</text>
+    </g>
+    <g id="step2" style="opacity:0">
+      <ellipse cx="335" cy="76" rx="15" ry="15" fill="#0F0"></ellipse>
+      <text x="330" y="82" style="fill:#000; font:italic 18px serif; user-select:none">2</text>
+    </g>
+    <g id="step3" style="opacity:0">
+      <ellipse cx="350" cy="245" rx="15" ry="15" fill="#0F0"></ellipse>
+      <text x="345" y="250" style="fill:#000; font:italic 18px serif; user-select:none">3</text>
+    </g>
+    <g id="restart" style="cursor:pointer">
+      <rect x="350" y="382" width="100" height="50" rx="5"  fill="#0F0" />
+      <text x="377" y="413" style="fill:#000; font:italic 18px serif; user-select:none">reset</text>
+    </g>
   </svg>
   <script>
-    // dock portafilter
-    document.getElementById('portafilter').addEventListener('click', function dockPortafilter() {
-      gsap.to('#portafilter', 1, { x:240, onComplete:activateButton });
-      this.removeEventListener('click', dockPortafilter);
-      this.style.cursor = 'default';
+    function start() {
+      // dock portafilter
+      document.getElementById('portafilter').addEventListener('click', function dockPortafilter() {
+        gsap.to('#portafilter', 1, { x:240, onComplete:activateButton });
+        this.removeEventListener('click', dockPortafilter);
+        document.getElementById('step1').style.opacity = 0;
+        gsap.to('#step2', 0.5, { opacity:1, delay:1.5 });
+      });
+      let sb = document.getElementById('startbutton');
+      // activate green button
+      function activateButton() {
+        sb.setAttribute('fill', '#0F0');
+        sb.addEventListener('click', function greenStartButton() {
+          gsap.to('#cuplevel', 2, { y:-60, onComplete:deactivateButton });
+          this.removeEventListener('click', greenStartButton);
+          document.getElementById('step2').style.opacity = 0;
+          gsap.to('#step3', 0.5, { opacity:1, delay:1.5 });
+        });
+      }
+      // deactivate green button
+      function deactivateButton() {
+        sb.setAttribute('fill','#F00');
+        // add frothy milk
+        document.getElementById('cup').addEventListener('click', function addMilk() {
+          let milk = document.createElementNS('http://www.w3.org/2000/svg','line')
+          milk.setAttribute('stroke', '#FFF');
+          milk.setAttribute('stroke-opacity', '0.4');
+          milk.setAttribute('stroke-width', '15');
+          milk.setAttribute('stroke-linecap', 'round');
+          milk.setAttribute('x1', 353);
+          milk.setAttribute('y1', 250);
+          milk.setAttribute('x2', 447);
+          milk.setAttribute('y2', 250);
+          milk.setAttribute('id', 'milk');
+          document.querySelector('svg').appendChild(milk);
+          this.removeEventListener('click', addMilk);
+          document.getElementById('step3').style.opacity = 0;
+          gsap.to('#restart', 0, { y:0 });
+        });
+      }
+    }
+    // reset code
+    gsap.to('#restart', 0, { y:450 });
+    document.getElementById('restart').addEventListener('click', () => {
+      gsap.to('#portafilter', 0.5, { x:0 });
+      document.getElementById('portafilter').style.cursor = 'pointer';
+      gsap.to('#cuplevel', 0.5, { y:0 });
+      document.getElementById('milk').remove();
+      gsap.to('#step1', 0.5, { opacity:1, delay:1.5 });
+      document.getElementById('step3').style.opacity = 0;
+      gsap.to('#restart', 0, { y:450 });
+      start();
     });
-    let sb = document.getElementById('startbutton');
-    // activate green button
-    function activateButton() {
-      sb.setAttribute('fill', '#0F0');
-      sb.addEventListener('click', function greenStartButton() {
-        gsap.to('#cuplevel', 2, { y:-60, onComplete:deactivateButton });
-        this.removeEventListener('click', greenStartButton);
-        this.style.cursor = 'default';
-      });
-    }
-    // deactivate green button
-    function deactivateButton() {
-      sb.setAttribute('fill','#F00');
-      // add frothy milk
-      document.getElementById('cup').addEventListener('click', function addMilk() {
-        let milk = document.createElementNS('http://www.w3.org/2000/svg','line')
-        milk.setAttribute('stroke', '#FFF');
-        milk.setAttribute('stroke-opacity', '0.4');
-        milk.setAttribute('stroke-width', '15');
-        milk.setAttribute('stroke-linecap', 'round');
-        milk.setAttribute('x1', 353);
-        milk.setAttribute('y1', 250);
-        milk.setAttribute('x2', 447);
-        milk.setAttribute('y2', 250);
-        document.querySelector('svg').appendChild(milk);
-        this.removeEventListener('click', addMilk);
-        this.style.cursor = 'default';
-      });
-    }
+    start();
   </script>
 </div>
 <figcaption>At the time of writing, version 3.2.6 is the latest release</figcaption>
 </figure>
+
+
+GIFs are probably the easiest way to get animation into a web-page, but with SVG, you get vector graphics that scale to any size with no discernible loss in quality. What's more, SVG data usually consumes less bandwidth than a GIF, and you can add interactivity to SVGs using JavaScript.
 
 I like the [MDN web docs](https://developer.mozilla.org/en-US/docs/Web/SVG) definition of SVG, which states that "Scalable Vector Graphics (SVG) is an XML-based markup language for describing two-dimensional based vector graphics. SVG is, essentially, to graphics what HTML is to text." For this task, you'll use various SVG elements, but only a small subset of what's available. For a complete reference of SVG elements and attributes, you can refer to the [MDN documentation](https://developer.mozilla.org/en-US/docs/Web/SVG/).
 

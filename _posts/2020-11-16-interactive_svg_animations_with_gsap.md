@@ -101,7 +101,7 @@ In this tutorial, you'll create an interactive espresso machine using SVG, JavaS
     </g>
     <g id="restart" style="cursor:pointer">
       <rect x="350" y="382" width="100" height="50" rx="5"  fill="#0F0" />
-      <text x="379" y="413">reset</text>
+      <text x="378" y="413">reset</text>
     </g>
   </svg>
   <script>

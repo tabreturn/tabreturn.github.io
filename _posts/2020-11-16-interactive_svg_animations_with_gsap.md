@@ -6,7 +6,7 @@ categories: code javascript
 published: false
 ---
 
-In this tutorial, you'll create an interactive espresso machine using SVG, JavaScript, and the GSAP library for animation. You'll draw the coffee machine using SVG code; once that's complete, you'll add the JavaScript/GSAP code to make it animate. The final result looks like this (you can click ):
+In this tutorial, you'll create an interactive espresso machine using SVG, JavaScript, and the GSAP library for animation. You'll draw the espresso machine using SVG code; once that's complete, you'll add the JavaScript/GSAP code animate it. The final result is a three-step animation (Figure 1). Click the object next to each numbered ball to test it out:
 
 <figure>
 <div id="coffeeDemo">
@@ -77,22 +77,31 @@ In this tutorial, you'll create an interactive espresso machine using SVG, JavaS
         <rect id="cuplevel" x="325" y="310" width="150" height="60" fill="#F00" />
       </clipPath>
     </defs>
+    <style>
+      text {
+        fill: #000;
+        font-family: "Times New Roman", Times, serif;
+        font-size: 22px;
+        font-style: italic;
+        user-select: none;
+      }
+    </style>
     <!-- number balls -->
     <g id="step1">
       <ellipse cx="120" cy="125" rx="15" ry="15" fill="#0F0"></ellipse>
-      <text x="115" y="131" style="fill:#000; font:italic 18px serif; user-select:none">1</text>
+      <text x="114" y="132" style="fill:#000">1</text>
     </g>
     <g id="step2" style="opacity:0">
       <ellipse cx="335" cy="76" rx="15" ry="15" fill="#0F0"></ellipse>
-      <text x="330" y="82" style="fill:#000; font:italic 18px serif; user-select:none">2</text>
+      <text x="329" y="82" style="fill:#000">2</text>
     </g>
     <g id="step3" style="opacity:0">
       <ellipse cx="350" cy="245" rx="15" ry="15" fill="#0F0"></ellipse>
-      <text x="345" y="250" style="fill:#000; font:italic 18px serif; user-select:none">3</text>
+      <text x="345" y="252" style="fill:#000">3</text>
     </g>
     <g id="restart" style="cursor:pointer">
       <rect x="350" y="382" width="100" height="50" rx="5"  fill="#0F0" />
-      <text x="377" y="413" style="fill:#000; font:italic 18px serif; user-select:none">reset</text>
+      <text x="377" y="413">reset</text>
     </g>
   </svg>
   <script>
@@ -112,7 +121,7 @@ In this tutorial, you'll create an interactive espresso machine using SVG, JavaS
           gsap.to('#cuplevel', 2, { y:-60, onComplete:deactivateButton });
           this.removeEventListener('click', greenStartButton);
           document.getElementById('step2').style.opacity = 0;
-          gsap.to('#step3', 0.5, { opacity:1, delay:0.5 });
+          gsap.to('#step3', 0.5, { opacity:1, delay:1.5 });
         });
       }
       // deactivate green button
@@ -152,7 +161,7 @@ In this tutorial, you'll create an interactive espresso machine using SVG, JavaS
     start();
   </script>
 </div>
-<figcaption>At the time of writing, version 3.2.6 is the latest release</figcaption>
+<figcaption>Figure 1: Click the object next to each green, numbered ball to advance through the animation</figcaption>
 </figure>
 
 

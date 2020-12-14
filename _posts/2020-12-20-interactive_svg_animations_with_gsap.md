@@ -168,7 +168,7 @@ GIFs are probably the easiest way to get animation into a web-page, but with SVG
 
 ## The HTML Document Structure
 
-Here's the code to start off your file; you'll add your SVG and JavaScript to this. The file includes a link to (a [CDN-hosted](https://cdnjs.com/libraries/gsap)) GSAP. To keep things simple, you'll use an internal style sheet and internal JavaScript:
+Here's the code to start your file; you'll add your SVG and JavaScript to this. The file includes a link to (a [CDN-hosted](https://cdnjs.com/libraries/gsap)) GSAP. To keep things simple, you'll write all of your markup, CSS, and JavaScript in the same file.
 
 ```html
 <!DOCTYPE html>
@@ -197,32 +197,29 @@ Now that you have the basic structure in place, we can add some SVG code.
 SVG
 ---
 
-I like the [MDN web docs](https://developer.mozilla.org/en-US/docs/Web/SVG) definition of SVG, which states that "Scalable Vector Graphics (SVG) is an XML-based markup language for describing two-dimensional based vector graphics. SVG is, essentially, to graphics what HTML is to text." For this task, you'll use various SVG elements, but only a small subset of what's available. For a complete reference of SVG elements and attributes, you can refer to the [MDN documentation](https://developer.mozilla.org/en-US/docs/Web/SVG/).
+I like the [MDN web docs](https://developer.mozilla.org/en-US/docs/Web/SVG) definition of SVG, which states that --
 
-You can add SVG images to web-pages in various ways; for this task, you'll use *inline* SVG (writing the SVG code among the HTML). For the other ways, refer to the [MDN documentation on adding SVGs to web-pages](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Adding_vector_graphics_to_the_Web).
+*Scalable Vector Graphics (SVG) is an XML-based markup language for describing two-dimensional based vector graphics. SVG is, essentially, to graphics what HTML is to text.*
 
-There are SVG attributes to control how your SVG graphics scale/respond to resizing. Many vector graphics editors provide export options to set those parameters, although you can code them manually.
+For this task, you'll use different SVG elements, but only a small subset of what's available. For a complete reference of SVG elements and their attributes, you can refer to the [MDN documentation](https://developer.mozilla.org/en-US/docs/Web/SVG/). You can add SVG images to web-pages in various ways; for this task, you'll use *inline* SVG---that is: writing the SVG code among the HTML. For the other ways, refer to the [MDN documentation on adding SVGs to web-pages](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Adding_vector_graphics_to_the_Web).
 
-As the GSAP developers put it, "GSAP as the Swiss Army Knife of JavaScript animation...but better. It animates anything JavaScript can touch." If you're not convinced, they list a bunch more reasons on their website.
-
-To begin creating shapes, add an empty `svg` tag; this will serve as your 'drawing space'. Use `width` and `height` attributes to define the size:
+Your document has an empty `svg` tag, which defines your 'drawing space'. The `width` and `height` attributes define the size:
 
 ```html
   ...
-
-  <body>
-
-    <svg width="800" height="395">
-
-    </svg>
-
-    <script>
-    ...
+  <svg width="800" height="395">
+    <!-- SVG code goes here -->
+  </svg>
+  ...
 ```
+
+There are SVG attributes to control how your SVG graphics scale/respond to resizing. If you resize the screen, Figure 1 will scale proportionately. If you're using a vector graphics editor to create SVGs, you can set those parameters using the relevant export options. These control the [viewBox](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/viewBox) and [preserveAspectRatio](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/preserveAspectRatio) attributes.
 
 Add some CSS (within the `<style>` block) to style the background and outline the SVG element:
 
-```css
+```html
+    ...
+    <style>
       html, body {
         align-items: center;
         background-color: #888;
@@ -234,9 +231,38 @@ Add some CSS (within the `<style>` block) to style the background and outline th
       svg {
         outline: 1px dashed #666;
       }
+    </style>
+    ...
 ```
 
-![](01-start.png)
+...
+
+<figure>
+<div id="coffeeDemo">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+  <svg width="800" height="395" viewBox="0 0 800 395">
+  </svg>
+  <script>
+  </script>
+</div>
+<figcaption>Figure 1: Click the object next to each numbered ball to advance through the animation</figcaption>
+</figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 You are now ready to add some shapes.
 
@@ -444,8 +470,14 @@ Although not covered in this lesson, it's good to know about SVG transformations
 https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Basic_Transformations
 
 
-SVG Animation and Interactivity
+SVG Animation and Interactivity -- RENAME GSAP ???
 ===============================
+
+
+As the GSAP developers put it, "GSAP as the Swiss Army Knife of JavaScript animation...but better. It animates anything JavaScript can touch." If you're not convinced, they list a bunch more reasons on their website.
+
+
+
 
 You can click different parts of the machine to trigger animations. You'll use JavaScript and *GSAP* (a library with animation functions) for handling animation.
 

@@ -192,29 +192,6 @@ Here's the code to start your file; you'll add your SVG and JavaScript to this. 
 </html>
 ```
 
-Now that you have the basic structure in place, we can add some SVG code.
-
-SVG
----
-
-I like the [MDN web docs](https://developer.mozilla.org/en-US/docs/Web/SVG) definition of SVG, which states that --
-
-*Scalable Vector Graphics (SVG) is an XML-based markup language for describing two-dimensional based vector graphics. SVG is, essentially, to graphics what HTML is to text.*
-
-For this task, you'll use different SVG elements, but only a small subset of what's available. For a complete reference of SVG elements and their attributes, you can refer to the [MDN documentation](https://developer.mozilla.org/en-US/docs/Web/SVG/). You can add SVG images to web-pages in various ways; for this task, you'll use *inline* SVG---that is: writing the SVG code among the HTML. For the other ways, refer to the [MDN documentation on adding SVGs to web-pages](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Adding_vector_graphics_to_the_Web).
-
-Your document has an empty `svg` tag, which defines your 'drawing space'. The `width` and `height` attributes define the size:
-
-```html
-  ...
-  <svg width="800" height="395">
-    <!-- SVG code goes here -->
-  </svg>
-  ...
-```
-
-There are SVG attributes to control how your SVG graphics scale/respond to resizing. If you resize the screen, Figure 1 will scale proportionately. If you're using a vector graphics editor to create SVGs, you can set those parameters using the relevant export options. These control the [viewBox](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/viewBox) and [preserveAspectRatio](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/preserveAspectRatio) attributes.
-
 Add some CSS (within the `<style>` block) to style the background and outline the SVG element:
 
 ```html
@@ -235,8 +212,6 @@ Add some CSS (within the `<style>` block) to style the background and outline th
     ...
 ```
 
-...
-
 <figure>
 <div id="coffeeDemo">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
@@ -245,49 +220,70 @@ Add some CSS (within the `<style>` block) to style the background and outline th
   <script>
   </script>
 </div>
-<figcaption>Figure 1: Click the object next to each numbered ball to advance through the animation</figcaption>
+<figcaption>Figure 2: An empty drawing space defined using an SVG element and some CSS</figcaption>
 </figure>
 
+Now that you have the basic structure in place, we can add some SVG code.
 
+SVG
+---
 
+I like the [MDN web docs](https://developer.mozilla.org/en-US/docs/Web/SVG) definition of SVG, which states that --
 
+*Scalable Vector Graphics (SVG) is an XML-based markup language for describing two-dimensional based vector graphics. SVG is, essentially, to graphics what HTML is to text.*
 
+For this task, you'll use different SVG elements, but only a small subset of what's available. For a complete reference of SVG elements and their attributes, you can refer to the [MDN documentation](https://developer.mozilla.org/en-US/docs/Web/SVG/). You can add SVG images to web-pages in various ways; for this task, you'll use *inline* SVG---that is: writing the SVG code among the HTML. For the other ways, refer to the [MDN documentation on adding SVGs to web-pages](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Adding_vector_graphics_to_the_Web).
 
+Your document has an empty `svg` tag, which defines your 'drawing space'. The `width` and `height` attributes define the size:
 
+```html
+    ...
+    <svg width="800" height="395">
+    <!-- SVG code goes here -->
+    </svg>
+    ...
+```
 
+There are SVG attributes to control how your SVG graphics scale/respond to resizing. If you resize the screen, Figure 1 will scale proportionately. If you're using a vector graphics editor to create SVGs, you can set those parameters using the relevant export options. These control the [viewBox](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/viewBox) and [preserveAspectRatio](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/preserveAspectRatio) attributes.
 
-
-
-
-
-
-
-
-
-You are now ready to add some shapes.
+You'll draw the espresso machine using different SVG shape tags.
 
 ### Rectangles ###
 
-Use the `<rect>` tag to draw a rectangle:
+The `<rect>` tag draws a rectangle. Add the following line to the `<svg>` section of your document---beneath the line the reads: `<!-- SVG code goes here -->`
 
+*svg*
 ```html
-    <svg width="800" height="395">
-
-      <rect x="260" y="115" width="280" height="200" fill="maroon" class="stroked" />
-
-    </svg>
+<rect x="260" y="115" width="280" height="200" fill="maroon" class="stroked" />
 ```
 
 The attributes (`x`, `y`, `width`, `height`, `fill`) should be self-explanatory. The `class` attribute is for applying some CSS styling. Add this corresponding rule to your internal stylesheet:
 
+*css*
 ```css
-      svg .stroked {
-        stroke: #000;
-        stroke-width: 15;
-      }
+svg .stroked {
+  stroke: #000;
+  stroke-width: 15;
+}
 ```
 
-![](02-rect.png)
+<figure>
+<div id="coffeeDemo">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+  <style>
+    svg .stroked {
+      stroke: #000;
+      stroke-width: 15;
+    }
+  </style>
+  <svg width="800" height="395" viewBox="0 0 800 395">
+    <rect x="260" y="115" width="280" height="200" fill="maroon" class="stroked" />
+  </svg>
+  <script>
+  </script>
+</div>
+<figcaption>Figure 2: An empty drawing space defined using an SVG element and some CSS</figcaption>
+</figure>
 
 Most properties can be applied using inline attributes or CSS. Depending on what you wish to accomplish, you may elect one approach over the other, but it's a bit tedious defining a one-off style for each element. If you're styling multiple elements the same way, a CSS class selector can be far more efficient.
 

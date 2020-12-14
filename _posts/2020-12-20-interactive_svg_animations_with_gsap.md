@@ -6,7 +6,7 @@ categories: code javascript
 published: false
 ---
 
-In this tutorial, you'll create an interactive espresso machine using SVG, JavaScript, and the GSAP library for animation. You'll draw the espresso machine using SVG code; once that's complete, you'll add the JavaScript/GSAP code animate it. The final result is a three-step animation (Figure 1). Click the object next to each numbered ball to test it out:
+In this tutorial, you'll create an interactive espresso machine using SVG, JavaScript, and the [GSAP](https://greensock.com/gsap/) library for animation. You'll draw the espresso machine using SVG code; once that's complete, you'll add the JavaScript/GSAP code animate it. The final result is a three-step, interactive animation (Figure 1). Click the object next to each numbered ball to test it out:
 
 <figure>
 <div id="coffeeDemo">
@@ -161,11 +161,41 @@ In this tutorial, you'll create an interactive espresso machine using SVG, JavaS
     start();
   </script>
 </div>
-<figcaption>Figure 1: Click the object next to each green, numbered ball to advance through the animation</figcaption>
+<figcaption>Figure 1: Click the object next to each numbered ball to advance through the animation</figcaption>
 </figure>
 
+GIFs are probably the easiest way to get animation into a web-page, but with SVG, you get vector graphics that scale to any size with no discernible loss in quality. What's more, SVG data usually consumes less bandwidth than a GIF---and you can add interactivity to SVGs using JavaScript.
 
-GIFs are probably the easiest way to get animation into a web-page, but with SVG, you get vector graphics that scale to any size with no discernible loss in quality. What's more, SVG data usually consumes less bandwidth than a GIF, and you can add interactivity to SVGs using JavaScript.
+## The HTML Document Structure
+
+Here's the code to start off your file; you'll add your SVG and JavaScript to this. The file includes a link to (a [CDN-hosted](https://cdnjs.com/libraries/gsap)) GSAP. To keep things simple, you'll use an internal style sheet and internal JavaScript:
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Espresso</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+    <style>
+      /* CSS code goes here */
+    </style>
+  </head>
+  <body>
+    <svg width="800" height="395">
+      <!-- SVG code goes here -->
+    </svg>
+    <script>
+      // JavaScript code goes here
+    </script>  
+  </body>
+</html>
+```
+
+Now that you have the basic structure in place, we can add some SVG code.
+
+SVG
+---
 
 I like the [MDN web docs](https://developer.mozilla.org/en-US/docs/Web/SVG) definition of SVG, which states that "Scalable Vector Graphics (SVG) is an XML-based markup language for describing two-dimensional based vector graphics. SVG is, essentially, to graphics what HTML is to text." For this task, you'll use various SVG elements, but only a small subset of what's available. For a complete reference of SVG elements and attributes, you can refer to the [MDN documentation](https://developer.mozilla.org/en-US/docs/Web/SVG/).
 
@@ -174,54 +204,6 @@ You can add SVG images to web-pages in various ways; for this task, you'll use *
 There are SVG attributes to control how your SVG graphics scale/respond to resizing. Many vector graphics editors provide export options to set those parameters, although you can code them manually.
 
 As the GSAP developers put it, "GSAP as the Swiss Army Knife of JavaScript animation...but better. It animates anything JavaScript can touch." If you're not convinced, they list a bunch more reasons on their website.
-
-
-
-
-
-
-
-
-
-
-
-
-
-Setup an HTML Document
-----------------------
-
-Here is the code to start off your file. This initial structure will include a link to a GSAP file (CDN-hosted). To keep things simple, you'll use an internal stylesheet and internal JavaScript:
-
-```html
-<!DOCTYPE html>
-
-<html>
-
-  <head>
-
-    <meta charset="utf-8" />
-    <title>212 Coffee</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
-
-    <style>
-    </style>
-
-  </head>
-
-  <body>
-
-    <script>
-    </script>
-
-  </body>
-
-</html>
-```
-
-Save the file as *212-coffee.html*.
-
-SVG
----
 
 To begin creating shapes, add an empty `svg` tag; this will serve as your 'drawing space'. Use `width` and `height` attributes to define the size:
 

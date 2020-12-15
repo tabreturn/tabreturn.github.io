@@ -249,7 +249,7 @@ If you resize the browser window, Figure 1 will scale proportionately; this mean
 
 Next, you'll draw the espresso machine using different SVG shapes, with varied strokes and fills.
 
-### Draw a Rectangle ###
+### Drawing a Rectangle ###
 
 The [`<rect>`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/rect) tag draws a rectangle. In addition to the attributes for setting the x, y, width, and height values, there are `rx` and `ry` attributes for making the corners round. For this first rectangle, however, we'll draw a square with sharp corners.
 
@@ -290,7 +290,7 @@ I specify a `stroke` colour value using (shorthand) hexadecimal, but you could a
 
 Most properties can be applied using inline attributes or CSS. Depending on what you wish to accomplish, you may elect one approach over the other, or a blend. It's a bit tedious defining a one-off style for each element, so if you're styling multiple elements the same way, a CSS class selector can be far more efficient.
 
-### Add Gradient Fills ###
+### Adding Gradient Fills ###
 
 You can apply gradient fills using the [`<linearGradient>`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/linearGradient) and [`<radialGradient>`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/radialGradient) tags. For the steel surfaces of the espresso machine, you'll apply a gradient comprising different shades of grey. Creating and applying the gradient is a two-step process:
 
@@ -343,7 +343,7 @@ The linear-gradient is horizontal by default. In Figure 4, note how the colour s
 
 You have drawn the steel elements of the espresso machine. Next, you'll add a circular red button at the top-left of the machine.
 
-### Draw a Circle Using an Ellipse Tag ###
+### Drawing a Circle Using an Ellipse Tag ###
 
 SVG has [`<ellipse>`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/ellipse) and [`<circle>`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/circle) tags. The `<ellipse>` is more versatile because you can use it to draw ellipses *and* circles. I'll use an `<ellipse>` for this example; of course, you're welcome to change this out for a `<circle>` if you prefer.
 
@@ -571,9 +571,14 @@ Note that the opening and closing `<g>` tags wrap the shapes comprising the port
 
 Refer to the relevant MDN documentation for more on the [`<line>`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/line) and [`<polygon>`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/polygon) tags.
 
-### Clipping Path ###
+### Using Clipping Paths to Mask Shapes ###
 
-A *clipping path* is a vector shape used to cut out a 2D image, a bit like a stencil. Anything inside the clipping path remains after it's applied to another shape; anything outside the path is omitted from the resulting shape. The result is a sort of masking effect. Here's an example of [circle-shaped clipping mask applied to a star](https://www.svgator.com/help/getting-started/creating-masks-in-adobe-illustrator)
+A *clipping path* is a vector shape used to cut out a 2D image, a bit like a stencil. The result is a sort of masking effect. In Figure 9, a bright red circular mask is placed over a maroon star (right); after the clipping path is applied (left), the result is a star with clipped tips. Anything outside the path is omitted from the clipped shape(s).
+
+<figure>
+  <img src="{{ site.url }}/img/isawg/clipping-path.svg" />
+  <figcaption>Figure 9: Applying a circular clipping path to a star shape</figcaption>
+</figure>
 
 You'll use a clipping path to fill the cup with coffee.
 

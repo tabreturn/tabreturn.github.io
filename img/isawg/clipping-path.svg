@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   width="150mm"
+   height="72mm"
+   viewBox="0 0 150 72"
+   version="1.1"
+   id="svg8">
+  <defs
+     id="defs2" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1">
+    <path
+       style="fill:#800000;fill-opacity:1;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stop-color:#000000"
+       id="path853"
+       d="m 109.16927,162.78726 -21.568402,-14.40191 -24.091407,9.60287 7.032031,-24.9632 -16.577528,-19.94484 25.914434,-1.0262 13.845932,-21.929459 8.98397,24.328979 25.13478,6.39169 -20.36203,16.06233 z"
+       transform="rotate(-5.9011226,-804.03414,582.88356)" />
+    <path
+       id="path924"
+       mask="none"
+       style="fill:#800000;fill-opacity:1;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stop-color:#000000"
+       d="m 116.77122,12.945885 -5.31699,10.726475 -11.456668,1.644346 a 26.62379,26.62379 0 0 0 -3.669543,12.355832 l 7.994861,7.819679 -1.81023,10.446908 a 26.62379,26.62379 0 0 0 11.1833,7.881173 l 9.17515,-4.803325 9.17515,4.844148 a 26.62379,26.62379 0 0 0 11.20035,-7.811926 l -1.78077,-10.492899 8.05997,-7.830013 a 26.62379,26.62379 0 0 0 -3.62044,-12.323797 l -11.49543,-1.690851 -5.28546,-10.755934 a 26.62379,26.62379 0 0 0 -6.19859,-0.731737 26.62379,26.62379 0 0 0 -6.15466,0.721921 z" />
+    <circle
+       style="fill:#ff0000;fill-opacity:0.85000002;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stop-color:#000000"
+       id="path851"
+       cx="38.259415"
+       cy="38.847942"
+       r="26.623791" />
+  </g>
+</svg>

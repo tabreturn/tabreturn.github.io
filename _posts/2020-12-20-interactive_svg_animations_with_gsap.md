@@ -9,40 +9,40 @@ published: false
 In this tutorial, you'll create an interactive espresso machine using SVG, JavaScript, and the [GSAP](https://greensock.com/gsap/) library for animation. You'll draw the espresso machine using SVG code; once that's complete, you'll add the JavaScript/GSAP code to animate it. The final result is a three-step, interactive animation (Figure 1). Click the object next to each numbered ball that appears to test it out:
 
 <figure>
-<div id="coffeeDemo">
+<div id="figure1">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
   <style>
-    #coffeeDemo svg {
+    #figure1 svg {
       background-color: #888;
       outline: 1px dashed #666;
     }
-    #coffeeDemo svg .stroked {
+    #figure1 svg .stroked {
       stroke: #000;
       stroke-width: 15;
     }
-    #coffeeDemo #portafilter, #coffeeDemo #startbutton, #coffeeDemo #cup {
+    #figure1 #portafilter1, #figure1 #startbutton1, #figure1 #cup1 {
       cursor: pointer;
     }
   </style>
   <svg width="800" height="395" viewBox="0 0 800 395">
     <rect x="260" y="115" width="280" height="200" fill="maroon" class="stroked" />
     <!-- coffee machine (maroon and steel with a red button) -->
-    <linearGradient id="steel">
+    <linearGradient id="steel1">
       <stop offset="0%"   style="stop-color:#666" />
       <stop offset="50%"  style="stop-color:#FFF" />
       <stop offset="65%"  style="stop-color:#888" />
       <stop offset="100%" style="stop-color:#FFF" />
     </linearGradient>
-    <rect x="250" y="35"  rx="5" ry="5" width="300" height="80" class="stroked" fill="url(#steel)" />
-    <rect x="250" y="315" rx="5" ry="5" width="300" height="45" class="stroked" fill="url(#steel)" />
-    <ellipse cx="290" cy="75" rx="15" ry="15" id="startbutton"  class="stroked" fill="#F00" />
-    <rect x="350" y="115" rx="5" ry="5" width="100" height="45" class="stroked" fill="url(#steel)" />
+    <rect x="250" y="35"  rx="5" ry="5" width="300" height="80" class="stroked" fill="url(#steel1)" />
+    <rect x="250" y="315" rx="5" ry="5" width="300" height="45" class="stroked" fill="url(#steel1)" />
+    <ellipse cx="290" cy="75" rx="15" ry="15" id="startbutton1"  class="stroked" fill="#F00" />
+    <rect x="350" y="115" rx="5" ry="5" width="100" height="45" class="stroked" fill="url(#steel1)" />
     <!-- coffee cup shape -->
     <path
       stroke-linejoin="round"
       class="stroked"
       fill="#0EE" fill-opacity="0.4"
-      id="cup"
+      id="cup1"
       d="M335 230
          L465 230
          C465 230, 465 310, 400 310
@@ -50,11 +50,11 @@ In this tutorial, you'll create an interactive espresso machine using SVG, JavaS
          Z"
     />
     <!-- portafilter -->
-    <g class="stroked" id="portafilter">
+    <g class="stroked" id="portafilter1">
       <line x1="50" y1="160" x2="200" y2="160" stroke-linecap="round" />
       <polygon
         stroke-linejoin="round"
-        fill="url(#steel)"
+        fill="url(#steel1)"
         points="120,160
                 130,205
                 190,205
@@ -63,7 +63,7 @@ In this tutorial, you'll create an interactive espresso machine using SVG, JavaS
     </g>
     <!-- coffee in the coffee cup -->
     <path
-      clip-path="url(#cupmask)"
+      clip-path="url(#cupmask1)"
       class="stroked"
       fill="#421"
       d="M335 230
@@ -73,8 +73,8 @@ In this tutorial, you'll create an interactive espresso machine using SVG, JavaS
          Z"
     />
     <defs>
-      <clipPath id="cupmask">
-        <rect id="cuplevel" x="325" y="310" width="150" height="60" fill="#F00" />
+      <clipPath id="cupmask1">
+        <rect id="cuplevel1" x="325" y="310" width="150" height="60" fill="#F00" />
       </clipPath>
     </defs>
     <style>
@@ -105,20 +105,21 @@ In this tutorial, you'll create an interactive espresso machine using SVG, JavaS
     </g>
   </svg>
   <script>
+    cd = document.getElementById('figure1');
     function start() {
       // dock portafilter
-      document.getElementById('portafilter').addEventListener('click', function dockPortafilter() {
-        gsap.to('#portafilter', 1, { x:240, onComplete:activateButton });
+      document.getElementById('portafilter1').addEventListener('click', function dockPortafilter() {
+        gsap.to('#portafilter1', 1, { x:240, onComplete:activateButton });
         this.removeEventListener('click', dockPortafilter);
         document.getElementById('step1').style.opacity = 0;
         gsap.to('#step2', 0.5, { opacity:1, delay:0.5 });
       });
-      let sb = document.getElementById('startbutton');
+      let sb = document.getElementById('startbutton1');
       // activate green button
       function activateButton() {
         sb.setAttribute('fill', '#0F0');
         sb.addEventListener('click', function greenStartButton() {
-          gsap.to('#cuplevel', 2, { y:-60, onComplete:deactivateButton });
+          gsap.to('#cuplevel1', 2, { y:-60, onComplete:deactivateButton });
           this.removeEventListener('click', greenStartButton);
           document.getElementById('step2').style.opacity = 0;
           gsap.to('#step3', 0.5, { opacity:1, delay:1.5 });
@@ -128,7 +129,7 @@ In this tutorial, you'll create an interactive espresso machine using SVG, JavaS
       function deactivateButton() {
         sb.setAttribute('fill','#F00');
         // add frothy milk
-        document.getElementById('cup').addEventListener('click', function addMilk() {
+        document.getElementById('cup1').addEventListener('click', function addMilk() {
           let milk = document.createElementNS('http://www.w3.org/2000/svg','line')
           milk.setAttribute('stroke', '#FFF');
           milk.setAttribute('stroke-opacity', '0.4');
@@ -138,7 +139,7 @@ In this tutorial, you'll create an interactive espresso machine using SVG, JavaS
           milk.setAttribute('y1', 250);
           milk.setAttribute('x2', 447);
           milk.setAttribute('y2', 250);
-          milk.setAttribute('id', 'milk');
+          milk.setAttribute('id', 'milk1');
           document.querySelector('svg').appendChild(milk);
           this.removeEventListener('click', addMilk);
           document.getElementById('step3').style.opacity = 0;
@@ -149,10 +150,10 @@ In this tutorial, you'll create an interactive espresso machine using SVG, JavaS
     // reset code
     gsap.to('#restart', 0, { y:450 });
     document.getElementById('restart').addEventListener('click', () => {
-      gsap.to('#portafilter', 0.2, { x:0 });
-      document.getElementById('portafilter').style.cursor = 'pointer';
-      gsap.to('#cuplevel', 0.2, { y:0 });
-      document.getElementById('milk').remove();
+      gsap.to('#portafilter1', 0.2, { x:0 });
+      document.getElementById('portafilter1').style.cursor = 'pointer';
+      gsap.to('#cuplevel1', 0.2, { y:0 });
+      document.getElementById('milk1').remove();
       gsap.to('#step1', 0.2, { opacity:1, delay:0.5 });
       document.getElementById('step3').style.opacity = 0;
       gsap.to('#restart', 0, { y:450 });
@@ -214,8 +215,14 @@ Add some CSS to the internal style sheet (within the `<style>` block) to center 
 This grey area will serve as the 'drawing space' (Figure 2).
 
 <figure>
-<div id="coffeeDemo">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+<div id="figure2">
+  <style>
+    /* CSS code goes here */
+    #figure2 svg {
+      background-color: #888;
+      outline: 1px dashed #666;
+    }
+  </style>
   <svg width="800" height="395" viewBox="0 0 800 395">
   </svg>
   <script>
@@ -271,10 +278,13 @@ svg .stroked {
 I specify a `stroke` colour value using (shorthand) hexadecimal, but you could also use [keyword or rgb/rgba](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value) values. The result, depicted in Figure 3, is a maroon rectangle with a thick black outline:
 
 <figure>
-<div id="coffeeDemo">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+<div id="figure3">
   <style>
-    svg .stroked {
+    #figure3 svg {
+      background-color: #888;
+      outline: 1px dashed #666;
+    }
+    #figure3 svg .stroked {
       stroke: #000;
       stroke-width: 15;
     }
@@ -294,10 +304,10 @@ Most properties can be applied using inline attributes or CSS. Depending on what
 
 You can apply gradient fills using the [`<linearGradient>`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/linearGradient) and [`<radialGradient>`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/radialGradient) tags. For the steel surfaces of the espresso machine, you'll apply a gradient comprising different shades of grey. Creating and applying the gradient is a two-step process:
 
-1. you create a gradient fill using a `<linearGradient>` element and define its *colour-stops* using `stop` tags;
+1. you create a gradient fill using a `<linearGradient>` element and define its *colour-stops* using `<stop>` tags;
 2. then, you reference the gradient by its `id` attribute to apply it to a given shape.
 
-In this case, the `linearGradient` has an `id="steel"`, which you can apply to three rectangles using a `fill="url(#steel)"` attribute. Add this code to your `svg` element:
+In this case, the `linearGradient` has an `id="steel"`, which you apply to three rectangles using a `fill="url(#steel)"` attribute. Add this code to your SVG:
 
 ```html
 <linearGradient id="steel">
@@ -312,13 +322,16 @@ In this case, the `linearGradient` has an `id="steel"`, which you can apply to t
 <rect x="350" y="115" rx="5" ry="5" width="100" height="45" class="stroked" fill="url(#steel)" />
 ```
 
-The linear-gradient is horizontal by default. In Figure 4, note how the colour stops (`stop` tags) correspond to the steel fill, blending to white (`#FFF`) in the centre (`offset="50%"`) and again to white at the far right (`offset="100%"`).
+The linear-gradient is horizontal by default. Note how the colour stops (`<stop>` tags) correspond to the steel fill in Figure 4, blending to white (`#FFF`) in the centre (`offset="50%"`) and again to white at the far right (`offset="100%"`).
 
 <figure>
-<div id="coffeeDemo">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+<div id="figure4">
   <style>
-    svg .stroked {
+    #figure4 svg {
+      background-color: #888;
+      outline: 1px dashed #666;
+    }
+    #figure4 svg .stroked {
       stroke: #000;
       stroke-width: 15;
     }
@@ -341,7 +354,7 @@ The linear-gradient is horizontal by default. In Figure 4, note how the colour s
 <figcaption>Figure 4: Adding steel surfaces using gradient fills</figcaption>
 </figure>
 
-You have drawn the steel elements of the espresso machine. Next, you'll add a circular red button at the top-left of the machine.
+You have drawn the steel elements of the espresso machine. Next, you'll add a circular red button at the top-left of the device.
 
 ### Drawing a Circle Using an Ellipse Tag ###
 
@@ -353,13 +366,16 @@ For the red button, add an ellipse line to the end of your SVG code:
 <ellipse cx="290" cy="75" rx="15" ry="15" id="startbutton"  class="stroked" fill="#F00" />
 ```
 
-SVG reads from top to bottom. The first shape in the code appears at the bottom of the visual 'stack'. The button displays above/over the steel surface because the `<ellipse>` line comes last (Figure 5).
+SVG reads from top to bottom, drawing each shape as it moves down the code. The first shape in the code appears at the bottom of the visual 'stack'. The button displays above/over the steel surface because the `<ellipse>` line comes last (Figure 5).
 
 <figure>
-<div id="coffeeDemo">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+<div id="figure5">
   <style>
-    svg .stroked {
+    #figure5 svg {
+      background-color: #888;
+      outline: 1px dashed #666;
+    }
+    #figure5 svg .stroked {
       stroke: #000;
       stroke-width: 15;
     }
@@ -387,7 +403,7 @@ There are several SVG tags for drawing [2D primitive shapes](https://developer.m
 
 ### Drawing a Complex Shape Using a Path ###
 
-You use paths to create complex shapes that combine straight and/or curved lines. If you've used some vector graphics editor---like Adobe Illustrator or Inkscape---then you can think of the [`<path>`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/path) tag as your SVG equivalent of a *pen* or *Bézier curve* tool. In fact, if you draw any complex shapes using those applications, the SVG files you export describes those shapes using `<path>` tags.
+You use paths to create complex shapes that combine straight and/or curved lines. If you've used some vector graphics editor---like Adobe Illustrator or Inkscape---then you can think of the [`<path>`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/path) tag as your SVG equivalent of a *pen* or *Bézier curve* tool. In fact, those applications use `<path>` tags to describe complex shapes when you export to SVG.
 
 Add this code to the end of your SVG to draw a cup using a `<path>` tag:
 
@@ -404,14 +420,14 @@ Add this code to the end of your SVG to draw a cup using a `<path>` tag:
      Z"
 />
 ```
-The `d` attribute uses various commands to construct paths; I've entered each command on its own line to make the code easier to read. The `M` command moves the 'pen' to the starting coordinates (`335 230`); the `L` command draws a straight line from the starting point to (`465 230`). Note that the x-y values in each coordinate pair are separated with a space. The first `C` command draws a curve to (`400 310`)---the (`465 230`) is the control point for the first/start anchor point; the (`465 310`) is the control point for the second/end anchor point. The second `C` command draws a curve to (`335 230`)---the control points are (`335 310`) and (`335 230`), respectively. The `Z` command closes the path so that the outline of the mug is complete. Figure 6 visualises what's happening with the curves and control points.
+The `d` attribute uses various commands to construct paths; I've entered each command on its own line to make the code easier to read. The `M` command moves the 'pen' to the starting coordinates (`335 230`); the `L` command draws a straight line from the starting point to (`465 230`). Note that the x-y values in each coordinate pair are separated with a space. The first `C` command draws a curve to (`400 310`)---the (`465 230`) is the control point for the first/start anchor point; the (`465 310`) is the control point for the second/end anchor point. The second `C` command draws a curve to (`335 230`)---the control points are (`335 310`) and (`335 230`), respectively. I've placed the second control point in the same position as the second anchor point for both curves. The `Z` command closes the path so that the outline of the cup is complete. Figure 6 visualises what's happening with the curves and control points.
 
 <figure>
   <img src="{{ site.url }}/img/isawg/cup-path.svg" />
-  <figcaption>Figure 6: The coordinates for the path anchor- and control points</figcaption>
+  <figcaption>Figure 6: The coordinates for the cup's path anchor- and control points</figcaption>
 </figure>
 
-If you've used a vector graphics editor before, this diagram should make some sense. There are several commands for drawing lines and curves, listed in the table below:
+If you've used a vector graphics editor before, the Figure 6 diagram should make some sense. There are several commands for drawing lines and curves, listed in the table below:
 
 <table width="100%" style="margin-bottom:1.5em; max-width:800px">
   <tr style="text-align:left">
@@ -450,17 +466,24 @@ You'll notice that each command has an upper- and lowercase variant; this is for
 or using:   
 `d="M335 230 l130 0 ...`
 
-In the second version, the `l` command draws a line that ends `130` pixels to the right of (`335 230`) and `0` pixels above/below it. The visual result is exactly the same as the first version. The difference is that the `l` point is positioned relative to its preceding point. If you're wondering: there's no difference between the uppercase and lowercase `Z`/`z` command.
+The first version is what you have right now. In the second version, the `l` command draws a line that ends `130` pixels to the right of (`335 230`) and `0` pixels above/below it. The visual result is exactly the same as the first version. The difference is that the `l` point is positioned relative to its preceding point.
+
+<blockquote markdown="1">
+If you're wondering: there's no difference between the uppercase and lowercase `Z`/`z` command.
+</blockquote>
 
 I won't get into any more detail about how curves work here, but you can refer to the [MDN documentation on path commands](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d#Path_commands) to learn more. Paths can be tricky to get right by hand-coding coordinates, but you can always use Inkscape, Illustrator, or some similar software if you prefer visual tools.
 
-Figure 7 depicts the finished mug. The path is styled using the `stroked` class, so it has a thick black stroke; the fill is a semi-opaque, blue-ish colour.
+Figure 7 depicts the finished cup. I've styled the path using the `stroked` class, so it has a thick black stroke; the fill is a semi-opaque, blue-ish colour.
 
 <figure>
-<div id="coffeeDemo">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+<div id="figure7">
   <style>
-    svg .stroked {
+    #figure7 svg {
+      background-color: #888;
+      outline: 1px dashed #666;
+    }
+    #figure7 svg .stroked {
       stroke: #000;
       stroke-width: 15;
     }
@@ -492,7 +515,7 @@ Figure 7 depicts the finished mug. The path is styled using the `stroked` class,
   <script>
   </script>
 </div>
-<figcaption>Figure 7: The complete mug positioned on the espresso machine</figcaption>
+<figcaption>Figure 7: The complete cup positioned on the espresso machine</figcaption>
 </figure>
 
 In the next section, you'll group SVG elements.
@@ -517,13 +540,16 @@ Add a *portafilter* (that handle thing with the coffee grounds in it), using a g
 </g>
 ```
 
-Note that the opening and closing `<g>` tags wrap the shapes comprising the portafilter (Figure 8); it also has an `id` of `"portafilter"`. You'll use that `id` later to animate the portafilter with GSAP.
+Note that the opening and closing `<g>` tags wrap the shapes comprising the portafilter (Figure 8); the group also has an `id` of `"portafilter"`. You'll use that `id` later to animate the portafilter with GSAP.
 
 <figure>
-<div id="coffeeDemo">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+<div id="figure8">
   <style>
-    svg .stroked {
+    #figure8 svg {
+      background-color: #888;
+      outline: 1px dashed #666;
+    }
+    #figure8 svg .stroked {
       stroke: #000;
       stroke-width: 15;
     }
@@ -569,63 +595,202 @@ Note that the opening and closing `<g>` tags wrap the shapes comprising the port
 <figcaption>Figure 8: A portafilter drawn with a line and polygon</figcaption>
 </figure>
 
-Refer to the relevant MDN documentation for more on the [`<line>`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/line) and [`<polygon>`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/polygon) tags.
+You can refer to the relevant MDN documentation for more on the [`<line>`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/line) and [`<polygon>`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/polygon) tags.
 
 ### Using Clipping Paths to Mask Shapes ###
 
-A *clipping path* is a vector shape used to cut out a 2D image, a bit like a stencil. The result is a sort of masking effect. In Figure 9, a bright red circular mask is placed over a maroon star (right); after the clipping path is applied (left), the result is a star with clipped tips. Anything outside the path is omitted from the clipped shape(s).
+A *clipping path* is a vector shape used to cut out a 2D image, a bit like a stencil. The result is a sort of masking effect. In Figure 9, a bright red circle (the clipping path) is placed over a brown star (left); after the clipping path is applied, the result is a star with clipped tips (right). The operation subtracts anything outside the red circle.
 
 <figure>
   <img src="{{ site.url }}/img/isawg/clipping-path.svg" />
   <figcaption>Figure 9: Applying a circular clipping path to a star shape</figcaption>
 </figure>
 
-You'll use a clipping path to fill the cup with coffee.
-
-First, 'fill' the mug with coffee by creating another (brown) mug-shaped path:
+You'll use a clipping path to fill the coffee cup to different levels. Create a full cup of coffee using another cup-shaped path with a brown fill. And add a red rectangle for a clipping path:
 
 ```html
-      ...
-      <path
-        clip-path="url(#cupmask)"
-        class="stroked"
-        fill="#421"
-        d="M335 230
-           L465 230
-           C465 230, 465 310, 400 310
-           C335 310, 335 230, 335 230
-           Z"
+<path
+  class="stroked"
+  fill="#421"
+  d="M335 230
+     L465 230
+     C465 230, 465 310, 400 310
+     C335 310, 335 230, 335 230
+     Z"
+/>
+<rect id="cuplevel" x="325" y="250" width="150" height="60" fill="#F00" />
+```
+
+Wherever the red rectangle overlaps the brown-filled coffee cup, the brown must show through (Figure 10). But it's not quite finished yet ...
+
+<figure>
+<div id="figure10">
+  <style>
+    #figure10 svg {
+      background-color: #888;
+      outline: 1px dashed #666;
+    }
+    #figure10 svg .stroked {
+      stroke: #000;
+      stroke-width: 15;
+    }
+  </style>
+  <svg width="800" height="395" viewBox="0 0 800 395">
+    <rect x="260" y="115" width="280" height="200" fill="maroon" class="stroked" />
+    <linearGradient id="steel">
+      <stop offset="0%"   style="stop-color:#666" />
+      <stop offset="50%"  style="stop-color:#FFF" />
+      <stop offset="65%"  style="stop-color:#888" />
+      <stop offset="100%" style="stop-color:#FFF" />
+    </linearGradient>
+    <rect x="250" y="35"  rx="5" ry="5" width="300" height="80" class="stroked" fill="url(#steel)" />
+    <rect x="250" y="315" rx="5" ry="5" width="300" height="45" class="stroked" fill="url(#steel)" />
+    <rect x="350" y="115" rx="5" ry="5" width="100" height="45" class="stroked" fill="url(#steel)" />
+    <ellipse cx="290" cy="75" rx="15" ry="15" id="startbutton"  class="stroked" fill="#F00" />
+    <path
+      stroke-linejoin="round"
+      class="stroked"
+      fill="#0EE" fill-opacity="0.4"
+      id="cup"
+      d="M335 230
+         L465 230
+         C465 230, 465 310, 400 310
+         C335 310, 335 230, 335 230
+         Z"
+    />
+    <g class="stroked" id="portafilter">
+      <line x1="50" y1="160" x2="200" y2="160" stroke-linecap="round" />
+      <polygon
+        stroke-linejoin="round"
+        fill="url(#steel)"
+        points="120,160
+                130,205
+                190,205
+                200,160"
       />
-    </svg>
-```
+    </g>
+    <path
+      class="stroked"
+      fill="#421"
+      d="M335 230
+         L465 230
+         C465 230, 465 310, 400 310
+         C335 310, 335 230, 335 230
+         Z"
+    />
+    <rect id="cuplevel" x="325" y="250" width="150" height="60" fill="#F00" />
+  </svg>
+  <script>
+  </script>
+</div>
+<figcaption>Figure 10: A cup filled brown and a red clipping path</figcaption>
+</figure>
 
-Note the `clip-path="url(#cupmask)"`---this will apply the relevant clipping mask (which you have yet to define).
 
-![](07-clip_base.png)
+Convert this `rect` to a clipping path using `<defs>` and `<clipPath>` tags. Add a `clip-path="url(#cupmask)"` attribute to the brown mug---this will apply the relevant clipping mask (which you have yet to define).
 
-Now, add a rectangle that will mask the coffee in the cup:
-
+<style>#noerr .err {background-color:transparent}</style>
+<div id="noerr" markdown="1">
 ```html
-      ...
-      <rect id="cuplevel" x="325" y="250" width="150" height="60" fill="#F00" />
-    </svg>
+<path
+  ...
+  clip-path="url(#cupmask)"
+/>
+<defs>
+  <clipPath id="cupmask">
+    <rect id="cuplevel" ... />
+  </clipPath>
+</defs>
 ```
+</div>
 
-Okay, so it looks a bit odd. It's not quite finished yet ...
+...
 
-![](08-clip_rect.png)
+<figure>
+<div id="figure11">
+  <style>
+    #figure11 svg {
+      background-color: #888;
+      outline: 1px dashed #666;
+    }
+    #figure11 svg .stroked {
+      stroke: #000;
+      stroke-width: 15;
+    }
+  </style>
+  <svg width="800" height="395" viewBox="0 0 800 395">
+    <rect x="260" y="115" width="280" height="200" fill="maroon" class="stroked" />
+    <linearGradient id="steel">
+      <stop offset="0%"   style="stop-color:#666" />
+      <stop offset="50%"  style="stop-color:#FFF" />
+      <stop offset="65%"  style="stop-color:#888" />
+      <stop offset="100%" style="stop-color:#FFF" />
+    </linearGradient>
+    <rect x="250" y="35"  rx="5" ry="5" width="300" height="80" class="stroked" fill="url(#steel)" />
+    <rect x="250" y="315" rx="5" ry="5" width="300" height="45" class="stroked" fill="url(#steel)" />
+    <rect x="350" y="115" rx="5" ry="5" width="100" height="45" class="stroked" fill="url(#steel)" />
+    <ellipse cx="290" cy="75" rx="15" ry="15" id="startbutton"  class="stroked" fill="#F00" />
+    <path
+      stroke-linejoin="round"
+      class="stroked"
+      fill="#0EE" fill-opacity="0.4"
+      id="cup"
+      d="M335 230
+         L465 230
+         C465 230, 465 310, 400 310
+         C335 310, 335 230, 335 230
+         Z"
+    />
+    <g class="stroked" id="portafilter">
+      <line x1="50" y1="160" x2="200" y2="160" stroke-linecap="round" />
+      <polygon
+        stroke-linejoin="round"
+        fill="url(#steel)"
+        points="120,160
+                130,205
+                190,205
+                200,160"
+      />
+    </g>
+    <path
+      class="stroked"
+      fill="#421"
+      d="M335 230
+         L465 230
+         C465 230, 465 310, 400 310
+         C335 310, 335 230, 335 230
+         Z"
+      clip-path="url(#cupmask)"
+    />
+    <defs>
+      <clipPath id="cupmask">
+        <rect id="cuplevel" x="325" y="250" width="150" height="60" fill="#F00" />
+      </clipPath>
+    </defs>
+  </svg>
+  <script>
+  </script>
+</div>
+<figcaption>Figure 11: A cup filled brown and a red clipping path</figcaption>
+</figure>
 
-Recall that the bright red rectangle will serve as the clipping path -- in other words, wherever it overlaps the brown shape (the coffee in the cup), the brown will show through. Now convert this `rect` to an actual clipping path:
 
-```html
-      ...
-      <defs>
-        <clipPath id="cupmask">
-          <rect id="cuplevel" x="325" y="250" width="150" height="60" fill="#F00" />
-        </clipPath>
-      </defs>
-    </svg>
-```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Note the `id="cupmask"` attribute that corresponds to the `clip-path="url(#cupmask)` in the brown `<path>` tag.
 
@@ -701,7 +866,7 @@ Once this motion is complete, you can press the red button (to start the machine
         ...
 ```
 
-The `onComplete:activateButton` specifies that once the tween is finished, JavaScript must call a function named `activateButton`. Define that function, and set the `y` attribute of the coffee in the mug to `310` (to have it start empty):
+The `onComplete:activateButton` specifies that once the tween is finished, JavaScript must call a function named `activateButton`. Define that function, and set the `y` attribute of the coffee in the cup to `310` (to have it start empty):
 
 ```html
         ...
@@ -723,9 +888,9 @@ The `onComplete:activateButton` specifies that once the tween is finished, JavaS
     </script>
 ```
 
-The `activateButton()` function sets the button fill to green and adds a new event listener to it. Pressing this button---which is only possible once it turns green---will fill the mug:
+The `activateButton()` function sets the button fill to green and adds a new event listener to it. Pressing this button---which is only possible once it turns green---will fill the cup:
 
-![](11-callback_fill_mug.png)
+![](11-callback_fill_cup.png)
 
 Add another callback:
 
@@ -735,7 +900,7 @@ Add another callback:
           ...
 ```
 
-And a corresponding function to add some frothy milk to the mug:
+And a corresponding function to add some frothy milk to the cup:
 
 ```js
       function deactivateButton() {
@@ -758,7 +923,7 @@ And a corresponding function to add some frothy milk to the mug:
     </script>
 ```
 
-Save, refresh your browser, and run through the click-sequence again; for the third/last step, click on the mug to add the froth.
+Save, refresh your browser, and run through the click-sequence again; for the third/last step, click on the cup to add the froth.
 
 ![](12-callback_milk.png)
 
@@ -767,7 +932,7 @@ Challenge
 
 See if you can add the following features:
 
-* a stream of coffee, from the portafilter to the mug, while the mug is filling-up;
+* a stream of coffee, from the portafilter to the cup, while the cup is filling-up;
 * add some button to reset the process.
 
 *End*

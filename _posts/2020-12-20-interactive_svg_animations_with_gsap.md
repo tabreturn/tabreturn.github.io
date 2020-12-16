@@ -2,11 +2,13 @@
 layout: post
 comments: true
 title: "Interactive SVG Animation with GSAP"
-categories: code javascript
+categories: code javascript svg
 published: false
 ---
 
-In this tutorial, you'll create an interactive espresso machine using SVG, JavaScript, and the [GSAP](https://greensock.com/gsap/) library for animation. You'll draw the espresso machine using SVG code; once that's complete, you'll add the JavaScript/GSAP code to animate it. The final result is a three-step, interactive animation (Figure 1). Click the object next to each numbered ball that appears to test it out:
+In this tutorial, you'll create an interactive espresso machine using SVG, JavaScript, and the [GSAP](https://greensock.com/gsap/) library for animation. You'll draw the espresso machine using SVG code; once that's complete, you'll add the JavaScript/GSAP code to animate it. You'll learn how to use different SVG elements and attributes to draw with code. I won't go into much detail about JavaScript---just enough to add some event listeners and elements to manipulate with GSAP. The tutorial assumes that you possess a decent grasp of how HTML and CSS work.
+
+The final result is a three-step, interactive animation (Figure 1). Click the object next to each numbered ball that appears to test it out:
 
 <figure>
 <div id="figure1">
@@ -597,7 +599,7 @@ Note that the opening and closing `<g>` tags wrap the shapes comprising the port
 
 You can refer to the relevant MDN documentation for more on the [`<line>`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/line) and [`<polygon>`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/polygon) tags.
 
-### Using Clipping Paths to Mask Shapes ###
+### Using Clipping Paths in SVG ###
 
 A *clipping path* is a vector shape used to cut out a 2D image, a bit like a stencil. The result is a sort of masking effect. In Figure 9, a bright red circle (the clipping path) is placed over a brown star (left); after the clipping path is applied, the result is a star with clipped tips (right). The operation subtracts anything outside the red circle.
 
@@ -606,7 +608,7 @@ A *clipping path* is a vector shape used to cut out a 2D image, a bit like a ste
   <figcaption>Figure 9: Applying a circular clipping path to a star shape</figcaption>
 </figure>
 
-You'll use a clipping path to fill the coffee cup to different levels. Create a full cup of coffee using another cup-shaped path with a brown fill. And add a red rectangle for a clipping path:
+You'll use a clipping path to fill the coffee cup to different levels. Create a full cup of coffee using another cup-shaped path with a brown fill. And add a red rectangle to serve as a clipping path:
 
 ```html
 <path
@@ -621,7 +623,7 @@ You'll use a clipping path to fill the coffee cup to different levels. Create a 
 <rect id="cuplevel" x="325" y="250" width="150" height="60" fill="#F00" />
 ```
 
-Wherever the red rectangle overlaps the brown-filled coffee cup, the brown must show through (Figure 10). But it's not quite finished yet ...
+Wherever the red rectangle overlaps the coffee cup filled in brown, the brown must show through (Figure 10). But it's not quite finished yet ...
 
 <figure>
 <div id="figure10">
@@ -686,8 +688,7 @@ Wherever the red rectangle overlaps the brown-filled coffee cup, the brown must 
 <figcaption>Figure 10: A cup filled brown and a red clipping path</figcaption>
 </figure>
 
-
-Convert this `rect` to a clipping path using `<defs>` and `<clipPath>` tags. Add a `clip-path="url(#cupmask)"` attribute to the brown mug---this will apply the relevant clipping mask (which you have yet to define).
+Convert this red rectangle to a clipping path using `<defs>` and `<clipPath>` tags. Additionally, add a `clip-path="url(#cupmask)"` attribute to the brown mug---this will apply the relevant clipping path by referencing the `id` attribute on the opening `<clipPath>` tag:
 
 <style>#noerr .err {background-color:transparent}</style>
 <div id="noerr" markdown="1">
@@ -704,7 +705,7 @@ Convert this `rect` to a clipping path using `<defs>` and `<clipPath>` tags. Add
 ```
 </div>
 
-...
+Now that the clipping path is applied (Figure 11), all you see is the brown coffee showing through:
 
 <figure>
 <div id="figure11">
@@ -771,30 +772,11 @@ Convert this `rect` to a clipping path using `<defs>` and `<clipPath>` tags. Add
   <script>
   </script>
 </div>
-<figcaption>Figure 11: A cup filled brown and a red clipping path</figcaption>
+<figcaption>Figure 11: The clipping path effect applied to the coffee in the mug</figcaption>
 </figure>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Note the `id="cupmask"` attribute that corresponds to the `clip-path="url(#cupmask)` in the brown `<path>` tag.
-
-![](09-clip_complete.png)
+You can fill your clipping path in any colour you like; once it's applied, it makes no difference. I like to use bright colours so that I can easily see the shape when the effect is deactivated.
 
 You're ready to apply some interactivity and animation to the image.
 

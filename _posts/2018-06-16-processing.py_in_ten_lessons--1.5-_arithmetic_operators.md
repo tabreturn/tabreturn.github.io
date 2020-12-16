@@ -2,7 +2,7 @@
 layout: post
 comments: true
 title: "Processing.py in Ten Lessons – 1.5: Arithmetic Operators"
-categories: code processing python
+categories: processing python
 ---
 
 <p markdown="1" style="text-align:right">

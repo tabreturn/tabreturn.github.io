@@ -2,7 +2,7 @@
 layout: post
 comments: true
 title: "Processing.py in Ten Lessons – 6.6: Tint and Transparency"
-categories: code processing python
+categories: processing python
 mathml: true
 ---
 

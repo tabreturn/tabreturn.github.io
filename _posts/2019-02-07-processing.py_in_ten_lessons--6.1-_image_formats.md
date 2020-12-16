@@ -2,7 +2,7 @@
 layout: post
 comments: true
 title: "Processing.py in Ten Lessons – 6.1: Image Formats"
-categories: code processing python
+categories: processing python
 mathml: true
 ---
 

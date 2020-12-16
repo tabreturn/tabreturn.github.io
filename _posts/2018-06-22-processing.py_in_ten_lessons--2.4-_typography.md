@@ -2,7 +2,7 @@
 layout: post
 comments: true
 title: "Processing.py in Ten Lessons – 2.4: Typography"
-categories: code processing python
+categories: processing python
 ---
 
 <p markdown="1" style="text-align:right">

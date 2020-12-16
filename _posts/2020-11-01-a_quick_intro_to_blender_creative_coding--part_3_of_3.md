@@ -2,7 +2,7 @@
 layout: post
 comments: true
 title: "A Quick Intro to Blender Creative Coding – part 3 of 3"
-categories: code blender python
+categories: blender python
 ---
 
 <p markdown="1" style="text-align:right">

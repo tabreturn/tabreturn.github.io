@@ -2,7 +2,7 @@
 layout: post
 comments: true
 title: "Processing.py in Ten Lessons – 7.4: Collision Detection"
-categories: code processing python
+categories: processing python
 ---
 
 <p markdown="1" style="text-align:right">

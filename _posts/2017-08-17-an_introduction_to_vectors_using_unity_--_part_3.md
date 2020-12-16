@@ -2,7 +2,7 @@
 layout: post
 comments: true
 title: "An Introduction to Vectors Using Unity – part 3"
-categories: code unity
+categories: unity
 ---
 
 <!-- unityscript error highlight conceal -->

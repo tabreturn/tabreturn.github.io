@@ -2,7 +2,7 @@
 layout: post
 comments: true
 title: "Processing.py in Ten Lessons – 6.2: Colour Channels"
-categories: code processing python
+categories: processing python
 mathml: true
 ---
 

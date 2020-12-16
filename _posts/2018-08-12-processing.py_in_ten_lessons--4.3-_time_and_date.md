@@ -2,7 +2,7 @@
 layout: post
 comments: true
 title: "Processing.py in Ten Lessons – 4.3: Time and Date"
-categories: code processing python
+categories: processing python
 mathml: true
 ---
 

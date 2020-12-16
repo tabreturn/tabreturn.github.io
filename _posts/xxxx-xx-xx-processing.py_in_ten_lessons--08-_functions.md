@@ -2,7 +2,7 @@
 layout: post
 comments: true
 title: "Processing.py in Ten Lessons – 08: Functions"
-categories: processing python
+categories: code processing python
 published: false
 ---
 

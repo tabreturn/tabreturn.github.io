@@ -2,7 +2,7 @@
 layout: post
 comments: true
 title: "Converting CSS Colour to Greyscale"
-categories: html javascript
+categories: code html javascript
 ---
 
 This post discusses how RGB colour is converted to greyscale. Two formulae are presented here, along with techniques to implement them using a combination of HTML and JavaScript.

@@ -2,7 +2,7 @@
 layout: post
 comments: true
 title: "Processing.py in Ten Lessons – 4.1: Animation"
-categories: processing python
+categories: code processing python
 mathml: true
 ---
 

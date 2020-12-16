@@ -2,7 +2,7 @@
 layout: post
 comments: true
 title: "Processing.py in Ten Lessons – 5.5: External Data"
-categories: processing python
+categories: code processing python
 ---
 
 <p markdown="1" style="text-align:right">

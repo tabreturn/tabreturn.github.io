@@ -2,7 +2,7 @@
 layout: post
 comments: true
 title: "An Introduction to Vectors Using Unity – part 1"
-categories: unity
+categories: code unity
 mathml: true
 ---
 

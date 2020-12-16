@@ -2,7 +2,7 @@
 layout: post
 comments: true
 title: "Processing.py in Ten Lessons – 4.4: Animated Trigonometry"
-categories: processing python
+categories: code processing python
 mathml: true
 ---
 

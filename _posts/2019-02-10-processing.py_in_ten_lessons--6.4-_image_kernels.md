@@ -2,7 +2,7 @@
 layout: post
 comments: true
 title: "Processing.py in Ten Lessons – 6.4: Image Kernels"
-categories: processing python
+categories: code processing python
 mathml: true
 ---
 

@@ -2,7 +2,7 @@
 layout: post
 comments: true
 title: "Processing.py in Ten Lessons – 2.5: Apple Logo Task"
-categories: processing python
+categories: code processing python
 ---
 
 <p markdown="1" style="text-align:right">

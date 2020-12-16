@@ -2,7 +2,7 @@
 layout: post
 comments: true
 title: "Comparing Colours: An Intro to Colour Distance"
-categories: code
+categories: misc
 ---
 
 This post discusses the concepts around measuring differences in colour, particularly in the RGB colour space.

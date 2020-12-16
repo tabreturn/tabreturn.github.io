@@ -6,7 +6,7 @@ categories: code javascript svg
 published: false
 ---
 
-In this tutorial, you'll create an interactive espresso machine using SVG, JavaScript, and the [GSAP](https://greensock.com/gsap/) library for animation. You'll draw the espresso machine using SVG code; once that's complete, you'll add the JavaScript/GSAP code to animate it. You'll learn how to use different SVG elements and attributes to draw with code. I won't go into much detail about JavaScript---just enough to add some event listeners and elements to manipulate with GSAP. The tutorial assumes that you possess a decent grasp of how HTML and CSS work.
+In this tutorial, you'll create an interactive espresso machine using SVG, JavaScript, and the [GSAP](https://greensock.com/gsap/) library for animation. You'll draw the espresso machine using SVG code; once that's complete, you'll add the JavaScript/GSAP code to animate it. You'll learn how to use different SVG elements and attributes to draw with code. I won't go into much detail about JavaScript---just enough to add some event listeners and manipulate SVG elements with GSAP. The tutorial assumes that you possess a decent grasp of how HTML and CSS work.
 
 The final result is a three-step, interactive animation (Figure 1). Click the object next to each numbered ball that appears to test it out:
 
@@ -245,9 +245,9 @@ I like the [MDN web docs](https://developer.mozilla.org/en-US/docs/Web/SVG) defi
 
 *Scalable Vector Graphics (SVG) is an XML-based markup language for describing two-dimensional based vector graphics. SVG is, essentially, to graphics what HTML is to text.*
 
-For this task, you'll use different SVG elements, but only a small subset of what's available. For a complete reference of SVG elements and their attributes, you can refer to the [MDN documentation](https://developer.mozilla.org/en-US/docs/Web/SVG/). You can add SVG images to web-pages in various ways; for this task, you'll use *inline* SVG---that is: writing the SVG code in a pair of `<svg>` tags, within the HTML. For the other ways, refer to the [MDN documentation on adding SVGs to web-pages](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Adding_vector_graphics_to_the_Web).
+For this task, you'll use different SVG elements, but only a small subset of what's available. For a complete reference of SVG elements and their attributes, you can refer to the [MDN documentation](https://developer.mozilla.org/en-US/docs/Web/SVG/). You can add SVG images to web-pages in various ways; for this task, you'll use *inline* SVG---that is: writing the SVG code in a pair of `<svg>` tags, among the HTML. For the other ways, refer to the [MDN documentation on adding SVGs to web-pages](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Adding_vector_graphics_to_the_Web).
 
-The `width` and `height` attributes of the `<svg>` tag define the dimensions of the graphic, like they do for GIF, JGG, or PNG image. I've used the [`viewBox`](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/viewBox) attribute to define the visible boundaries of the drawing area, and some inline CSS for a `max-width` of 800px. You'll see anything you plot between 0 and 800 pixels on the x-axis, and 0 and 395 pixels on the y-axis.
+The `width` and `height` attributes of the `<svg>` tag define the dimensions of the graphic, like they do for GIF, JPG, or PNG image. I've used the [`viewBox`](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/viewBox) attribute to specify the visible boundaries of the drawing area, and some inline CSS for a `max-width` of 800px. This means that the image will display no larger than 800px wide, although it can scale down if necessary. It's always 395 pixels high. You'll see anything you plot between 0 and 800 pixels on the x-axis, and 0 and 395 pixels on the y-axis.
 
 ```html
     ...
@@ -257,13 +257,13 @@ The `width` and `height` attributes of the `<svg>` tag define the dimensions of 
     ...
 ```
 
-If you resize the browser window, Figure 1 will scale proportionately; this means that the coordinate space scales with the image. There are SVG attributes to control how your SVG graphics respond to resizing. If you're using a vector graphics editor to create SVGs, you can set those parameters using the appropriate export options (which actually control the `viewBox` and [`preserveAspectRatio`](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/preserveAspectRatio)).
+If you resize the browser window, the contents in Figure 1 will scale proportionately; this means that the coordinate space scales with the image. There are SVG attributes to control how your SVG graphics respond to resizing. If you're using a vector graphics editor to create SVGs, you can set those parameters using the appropriate export options (which actually control the `viewBox` and [`preserveAspectRatio`](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/preserveAspectRatio) attributes).
 
-Next, you'll draw the espresso machine using different SVG shapes, with varied strokes and fills.
+Next, you'll draw the espresso machine using different SVG shapes with varied strokes and fills.
 
 ### Drawing a Rectangle ###
 
-The [`<rect>`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/rect) tag draws a rectangle. In addition to the attributes for setting the x, y, width, and height values, there are `rx` and `ry` attributes for making the corners round. For this first rectangle, however, we'll draw a square with sharp corners.
+The [`<rect>`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/rect) tag draws a rectangle. In addition to the attributes for setting the x, y, width, and height values, there are `rx` and `ry` attributes for making the corners round. For this first rectangle, however, you'll draw sharp corners.
 
 Add the following line to the `<svg>` section of your document---beneath the line the reads: `<!-- SVG code goes here -->`
 
@@ -303,13 +303,13 @@ I specify a `stroke` colour value using (shorthand) hexadecimal, but you could a
 <figcaption>Figure 3: An SVG rectangle</figcaption>
 </figure>
 
-Most properties can be applied using inline attributes or CSS. Depending on what you wish to accomplish, you may elect one approach over the other, or a blend. It's a bit tedious defining a one-off style for each element, so if you're styling multiple elements the same way, a CSS class selector can be far more efficient.
+Most style properties can be applied using inline attributes or CSS. Depending on what you wish to accomplish, you may elect one approach over the other, or a blend. It's a bit tedious defining a one-off style for each element, so if you're styling multiple elements the same way, a CSS class selector can be far more efficient.
 
 ### Adding Gradient Fills ###
 
 You can apply gradient fills using the [`<linearGradient>`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/linearGradient) and [`<radialGradient>`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/radialGradient) tags. For the steel surfaces of the espresso machine, you'll apply a gradient comprising different shades of grey. Creating and applying the gradient is a two-step process:
 
-1. you create a gradient fill using a `<linearGradient>` element and define its *colour-stops* using `<stop>` tags;
+1. you create a gradient fill using a `<linearGradient>` or `<radialGradient>` element and define its *colour-stops* using `<stop>` tags;
 2. then, you reference the gradient by its `id` attribute to apply it to a given shape.
 
 In this case, the `linearGradient` has an `id="steel"`, which you apply to three rectangles using a `fill="url(#steel)"` attribute. Add this code to your SVG:
@@ -327,7 +327,7 @@ In this case, the `linearGradient` has an `id="steel"`, which you apply to three
 <rect x="350" y="115" rx="5" ry="5" width="100" height="45" class="stroked" fill="url(#steel)" />
 ```
 
-The linear-gradient is horizontal by default. Note how the colour stops (`<stop>` tags) correspond to the steel fill in Figure 4, blending to white (`#FFF`) in the centre (`offset="50%"`) and again to white at the far right (`offset="100%"`).
+The linear-gradient is horizontal by default. Note how the colour stops (`<stop>` tags) correspond to the metallic parts in Figure 4, blending from grey to white (`#FFF`) in the centre (`offset="50%"`) and again to white at the far right (`offset="100%"`).
 
 <figure>
 <div id="figure4">
@@ -359,7 +359,7 @@ The linear-gradient is horizontal by default. Note how the colour stops (`<stop>
 <figcaption>Figure 4: Adding steel surfaces using gradient fills</figcaption>
 </figure>
 
-You have drawn the steel elements of the espresso machine. Next, you'll add a circular red button at the top-left of the device.
+There are no more steel elements to add to the espresso machine. Next, you'll add a circular red button to the top-left of the device.
 
 ### Drawing a Circle Using an Ellipse Tag ###
 
@@ -425,14 +425,14 @@ Add this code to the end of your SVG to draw a cup using a `<path>` tag:
      Z"
 />
 ```
-The `d` attribute uses various commands to construct paths; I've entered each command on its own line to make the code easier to read. The `M` command moves the 'pen' to the starting coordinates (`335 230`); the `L` command draws a straight line from the starting point to (`465 230`). Note that the x-y values in each coordinate pair are separated with a space. The first `C` command draws a curve to (`400 310`)---the (`465 230`) is the control point for the first/start anchor point; the (`465 310`) is the control point for the second/end anchor point. The second `C` command draws a curve to (`335 230`)---the control points are (`335 310`) and (`335 230`), respectively. I've placed the second control point in the same position as the second anchor point for both curves. The `Z` command closes the path so that the outline of the cup is complete. Figure 6 visualises what's happening with the curves and control points.
+The `d` attribute uses various commands to construct paths; I've entered each command on its own line to make the code easier to read. The `M` command moves the 'pen' to the starting coordinates (`335 230`); the `L` command draws a straight line from the starting coordinates to (`465 230`). Note that the x-y values in each coordinate pair are separated with a space. The first `C` command draws a curve to (`400 310`)---the (`465 230`) is the control point for the first/starting anchor point; the (`465 310`) is the control point for the second/end anchor point. The second `C` command draws a curve to (`335 230`)---the control points are (`335 310`) and (`335 230`), respectively. I've placed the starting control point in the same position as the end anchor point for both curves. The `Z` command closes the path so that the outline of the cup is complete. Figure 6 visualises what's happening with the curves and control points.
 
 <figure>
   <img src="{{ site.url }}/img/isawg/cup-path.svg" />
-  <figcaption>Figure 6: The coordinates for the cup's path anchor- and control points</figcaption>
+  <figcaption>Figure 6: The coordinates for the cup path's anchor- and control points</figcaption>
 </figure>
 
-If you've used a vector graphics editor before, the Figure 6 diagram should make some sense. There are several commands for drawing lines and curves, listed in the table below:
+If you've used a vector graphics editor before, the Figure 6 diagram should make some sense. There are several commands for drawing lines and curves as listed in the table below:
 
 <table width="100%" style="margin-bottom:1.5em; max-width:800px">
   <tr style="text-align:left">
@@ -471,7 +471,7 @@ You'll notice that each command has an upper- and lowercase variant; this is for
 or using:   
 `d="M335 230 l130 0 ...`
 
-The first version is what you have right now. In the second version, the `l` command draws a line that ends `130` pixels to the right of (`335 230`) and `0` pixels above/below it. The visual result is exactly the same as the first version. The difference is that the `l` point is positioned relative to its preceding point.
+The first version is what you have right now. In the second version, the `l` command (lowercase) draws a line that ends `130` pixels to the right of (`335 230`) and `0` pixels above/below it. The visual result is exactly the same as the first version. The difference is that the `l` point is positioned relative to its preceding point.
 
 <blockquote markdown="1">
 If you're wondering: there's no difference between the uppercase and lowercase `Z`/`z` command.
@@ -527,7 +527,7 @@ In the next section, you'll group SVG elements.
 
 ### Combining Shapes into Groups ###
 
-The group element, [`<g>`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/g), contains other SVG elements. It's a convenient mechanism for arranging shapes into groups of your specification so that you can address and manipulate multiple elements at once.
+The group element, [`<g>`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/g), contains other SVG elements. It's a convenient mechanism for arranging shapes into groups of your selection so that you can address and manipulate multiple elements at once.
 
 Add a *portafilter* (that handle thing with the coffee grounds in it), using a group that's composed of a `<line>` and a `<polygon>` tag:
 
@@ -545,7 +545,7 @@ Add a *portafilter* (that handle thing with the coffee grounds in it), using a g
 </g>
 ```
 
-Note that the opening and closing `<g>` tags wrap the shapes comprising the portafilter (Figure 8); the group also has an `id` of `"portafilter"`. You'll use that `id` later to animate the portafilter with GSAP.
+Note that the opening and closing `<g>` tags wrap the shapes comprising the portafilter; the group also has an `id` of `"portafilter"`. You'll use that `id` later to animate the portafilter with GSAP. In Figure 8, you can see the portafilter floating on the left of the machine:
 
 <figure>
 <div id="figure8">
@@ -597,14 +597,14 @@ Note that the opening and closing `<g>` tags wrap the shapes comprising the port
   <script>
   </script>
 </div>
-<figcaption>Figure 8: A portafilter drawn with a line and polygon</figcaption>
+<figcaption>Figure 8: A portafilter (left) drawn with a line and polygon</figcaption>
 </figure>
 
 You can refer to the relevant MDN documentation for more on the [`<line>`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/line) and [`<polygon>`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/polygon) tags.
 
 ### Using Clipping Paths in SVG ###
 
-A *clipping path* is a vector shape used to cut out a 2D image, a bit like a stencil. The result is a sort of masking effect. In Figure 9, a bright red circle (the clipping path) is placed over a brown star (left); after the clipping path is applied, the result is a star with clipped tips (right). The operation subtracts anything outside the red circle.
+A *clipping path* is a vector shape used to cut out a 2D image, a bit like a stencil. The result is a sort of masking effect. In Figure 9, a bright red circle (the clipping path) is placed over a dark brown star (left); after the clipping path is applied, the result is a star with clipped tips (right). The operation subtracts anything outside the red circle.
 
 <figure>
   <img src="{{ site.url }}/img/isawg/clipping-path.svg" />
@@ -688,7 +688,7 @@ Wherever the red rectangle overlaps the coffee cup filled in brown, the brown mu
   <script>
   </script>
 </div>
-<figcaption>Figure 10: A cup filled brown and a red clipping path</figcaption>
+<figcaption>Figure 10: A cup filled brown and a red clipping path over it</figcaption>
 </figure>
 
 Convert this red rectangle to a clipping path using `<defs>` and `<clipPath>` tags. Additionally, add a `clip-path="url(#cupmask)"` attribute to the brown mug---this will apply the relevant clipping path by referencing the `id` attribute on the opening `<clipPath>` tag:
@@ -775,7 +775,7 @@ Now that the clipping path is applied (Figure 11), all you see is the brown coff
   <script>
   </script>
 </div>
-<figcaption>Figure 11: The clipping path effect applied to the coffee in the mug</figcaption>
+<figcaption>Figure 11: The clipping path effect applied to the coffee in the mug contents</figcaption>
 </figure>
 
 You can fill your clipping path in any colour you like; once it's applied, it makes no difference. I like to use bright colours so that I can easily see the shape when the effect is deactivated.
@@ -798,7 +798,7 @@ If you're not convinced, they list a bunch more reasons on the [GSAP website](ht
 
 ### Changing the Mouse Cursor for Interactive Elements
 
-There are three clickable items: the portafilter, start button, and cup (see Figure 1). To begin, add a CSS rule to change the mouse cursor to a pointer whenever it hovers over some (soon-to-be) clickable portafilter element:
+There are three clickable items: the portafilter, start button, and cup (see Figure 1). To begin, add a CSS rule to change the mouse cursor to a pointer whenever it hovers over the (soon-to-be) clickable portafilter element:
 
 ```css
 #portafilter {
@@ -1001,6 +1001,7 @@ See if you can add the following features:
 
 ## References
 
+* https://codepen.io/MarioD/post/interactive-hippo-button-tutorial
 * https://developer.mozilla.org/en-US/docs/Web/SVG/Element
 * https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute
 * https://greensock.com/docs/

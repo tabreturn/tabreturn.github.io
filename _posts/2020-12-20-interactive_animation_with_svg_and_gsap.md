@@ -22,7 +22,7 @@ The final result is a three-step, interactive animation (Figure 1). Click the ob
       stroke: #000;
       stroke-width: 15;
     }
-    #figure1 #portafilter1, #figure1 #startbutton1, #figure1 #cup1 {
+    #figure1 #portafilter1 {
       cursor: pointer;
     }
   </style>
@@ -110,30 +110,32 @@ The final result is a three-step, interactive animation (Figure 1). Click the ob
     cd = document.getElementById('figure1');
     function start() {
       // dock portafilter
-      document.getElementById('portafilter1').addEventListener('click', function dockPortafilter() {
-        gsap.to('#portafilter1', 1, { x:240, onComplete:activateButton });
-        this.removeEventListener('click', dockPortafilter);
+      document.getElementById('portafilter1').addEventListener('click', function dockPortafilter1() {
+        gsap.to('#portafilter1', 1, { x:240, onComplete:activateButton1 });
+        this.removeEventListener('click', dockPortafilter1);
         document.getElementById('step1').style.opacity = 0;
         gsap.to('#step2', 0.5, { opacity:1, delay:0.5 });
         this.style.cursor = 'default';
       });
-      let sb = document.getElementById('startbutton1');
+      let sb1 = document.getElementById('startbutton1');
       // activate green button
-      function activateButton() {
-        sb.setAttribute('fill', '#0F0');
-        sb.addEventListener('click', function greenStartButton() {
-          gsap.to('#cuplevel1', 2, { y:-60, onComplete:deactivateButton });
-          this.removeEventListener('click', greenStartButton);
+      function activateButton1() {
+        sb1.setAttribute('fill', '#0F0');
+        sb1.style.cursor = 'pointer';
+        sb1.addEventListener('click', function greenStartButton1() {
+          gsap.to('#cuplevel1', 2, { y:-60, onComplete:deactivateButton1 });
+          this.removeEventListener('click', greenStartButton1);
           document.getElementById('step2').style.opacity = 0;
           gsap.to('#step3', 0.5, { opacity:1, delay:1.5 });
           this.style.cursor = 'default';
         });
       }
       // deactivate green button
-      function deactivateButton() {
-        sb.setAttribute('fill','#F00');
+      function deactivateButton1() {
+        sb1.setAttribute('fill','#F00');
+        document.getElementById('cup1').style.cursor = 'pointer';
         // add frothy milk
-        document.getElementById('cup1').addEventListener('click', function addMilk() {
+        document.getElementById('cup1').addEventListener('click', function addMilk1() {
           let milk = document.createElementNS('http://www.w3.org/2000/svg','line')
           milk.setAttribute('stroke', '#FFF');
           milk.setAttribute('stroke-opacity', '0.4');
@@ -144,8 +146,9 @@ The final result is a three-step, interactive animation (Figure 1). Click the ob
           milk.setAttribute('x2', 447);
           milk.setAttribute('y2', 250);
           milk.setAttribute('id', 'milk1');
+          document.getElementById('cup1').style.cursor = 'default';
           document.querySelector('svg').appendChild(milk);
-          this.removeEventListener('click', addMilk);
+          this.removeEventListener('click', addMilk1);
           document.getElementById('step3').style.opacity = 0;
           gsap.to('#restart', 0, { y:0 });
         });
@@ -156,7 +159,7 @@ The final result is a three-step, interactive animation (Figure 1). Click the ob
     document.getElementById('restart').addEventListener('click', () => {
       gsap.to('#portafilter1', 0.2, { x:0 });
       document.getElementById('portafilter1').style.cursor = 'pointer';
-      document.getElementById('startbutton1').style.cursor = 'pointer';
+      document.getElementById('startbutton1').style.cursor = 'default';
       gsap.to('#cuplevel1', 0.2, { y:0 });
       document.getElementById('milk1').remove();
       gsap.to('#step1', 0.2, { opacity:1, delay:0.5 });
@@ -683,7 +686,7 @@ Wherever the red rectangle overlaps the coffee cup filled in brown, the brown mu
          C335 310, 335 230, 335 230
          Z"
     />
-    <rect id="cuplevel" x="325" y="250" width="150" height="60" fill="#F00" />
+    <rect id="cuplevel10" x="325" y="250" width="150" height="60" fill="#F00" />
   </svg>
   <script>
   </script>
@@ -764,11 +767,11 @@ Now that the clipping path is applied (Figure 11), all you see is the brown coff
          C465 230, 465 310, 400 310
          C335 310, 335 230, 335 230
          Z"
-      clip-path="url(#cupmask)"
+      clip-path="url(#cupmask11)"
     />
     <defs>
-      <clipPath id="cupmask">
-        <rect id="cuplevel" x="325" y="250" width="150" height="60" fill="#F00" />
+      <clipPath id="cupmask11">
+        <rect id="cuplevel11" x="325" y="250" width="150" height="60" fill="#F00" />
       </clipPath>
     </defs>
   </svg>
@@ -777,6 +780,12 @@ Now that the clipping path is applied (Figure 11), all you see is the brown coff
 </div>
 <figcaption>Figure 11: The clipping path effect applied to the coffee in the mug contents</figcaption>
 </figure>
+
+But, the clipping path is currently sitting at the full position. Change the `y` attribute of the `cuplevel` rectangle to `310`, emptying the mug:
+```html
+<rect id="cuplevel" x="325" y="310" ... />
+```
+A bit further along, you'll use GSAP to animate the y-position of the clipping path, moving it upward to create the illusion of a cup filling with coffee.
 
 You can fill your clipping path in any colour you like; once it's applied, it makes no difference. I like to use bright colours so that I can easily see the shape when the effect is deactivated.
 
@@ -806,36 +815,33 @@ There are three clickable items: the portafilter, start button, and cup (see Fig
 }
 ```
 
-This will help indicate to the user (by way of that gloved-pointy-finger thing) that the portafilter is interactive.
+This will help indicate to the user (by way of that gloved-pointy-finger cursor) that the portafilter is interactive.
 
 ### Programming the Portafilter Animation
 
-You have the GSAP library linked in the `<head>` of your HTML, and an empty pair of `<script>` tags (just before the closing `</body>` tag) for adding new JavaScript code. Before adding some animation, get an event listener working:
+You have the GSAP library linked in the `<head>` of your HTML, and an empty pair of `<script>` tags (just before the closing `</body>` tag) for adding new JavaScript code. Add some JavaScript for an event listener to that section:
 
-```html
-    <script>
-      // JavaScript code goes here
-      document.getElementById('portafilter').addEventListener('click', function dockPortafilter() {
-        alert('clicked');
-      });
-    </script>
+```javascript
+// JavaScript code goes here
+document.getElementById('portafilter').addEventListener('click', function dockPortafilter() {
+  alert('clicked');
+});
 ```
 
 Clicking the portafilter pops-up an alert box that reads "clicked". The `document.getElementById()` accepts a single argument: the `id` of the element you want to address; in this case, it's `portafilter`. You add an event listener to that element using `addEventListener()`---specifically, one that listens for a mouse `'click'`. You can name the `function` whatever you like (even make it nameless), so I've used `dockPortafilter()`. The indented code---`alert('clicked')`---is triggered whenever you click the portafilter.
 
 SVG is part of the DOM, so JavaScript does pretty much all the same things in SVG as it does in HTML. In other words, you can address elements as you might in HTML, add event listeners, and so on.
 
-Replace the `alert` line some tween code:
+Now replace the `alert()` line with three new lines:
 
-```javascript
-document.getElementById('portafilter').addEventListener('click', function dockPortafilter() {
-  gsap.to('#portafilter', 1, { x:240 });
-  this.removeEventListener('click', dockPortafilter);
-  this.style.cursor = 'default';
-});
+```diff
+-  alert('clicked');
++  gsap.to('#portafilter', 1, { x:240 });
++  this.removeEventListener('click', dockPortafilter);
++  this.style.cursor = 'default';
 ```
 
-Click the portafilter to move it into position above the cup, performing a smooth tween in the process. The `gsap.to('#portafilter', 1, {x:240})` tweens the `'#portafilter'` element from its current location to a new x-coordinate of `240`, taking `1` second to complete the motion. Then, the code removes the event listener (`removeEventListener`) using the function name, so that you cannot click/animate the portafilter again, and resets the mouse cursor (to the default arrow cursor).
+Click the portafilter to move it into position above the cup. The `gsap.to('#portafilter', 1, {x:240})` smoothly tweens the `'#portafilter'` element from its current location to a new x-coordinate of `240`, taking `1` second to complete the motion. Then, the code removes the event listener (`removeEventListener`) using the function name (`dockPortafilter`), so that you cannot click/animate the portafilter again, and resets the mouse cursor (to the `default` arrow cursor).
 
 <figure>
 <div id="figure12">
@@ -894,18 +900,18 @@ Click the portafilter to move it into position above the cup, performing a smoot
          C465 230, 465 310, 400 310
          C335 310, 335 230, 335 230
          Z"
-      clip-path="url(#cupmask)"
+      clip-path="url(#cupmask12)"
     />
     <defs>
-      <clipPath id="cupmask">
-        <rect id="cuplevel" x="325" y="250" width="150" height="60" fill="#F00" />
+      <clipPath id="cupmask12">
+        <rect id="cuplevel12" x="325" y="250" width="150" height="60" fill="#F00" />
       </clipPath>
     </defs>
   </svg>
   <script>
-    document.querySelector('#figure12 #portafilter').addEventListener('click', function dockPortafilter() {
+    document.querySelector('#figure12 #portafilter').addEventListener('click', function dockPortafilter13() {
       gsap.to('#figure12 #portafilter', 1, { x:240 });
-      this.removeEventListener('click', dockPortafilter);
+      this.removeEventListener('click', dockPortafilter13);
       this.style.cursor = 'default';
     });
   </script>
@@ -913,13 +919,13 @@ Click the portafilter to move it into position above the cup, performing a smoot
 <figcaption>Figure 12: Click the portafilter to animate it into position above the cup</figcaption>
 </figure>
 
-Once the portafilter animation is finished, you can press the red button (to start the machine).
+Once the portafilter animation is finished, the red button should change to green. But, this requires a callback function.
 
 ## Using a Callback Function to Initialise the Start Button
 
-n computer programming, a callback, also known as a "call-after"[1] function, is any executable code that is passed as an argument to other code; that other code i
+In computer programming, a *callback*  is any executable code that's passed as an argument to other code. In JavaScript speak: a function that's handed to another function as one of its arguments.
 
-To add the event listener for the red button *after* the tween is complete, you'll use a *callback* function. Add this as an additional `onComplete` parameter to your existing `gsap.to` line:
+You don't want the red button operational until the portafilter is locked in position. To change the red button to green *after* the portafilter tween is complete, you'll use a callback function. Specify the callback function name using an additional `onComplete` parameter in your existing `gsap.to()` line:
 
 ```javascript
   ...
@@ -927,7 +933,7 @@ To add the event listener for the red button *after* the tween is complete, you'
   ...
 ```
 
-The `onComplete:activateButton` specifies that once the tween is finished, JavaScript must call a function named `activateButton()`. Define that function
+The `onComplete:activateButton` specifies that once the tween is complete, JavaScript must call a function named `activateButton()`. Define that function next:
 
 
 ```javascript
@@ -935,25 +941,108 @@ let sb = document.getElementById('startbutton');
 
 function activateButton() {
   sb.setAttribute('fill', '#0F0');
+  sb.style.cursor = 'pointer';
   sb.addEventListener('click', function greenStartButton() {
-    gsap.to('#cuplevel', 2, { y:-60 });
+    gsap.to('#cuplevel', 2, { y:-60, onComplete:deactivateButton });
     this.removeEventListener('click', greenStartButton);
     this.style.cursor = 'default';
   });
 }
 ```
 
-, and set the `y` attribute of the coffee in the cup to `310` (to have it start empty):
-```html
-        ...
-          <rect id="cuplevel" x="325" y="310" width="150" height="60" fill="#F00" />
-        ...
-```
+The `activateButton()` function sets the button fill to bright green (`#0F0`), changes the start button cursor to `pointer`, and adds a new event listener to it. The `gsap.to()` function in the `greenStartButton()` function block tweens the `y` position of the clipping mask, over a period of `2` seconds, then calls the next callback function, `deactivateButton()`.
 
-The `activateButton()` function sets the button fill to green and adds a new event listener to it. Pressing this button---which is only possible once it turns green---will fill the cup:
+Pressing this button---which is only possible once it turns green---will fill the cup :
 
-![](11-callback_fill_cup.png)
+<figure>
+<div id="figure13">
+  <style>
+    #figure13 svg {
+      background-color: #888;
+      outline: 1px dashed #666;
+    }
+    #figure13 svg .stroked {
+      stroke: #000;
+      stroke-width: 15;
+    }
+    #figure13 #portafilter {
+      cursor: pointer;
+    }
+  </style>
+  <svg width="100%" height="395" viewBox="0 0 800 395" style="max-width: 800px">
+    <rect x="260" y="115" width="280" height="200" fill="maroon" class="stroked" />
+    <linearGradient id="steel">
+      <stop offset="0%"   style="stop-color:#666" />
+      <stop offset="50%"  style="stop-color:#FFF" />
+      <stop offset="65%"  style="stop-color:#888" />
+      <stop offset="100%" style="stop-color:#FFF" />
+    </linearGradient>
+    <rect x="250" y="35"  rx="5" ry="5" width="300" height="80" class="stroked" fill="url(#steel)" />
+    <rect x="250" y="315" rx="5" ry="5" width="300" height="45" class="stroked" fill="url(#steel)" />
+    <rect x="350" y="115" rx="5" ry="5" width="100" height="45" class="stroked" fill="url(#steel)" />
+    <ellipse cx="290" cy="75" rx="15" ry="15" id="startbutton"  class="stroked" fill="#F00" />
+    <path
+      stroke-linejoin="round"
+      class="stroked"
+      fill="#0EE" fill-opacity="0.4"
+      id="cup"
+      d="M335 230
+         L465 230
+         C465 230, 465 310, 400 310
+         C335 310, 335 230, 335 230
+         Z"
+    />
+    <g class="stroked" id="portafilter">
+      <line x1="50" y1="160" x2="200" y2="160" stroke-linecap="round" />
+      <polygon
+        stroke-linejoin="round"
+        fill="url(#steel)"
+        points="120,160
+                130,205
+                190,205
+                200,160"
+      />
+    </g>
+    <path
+      class="stroked"
+      fill="#421"
+      d="M335 230
+         L465 230
+         C465 230, 465 310, 400 310
+         C335 310, 335 230, 335 230
+         Z"
+      clip-path="url(#cupmask13)"
+    />
+    <defs>
+      <clipPath id="cupmask13">
+        <rect id="cuplevel13" x="325" y="310" width="150" height="60" fill="#F00" />
+      </clipPath>
+    </defs>
+  </svg>
+  <script>
+    document.querySelector('#figure13 #portafilter').addEventListener('click', function dockPortafilter13() {
+      gsap.to('#figure13 #portafilter', 1, { x:240 });
+      this.removeEventListener('click', dockPortafilter13);
+      this.style.cursor = 'default';
+    });
+    let sb13 = document.querySelector('#figure13 #startbutton');
+    function activateButton13() {
+      sb13.setAttribute('fill', '#0F0');
+      sb13.style.cursor = 'pointer';
+      sb13.addEventListener('click', function greenStartButton13() {
+        gsap.to('#figure13 #cuplevel13', 2, { y:-60 });
+        this.removeEventListener('click', greenStartButton13);
+        this.style.cursor = 'default';
+      });
+    }
+  </script>
+</div>
+<figcaption>Figure 13: ....</figcaption>
+</figure>
 
+
+
+befoe conintuing
 Add another callback:
 
 ```js
@@ -961,6 +1050,11 @@ Add another callback:
           gsap.to('#cuplevel', 2, { y:-60, onComplete:deactivateButton });
           ...
 ```
+...
+
+
+### Creating New SVG Elements with Javascript
+
 
 And a corresponding function to add some frothy milk to the cup:
 
@@ -987,7 +1081,11 @@ And a corresponding function to add some frothy milk to the cup:
 
 Save, refresh your browser, and run through the click-sequence again; for the third/last step, click on the cup to add the froth.
 
-![](12-callback_milk.png)
+12-callback_milk.png
+
+
+
+https://codepen.io/tabreturn/pen/BaLWgxy
 
 Challenge
 ---------

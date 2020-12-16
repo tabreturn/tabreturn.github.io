@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title: "Interactive SVG Animation with GSAP"
+title: "Interactive Animation with SVG and GSAP"
 categories: code javascript svg
 published: false
 ---
@@ -26,7 +26,7 @@ The final result is a three-step, interactive animation (Figure 1). Click the ob
       cursor: pointer;
     }
   </style>
-  <svg width="800" height="395" viewBox="0 0 800 395">
+  <svg width="100%" height="395" viewBox="0 0 800 395" style="max-width: 800px">
     <rect x="260" y="115" width="280" height="200" fill="maroon" class="stroked" />
     <!-- coffee machine (maroon and steel with a red button) -->
     <linearGradient id="steel1">
@@ -188,7 +188,7 @@ Here's the code to start your HTML document; you'll add your SVG and JavaScript 
     </style>
   </head>
   <body>
-    <svg width="800" height="395" viewBox="0 0 800 395">
+    <svg width="100%" height="395" viewBox="0 0 800 395" style="max-width: 800px">
       <!-- SVG code goes here -->
     </svg>
     <script>
@@ -228,7 +228,7 @@ This grey area will serve as the 'drawing space' (Figure 2).
       outline: 1px dashed #666;
     }
   </style>
-  <svg width="800" height="395" viewBox="0 0 800 395">
+  <svg width="100%" height="395" viewBox="0 0 800 395" style="max-width: 800px">
   </svg>
   <script>
   </script>
@@ -247,17 +247,17 @@ I like the [MDN web docs](https://developer.mozilla.org/en-US/docs/Web/SVG) defi
 
 For this task, you'll use different SVG elements, but only a small subset of what's available. For a complete reference of SVG elements and their attributes, you can refer to the [MDN documentation](https://developer.mozilla.org/en-US/docs/Web/SVG/). You can add SVG images to web-pages in various ways; for this task, you'll use *inline* SVG---that is: writing the SVG code in a pair of `<svg>` tags, within the HTML. For the other ways, refer to the [MDN documentation on adding SVGs to web-pages](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Adding_vector_graphics_to_the_Web).
 
-The `width` and `height` attributes of the `<svg>` tag define the visible boundaries of your drawing area. You'll see anything you plot between 0 and 800 pixels on the x-axis, and 0 and 395 pixels on the y-axis.
+The `width` and `height` attributes of the `<svg>` tag define the dimensions of the graphic, like they do for GIF, JGG, or PNG image. I've used the [`viewBox`](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/viewBox) attribute to define the visible boundaries of the drawing area, and some inline CSS for a `max-width` of 800px. You'll see anything you plot between 0 and 800 pixels on the x-axis, and 0 and 395 pixels on the y-axis.
 
 ```html
     ...
-    <svg width="800" height="395" viewBox="0 0 800 395">
+    <svg width="100%" height="395" viewBox="0 0 800 395" style="max-width: 800px">
       <!-- SVG code goes here -->
     </svg>
     ...
 ```
 
-If you resize the browser window, Figure 1 will scale proportionately; this means that the coordinate space scales with the image. There are SVG attributes to control how your SVG graphics respond to resizing. In this case, I've used the [`viewBox`](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/viewBox) attribute to enable scaling. Notice that the third and fourth `viewBox` values match the `width` and `height`. If you're using a vector graphics editor to create SVGs, you can set those parameters using the appropriate export options (which actually control the `viewBox` and [`preserveAspectRatio`](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/preserveAspectRatio)).
+If you resize the browser window, Figure 1 will scale proportionately; this means that the coordinate space scales with the image. There are SVG attributes to control how your SVG graphics respond to resizing. If you're using a vector graphics editor to create SVGs, you can set those parameters using the appropriate export options (which actually control the `viewBox` and [`preserveAspectRatio`](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/preserveAspectRatio)).
 
 Next, you'll draw the espresso machine using different SVG shapes, with varied strokes and fills.
 
@@ -294,7 +294,7 @@ I specify a `stroke` colour value using (shorthand) hexadecimal, but you could a
       stroke-width: 15;
     }
   </style>
-  <svg width="800" height="395" viewBox="0 0 800 395">
+  <svg width="100%" height="395" viewBox="0 0 800 395" style="max-width: 800px">
     <rect x="260" y="115" width="280" height="200" fill="maroon" class="stroked" />
   </svg>
   <script>
@@ -341,7 +341,7 @@ The linear-gradient is horizontal by default. Note how the colour stops (`<stop>
       stroke-width: 15;
     }
   </style>
-  <svg width="800" height="395" viewBox="0 0 800 395">
+  <svg width="100%" height="395" viewBox="0 0 800 395" style="max-width: 800px">
     <rect x="260" y="115" width="280" height="200" fill="maroon" class="stroked" />
     <linearGradient id="steel">
       <stop offset="0%"   style="stop-color:#666" />
@@ -385,7 +385,7 @@ SVG reads from top to bottom, drawing each shape as it moves down the code. The 
       stroke-width: 15;
     }
   </style>
-  <svg width="800" height="395" viewBox="0 0 800 395">
+  <svg width="100%" height="395" viewBox="0 0 800 395" style="max-width: 800px">
     <rect x="260" y="115" width="280" height="200" fill="maroon" class="stroked" />
     <linearGradient id="steel">
       <stop offset="0%"   style="stop-color:#666" />
@@ -493,7 +493,7 @@ Figure 7 depicts the finished cup. I've styled the path using the `stroked` clas
       stroke-width: 15;
     }
   </style>
-  <svg width="800" height="395" viewBox="0 0 800 395">
+  <svg width="100%" height="395" viewBox="0 0 800 395" style="max-width: 800px">
     <rect x="260" y="115" width="280" height="200" fill="maroon" class="stroked" />
     <linearGradient id="steel">
       <stop offset="0%"   style="stop-color:#666" />
@@ -559,7 +559,7 @@ Note that the opening and closing `<g>` tags wrap the shapes comprising the port
       stroke-width: 15;
     }
   </style>
-  <svg width="800" height="395" viewBox="0 0 800 395">
+  <svg width="100%" height="395" viewBox="0 0 800 395" style="max-width: 800px">
     <rect x="260" y="115" width="280" height="200" fill="maroon" class="stroked" />
     <linearGradient id="steel">
       <stop offset="0%"   style="stop-color:#666" />
@@ -640,7 +640,7 @@ Wherever the red rectangle overlaps the coffee cup filled in brown, the brown mu
       stroke-width: 15;
     }
   </style>
-  <svg width="800" height="395" viewBox="0 0 800 395">
+  <svg width="100%" height="395" viewBox="0 0 800 395" style="max-width: 800px">
     <rect x="260" y="115" width="280" height="200" fill="maroon" class="stroked" />
     <linearGradient id="steel">
       <stop offset="0%"   style="stop-color:#666" />
@@ -722,7 +722,7 @@ Now that the clipping path is applied (Figure 11), all you see is the brown coff
       stroke-width: 15;
     }
   </style>
-  <svg width="800" height="395" viewBox="0 0 800 395">
+  <svg width="100%" height="395" viewBox="0 0 800 395" style="max-width: 800px">
     <rect x="260" y="115" width="280" height="200" fill="maroon" class="stroked" />
     <linearGradient id="steel">
       <stop offset="0%"   style="stop-color:#666" />
@@ -852,7 +852,7 @@ Click the portafilter to move it into position above the cup, performing a smoot
       cursor: pointer;
     }
   </style>
-  <svg width="800" height="395" viewBox="0 0 800 395">
+  <svg width="100%" height="395" viewBox="0 0 800 395" style="max-width: 800px">
     <rect x="260" y="115" width="280" height="200" fill="maroon" class="stroked" />
     <linearGradient id="steel">
       <stop offset="0%"   style="stop-color:#666" />
@@ -1003,3 +1003,4 @@ See if you can add the following features:
 
 * https://developer.mozilla.org/en-US/docs/Web/SVG/Element
 * https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute
+* https://greensock.com/docs/

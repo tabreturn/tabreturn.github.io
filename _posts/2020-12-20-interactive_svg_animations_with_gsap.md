@@ -115,6 +115,7 @@ The final result is a three-step, interactive animation (Figure 1). Click the ob
         this.removeEventListener('click', dockPortafilter);
         document.getElementById('step1').style.opacity = 0;
         gsap.to('#step2', 0.5, { opacity:1, delay:0.5 });
+        this.style.cursor = 'default';
       });
       let sb = document.getElementById('startbutton1');
       // activate green button
@@ -125,6 +126,7 @@ The final result is a three-step, interactive animation (Figure 1). Click the ob
           this.removeEventListener('click', greenStartButton);
           document.getElementById('step2').style.opacity = 0;
           gsap.to('#step3', 0.5, { opacity:1, delay:1.5 });
+          this.style.cursor = 'default';
         });
       }
       // deactivate green button
@@ -154,6 +156,7 @@ The final result is a three-step, interactive animation (Figure 1). Click the ob
     document.getElementById('restart').addEventListener('click', () => {
       gsap.to('#portafilter1', 0.2, { x:0 });
       document.getElementById('portafilter1').style.cursor = 'pointer';
+      document.getElementById('startbutton1').style.cursor = 'pointer';
       gsap.to('#cuplevel1', 0.2, { y:0 });
       document.getElementById('milk1').remove();
       gsap.to('#step1', 0.2, { opacity:1, delay:0.5 });
@@ -785,11 +788,9 @@ SVG transformations provide a simple way to `translate`, `rotate`, `skew`, and `
 </blockquote>
 
 
-## Adding Interactive Animations with JavaScript & GSAP
+## Adding Interactive Animation with JavaScript & GSAP
 
-You'll click different parts of the espresso machine to trigger animations. There are many ways to animate SVG elements---natively (*CSS*, *rAF*, *WAAPI*, *VanillaJS*) and using JavaScript libraries (like *Anime*, *Mo*, *p5*, *Snap*). You'll use *GSAP*, a JavaScript library especially developed for handling animation.
-
-As the GSAP developers put it---
+You'll click different parts of the espresso machine to trigger animations. There are many ways to animate SVG elements---natively (*CSS*, *rAF*, *WAAPI*, *VanillaJS*) and using JavaScript libraries (like *Anime*, *Mo*, and *p5*). You'll use *GSAP*, a JavaScript library especially developed for handling animation. As the GSAP developers put it---
 
 *Think of GSAP as the Swiss Army Knife of JavaScript animation...but better. It animates anything JavaScript can touch (CSS properties, canvas library objects, SVG, React, Vue, generic objects, whatever) and it solves countless browser inconsistencies, all with blazing speed (up to 20x faster than jQuery), including automatic GPU-acceleration of transforms.*
 
@@ -797,19 +798,19 @@ If you're not convinced, they list a bunch more reasons on the [GSAP website](ht
 
 ### Changing the Mouse Cursor for Interactive Elements
 
-There are three clickable items: the portafilter, start button, and cup (see Figure 1). To begin, add some CSS to change the mouse cursor to a pointer whenever it hovers over some (soon-to-be) clickable element:
+There are three clickable items: the portafilter, start button, and cup (see Figure 1). To begin, add a CSS rule to change the mouse cursor to a pointer whenever it hovers over some (soon-to-be) clickable portafilter element:
 
 ```css
-#portafilter, #startbutton, #cup {
+#portafilter {
   cursor: pointer;
 }
 ```
 
-This will help convey to the user (by way of that gloved-pointy-finger thing) that each of those items is interactive.
+This will help indicate to the user (by way of that gloved-pointy-finger thing) that the portafilter is interactive.
 
 ### Programming the Portafilter Animation
 
-You have the GSAP library linked in the `<head>` of your HTML document, and an empty pair of `<script>` tags (just before the closing `</body>` tag) for adding new JavaScript code. To start the portafilter animation, you'll begin with an event listener:
+You have the GSAP library linked in the `<head>` of your HTML, and an empty pair of `<script>` tags (just before the closing `</body>` tag) for adding new JavaScript code. Before adding some animation, get an event listener working:
 
 ```html
     <script>
@@ -820,54 +821,133 @@ You have the GSAP library linked in the `<head>` of your HTML document, and an e
     </script>
 ```
 
-Clicking the portafilter pops-up an alert box that reads "clicked".
+Clicking the portafilter pops-up an alert box that reads "clicked". The `document.getElementById()` accepts a single argument: the `id` of the element you want to address; in this case, it's `portafilter`. You add an event listener to that element using `addEventListener()`---specifically, one that listens for a mouse `'click'`. You can name the `function` whatever you like (even make it nameless), so I've used `dockPortafilter()`. The indented code---`alert('clicked')`---is triggered whenever you click the portafilter.
 
-SVG is part of the DOM, so JavaScript does pretty much all the same things in SVG as it does in HTML. In other words, you can address elements as you might in HTML, add event listeners, etc.
+SVG is part of the DOM, so JavaScript does pretty much all the same things in SVG as it does in HTML. In other words, you can address elements as you might in HTML, add event listeners, and so on.
 
-Replace the `alert` with some tween code:
+Replace the `alert` line some tween code:
 
-```html
-    <script>
-      document.getElementById('portafilter').addEventListener('click', function dockPortafilter() {
-        gsap.to('#portafilter', 1, { x:240 });
-        this.removeEventListener('click', dockPortafilter);
-        this.style.cursor = 'default';
-      });
-    </script>
+```javascript
+document.getElementById('portafilter').addEventListener('click', function dockPortafilter() {
+  gsap.to('#portafilter', 1, { x:240 });
+  this.removeEventListener('click', dockPortafilter);
+  this.style.cursor = 'default';
+});
 ```
 
-Clicking the portafilter moves it into position above the cup, performing a smooth tween in the process. The `gsap.to('#portafilter', 1, {x:240})` tweens the `'#portafilter'` element from its current location to a new x-coordinate of `240`, taking `1` second to complete the motion. Then, the code removes the event listener (`removeEventListener`) so that you cannot click/animate the portafilter again, and resets the mouse cursor (to the standard pointer).
+Click the portafilter to move it into position above the cup, performing a smooth tween in the process. The `gsap.to('#portafilter', 1, {x:240})` tweens the `'#portafilter'` element from its current location to a new x-coordinate of `240`, taking `1` second to complete the motion. Then, the code removes the event listener (`removeEventListener`) using the function name, so that you cannot click/animate the portafilter again, and resets the mouse cursor (to the default arrow cursor).
 
-![](10-tween_portafilter.png)
+<figure>
+<div id="figure12">
+  <style>
+    #figure12 svg {
+      background-color: #888;
+      outline: 1px dashed #666;
+    }
+    #figure12 svg .stroked {
+      stroke: #000;
+      stroke-width: 15;
+    }
+    #figure12 #portafilter {
+      cursor: pointer;
+    }
+  </style>
+  <svg width="800" height="395" viewBox="0 0 800 395">
+    <rect x="260" y="115" width="280" height="200" fill="maroon" class="stroked" />
+    <linearGradient id="steel">
+      <stop offset="0%"   style="stop-color:#666" />
+      <stop offset="50%"  style="stop-color:#FFF" />
+      <stop offset="65%"  style="stop-color:#888" />
+      <stop offset="100%" style="stop-color:#FFF" />
+    </linearGradient>
+    <rect x="250" y="35"  rx="5" ry="5" width="300" height="80" class="stroked" fill="url(#steel)" />
+    <rect x="250" y="315" rx="5" ry="5" width="300" height="45" class="stroked" fill="url(#steel)" />
+    <rect x="350" y="115" rx="5" ry="5" width="100" height="45" class="stroked" fill="url(#steel)" />
+    <ellipse cx="290" cy="75" rx="15" ry="15" id="startbutton"  class="stroked" fill="#F00" />
+    <path
+      stroke-linejoin="round"
+      class="stroked"
+      fill="#0EE" fill-opacity="0.4"
+      id="cup"
+      d="M335 230
+         L465 230
+         C465 230, 465 310, 400 310
+         C335 310, 335 230, 335 230
+         Z"
+    />
+    <g class="stroked" id="portafilter">
+      <line x1="50" y1="160" x2="200" y2="160" stroke-linecap="round" />
+      <polygon
+        stroke-linejoin="round"
+        fill="url(#steel)"
+        points="120,160
+                130,205
+                190,205
+                200,160"
+      />
+    </g>
+    <path
+      class="stroked"
+      fill="#421"
+      d="M335 230
+         L465 230
+         C465 230, 465 310, 400 310
+         C335 310, 335 230, 335 230
+         Z"
+      clip-path="url(#cupmask)"
+    />
+    <defs>
+      <clipPath id="cupmask">
+        <rect id="cuplevel" x="325" y="250" width="150" height="60" fill="#F00" />
+      </clipPath>
+    </defs>
+  </svg>
+  <script>
+    document.querySelector('#figure12 #portafilter').addEventListener('click', function dockPortafilter() {
+      gsap.to('#figure12 #portafilter', 1, { x:240 });
+      this.removeEventListener('click', dockPortafilter);
+      this.style.cursor = 'default';
+    });
+  </script>
+</div>
+<figcaption>Figure 12: Click the portafilter to animate it into position above the cup</figcaption>
+</figure>
 
-Once this motion is complete, you can press the red button (to start the machine). To add the event listener for the red button *after* the tween is complete, you'll use a *callback* function. Add this as an additional parameter to your existing `gsap.to`:
+Once the portafilter animation is finished, you can press the red button (to start the machine).
 
-```js
-        ...
-        gsap.to('#portafilter', 1, { x:240, onComplete:activateButton });
-        ...
+## Using a Callback Function to Initialise the Start Button
+
+n computer programming, a callback, also known as a "call-after"[1] function, is any executable code that is passed as an argument to other code; that other code i
+
+To add the event listener for the red button *after* the tween is complete, you'll use a *callback* function. Add this as an additional `onComplete` parameter to your existing `gsap.to` line:
+
+```javascript
+  ...
+  gsap.to('#portafilter', 1, { x:240, onComplete:activateButton });
+  ...
 ```
 
-The `onComplete:activateButton` specifies that once the tween is finished, JavaScript must call a function named `activateButton`. Define that function, and set the `y` attribute of the coffee in the cup to `310` (to have it start empty):
+The `onComplete:activateButton` specifies that once the tween is finished, JavaScript must call a function named `activateButton()`. Define that function
 
+
+```javascript
+let sb = document.getElementById('startbutton');
+
+function activateButton() {
+  sb.setAttribute('fill', '#0F0');
+  sb.addEventListener('click', function greenStartButton() {
+    gsap.to('#cuplevel', 2, { y:-60 });
+    this.removeEventListener('click', greenStartButton);
+    this.style.cursor = 'default';
+  });
+}
+```
+
+, and set the `y` attribute of the coffee in the cup to `310` (to have it start empty):
 ```html
         ...
           <rect id="cuplevel" x="325" y="310" width="150" height="60" fill="#F00" />
         ...
-```
-```js
-      ...
-      let sb = document.getElementById('startbutton');
-
-      function activateButton() {
-        sb.setAttribute('fill', '#0F0');
-        sb.addEventListener('click', function greenStartButton() {
-          gsap.to('#cuplevel', 2, { y:-60 });
-          this.removeEventListener('click', greenStartButton);
-          this.style.cursor = 'default';
-        });
-      }
-    </script>
 ```
 
 The `activateButton()` function sets the button fill to green and adds a new event listener to it. Pressing this button---which is only possible once it turns green---will fill the cup:

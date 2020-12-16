@@ -43,6 +43,17 @@ $on-laptop:        800px;
   "isso-overrides"
 ;
 
+// side-scrolling code blocks (-rouge is for ``` markdown)
+.highlight pre code,
+.highlighter-rouge pre code {
+  white-space: pre;
+}
+
+.highlight,
+.highlighter-rouge {
+  margin-right: 0
+}
+
 // other
 #intro {
   border-bottom: #b5b5b5 1px solid;

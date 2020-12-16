@@ -775,45 +775,45 @@ Now that the clipping path is applied (Figure 11), all you see is the brown coff
 <figcaption>Figure 11: The clipping path effect applied to the coffee in the mug</figcaption>
 </figure>
 
-
 You can fill your clipping path in any colour you like; once it's applied, it makes no difference. I like to use bright colours so that I can easily see the shape when the effect is deactivated.
 
 You're ready to apply some interactivity and animation to the SVG graphic.
 
-SVG Transformations
--------------------
-
-Although not covered in this lesson, it's good to know about SVG transformations. These provide a simple way to *translate*, *rotate*, *skew*, and *scale* groups or individual shapes:  
-https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Basic_Transformations
-
-
-SVG Animation and Interactivity -- RENAME GSAP ???
-===============================
+<blockquote markdown="1">
+**SVG Transformations**  
+SVG transformations provide a simple way to `translate`, `rotate`, `skew`, and `scale` groups or individual shapes. They are very useful! I don't cover them here, but you can learn about them using [MDN's tutorial on Basic Transformations](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Basic_Transformations).
+</blockquote>
 
 
-As the GSAP developers put it, "GSAP as the Swiss Army Knife of JavaScript animation...but better. It animates anything JavaScript can touch." If you're not convinced, they list a bunch more reasons on their website.
+## Adding Interactive Animations with JavaScript & GSAP
 
+You'll click different parts of the espresso machine to trigger animations. There are many ways to animate SVG elements---natively (*CSS*, *rAF*, *WAAPI*, *VanillaJS*) and using JavaScript libraries (like *Anime*, *Mo*, *p5*, *Snap*). You'll use *GSAP*, a JavaScript library especially developed for handling animation.
 
+As the GSAP developers put it---
 
+*Think of GSAP as the Swiss Army Knife of JavaScript animation...but better. It animates anything JavaScript can touch (CSS properties, canvas library objects, SVG, React, Vue, generic objects, whatever) and it solves countless browser inconsistencies, all with blazing speed (up to 20x faster than jQuery), including automatic GPU-acceleration of transforms.*
 
-You can click different parts of the machine to trigger animations. You'll use JavaScript and *GSAP* (a library with animation functions) for handling animation.
+If you're not convinced, they list a bunch more reasons on the [GSAP website](https://greensock.com/gsap/). For additional guidance on using GSAP, you can refer to the [official documentation](https://greensock.com/docs/).
 
-Note that there are many ways to animate SVG elements -- natively (*CSS*, *rAF*, *WAAPI*) and using other JavaScript libraries (like *Anime*, *Mo*, *p5*, *Snap*). For additional guidance on using GSAP, you can refer to the official documentation:
+### Changing the Mouse Cursor for Interactive Elements
 
-https://greensock.com/docs/3
-
-To begin, add some CSS to change the cursor to a pointer whenever it hovers over some (soon-to-be) clickable element:
+There are three clickable items: the portafilter, start button, and cup (see Figure 1). To begin, add some CSS to change the mouse cursor to a pointer whenever it hovers over some (soon-to-be) clickable element:
 
 ```css
-      #portafilter, #startbutton, #cup {
-        cursor: pointer;
-      }
+#portafilter, #startbutton, #cup {
+  cursor: pointer;
+}
 ```
 
-You have the GSAP library linked in the `head` of your HTML document, and an empty pair of `script` tags (just before the closing `</body>` tag) for adding your JavaScript code. Let's begin with an event listener---which works exactly the same way as it would with HTML:
+This will help convey to the user (by way of that gloved-pointy-finger thing) that each of those items is interactive.
+
+### Programming the Portafilter Animation
+
+You have the GSAP library linked in the `<head>` of your HTML document, and an empty pair of `<script>` tags (just before the closing `</body>` tag) for adding new JavaScript code. To start the portafilter animation, you'll begin with an event listener:
 
 ```html
     <script>
+      // JavaScript code goes here
       document.getElementById('portafilter').addEventListener('click', function dockPortafilter() {
         alert('clicked');
       });

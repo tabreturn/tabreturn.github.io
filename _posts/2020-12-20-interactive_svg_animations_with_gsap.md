@@ -778,7 +778,7 @@ Now that the clipping path is applied (Figure 11), all you see is the brown coff
 
 You can fill your clipping path in any colour you like; once it's applied, it makes no difference. I like to use bright colours so that I can easily see the shape when the effect is deactivated.
 
-You're ready to apply some interactivity and animation to the image.
+You're ready to apply some interactivity and animation to the SVG graphic.
 
 SVG Transformations
 -------------------

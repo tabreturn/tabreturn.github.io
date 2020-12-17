@@ -3,7 +3,7 @@ layout: post
 comments: true
 title: "Interactive Animation with SVG and GSAP"
 categories: code javascript svg
-published: false
+published: true
 ---
 
 In this tutorial, you'll create an interactive espresso machine using SVG, JavaScript, and the [GSAP](https://greensock.com/gsap/) library for animation. You'll draw the espresso machine using SVG code; once that's complete, you'll add the JavaScript/GSAP code to animate it. You'll learn how to use different SVG elements and attributes to draw with code. I won't go into much detail about JavaScript---just enough to add some event listeners and manipulate SVG elements with GSAP. The tutorial assumes that you possess a decent grasp of how HTML and CSS work.
@@ -102,8 +102,8 @@ The final result is a three-step, interactive animation (Figure 1). Click the ob
       <text x="345" y="252" style="fill:#000">3</text>
     </g>
     <g id="restart" style="cursor:pointer">
-      <rect x="350" y="382" width="100" height="50" rx="5"  fill="#0F0" />
-      <text x="378" y="413">reset</text>
+      <rect x="625" y="170" width="100" height="50" rx="5"  fill="#0F0" />
+      <text x="653" y="201">reset</text>
     </g>
   </svg>
   <script>
@@ -548,7 +548,7 @@ Add a *portafilter* (that handle thing with the coffee grounds in it), using a g
 </g>
 ```
 
-Note that the opening and closing `<g>` tags wrap the shapes comprising the portafilter; the group also has an `id` of `"portafilter"`. You'll use that `id` later to animate the portafilter with GSAP. In Figure 8, you can see the portafilter floating on the left of the machine:
+Note that the opening and closing `<g>` tags wrap the shapes comprising the portafilter; the group also has an `id` of `"portafilter"`. You'll use that `id` later to animate the portafilter with GSAP. The portafilter reuses the steel gradient for its fill. In Figure 8, you can see the portafilter floating on the left of the machine:
 
 <figure>
 <div id="figure8">
@@ -925,7 +925,7 @@ Once the portafilter animation finishes, the red button should change to green. 
 
 ### Using a Callback Function to Initialise the Start Button
 
-In computer programming, a *callback*  is any executable code that's passed as an argument to other code. In JavaScript speak: a function that's handed to another function as one of its arguments.
+In computer programming, a *callback*  is any executable code that's passed as an argument to other code. Or, in JavaScript-speak: a function that's handed to another function as one of its arguments.
 
 You don't want the red button operational until the portafilter is locked in position. To change the red button to green *after* the portafilter tween is complete, you'll use a callback function. Specify the callback function name using an additional `onComplete` parameter in your existing `gsap.to()` line:
 
@@ -935,7 +935,7 @@ You don't want the red button operational until the portafilter is locked in pos
   ...
 ```
 
-The `onComplete: activateButton` specifies that once the tween is complete, JavaScript must call a function named `activateButton()`. Define that function next:
+The `onComplete: activateButton` tells GSAP that once the tween is complete, JavaScript must call a function named `activateButton()`. Define that function next:
 
 
 ```javascript
@@ -952,13 +952,13 @@ function activateButton() {
 }
 ```
 
-The `activateButton()` function turns the start button green and adds a new event listener to it. When you click the start button, the `gsap.to()` line tweens the `y` position of the `#cuplevel` clipping path, moving it upward to a new y-coordinate of `-60` over a period of `2` seconds; on completion, the callback function will run a `deactivateButton()` function. But there's no corresponding function definition for that, yet.
+The `activateButton()` function turns the start button green and adds a new event listener to it. When you click the start button, the `gsap.to()` line tweens the `y` position of the `#cuplevel` clipping path, moving it upward to a new y-coordinate of `-60` over a duration of `2` seconds; on completion, the callback function will run a `deactivateButton()` function. But there's no corresponding function definition for that, yet.
 
 ### Creating New SVG Elements with Javascript
 
-You use the `createElement()` method to create new HTML elements using JavaScript. The process is very similar for SVG elements, except that you use [`createElementNS()`](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElementNS) instead.
+You use the `createElement()` method to create new HTML elements using JavaScript. The process is very similar for SVG, except that you use [`createElementNS()`](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElementNS) instead.
 
-And the corresponding `deactivateButton()` function for your last `gsap.to()` tween. This will add some frothy milk to the cup:
+Add a corresponding `deactivateButton()` function for your last `gsap.to()` tween. This will add some frothy milk to the cup using a thick, semi-opaque line with rounded tips:
 
 ```js
 function deactivateButton() {
@@ -982,7 +982,9 @@ function deactivateButton() {
 }
 ```
 
-Save, refresh your browser, and run through the click-sequence again; for the third/last step, click on the cup to add the froth.
+The [`<line>`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/line) element draws a line connecting two points. To create this, I've used a `createElementNS()` function that includes an SVG namespace URI and `line` argument. The points at each of the line end are defined using `x1`, `y1`, `x2`, and `y2` attributes, which I've set using the [`setAttribute()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/setAttribute) method. After adding several attributes, I append the line element to the SVG (using an `appendChild()` method).
+
+Test out the sequence of clicks in Figure 13: click the portafilter; then the button; and finally, the lip of the cup to add the frothy milk.
 
 <figure>
 <div id="figure13">
@@ -1048,9 +1050,9 @@ Save, refresh your browser, and run through the click-sequence again; for the th
         <rect id="cuplevel13" x="325" y="310" width="150" height="60" fill="#F00" />
       </clipPath>
     </defs>
-    <g id="restart" style="cursor:pointer">
-      <rect x="350" y="382" width="100" height="50" rx="5"  fill="#0F0" />
-      <text x="378" y="413">reset</text>
+    <g id="restart13" style="cursor:pointer">
+      <rect x="625" y="170" width="100" height="50" rx="5"  fill="#0F0" />
+      <text x="653" y="201">reset</text>
     </g>
   </svg>
   <script>
@@ -1088,38 +1090,41 @@ Save, refresh your browser, and run through the click-sequence again; for the th
           document.querySelector('#figure13 svg').appendChild(milk);
           this.removeEventListener('click', addMilk13);
           this.style.cursor = 'default';
-          gsap.to('#figure13 #restart', 0, { y:0 });
+          gsap.to('#figure13 #restart13', 0, { y:0 });
         });
       }
     }
     start13();
     // reset code
-    gsap.to('#restart', 0, { y:450 });
-    document.querySelector('#figure13 #restart').addEventListener('click', () => {
+    gsap.to('#figure13 #restart13', 0, { y:450 });
+    document.querySelector('#figure13 #restart13').addEventListener('click', () => {
       gsap.to('#figure13 #portafilter', 0.2, { x:0 });
       document.querySelector('#figure13 #portafilter').style.cursor = 'pointer';
       document.querySelector('#figure13 #startbutton').style.cursor = 'default';
       gsap.to('#figure13 #cuplevel13', 0.2, { y:0 });
       document.querySelector('#figure13 #milk').remove();
-      gsap.to('#figure13 #restart', 0, { y:450 });
+      gsap.to('#figure13 #restart13', 0, { y:450 });
       start13();
     });
   </script>
 </div>
-<figcaption>Figure 13: ....</figcaption>
+<figcaption>Figure 13: Click the portafilter, then the button, then the lip of the cup</figcaption>
 </figure>
 
+I've also added a reset button to restart the steps. You can find the complete code, with the reset button, on [CodePen](https://codepen.io/tabreturn/pen/BaLWgxy) (where I've split the code into separate HTML/CSS/JS panes).
+
+<blockquote markdown="1">
+**For a challenge**, see if you can add a stream of coffee, from the portafilter to the cup, while the cup is filling up.
+</blockquote>
 
 
-https://codepen.io/tabreturn/pen/BaLWgxy
+## Summary
 
-Challenge
----------
+In this tutorial, you used different SVG tags to draw rectangles, ellipses, and paths. You can use SVG attributes to apply strokes and solid- and gradient fills to those shapes. You can also define groups of elements, which is a useful technique for addressing and manipulating multiple shapes at once. Clipping paths are a handy way to clip/mask off parts of objects you want to hide.
 
-See if you can add the following features:
+You added GSAP animations to the SVG using JavaScript. GSAP can tween curves, colours, CSS properties, and much more. The `gsap.to()` method for tweens includes handy callback parameters, like `onComplete` to execute additional code once a tween is complete. Of course, you can combine other JavaScript with GSAP, like methods for creating new SVG elements dynamically.
 
-* a stream of coffee, from the portafilter to the cup, while the cup is filling-up;
-* add some button to reset the process.
+But there's so much more to SVG and GSAP, and I encourage you to explore more using the links in the References section. Be sure to checkout [SVG transformation attributes](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Basic_Transformations), too---and how [GSAP can tween them](https://greensock.com/docs/v3/GSAP/gsap.to())! If you're looking for some cool projects to apply these techniques, I'd suggest that combining SVG and GSAP is a great way to create [explorable explanations](https://en.wikipedia.org/wiki/Explorable_explanation) and unique data visualisations.
 
 *End*
 
@@ -1129,3 +1134,4 @@ See if you can add the following features:
 * https://developer.mozilla.org/en-US/docs/Web/SVG/Element
 * https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute
 * https://greensock.com/docs/
+* https://greensock.com/get-started

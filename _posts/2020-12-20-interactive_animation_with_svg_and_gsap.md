@@ -477,7 +477,7 @@ or using:
 The first version is what you have right now. In the second version, the `l` command (lowercase) draws a line that ends `130` pixels to the right of (`335 230`) and `0` pixels above/below it. The visual result is exactly the same as the first version. The difference is that the `l` point is positioned relative to its preceding point.
 
 <blockquote markdown="1">
-If you're wondering: there's no difference between the uppercase and lowercase `Z`/`z` command.
+NOTE: If you're wondering: there's no difference between the uppercase and lowercase `Z`/`z` command.
 </blockquote>
 
 I won't get into any more detail about how curves work here, but you can refer to the [MDN documentation on path commands](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d#Path_commands) to learn more. Paths can be tricky to get right by hand-coding coordinates, but you can always use Inkscape, Illustrator, or some similar software if you prefer visual tools.
@@ -841,7 +841,7 @@ Now replace the `alert()` line with three new lines:
 +  this.style.cursor = 'default';
 ```
 
-Click the portafilter to move it into position above the cup. The `gsap.to('#portafilter', 1, {x: 240})` smoothly tweens the `'#portafilter'` element from its current location to a new x-coordinate of `240`, taking `1` second to complete the motion. Then, the `removeEventListener()` method removes the click event by referencing the function name (`dockPortafilter`), so that you cannot click/animate the portafilter again, and resets the mouse cursor (to the `default` arrow cursor).
+Click the portafilter to move it into position above the cup. The `gsap.to('#portafilter', 1, {x: 240})` smoothly animates the `'#portafilter'` element from its current location to a new x-coordinate of `240`, taking `1` second to complete the motion. Then, the `removeEventListener()` method removes the click event by referencing the function name (`dockPortafilter`), so that you cannot click/animate the portafilter again, and resets the mouse cursor (to the `default` arrow cursor).
 
 <figure>
 <div id="figure12">
@@ -919,9 +919,11 @@ Click the portafilter to move it into position above the cup. The `gsap.to('#por
 <figcaption>Figure 12: Click the portafilter to animate it into position above the cup</figcaption>
 </figure>
 
+This animation technique is referred to as *tweening*. A tween generates intermediate frames between a start and end frame to create the appearance of smooth animation. In GSAP, you use the [`gsap.to()`](https://greensock.com/docs/v3/GSAP/gsap.to()), [`gsap.from()`](https://greensock.com/docs/v3/GSAP/gsap.from()), and [`gsap.fromTo()`](https://greensock.com/docs/v3/GSAP/gsap.fromTo()) for any properties you want to tween.
+
 Once the portafilter animation finishes, the red button should change to green. But, this requires a callback function.
 
-## Using a Callback Function to Initialise the Start Button
+### Using a Callback Function to Initialise the Start Button
 
 In computer programming, a *callback*  is any executable code that's passed as an argument to other code. In JavaScript speak: a function that's handed to another function as one of its arguments.
 
@@ -950,9 +952,40 @@ function activateButton() {
 }
 ```
 
-The `activateButton()` function adds a new event listener to the start button. When you click the start button, the `gsap.to()` line tweens the `y` position of the clipping mask, moving it to a new y-coordinate of `-60` over a period of `2` seconds; on completion, the callback function will run a `deactivateButton()` function. Then it removes the listener and resets the mouse cursor.
+The `activateButton()` function turns the start button green and adds a new event listener to it. When you click the start button, the `gsap.to()` line tweens the `y` position of the `#cuplevel` clipping path, moving it to a new y-coordinate of `-60` over a period of `2` seconds; on completion, the callback function will run a `deactivateButton()` function.
 
 Pressing this button---which is only possible once it turns green---will fill the cup :
+
+
+
+
+### Creating New SVG Elements with Javascript
+
+
+And a corresponding function to add some frothy milk to the cup:
+
+```js
+      function deactivateButton() {
+        sb.setAttribute('fill','#F00');
+        document.getElementById('cup').addEventListener('click', function addMilk() {
+          let milk = document.createElementNS('http://www.w3.org/2000/svg','line')
+          milk.setAttribute('stroke', '#FFF');
+          milk.setAttribute('stroke-opacity', '0.4');
+          milk.setAttribute('stroke-width', '15');
+          milk.setAttribute('stroke-linecap', 'round');
+          milk.setAttribute('x1', 353);
+          milk.setAttribute('y1', 250);
+          milk.setAttribute('x2', 447);
+          milk.setAttribute('y2', 250);
+          document.querySelector('svg').appendChild(milk);
+          this.removeEventListener('click', addMilk);
+          this.style.cursor = 'default';
+        });
+      }
+    </script>
+```
+
+Save, refresh your browser, and run through the click-sequence again; for the third/last step, click on the cup to add the froth.
 
 <figure>
 <div id="figure13">
@@ -1039,49 +1072,6 @@ Pressing this button---which is only possible once it turns green---will fill th
 </div>
 <figcaption>Figure 13: ....</figcaption>
 </figure>
-
-
-
-befoe conintuing
-Add another callback:
-
-```js
-        ...
-          gsap.to('#cuplevel', 2, { y:-60, onComplete:deactivateButton });
-          ...
-```
-...
-
-
-### Creating New SVG Elements with Javascript
-
-
-And a corresponding function to add some frothy milk to the cup:
-
-```js
-      function deactivateButton() {
-        sb.setAttribute('fill','#F00');
-        document.getElementById('cup').addEventListener('click', function addMilk() {
-          let milk = document.createElementNS('http://www.w3.org/2000/svg','line')
-          milk.setAttribute('stroke', '#FFF');
-          milk.setAttribute('stroke-opacity', '0.4');
-          milk.setAttribute('stroke-width', '15');
-          milk.setAttribute('stroke-linecap', 'round');
-          milk.setAttribute('x1', 353);
-          milk.setAttribute('y1', 250);
-          milk.setAttribute('x2', 447);
-          milk.setAttribute('y2', 250);
-          document.querySelector('svg').appendChild(milk);
-          this.removeEventListener('click', addMilk);
-          this.style.cursor = 'default';
-        });
-      }
-    </script>
-```
-
-Save, refresh your browser, and run through the click-sequence again; for the third/last step, click on the cup to add the froth.
-
-12-callback_milk.png
 
 
 

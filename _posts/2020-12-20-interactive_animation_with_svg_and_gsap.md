@@ -108,7 +108,7 @@ The final result is a three-step, interactive animation (Figure 1). Click the ob
   </svg>
   <script>
     cd = document.getElementById('figure1');
-    function start() {
+    function start1() {
       // dock portafilter
       document.getElementById('portafilter1').addEventListener('click', function dockPortafilter1() {
         gsap.to('#portafilter1', 1, { x:240, onComplete:activateButton1 });
@@ -165,9 +165,9 @@ The final result is a three-step, interactive animation (Figure 1). Click the ob
       gsap.to('#step1', 0.2, { opacity:1, delay:0.5 });
       document.getElementById('step3').style.opacity = 0;
       gsap.to('#restart', 0, { y:450 });
-      start();
+      start1();
     });
-    start();
+    start1();
   </script>
 </div>
 <figcaption>Figure 1: Click the object next to each numbered ball to advance through the animation</figcaption>
@@ -952,37 +952,34 @@ function activateButton() {
 }
 ```
 
-The `activateButton()` function turns the start button green and adds a new event listener to it. When you click the start button, the `gsap.to()` line tweens the `y` position of the `#cuplevel` clipping path, moving it to a new y-coordinate of `-60` over a period of `2` seconds; on completion, the callback function will run a `deactivateButton()` function.
-
-Pressing this button---which is only possible once it turns green---will fill the cup :
-
-
-
+The `activateButton()` function turns the start button green and adds a new event listener to it. When you click the start button, the `gsap.to()` line tweens the `y` position of the `#cuplevel` clipping path, moving it upward to a new y-coordinate of `-60` over a period of `2` seconds; on completion, the callback function will run a `deactivateButton()` function. But there's no corresponding function definition for that, yet.
 
 ### Creating New SVG Elements with Javascript
 
+You use the `createElement()` method to create new HTML elements using JavaScript. The process is very similar for SVG elements, except that you use [`createElementNS()`](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElementNS) instead.
 
-And a corresponding function to add some frothy milk to the cup:
+And the corresponding `deactivateButton()` function for your last `gsap.to()` tween. This will add some frothy milk to the cup:
 
 ```js
-      function deactivateButton() {
-        sb.setAttribute('fill','#F00');
-        document.getElementById('cup').addEventListener('click', function addMilk() {
-          let milk = document.createElementNS('http://www.w3.org/2000/svg','line')
-          milk.setAttribute('stroke', '#FFF');
-          milk.setAttribute('stroke-opacity', '0.4');
-          milk.setAttribute('stroke-width', '15');
-          milk.setAttribute('stroke-linecap', 'round');
-          milk.setAttribute('x1', 353);
-          milk.setAttribute('y1', 250);
-          milk.setAttribute('x2', 447);
-          milk.setAttribute('y2', 250);
-          document.querySelector('svg').appendChild(milk);
-          this.removeEventListener('click', addMilk);
-          this.style.cursor = 'default';
-        });
-      }
-    </script>
+function deactivateButton() {
+  sb.setAttribute('fill','#F00');
+  let cup = document.getElementById('cup');
+  cup.style.cursor = 'pointer';
+  cup.addEventListener('click', function addMilk() {
+    let milk = document.createElementNS('http://www.w3.org/2000/svg', 'line')
+    milk.setAttribute('stroke', '#FFF');
+    milk.setAttribute('stroke-opacity', '0.4');
+    milk.setAttribute('stroke-width', '15');
+    milk.setAttribute('stroke-linecap', 'round');
+    milk.setAttribute('x1', 353);
+    milk.setAttribute('y1', 250);
+    milk.setAttribute('x2', 447);
+    milk.setAttribute('y2', 250);
+    document.querySelector('svg').appendChild(milk);
+    this.removeEventListener('click', addMilk);
+    this.style.cursor = 'default';
+  });
+}
 ```
 
 Save, refresh your browser, and run through the click-sequence again; for the third/last step, click on the cup to add the froth.
@@ -1018,7 +1015,7 @@ Save, refresh your browser, and run through the click-sequence again; for the th
       stroke-linejoin="round"
       class="stroked"
       fill="#0EE" fill-opacity="0.4"
-      id="cup"
+      id="cup13"
       d="M335 230
          L465 230
          C465 230, 465 310, 400 310
@@ -1051,23 +1048,62 @@ Save, refresh your browser, and run through the click-sequence again; for the th
         <rect id="cuplevel13" x="325" y="310" width="150" height="60" fill="#F00" />
       </clipPath>
     </defs>
+    <g id="restart" style="cursor:pointer">
+      <rect x="350" y="382" width="100" height="50" rx="5"  fill="#0F0" />
+      <text x="378" y="413">reset</text>
+    </g>
   </svg>
   <script>
-    document.querySelector('#figure13 #portafilter').addEventListener('click', function dockPortafilter13() {
-      gsap.to('#figure13 #portafilter', 1, { x:240 });
-      this.removeEventListener('click', dockPortafilter13);
-      this.style.cursor = 'default';
-    });
-    let sb13 = document.querySelector('#figure13 #startbutton');
-    function activateButton13() {
-      sb13.setAttribute('fill', '#0F0');
-      sb13.style.cursor = 'pointer';
-      sb13.addEventListener('click', function greenStartButton13() {
-        gsap.to('#figure13 #cuplevel13', 2, { y:-60 });
-        this.removeEventListener('click', greenStartButton13);
+    function start13() {
+      document.querySelector('#figure13 #portafilter').addEventListener('click', function dockPortafilter13() {
+        gsap.to('#figure13 #portafilter', 1, { x:240, onComplete: activateButton13});
+        this.removeEventListener('click', dockPortafilter13);
         this.style.cursor = 'default';
       });
+      let sb13 = document.querySelector('#figure13 #startbutton');
+      function activateButton13() {
+        sb13.setAttribute('fill', '#0F0');
+        sb13.style.cursor = 'pointer';
+        sb13.addEventListener('click', function greenStartButton13() {
+          gsap.to('#figure13 #cuplevel13', 2, { y:-60, onComplete: deactivateButton13});
+          this.removeEventListener('click', greenStartButton13);
+          this.style.cursor = 'default';
+        });
+      }
+      function deactivateButton13() {
+        sb13.setAttribute('fill','#F00');
+        let cup = document.getElementById('cup13');
+        cup.style.cursor = 'pointer';
+        cup.addEventListener('click', function addMilk13() {
+          let milk = document.createElementNS('http://www.w3.org/2000/svg', 'line')
+          milk.setAttribute('stroke', '#FFF');
+          milk.setAttribute('stroke-opacity', '0.4');
+          milk.setAttribute('stroke-width', '15');
+          milk.setAttribute('stroke-linecap', 'round');
+          milk.setAttribute('x1', 353);
+          milk.setAttribute('y1', 250);
+          milk.setAttribute('x2', 447);
+          milk.setAttribute('y2', 250);
+          milk.setAttribute('id', 'milk');
+          document.querySelector('#figure13 svg').appendChild(milk);
+          this.removeEventListener('click', addMilk13);
+          this.style.cursor = 'default';
+          gsap.to('#figure13 #restart', 0, { y:0 });
+        });
+      }
     }
+    start13();
+    // reset code
+    gsap.to('#restart', 0, { y:450 });
+    document.querySelector('#figure13 #restart').addEventListener('click', () => {
+      gsap.to('#figure13 #portafilter', 0.2, { x:0 });
+      document.querySelector('#figure13 #portafilter').style.cursor = 'pointer';
+      document.querySelector('#figure13 #startbutton').style.cursor = 'default';
+      gsap.to('#figure13 #cuplevel13', 0.2, { y:0 });
+      document.querySelector('#figure13 #milk').remove();
+      gsap.to('#figure13 #restart', 0, { y:450 });
+      start13();
+    });
   </script>
 </div>
 <figcaption>Figure 13: ....</figcaption>

@@ -607,7 +607,7 @@ You can refer to the relevant MDN documentation for more on the [`<line>`](https
 
 ### Using Clipping Paths in SVG ###
 
-A *clipping path* is a vector shape used to cut out a 2D image, a bit like a stencil. The result is a sort of masking effect. In Figure 9, a bright red circle (the clipping path) is placed over a dark brown star (left); after the clipping path is applied, the result is a star with clipped tips (right). The operation subtracts anything outside the red circle.
+A *clipping path* is a vector shape used to cut out a 2D image, a bit like a stencil. The result is a sort of masking effect. In Figure 9, a bright red circle (the clipping path) is placed over a dark brown star (left); after applying the clipping path, the result is a star with clipped tips (right). The operation subtracts anything outside the red circle.
 
 <figure>
   <img src="{{ site.url }}/img/isawg/clipping-path.svg" />
@@ -691,10 +691,10 @@ Wherever the red rectangle overlaps the coffee cup filled in brown, the brown mu
   <script>
   </script>
 </div>
-<figcaption>Figure 10: A cup filled brown and a red clipping path over it</figcaption>
+<figcaption>Figure 10: A cup filled brown and a (soon-to-be) red clipping path over it</figcaption>
 </figure>
 
-Convert this red rectangle to a clipping path using `<defs>` and `<clipPath>` tags. Additionally, add a `clip-path="url(#cupmask)"` attribute to the brown mug---this will apply the relevant clipping path by referencing the `id` attribute on the opening `<clipPath>` tag:
+Convert this red rectangle to a clipping path using `<defs>` and `<clipPath>` tags. Additionally, add a `clip-path="url(#cupmask)"` attribute to the brown mug---this will apply the relevant clipping path by referencing the `id` attribute of the opening `<clipPath>` tag:
 
 <style>#noerr .err {background-color:transparent}</style>
 <div id="noerr" markdown="1">
@@ -778,10 +778,10 @@ Now that the clipping path is applied (Figure 11), all you see is the brown coff
   <script>
   </script>
 </div>
-<figcaption>Figure 11: The clipping path effect applied to the coffee in the mug contents</figcaption>
+<figcaption>Figure 11: The clipping path effect applied to the coffee in the mug</figcaption>
 </figure>
 
-But, the clipping path is currently sitting at the full position. Change the `y` attribute of the `cuplevel` rectangle to `310`, emptying the mug:
+But, the clipping path is currently sitting at the full position. Change the `y` attribute of the `cuplevel` rectangle to `310`, moving it down and emptying the mug:
 ```html
 <rect id="cuplevel" x="325" y="310" ... />
 ```
@@ -828,7 +828,7 @@ document.getElementById('portafilter').addEventListener('click', function dockPo
 });
 ```
 
-Clicking the portafilter pops-up an alert box that reads "clicked". The `document.getElementById()` accepts a single argument: the `id` of the element you want to address; in this case, it's `portafilter`. You add an event listener to that element using `addEventListener()`---specifically, one that listens for a mouse `'click'`. You can name the `function` whatever you like (even make it nameless), so I've used `dockPortafilter()`. The indented code---`alert('clicked')`---is triggered whenever you click the portafilter.
+Clicking the portafilter pops-up an alert box that reads "clicked". The `document.getElementById()` accepts a single argument: the `id` of the element you want to address; in this case, it's `portafilter`. You add an event listener to that element using the `addEventListener()` method---specifically, one that listens for a mouse `'click'`. You can name the `function` whatever you like (even make it nameless), so I've used `dockPortafilter()`. The indented code---`alert('clicked')`---is triggered whenever you click the portafilter.
 
 SVG is part of the DOM, so JavaScript does pretty much all the same things in SVG as it does in HTML. In other words, you can address elements as you might in HTML, add event listeners, and so on.
 
@@ -836,12 +836,12 @@ Now replace the `alert()` line with three new lines:
 
 ```diff
 -  alert('clicked');
-+  gsap.to('#portafilter', 1, { x:240 });
++  gsap.to('#portafilter', 1, {x: 240});
 +  this.removeEventListener('click', dockPortafilter);
 +  this.style.cursor = 'default';
 ```
 
-Click the portafilter to move it into position above the cup. The `gsap.to('#portafilter', 1, {x:240})` smoothly tweens the `'#portafilter'` element from its current location to a new x-coordinate of `240`, taking `1` second to complete the motion. Then, the code removes the event listener (`removeEventListener`) using the function name (`dockPortafilter`), so that you cannot click/animate the portafilter again, and resets the mouse cursor (to the `default` arrow cursor).
+Click the portafilter to move it into position above the cup. The `gsap.to('#portafilter', 1, {x: 240})` smoothly tweens the `'#portafilter'` element from its current location to a new x-coordinate of `240`, taking `1` second to complete the motion. Then, the `removeEventListener()` method removes the click event by referencing the function name (`dockPortafilter`), so that you cannot click/animate the portafilter again, and resets the mouse cursor (to the `default` arrow cursor).
 
 <figure>
 <div id="figure12">
@@ -919,7 +919,7 @@ Click the portafilter to move it into position above the cup. The `gsap.to('#por
 <figcaption>Figure 12: Click the portafilter to animate it into position above the cup</figcaption>
 </figure>
 
-Once the portafilter animation is finished, the red button should change to green. But, this requires a callback function.
+Once the portafilter animation finishes, the red button should change to green. But, this requires a callback function.
 
 ## Using a Callback Function to Initialise the Start Button
 
@@ -929,11 +929,11 @@ You don't want the red button operational until the portafilter is locked in pos
 
 ```javascript
   ...
-  gsap.to('#portafilter', 1, { x:240, onComplete:activateButton });
+  gsap.to('#portafilter', 1, {x: 240, onComplete: activateButton});
   ...
 ```
 
-The `onComplete:activateButton` specifies that once the tween is complete, JavaScript must call a function named `activateButton()`. Define that function next:
+The `onComplete: activateButton` specifies that once the tween is complete, JavaScript must call a function named `activateButton()`. Define that function next:
 
 
 ```javascript
@@ -943,14 +943,14 @@ function activateButton() {
   sb.setAttribute('fill', '#0F0');
   sb.style.cursor = 'pointer';
   sb.addEventListener('click', function greenStartButton() {
-    gsap.to('#cuplevel', 2, { y:-60, onComplete:deactivateButton });
+    gsap.to('#cuplevel', 2, {y: -60, onComplete: deactivateButton});
     this.removeEventListener('click', greenStartButton);
     this.style.cursor = 'default';
   });
 }
 ```
 
-The `activateButton()` function sets the button fill to bright green (`#0F0`), changes the start button cursor to `pointer`, and adds a new event listener to it. The `gsap.to()` function in the `greenStartButton()` function block tweens the `y` position of the clipping mask, over a period of `2` seconds, then calls the next callback function, `deactivateButton()`.
+The `activateButton()` function adds a new event listener to the start button. When you click the start button, the `gsap.to()` line tweens the `y` position of the clipping mask, moving it to a new y-coordinate of `-60` over a period of `2` seconds; on completion, the callback function will run a `deactivateButton()` function. Then it removes the listener and resets the mouse cursor.
 
 Pressing this button---which is only possible once it turns green---will fill the cup :
 

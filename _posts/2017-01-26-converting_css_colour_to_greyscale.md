@@ -212,6 +212,8 @@ This is a simple example, but you can fiddle with it some more -- or better yet,
 
 This post covered two common formulae for converting colour to greyscale. However, there are more, and if you're interested in reading further, I highly recommend [Tanner Helland's blog post]( http://www.tannerhelland.com/3643/grayscale-image-algorithm-vb6/) on the topic.
 
+*End*
+
 ## References
 
 * http://gimp-savvy.com/BOOK/index.html?node54.html

@@ -139,6 +139,8 @@ This is because the HVS is more sensitive to certain colours due to the physiolo
 
 It gets more complicated, though, and further adjustments must be made to accommodate for -- among other considerations -- the fact that changes in darker colours are less noticeable than those in lighter colours. And this is where the article ends; and where you can head over to Zachary Schuessler's [Delta E 101 webpage](http://zschuessler.github.io/DeltaE/learn/). Zachary does an excellent job of explaining Delta E further, and also provides the CIE's algorithms implemented as a [JavaScript library](https://zschuessler.github.io/DeltaE/).
 
+*End*
+
 ## References
 
 * https://www.researchgate.net/publication/236023905_Color_difference_Delta_E_-_A_survey

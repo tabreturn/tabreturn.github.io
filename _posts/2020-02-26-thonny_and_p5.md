@@ -117,6 +117,8 @@ You can now copy your Thonny application folder to your USB drive. It may be qui
 
 For more on p5, Processing, processing.py, and Thonny, refer to the links below.
 
+*End*
+
 ## References
 
 * https://github.com/p5py/p5

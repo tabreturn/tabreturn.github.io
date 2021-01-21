@@ -13,7 +13,7 @@ categories: code processing python
 &nbsp;  
 I must apologise: development of these lessons is on hold for now.
 
-**The good news is that I'm writing a book. It's tentatively titled *Learn Python Visually: Creative Coding with Python Mode for Processing***. I'll be working with the good folks at [No Starch Press](https://nostarch.com/), purveyors of the finest in geek entertainment. You can expect a refined and designed version of what I've provided online, printed in full colour with new chapters and nice margins to scrawl in.
+**But I have a new book out titled *Learn Python Visually: Creative Coding with Python Mode for Processing***. The book contains a refined and redesigned version of what I've provided online, printed in full colour with new chapters and nice margins to scrawl in. You can order a copy from the [No Starch website](https://nostarch.com/) or on [Amazon](https://www.amazon.com/Learn-Python-Visually-Tristan-Bunn-ebook/dp/B08JKNHDWN/ref=sr_1_5?dchild=1&keywords=learn+python+visually&qid=1611202175&sr=8-5). 
 
 I will finish off the remaining lessons (listed below), but cannot say exactly when. You can visit from time to time to check for updates, or <a href="{{ "/feed.xml" | prepend: site.baseurl }}">subscribe via RSS</a>.
 

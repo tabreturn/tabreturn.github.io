@@ -16,9 +16,7 @@ categories: code processing python
 The *functions* chapter is available as a free sample download here:  
 [https://nostarch.com/download/samples/LearnPythonVisually_sampleChapter.pdf](https://nostarch.com/download/samples/LearnPythonVisually_sampleChapter.pdf)
 
-I'll finish off the remaining lessons (listed below), but cannot say exactly when. You can visit from time to time to check for updates, or <a href="{{ "/feed.xml" | prepend: site.baseurl }}">subscribe via RSS</a>.
-
-My thanks go to Åke Jonsson for his feedback on the lessons I've posted up to this point.
+I'll finish off the remaining lessons (listed below), but cannot say exactly when. You can visit from time to time to check for updates, or <a href="{{ "/feed.xml" | prepend: site.baseurl }}">subscribe via RSS</a>. My thanks go to Åke Jonsson for his feedback on the lessons I've posted up to this point.
 
 **In development**  
 *Lesson 9: Object-Orientation* *([lesson code](https://github.com/tabreturn/processing.py-book/tree/master/chapter-10-object-oriented_programming_and_pvector/microscopic))*  

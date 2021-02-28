@@ -11,7 +11,9 @@ categories: code processing python
 
 ---
 &nbsp;  
-**I have a new book out titled *Learn Python Visually – Creative Coding with Python Mode for Processing***. The book contains a refined and redesigned version of what I've provided online, printed in full colour with new chapters and nice margins to scrawl in. You can order a copy from the [No Starch website](https://nostarch.com/Learn-Python-Visually) or [Amazon](https://www.amazon.com/Learn-Python-Visually-Tristan-Bunn-ebook/dp/B08JKNHDWN/). 
+**I have a new book out titled *Learn Python Visually – Creative Coding with Processing.py***. The book contains a refined and redesigned version of what I've provided online, printed in full colour with new chapters and nice margins to scrawl in. You can order a copy from the [No Starch website](https://nostarch.com/Learn-Python-Visually) or [Amazon](https://www.amazon.com/Learn-Python-Visually-Tristan-Bunn-ebook/dp/B08JKNHDWN/).
+
+<img class="fullwidth" src="http://portfolio.tabreturn.com/images/learn-python-visually.png" />
 
 The *functions* chapter is available as a free sample download here:  
 [https://nostarch.com/download/samples/LearnPythonVisually_sampleChapter.pdf](https://nostarch.com/download/samples/LearnPythonVisually_sampleChapter.pdf)

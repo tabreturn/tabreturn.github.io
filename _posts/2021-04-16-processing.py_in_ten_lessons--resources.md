@@ -44,7 +44,7 @@ The source files are on [GitHub](https://github.com/tabreturn/processing.py-chea
 
 ## 3. Other Useful Resources
 
-Alexandre Villares has compiled an excellent list of resources for teaching artists, designers, and architects to code. Also, you should check out his impressive *sketch-a-day* repo:
+Alexandre Villares has compiled an excellent list of resources for teaching artists, designers, and architects to code with Python. Also, you should check out his impressive *sketch-a-day* repo:
 
 * [https://github.com/villares/Resources-for-teaching-programming](https://github.com/villares/Resources-for-teaching-programming)
 * [https://github.com/villares/sketch-a-day](https://github.com/villares/sketch-a-day)

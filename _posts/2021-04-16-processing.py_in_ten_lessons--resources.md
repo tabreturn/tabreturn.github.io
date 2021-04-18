@@ -25,7 +25,7 @@ So far, I've worked on porting the examples bundled with Processing's Python Mod
 You can find the source code for the website on [GitHub](https://github.com/tabreturn/tabreturn.pyde). I built it using [Jinja2](https://jinja.palletsprojects.com/) for templating and [pyp5js](https://berinhard.github.io/pyp5js/) to transcribe processing.py files to p5.js. It uses a modified [Pygments](https://pygments.org/) lexer for syntax highlighting.
 </small>
 
-## 2. A Processing Python Mode / Processing.py cheat sheet for beginners
+## 2. A Processing Python Mode / Processing.py Cheat Sheet for Beginners
 
 I put together a Processing.py / Python Mode cheat sheet for beginners. If that sounds useful, you can [download the cheat sheet here](https://raw.githubusercontent.com/tabreturn/processing.py-cheat-sheet/master/p.py_cc.pdf).
 

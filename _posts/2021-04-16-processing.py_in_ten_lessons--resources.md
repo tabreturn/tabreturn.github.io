@@ -22,7 +22,7 @@ I've created two new resources to help Processing.py users -- **a website for br
 So far, I've worked on porting the examples bundled with Processing's Python Mode (ordinarily accessible in the Processing IDE via the *File > Examples...* menu). Each entry displays a sketch that runs in the web browser along with its source code.
 
 <small markdown="1">
-You can find the source code for the website on [GitHub](https://github.com/tabreturn/tabreturn.pyde). I built the it using [Jinja2](https://jinja.palletsprojects.com/) for templating and [pyp5js](https://berinhard.github.io/pyp5js/) to transcribe processing.py files to p5.js. It uses a modified [Pygments](https://pygments.org/) lexer for syntax highlighting.
+You can find the source code for the website on [GitHub](https://github.com/tabreturn/tabreturn.pyde). I built it using [Jinja2](https://jinja.palletsprojects.com/) for templating and [pyp5js](https://berinhard.github.io/pyp5js/) to transcribe processing.py files to p5.js. It uses a modified [Pygments](https://pygments.org/) lexer for syntax highlighting.
 </small>
 
 ## 2. A Processing Python Mode / Processing.py cheat sheet for beginners

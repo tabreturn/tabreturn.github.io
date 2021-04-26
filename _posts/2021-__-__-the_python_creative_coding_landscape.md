@@ -23,5 +23,5 @@ Summary ...
 ## References
 
 * hhttps://github.com/villares/Resources-for-teaching-programming
-* godot and blender?
+* godot (https://github.com/touilleMan/godot-python) and blender?
 * https://...

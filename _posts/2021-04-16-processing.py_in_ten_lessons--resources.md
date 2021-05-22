@@ -13,7 +13,7 @@ I've created two new resources to help Processing.py users -- **a website for br
 [pyde.org](http://pyde.org/) hosts a collection of short, prototypical programs exploring the basics of programming with Processing.py.
 
 <figure>
-  <img class="fullwidth" src="https://raw.githubusercontent.com/tabreturn/tabreturn.pyde/master/screenshot.png" />
+  <img class="fullwidth" src="https://raw.githubusercontent.com/tabreturn/pyde.org/master/screenshot.png" />
   <figcaption>
     The pyde.org landing page displaying the examples listing
   </figcaption>

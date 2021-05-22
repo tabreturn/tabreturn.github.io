@@ -10,12 +10,12 @@ I've created two new resources to help Processing.py users -- **a website for br
 ## 1. A Website for Browsing Code Examples
 
 
-[pyde.tabreturn.com](http://pyde.tabreturn.com/) hosts a collection of short, prototypical programs exploring the basics of programming with Processing.py.
+[pyde.org](http://pyde.org/) hosts a collection of short, prototypical programs exploring the basics of programming with Processing.py.
 
 <figure>
   <img class="fullwidth" src="https://raw.githubusercontent.com/tabreturn/tabreturn.pyde/master/screenshot.png" />
   <figcaption>
-    The pyde.tabreturn.com landing page displaying the examples listing
+    The pyde.org landing page displaying the examples listing
   </figcaption>
 </figure>
 
@@ -36,7 +36,7 @@ I put together a Processing.py / Python Mode cheat sheet for beginners. If that 
   </figcaption>
 </figure>
 
-I figured a simple 2-pager works best (a single sheet of paper, printed on both sides). Once the user outgrows this cheat sheet, the official [Python Mode reference](https://py.processing.org/reference/) is probably more helpful than a cheat sheet with several more pages. 
+I figured a simple 2-pager works best (a single sheet of paper, printed on both sides). Once the user outgrows this cheat sheet, the official [Python Mode reference](https://py.processing.org/reference/) is probably more helpful than a cheat sheet with several more pages.
 
 <small markdown="1">
 The source files are on [GitHub](https://github.com/tabreturn/processing.py-cheat-sheet). Add to- or edit as you please. I designed the cheat sheet using [Scribus](https://www.scribus.net/) and [Inkscape](https://inkscape.org/).
@@ -54,4 +54,3 @@ For general Python usage, here's a Processing-less beginner Python cheat sheet b
 * [https://github.com/ehmatthes/pcc/blob/master/cheat_sheets/beginners_python_cheat_sheet_pcc.pdf](https://github.com/ehmatthes/pcc/blob/master/cheat_sheets/beginners_python_cheat_sheet_pcc.pdf)
 
 *End*
-

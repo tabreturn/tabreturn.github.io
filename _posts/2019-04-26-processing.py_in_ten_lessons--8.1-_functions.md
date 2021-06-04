@@ -26,6 +26,8 @@ I'll finish off the remaining lessons (listed below), but cannot say exactly whe
 *Lesson 11: Some Physics*  
 *Bonus Lesson: 3D and Shaders* *([another 3d tutorial](https://py.processing.org/tutorials/p3d/))*
 
+As an alternative to Processing 3D, you might try [Blender scripting](https://tabreturn.github.io/#blender-reverse) or [GlowScript](https://www.glowscript.org/).
+
 <p style="text-align:right" markdown="1">
 [Complete list of Processing.py lessons]({{ site.baseurl }}/#processing-reverse)
 </p>

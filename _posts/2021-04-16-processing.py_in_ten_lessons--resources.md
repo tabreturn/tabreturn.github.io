@@ -10,12 +10,12 @@ I've created two new resources to help Processing.py users -- **a website for br
 ## 1. A Website for Browsing Code Examples
 
 
-[pyde.org](http://pyde.org/) hosts a collection of short, prototypical programs exploring the basics of programming with Processing.py.
+[PYDE.ORG](http://pyde.org/) hosts a collection of short, prototypical programs exploring the basics of programming with Processing.py.
 
 <figure>
   <img class="fullwidth" style="outline:1px solid #BBB" src="https://raw.githubusercontent.com/tabreturn/pyde.org/master/screenshot.png" />
   <figcaption>
-    The pyde.org landing page displaying the examples listing
+    The PYDE.ORG landing page displaying the examples listing
   </figcaption>
 </figure>
 

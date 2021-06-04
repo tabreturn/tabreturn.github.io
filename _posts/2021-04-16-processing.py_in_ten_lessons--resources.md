@@ -49,6 +49,11 @@ Alexandre Villares has compiled an excellent list of resources for teaching arti
 * [https://github.com/villares/Resources-for-teaching-programming](https://github.com/villares/Resources-for-teaching-programming)
 * [https://github.com/villares/sketch-a-day](https://github.com/villares/sketch-a-day)
 
+As an alternative to Processing 3D, you might try 
+
+* [Blender scripting](https://tabreturn.github.io/#blender-reverse)
+* [GlowScript](https://www.glowscript.org/)
+
 For general Python usage, here's a Processing-less beginner Python cheat sheet by Eric Matthes:
 
 * [https://github.com/ehmatthes/pcc/blob/master/cheat_sheets/beginners_python_cheat_sheet_pcc.pdf](https://github.com/ehmatthes/pcc/blob/master/cheat_sheets/beginners_python_cheat_sheet_pcc.pdf)

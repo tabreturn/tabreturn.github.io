@@ -49,7 +49,7 @@ Alexandre Villares has compiled an excellent list of resources for teaching arti
 * [https://github.com/villares/Resources-for-teaching-programming](https://github.com/villares/Resources-for-teaching-programming)
 * [https://github.com/villares/sketch-a-day](https://github.com/villares/sketch-a-day)
 
-As an alternative to Processing 3D, you might try 
+As an alternative to Processing 3D, you might try:
 
 * [Blender scripting](https://tabreturn.github.io/#blender-reverse)
 * [GlowScript](https://www.glowscript.org/)

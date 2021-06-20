@@ -8,7 +8,7 @@ categories: code python
 You can combine *Thonny* and *p5* for a Processing-esque, Python 3 development environment that runs off a USB drive. There are situations where you may prefer to use p5 over Processing Python Mode / processing.py, which I discuss in this post. This Thonny-p5 combo is also handy for teaching programming in computer labs where students cannot install software, or any situation where you'd prefer to run an application in a portable fashion.
 
 <figure>
-  <img src="{{ site.url }}/img/tap/header.png" class="fullwidth" />
+  <img src="{{ site.url }}/img/tap5/header.png" class="fullwidth" />
 </figure>
 
 This post covers how to roll-your-own portable Thonny + p5 IDE for Windows computers. The process is similar for Mac and Linux setups, although I will not cover the procedure for these platforms.
@@ -34,38 +34,38 @@ Unlike Processing's Python mode, p5 is compatible with Python 3 and Python libra
 To begin, download the portable version of Thonny from [https://github.com/thonny/thonny/releases/](https://github.com/thonny/thonny/releases/).
 
 <figure>
-  <img src="{{ site.url }}/img/tap/thonny-download.png" class="fullwidth" />
+  <img src="{{ site.url }}/img/tap5/thonny-download.png" class="fullwidth" />
   <figcaption>At the time of writing, version 3.2.6 is the latest release</figcaption>
 </figure>
 
 Extract the zip file you've downloaded, then run the *thonny.exe* file to launch Thonny:
 
 <figure>
-  <img src="{{ site.url }}/img/tap/thonny-extract.png" class="fullwidth" />
+  <img src="{{ site.url }}/img/tap5/thonny-extract.png" class="fullwidth" />
 </figure>
 
 At the first prompt, you may change the *Language setting*, but stick with the default *Initial Settings* (of *Standard*):
 
 <figure>
-  <img src="{{ site.url }}/img/tap/thonny-splash.png" style="max-width:350px" />
+  <img src="{{ site.url }}/img/tap5/thonny-splash.png" style="max-width:350px" />
 </figure>
 
 Test out Thonny with a simple `print('hello world')`. You use the run button (green circle with the ▶ icon) to run your script. If you hover over any button, a tool-tip will display its associated keyboard shortcut (*F5* in this case). The first time you run a new script, Thonny will ask you to save the file. Thereafter, it auto-saves each time you run.
 
 <figure>
-  <img src="{{ site.url }}/img/tap/thonny-hello-world.png" class="fullwidth" />
+  <img src="{{ site.url }}/img/tap5/thonny-hello-world.png" class="fullwidth" />
 </figure>
 
 Next, you must install the p5 packages. You want these packages to install to your Thonny application folder; this way, when you copy your Thonny folder to your USB drive, it will include the p5 packages. To do this, select *Tools > Open system shell...*
 
 <figure>
-  <img src="{{ site.url }}/img/tap/p5-package.png" class="fullwidth" />
+  <img src="{{ site.url }}/img/tap5/p5-package.png" class="fullwidth" />
 </figure>
 
 This will display a console window. Type `pip install p5` into the console and hit enter. This will install p5 and its dependencies (glfw, triangle, vispy, numpy, Pillow, freetype-py).
 
 <figure>
-  <img src="{{ site.url }}/img/tap/p5-pip.png" class="fullwidth" />
+  <img src="{{ site.url }}/img/tap5/p5-pip.png" class="fullwidth" />
 </figure>
 
 Close the console window once this is done. If there's some "`... Microsoft Visual C++ ...`" error, you'll need to [install the necessary build tools](https://www.scivision.dev/python-windows-visual-c-14-required/) then run the pip command again. Note that once you've successfully completed this step, you no longer require Microsoft Visual C++. Moreover, your portable Thonny + p5 will run on Windows computers without Microsoft Visual C++ package.
@@ -73,20 +73,20 @@ Close the console window once this is done. If there's some "`... Microsoft Visu
 p5 uses VisPy, which requires GLFW. GLFW is an open-source library for OpenGL, OpenGL ES and Vulkan. Download the Windows pre-compiled binaries for GLFW from [https://www.glfw.org/download.html](https://www.glfw.org/download.html). I had issues using the 64-bit binaries, so I'm directing you to use the 32-bit version:
 
 <figure>
-  <img src="{{ site.url }}/img/tap/glfw-download.png" class="fullwidth" />
+  <img src="{{ site.url }}/img/tap5/glfw-download.png" class="fullwidth" />
   <figcaption>The 32-bit binaries will run fine on 64-bit Windows</figcaption>
 </figure>
 
 Open the GLFW download (a zip file), then navigate to the *lib-mingw* folder; there are three files within this (*glfw3.dll*, *libglfw3.a*, and *libglfwdll.a*). Copy/move these three files into your Thonny application folder, so that they reside in the same location as your *thonny.exe* file:
 
 <figure>
-  <img src="{{ site.url }}/img/tap/glfw-copy-in.png" class="fullwidth" />
+  <img src="{{ site.url }}/img/tap5/glfw-copy-in.png" class="fullwidth" />
 </figure>
 
 You have to tell VisPy where to find this *glfw3.dll* file. Navigate deeper into your Thonny folder -- into a folder named *Lib*, then into *site-packages*, then into *vispy*, then into *ext*. Open the *glfw.py* file in any text/code editor:
 
 <figure>
-  <img src="{{ site.url }}/img/tap/glfw-locate.png" class="fullwidth" />
+  <img src="{{ site.url }}/img/tap5/glfw-locate.png" class="fullwidth" />
 </figure>
 
 Locate the line that reads: `# Else, we failed and exit`  
@@ -97,14 +97,14 @@ _glfw_file = sys.executable.replace('python.exe', 'glfw3.dll')
 ~~~
 
 <figure>
-  <img src="{{ site.url }}/img/tap/glfw-edit.png" class="fullwidth" />
+  <img src="{{ site.url }}/img/tap5/glfw-edit.png" class="fullwidth" />
   <figcaption>I'm using Atom, but you may use any code/text editor you prefer</figcaption>
 </figure>
 
 Save this edit. You can now run p5 sketches in Thonny!
 
 <figure>
-  <img src="{{ site.url }}/img/tap/done.png" class="fullwidth" />
+  <img src="{{ site.url }}/img/tap5/done.png" class="fullwidth" />
 </figure>
 
 Check out the [p5 reference](https://p5.readthedocs.io) for more on how to use it. p5 code looks a little different than processing.py code, but if you have some experience with the latter, it won't take long to pick up.

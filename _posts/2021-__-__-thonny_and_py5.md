@@ -121,6 +121,28 @@ debug example
 imported mode
 Uncheck Tooos > Options... > Assistant > Open Assistant automatically when program crashes with an exception
 
+```python
+import py5, py5_tools
+py5_tools.set_imported_mode(True)
+from py5 import *
+
+print(py5_tools.imported.get_imported_mode())
+
+def settings():
+    size(300, 200)
+
+def setup():
+    rect_mode(CENTER)
+
+def draw():
+    rect(py5.mouse_x, py5.mouse_y, 10, 10)
+
+def mouse_clicked():
+    print(555)
+
+run_sketch()
+```
+
 
 
 # INSTALLING PACKAGES

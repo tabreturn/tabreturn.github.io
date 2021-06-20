@@ -6,9 +6,7 @@ categories: code python
 published: false
 ---
 
-
-
-OPEN TERMINAL
+# OPEN TERMINAL AND INSTALL
 
 1. sudo apt-get install python3.9 python3.9-dev python3.9-venv 
    (apt or whatever, needs dev files to build py5) -- check what thonny windows uses
@@ -18,52 +16,91 @@ OPEN TERMINAL
 
 3. mkdir thonny_py5
    cd thonny_py5
-   python3.9 -m venv env
-   source env/bin/activate
-   pip install py5
-   deactivate
 
-
-3. wget https://github.com/thonny/thonny/releases/download/v3.3.7/thonny-3.3.7-i686-alt.tar.gz
+3. wget https://github.com/thonny/thonny/releases/download/v3.3.7/thonny-3.3.7-x86_64-alt.tar.gz
    (check https://github.com/thonny/thonny/releases for -py38 version if you're using windows)
 
-4. tar -xzvf thonny-3.3.7-i686-alt.tar.gz
-   rm -r env thonny-3.3.7-i686-alt.tar.gz
+4. tar -xzvf thonny-3.3.7-x86_64-alt.tar.gz
+   rm thonny-3.3.7-x86_64-alt.tar.gz
 
-5. cd ./env/lib/python3.9/site-packages/* 
-   cpbackcall* chardet9* daetutil easy_install.py decorator* idna* ipython* jpype line_profiler* matplotlib* noise* nptyping* numpy* IPython JPype* pexpect* pandas* pickleshare* PIL Pillow* prompt_toolkit* py5* pygments Pygments* python_dateutil* pytz* requests* setup.py stackprinter* tests traitlets* typish* urlib3* wcwidth* *jpype* decorator.py kernprof.py ../thonny/lib/python3.9/site-packages/
+5. python3.9 -m venv tempenv
+   cd tempenv/lib/python3.9
+   rm -r site-packages
+   ln -s ../../../thonny/lib/python3.9/site-packages site-packages
+   cd ../../../
 
-8. dowload jdk11 from https://www.oracle.com/java/technologies/javase/jdk11-archive-downloads.html
-   and extract it in your py5 directory, alongside thonny (or install it via apt and ignore the next step)
+6. source tempenv/bin/activate
+   pip install py5
+   deactivate
+   rm -r tempenv
+
+7. wget https://download.java.net/openjdk/jdk11/ri/openjdk-11+28_linux-x64_bin.tar.gz
+   tar -xzvf openjdk-11+28_linux-x64_bin.tar.gz
+   rm openjdk-11+28_linux-x64_bin.tar.gz
+   
+   this extracts it in your py5 directory, alongside thonny (note you could install it via apt and ignore this step)
    py5
-   └─ jdk-11.x.xx
+   └─ jdk-11
    └─ thonny
 
-9. sed -i '2iexport JAVA_HOME=$PWD/../jdk-11.x.xx/' ./thonny/bin/thonny
-   (replace the x's accordingly)
+   sed -i '2iexport JAVA_HOME=$PWD/../../jdk-11/' ./thonny/bin/thonny
 
-10. ln -s ./thonny/bin/thonny thonny_py5
+10. printf '#!/bin/bash\ncd thonny/bin;./thonny' > run
+    chmod +x run
 
-10. optional clean up: 
-sudo apt-get remove --purge python3.9 python3.9-dev python3.9-venv
-sudo apt-get autoremove --purge
-
-
+11. clean up (if you don't want/need python 3): 
+    sudo apt-get remove --purge python3.9 python3.9-dev python3.9-venv
+    sudo apt-get autoremove --purge
 
 
+# OPEN THONNY
+
+1. create a sketch, run (it'll prompt you to save)
+
+```python
+import py5
+
+def settings():
+    py5.size(200, 200)
+
+def draw():
+    py5.rect(py5.mouse_x, py5.mouse_y, 10, 10)
+
+py5.run_sketch()
+```
+use ctrl+space to list the different py5 methods and atrributes
+
+mention assistant; close if you wish
 
 
+2. change theme (restart for full effect)
+   Tools > Options...
+   Theme & Font; change the UI theme and syntax theme as you please
+   you'll have to restart to apply the theme fully
+
+3. debugging in thonny
+
+variables panel
+```python
+x = 10
+
+while True:
+    x += 1
+```
+
+object inspector
+```python
+class foo():
+    def __init__(self, bar):
+        self.bar = bar
+
+x = foo(10)
+
+while True:
+    x.bar += 1
+```
 
 
-OPEN THONNY
-
-tab to prompt for methods and attrs
-ctrl+space for auto-complete (continous)
-
-Uncheck Tooos > Options... > Assistant > Open Assistant automatically when program crashes with an exception
-
-
-change theme (restart for full effect)
 
 thonny has plugins -- so maybe a procssing one with all of the settings (imports, pyde extensions, a color mixder, etc.)
 
@@ -81,7 +118,8 @@ debug example
 
 
 
-
+imported mode
+Uncheck Tooos > Options... > Assistant > Open Assistant automatically when program crashes with an exception
 
 
 

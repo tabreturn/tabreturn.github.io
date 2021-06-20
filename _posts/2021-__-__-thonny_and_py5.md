@@ -8,7 +8,7 @@ published: false
 
 # OPEN TERMINAL AND INSTALL
 
-1. sudo apt-get install python3.9 python3.9-dev python3.9-venv 
+1. sudo apt-get install python3.9 python3.9-dev python3.9-venv
    (apt or whatever, needs dev files to build py5) -- check what thonny windows uses
 
 2. cd ~/Desktop
@@ -37,7 +37,7 @@ published: false
 7. wget https://download.java.net/openjdk/jdk11/ri/openjdk-11+28_linux-x64_bin.tar.gz
    tar -xzvf openjdk-11+28_linux-x64_bin.tar.gz
    rm openjdk-11+28_linux-x64_bin.tar.gz
-   
+
    this extracts it in your py5 directory, alongside thonny (note you could install it via apt and ignore this step)
    py5
    └─ jdk-11
@@ -48,14 +48,19 @@ published: false
 10. printf '#!/bin/bash\ncd thonny/bin;./thonny' > run
     chmod +x run
 
-11. clean up (if you don't want/need python 3): 
+11. clean up (if you don't want/need python 3):
     sudo apt-get remove --purge python3.9 python3.9-dev python3.9-venv
     sudo apt-get autoremove --purge
 
 
 # OPEN THONNY
 
-1. create a sketch, run (it'll prompt you to save)
+1. change theme (restart for full effect)
+   Tools > Options...
+   Theme & Font; change the UI theme and syntax theme as you please
+   you'll have to restart to apply the theme fully
+
+2. create a sketch, run (it'll prompt you to save)
 
 ```python
 import py5
@@ -72,11 +77,6 @@ use ctrl+space to list the different py5 methods and atrributes
 
 mention assistant; close if you wish
 
-
-2. change theme (restart for full effect)
-   Tools > Options...
-   Theme & Font; change the UI theme and syntax theme as you please
-   you'll have to restart to apply the theme fully
 
 3. debugging in thonny
 
@@ -123,6 +123,53 @@ Uncheck Tooos > Options... > Assistant > Open Assistant automatically when progr
 
 
 
+# INSTALLING PACKAGES
+
+cd to thonny_py5/thonny/bin
+./pip3 install ...
+
+an example using pymunk
+
+```
+import py5
+
+import pymunk
+# http://www.pymunk.org/en/latest/tutorials/SlideAndPinJoint.html
+space = pymunk.Space()
+space.gravity = (0, -900)
+
+b0 = space.static_body
+segment = pymunk.Segment(b0, (0, 0), (640, 0), 4)
+segment.elasticity = 1
+body = pymunk.Body(mass=1, moment=10)
+body.position = 100, 200
+
+circle = pymunk.Circle(body, radius=20)
+circle.elasticity = 0.95
+
+space.add(body, circle, segment)
+def settings():
+    py5.size(200, 200)
+
+def draw():
+    py5.background(0)
+    py5.circle(circle.body.position.x, circle.body.position.y, circle.radius)
+    
+    space.step(0.02)        # Step the simulation one step forward
+    #space.debug_draw(print_options) # Print the state of the simulation
+
+py5.run_sketch()
+```
+
+
+
+
+
+
+
+
+
+
 CODE
 
 
@@ -145,11 +192,11 @@ def settings():
     size(500, 500)
 
 def setup():
-    
+
     background(0)
     img = load_image('smile.jpg')
     image(img, 10, 10)
-    
+
 
 
 def draw():
@@ -198,6 +245,5 @@ x = 10
 
 while True:
     print("x:", x)
-    x += 1 
+    x += 1
     sleep(0.05)
-

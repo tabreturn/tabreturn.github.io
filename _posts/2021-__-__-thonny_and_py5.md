@@ -6,7 +6,22 @@ categories: code python
 published: false
 ---
 
-# OPEN TERMINAL AND INSTALL
+... intro ...
+
+<figure>
+  <img src="{{ site.url }}/img/tap/....png" class="fullwidth" />
+</figure>
+
+...
+
+## Heading
+
+...
+
+
+## Install
+
+... terminal ...
 
 1. sudo apt-get install python3.9 python3.9-dev python3.9-venv
    (apt or whatever, needs dev files to build py5) -- check what thonny windows uses
@@ -30,7 +45,7 @@ published: false
    cd ../../../
 
 6. source tempenv/bin/activate
-   pip install py5
+   pip install py5==0.4a2
    deactivate
    rm -r tempenv
 
@@ -53,7 +68,7 @@ published: false
     sudo apt-get autoremove --purge
 
 
-# OPEN THONNY
+## Running Thonny
 
 1. change theme (restart for full effect)
    Tools > Options...
@@ -78,7 +93,7 @@ use ctrl+space to list the different py5 methods and atrributes
 mention assistant; close if you wish
 
 
-3. debugging in thonny
+3. debugging in thonny (maybe not)
 
 variables panel
 ```python
@@ -145,7 +160,7 @@ run_sketch()
 
 
 
-# INSTALLING PACKAGES
+# Installing Packages
 
 cd to thonny_py5/thonny/bin
 ./pip3 install ...
@@ -269,3 +284,15 @@ while True:
     print("x:", x)
     x += 1
     sleep(0.05)
+
+
+
+
+
+
+*End*
+
+## References
+
+* https://...
+* ...

@@ -12,23 +12,23 @@ Previously, I wrote a post on [combining the Thonny editor and p5]({% post_url 2
 
 *"Processing.py is the spiritual ancestor to and inspiration for py5. Py5 is similar to Processing.py in that both use Python syntax but their implementations are very different. Processing.py and py5 do not share any code but py5 benefits from code in the Processing core libraries written to accommodate Processing.py."*
 
-I've been involved with [Processing.py](https://py.processing.org/) for some time, and I got excited when I read this. Promptly, I set out to see if I could combine py5 with [Thonny](https://thonny.org/), a fantastic Python IDE for beginners. I'm delighted with the result (Figure 1).
+I've been involved with [Processing.py](https://py.processing.org/) for some time, and I got excited when I read this. So, I promptly set out to see if I could combine py5 with [Thonny](https://thonny.org/), a fantastic Python IDE for beginners. I'm delighted with the result (Figure 1).
 
 <figure>
   <img src="{{ site.url }}/img/tapy5/banner.png" class="fullwidth" />
-  <figcaption>Figure 1: A faux <a href="https://py.processing.org/">Processing.py/Python Mode</a> IDE set up with Thonny and py5</figcaption>
+  <figcaption>Figure 1: A faux <a href="https://py.processing.org/">Processing.py/Python Mode</a> clone set up with Thonny and py5</figcaption>
 </figure>
 
-I prefer to run applications in a 'portable' fashion where I can. This is useful for different reasons, including that it's easier to distribute something that beginners can simply click and run. In other words, if you're on a system like mine (Debian-based Linux, in this case), I can zip up the files and send the archive to you; all you need to do is extract and run it! No installation process required.
+I prefer to run applications in a 'portable' fashion where I can. This is useful for different reasons, including that it's easier to distribute something that beginners can simply click and run. In other words, if you're on a system like mine (Debian-based Linux, in this case), I can zip up the files and send the archive to you; all you need to do is extract and run it! No installation process required. What's more, you can run a portable app off a USB drive.
 
-This post covers how to roll your own portable Thonny + py5 IDE on Linux (Mint, specifically, in my case). Ubuntu and other Debian distros should work with these instructions. The process is similar for Mac and Linux setups, although I will not cover the procedure for these platforms.
+This post covers how to roll your very own portable Thonny + py5 IDE on Linux (Mint in my case). Ubuntu and other Debian distros should work with these instructions. The process is similar for Mac and Linux setups, although I will not cover the procedure for those platforms. I've explained each step, though, so you can adapt the process accordingly for other platforms.
 
 I'll also provide a quick-start guide to writing py5 code with Thonny.
 
 
-## Installing py5 and Thonny
+## Creating a Portable py5 + Thonny App
 
-Note that you're creating a portable IDE. There are other ways to [install py5](http://py5.ixora.io/install/) -- with Python, Anaconda, and for Jupyter notebooks. The aim here's a self-contained bundle that runs even if the user's computer is missing Python, Java, or any other packages that py5 or Thonny ordinarily require.
+Note that you're creating a portable IDE. There are other ways to [install py5](http://py5.ixora.io/install/) -- with Python, Anaconda, and for Jupyter notebooks. The aim here is a self-contained bundle that runs even if the user's computer is missing Python, Java, or any other packages that py5 or Thonny ordinarily require. The result is an IDE that resembles that of [Processing PDE](https://processing.org/reference/environment/).
 
 To begin, open your terminal. At the time of writing, Thonny (at version [3.3.10](https://github.com/thonny/thonny/releases/tag/v3.3.10)) comes bundled with Python 3.7.9. However, py5 requires Python 3.8 or higher. But, there are "alt-variants" of Thonny that use Python 3.9 instead of 3.7, which you'll use instead.
 
@@ -37,7 +37,7 @@ To begin, open your terminal. At the time of writing, Thonny (at version [3.3.10
 sudo apt-get install python3.9 python3.9-dev python3.9-venv
 ```
 
-**Step 2** -- Now, set up a new folder/directory named *thonny_py5* for your Thonny + py5 install. Recall that this is a portable setup -- you can move it anywhere you like later. I've decided to create this folder on my Desktop:
+**Step 2** -- Now, set up a new folder/directory named *thonny_py5* for your Thonny + py5 install. Recall that this is a portable setup -- you can move it anywhere you like later after you've completed these steps. I've decided to create this folder on my Desktop:
 ```
 cd ~/Desktop
 mkdir thonny_py5
@@ -53,7 +53,7 @@ tar -xzvf thonny-3.3.7-x86_64-alt.tar.gz
 rm thonny-3.3.7-x86_64-alt.tar.gz
 ```
 
-**Step 4** -- Set up a virtual environment to install the py5 packages; to install those packages in Thonny's built-in Python location, there's a symlink. Once you've installed the necessary package(s), the commands delete the virtual environment:
+**Step 4** -- Set up a temporary virtual environment to install the py5 packages; to install those packages in Thonny's built-in Python location, there's a symlink (the `ln -s` part). Once you've installed the necessary package(s), there are commands to delete the virtual environment:
 ```
 python3.9 -m venv tempenv
 cd tempenv/lib/python3.9
@@ -75,14 +75,14 @@ tar -xzvf openjdk-11+28_linux-x64_bin.tar.gz
 rm openjdk-11+28_linux-x64_bin.tar.gz
 ```
 
-This extracts OpenJDK in your *thonny_py5* directory, alongside thonny:
+This extracts OpenJDK in your *thonny_py5* directory, alongside *thonny*:
 ```
 thonny_py5
 └─ jdk-11
 └─ thonny
 ```
 
-Enter this command that sets the Java environmental variable upon starting Thonny, so that your computer knows where to find Java when it runs your py5 programs/sketches:
+Enter the following command that sets the Java environmental variable upon starting Thonny -- so that your computer knows where to find Java when it runs your py5 programs/sketches:
 ```
 sed -i '2iexport JAVA_HOME=$PWD/../../jdk-11/' ./thonny/bin/thonny
 ```
@@ -101,16 +101,16 @@ sudo apt-get remove --purge python3.9 python3.9-dev python3.9-venv
 sudo apt-get autoremove --purge
 ```
 
-You can now move *thonny_py5* folder anywhere you like on your system, copy it to other Linux computers, and so on. It's a self-contained app with Python, the py5 libraries, and Java.
+You can now move the *thonny_py5* folder anywhere you like on your system, copy it to other Linux computers, and so on. It's a self-contained app with Python, the py5 libraries, and Java.
 
 You're ready to test out Thonny and py5.
 
 
 ## Running Thonny
 
-Double-click your *run* file to start Thonny. If your system gives you the option to Run in Terminal / Display / Cancel / Run, select **Run**. It's also handy to add this as an app to your 'start' menu.
+Double-click your *run* file to start Thonny. If your system gives you the option to Run in Terminal / Display / Cancel / Run, select **Run**. It's also handy to add this *run* file as an app to your 'start' menu.
 
-When you run Thonny for the first time, there's a simple configuration step (Figure 2), after which Thonny will open, and you're ready to write code (Figure 3).
+When you run Thonny for the first time, there's a simple configuration step (Figure 2), after which Thonny will open. You're ready to write code when you see the editor (Figure 3).
 
 <figure>
   <img src="{{ site.url }}/img/tapy5/configuration-start.png" style="border:1px solid black" />
@@ -122,7 +122,7 @@ When you run Thonny for the first time, there's a simple configuration step (Fig
   <figcaption>Figure 3: Thonny's standard appearance</figcaption>
 </figure>
 
-If you've already installed another Thonny instance on your machine, it'll skip the configuration step and load your default preferences.
+If you've already installed another Thonny instance on your machine, it'll skip the configuration step and load your existing preferences.
 
 ### Customising Thonny's Appearance
 
@@ -140,11 +140,13 @@ Now let's write some code!
 
 ## Writing py5 Sketches
 
-py5 has [three modes](http://py5.ixora.io/tutorials/py5-modes/) -- *module*, *class*, and *imported* mode. I cover two of those here: module and imported. To run files in Thonny, you can use the Ctrl + R, F5, or the run icon (green play button above the code editor).
+py5 has [three modes](http://py5.ixora.io/tutorials/py5-modes/) -- *Module*, *Class*, and *Imported* mode. I cover two of those here: Module and Imported.
+
+To run files in Thonny, you can use the **Ctrl-R**, or **F5**, or the run icon (green play button above the code editor). If you want to test this out quickly, try a `print('Hello, World!')`. If you haven't saved your new file when you run it, Thonny will prompt you to name and save it somewhere.
 
 ### Py5 Module Mode
 
-In *module mode*, you'll access py5 functionality through module-level functions and fields. For those coming from a Processing background, that means there's a `py5.` in front of every method and attribute. Here's a simple example:
+In *Module mode*, you'll access py5 functionality through module-level functions and fields. For those coming from [Processing.py](https://py.processing.org/reference/), that means there's a `py5.` in front of your functions and system variables. Here's a simple example to start:
 
 ```python
 import py5
@@ -168,42 +170,45 @@ Note the differences compared with Processing.py. First, you must add the `impor
 You can refer to the py5 reference for a complete list of what's available in py5:  
 [http://py5.ixora.io/reference/](http://py5.ixora.io/reference/)
 
-It's also handy to note that Thonny includes code completion, so you can hit the Tab key or Ctrl + Space to select what you need from py5 (Figure 5).
+It's also handy to note that Thonny includes code completion, so you can hit the **Tab** key or **Ctrl-Space** to select what you need from py5 (Figure 5).
 
 <figure>
   <img src="{{ site.url }}/img/tapy5/code-completion.png" class="fullwidth" />
-  <figcaption>Figure 5: Thonny's code completion, activate using Tab or Ctrl + Space</figcaption>
+  <figcaption>Figure 5: Thonny's code completion, activate using <b>Tab</b> or <b>Ctrl-Space</b></figcaption>
 </figure>
 
 Run the sketch to view the result (Figure 6).
 
 <figure>
   <img src="{{ site.url }}/img/tapy5/module-mode.png" class="fullwidth" />
-  <figcaption>Figure 5: Running a basic module mode sketch</figcaption>
+  <figcaption>Figure 5: Running a basic, Module mode sketch</figcaption>
 </figure>
 
 Thonny is full of [useful features](https://thonny.org/), many in the form of panels that you can activate from the **View** menu. I won't cover those here.
 
-That concludes this brief introduction to *module mode*. The *imported mode* is even closer to Processing, which I cover next.
+That concludes this brief introduction to Module mode. The *Imported mode* is even closer to Processing, which I cover next.
 
 ### Py5 Imported Mode (for a more authentic Processing experience)
 
-*"Imported Mode was originally designed to be used by beginner programmers. It is analogous to the Processing code users write in the Processing Development Editor (PDE)."  
--- from the official [py5 documentation](http://py5.ixora.io/tutorials/py5-modes#imported-mode)*
+I'll begin with a description for *Imported mode* from the official [py5 documentation](http://py5.ixora.io/tutorials/py5-modes#imported-mode) --
 
-To get this working nicely, you'll need to make a small modification to Thonny. Within your *thonny_py5* folder, you'll need to locate a file named *running.py*:
+*"Imported Mode was originally designed to be used by beginner programmers. It is analogous to the Processing code users write in the Processing Development Editor (PDE)."*
+
+To get this working nicely, you'll need to make a small modification to Thonny. Within your *thonny_py5* folder, you'll need to locate a file named *running.py*; here's the path:
+
 ```
 thonny_py5/thonny/lib/python3.9/site-packages/thonny/running.py
 ```
 
-Open this file with a code/text editor and search for the following line:  
-`cmd_parts = ["%" + command_name, rel_filename] + args`
+Open this file with a code/text editor and search for the following line:
+```
+cmd_parts = ["%" + command_name, rel_filename] + args
+```
 
 Insert the following new code:
 ```python
         ...
         cmd_parts = ["%" + command_name, rel_filename] + args
-
         # insert this new code ▼▼▼
         if args[0] == 'imported_mode':
             import site
@@ -212,14 +217,14 @@ Insert the following new code:
             cmd_parts = ["%" + command_name, rs_path, rel_filename]
 ```
 
-Save your changes. This will tell Thonny to use a special py5 utility script to run your code. But, what if you don't want to use it? Well, this utility script only fires *if* you add `imported_mode` to your Thonny *Program arguments*. To do this, select **View > Program arguments**, then enter `imported_mode` into the field that appears (Figure 6).
+Save the changes. This will tell Thonny to use a special py5 utility script to run your code. "But, wait--", I hear you say. What if you don't want to use it -- like when you're using Thonny for Module mode or regular-old Python? Thonny will run normally by default. This utility script only fires *if* you add `imported_mode` to your Thonny *Program arguments*. To do this, select **View > Program arguments**, then enter `imported_mode` into the field that appears (Figure 6).
 
 <figure>
   <img src="{{ site.url }}/img/tapy5/program-arguments.png" class="fullwidth" />
   <figcaption>Figure 6: Setting the Program arguments to imported_mode</figcaption>
 </figure>
 
-Now you can write your code without any `py5` prefixes or `import` line. Here's the same simple example from above converted to module mode:
+Now you can write your code without any `py5` prefixes or `import` line. Here's the same simple example from above converted to Imported mode:
 
 ```python
 def settings():
@@ -234,13 +239,13 @@ def draw():
     print(frame_count)
 ```
 
-This is beginning to look a lot more like Processing code! The creator of py5 plans to make an adjustment to the next release that allows you to place the `size()` function in the `setup()` block -- so you wouldn't require a `settings()` function.
+This is beginning to look a lot more like Processing code! The creator of py5 intends that the next release allows you to place the `size()` function in the `setup()` block -- so you won't require a `settings()` function in future, just like Processing :)
 
-Use the stop button to stop/exit any sketch you run (Figure 7).
+You can run the sketch. Note that you can also use the stop button to stop/exit sketch (Figure 7).
 
 <figure>
   <img src="{{ site.url }}/img/tapy5/stop-button.png" class="fullwidth" />
-  <figcaption>Figure 7: Exit sketches using the stop button</figcaption>
+  <figcaption>Figure 7: You can stop sketches using the stop button</figcaption>
 </figure>
 
 If you restart Thonny, it'll recall the arguments field from the last session. Empty this to return to normal Python mode.

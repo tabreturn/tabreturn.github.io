@@ -182,23 +182,46 @@ Run the sketch to view the result (Figure 6).
   <figcaption>Figure 5: Running a basic module mode sketch</figcaption>
 </figure>
 
-
 Thonny is full of [useful features](https://thonny.org/), many in the form of panels that you can activate from the **View** menu. I won't cover those here.
 
 That concludes this brief introduction to *module mode*. The *imported mode* is even closer to Processing, which I cover next.
 
-### Py5 Imported Mode
+### Py5 Imported Mode (for a more authentic Processing experience)
 
 *"Imported Mode was originally designed to be used by beginner programmers. It is analogous to the Processing code users write in the Processing Development Editor (PDE)."  
 -- from the official [py5 documentation](http://py5.ixora.io/tutorials/py5-modes#imported-mode)*
 
-Here's the same simple example from above converted to module mode:
+To get this working nicely, you'll need to make a small modification to Thonny. Within your *thonny_py5* folder, you'll need to locate a file named *running.py*:
+```
+thonny_py5/thonny/lib/python3.9/site-packages/thonny/running.py
+```
+
+Open this file with a code/text editor and search for the following line:  
+`cmd_parts = ["%" + command_name, rel_filename] + args`
+
+Insert the following new code:
+```python
+        ...
+        cmd_parts = ["%" + command_name, rel_filename] + args
+
+        # insert this new code ▼▼▼
+        if args[0] == 'imported_mode':
+            import site
+            rs_file = '/py5_tools/tools/run_sketch.py'
+            rs_path = str(site.getsitepackages()[0]) + rs_file
+            cmd_parts = ["%" + command_name, rs_path, rel_filename]
+```
+
+Save your changes. This will tell Thonny to use a special py5 utility script to run your code. But, what if you don't want to use it? Well, this utility script only fires *if* you add `imported_mode` to your Thonny *Program arguments*. To do this, select **View > Program arguments**, then enter `imported_mode` into the field that appears (Figure 6).
+
+<figure>
+  <img src="{{ site.url }}/img/tapy5/program-arguments.png" class="fullwidth" />
+  <figcaption>Figure 6: Setting the Program arguments to imported_mode</figcaption>
+</figure>
+
+Now you can write your code without any `py5` prefixes or `import` line. Here's the same simple example from above converted to module mode:
 
 ```python
-import py5, py5_tools
-py5_tools.set_imported_mode(True)
-from py5 import *
-
 def settings():
     size(500, 500)
 
@@ -207,58 +230,101 @@ def setup():
     no_stroke()
 
 def draw():
-    circle(py5.mouse_x, py5.mouse_y, 10)
-    print(py5.frame_count)
-
-run_sketch()
+    circle(mouse_x, mouse_y, 10)
+    print(frame_count)
 ```
-Notice how this code omits many of `py5` prefixes. However,  .............. ............................................... ..................... ............................................... ............................... .............................
+
+This is beginning to look a lot more like Processing code! The creator of py5 plans to make an adjustment to the next release that allows you to place the `size()` function in the `setup()` block -- so you wouldn't require a `settings()` function.
+
+Use the stop button to stop/exit any sketch you run (Figure 7).
+
+<figure>
+  <img src="{{ site.url }}/img/tapy5/stop-button.png" class="fullwidth" />
+  <figcaption>Figure 7: Exit sketches using the stop button</figcaption>
+</figure>
+
+If you restart Thonny, it'll recall the arguments field from the last session. Empty this to return to normal Python mode.
 
 
 ## Installing Packages
 
+You can install additional Python libraries to extend your py5 sketches. In this section, you'll install a 2D Python physics library, [Pymunk](http://www.pymunk.org). The techniques you use here are applicable to installing other Python packages.
 
- It makes the Java Processing jars available to the CPython interpreter using JPype.
- https://py.processing.org/tutorials/python-jython-java/
+<blockquote markdown="1">
+NOTE: One of the neat things about JPype is that it makes the Java Processing jars available to the CPython interpreter. Processing.py uses [Jython](https://www.jython.org/), which does *not* support third-party Python libraries that use extensions written in C.
+</blockquote>
 
-cd to thonny_py5/thonny/bin
-./pip3 install ...
-
-an example using pymunk
+You need to install packages using Thonny's built-in `pip` command. Open your terminal and change to your Thonny `bin` directory:
 
 ```
-import py5
+cd ~/Desktop/thonny_py5/thonny/bin
+```
 
+Note that my *thonny_py5* resides on my Desktop; your path is different if you've moved your folder elsewhere.
+
+Now install Pymunk:
+
+```
+./pip3 install pymunk
+```
+
+This `pip` command (within your Thonny app) installs all of it's packages to Thonny's `/lib/python3.9/site-packages/` location. Pymunk is now part of your portable app.
+
+Now that you've installed Pymunk, you can use this library in your sketches.
+
+
+## A Pymunk example
+
+Open Thonny and add the following code to a new file:
+
+```python
 import pymunk
-# http://www.pymunk.org/en/latest/tutorials/SlideAndPinJoint.html
+
 space = pymunk.Space()
-space.gravity = (0, -900)
+space.gravity = (0, 900)
 
-b0 = space.static_body
-segment = pymunk.Segment(b0, (0, 0), (640, 0), 4)
-segment.elasticity = 1
+# create valley-like floor
+segment1 = pymunk.Segment(space.static_body, (0, 100), (250, 450), 5)
+segment1.elasticity = 1
+segment2 = pymunk.Segment(space.static_body, (500, 100), (250, 450), 5)
+segment2.elasticity = 1
+space.add(segment1, segment2)
+
+# create ball
 body = pymunk.Body(mass=1, moment=10)
-body.position = 100, 200
+body.position = 90, 0
+ball = pymunk.Circle(body, radius=10)
+ball.elasticity = 0.95
+space.add(body, ball)
 
-circle = pymunk.Circle(body, radius=20)
-circle.elasticity = 0.95
-
-space.add(body, circle, segment)
 def settings():
-    py5.size(200, 200)
+    size(500, 500)
 
 def draw():
-    py5.background(0)
-    py5.circle(circle.body.position.x, circle.body.position.y, circle.radius)
+    background(150)
 
-    space.step(0.02)        # Step the simulation one step forward
-    #space.debug_draw(print_options) # Print the state of the simulation
+    # render all of the elements
+    stroke(255)
+    stroke_weight(segment1.radius*2)
+    line(segment1.a.x, segment1.a.y, segment1.b.x, segment1.b.y)
+    line(segment2.a.x, segment2.a.y, segment2.b.x, segment2.b.y)
+    no_stroke()
+    circle(ball.body.position.x, ball.body.position.y, ball.radius*2)
 
-py5.run_sketch()
+    space.step(1/get_frame_rate())
 ```
 
+Run the sketch to begin the simulation -- the ball from around the top of the display window and bounces around before settling to a standstill in the trough.
+
+<figure>
+  <img src="{{ site.url }}/img/tapy5/pymunk-example.png" class="fullwidth" />
+  <figcaption>Figure 8: The ball bounces around within the valley</figcaption>
+</figure>
 
 ...
+
+http://www.pymunk.org/en/latest/pymunk.html
+
 
 http://py5.ixora.io/reference/
 

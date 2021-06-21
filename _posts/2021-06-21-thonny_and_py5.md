@@ -320,11 +320,11 @@ def draw():
     space.step(1/get_frame_rate())
 ```
 
-Run the sketch to begin the simulation. The ball drops from around the top-left of the display window; it bounces around before settling to a standstill in the trough of the V.
+Run the sketch to begin the simulation. The ball drops from around the top-left of the display window; it bounces around before settling to a standstill in the trough of the V (Figure 9).
 
 <figure>
   <img src="{{ site.url }}/img/tapy5/pymunk-example.png" class="fullwidth" />
-  <figcaption>Figure 8: The ball bounces around within the V-shape</figcaption>
+  <figcaption>Figure 9: The ball bounces around within the V-shape</figcaption>
 </figure>
 
 For more on Pymunk, refer to the official website which contains an API reference, tutorials, a showcase, and more:

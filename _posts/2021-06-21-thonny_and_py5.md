@@ -90,7 +90,7 @@ Technically speaking, step 5 isn't required if you have an existing Java runtime
 
 **Step 6** -- Finally, create a *run* file in the root of your *thonny_py5* directory to start Thonny:
 ```
-printf '#!/bin/bash\ncd thonny/bin;./thonny' > run
+printf '#!/bin/bash\ncd $(dirname $0)/thonny/bin;./thonny' > run
 chmod +x run
 ```
 

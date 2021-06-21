@@ -3,7 +3,6 @@ layout: post
 comments: true
 title: "Portable Thonny and py5"
 categories: code python
-published: false
 ---
 
 I very recently stumbled upon [py5](http://py5.ixora.io/), a Python version of Processing for Python 3.8+ that uses Processing's core libraries under the hood (thanks to some [JPype](http://www.jpype.org) magic).
@@ -248,24 +247,24 @@ You can run the sketch. Note that you can also use the stop button to stop/exit 
   <figcaption>Figure 7: You can stop sketches using the stop button</figcaption>
 </figure>
 
-If you restart Thonny, it'll recall the arguments field from the last session. Empty this to return to normal Python mode.
+If you restart Thonny, it'll recall the Program arguments field from the last session. You must clear this field to return to normal Python mode.
 
 
 ## Installing Packages
 
-You can install additional Python libraries to extend your py5 sketches. In this section, you'll install a 2D Python physics library, [Pymunk](http://www.pymunk.org). The techniques you use here are applicable to installing other Python packages.
+You can install additional Python libraries to extend your py5 sketches. In this section, you'll install a 2D Python physics library, [Pymunk](http://www.pymunk.org). The techniques you use here apply to installing other Python packages.
 
 <blockquote markdown="1">
-NOTE: One of the neat things about JPype is that it makes the Java Processing jars available to the CPython interpreter. Processing.py uses [Jython](https://www.jython.org/), which does *not* support third-party Python libraries that use extensions written in C.
+NOTE: One of the neat things about JPype is that it makes the Java Processing jars available to the CPython interpreter, unlike [Jython](https://www.jython.org/) for Processing.py, which doesn't support third-party Python libraries that use extensions written in C. It's for this reason that the popular NumPy library will run fine in py5 but not Processing.py.
 </blockquote>
 
-You need to install packages using Thonny's built-in `pip` command. Open your terminal and change to your Thonny `bin` directory:
+You need to install Python packages using Thonny's built-in `pip` command. Open your terminal and change to your Thonny `bin` directory:
 
 ```
 cd ~/Desktop/thonny_py5/thonny/bin
 ```
 
-Note that my *thonny_py5* resides on my Desktop; your path is different if you've moved your folder elsewhere.
+Note that my *thonny_py5* app resides on my Desktop; your path is different if you've moved your folder elsewhere.
 
 Now install Pymunk:
 
@@ -273,29 +272,30 @@ Now install Pymunk:
 ./pip3 install pymunk
 ```
 
-This `pip` command (within your Thonny app) installs all of it's packages to Thonny's `/lib/python3.9/site-packages/` location. Pymunk is now part of your portable app.
+This `pip` command (within your Thonny app) installs all of its packages to Thonny's `lib/python3.9/site-packages/` location. Pymunk is now part of your portable app.
 
 Now that you've installed Pymunk, you can use this library in your sketches.
 
 
 ## A Pymunk example
 
-Open Thonny and add the following code to a new file:
+In Thonny, using Imported mode, and add the following code to a new file:
 
 ```python
 import pymunk
 
+# create a new space for your simulation
 space = pymunk.Space()
 space.gravity = (0, 900)
 
-# create valley-like floor
+# create a valley-like floor
 segment1 = pymunk.Segment(space.static_body, (0, 100), (250, 450), 5)
 segment1.elasticity = 1
 segment2 = pymunk.Segment(space.static_body, (500, 100), (250, 450), 5)
 segment2.elasticity = 1
 space.add(segment1, segment2)
 
-# create ball
+# create a ball
 body = pymunk.Body(mass=1, moment=10)
 body.position = 90, 0
 ball = pymunk.Circle(body, radius=10)
@@ -308,7 +308,7 @@ def settings():
 def draw():
     background(150)
 
-    # render all of the elements
+    # render all of the bodies
     stroke(255)
     stroke_weight(segment1.radius*2)
     line(segment1.a.x, segment1.a.y, segment1.b.x, segment1.b.y)
@@ -316,46 +316,41 @@ def draw():
     no_stroke()
     circle(ball.body.position.x, ball.body.position.y, ball.radius*2)
 
+    # advance the simulation one step
     space.step(1/get_frame_rate())
 ```
 
-Run the sketch to begin the simulation -- the ball from around the top of the display window and bounces around before settling to a standstill in the trough.
+Run the sketch to begin the simulation. The ball drops from around the top-left of the display window; it bounces around before settling to a standstill in the trough of the V.
 
 <figure>
   <img src="{{ site.url }}/img/tapy5/pymunk-example.png" class="fullwidth" />
-  <figcaption>Figure 8: The ball bounces around within the valley</figcaption>
+  <figcaption>Figure 8: The ball bounces around within the V-shape</figcaption>
 </figure>
 
-...
+For more on Pymunk, refer to the official website which contains an API reference, tutorials, a showcase, and more:
 
-http://www.pymunk.org/en/latest/pymunk.html
+[http://www.pymunk.org](http://www.pymunk.org)
 
-
-http://py5.ixora.io/reference/
-
+That's all that I'll cover here. I hope that's inspired you. The possibilities for creative coding using Thonny, py5, and other Python libraries are truly vast and exciting.
 
 
+## Final Words
 
+py5 is new and exciting, and I'm sure it's going to evolve rapidly.
 
-## Conclusion
+The creator has commented that "the Processing Editor does not currently support py5, but perhaps one day it will." So py5 might be running Python Mode for Processing sometime in the future, integrated seamlessly into the Processing PDE.
 
-http://py5.ixora.io/install/#install-cairo-and-cairosvg-optional
+For now, Thonny offers a very capable and attractive editor to complement py5. Thonny also includes a robust [plug-in system](https://github.com/thonny/thonny/wiki/Plugins) -- so maybe there's an opportunity to compile the steps I've outlined in this post into some convenient, easy to activate plug-in. Perhaps this integrates useful Processing PDE features into Thonny, like a colour mixer, support for files with .pyde extensions, and more.
 
-py5 is new and exciting, and it's changing all the time ...
+But why stop there? We might even develop other Thonny plugins -- like one for [p5](https://p5.readthedocs.io/en/latest/) (when you want to avoid Java altogether), [pyp5js](https://berinhard.github.io/pyp5js/) (for exporting to JS/web browsers), [Shoebot](http://shoebot.net/), and even some headless version of [Blender](http://localhost:4000/#blender-reverse) (for some really powerful 3D) ... but I digress.
 
-http://py5.ixora.io/community/
+If you like py5, get involved! Just using the software and reporting issues is easy (and fun). Here's some info on contributing, wrapped in an inspiring project manifesto:
 
-http://py5.ixora.io/blog/
+[http://py5.ixora.io/community/](http://py5.ixora.io/community/)
 
--- from the official [py5 documentation](http://py5.ixora.io/tutorials/py5-modes#imported-mode)*
+The py5 [reference](http://py5.ixora.io/reference/) and other documentation are coming along nicely, especially considering how young the project is. Plus, it works great, too, thanks to leveraging the very mature and established Processing ecosystem. This also means that you can tap into a wealth of Processing learning materials and resources (with a bit of translation into Python/py5 required). There's also a discussion about a *Processing.py compatibility mode* -- think: `noStroke` instead of `no_stroke()`, etc.
 
-"The Processing Editor does not currently support py5, but perhaps one day it will. Until then, you can use the py5 Jupyter Notebook Kernel.""
-
-thonny has plugins -- so maybe a procssing one with all of the settings (imports, pyde extensions, a color mixder, etc.)
-
-even an option to export to pyp5js, or bpy for 3d, or shoebot mode?
-
-https://github.com/hx2A/py5generator/discussions/12
+You can follow py5 project updates here: [http://py5.ixora.io/blog/](http://py5.ixora.io/blog/); and via [RSS feed](http://py5.ixora.io/rss.xml).
 
 *End*
 
@@ -367,5 +362,4 @@ https://github.com/hx2A/py5generator/discussions/12
 * http://py5.ixora.io/tutorials/
 * https://py.processing.org/
 * https://thonny.org/
-*
-* ...
+* http://www.pymunk.org/

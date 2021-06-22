@@ -2,7 +2,7 @@
 layout: post
 comments: true
 title: "Portable Thonny and py5"
-categories: code python
+categories: code python thonny
 ---
 
 I very recently stumbled upon [py5](http://py5.ixora.io/), a Python version of Processing for Python 3.8+ that uses Processing's core libraries under the hood (thanks to some [JPype](http://www.jpype.org) magic).

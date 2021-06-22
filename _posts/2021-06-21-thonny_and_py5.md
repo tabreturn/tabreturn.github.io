@@ -345,7 +345,7 @@ But why stop there? We might even develop other Thonny plugins -- like one for [
 If you like py5, get involved! Just using the software and reporting issues is easy (and fun). Here's some info on how to help, and an inspiring community manifesto:
 
 * how to to help: [http://py5.ixora.io/help/](http://py5.ixora.io/help/)  
-* commnunity: [http://py5.ixora.io/community/](http://py5.ixora.io/community/)
+* community: [http://py5.ixora.io/community/](http://py5.ixora.io/community/)
 
 The py5 [reference](http://py5.ixora.io/reference/) and other documentation are coming along nicely, especially considering how young the project is. Plus, py5 runs great, too, thanks to leveraging the very mature and established Processing ecosystem. This also means that you can tap into a wealth of Processing learning materials and resources (with a bit of translation into Python/py5 required). There's also a discussion about a *Processing.py compatibility mode* -- think: `noStroke()` instead of `no_stroke()`, etc.
 

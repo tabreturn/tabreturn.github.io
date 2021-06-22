@@ -5,7 +5,12 @@ title: "Portable Thonny and p5"
 categories: code python thonny
 ---
 
-You can combine *Thonny* and *p5* for a Processing-esque, Python 3 development environment that runs off a USB drive. There are situations where you may prefer to use p5 over Processing Python Mode / processing.py, which I discuss in this post. This Thonny-p5 combo is also handy for teaching programming in computer labs where students cannot install software, or any situation where you'd prefer to run an application in a portable fashion.
+You can combine *Thonny* and *p5* for a Processing-esque, Python 3 development environment that runs off a USB drive. There are situations where you may prefer to use p5 over Processing Python Mode / Processing.py, which I discuss in this post. This Thonny-p5 combo is also handy for teaching programming in computer labs where students cannot install software, or any situation where you'd prefer to run an application in a portable fashion.
+
+<p style="border:3px solid rgba(255,255,255,0.5); outline:1px solid black; margin:-0.5em 0 1.5em 0; padding:1em" markdown=1>
+*I've written a more recent post on combining [Thonny and **py5**]({% post_url 2021-06-21-thonny_and_py5 %}).
+This is quite different from **p5** -- like Processing.py, py5 also leverages Processing's core libraries.*
+</p>
 
 <figure>
   <img src="{{ site.url }}/img/tap5/header.png" class="fullwidth" />
@@ -107,7 +112,7 @@ Save this edit. You can now run p5 sketches in Thonny!
   <img src="{{ site.url }}/img/tap5/done.png" class="fullwidth" />
 </figure>
 
-Check out the [p5 reference](https://p5.readthedocs.io) for more on how to use it. p5 code looks a little different than processing.py code, but if you have some experience with the latter, it won't take long to pick up.
+Check out the [p5 reference](https://p5.readthedocs.io) for more on how to use it. p5 code looks a little different than Processing.py code, but if you have some experience with the latter, it won't take long to pick up.
 
 ## Thonny + p5 on da USB Drive
 
@@ -115,7 +120,7 @@ You can now copy your Thonny application folder to your USB drive. It may be qui
 
 <sup markdown="1">If you wish to, you can delete all of the *.pyc* files and *\__pycache\__* directories before you zip/compress the Thonny application folder. If you don't know how to do this, or what this even means -- don't worry about it, it's not a critical step.</sup>
 
-For more on p5, Processing, processing.py, and Thonny, refer to the links below.
+For more on p5, Processing, Processing.py, and Thonny, refer to the links below.
 
 *End*
 

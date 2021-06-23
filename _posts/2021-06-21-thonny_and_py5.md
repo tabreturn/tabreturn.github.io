@@ -150,10 +150,8 @@ In *Module mode*, you'll access py5 functionality through module-level functions
 ```python
 import py5
 
-def settings():
-    py5.size(500, 500)
-
 def setup():
+    py5.size(500, 500)
     py5.fill(255, 0, 0)
     py5.no_stroke()
 
@@ -226,10 +224,8 @@ Save the changes. This will tell Thonny to use a special py5 utility script to r
 Now you can write your code without any `py5` prefixes, and `import` and `run_sketch()` lines. Here's the same simple example from above converted to Imported mode:
 
 ```python
-def settings():
-    size(500, 500)
-
 def setup():
+    size(500, 500)
     fill(255, 0, 0)
     no_stroke()
 
@@ -238,9 +234,7 @@ def draw():
     print(frame_count)
 ```
 
-This is beginning to look a lot more like Processing code! The creator of py5 intends that the next release allows you to place the `size()` function in the `setup()` block -- so you won't require the `settings()` function in future, just like Processing :)
-
-You can run the sketch. Note that you can also use the stop button to stop/exit sketches (Figure 8).
+This is beginning to look a lot more like Processing code! You can run the sketch. Note that you can also use the stop button to stop/exit sketches (Figure 8).
 
 <figure>
   <img src="{{ site.url }}/img/tapy5/stop-button.png" class="fullwidth" />
@@ -302,7 +296,7 @@ ball = pymunk.Circle(body, radius=10)
 ball.elasticity = 0.95
 space.add(body, ball)
 
-def settings():
+def setup():
     size(500, 500)
 
 def draw():

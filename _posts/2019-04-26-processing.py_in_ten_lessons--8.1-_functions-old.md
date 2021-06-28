@@ -4,6 +4,8 @@ comments: true
 title: "Processing.py in Ten Lessons – 08: Functions"
 categories: code processing python
 published: false
+image: /img/pitl03/iteration-for-loop-adaption.png
+description: A series of tutorials on Processing.py, introducing non-programmers to the fundamentals of computer programming in a visual context.
 ---
 
 ---

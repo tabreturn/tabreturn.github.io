@@ -3,6 +3,8 @@ layout: post
 comments: true
 title: "Converting CSS Colour to Greyscale"
 categories: code html javascript
+image: /img/ccctg/nyancat-colour-to-averaged.png
+description: This post discusses how RGB colour is converted to greyscale.
 ---
 
 This post discusses how RGB colour is converted to greyscale. Two formulae are presented here, along with techniques to implement them using a combination of HTML and JavaScript.

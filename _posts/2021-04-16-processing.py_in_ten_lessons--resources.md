@@ -3,6 +3,8 @@ layout: post
 comments: true
 title: "Processing.py in Ten Lessons – Resources"
 categories: code processing python
+image: /img/pitl03/iteration-for-loop-adaption.png
+description: Some resources to help Processing.py users.
 ---
 
 I've created two new resources to help Processing.py users -- **a website for browsing code examples** and a **cheat sheet for beginners**. If you're keen to learn more about Python Mode for Processing, I've written a [series of lessons]({{ site.baseurl }}/#processing-reverse). I've also got a book out, [Learn Python Visually](https://nostarch.com/Learn-Python-Visually), published by No Starch Press.

@@ -3,6 +3,8 @@ layout: post
 comments: true
 title: "The Python Creative Coding Landscape"
 categories: code python
+image: /img/...
+description: ...
 published: false
 ---
 

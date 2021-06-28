@@ -4,6 +4,8 @@ comments: true
 title: "Interactive Animation with SVG and GSAP"
 categories: code javascript svg
 published: true
+image: /img/isawg/poster.png
+description: Create an interactive espresso machine using SVG, JavaScript, and the GSAP.
 ---
 
 In this tutorial, you'll create an interactive espresso machine using SVG, JavaScript, and the [GSAP](https://greensock.com/gsap/) library for animation. You'll draw the espresso machine using SVG code; once that's complete, you'll add the JavaScript/GSAP code to animate it. You'll learn how to use different SVG elements and attributes to draw with code. I won't go into much detail about JavaScript---just enough to add some event listeners and manipulate SVG elements with GSAP. The tutorial assumes that you possess a decent grasp of how HTML and CSS work.

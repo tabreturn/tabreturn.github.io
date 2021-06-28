@@ -3,6 +3,8 @@ layout: post
 comments: true
 title: "Processing.py in Ten Lessons – 1.3: Drawing"
 categories: code processing python
+image: /img/pitl03/iteration-for-loop-adaption.png
+description: A series of tutorials on Processing.py, introducing non-programmers to the fundamentals of computer programming in a visual context.
 ---
 
 <p markdown="1" style="text-align:right">

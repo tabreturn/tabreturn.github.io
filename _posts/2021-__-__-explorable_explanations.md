@@ -3,6 +3,8 @@ layout: post
 comments: true
 title: "Explorable Explanations"
 categories: <new category?>
+image: /img/...
+description: ...
 published: false
 ---
 

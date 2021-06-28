@@ -3,6 +3,8 @@ layout: post
 comments: true
 title: "A Quick Intro to Blender Creative Coding – part 3 of 3"
 categories: code blender python
+image: /img/aqitbcc01/getting-started-blender.png
+description: A short tutorial series to introduce Blender as a tool for creative coding.
 ---
 
 <p markdown="1" style="text-align:right">

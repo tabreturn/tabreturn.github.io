@@ -4,6 +4,8 @@ comments: true
 title: "An Introduction to Vectors Using Unity – part 1"
 categories: code unity
 mathml: true
+image: /img/aitvuup1/17-vector.svg
+description: An Introduction to Vectors Using Unity, part 1.
 ---
 
 <!-- unityscript error highlight conceal -->

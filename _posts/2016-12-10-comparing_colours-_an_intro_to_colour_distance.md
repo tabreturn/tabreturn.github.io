@@ -3,6 +3,8 @@ layout: post
 comments: true
 title: "Comparing Colours: An Intro to Colour Distance"
 categories: misc
+image: /img/cc/colour-graph.svg
+description: This post discusses the concepts around measuring differences in colour, particularly in the RGB colour space.
 ---
 
 This post discusses the concepts around measuring differences in colour, particularly in the RGB colour space.

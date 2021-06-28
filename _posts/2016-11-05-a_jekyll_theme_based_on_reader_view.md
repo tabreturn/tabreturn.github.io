@@ -3,6 +3,8 @@ layout: post
 comments: true
 title: "A Jekyll Theme Based on Reader View"
 categories: jekyll misc
+image: /img/logo.svg
+description: A Jekyll theme based on the Firefox Reader View, for a clean, clear, customisable blog interface.
 ---
 
 [Reader View](https://support.mozilla.org/en-US/kb/firefox-reader-view-clutter-free-web-pages) is a Firefox feature that strips away clutter, such as buttons, ads, and background images; and adjusts text size, contrast and layout for better web-page readability. Reader View settings are easily customised to best suit an individual's desired reading preferences.

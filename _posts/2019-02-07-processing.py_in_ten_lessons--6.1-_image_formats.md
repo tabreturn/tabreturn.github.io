@@ -4,6 +4,8 @@ comments: true
 title: "Processing.py in Ten Lessons – 6.1: Image Formats"
 categories: code processing python
 mathml: true
+image: /img/pitl03/iteration-for-loop-adaption.png
+description: A series of tutorials on Processing.py, introducing non-programmers to the fundamentals of computer programming in a visual context.
 ---
 
 <p markdown="1" style="text-align:right">

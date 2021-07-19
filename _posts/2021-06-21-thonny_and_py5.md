@@ -152,8 +152,10 @@ In *Module mode*, you'll access py5 functionality through module-level functions
 ```python
 import py5
 
-def setup():
+def settings():
     py5.size(500, 500)
+
+def setup():
     py5.fill(255, 0, 0)
     py5.no_stroke()
 

@@ -209,7 +209,7 @@ Insert the following new code:
         ...
         cmd_parts = ["%" + command_name, rel_filename] + args
         # insert this new code ▼▼▼
-        if args[0] == 'imported_mode':
+        if args and args[0] == 'imported_mode':
             import site
             rs_file = '/py5_tools/tools/run_sketch.py'
             rs_path = str(site.getsitepackages()[0]) + rs_file

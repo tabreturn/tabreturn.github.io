@@ -225,6 +225,16 @@ for i in range(1,145):
   <figcaption>Randomised quarter-circle sketch.</figcaption>
 </figure>
 
+
+As your programs grow more complex, you'll find multiple ways to code the same outcome. For example, you could have laid the quarter-circle Truchet tiles by using a *loop within a loop*, using `range()` functions with a step-size argument, in various combinations. See if you can program the randomised quarter-circle sketch using a structure like this:
+
+{% highlight py %}
+for row in range(0, height, 50):
+    for col in range(0, width, 50):
+        ...
+{% endhighlight %}
+
+
 If you've ever played the strategy game [Trax](https://en.wikipedia.org/wiki/Trax_(game)), this pattern will look familiar. Another tile-based strategy game, [Tantrix](https://en.wikipedia.org/wiki/Tantrix), uses a hexagonal adaption of a Truchet tile.
 
 Tiles are an exciting area to explore using Processing, and we'll look at other types in the lessons to come.

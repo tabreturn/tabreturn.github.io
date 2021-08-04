@@ -10,7 +10,7 @@ description: Combine Thonny and py5 for a Processing-esque, portable Python 3 de
 I very recently stumbled upon [py5](http://py5.ixora.io/), a Python version of Processing for Python 3.8+ that uses Processing's core libraries under the hood (thanks to some [JPype](http://www.jpype.org) magic).
 
 <p style="border:3px solid rgba(255,255,255,0.5); outline:1px solid black; margin:-0.5em 0 1.5em 0; padding:1em" markdown=1>
-*I've begun working on a Thonny plug-in, [thonny-py5mode](https://pypi.org/project/thonny-py5mode/), that automates the installation steps I cover in this post. You can check out the [project repo](https://github.com/tabreturn/thonny-py5mode) to see how work on the plug-in is progressing*.
+*I've begun working on a Thonny plug-in, [thonny-py5mode](https://pypi.org/project/thonny-py5mode/), that automates the installation steps I cover in this post. You can check out the [project repo](https://github.com/tabreturn/thonny-py5mode) to track how work on the plug-in is progressing*.
 </p>
 
 Previously, I wrote a post on [combining the Thonny editor and p5]({% post_url 2020-02-26-thonny_and_p5 %}). *p5* is a sort of Python 'clone' of Processing, that doesn't actually use Processing to generate visual output. But *py5* is quite different. As its creator, Jim Schmitz, [explains](http://py5.ixora.io/about/) --

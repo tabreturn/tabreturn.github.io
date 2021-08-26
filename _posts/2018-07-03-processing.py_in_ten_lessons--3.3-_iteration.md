@@ -167,7 +167,7 @@ ellipse(100,100, 80,80)
 
 The following sequence of steps outlines the most straightforward approach to begin tackling this task:
 
-1. create a `while` structure that loops twelve times (consider using a `print()` to monitor your counter);
+1. create a `while` structure that loops sixteen times (consider using a `print()` to monitor your counter);
 2. using the loop, place the circles in one long row, extending past the right edge of the display window;
 3. once the above is working, use an `if` statement within the loop to detect when the second row must begin.
 

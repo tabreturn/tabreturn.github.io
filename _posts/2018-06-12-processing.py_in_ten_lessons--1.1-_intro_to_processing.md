@@ -31,7 +31,7 @@ You can think of Processing.py as a kind-of extension of the Python programming 
 
 ### Setup Processing
 
-Before you can write any code, you'll need to download Processing. Head over to the Processing download page, and download the relevant version (Windows/Mac/Linux):
+Before you can write any code, you'll need to download Processing. Head over to the Processing download page, and download the relevant version (Windows/Mac/Linux). Note that, right now, there is no Processing.py support for Processing 4 -- you must download **Processing version 3.5.4**:
 
 [processing.org/download](https://processing.org/download/)
 

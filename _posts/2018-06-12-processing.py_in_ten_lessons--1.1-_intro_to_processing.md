@@ -31,13 +31,13 @@ You can think of Processing.py as a kind-of extension of the Python programming 
 
 ### Setup Processing
 
-Before you can write any code, you'll need to download Processing. Head over to the Processing download page, and download the relevant version (Windows/Mac/Linux). Note that, right now, there is no Processing.py support for Processing 4 -- you must download **Processing version 3.5.4**:
+Before you can write any code, you'll need to download Processing. Head over to the Processing download page, and download the relevant version (Windows/Mac/Linux). Note that Processing 3.5.4 is the latest stable release at the time of writing. For the upcoming Processing 4, the process shouldn't change:
 
 [processing.org/download](https://processing.org/download/)
 
 Run the application. Note that the default mode is "Java". As these tutorials cover the Python variant, you'll need to switch to Python mode.
 
-Click on the down arrow next to "Java" and select **Add Mode...** . Then, from the *Contribution Manager* window that appears, choose **Python Mode for Processing 3**. Finally, click **Install**.
+Click on the down arrow next to "Java" and select **Add Mode...** . Then, from the *Contribution Manager* window that appears, choose **Python Mode for Processing 3** (or 4 if applicable). Finally, click **Install**.
 
 <figure>
   <img src="{{ site.url }}/img/pitl01/intro-to-processing-add-python-mode.png" class="fullwidth" />

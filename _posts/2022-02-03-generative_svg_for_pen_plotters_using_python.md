@@ -88,7 +88,7 @@ The [fake-bpy-module](https://pypi.org/project/fake-bpy-module-2.90/) is helpful
 NOTE: you could also use Blender's built-in code editor ("Scripting" workspace). I often prefer to write my code in a dedicated Python editor.
 </blockquote>
 
-Once again, vpype can prove very useful for cleaning up and optimising your Blender-generated SVG files. 
+Once again, vpype will prove very useful for cleaning up and optimising your Blender-generated SVG files. 
 
 
 ## Task 4: Codeless SVG

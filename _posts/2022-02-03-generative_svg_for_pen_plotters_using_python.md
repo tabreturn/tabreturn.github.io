@@ -2,7 +2,7 @@
 layout: post
 comments: true
 title: "Generative SVG for Pen Plotters using Python"
-categories: code python thonny
+categories: code python svg thonny
 image: /img/gsfppup/plot-banner.png
 description: Using py5, vpype, Blender (bpy), and other Python tools to generate plotter art.
 ---
@@ -14,7 +14,6 @@ I recently delivered a [CC Fest](https://ccfest.rocks/) presentation on my Pytho
 https://github.com/tabreturn/cc-fest-plotter
 
 The recording of the session covers three tasks -- two I predicted I'd cover adequately, and a third I had to rush through. But, there are four tasks in all, with a commented file for each.
-
 
 
 ## Task 1: SVG concepts
@@ -94,12 +93,12 @@ The [fake-bpy-module](https://pypi.org/project/fake-bpy-module-2.90/) is helpful
 <figcaption>Figure 4.2: A Hilbert curve generated in Inkscape</figcaption>
 </figure>
 
-Yeah -- not exactly 'Python', but they make for some cool plotter artwork and are great fun for play. Also, if you get creative, you might combine/augment results you generate with these tools using Python scripts ... 
+Yeah -- not exactly 'Python', but they make for some cool plotter artwork and are great fun for play. Also, if you get creative, you might combine/augment results you generate with these tools using Python scripts ...
 
 
 ## In Closing
 
-There was a big turnout for this Virtual edition of CC Fest, with a broad range of sessions. It's worthwhile tracking down the other talk recordings and accompanying materials. There's always some Python representation at the events, and I'd encourage you to propose your own Python/Processing/etc. sessions. Reach out to me if you'd like some guidance and mentorship with this. 
+There was a big turnout for this Virtual edition of CC Fest, with a broad range of sessions. It's worthwhile tracking down the other talk recordings and accompanying materials. There's always some Python representation at the events, and I'd encourage you to propose your own Python/Processing/etc. sessions. Reach out to me if you'd like some guidance and mentorship with this.
 
 I included some [links to plotter artwork/artists](https://github.com/tabreturn/cc-fest-plotter#inspiration) for inspiration. Happy plotting!
 

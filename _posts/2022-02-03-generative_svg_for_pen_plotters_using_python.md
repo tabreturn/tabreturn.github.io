@@ -48,13 +48,13 @@ This is really the focus of the presentation -- generating SVG files with py5 co
 
 Then, I move into vpype (Figure 2) for:
 
-1. visualising the drawing routes the plotter must follow (where it will pick up the pen or lower it to draw);
-2. optimising the drawing route so that shapes and lines plot in the most efficient order;
-3. the *occult* add-on for vpype to remove occulted lines (think: the lowermost shapes won't show through the ones overlapping them).
+5. visualising the drawing routes the plotter must follow (where it will pick up the pen or lower it to draw);
+6. optimising the drawing route so that shapes and lines plot in the most efficient order;
+7. the *occult* add-on for vpype to remove occulted lines (think: the lowermost shapes won't show through the ones overlapping them).
 
 <figure>
 <img src="{{ site.url }}/img/gsfppup/task-2-py5.png" class="fullwidth" />
-<figcaption>Figure 2: Generating SVG files with py5, and optimising them with vpype. Note the effect of occult on the squares with blue outlines.</figcaption>
+<figcaption>Figure 2: Generating SVG files with py5 and optimising them with vpype. Note the effect of occult on the squares with blue outlines (compared to the ones on the white background).</figcaption>
 </figure>
 
 There's far too much vpype awesomeness to cover in such a short time, and I point to some additional features (`linesimplify`, `linemerge`, `multipass`) and other add-ons (for pixel art and hatching).

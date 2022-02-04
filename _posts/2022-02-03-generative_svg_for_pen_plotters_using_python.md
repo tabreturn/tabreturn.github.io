@@ -64,7 +64,7 @@ There's far too much vpype awesomeness to cover in such a short time, and I poin
 
 ## Task 3: Blender SVG
 
-If you haven't heard, Blender has a Python scripting API that makes for a powerful [3D creative coding environment]({% post_url 2020-06-06-a_quick_intro_to_blender_creative_coding--part_1_of_3 %}). What's more, the Blender *Freestyle* add-on enables SVG rendering/export capability. This means that you can program Blender to render SVG artwork for plotting (Figure 3.1). There are many line options to play with -- silhouette-style, wireframe-style, and so on.
+If you haven't heard, Blender has a Python scripting API that makes for a powerful [3D creative coding environment]({% post_url 2020-06-06-a_quick_intro_to_blender_creative_coding--part_1_of_3 %}). What's more, the Blender *Freestyle* add-on enables SVG rendering/export capability. This means that you can write Blender code to render SVG artwork for plotting (Figure 3.1). There are many line options to play with -- silhouette-style, wireframe-style, and so on.
 
 <figure>
 <img src="{{ site.url }}/img/gsfppup/plot-blender.png" class="fullwidth" />
@@ -85,10 +85,10 @@ The [03-blender_svg.py](https://github.com/tabreturn/cc-fest-plotter/blob/main/t
 The [fake-bpy-module](https://pypi.org/project/fake-bpy-module-2.90/) is helpful to add Blender (bpy module) code-completion to your Python editor.
 
 <blockquote markdown="1">
-NOTE: you could also use Blender's built-in code editor. I often prefer to write my code in a dedicated Python editor.
+NOTE: you could also use Blender's built-in code editor ("Scripting" workspace). I often prefer to write my code in a dedicated Python editor.
 </blockquote>
 
-Once again, vpype will prove very useful for cleaning up and optimising your Blender-generated SVG files. 
+Once again, vpype can prove very useful for cleaning up and optimising your Blender-generated SVG files. 
 
 
 ## Task 4: Codeless SVG

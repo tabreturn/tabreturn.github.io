@@ -93,7 +93,7 @@ Once again, vpype will prove very useful for cleaning up and optimising your Ble
 
 ## Task 4: Codeless SVG
 
-(As initially anticipated) I don't reach this far in my presentation session. The [04-codeless_svg.md](https://github.com/tabreturn/cc-fest-plotter/blob/main/tasks/04-codeless_svg.md?plain=1) file contains a set of steps (in markdown) for generating SVGs in the UJI web-app (Figure 4.1) and using Inkscape's L-System feature (Figure 4.2).
+(As initially anticipated) I don't reach this far in my presentation session. The [04-codeless_svg.md](https://github.com/tabreturn/cc-fest-plotter/blob/main/tasks/04-codeless_svg.md?plain=1) file contains a set of steps (in markdown) for generating SVGs in the [UJI web-app](https://doersino.github.io/uji/) (Figure 4.1) and using Inkscape's L-System feature (Figure 4.2).
 
 <figure>
 <img src="{{ site.url }}/img/gsfppup/task-4-uji.png" class="fullwidth" />

@@ -22,7 +22,7 @@ The recording of the session covers three tasks -- two I predicted I'd cover ade
 
 ## Task 1: SVG concepts
 
-In the first task (*01-svg_concepts.svg*), I cover some SVG essentials -- that is, document structure and adding a square and line using `<rect>` and `<line>` tags (Figure 1).
+In the first task ([01-svg_concepts.svg](https://github.com/tabreturn/cc-fest-plotter/blob/main/tasks/01-svg_concepts.svg?short_path=b06e63b)), I cover some SVG essentials -- that is, document structure and adding a square and line using `<rect>` and `<line>` tags (Figure 1).
 
 <figure>
 <img src="{{ site.url }}/img/gsfppup/task-1-svg.png" class="fullwidth" />
@@ -39,7 +39,7 @@ This cursory introduction to SVG code leads into generating SVGs with py5.
 
 ## Task 2: py5 SVG
 
-This is really the focus of the presentation -- generating SVG files with py5 code for plotting art. I use the Thonny IDE for this section with the [py5mode plug-in](https://pypi.org/project/thonny-py5mode/). The *02-py5_svg.py* file steps through:
+This is really the focus of the presentation -- generating SVG files with py5 code for plotting art. I use the Thonny IDE for this section with the [py5mode plug-in](https://pypi.org/project/thonny-py5mode/). The [02-py5_svg.py](https://github.com/tabreturn/cc-fest-plotter/blob/main/tasks/02-py5_svg.py) file steps through:
 
 1. creating an SVG file in py5 (and by extension, Processing);
 2. creating multiple SVG files for multi-colour plots using different pens;
@@ -69,7 +69,7 @@ If you haven't heard, Blender has a Python scripting API that makes for a powerf
 <figcaption>Figure 3.1: A plot generated with a Blender Python script</figcaption>
 </figure>
 
-As depicted in Figure 3.2, the *03-blender_svg.py* file task steps through:
+As depicted in Figure 3.2, the [03-blender_svg.py](https://github.com/tabreturn/cc-fest-plotter/blob/main/tasks/03-blender_svg.py) file task steps through:
 
 1. setting up an empty Blender scene to populate with code-generated forms that will render those as SVG outlines;
 2. writing Python code to generate a cone and some metaballs;
@@ -85,7 +85,7 @@ The [fake-bpy-module](https://pypi.org/project/fake-bpy-module-2.90/) is helpful
 
 ## Task 4: Codeless SVG
 
-(As initially anticipated) I don't reach this far in the presentation. The *04-codeless_svg.md* file contains a set of steps (in markdown) for generating SVGs in the UJI web-app (Figure 4.1) and using Inkscape's L-System feature (Figure 4.2).
+(As initially anticipated) I don't reach this far in the presentation. The [04-codeless_svg.md](https://github.com/tabreturn/cc-fest-plotter/blob/main/tasks/04-codeless_svg.md?plain=1) file contains a set of steps (in markdown) for generating SVGs in the UJI web-app (Figure 4.1) and using Inkscape's L-System feature (Figure 4.2).
 
 <figure>
 <img src="{{ site.url }}/img/gsfppup/task-4-uji.png" class="fullwidth" />

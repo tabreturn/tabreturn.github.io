@@ -9,6 +9,8 @@ description: Using py5, vpype, Blender (bpy), and other Python tools to generate
 
 I've been working extensively with [py5](http://py5.ixora.io/) for creative coding projects and investigating it seriously as a tool for learning & teaching to code in a more visual context. I recently acquired access to a pen plotter, which I'm excited to report makes a fantastic hardware addition to my growing suite of creative coding toys. And Python has to offer the pen plotter enthusiast -- from powerful SVG optimisation tools like [vpype](https://github.com/abey79/vpype) to scripted Blender 3D graphics for plotting using ([bpy](https://docs.blender.org/manual/en/latest/advanced/scripting/index.html)), and more.
 
+![](/img/gsfppup/plot-banner.png)
+
 I recently delivered a [CC Fest](https://ccfest.rocks/) presentation on my Python+SVG+plotter adventures and discoveries, the resources for which I've posted on GitHub. I even included some coverage of code-less generative SVG tools --
 
 https://github.com/tabreturn/cc-fest-plotter

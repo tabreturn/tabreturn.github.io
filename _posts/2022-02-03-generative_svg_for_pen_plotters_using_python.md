@@ -7,7 +7,7 @@ image: /img/gsfppup/plot-banner.png
 description: Using py5, vpype, Blender (bpy), and other Python tools to generate plotter art.
 ---
 
-I recently acquired access to a pen plotter, which I'm excited to report makes a fantastic hardware addition to my growing suite of creative coding toys. Python has plenty to offer the plotter enthusiast -- from powerful SVG optimisation tools like [vpype](https://github.com/abey79/vpype) to [Blender scripting](https://docs.blender.org/manual/en/latest/advanced/scripting/index.html) for SVG renders, and more.
+I recently acquired access to a pen plotter, which I'm excited to report makes a fantastic hardware addition to my growing suite of creative coding toys. Python has plenty to offer the plotter enthusiast -- from powerful SVG optimisation tools like [vpype](https://github.com/abey79/vpype) to [Blender scripting](https://docs.blender.org/manual/en/latest/advanced/scripting/index.html) for '3D' SVG renders, and more.
 
 <figure>
 <img src="{{ site.url }}/img/gsfppup/plot-banner.png" class="fullwidth" />

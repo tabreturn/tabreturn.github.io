@@ -59,7 +59,7 @@ Then, I move into vpype (Figure 2) for:
 <figcaption>Figure 2: Generating SVG files with py5 and optimising them with vpype. Note the effect of occult on the squares with blue outlines (compared to the ones on the white background).</figcaption>
 </figure>
 
-There's far too much vpype awesomeness to cover in such a short time, and I point to some additional features ([`linesimplify`](https://vpype.readthedocs.io/en/stable/reference.html#linesimplify), [`linemerge`](https://vpype.readthedocs.io/en/stable/reference.html#linemerge), [`multipass`](https://vpype.readthedocs.io/en/stable/reference.html#multipass)) and other plug-in (for [pixel art](https://github.com/abey79/vpype-pixelart) and [hatching](https://github.com/plottertools/hatched)).
+There's far too much vpype awesomeness to cover in such a short time, and I point to some additional features ([`linesimplify`](https://vpype.readthedocs.io/en/stable/reference.html#linesimplify), [`linemerge`](https://vpype.readthedocs.io/en/stable/reference.html#linemerge), [`multipass`](https://vpype.readthedocs.io/en/stable/reference.html#multipass)) and other plug-ins (for [pixel art](https://github.com/abey79/vpype-pixelart) and [hatching](https://github.com/plottertools/hatched)).
 
 
 ## Task 3: Blender SVG

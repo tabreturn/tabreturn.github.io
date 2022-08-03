@@ -5,7 +5,6 @@ title: "Overview of Tools Combining Processing and Python"
 categories: code processing python
 image: /img/ootcpap/siggraph-video.png
 description: Demystifying the Python-Processing Landscape.
-published: true
 ---
 
 A while ago, I was reading over (and responding to) a post on the [Processing forums](https://discourse.processing.org). The thread discussed the future of Processing [Python Mode / Processing.py](https://py.processing.org/), but that's not exactly why I'm writing this blog post. What inspired me was one particular comment from *Setsuna* that read:

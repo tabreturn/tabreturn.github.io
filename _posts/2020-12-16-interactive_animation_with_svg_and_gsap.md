@@ -3,7 +3,6 @@ layout: post
 comments: true
 title: "Interactive Animation with SVG and GSAP"
 categories: code javascript svg
-published: true
 image: /img/isawg/poster.png
 description: Create an interactive espresso machine using SVG, JavaScript, and the GSAP.
 ---

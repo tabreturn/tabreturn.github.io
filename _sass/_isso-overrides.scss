@@ -13,6 +13,12 @@
     opacity: 1;
   }
 
+  p {
+    margin-bottom: 0.25em;
+    margin-top: 0.5em;
+    padding: 0;
+  }
+
   a.edit, a.delete, a.reply {
     text-decoration: underline;
     text-shadow: none;
